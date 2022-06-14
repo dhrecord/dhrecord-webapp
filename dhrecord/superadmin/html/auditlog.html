@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid container">
             <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
@@ -57,8 +58,55 @@
         </div>
     </nav>
 
+    <!-- content -->
     <div class="container my-5">
-        <h4>Audit Log</h4>
+        <h4 class="mb-4">Audit Log</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Date/Time</th>
+                    <th scope="col">Actor ID</th>
+                    <th scope="col">Actor</th>
+                    <th scope="col">Activity</th>
+                    <th scope="col">Target</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>23/01/2022, 07:30:33 PM</td>
+                    <td>1</td>
+                    <td>Sam</td>
+                    <td>Add user</td>
+                    <td>User: Nate22@gmail.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>23/01/2022, 09:22:21 PM</td>
+                    <td>1</td>
+                    <td>Sam</td>
+                    <td>Add User</td>
+                    <td>User: Jack11@gmail.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>25/01/2022, 11:40:03 AM</td>
+                    <td>23</td>
+                    <td>Nate</td>
+                    <td>Update User</td>
+                    <td>User: Nate22@gmail.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>26/01/2022, 02:11:23 AM</td>
+                    <td>24</td>
+                    <td>Jack</td>
+                    <td>Update User</td>
+                    <td>User: Jack11@gmail.com</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- bootstrap js -->
