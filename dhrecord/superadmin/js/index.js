@@ -7,6 +7,7 @@ var data = [
     "S5219994H",
     "+65 8950 4262",
     "JohnDoe@gmail.com",
+    "-",
   ],
   [
     2,
@@ -15,6 +16,7 @@ var data = [
     "S6891261Z",
     "+65 8952 7201",
     "JaneDoe@gmail.com",
+    "l99Pas6d",
   ],
   [
     3,
@@ -23,6 +25,7 @@ var data = [
     "S9168686D",
     "+65 9786 5789",
     "Nate22@gmail.com",
+    "9KAasY7w",
   ],
   [
     4,
@@ -31,6 +34,7 @@ var data = [
     "S5397679D",
     "+65 8951 7299",
     "Jack11@gmail.com",
+    "9KAasY7w",
   ],
 ];
 
@@ -51,6 +55,8 @@ function findData() {
       data[i][4] +
       "</td><td>" +
       data[i][5] +
+      "</td><td>" +
+      data[i][6] +
       "</td>" +
       '<td class="text-center"><button onclick="editInfo(' +
       data[i][0] +
@@ -89,6 +95,8 @@ function searchName() {
         data[i][4] +
         "</td><td>" +
         data[i][5] +
+        "</td><td>" +
+        data[i][6] +
         "</td>" +
         '<td class="text-center"><button onclick="editInfo(' +
         data[i][0] +
@@ -130,6 +138,8 @@ function deleteRow(id) {
       data[i][4] +
       "</td><td>" +
       data[i][5] +
+      "</td><td>" +
+      data[i][6] +
       "</td>" +
       '<td class="text-center"><button onclick="editInfo(' +
       data[i][0] +
@@ -165,6 +175,7 @@ function saveDetails() {
   let NRIC = $("#inputNRIC").val();
   let contactNo = $("#inputContactNo").val();
   let email = $("#inputEmail").val();
+  let c_ref = $("#inputCheckReferral").val();
 
   if (
     ID.trim() === "" ||
@@ -185,13 +196,17 @@ function saveDetails() {
   ID = parseInt(ID);
   for (i = 0; i < data.length; i++) {
     if (data[i][0] == ID) {
-      data[i] = [ID, name, address, NRIC, contactNo, email];
+      data[i] = [ID, name, address, NRIC, contactNo, email, c_ref];
     }
   }
 
   // display updated table
   let text = "";
   for (i = 0; i < data.length; i++) {
+    if (data[i][6].trim() === "") {
+      data[i][6] = "-";
+    }
+
     text +=
       '<tr><td scope="row">' +
       data[i][0] +
@@ -205,6 +220,8 @@ function saveDetails() {
       data[i][4] +
       "</td><td>" +
       data[i][5] +
+      "</td><td>" +
+      data[i][6] +
       "</td>" +
       '<td class="text-center"><button onclick="editInfo(' +
       data[i][0] +
