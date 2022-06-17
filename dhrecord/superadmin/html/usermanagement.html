@@ -21,7 +21,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body onload="findData();">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid container">
             <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
@@ -95,10 +95,10 @@
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody id="data">
+                <!-- <tr>
                     <th scope="row">1</th>
-                    <td class="td">John Doe</td>
+                    <td>John Doe</td>
                     <td>5 Magazine Road #02-01, 059571, Singapore</td>
                     <td>S5219994H</td>
                     <td>+65 8950 4262</td>
@@ -143,7 +143,7 @@
                             data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button>
                     </td>
                     <td class="text-center"><button class="border-0"><i class="fa-solid fa-trash-can"></i></button></td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
 
