@@ -34,7 +34,7 @@ var data = [
   ],
 ];
 
-// inject data to table in 'user management' page
+// inject data to table in 'user management' page => onLoad
 function findData() {
   let text = "";
   for (i = 0; i < data.length; i++) {
@@ -52,8 +52,12 @@ function findData() {
       "</td><td>" +
       data[i][5] +
       "</td>" +
-      '<td class="text-center"><button class="border-0 edit-btn" data-bs-toggle="modal" data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button></td>' +
-      '<td class="text-center"><button class="border-0"><i class="fa-solid fa-trash-can"></i></button></td><tr>';
+      '<td class="text-center"><button onclick="editInfo(' +
+      data[i][0] +
+      ');" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button></td>' +
+      '<td class="text-center"><button onclick="deleteRow(' +
+      data[i][0] +
+      ');" class="border-0"><i class="fa-solid fa-trash-can"></i></button></td><tr>';
   }
 
   document.getElementById("data").innerHTML += text;
@@ -86,36 +90,130 @@ function searchName() {
         "</td><td>" +
         data[i][5] +
         "</td>" +
-        '<td class="text-center"><button class="border-0 edit-btn" data-bs-toggle="modal" data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button></td>' +
-        '<td class="text-center"><button class="border-0"><i class="fa-solid fa-trash-can"></i></button></td><tr>';
+        '<td class="text-center"><button onclick="editInfo(' +
+        data[i][0] +
+        ');" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button></td>' +
+        '<td class="text-center"><button onclick="deleteRow(' +
+        data[i][0] +
+        ');" class="border-0"><i class="fa-solid fa-trash-can"></i></button></td><tr>';
     }
   }
 
   document.getElementById("data").innerHTML += text;
 }
 
-// to pass information to modal when 'edit' button is clicked
-$(".edit-btn").click(function () {
-  // get the name
-  var $name = $(this)
-    .closest("tr") // Finds the closest row <tr>
-    .find("td:first")
-    .text(); // Retrieves the text within <td>
-  $("#inputName").val($name);
+// function to delete row when 'delete' button is clicked
+function deleteRow(id) {
+  // empty table
+  document.getElementById("data").innerHTML = "";
 
-  // get the address
-  var $address = $(this).closest("tr").find("td:eq(1)").text();
-  $("#inputAddress").val($address);
+  // remove deleted row from data
+  for (i = 0; i < data.length; i++) {
+    if (data[i][0] === id) {
+      data.splice(i, 1);
+    }
+  }
 
-  // get the NRIC
-  var $NRIC = $(this).closest("tr").find("td:eq(2)").text();
-  $("#inputNRIC").val($NRIC);
+  // display updated table
+  let text = "";
+  for (i = 0; i < data.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data[i][0] +
+      "</td><td>" +
+      data[i][1] +
+      "</td><td>" +
+      data[i][2] +
+      "</td><td>" +
+      data[i][3] +
+      "</td><td>" +
+      data[i][4] +
+      "</td><td>" +
+      data[i][5] +
+      "</td>" +
+      '<td class="text-center"><button onclick="editInfo(' +
+      data[i][0] +
+      ');" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button></td>' +
+      '<td class="text-center"><button onclick="deleteRow(' +
+      data[i][0] +
+      ');" class="border-0"><i class="fa-solid fa-trash-can"></i></button></td><tr>';
+  }
 
-  // get the contact no.
-  var $contactNo = $(this).closest("tr").find("td:eq(3)").text();
-  $("#inputContactNo").val($contactNo);
+  document.getElementById("data").innerHTML += text;
+}
 
-  // get the email
-  var $email = $(this).closest("tr").find("td:eq(4)").text();
-  $("#inputEmail").val($email);
-});
+// function to pass information to modal when 'edit' button is clicked
+function editInfo(id) {
+  for (i = 0; i < data.length; i++) {
+    if (data[i][0] === id) {
+      $("#invisibleID").val(data[i][0]);
+      $("#inputName").val(data[i][1]);
+      $("#inputAddress").val(data[i][2]);
+      $("#inputNRIC").val(data[i][3]);
+      $("#inputContactNo").val(data[i][4]);
+      $("#inputEmail").val(data[i][5]);
+    }
+  }
+}
+
+// function to save the updated information from modal
+function saveDetails() {
+  // validate input - not null
+  let ID = $("#invisibleID").val();
+  let name = $("#inputName").val();
+  let address = $("#inputAddress").val();
+  let NRIC = $("#inputNRIC").val();
+  let contactNo = $("#inputContactNo").val();
+  let email = $("#inputEmail").val();
+
+  if (
+    ID.trim() === "" ||
+    name.trim() === "" ||
+    address.trim() === "" ||
+    NRIC.trim() === "" ||
+    contactNo.trim() === "" ||
+    email.trim() === ""
+  ) {
+    alert("Invalid! Please don't leave the input field empty!");
+    return;
+  }
+
+  // empty table
+  document.getElementById("data").innerHTML = "";
+
+  // update data of the user
+  ID = parseInt(ID);
+  for (i = 0; i < data.length; i++) {
+    if (data[i][0] == ID) {
+      data[i] = [ID, name, address, NRIC, contactNo, email];
+    }
+  }
+
+  // display updated table
+  let text = "";
+  for (i = 0; i < data.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data[i][0] +
+      "</td><td>" +
+      data[i][1] +
+      "</td><td>" +
+      data[i][2] +
+      "</td><td>" +
+      data[i][3] +
+      "</td><td>" +
+      data[i][4] +
+      "</td><td>" +
+      data[i][5] +
+      "</td>" +
+      '<td class="text-center"><button onclick="editInfo(' +
+      data[i][0] +
+      ');" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button></td>' +
+      '<td class="text-center"><button onclick="deleteRow(' +
+      data[i][0] +
+      ');" class="border-0"><i class="fa-solid fa-trash-can"></i></button></td><tr>';
+  }
+
+  document.getElementById("data").innerHTML += text;
+  $("#popupModal").modal("hide");
+}
