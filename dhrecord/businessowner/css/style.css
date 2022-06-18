@@ -1,3 +1,16 @@
-/* h1{
-    color: blue;
-} */
+.img-icon-search {
+    width: 16px;
+}
+
+.referral-box {
+    border: 1px solid black !important;
+}
+
+td > button {
+    background: none;
+}
+
+button:hover {
+    opacity: 0.6;
+    transition: 0.6s;
+}
