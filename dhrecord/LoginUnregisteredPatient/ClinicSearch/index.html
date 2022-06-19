@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clinic Search</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid container">
+            <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./manageRecord.html">Manage Record</a>
+                    </li>
+
+                </ul>
+                <div class="d-flex flex-column align-items-end">
+                    <p class="navbar-text text-white m-0">
+                        <!--Welcome, Username-->
+                    </p>
+                    <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;" onclick="window.location.href='http://localhost:52874/index.html'">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="custom-container">
+        <div class="search-container">
+            <input class="mt-4" type="text" placeholder="Search.." name="search">
+            <button class="search-button" type="submit"></button>
+        </div>
+
+        <div class="Rectangle16">
+            <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
+                <tr>
+                    <th>Clinic Name</th>
+                    <th>Clinic Description</th>
+                </tr>
+                <tr>
+                    <td>Ashford Dental Centre</td>
+                    <td>
+                        Address: 215 Upper Thomson Rd, Singapore 574349 <br>
+                        <br>
+                        Hours: <br>
+                        9am–6pm <br>
+                        Appointments: ashforddentalcentre.com.sg <br>
+                        Phone: 6265 9146<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Royce Dental Surgery - Woodlands</td>
+                    <td>
+                        Address: Woodlands Ave 1, #01-821 Block 371, Singapore 730371<br>
+                        <br>
+                        Hours:<br>
+                        9am–6pm<br>
+                        Phone: 6368 7467<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>National Dental Centre Singapore</td>
+                    <td>
+                        Located in: Singapore General Hospital<br>
+                        Address: 5 Second Hospital Ave, Singapore 168938<br>
+                        <br>
+                        Hours:<br>
+                        8:30am–5:30pm<br>
+                        Phone: 6324 8802<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>National Dental Centre Singapore</td>
+                    <td>
+                        Located in: E Medical Novena<br>
+                        Address: 10 Sinaran Drive Unit 08-15/16 Novena Medical Centre, 307506<br>
+                        <br>
+                        Hours:<br>
+                        9am-5pm<br>
+                        Products and services: expatdental.com<br>
+                        Appointments: expatdental.com<br>
+                        Phone: 6397 6718<br>
+                    </td>
+                </tr>
+                <!--<tr>
+                    <td>Smilefocus Dental Clinic</td>
+                    <td>
+                        Located in: Camden Medical<br>
+                        Address: 1 Orchard Blvd, #08-02 Camden Medical Centre, Singapore 248649<br>
+                        Areas served: Orchard and nearby areas<br>
+                        <br>
+                        Hours:<br>
+                        9am–6:30pm<br>
+                        Appointments: smilefocus.com.sg<br>
+                        Phone: 6733 9882<br>
+                    </td>
+                </tr>-->
+            </table>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
