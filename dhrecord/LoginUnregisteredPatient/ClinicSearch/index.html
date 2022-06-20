@@ -11,19 +11,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid container">
-            <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
+            <a class="navbar-brand" href="http://localhost:52874/index.html"><b>DHRecord</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
+                    </li>-->
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="./manageRecord.html">Manage Record</a>
-                    </li>
+                    </li>-->
 
                 </ul>
                 <div class="d-flex flex-column align-items-end">
@@ -35,13 +35,13 @@
             </div>
         </div>
     </nav>
-    <div class="custom-container">
         <div class="search-container">
-            <input class="mt-4" type="text" placeholder="Search.." name="search">
-            <button class="search-button" type="submit"></button>
+            <input class="mt-4" type="text" placeholder="Search..." name="search" id="searchInput" onkeyup='tableSearch()'>
+            <!--<button class="search-button" type="submit"></button>-->
         </div>
 
         <div class="Rectangle16">
+            <!--<input type="text" id="searchInput" onkeyup="tableSearch()" placeholder="Clinic Name...">-->
             <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
                 <tr>
                     <th>Clinic Name</th>
@@ -80,7 +80,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>National Dental Centre Singapore</td>
+                    <td>Expat Dental</td>
                     <td>
                         Located in: E Medical Novena<br>
                         Address: 10 Sinaran Drive Unit 08-15/16 Novena Medical Centre, 307506<br>
@@ -113,5 +113,37 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
+    <script type="application/javascript">
+        function tableSearch(){
+            let input, filter, table, tr, td, txtValue;
+
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("clinicTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++)
+            {
+                td = tr[i].getElementsByTagName("td")[0];
+
+                if(td)
+                {
+                    txtValue = td.textContent || td.innerText;
+
+                    if(txtValue.toUpperCase().indexOf(filter) > -1)
+                    {
+                        tr[i].style.display = "";
+                    }
+
+                    else
+                    {
+                        tr[i].style.display = "none";
+                    }
+
+                }
+            }
+        }
+    </script>
 </body>
 </html>

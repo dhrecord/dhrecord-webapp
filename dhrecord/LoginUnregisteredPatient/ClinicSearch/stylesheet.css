@@ -37,13 +37,12 @@ div.btn-secondary02{
     background: #000000;
 }
 
-div.Rectangle16{
+div.Rectangle16 {
     position: absolute;
     width: 1850px;
-    height: 750px;
+    height: 900px;
     left: 36px;
     top: 180px;
-
     background: #D9D9D9;
 }
 
@@ -53,22 +52,4 @@ div.search-container{
     height: 80px;
     left: 35px;
     top: 95px;
-}
-
-.search-button{
-    position: absolute;
-    background: #FFFFFF;
-    width: 30px;
-    height: 30px;
-    left: 189px;
-    top: 24px;
-    font-size: 17px;
-    border: 1;
-    border-width: thin;
-    cursor: pointer;
-}
-
-.search-button:hover{
-    background-color:#ddd;
-    transition: 0.7s;
 }
