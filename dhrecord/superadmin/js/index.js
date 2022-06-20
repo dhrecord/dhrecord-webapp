@@ -573,7 +573,7 @@ var data4 = [
   [
     1,
     "Oral surgery",
-    "Surgical management of conditions affecting the oral and dento-alveolar tissues.",
+    "Surgical management of conditions affecting the oral and dento-alveolar tissues",
   ],
   [
     2,
@@ -726,4 +726,136 @@ function deleteInfo4(id) {
   }
 
   document.getElementById("data4").innerHTML += text;
+}
+
+// CLINIC SPECIALIZATION - Review Request
+// sample data
+var data5 = [
+  [
+    1,
+    "Endodontic",
+    "Morphology and pathology of the pulpo-dentine complex and periradicular tissues",
+    "Y-Dental",
+  ],
+  [
+    2,
+    "Oral and maxillofacial surgery",
+    "Diagnosis, surgical and adjunctive treatment of diseases, injuries and defects of human jaws and associated structures",
+    "Dental Care",
+  ],
+  [
+    3,
+    "Oral medicine",
+    "Oral health care of patients with chronic and medically related disorders of the oral and maxillofacial region.",
+    "ArcDent",
+  ],
+];
+
+// inject data to table in 'user management' page => onLoad
+function findData5() {
+  let text = "";
+  for (i = 0; i < data5.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data5[i][0] +
+      "</td><td>" +
+      data5[i][1] +
+      "</td><td>" +
+      data5[i][2] +
+      "</td><td>" +
+      data5[i][3] +
+      "</td>" +
+      '<td class="text-center"><button onclick="approve5(' +
+      data5[i][0] +
+      ');" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#popupModal5">Approve</button></td>' +
+      '<td class="text-center"><button onclick="reject5(' +
+      data5[i][0] +
+      ');" class="btn btn-sm btn-danger">Reject</button></td>' +
+      "</tr>";
+  }
+
+  document.getElementById("data5").innerHTML += text;
+}
+
+// function to delete row when 'delete' button is clicked
+function approve5(id) {
+  // empty table
+  document.getElementById("data5").innerHTML = "";
+
+  // remove deleted row from data
+  for (i = 0; i < data5.length; i++) {
+    if (data5[i][0] === id) {
+      data5.splice(i, 1);
+    }
+  }
+
+  // display updated table
+  let text = "";
+  for (i = 0; i < data5.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data5[i][0] +
+      "</td><td>" +
+      data5[i][1] +
+      "</td><td>" +
+      data5[i][2] +
+      "</td><td>" +
+      data5[i][3] +
+      "</td>" +
+      '<td class="text-center"><button onclick="approve5(' +
+      data5[i][0] +
+      ');" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#popupModal5">Approve</button></td>' +
+      '<td class="text-center"><button onclick="reject5(' +
+      data5[i][0] +
+      ');" class="btn btn-sm btn-danger">Reject</button></td>' +
+      "</tr>";
+  }
+
+  document.getElementById("data5").innerHTML += text;
+  document.getElementById("msg-alert").innerHTML =
+    "Request is approved successfully!";
+  $("#alert_approval").css("display", "block");
+}
+
+function reject5(id) {
+  // empty table
+  document.getElementById("data5").innerHTML = "";
+
+  // remove deleted row from data
+  for (i = 0; i < data5.length; i++) {
+    if (data5[i][0] === id) {
+      data5.splice(i, 1);
+    }
+  }
+
+  // display updated table
+  let text = "";
+  for (i = 0; i < data5.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data5[i][0] +
+      "</td><td>" +
+      data5[i][1] +
+      "</td><td>" +
+      data5[i][2] +
+      "</td><td>" +
+      data5[i][3] +
+      "</td>" +
+      '<td class="text-center"><button onclick="approve5(' +
+      data5[i][0] +
+      ');" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#popupModal5">Approve</button></td>' +
+      '<td class="text-center"><button onclick="reject5(' +
+      data5[i][0] +
+      ');" class="btn btn-sm btn-danger">Reject</button></td>' +
+      "</tr>";
+  }
+
+  document.getElementById("data5").innerHTML += text;
+  document.getElementById("msg-alert").innerHTML =
+    "Request is rejected successfully!";
+  $("#alert_approval").css("display", "block");
+}
+
+function close_alert() {
+  $("#alert_approval").css("display", "none");
 }
