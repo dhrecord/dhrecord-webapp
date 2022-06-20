@@ -693,6 +693,51 @@ function saveDetails4() {
   $("#popupModal4").modal("hide");
 }
 
+function saveDetails5() {
+  // validate input - not null
+  let ID = data4[data4.length - 1][0] + 1;
+  let specialization_name = $("#inputSpecializationName2").val();
+  let description = $("#inputDescription2").val();
+
+  if (specialization_name.trim() === "" || description.trim() === "") {
+    alert("Invalid! Please don't leave the input field empty!");
+    return;
+  }
+
+  // empty table
+  document.getElementById("data4").innerHTML = "";
+
+  // add item to array
+  data4.push([ID, specialization_name, description]);
+
+  // display updated table
+  let text = "";
+  for (i = 0; i < data4.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data4[i][0] +
+      "</td><td>" +
+      data4[i][1] +
+      "</td><td>" +
+      data4[i][2] +
+      "</td>" +
+      '<td class="text-center"><button onclick="editInfo4(' +
+      data4[i][0] +
+      ');" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal4">Edit</button></td>' +
+      '<td class="text-center"><button onclick="deleteInfo4(' +
+      data4[i][0] +
+      ');" class="btn btn-sm btn-danger">Delete</button></td>' +
+      "</tr>";
+  }
+
+  document.getElementById("data4").innerHTML += text;
+
+  $("#inputSpecializationName2").val("");
+  $("#inputDescription2").val("");
+
+  $("#popupModal5").modal("hide");
+}
+
 // function to delete row when 'delete' button is clicked
 function deleteInfo4(id) {
   // empty table
