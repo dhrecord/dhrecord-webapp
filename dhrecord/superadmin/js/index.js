@@ -631,6 +631,40 @@ function findData4() {
   document.getElementById("data4").innerHTML += text;
 }
 
+// search specialiaztion name function
+function searchSpecializationName() {
+  // empty table
+  document.getElementById("data4").innerHTML = "";
+
+  // get user input
+  let input = document.getElementById("searchNameInput2");
+  let filter = input.value.toUpperCase();
+
+  // inject matched data
+  let text = "";
+  for (i = 0; i < data4.length; i++) {
+    if (data4[i][1].toUpperCase().indexOf(filter) > -1) {
+      text +=
+        '<tr><td scope="row">' +
+        data4[i][0] +
+        "</td><td>" +
+        data4[i][1] +
+        "</td><td>" +
+        data4[i][2] +
+        "</td>" +
+        '<td class="text-center"><button onclick="editInfo4(' +
+        data4[i][0] +
+        ');" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal4">Edit</button></td>' +
+        '<td class="text-center"><button onclick="deleteInfo4(' +
+        data4[i][0] +
+        ');" class="btn btn-sm btn-danger">Delete</button></td>' +
+        "</tr>";
+    }
+  }
+
+  document.getElementById("data4").innerHTML += text;
+}
+
 // function to pass information to modal when 'edit' button is clicked
 function editInfo4(id) {
   for (i = 0; i < data4.length; i++) {

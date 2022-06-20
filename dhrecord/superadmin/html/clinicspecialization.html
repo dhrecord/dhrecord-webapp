@@ -70,12 +70,25 @@
 
     <main class="container my-5">
         <h4 class="mb-5">Clinic Specialization</h4>
-        <div class="d-flex justify-content-end">
-            <a href="./reviewrequest.html" class="btn btn-dark">Review Request</a>
-            &nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal5">Add
-                Specialization</button>
+        <div class="mb-4 d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <div class="input-group">
+                    <input type="text" id="searchNameInput2" class="form-control" placeholder="Specialization Name"
+                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 400px;" />
+                    <button class="input-group-text" id="basic-addon2" onclick="searchSpecializationName();">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="./reviewrequest.html" class="btn btn-dark">Review Request</a>
+                &nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal5">Add
+                    Specialization</button>
+            </div>
         </div>
+
 
         <table class="table table-striped mt-5">
             <thead>
