@@ -1,4 +1,4 @@
-body {
+/* body {
     overflow: hidden;
 }
 
@@ -129,4 +129,71 @@ div.logIn{
     text-decoration-line: underline;
 
     color: #2E3438;
+} */
+
+/* alternative from aurell - responsive web design */
+body {
+    overflow: hidden;
+}
+
+
+button:hover{
+    opacity: 0.6;
+    transition: 0.6s;
+}
+
+.btn-login-custom{
+    border: #FFB847!important;  
+    background: #FFB847!important;
+}
+
+
+.login-form-title{
+    font-family: agency-fb, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    color: #2C2C2C;
+}
+
+.login-form{
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.Eclipse1{
+    box-sizing: border-box;
+    position: absolute;
+    width: 35vw;
+    height: 30vw;
+    left: -13vw;
+    top: -14vw;
+    border-radius: 50%;
+    background: #212529;
+}
+
+.Eclipse2{
+    box-sizing: border-box;
+    position: absolute;
+    width: 35vw;
+    height: 30vw;
+    left: 65vw;
+    top: 70vh;
+    border-radius: 50%;
+    background: #212529;
+}
+
+.container-top{
+    border: 1px solid #DEE2E6;
+    border-top: 10px solid #212529!important;
+}
+
+.right-rectangle{
+    background-color: #212529;
+    width: 330px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
