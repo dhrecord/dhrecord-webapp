@@ -14,3 +14,50 @@ button:hover{
     opacity: 0.6;
     transition: 0.6s;
 }
+
+.btn-login-custom{
+    border: #FFB847!important;  
+    background: #FFB847!important;
+}
+
+
+.login-form-title{
+    font-family: agency-fb, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+
+    color: #2C2C2C;
+}
+
+.login-form{
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.Eclipse1{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 35vw;
+    height: 30vw;
+    left: -13vw;
+    top: -14vw;
+    border-radius: 50%;
+
+    background: #00A3A8;
+}
+
+.Eclipse2{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 35vw;
+    height: 30vw;
+    left: 80vw;
+    top: 70vh;
+    border-radius: 50%;
+
+    background: #00A3A8;
+}

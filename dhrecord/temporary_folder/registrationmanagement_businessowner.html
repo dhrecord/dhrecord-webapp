@@ -29,13 +29,13 @@
                         <a class="nav-link" aria-current="page" href="./home.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./auditlog.html">Audit Log</a>
+                        <a class="nav-link" href="./auditlog.html">Audit Log</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./usermanagement.html">User Management</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Registration Management
                         </a>
@@ -61,53 +61,59 @@
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-4">Audit Log</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Date/Time</th>
-                    <th scope="col">Actor ID</th>
-                    <th scope="col">Actor</th>
-                    <th scope="col">Activity</th>
-                    <th scope="col">Target</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>26/01/2022, 02:11:23 AM</td>
-                    <td>24</td>
-                    <td>Jack</td>
-                    <td>Update User</td>
-                    <td>User: Jack11@gmail.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>25/01/2022, 11:40:03 AM</td>
-                    <td>23</td>
-                    <td>Nate</td>
-                    <td>Update User</td>
-                    <td>User: Nate22@gmail.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>23/01/2022, 09:22:21 PM</td>
-                    <td>1</td>
-                    <td>Sam</td>
-                    <td>Add User</td>
-                    <td>User: Jack11@gmail.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>23/01/2022, 07:30:33 PM</td>
-                    <td>1</td>
-                    <td>Sam</td>
-                    <td>Add user</td>
-                    <td>User: Nate22@gmail.com</td>
-                </tr>
-            </tbody>
-        </table>
+        <h4 class="mb-4">Registration Management - Business Owner</h4>
+        <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
+            <div class="mb-3 row">
+                <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="fullName">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="nricNumber" class="col-sm-2 col-form-label">NRIC Number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nricNumber">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="contactNumber">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="email" class="col-sm-2 col-form-label">Email Address</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="email">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="registrationNumber" class="col-sm-2 col-form-label">Registration Number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="registrationNumber">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="licenseNumber" class="col-sm-2 col-form-label">License Number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="licenseNumber">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="locationOfClininc" class="col-sm-2 col-form-label">Location of Clinic</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="locationOfClininc">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="clinicSpecialization" class="col-sm-2 col-form-label">Clinic Specialization</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="clinicSpecialization">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+        </div>
     </div>
 
     <!-- bootstrap js -->
