@@ -566,3 +566,164 @@ function approveUser(id) {
 function close_alert() {
   $("#alert_approval").css("display", "none");
 }
+
+// CLINIC SPECIALIZATION
+// sample data
+var data4 = [
+  [
+    1,
+    "Oral surgery",
+    "Surgical management of conditions affecting the oral and dento-alveolar tissues.",
+  ],
+  [
+    2,
+    "Orthodontic",
+    "Supervision, guidance and correction of the growing and mature dentofacial structures",
+  ],
+  [
+    3,
+    "Paediatric dentistry",
+    "Oral health care for children and those with special needs",
+  ],
+  [
+    4,
+    "Forensic odontology",
+    "The examination and evaluation of dental evidence for interests of justice",
+  ],
+  [
+    5,
+    "Prosthodontics",
+    "Reconstruction of the natural teeth, replacement of missing teeth, and substitution of contiguous oral and maxillofacial tissues",
+  ],
+  [
+    6,
+    "Periodontics",
+    "Treatment of diseases or abnormalities of the supporting tissues of the teeth and their substitutes",
+  ],
+  [
+    7,
+    "Dento-maxillofacial radiology",
+    "Diagnostic imaging procedures applied to the hard and soft tissues of the oral and maxillofacial region",
+  ],
+];
+
+// inject data to table in 'user management' page => onLoad
+function findData4() {
+  let text = "";
+  for (i = 0; i < data4.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data4[i][0] +
+      "</td><td>" +
+      data4[i][1] +
+      "</td><td>" +
+      data4[i][2] +
+      "</td>" +
+      '<td class="text-center"><button onclick="editInfo4(' +
+      data4[i][0] +
+      ');" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal4">Edit</button></td>' +
+      '<td class="text-center"><button onclick="deleteInfo4(' +
+      data4[i][0] +
+      ');" class="btn btn-sm btn-danger">Delete</button></td>' +
+      "</tr>";
+  }
+
+  document.getElementById("data4").innerHTML += text;
+}
+
+// function to pass information to modal when 'edit' button is clicked
+function editInfo4(id) {
+  for (i = 0; i < data4.length; i++) {
+    if (data4[i][0] === id) {
+      $("#invisibleID").val(data4[i][0]);
+      $("#inputSpecializationName").val(data4[i][1]);
+      $("#inputDescription").val(data4[i][2]);
+    }
+  }
+}
+
+// function to save the updated information from modal
+function saveDetails4() {
+  // validate input - not null
+  let ID = $("#invisibleID").val();
+  let specialization_name = $("#inputSpecializationName").val();
+  let description = $("#inputDescription").val();
+
+  if (
+    ID.trim() === "" ||
+    specialization_name.trim() === "" ||
+    description.trim() === ""
+  ) {
+    alert("Invalid! Please don't leave the input field empty!");
+    return;
+  }
+
+  // empty table
+  document.getElementById("data4").innerHTML = "";
+
+  // update data of the user
+  ID = parseInt(ID);
+  for (i = 0; i < data4.length; i++) {
+    if (data4[i][0] == ID) {
+      data4[i] = [ID, specialization_name, description];
+    }
+  }
+
+  // display updated table
+  let text = "";
+  for (i = 0; i < data4.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data4[i][0] +
+      "</td><td>" +
+      data4[i][1] +
+      "</td><td>" +
+      data4[i][2] +
+      "</td>" +
+      '<td class="text-center"><button onclick="editInfo4(' +
+      data4[i][0] +
+      ');" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal4">Edit</button></td>' +
+      '<td class="text-center"><button onclick="deleteInfo4(' +
+      data4[i][0] +
+      ');" class="btn btn-sm btn-danger">Delete</button></td>' +
+      "</tr>";
+  }
+
+  document.getElementById("data4").innerHTML += text;
+  $("#popupModal4").modal("hide");
+}
+
+// function to delete row when 'delete' button is clicked
+function deleteInfo4(id) {
+  // empty table
+  document.getElementById("data4").innerHTML = "";
+
+  // remove deleted row from data
+  for (i = 0; i < data4.length; i++) {
+    if (data4[i][0] === id) {
+      data4.splice(i, 1);
+    }
+  }
+
+  // display updated table
+  let text = "";
+  for (i = 0; i < data4.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data4[i][0] +
+      "</td><td>" +
+      data4[i][1] +
+      "</td><td>" +
+      data4[i][2] +
+      "</td>" +
+      '<td class="text-center"><button onclick="editInfo4(' +
+      data4[i][0] +
+      ');" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal4">Edit</button></td>' +
+      '<td class="text-center"><button onclick="deleteInfo4(' +
+      data4[i][0] +
+      ');" class="btn btn-sm btn-danger">Delete</button></td>' +
+      "</tr>";
+  }
+
+  document.getElementById("data4").innerHTML += text;
+}
