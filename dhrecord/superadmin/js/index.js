@@ -77,12 +77,16 @@ function searchName() {
 
   // get user input
   let input = document.getElementById("searchNameInput");
-  let filter = input.value.toUpperCase();
+  let to_Upper = input.value.toUpperCase();
+
+  // get selected filter
+  let filter = $("#userManagement_ddlFilterBy").val();
+  filter = parseInt(filter);
 
   // inject matched data
   let text = "";
   for (i = 0; i < data.length; i++) {
-    if (data[i][1].toUpperCase().indexOf(filter) > -1) {
+    if (data[i][filter - 1].toString().toUpperCase().indexOf(to_Upper) > -1) {
       text +=
         '<tr><td scope="row">' +
         data[i][0] +
@@ -327,12 +331,16 @@ function searchName2() {
 
   // get user input
   let input = document.getElementById("searchNameInput");
-  let filter = input.value.toUpperCase();
+  let to_Upper = input.value.toUpperCase();
+
+  // get selected filter
+  let filter = $("#regManPA_ddlFilterBy").val();
+  filter = parseInt(filter);
 
   // inject matched data
   let text = "";
   for (i = 0; i < data2.length; i++) {
-    if (data2[i][1].toUpperCase().indexOf(filter) > -1) {
+    if (data2[i][filter - 1].toUpperCase().indexOf(to_Upper) > -1) {
       text +=
         '<tr><td scope="row">' +
         data2[i][0] +
@@ -459,12 +467,16 @@ function searchName3() {
 
   // get user input
   let input = document.getElementById("searchNameInput");
-  let filter = input.value.toUpperCase();
+  let to_Upper = input.value.toUpperCase();
+
+  // get selected filter
+  let filter = $("#regManBO_ddlFilterBy").val();
+  filter = parseInt(filter);
 
   // inject matched data
   let text = "";
   for (i = 0; i < data3.length; i++) {
-    if (data3[i][1].toUpperCase().indexOf(filter) > -1) {
+    if (data3[i][filter - 1].toUpperCase().indexOf(to_Upper) > -1) {
       text +=
         '<tr><td scope="row">' +
         data3[i][0] +
@@ -631,7 +643,7 @@ function findData4() {
   document.getElementById("data4").innerHTML += text;
 }
 
-// search specialiaztion name function
+// search specialization name function
 function searchSpecializationName() {
   // empty table
   document.getElementById("data4").innerHTML = "";
@@ -937,4 +949,87 @@ function reject5(id) {
 
 function close_alert() {
   $("#alert_approval").css("display", "none");
+}
+
+// AUDIT LOG
+// sample data
+var data6 = [
+  [
+    1,
+    "26/01/2022, 02:11:23 AM",
+    24,
+    "Jack",
+    "Update User",
+    "User: Jack11@gmail.com",
+  ],
+  [
+    2,
+    "25/01/2022 11:40:03 AM",
+    23,
+    "Nate",
+    "	Update User",
+    "User: Nate22@gmail.com",
+  ],
+  [3, "23/01/2022 09:22:21 PM", 1, "Sam", "Add User", "	User: Jack11@gmail.com"],
+  [4, "23/01/2022 07:30:33 PM", 1, "Sam", "Add user", "User: Nate22@gmail.com"],
+];
+
+// inject data to table in 'user management' page => onLoad
+function findData6() {
+  let text = "";
+  for (i = 0; i < data6.length; i++) {
+    text +=
+      '<tr><td scope="row">' +
+      data6[i][0] +
+      "</td><td>" +
+      data6[i][1] +
+      "</td><td>" +
+      data6[i][2] +
+      "</td><td>" +
+      data6[i][3] +
+      "</td><td>" +
+      data6[i][4] +
+      "</td><td>" +
+      data6[i][5] +
+      "</td></tr>";
+  }
+
+  document.getElementById("data6").innerHTML += text;
+}
+
+// search audit function
+function searchAuditLog() {
+  // empty table
+  document.getElementById("data6").innerHTML = "";
+
+  // get user input
+  let input = document.getElementById("searchAuditLog");
+  let to_Upper = input.value.toUpperCase();
+
+  // get selected filter
+  let filter = $("#auditLog_ddlFilterBy").val();
+  filter = parseInt(filter);
+
+  // inject matched data
+  let text = "";
+  for (i = 0; i < data6.length; i++) {
+    if (data6[i][filter - 1].toString().toUpperCase().indexOf(to_Upper) > -1) {
+      text +=
+        '<tr><td scope="row">' +
+        data6[i][0] +
+        "</td><td>" +
+        data6[i][1] +
+        "</td><td>" +
+        data6[i][2] +
+        "</td><td>" +
+        data6[i][3] +
+        "</td><td>" +
+        data6[i][4] +
+        "</td><td>" +
+        data6[i][5] +
+        "</td></tr>";
+    }
+  }
+
+  document.getElementById("data6").innerHTML += text;
 }
