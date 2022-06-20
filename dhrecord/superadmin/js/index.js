@@ -163,6 +163,7 @@ function editInfo(id) {
       $("#inputNRIC").val(data[i][3]);
       $("#inputContactNo").val(data[i][4]);
       $("#inputEmail").val(data[i][5]);
+      $("#inputCheckReferral").val(data[i][6]);
     }
   }
 }
