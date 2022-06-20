@@ -51,13 +51,13 @@
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-5">Inventory Management</h4> 
+        <h4 class="mb-5">Inventory Management</h4>
         <div class="mb-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" id="searchInput" class="form-control" placeholder="Search..." aria-label="Name"
-                           aria-describedby="basic-addon2" style="max-width: 300px;" />
+                        aria-describedby="basic-addon2" style="max-width: 300px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="search();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -74,17 +74,21 @@
                 </div>
             </div>
             <div class="referral-box px-3 py-1">
-                <button type="button" class="btn btn-primary"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="window.location.href='http://localhost:52662/AddNewPrescription.html';">
+                <button type="button" class="btn btn-dark"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    onclick="window.location.href='./AddNewPrescription.html';">
                     Add New Prescription
                 </button>
-                <button onclick="AddInfo();" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal1"><i class="fa-solid fa-pen-to-square"></i></button>
-                <div class="modal fade" id="popupModal1" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+                <!-- <button onclick="AddInfo();" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal1"><i
+                        class="fa-solid fa-pen-to-square"></i></button> -->
+                <div class="modal fade" id="popupModal1" tabindex="-1" aria-labelledby="popupModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="popupModalLabel">Edit Information</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form>
@@ -116,7 +120,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <table class="table table-striped">
             <thead>
@@ -125,60 +129,13 @@
                     <th scope="col">Prescription Name</th>
                     <th scope="col">Prescription Description</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Remarks</th>                    
+                    <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody id="prescriptionData">
-                <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>John Doe</td>
-                    <td>5 Magazine Road #02-01, 059571, Singapore</td>
-                    <td>S5219994H</td>
-                    <td>+65 8950 4262</td>
-                    <td>JohnDoe@gmail.com</td>
-                    <td class="text-center"><button class="border-0 edit-btn" data-bs-toggle="modal"
-                            data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button>
-                    </td>
-                    <td class="text-center"><button class="border-0"><i class="fa-solid fa-trash-can"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jane Doe</td>
-                    <td>926 Yishun Central 1 01-177, 760926, Singapore</td>
-                    <td>S6891261Z</td>
-                    <td>+65 8952 7201</td>
-                    <td>JaneDoe@gmail.com</td>
-                    <td class="text-center"><button class="border-0 edit-btn" data-bs-toggle="modal"
-                            data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button>
-                    </td>
-                    <td class="text-center"><button class="border-0"><i class="fa-solid fa-trash-can"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Nate</td>
-                    <td>1 Coleman Street 02-30/31 The Adelphi, 179803, Singapore</td>
-                    <td>S9168686D</td>
-                    <td>+65 9786 5789</td>
-                    <td>Nate22@gmail.com</td>
-                    <td class="text-center"><button class="border-0 edit-btn" data-bs-toggle="modal"
-                            data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button>
-                    </td>
-                    <td class="text-center"><button class="border-0"><i class="fa-solid fa-trash-can"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Jack</td>
-                    <td>112 East Coast Road #B1-14 112 Katong, 428802, Singapore</td>
-                    <td>S5397679D</td>
-                    <td>+65 8951 7299</td>
-                    <td>Jack11@gmail.com</td>
-                    <td class="text-center"><button class="border-0 edit-btn" data-bs-toggle="modal"
-                            data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button>
-                    </td>
-                    <td class="text-center"><button class="border-0"><i class="fa-solid fa-trash-can"></i></button></td>
-                </tr> -->
+
             </tbody>
         </table>
 
