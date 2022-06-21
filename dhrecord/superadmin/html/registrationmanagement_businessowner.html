@@ -36,6 +36,9 @@
                         <a class="nav-link" aria-current="page" href="./home.html">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="./clinicspecialization.html">Clinic Specialization</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="./auditlog.html">Audit Log</a>
                     </li>
                     <li class="nav-item">
@@ -71,17 +74,30 @@
         <h4 class="mb-5">Registration Management - Business Owner</h4>
 
 
-        <div class="mb-4 d-flex align-items-center justify-content-between">
+        <div class="mb-4 d-flex align-items-center">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Name" aria-label="Name"
-                        aria-describedby="basic-addon2" style="max-width: 300px;" />
+                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
+                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="searchName3();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
+            <select class="form-select" id="regManBO_ddlFilterBy" aria-label="Filter By..."
+                style="margin-left: 70px; max-width: 250px;">
+                <option selected disabled hidden>Filter By...</option>
+                <option value="1">No</option>
+                <option value="2">Clinic Name</option>
+                <option value="3">Address</option>
+                <option value="4">Contact No.</option>
+                <option value="5">Email</option>
+                <option value="6">Registration No.</option>
+                <option value="7">License No.</option>
+                <option value="8">Registration Date</option>
+                <option value="9">Specialization</option>
+            </select>
         </div>
 
         <!-- alert -->
@@ -91,7 +107,7 @@
                 <i class="fa fa-check" aria-hidden="true"></i>
                 &nbsp;&nbsp;
                 <div>
-                    Apllication is approved successfully!
+                    Application is approved successfully!
                 </div>
             </div>
 
@@ -101,17 +117,17 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col" style="vertical-align: middle;">No</th>
-                    <th scope="col" style="vertical-align: middle;">Clinic Name</th>
-                    <th scope="col" style="vertical-align: middle;">Address</th>
-                    <th scope="col" style="vertical-align: middle;">Contact No</th>
-                    <th scope="col" style="vertical-align: middle;">Email</th>
-                    <th scope="col" style="vertical-align: middle;">Registration No.</th>
-                    <th scope="col" style="vertical-align: middle;">License No.</th>
-                    <th scope="col" style="vertical-align: middle;">Registration Date</th>
-                    <th scope="col" style="vertical-align: middle;">Specialization</th>
-                    <th scope="col" style="vertical-align: middle;">Full Info</th>
-                    <th scope="col" style="vertical-align: middle;">Approve</th>
+                    <th scope="col">No</th>
+                    <th scope="col">Clinic Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Contact No.</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Registration No.</th>
+                    <th scope="col">License No.</th>
+                    <th scope="col">Registration Date</th>
+                    <th scope="col">Specialization</th>
+                    <th scope="col">Full Info</th>
+                    <th scope="col">Approve</th>
                 </tr>
             </thead>
             <tbody id="data3">
