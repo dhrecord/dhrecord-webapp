@@ -194,6 +194,8 @@ function search() {
 
 // function to delete row when 'delete' button is clicked
 function deleteRow(id) {
+
+    
     // empty table
     document.getElementById("prescriptionData").innerHTML = "";
 
@@ -223,10 +225,11 @@ function deleteRow(id) {
             ');" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal"><i class="fa-solid fa-pen-to-square"></i></button></td>' +
             '<td class="text-center"><button onclick="deleteRow(' +
             prescriptionData[i][0] +
-            ');" class="border-0"><i class="fa-solid fa-trash-can"></i></button></td><tr>';
+            ');" class="border-0"><i class="fa-solid fa-trash-can" ></i></button></td><tr>';
     }
 
     document.getElementById("prescriptionData").innerHTML += text;
+    return confirm("Are you sure you want to delete?");
 }
 
 // function to pass information to modal when 'edit' button is clicked
@@ -360,7 +363,7 @@ function addID() {
         }
 
         document.getElementById("prescriptionData").innerHTML += text;
-        //$("#popupModal1").modal("hide");
+        $("#popupModal1").modal("hide");
     }    
 
 }
