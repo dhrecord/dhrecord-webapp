@@ -395,10 +395,12 @@ var data3 = [
     "5 Magazine Road #02-01, 059571, Singapore",
     "+65 8950 4262",
     "YDental@gmail.com",
+    "Pediatric Dentistry",
     "123456789012",
     "C0019292",
-    "21/03/2006",
-    "Pediatric Dentistry",
+    "21/03/2021",
+    "2 Years",
+    "Active",
   ],
   [
     2,
@@ -406,10 +408,12 @@ var data3 = [
     "926 Yishun Central 1 01-177, 760926, Singapore",
     "+65 8952 7201",
     "DentalCare@gmail.com",
+    "Periodontics, Prosthodontics",
     "234567890123",
     "C0315261",
-    "08/08/2010",
-    "Periodontics, Prosthodontics",
+    "08/08/2021",
+    "5 Years",
+    "Active",
   ],
   [
     3,
@@ -417,10 +421,12 @@ var data3 = [
     "112 East Coast Road #B1-14 112 Katong, 428802, Singapore",
     "+65 9786 5789",
     "GoDental@gmail.com",
+    "Oral surgery",
     "345678901234",
     "C2032352",
-    "17/09/2010",
-    "Oral surgery",
+    "17/09/2021",
+    "1 Year",
+    "Active",
   ],
 ];
 
@@ -442,11 +448,11 @@ function findData3() {
       "</td><td>" +
       data3[i][5] +
       "</td><td>" +
-      data3[i][6] +
-      "</td><td>" +
-      data3[i][7] +
-      "</td><td>" +
       data3[i][8] +
+      "</td><td>" +
+      data3[i][9] +
+      "</td><td>" +
+      data3[i][10] +
       "</td>" +
       '<td class="text-center"><button onclick="viewFullInfo3(' +
       data3[i][0] +
@@ -491,11 +497,11 @@ function searchName3() {
         "</td><td>" +
         data3[i][5] +
         "</td><td>" +
-        data3[i][6] +
-        "</td><td>" +
-        data3[i][7] +
-        "</td><td>" +
         data3[i][8] +
+        "</td><td>" +
+        data3[i][9] +
+        "</td><td>" +
+        data3[i][10] +
         "</td>" +
         '<td class="text-center"><button onclick="viewFullInfo3(' +
         data3[i][0] +
@@ -519,10 +525,12 @@ function viewFullInfo3(id) {
       $("#inputAddress").val(data3[i][2]);
       $("#inputContactNo").val(data3[i][3]);
       $("#inputEmail").val(data3[i][4]);
-      $("#inputRegistrationNo").val(data3[i][5]);
-      $("#inputLicenseNo").val(data3[i][6]);
-      $("#inputRegistrationDate").val(data3[i][7]);
-      $("#inputSpecialization").val(data3[i][8]);
+      $("#inputSpecialization").val(data3[i][5]);
+      $("#inputRegistrationNo").val(data3[i][6]);
+      $("#inputLicenseNo").val(data3[i][7]);
+      $("#inputRegistrationDate").val(data3[i][8]);
+      $("#inputContractPeriod").val(data3[i][9]);
+      $("#inputAccountStatus").val(data3[i][10]);
     }
   }
 }
@@ -556,11 +564,11 @@ function approveUser(id) {
       "</td><td>" +
       data3[i][5] +
       "</td><td>" +
-      data3[i][6] +
-      "</td><td>" +
-      data3[i][7] +
-      "</td><td>" +
       data3[i][8] +
+      "</td><td>" +
+      data3[i][9] +
+      "</td><td>" +
+      data3[i][10] +
       "</td>" +
       '<td class="text-center"><button onclick="viewFullInfo3(' +
       data3[i][0] +

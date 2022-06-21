@@ -122,10 +122,12 @@
                     <th scope="col">Address</th>
                     <th scope="col">Contact No.</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Registration No.</th>
-                    <th scope="col">License No.</th>
-                    <th scope="col">Registration Date</th>
                     <th scope="col">Specialization</th>
+                    <!-- <th scope="col">Registration No.</th>
+                    <th scope="col">License No.</th> -->
+                    <th scope="col">Registration Date</th>
+                    <th scope="col">Contract Period</th>
+                    <th scope="col">Account Status</th>
                     <th scope="col">Full Info</th>
                     <th scope="col">Approve</th>
                 </tr>
@@ -163,6 +165,11 @@
                                     readonly>
                             </div>
                             <div class="mb-3">
+                                <label for="inputSpecialization" class="form-label">Specialization</label>
+                                <textarea rows=3 type="text" class="form-control" id="inputSpecialization"
+                                    readonly></textarea>
+                            </div>
+                            <div class="mb-3">
                                 <label for="inputRegistrationNo" class="form-label">Registration No.</label>
                                 <input type="text" class="form-control" id="inputRegistrationNo" readonly>
                             </div>
@@ -175,9 +182,12 @@
                                 <input type="text" class="form-control" id="inputRegistrationDate" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="inputSpecialization" class="form-label">Specialization</label>
-                                <textarea rows=3 type="text" class="form-control" id="inputSpecialization"
-                                    readonly></textarea>
+                                <label for="inputContractPeriod" class="form-label">Contract Period</label>
+                                <input type="text" class="form-control" id="inputContractPeriod" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputAccountStatus" class="form-label">Account Status</label>
+                                <input type="text" class="form-control" id="inputAccountStatus" readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputScannedLicense" class="form-label">Scanned License</label>
