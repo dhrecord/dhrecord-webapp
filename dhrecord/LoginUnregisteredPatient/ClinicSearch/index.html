@@ -51,7 +51,7 @@
     <div class="container my-5 custom-container">
         <!-- <div class="search-container">
             <input class="mt-4" type="text" placeholder="Search.." name="search">
-            <button class="search-button" type="submit"></button>
+            <button class="search-button" type="submit">test</button>
         </div> -->
         <div class="mb-5">
             <h4>Find a Clinic!</h4>
@@ -60,20 +60,21 @@
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchClinic" class="form-control" placeholder="Enter Value ..."
+                    <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="searchClinic();">
+                    <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
-            <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+            <!-- to be applied later -->
+            <!-- <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">Clinic Name</option>
                 <option value="2">Address</option>
                 <option value="3">Operating Hours</option>
-            </select>
+            </select> -->
         </div>
         <div class="content-div my-4">
             <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
@@ -164,6 +165,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
+
+    <!-- <script src="./index.js"></script> -->
+    <script type="application/javascript">
+        function tableSearch() {
+            let input, filter, table, tr, td, txtValue;
+
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("clinicTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    }
+
+                    else {
+                        tr[i].style.display = "none";
+                    }
+
+                }
+            }
+        };
+    </script>
 </body>
 
 </html>
