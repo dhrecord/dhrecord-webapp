@@ -1,0 +1,199 @@
+/* body {
+    overflow: hidden;
+}
+
+div.row {
+    width: 1280px;
+    height: 720px;
+}
+
+.custom-container {
+    width: 1280px;
+    height: 720px;
+    background: #FFFFFF;
+}
+
+div.Desktop {
+    width: 1280px;
+    height: 720px;
+
+    
+}
+
+div.Rectangle1 {
+    box-sizing: border-box;
+    
+    position: absolute;
+    width: 353px;
+    height: 975px;
+    left: 1567px;
+    top: 0px;
+
+    background: #00A3A8;
+
+}
+
+div.Eclipse2 {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 356px;
+    height: 334px;
+    left: -87px;
+    top: -139px;
+
+    background: #00A3A8;
+}
+
+div.Eclipse3 {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 300px;
+    height: 285px;
+    left: 1430px;
+    top: 800px;
+
+    background: #00A3A8;
+}
+
+div.btn-secondary16{
+    position: absolute;
+    width: 249px;
+    height: 50px;
+    left: 1600px;
+    top: 25px;
+
+    text-align: center;
+
+    background: #7DE3E7;
+}
+
+div.btn-secondary17{
+    position: absolute;
+    width: 249px;
+    height: 50px;
+    left: 1600px;
+    top: 115px;
+
+    text-align: center;
+
+    background: #7DE3E7;
+}
+
+div.SIGNIN{
+    position: absolute;
+    width: 292px;
+    height: 55px;
+    left: 650px;
+    top: 155px;
+
+    font-family: agency-fb, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: center;
+
+    color: #2C2C2C;
+}
+
+div.logIn{
+    position: absolute;
+    width: 300px;
+    height: 55px;
+    left: 650px;
+    top: 260px;
+}
+
+.btn-primary{
+    position: absolute;
+    left: 120px;
+    top: 150px;
+    background: #FFB847;
+    border: #FFB847;
+}
+
+.signUp{
+    position: absolute;
+    width: 256px;
+    height: 36px;
+    left: 675px;
+    top: 621px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    text-decoration-line: underline;
+
+    color: #2E3438;
+} */
+
+/* alternative from aurell - responsive web design */
+body {
+    overflow: hidden;
+}
+
+
+button:hover{
+    opacity: 0.6;
+    transition: 0.6s;
+}
+
+.btn-login-custom{
+    border: #FFB847!important;  
+    background: #FFB847!important;
+}
+
+
+.login-form-title{
+    font-family: agency-fb, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    color: #2C2C2C;
+}
+
+.login-form{
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.Eclipse1{
+    box-sizing: border-box;
+    position: absolute;
+    width: 35vw;
+    height: 30vw;
+    left: -13vw;
+    top: -14vw;
+    border-radius: 50%;
+    background: #212529;
+}
+
+.Eclipse2{
+    box-sizing: border-box;
+    position: absolute;
+    width: 35vw;
+    height: 30vw;
+    left: 65vw;
+    top: 70vh;
+    border-radius: 50%;
+    background: #212529;
+}
+
+.container-top{
+    border: 1px solid #DEE2E6;
+    border-top: 10px solid #212529!important;
+}
+
+.right-rectangle{
+    background-color: #212529;
+    width: 330px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

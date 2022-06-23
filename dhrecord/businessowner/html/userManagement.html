@@ -73,20 +73,28 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">User Management</h4>
-        <div class="mb-4 d-flex align-items-center justify-content-between">
+        <div class="mb-4 d-flex align-items-center">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Name" aria-label="Name"
-                           aria-describedby="basic-addon2" style="max-width: 300px;" />
+                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
+                           aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="searchName();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
-            <div class="referral-box px-3 py-1">
-                <p class="m-0"><b>Referral Letter: ASX7aJWs</b></p>
-            </div>
+            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+                    style="margin-left: 70px; max-width: 250px;">
+                <option selected disabled hidden>Filter By...</option>
+                <option value="1">No</option>
+                <option value="2">Name</option>
+                <option value="3">Address</option>
+                <option value="4">NRIC</option>
+                <option value="5">Contact No</option>
+                <option value="6">Email</option>
+                <option value="7">Check Referral</option>
+            </select>
         </div>
         <table class="table table-striped">
             <thead>
@@ -192,7 +200,6 @@
                                 <label for="inputCheckReferral" class="form-label">Check Referral</label>
                                 <input type="text" class="form-control" id="inputCheckReferral">
                             </div>
-
                         </form>
                     </div>
                     <div class="modal-footer">
