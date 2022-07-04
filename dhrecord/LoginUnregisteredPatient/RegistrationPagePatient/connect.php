@@ -1,10 +1,5 @@
 <?php
 
-	//$servername = "localhost";
-	//$username = "u922342007_admin";
-	//$password = "Aylm@012";
-	//$database = "u922342007_Test";
-
 	$fullName = $_POST['fullName'];
 	$nricNumber = $_POST['nricNumber'];
 	$contactNumber = $_POST['contactNumber'];
@@ -14,17 +9,18 @@
 	$drugAllergies = $_POST['drug-allergies'];
 
 	//Database Connection
-	$conn = mysqli_connect("localhost","u922342007_admin","Aylm@012","u922342007_Test");
-	
-	if(!$conn)
-	{
-		echo 'Not connected to server!';
+	$servername = "localhost";
+	$database = "u922342007_Test";
+	$username = "u922342007_admin";
+	$password = "Aylm@012";
+	// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $database);
+	// Check connection
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
 	}
-
-	else 
-	{
-		echo 'yay!';
-	}
+	echo "Connected successfully";
+	mysqli_close($conn);
 
 
 	//else
