@@ -10,21 +10,27 @@
 	$contactNumber = $_POST['contactNumber'];
 	$email = $_POST['email'];
 	$address = $_POST['address'];
-	$med-conditions = $_POST['med-conditions'];
-	$drug-allergies = $_POST['drug-allergies'];
+	$medConditions = $_POST['med-conditions'];
+	$drugAllergies = $_POST['drug-allergies'];
 
 	//Database Connection
-	$conn = mysqli_connect("http://dhrecord.com/","u922342007_admin","Aylm@012","u922342007_Test");
+	$conn = mysqli_connect("localhost","u922342007_admin","Aylm@012","u922342007_Test");
 	
 	if(!$conn)
 	{
 		echo 'Not connected to server!';
 	}
 
+	else 
+	{
+		echo 'yay!';
+	}
+
+
 	//else
 	//{
 		//$stmt = $conn->prepare("insert into registration(fullName, nricNumber, contactNumber, email, address, med-conditions, drug-allergies) values(?, ?, ?, ?, ?, ?, ?)");
-		//$stmt->bind_param("sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $med-conditions, $drug-allergies);
+		//$stmt->bind_param("sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
 		//$stmt->execute();
 		//echo "registration successful, returning to homepage . . . "
 		//$stmt->close();
