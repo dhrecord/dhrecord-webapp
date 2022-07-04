@@ -2,7 +2,7 @@
 
 	$servername = "dhrecord.com";
 	$username = "u922342007_admin";
-	$password = "";
+	$password = "Aylm@012";
 	$database = "u922342007_Test";
 
 	$fullName = $_POST['fullName'];
