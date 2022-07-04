@@ -1,6 +1,6 @@
 <?php
 
-	$servername = "server598";
+	$servername = "ns1.dns-parking.com";
 	$username = "u922342007_admin";
 	$password = "Aylm@012";
 	$database = "u922342007_Test";
