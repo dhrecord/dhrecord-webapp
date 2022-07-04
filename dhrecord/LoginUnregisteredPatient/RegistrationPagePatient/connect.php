@@ -1,6 +1,6 @@
 <?php
 
-	$servername = "dhrecord.com";
+	$servername = "server598";
 	$username = "u922342007_admin";
 	$password = "Aylm@012";
 	$database = "u922342007_Test";
