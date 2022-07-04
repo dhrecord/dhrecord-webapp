@@ -33,16 +33,16 @@
 		//$conn->close();
 	//}
 
-	//if ($stmt = mysqli_prepare($conn, "insert into registration(fullName, nricNumber, contactNumber, email, address, med-conditions, drug-allergies) values(?, ?, ?, ?, ?, ?, ?)")) 
-	//{
-	//	mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $med-conditions, $drug-allergies);
-	//	mysqli_stmt_execute($stmt);
-	//	echo "Data inserted";
-    //}
+	if ($stmt = mysqli_prepare($conn, "insert into registration(fullName, nricNumber, contactNumber, email, address, med-conditions, drug-allergies) values(?, ?, ?, ?, ?, ?, ?)")) 
+	{
+		mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
+		mysqli_stmt_execute($stmt);
+		echo "Data inserted";
+    }
 
-   //else 
-   //{
-   //	echo "Error";
-   //}
+   else 
+   {
+   		echo "Error";
+   }
 
 ?>
