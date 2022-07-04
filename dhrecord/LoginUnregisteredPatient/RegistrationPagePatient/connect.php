@@ -14,7 +14,7 @@
 	$drug-allergies = $_POST['drug-allergies'];
 
 	//Database Connection
-	$conn = new mysqli("localhost","u922342007_admin","Aylm@012","u922342007_Test");
+	$conn = new mysqli("http://dhrecord.com/","u922342007_admin","Aylm@012","u922342007_Test");
 	
 	if(!$conn)
 	{
