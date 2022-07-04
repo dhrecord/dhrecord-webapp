@@ -20,7 +20,7 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 	echo "Connected successfully";
-	mysqli_close($conn);
+	
 
 
 	//else
@@ -38,6 +38,7 @@
 		mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
 		mysqli_stmt_execute($stmt);
 		echo "Data inserted";
+		mysqli_close($conn);
     }
 
    else 
