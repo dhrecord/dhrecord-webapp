@@ -63,56 +63,58 @@
     <div class="container my-5">
         <h4 class="mb-4">Registration Management - Business Owner</h4>
         <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
-            <div class="mb-3 row">
-                <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="fullName">
+            <form method="post" action="./connect.php">
+                <div class="mb-3 row">
+                    <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="fullName" name="fullName">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="nricNumber" class="col-sm-2 col-form-label">NRIC Number</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nricNumber">
+                <div class="mb-3 row">
+                    <label for="nricNumber" class="col-sm-2 col-form-label">NRIC Number</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nricNumber" name="nricNumber">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="contactNumber">
+                <div class="mb-3 row">
+                    <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="contactNumber" name="contactNumber">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="email" class="col-sm-2 col-form-label">Email Address</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="email">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2 col-form-label">Email Address</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" name="email">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="registrationNumber" class="col-sm-2 col-form-label">Registration Number</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="registrationNumber">
+                <div class="mb-3 row">
+                    <label for="registrationNumber" class="col-sm-2 col-form-label">Registration Number</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="registrationNumber" name="registrationNumber">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="licenseNumber" class="col-sm-2 col-form-label">License Number</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="licenseNumber">
+                <div class="mb-3 row">
+                    <label for="licenseNumber" class="col-sm-2 col-form-label">License Number</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="locationOfClininc" class="col-sm-2 col-form-label">Location of Clinic</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="locationOfClininc">
+                <div class="mb-3 row">
+                    <label for="locationOfClininc" class="col-sm-2 col-form-label">Location of Clinic</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="locationOfClinic" name="locationOfClinic">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="clinicSpecialization" class="col-sm-2 col-form-label">Clinic Specialization</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="clinicSpecialization">
+                <div class="mb-3 row">
+                    <label for="clinicSpecialization" class="col-sm-2 col-form-label">Clinic Specialization</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="clinicSpecialization" name="clinicSpecialization">
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            </form>
         </div>
     </div>
 

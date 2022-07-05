@@ -4,9 +4,10 @@
 	$nricNumber = $_POST['nricNumber'];
 	$contactNumber = $_POST['contactNumber'];
 	$email = $_POST['email'];
-	$address = $_POST['address'];
-	$medConditions = $_POST['med-conditions'];
-	$drugAllergies = $_POST['drug-allergies'];
+	$registrationNumber = $_POST['registrationNumber'];
+	$licenseNumber = $_POST['licenseNumber'];
+	$locationOfClinic = $_POST['locationOfClinic'];
+	$clinicSpecialization = $_POST['clinicSpecialization'];
 
 	//Database Connection
 	$servername = "localhost";
@@ -22,9 +23,9 @@
 	}
 	
 	//inserting data
-	if ($stmt = mysqli_prepare($conn, "insert into registration(fullName, nricNumber, contactNumber, email, address, med-conditions, drug-allergies) values(?, ?, ?, ?, ?, ?, ?)")) 
+	if ($stmt = mysqli_prepare($conn, "insert into businessOwnerRegistration(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, locationOfClinic, clinicSpecialization) values(?, ?, ?, ?, ?, ?, ?, ?)")) 
 	{
-		mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
+		mysqli_stmt_bind_param($stmt, "ssssiiss", $fullName, $nricNumber, $contactNumber, $email, $registrationNumber, $licenseNumber, $locationOfClinic, $clinicSpecialization);
 		mysqli_stmt_execute($stmt);
 		echo "Data inserted";
 		mysqli_close($conn);
