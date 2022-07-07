@@ -23,7 +23,7 @@
 	}
 	
 	//inserting data
-	if ($stmt = mysqli_prepare($conn, "insert into businessOwnerRegistration(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, locationOfClinic, clinicSpecialization) values(?, ?, ?, ?, ?, ?, ?, ?)")) 
+	if ($stmt = mysqli_prepare($conn, "insert into businessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, locationOfClinic, clinicSpecialization) values(?, ?, ?, ?, ?, ?, ?, ?)")) 
 	{
 		mysqli_stmt_bind_param($stmt, "ssssiiss", $fullName, $nricNumber, $contactNumber, $email, $registrationNumber, $licenseNumber, $locationOfClinic, $clinicSpecialization);
 		mysqli_stmt_execute($stmt);

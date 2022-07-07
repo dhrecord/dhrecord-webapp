@@ -22,7 +22,7 @@
 	}
 	
 	//inserting data
-	if ($stmt = mysqli_prepare($conn, "insert into registration(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies) values(?, ?, ?, ?, ?, ?, ?)")) 
+	if ($stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies) values(?, ?, ?, ?, ?, ?, ?)")) 
 	{
 		mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
 		mysqli_stmt_execute($stmt);
