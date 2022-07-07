@@ -26,7 +26,7 @@
 	{
 		mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
 		mysqli_stmt_execute($stmt);
-		echo "Data inserted";
+		header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
 		mysqli_close($conn);
     }
    else 
