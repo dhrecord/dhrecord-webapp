@@ -75,7 +75,41 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Treatment Planning</h4>
-        <img src="./treatmentPlanningbusiness.png" />
+        <div class="mb-4 d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <div class="input-group">
+                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
+                           aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
+                    <button class="input-group-text" id="basic-addon2" onclick="searchName();">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+                    style="margin-left: 70px; max-width: 250px;">
+                <option selected disabled hidden>Filter By...</option>
+                <option value="1">No</option>
+                <option value="2">Name</option>
+                <option value="3">Address</option>
+                <option value="4">Current treatment plan</option>
+                <option value="5">Next treatment plan</option>
+
+            </select>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Current treatment plan</th>
+                    <th scope="col">Next treatment plan</th>
+
+                </tr>
+            </thead>
+
+        </table>
     </div>
 
 
