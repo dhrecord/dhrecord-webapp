@@ -1,5 +1,10 @@
 <?php
 	session_start();
+
+	if (!isset($_POST['userName'], $_POST['passWord']) ) 
+	{
+		exit('Please fill both the username and password fields!');
+	}
 	$userName = $_POST['userName'];
 	$passWord = $_POST['passWord'];
 
@@ -23,15 +28,32 @@
 		$stmt->bind_param("s", $userName);
 		$stmt->execute();
 		$stmt_result = $stmt->get_result();
-		if($stmt_result->num_rows > 0){
+		if($stmt_result->num_rows > 0)
+		{
 			$stmt->bind_result($id, $password);
 			$stmt->fetch();
 			$data = $stmt_result->fetch_assoc();
-			if($data['password'] === $passWord) {
-				echo "Login Successful";
+
+			if($data['password'] === $passWord) 
+			{
 				session_regenerate_id();
 				$_SESSION['loggedin'] = TRUE;
 				$_SESSION['id'] = $id;
+
+				$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
+				$stmt->bind_param('i', $id);
+				$stmt->execute();
+				$stmt->bind_result($type);
+				$stmt->fetch();
+				$stmt->close();	
+
+				if ($role == "sa")
+				{
+					header('Location: http://www.dhrecord.com/dhrecord/superadmin/html/home.html');
+				} else if ($role == "pa")
+				{
+					header('Location: http://www.dhrecord.com/dhrecord/registeredpatient/html/');
+				}
 			}else{
 				echo "invalid username or password";
 			}
