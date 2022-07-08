@@ -261,12 +261,12 @@ temporary rendered events).
   font-size: 0.85em;
   line-height: 1.4;
   border-radius: 3px;
-  border: 1px solid #f67280;
+  border: 1px solid #007bffb7;
 }
 
 .fc-event,
 .fc-event-dot {
-  background-color: #f67280;
+  background-color: #007bffb7;
   /* default BACKGROUND color */
 }
 
@@ -580,8 +580,12 @@ TODO: more distinction between this file and common.css
 }
 
 .fc-unthemed td.fc-today {
-  background: #40e0d0;
+  background: #007bffb7;
 }
+
+td.fc-today .fc-day-number{
+  color:white;
+} 
 
 .fc-unthemed .fc-disabled-day {
   background: #d7d7d7;
@@ -717,14 +721,15 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 /* "primary" coloring */
 .fc-button-primary {
   color: #fff;
-  background-color: #f67280;
-  border-color: #f67280;
+  background-color: #212529;
+  border-color: white;
 }
 
 .fc-button-primary:hover {
-  color: #fff;
-  background-color: #f67280;
-  border-color: #f67280;
+  opacity: 0.9;
+  color: #fff;  
+  background-color: #212529;
+  border-color: white;
 }
 
 
@@ -736,15 +741,15 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 
 .fc-button-primary:disabled {
   color: #fff;
-  background-color: #f67280;
-  border-color: #f67280;
+  background-color: #212529;
+  border-color: #fff;
 }
 
 .fc-button-primary:not(:disabled):active,
 .fc-button-primary:not(:disabled).fc-button-active {
   color: #fff;
-  background-color: #f67280;
-  border-color: #f67280;
+  background-color: #212529;
+  border-color: #fff;
 }
 
 .fc-button-primary:not(:disabled):active:focus,
