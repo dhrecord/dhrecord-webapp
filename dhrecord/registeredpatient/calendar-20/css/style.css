@@ -60,11 +60,6 @@ h2 {
   padding-right: 1em; 
 }
 
-/* overwrite */
-.fc-bg table tr:first-of-type{
-  /* background-color: red; */
-}
-
 @media (max-width: 767.98px) {
   .fc-toolbar {
     display: block !important;
