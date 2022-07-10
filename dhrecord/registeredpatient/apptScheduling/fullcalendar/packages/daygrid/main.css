@@ -9,7 +9,7 @@
 }
 
 .fc-dayGrid-view .fc-body .fc-row {
-  min-height: 4em;
+  min-height: 9em;
   /* ensure that all rows are at least this tall */
 }
 
@@ -32,7 +32,7 @@
 
 .fc-dayGrid-view .fc-week-number,
 .fc-dayGrid-view .fc-day-number {
-  padding: 2px;
+  padding: 4px;
 }
 
 .fc-dayGrid-view th.fc-week-number,
@@ -75,4 +75,9 @@
   /* work around the way we do column resizing and ensure a minimum width */
   display: inline-block;
   min-width: 1.25em;
+}
+
+.fc-time-grid > .fc-content-skeleton{
+  position: absolute;
+  top:0;
 }

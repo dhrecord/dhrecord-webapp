@@ -69,6 +69,7 @@
   /* because now-indicator lives directly inside */
 }
 
+
 .fc-time-grid .fc-content-skeleton {
   position: absolute;
   z-index: 3;
@@ -113,6 +114,7 @@
 .fc-time-grid .fc-slats td {
   height: 1.5em;
   border-bottom: 0;
+  background-color: red;
   /* each cell is responsible for its top border */
 }
 
