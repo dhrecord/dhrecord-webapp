@@ -1,12 +1,9 @@
 <?php
 
-	$fullName = $_POST['fullName'];
-	$nricNumber = $_POST['nricNumber'];
-	$contactNumber = $_POST['contactNumber'];
-	$email = $_POST['email'];
-	$address = $_POST['address'];
-	$medConditions = $_POST['med-conditions'];
-	$drugAllergies = $_POST['drug-allergies'];
+	$prescriptionName = $_POST['prescriptionName'];
+	$prescriptionDesc = $_POST['prescriptionDesc'];
+	$prescriptionQty = $_POST['Quantity'];
+	$Remarks = $_POST['Remarks'];	
 
 	//Database Connection
 	$servername = "localhost";
@@ -24,7 +21,7 @@
 	//inserting data
 	if ($stmt = mysqli_prepare($conn, "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES (?, ?, ?, ?)")) 
 	{
-		mysqli_stmt_bind_param($stmt, "sssssss", $prescriptionName, $prescriptionDesc, $Quantity, $Remarks);
+		mysqli_stmt_bind_param($stmt, "sssssss", $prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
 		mysqli_stmt_execute($stmt);
 		header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
 		mysqli_close($conn);
