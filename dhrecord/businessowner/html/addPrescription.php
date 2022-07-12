@@ -9,6 +9,8 @@
 	$password = "Aylm@012";
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $database);
+
+	$ID = default;
 	$prescriptionName = $_POST['prescriptionName'];
 	$prescriptionDesc = $_POST['prescriptionDesc'];
 	$prescriptionQty = $_POST['Quantity'];
@@ -21,10 +23,10 @@
 	
 	//inserting data
 	//if ($stmt = mysqli_prepare($conn, "insert into inventorymanagement(prescriptionname,prescriptiondesc,prescriptionqty, remarks) values (?, ?, ?, ?)")) 
-	if ($stmt = mysqli_prepare($conn, "insert into inventorymanagement(ID,prescriptionname, prescriptiondesc, prescriptionqty, remarks) values (default,?, ?, ?, ?)"))
+	if ($stmt = mysqli_prepare($conn, "insert into inventorymanagement(ID,prescriptionname, prescriptiondesc, prescriptionqty, remarks) values (?,?, ?, ?, ?)"))
 	{
 		
-		mysqli_stmt_bind_param($stmt, "ssssssss", $prescriptionname, $prescriptiondesc, $prescriptionqty, $remarks);
+		mysqli_stmt_bind_param($stmt, "ssssssss", $ID,$prescriptionname, $prescriptiondesc, $prescriptionqty, $remarks);
 		mysqli_stmt_execute($stmt);
 
 		header("location: http://dhrecord.com/dhrecord/businessowner/html/inventorymanagement.html");
