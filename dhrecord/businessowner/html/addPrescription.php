@@ -1,9 +1,6 @@
 <?php
 
-	$prescriptionName = $_POST['prescriptionName'];
-	$prescriptionDesc = $_POST['prescriptionDesc'];
-	$prescriptionQty = $_POST['Quantity'];
-	$Remarks = $_POST['Remarks'];	
+	
 
 	//Database Connection
 	$servername = "localhost";
@@ -31,8 +28,33 @@
    //{
    //		echo "Error";
    //}
+   if (isset ($_POST['submit']))
+   {
+	   if(!empty($_POST['prescriptionName']) && !empty($_POST['prescriptionDesc']) && !empty($_POST['Quantity']) && !empty($_POST['Remarks'])) {
 
-   $sql= "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES ('$prescriptionName', '$prescriptionDesc', '$prescriptionQty', '$Remarks')";
-	header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
+	   $prescriptionName = $_POST['prescriptionName'];
+		$prescriptionDesc = $_POST['prescriptionDesc'];
+		$prescriptionQty = $_POST['Quantity'];
+		$Remarks = $_POST['Remarks'];	
+
+		$query = "INSERT INTO inventoryManagement(prescriptionName, prescriptionDesc, prescriptionQty, Remarks) VALUES ('$prescriptionName', '$prescriptionDesc', '$prescriptionQty', '$Remarks')"
+	   
+		$run = mysqli_query($conn,$query) or die(mysqli_error());
+
+		if ($run){
+			echo "Form submitted successfully"
+		}
+
+		else {
+			echo "Form not submitted"
+		}
+	   }
+
+	   else {
+		   echo "all fields required"
+	   }
+   }
+   //$sql= "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES ('$prescriptionName', '$prescriptionDesc', '$prescriptionQty', '$Remarks')";
+	header("Location: http://dhrecord.com/dhrecord/businessowner/html/AddNewPrescription.html");
 
 ?>
