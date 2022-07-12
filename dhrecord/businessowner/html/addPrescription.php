@@ -55,6 +55,6 @@
 	   }
    }
    //$sql= "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES ('$prescriptionName', '$prescriptionDesc', '$prescriptionQty', '$Remarks')";
-	header("Location: http://dhrecord.com/dhrecord/businessowner/html/AddNewPrescription.html");
+	//header("Location: http://dhrecord.com/dhrecord/businessowner/html/AddNewPrescription.html");
 
 ?>
