@@ -19,7 +19,7 @@
 	}
 	
 	//inserting data
-	if ($stmt = mysqli_prepare($conn, "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES (?, ?, ?, ?)")) 
+	if ($stmt = mysqli_prepare($conn, "INSERT INTO inventoryManagement(prescriptionName,prescriptionDesc,prescriptionQty, Remarks) VALUES (?, ?, ?, ?)")) 
 	{
 		mysqli_stmt_bind_param($stmt, "sssssss", $prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
 		mysqli_stmt_execute($stmt);
