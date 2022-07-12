@@ -29,7 +29,7 @@
    //		echo "Error";
    //}
   
-	   if(!empty($_POST['prescriptionName']) && !empty($_POST['prescriptionDesc']) && !empty($_POST['Quantity']) && !empty($_POST['Remarks'])) {
+	   //if(!empty($_POST['prescriptionName']) && !empty($_POST['prescriptionDesc']) && !empty($_POST['Quantity']) && !empty($_POST['Remarks'])) {
 
 	   $prescriptionName = $_POST['prescriptionName'];
 		$prescriptionDesc = $_POST['prescriptionDesc'];
@@ -40,18 +40,18 @@
 	   
 		$run = mysqli_query($conn,$query) or die(mysqli_error());
 
-		if ($run){
-			echo "Form submitted successfully"
-		}
+		//if ($run){
+		//	echo "Form submitted successfully"
+		//}
 
-		else {
-			echo "Form not submitted"
-		}
-	   }
+		//else {
+		//	echo "Form not submitted"
+		//}
+	  // }
 
-	   else {
-		   echo "all fields required"
-	   }
+	   //else {
+		//   echo "all fields required"
+	   //}
    
    //$sql= "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES ('$prescriptionName', '$prescriptionDesc', '$prescriptionQty', '$Remarks')";
 	//header("Location: http://dhrecord.com/dhrecord/businessowner/html/AddNewPrescription.html");
