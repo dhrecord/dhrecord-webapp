@@ -10,7 +10,7 @@
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $database);
 
-	$ID = default;
+	$ID = 'default';
 	$prescriptionName = $_POST['prescriptionName'];
 	$prescriptionDesc = $_POST['prescriptionDesc'];
 	$prescriptionQty = $_POST['Quantity'];
