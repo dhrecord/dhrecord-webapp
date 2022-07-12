@@ -38,7 +38,7 @@
 
 		$query = "INSERT INTO inventoryManagement(prescriptionName, prescriptionDesc, prescriptionQty, Remarks) VALUES ('$prescriptionName', '$prescriptionDesc', '$prescriptionQty', '$Remarks')"
 	   
-		$run = mysqli_query($conn,$query) or die(mysqli_error());
+		$run = mysqli_query($conn,$query);
 
 		//if ($run){
 		//	echo "Form submitted successfully"
