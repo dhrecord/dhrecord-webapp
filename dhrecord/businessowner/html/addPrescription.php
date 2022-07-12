@@ -20,16 +20,19 @@
 	
 	//inserting data
 	//if ($stmt = mysqli_prepare($conn, "INSERT INTO inventoryManagement(prescriptionName,prescriptionDesc,prescriptionQty, Remarks) VALUES (?, ?, ?, ?)")) 
-	if ($stmt = mysqli_prepare($conn, "INSERT INTO `inventoryManagement`(`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES (?,? , ?, ?)"))
-	{
-		mysqli_stmt_bind_param($stmt, "ssssssss", $prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
-		mysqli_stmt_execute($stmt);
-		header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
-		mysqli_close($conn);
-    }
-   else 
-   {
-   		echo "Error";
-   }
+	//if ($stmt = mysqli_prepare($conn, "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES ('', '', '', '')"))
+	//{
+	//	mysqli_stmt_bind_param($stmt, "ssssssss", $prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
+	//	mysqli_stmt_execute($stmt);
+	//	header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
+	//	mysqli_close($conn);
+    //}
+   //else 
+   //{
+   //		echo "Error";
+   //}
+
+   $sql= "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES ('$prescriptionName', '$prescriptionDesc', '$prescriptionQty', '$Remarks')";
+	header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
 
 ?>
