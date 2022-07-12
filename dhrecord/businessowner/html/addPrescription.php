@@ -1,6 +1,10 @@
 <?php
 
-	
+	//$ID = 'default';
+	$prescriptionName = $_POST['prescriptionName'];
+	$prescriptionDesc = $_POST['prescriptionDesc'];
+	$prescriptionQty = $_POST['Quantity'];
+	$Remarks = $_POST['Remarks'];
 
 	//Database Connection
 	$servername = "localhost";
@@ -10,11 +14,7 @@
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $database);
 
-	//$ID = 'default';
-	$prescriptionName = $_POST['prescriptionName'];
-	$prescriptionDesc = $_POST['prescriptionDesc'];
-	$prescriptionQty = $_POST['Quantity'];
-	$Remarks = $_POST['Remarks'];
+	
 
 	if (!$conn) 
 	{
@@ -23,13 +23,13 @@
 	
 	//inserting data
 	//if ($stmt = mysqli_prepare($conn, "insert into inventorymanagement(prescriptionname,prescriptiondesc,prescriptionqty, remarks) values (?, ?, ?, ?)")) 
-	if ($stmt = mysqli_prepare($conn, "insert into inventoryManagement($prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks) values (?, ?, ?, ?)"))
+	if ($stmt = mysqli_prepare($conn, "insert into inventoryManagement(prescriptionName, prescriptionDesc, prescriptionQty, Remarks) values (?, ?, ?, ?)"))
 	{
 		
 		mysqli_stmt_bind_param($stmt, "ssssssss",$prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
 		mysqli_stmt_execute($stmt);
 
-		header("location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
+		header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
 		mysqli_close($conn);
     }
 
