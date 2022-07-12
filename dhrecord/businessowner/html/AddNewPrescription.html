@@ -69,36 +69,38 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-4">Inventory Management (Add New Prescription)</h4>
-        <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
-            <div class="mb-3 row">
-                <label for="fullName" class="col-sm-2 col-form-label">Prescription Name</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="prescriptionName">
+        <form method="post" action="./addPrescription.php">
+            <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
+                <div class="mb-3 row">
+                    <label for="fullName" class="col-sm-2 col-form-label">Prescription Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="prescriptionName">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="nricNumber" class="col-sm-2 col-form-label">Prescription Description</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="prescriptionDesc">
+                <div class="mb-3 row">
+                    <label for="nricNumber" class="col-sm-2 col-form-label">Prescription Description</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="prescriptionDesc">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="contactNumber" class="col-sm-2 col-form-label">Quantity</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Quantity">
+                <div class="mb-3 row">
+                    <label for="contactNumber" class="col-sm-2 col-form-label">Quantity</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Quantity">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="email" class="col-sm-2 col-form-label">Remarks</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Remarks">
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2 col-form-label">Remarks</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Remarks">
+                    </div>
                 </div>
-            </div>
 
-            <div class="mb-3 row">
-                <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
+                <div class="mb-3 row">
+                    <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 
     <!-- bootstrap js -->
