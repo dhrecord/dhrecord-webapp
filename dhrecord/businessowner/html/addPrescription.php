@@ -23,7 +23,7 @@
 	
 	//inserting data
 	//if ($stmt = mysqli_prepare($conn, "insert into inventorymanagement(prescriptionname,prescriptiondesc,prescriptionqty, remarks) values (?, ?, ?, ?)")) 
-	if ($stmt = mysqli_prepare($conn, "insert into inventoryManagement($prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks) values (?,?, ?, ?, ?)"))
+	if ($stmt = mysqli_prepare($conn, "insert into inventoryManagement($prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks) values (?, ?, ?, ?)"))
 	{
 		
 		mysqli_stmt_bind_param($stmt, "ssssssss",$prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
