@@ -28,8 +28,7 @@
    //{
    //		echo "Error";
    //}
-   if (isset ($_POST['submit']))
-   {
+  
 	   if(!empty($_POST['prescriptionName']) && !empty($_POST['prescriptionDesc']) && !empty($_POST['Quantity']) && !empty($_POST['Remarks'])) {
 
 	   $prescriptionName = $_POST['prescriptionName'];
@@ -53,7 +52,7 @@
 	   else {
 		   echo "all fields required"
 	   }
-   }
+   
    //$sql= "INSERT INTO `inventoryManagement` (`prescriptionName`, `prescriptionDesc`, `prescriptionQty`, `Remarks`) VALUES ('$prescriptionName', '$prescriptionDesc', '$prescriptionQty', '$Remarks')";
 	//header("Location: http://dhrecord.com/dhrecord/businessowner/html/AddNewPrescription.html");
 
