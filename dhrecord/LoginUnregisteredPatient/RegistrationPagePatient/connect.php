@@ -1,5 +1,6 @@
 <?php
 
+	//variables to go into registeredPatient
 	$fullName = $_POST['fullName'];
 	$nricNumber = $_POST['nricNumber'];
 	$contactNumber = $_POST['contactNumber'];
@@ -7,6 +8,11 @@
 	$address = $_POST['address'];
 	$medConditions = $_POST['med-conditions'];
 	$drugAllergies = $_POST['drug-allergies'];
+
+	//variables to go into users
+	$role = "pt";
+	$userName = $_POST['userName'];
+	$passWord = $_POST['passWord'];
 
 	//Database Connection
 	$servername = "localhost";
@@ -27,7 +33,11 @@
 		mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
 		mysqli_stmt_execute($stmt);
 		header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
+		$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
+		mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
+		mysqli_stmt_execute($stmt);
 		mysqli_close($conn);
+		
     }
    else 
    {
