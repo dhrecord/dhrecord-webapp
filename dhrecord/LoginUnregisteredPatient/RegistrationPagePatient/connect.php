@@ -36,7 +36,7 @@
 	$stmt->bind_param("s", $userName);
 	$stmt->execute();
 	$stmt_result = $stmt->get_result();
-	echo $stmt_result;
+	echo $stmt_result[ID];
 
 
 	//$userID = mysql_query("SELECT ID FROM users WHERE username = '$userName'");
