@@ -162,12 +162,12 @@
                     <th scope="col">Quantity</th>
                     <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col">Delete<?php test ?></th>
                 </tr>
             </thead>
             <!--<tbody id="prescriptionData">-->
             <tbody>
-                <?php test ?>
+                
                 <?php foreach ($res2 as $key => $values): ?>
                 <tr>
                     <td><?= $key ?></td>
