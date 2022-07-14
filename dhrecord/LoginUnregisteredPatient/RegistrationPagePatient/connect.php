@@ -32,8 +32,11 @@
 	mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
 	mysqli_stmt_execute($stmt);
 
-	$userID = $conn -> query("SELECT ID FROM users WHERE username = '$userName'");
-	echo $userID;
+	$stmt = $conn->prepare("SELECT ID FROM users where username = ?");
+	$stmt->bind_param("s", $userName);
+	$stmt->execute();
+	$stmt_result = $stmt->get_result();
+	echo $stmt_result;
 
 	//$userID = mysql_query("SELECT ID FROM users WHERE username = '$userName'");
 	//$result = mysql_fetch_array($userID);

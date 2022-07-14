@@ -2,15 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\dhrecord",
-    "\\dhrecord\\businessowner",
-    "\\dhrecord\\businessowner\\js",
     "\\dhrecord\\LoginUnregisteredPatient",
-    "\\dhrecord\\LoginUnregisteredPatient\\LoginPage",
-    "\\dhrecord\\registeredpatient",
-    "\\dhrecord\\registeredpatient\\js",
-    "\\dhrecord\\superadmin\\html",
-    "\\dhrecord\\superadmin\\js"
+    "\\dhrecord\\LoginUnregisteredPatient\\RegistrationPagePatient"
   ],
-  "SelectedNode": "\\dhrecord\\registeredpatient\\html\\referralTracking.php",
   "PreviewInSolutionExplorer": false
 }
