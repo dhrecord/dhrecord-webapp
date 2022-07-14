@@ -35,8 +35,8 @@
 	$stmt = $conn->prepare("SELECT * FROM users where username = ?");
 	$stmt->bind_param("s", $userName);
 	$stmt->execute();
-	$stmt_result = $stmt1->get_result();
-	echo $stmt1_result;
+	$stmt_result = $stmt->get_result();
+	echo $stmt_result;
 
 	//$userID = mysql_query("SELECT ID FROM users WHERE username = '$userName'");
 	//$result = mysql_fetch_array($userID);
