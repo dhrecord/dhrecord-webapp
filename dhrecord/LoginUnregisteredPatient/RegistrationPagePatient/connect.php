@@ -32,7 +32,7 @@
 	mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
 	mysqli_stmt_execute($stmt);
 
-	$userID = mysql_query($conn, "SELECT ID FROM users WHERE username = '$userName'");
+	$userID = mysql_query("SELECT ID FROM users WHERE username = '$userName'");
 	$result = mysql_fetch_array($userID);
 	echo $result['userID'];
 
