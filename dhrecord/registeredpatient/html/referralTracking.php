@@ -97,8 +97,7 @@
 					WHERE referralTracking.patient_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$getid}'");
 
 			$result = mysqli_query($conn, $sql);
-			$conn->close();
-		}
+			$conn->close();		
 			?>
 
 
@@ -124,8 +123,8 @@
 						}
 					?>
 				</table>
-			</body>
-
+			
+		}
 			<table>
 				<tr>
 					<th>referredBy</th>
