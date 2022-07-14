@@ -163,7 +163,7 @@
                     <th scope="col">Quantity</th>
                     <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete<?php echo test ?></th>
+                    <th scope="col">Delete<?= testing?></th>
                 </tr>
             </thead>
             <!--<tbody id="prescriptionData">-->
