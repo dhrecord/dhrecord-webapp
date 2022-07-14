@@ -32,6 +32,7 @@
 		
 			$result = mysqli_query($conn, $sql);
 			$conn->close();
+		}
 			?>
 		
 		
@@ -59,5 +60,5 @@
 					?>
 				</table>
 			</body>
-		}
+		
 </html>
