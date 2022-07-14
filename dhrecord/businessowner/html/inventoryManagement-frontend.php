@@ -153,6 +153,8 @@
             </div>
 
         </div>
+
+        <?php include 'inventoryManagement.php'; ?>
         
         <table class="table table-striped">
             <thead>
@@ -163,7 +165,7 @@
                     <th scope="col">Quantity</th>
                     <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete<?= testing?></th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <!--<tbody id="prescriptionData">-->
