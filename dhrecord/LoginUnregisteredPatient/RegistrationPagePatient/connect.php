@@ -32,8 +32,9 @@
 	mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
 	mysqli_stmt_execute($stmt);
 
-	$userID = mysql_query($conn, "select ID from users where username='$userName'");
-	echo $userID;
+	$userID = mysql_query($conn, "SELECT ID FROM users WHERE username = '$userName'");
+	$result = mysql_fetch_array($userID);
+	echo $result['userID'];
 
 	//$stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies) values(?, ?, ?, ?, ?, ?, ?)");
 	//mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
