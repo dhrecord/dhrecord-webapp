@@ -26,7 +26,7 @@
 	if ($stmt = mysqli_prepare($conn, "insert into inventoryManagement(prescriptionName, prescriptionDesc, prescriptionQty, Remarks) values (?, ?, ?, ?)"))
 	{
 		
-		mysqli_stmt_bind_param($stmt, "ssssssss",$prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
+		mysqli_stmt_bind_param($stmt, "ssis",$prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
 		mysqli_stmt_execute($stmt);
 
 		header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
