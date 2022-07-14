@@ -98,8 +98,36 @@
 
 			$result = mysqli_query($conn, $sql);
 			$conn->close();
+		}
 			?>
 
+<<<<<<< HEAD
+			<body>
+				<table>
+					<tr>
+						<th>referredBy</th>
+						<th>referralDate</th>
+					</tr>
+					<!-- PHP CODE TO FETCH DATA FROM ROWS -->
+					<?php
+						// LOOP TILL END OF DATA
+						while($rows=$result->fetch_assoc())
+						{
+					?>
+					<tr>
+						<!-- FETCHING DATA FROM EACH
+							ROW OF EVERY COLUMN -->
+						<td><?php echo $rows['referredBy'];?></td>
+						<td><?php echo $rows['referralDate'];?></td>
+					</tr>
+					<?php
+						}
+					?>
+				</table>
+			</body>
+		
+</html>
+=======
 			<table>
 				<tr>
 					<th>referredBy</th>
@@ -135,3 +163,4 @@
 </body>
 
 </html>
+>>>>>>> afd00b09fa75942b4af225031e155d4aa4d0e612
