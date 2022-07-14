@@ -101,7 +101,7 @@
 		}
 			?>
 
-<<<<<<< HEAD
+
 			<body>
 				<table>
 					<tr>
@@ -125,9 +125,7 @@
 					?>
 				</table>
 			</body>
-		
-</html>
-=======
+
 			<table>
 				<tr>
 					<th>referredBy</th>
@@ -163,4 +161,4 @@
 </body>
 
 </html>
->>>>>>> afd00b09fa75942b4af225031e155d4aa4d0e612
+
