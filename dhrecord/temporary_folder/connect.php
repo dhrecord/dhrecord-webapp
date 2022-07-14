@@ -1,6 +1,5 @@
 <?php
-	//cringe
-	//variables to go into registeredPatient
+	//variables to go into businessOwner
 	$fullName = $_POST['fullName'];
 	$nricNumber = $_POST['nricNumber'];
 	$contactNumber = $_POST['contactNumber'];
@@ -11,7 +10,7 @@
 	$clinicSpecialization = $_POST['clinicSpecialization'];
 
 	//variables to go into users
-	$role = "sa";
+	$role = "ca";
 	$userName = $_POST['userName'];
 	$passWord = $_POST['passWord'];
 
