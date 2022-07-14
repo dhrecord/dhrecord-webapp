@@ -157,7 +157,16 @@
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
-            <tbody id="prescriptionData">
+            <!--<tbody id="prescriptionData">-->
+            <tbody>
+                <?php foreach ($res2 as $key => $values): ?>
+                <tr>
+                    <td><?= $key ?></td>
+                    <?php foreach ($values as $value): ?>
+                    <td><?= $value ?></td>
+                    <?php endforeach; ?>
+                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
 
