@@ -28,14 +28,14 @@
 	}
 	
 	//inserting data
-	$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
-	mysqli_stmt_execute($stmt);
+	//$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
+	//mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
+	//mysqli_stmt_execute($stmt);
 
-	$stmt1 = $conn->prepare("SELECT ID FROM users where username = ?");
-	$stmt1->bind_param("s", $userName);
-	$stmt1->execute();
-	$stmt1_result = $stmt1->get_result();
+	$stmt = $conn->prepare("SELECT * FROM users where username = ?");
+	$stmt->bind_param("s", $userName);
+	$stmt->execute();
+	$stmt_result = $stmt1->get_result();
 	echo $stmt1_result;
 
 	//$userID = mysql_query("SELECT ID FROM users WHERE username = '$userName'");
