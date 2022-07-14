@@ -153,6 +153,9 @@
             </div>
 
         </div>
+
+        <?php include 'inventoryManagement.php'; ?>
+        
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -167,7 +170,7 @@
             </thead>
             <!--<tbody id="prescriptionData">-->
             <tbody>
-                <?php test ?>
+                
                 <?php foreach ($res2 as $key => $values): ?>
                 <tr>
                     <td><?= $key ?></td>
