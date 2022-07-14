@@ -32,9 +32,9 @@
 	mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
 	mysqli_stmt_execute($stmt);
 
-	$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
-	mysqli_stmt_execute($stmt);
+	//$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
+	//mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
+	//mysqli_stmt_execute($stmt);
 	mysqli_close($conn);
 	header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
 
