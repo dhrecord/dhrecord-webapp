@@ -153,7 +153,7 @@
             </div>
 
         </div>
-        <?php test ?>
+        
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -163,7 +163,7 @@
                     <th scope="col">Quantity</th>
                     <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col">Delete<?php echo test ?></th>
                 </tr>
             </thead>
             <!--<tbody id="prescriptionData">-->
