@@ -36,7 +36,15 @@
 	$stmt->bind_param("s", $userName);
 	$stmt->execute();
 	$stmt_result = $stmt->get_result();
-	echo $stmt_result;
+	if($stmt_result->num_rows > 0)
+	{
+		echo "yay";
+	}
+	else 
+	{
+		echo "noooooo";
+	}
+
 
 	//$userID = mysql_query("SELECT ID FROM users WHERE username = '$userName'");
 	//$result = mysql_fetch_array($userID);
