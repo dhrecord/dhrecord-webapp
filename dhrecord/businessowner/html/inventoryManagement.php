@@ -36,9 +36,7 @@
 	// Index for "title" ("A", "B", "C", ...)
 	
 	$i = 0;
-	for ($i = 1; $i <= $max; $i++){
-		$i++;
-		}
+	
 
 	foreach ($res1 as $row) {
 		$res2[$row[$i]][$row[1]] = $row[2];

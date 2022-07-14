@@ -166,6 +166,9 @@
                     <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
+                    <?php for ($i = 1; $i <= $max; $i++): ?>
+                    <?php $i ?>
+                    <?php endfor; ?>
                 </tr>
             </thead>
             <!--<tbody id="prescriptionData">-->
