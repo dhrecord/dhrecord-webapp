@@ -28,26 +28,21 @@
 	}
 	
 	//inserting data
-	//$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
-	//mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
-	//mysqli_stmt_execute($stmt);
+	$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
+	mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
+	mysqli_stmt_execute($stmt);
 
 	$stmt = $conn->prepare("SELECT ID FROM users where username = ?");
 	$stmt->bind_param("s", $userName);
 	$stmt->execute();
 	$stmt_result = $stmt->get_result();
-	echo $stmt_result[ID];
+	$row = $stmt_result->fetch_assoc();
 
-
-	//$userID = mysql_query("SELECT ID FROM users WHERE username = '$userName'");
-	//$result = mysql_fetch_array($userID);
-	//echo $result['userID'];
-
-	//$stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies) values(?, ?, ?, ?, ?, ?, ?)");
-	//mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies);
-	//mysqli_stmt_execute($stmt);
+	$stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?)");
+	mysqli_stmt_bind_param($stmt, "ssssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies, $row['ID']);
+	mysqli_stmt_execute($stmt);
 
 	mysqli_close($conn);
-	//header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
+	header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
 
 ?>
