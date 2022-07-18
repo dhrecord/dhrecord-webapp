@@ -36,7 +36,6 @@
 
 			if($data['password'] === $passWord) 
 			{
-				echo "yay";
 				//session_regenerate_id();
 				//$_SESSION['loggedin'] = TRUE;
 				//$_SESSION['id'] = $id;
@@ -47,12 +46,11 @@
 				//$stmt->bind_result($type);
 				//$stmt->fetch();
 				//$stmt->close();
-				$role = $data['role'];
 
-				if ($role == "sa")
+				if ($data['role'] == "sa")
 				{
 					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.html');
-				} else if ($role == "pt")
+				} else if ($data['role'] == "pt")
 				{
 					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
 				}
