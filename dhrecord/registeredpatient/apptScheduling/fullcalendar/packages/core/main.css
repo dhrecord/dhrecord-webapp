@@ -76,7 +76,7 @@ hr.fc-divider {
   margin: 0;
   padding: 0 0 2px;
   /* height is unreliable across browsers, so use padding */
-  border-width: 1px 0;
+  border-width: 0;
 }
 
 .fc-bg,
@@ -556,7 +556,7 @@ TODO: more distinction between this file and common.css
 */
 /* Colors
 --------------------------------------------------------------------------------------------------*/
-.fc-unthemed th,
+/* .fc-unthemed th, */
 .fc-unthemed td,
 .fc-unthemed thead,
 .fc-unthemed tbody,
@@ -567,6 +567,11 @@ TODO: more distinction between this file and common.css
 .fc-unthemed .fc-list-view,
 .fc-unthemed .fc-list-heading td {
   border-color: #f9f9f9;
+  /* border-color: transparent; */
+}
+
+.fc-unthemed th{
+  border: none;
 }
 
 .fc-unthemed .fc-popover {
@@ -577,15 +582,32 @@ TODO: more distinction between this file and common.css
 .fc-unthemed .fc-popover .fc-header,
 .fc-unthemed .fc-list-heading td {
   background: #eee;
+  /* background-color: #212529; */
+  padding: 0;
+  /* padding: 6px; */
+}
+
+td.fc-widget-header{
+  background-color: #212529!important;
+  color: white!important;
+  padding: 6px!important;
 }
 
 .fc-unthemed td.fc-today {
   background: #007bffb7;
 }
 
+td.fc-day, td.fc-axis{
+  border: 1px solid #efefef;
+}
+
 td.fc-today .fc-day-number{
   color:white;
 } 
+
+th.fc-day-header{
+  font-weight: normal;
+}
 
 .fc-unthemed .fc-disabled-day {
   background: #d7d7d7;
@@ -816,8 +838,14 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 /* List View
 --------------------------------------------------------------------------------------------------*/
 .fc-unthemed .fc-list-item:hover td {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
 }
+
+.fc-unthemed .fc-list-item td {
+  background-color: white;
+  padding: 6px;
+}
+
 
 /* Toolbar
 --------------------------------------------------------------------------------------------------*/

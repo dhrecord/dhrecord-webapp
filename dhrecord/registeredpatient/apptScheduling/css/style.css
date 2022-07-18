@@ -79,6 +79,11 @@ a {
 
 .fc-widget-content{
   height: 25px;
+  /* height: fit-content; */
+}
+
+.fc-listWeek-view.fc-widget-content{
+  height: fit-content;
 }
 
 .fc-time-grid-container{
@@ -87,6 +92,10 @@ a {
 
 .fc-body .fc-widget-content .fc-day-grid-container{
   height: fit-content!important;
+}
+
+.fc-widget-header > a{
+  color: white;
 }
 
 @media (max-width: 767.98px) {
