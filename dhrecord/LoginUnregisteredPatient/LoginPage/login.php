@@ -46,15 +46,16 @@
 				//$stmt->execute();
 				//$stmt->bind_result($type);
 				//$stmt->fetch();
-				//$stmt->close();	
+				//$stmt->close();
+				$role = $data['role'];
 
-				//if ($role == "sa")
-				//{
-				//	header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.html');
-				//} else if ($role == "pt")
-				//{
-				//	header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
-				//}
+				if ($role == "sa")
+				{
+					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.html');
+				} else if ($role == "pt")
+				{
+					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
+				}
 			}else{
 				echo "invalid username or password";
 			}
