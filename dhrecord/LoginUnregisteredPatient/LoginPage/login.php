@@ -36,24 +36,25 @@
 
 			if($data['password'] === $passWord) 
 			{
+				echo "yay";
 				//session_regenerate_id();
 				//$_SESSION['loggedin'] = TRUE;
 				//$_SESSION['id'] = $id;
 
-				$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
-				$stmt->bind_param('i', $id);
-				$stmt->execute();
-				$stmt->bind_result($type);
-				$stmt->fetch();
-				$stmt->close();	
+				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
+				//$stmt->bind_param('i', $id);
+				//$stmt->execute();
+				//$stmt->bind_result($type);
+				//$stmt->fetch();
+				//$stmt->close();	
 
-				if ($role == "sa")
-				{
-					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.html');
-				} else if ($role == "pt")
-				{
-					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
-				}
+				//if ($role == "sa")
+				//{
+				//	header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.html');
+				//} else if ($role == "pt")
+				//{
+				//	header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
+				//}
 			}else{
 				echo "invalid username or password";
 			}
