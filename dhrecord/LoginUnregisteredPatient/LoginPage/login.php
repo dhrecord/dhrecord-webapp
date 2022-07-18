@@ -49,12 +49,17 @@
 
 				if ($data['role'] === "sa")
 				{
-					//echo "superadmin";
 					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.html');
-				} else if ($data['role'] === "pt")
+				} 
+				
+				else if ($data['role'] === "pt")
 				{
-					//echo "patient";
 					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
+				}
+				
+				else if ($data['role'] === "ca")
+				{
+					header('Location: http://dhrecord.com/dhrecord/businessowner/html/');
 				}
 			}else{
 				echo "invalid username or password";
