@@ -35,8 +35,10 @@
                         <a class="nav-link" aria-current="page" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./apptSchedulingAndReminders.html">Appointment Scheduling &
-                            Reminder</a>
+                        <a class="nav-link" href="../apptScheduling/index.html">
+                            Appointment Scheduling &
+                            Reminder
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.html">Referral Tracking</a>
@@ -53,7 +55,9 @@
                         Welcome, Username
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
-                        onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.html'">Logout</button>
+                        onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.html'">
+                        Logout
+                    </button>
                 </div>
             </div>
         </div>
@@ -62,7 +66,35 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Treatment Planning</h4>
-        <img src="./treatmentPlanningpatient.png" />
+        <div class="mb-4 d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <div class="input-group">
+                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
+                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
+                    <button class="input-group-text" id="basic-addon2" onclick="searchName();">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+                style="margin-left: 70px; max-width: 250px;">
+                <option selected disabled hidden>Filter By...</option>
+                <option value="1">Current treatment plan</option>
+                <option value="2">Next treatment plan</option>
+
+            </select>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Current treatment plan</th>
+                    <th scope="col">Next treatment plan</th>
+
+                </tr>
+            </thead>
+
+        </table>
     </div>
 
 

@@ -26,7 +26,7 @@
         <div class="container-fluid container">
             <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
@@ -42,12 +42,16 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                           data-bs-toggle="dropdown" aria-expanded="false">
                             Appointment & Treatment
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="./apptSchedulingAndReminders.html">Appointment Scheduling
-                                    & Reminders</a></li>
+                            <li>
+                                <a class="dropdown-item" href="./apptSchedulingAndReminders.html">
+                                    Appointment Scheduling
+                                    & Reminders
+                                </a>
+                            </li>
                             <li><a class="dropdown-item" href="./treatmentPlanning.html">Treatment Planning</a></li>
                         </ul>
                     </li>
@@ -66,7 +70,9 @@
                         Welcome, Username
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
-                        onclick="document.location.href='./loginBusinessOwner.html'">Logout</button>
+                            onclick="document.location.href='./loginBusinessOwner.html'">
+                        Logout
+                    </button>
                 </div>
             </div>
         </div>
@@ -75,14 +81,92 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Referral Tracking</h4>
-        <img src="./referralTrackingbusiness.png" />
+        <div class="mb-4 d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <div class="input-group">
+                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
+                           aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
+                    <button class="input-group-text" id="basic-addon2" onclick="searchName();">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+                    style="margin-left: 70px; max-width: 250px;">
+                <option selected disabled hidden>Filter By...</option>
+                <option value="1">No</option>
+                <option value="2">Name</option>
+                <option value="3">Address</option>
+                <option value="4">NRIC</option>
+                <option value="5">Contact No</option>
+                <option value="6">Email</option>
+                <option value="7">Check Referral</option>
+            </select>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">NRIC</th>
+                    <th scope="col">Contact No</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Check Referral</th>
+                </tr>
+            </thead>
+
+            <tbody id="data">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>John Doe</td>
+                    <td>5 Magazine Road #02-01, 059571, Singapore</td>
+                    <td>S5219994H</td>
+                    <td>+65 8950 4262</td>
+                    <td>JohnDoe@gmail.com</td>
+                    <td>
+                        <button class="border-0 edit-btn" data-bs-toggle="modal"
+                                data-bs-target="#popupModal">
+                            <u>Check referral</u>
+                        </button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="popupModalLabel">Referral Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p style="display: none;" id="invisibleID"></p>
+                        <div class="mb-3">
+                            <label for="refDate" class="form-label" id="refDate">Referred DATE:</label>
+                            <br>ddmmyyyy
+                        </div>
+                        <div class="mb-3">
+                            <label for="refBy" class="form-label" id="refBy">Referred BY:</label>
+                            <br>dr.?
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
     <script src="../js/index.js"></script>
 </body>
