@@ -3,7 +3,12 @@
     "",
     "\\dhrecord",
     "\\dhrecord\\LoginUnregisteredPatient",
-    "\\dhrecord\\LoginUnregisteredPatient\\RegistrationPagePatient"
+    "\\dhrecord\\LoginUnregisteredPatient\\LoginPage",
+    "\\dhrecord\\temporary_folder"
   ],
+<<<<<<< HEAD
+  "SelectedNode": "\\dhrecord\\README.md",
+=======
+>>>>>>> 7b54bf2869f6ed6dab9803e8cafd26fec613e80a
   "PreviewInSolutionExplorer": false
 }
