@@ -180,7 +180,7 @@
 	                // Create connection
 	                $conn = mysqli_connect($servername, $username, $password, $database);
 
-                    $res = mysqli_query($con, "SELECT * FROM `inventoryManagement`");
+                    $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
                     
                     while($obj = mysqli_fetch_assoc($res)){
                       echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
