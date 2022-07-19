@@ -185,6 +185,7 @@
                     while($obj = mysqli_fetch_assoc($res)){
                       echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
                     }
+                    if ($obj) { echo "success"; mysqli_close($conn); } else { echo "error"; mysqli_close($conn); }
                 ?>
             </tbody>
         </table>
