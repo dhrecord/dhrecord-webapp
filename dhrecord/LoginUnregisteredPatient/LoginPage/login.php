@@ -1,6 +1,5 @@
 <?php
-	session_start();
-
+	
 	if (!isset($_POST['userName'], $_POST['passWord']) ) 
 	{
 		exit('Please fill both the username and password fields!');
@@ -37,7 +36,7 @@
 
 			if($data['password'] === $passWord) 
 			{
-				session_regenerate_id();
+				session_start();
 				//$_SESSION['loggedin'] = TRUE;
 				$_SESSION['userName'] = $data['username'];
 
