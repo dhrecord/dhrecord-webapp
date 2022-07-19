@@ -54,7 +54,8 @@
 				
 				else if ($data['role'] === "pt")
 				{
-					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
+					echo $_SESSION['userName']
+					//header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
 				}
 				
 				else if ($data['role'] === "ca")
