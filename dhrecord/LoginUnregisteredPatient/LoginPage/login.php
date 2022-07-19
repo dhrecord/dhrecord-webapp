@@ -28,6 +28,7 @@
 		$stmt->bind_param("s", $userName);
 		$stmt->execute();
 		$stmt_result = $stmt->get_result();
+
 		if($stmt_result->num_rows > 0)
 		{
 			$stmt->bind_result($id, $password);
@@ -38,7 +39,7 @@
 			{
 				session_regenerate_id();
 				//$_SESSION['loggedin'] = TRUE;
-				$_SESSION['id'] = $id;
+				$_SESSION['userName'] = $userName;
 
 				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
 				//$stmt->bind_param('i', $id);
