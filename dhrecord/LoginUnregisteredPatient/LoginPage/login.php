@@ -36,9 +36,9 @@
 
 			if($data['password'] === $passWord) 
 			{
-				//session_regenerate_id();
+				session_regenerate_id();
 				//$_SESSION['loggedin'] = TRUE;
-				//$_SESSION['id'] = $id;
+				$_SESSION['id'] = $id;
 
 				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
 				//$stmt->bind_param('i', $id);
