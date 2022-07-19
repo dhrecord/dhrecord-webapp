@@ -166,22 +166,26 @@
                     <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
-                    <?php for ($i = 1; $i <= $max; $i++): ?>
-                    <?php $i ?>
-                    <?php endfor; ?>
+                    
                 </tr>
             </thead>
             <!--<tbody id="prescriptionData">-->
             <tbody>
-                
-                <?php foreach ($res2 as $key => $values): ?>
-                <tr>
-                    <td><?= $key ?></td>
-                    <?php foreach ($values as $value): ?>
-                    <td><?= $value ?></td>
-                    <?php endforeach; ?>
-                </tr>
-                <?php endforeach; ?>
+                <?php
+                    //Database Connection
+	                $servername = "localhost";
+	                $database = "u922342007_Test";
+	                $username = "u922342007_admin";
+	                $password = "Aylm@012";
+	                // Create connection
+	                $conn = mysqli_connect($servername, $username, $password, $database);
+
+                    $res = mysqli_query($con, "SELECT * FROM inventoryManagement");
+                    
+                    while($obj = mysqli_fetch_assoc($res)){
+                      echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
+                    }
+                ?>
             </tbody>
         </table>
 
