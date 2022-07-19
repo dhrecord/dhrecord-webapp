@@ -1,4 +1,5 @@
 <?php
+	
 	session_start();
 
 	if (!isset($_POST['userName'], $_POST['passWord']) ) 
@@ -24,10 +25,11 @@
 	
 	else
 	{
-		$stmt = $conn->prepare("SELECT ID, password FROM users where username = ?");
+		$stmt = $conn->prepare("SELECT * FROM users where username = ?");
 		$stmt->bind_param("s", $userName);
 		$stmt->execute();
 		$stmt_result = $stmt->get_result();
+
 		if($stmt_result->num_rows > 0)
 		{
 			$stmt->bind_result($id, $password);
@@ -36,23 +38,30 @@
 
 			if($data['password'] === $passWord) 
 			{
-				session_regenerate_id();
-				$_SESSION['loggedin'] = TRUE;
-				$_SESSION['id'] = $id;
+				//$_SESSION['loggedin'] = TRUE;
+				$_SESSION['username'] = $data['username'];
 
-				$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
-				$stmt->bind_param('i', $id);
-				$stmt->execute();
-				$stmt->bind_result($type);
-				$stmt->fetch();
-				$stmt->close();	
+				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
+				//$stmt->bind_param('i', $id);
+				//$stmt->execute();
+				//$stmt->bind_result($type);
+				//$stmt->fetch();
+				//$stmt->close();
 
-				if ($role == "sa")
+				if ($data['role'] === "sa")
 				{
-					header('Location: http://www.dhrecord.com/dhrecord/superadmin/html/home.html');
-				} else if ($role == "pa")
+					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.html');
+				} 
+				
+				else if ($data['role'] === "pt")
 				{
-					header('Location: http://www.dhrecord.com/dhrecord/registeredpatient/html/');
+					//echo $_SESSION['username'];
+					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
+				}
+				
+				else if ($data['role'] === "ca")
+				{
+					header('Location: http://dhrecord.com/dhrecord/businessowner/html/');
 				}
 			}else{
 				echo "invalid username or password";

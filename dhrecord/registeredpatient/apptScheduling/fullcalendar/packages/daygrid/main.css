@@ -81,3 +81,7 @@
   position: absolute;
   top:0;
 }
+
+.fc-time-grid > .fc-content-skeleton td{
+  border: none;
+}
