@@ -39,7 +39,7 @@
 			{
 				session_regenerate_id();
 				//$_SESSION['loggedin'] = TRUE;
-				$_SESSION['userName'] = $userName;
+				$_SESSION['userName'] = $data['username'];
 
 				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
 				//$stmt->bind_param('i', $id);
