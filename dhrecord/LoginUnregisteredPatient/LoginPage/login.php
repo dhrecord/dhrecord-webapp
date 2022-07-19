@@ -1,5 +1,7 @@
 <?php
 	
+	session_start();
+
 	if (!isset($_POST['userName'], $_POST['passWord']) ) 
 	{
 		exit('Please fill both the username and password fields!');
@@ -36,9 +38,8 @@
 
 			if($data['password'] === $passWord) 
 			{
-				session_start();
 				//$_SESSION['loggedin'] = TRUE;
-				$_SESSION['userName'] = $data['username'];
+				$_SESSION['username'] = $data['username'];
 
 				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
 				//$stmt->bind_param('i', $id);
@@ -54,7 +55,7 @@
 				
 				else if ($data['role'] === "pt")
 				{
-					echo $_SESSION['userName']
+					echo $_SESSION['username']
 					//header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
 				}
 				
