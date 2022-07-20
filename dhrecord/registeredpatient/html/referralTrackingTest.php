@@ -74,11 +74,31 @@
         			<th>referralDate</th>
         		</tr>    		
                 
-        		
+        		<tr>
+                 <?php                           
+        
+                    //Database Connection
+                    $servername = "localhost";
+                    $database = "u922342007_Test";
+                    $username = "u922342007_admin";
+                    $password = "Aylm@012";
+        
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $database);
                 
-        		
-                    
-                
+        
+                    //$getid = $_SESSION['id'];
+        	        $res = ("SELECT * FROM referralTracking, registeredPatient, users
+					WHERE referralTracking.patient_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '2'");
+
+			        $result = mysqli_query($conn, $res);
+					
+
+                    while($sql = mysqli_fetch_assoc($res)){
+                              echo "<tr><td>".$sql["referralTracking.referredBy"]."</td><td>".$sql["referralTracking.referralDate"]."</td></tr>";
+                            }
+			        ?>         
+
         	</table>
         
     
