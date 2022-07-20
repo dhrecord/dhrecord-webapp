@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./referralTrackingTest.php">Referral Tracking</a>
+                        <a class="nav-link active" href="./referralTracking.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./surveyAndFeedback.html">Survey & Feedback</a>
