@@ -88,7 +88,8 @@
                 
         
                     //$getid = $_SESSION['id'];
-        	        $res = ("SELECT * FROM `referralTracking`");
+        	        $res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
+        			WHERE referralTracking.patient_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$id}'");
 
 			        $result = mysqli_query($conn, $res);
 					
