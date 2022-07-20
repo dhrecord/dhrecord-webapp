@@ -86,8 +86,9 @@
         </div>
         <table class="table table-striped">
 			<tr>
-				<th>referredBy</th>
-				<th>referralDate</th>
+				<th>startDate</th>
+				<th>endDate</th>
+				<th>details</th>
 			</tr>    		
 			<tr>
 			 <?php                           
