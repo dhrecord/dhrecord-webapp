@@ -40,6 +40,7 @@
 			{
 				//$_SESSION['loggedin'] = TRUE;
 				$_SESSION['username'] = $data['username'];
+				$_SESSION['id'] = $data['ID'];
 
 				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
 				//$stmt->bind_param('i', $id);
