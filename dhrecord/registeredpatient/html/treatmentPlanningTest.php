@@ -21,7 +21,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body onload="findData();">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid container">
             <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
@@ -110,7 +110,13 @@
 				
 
 				while($sql = mysqli_fetch_assoc($result)){
-						  echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td>"."<td>".$sql["details"]."</td></tr>";
+						<tr>
+							echo <td>$rows['startDate']</td>;
+							echo <td>$rows['EndDate']</td>;
+							echo <td>$rows['details']</td>;
+						</tr>
+						
+						  //echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td>"."<td>".$sql["details"]."</td></tr>";
 						}
 				?>
         </table>
