@@ -94,7 +94,7 @@
 			        $result = mysqli_query($conn, $res);
 					
 
-                    while($sql = mysqli_fetch_assoc($res)){
+                    while($sql = mysqli_fetch_assoc($result)){
                               echo "<tr><td>".$sql["referralTracking.referredBy"]."</td><td>".$sql["referralTracking.referralDate"]."</td></tr>";
                             }
 			        ?>         
