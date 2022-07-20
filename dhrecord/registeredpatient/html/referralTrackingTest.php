@@ -67,52 +67,47 @@
     <div class="container my-5">
         <h4 class="mb-5">Referral Tracking</h4>
 
-        <?php        
-        //session_start();
-        
-        //Database Connection
-        $servername = "localhost";
-        $database = "u922342007_Test";
-        $username = "u922342007_admin";
-        $password = "Aylm@012";
-        
-        // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $database);
-        
-        if (!$conn)
-        {
-        	die("Connection failed: " . mysqli_connect_error());
-        }
-        
-        else
-        {
-            //$getid = $_SESSION['id'];
-        	$sql = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
-        			WHERE referralTracking.patient_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '2'");
-        
-        	$result = mysqli_query($conn, $sql);
-        	?>
-        
+       
         	<table>
         		<tr>
         			<th>referredBy</th>
         			<th>referralDate</th>
-        		</tr>
-        		<!-- PHP CODE TO FETCH DATA FROM ROWS -->
-                <?php
+        		</tr>    		
+                
+        		<tr>
+                 <?php        
+                    //session_start();
+        
+                    //Database Connection
+                    $servername = "localhost";
+                    $database = "u922342007_Test";
+                    $username = "u922342007_admin";
+                    $password = "Aylm@012";
+        
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $database);
+                
+        
+                    //$getid = $_SESSION['id'];
+        	        $sql = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
+        			        WHERE referralTracking.patient_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '2'");
+        
+        	        $result = mysqli_query($conn, $sql);
+        	        
                     // LOOP TILL END OF DATA
                     while($rows=$result->fetch_assoc())
                     {
-                ?>
-        		<tr>
-        			<td><?php echo $rows['referredBy'];?></td>
-        			<td><?php echo $rows['referralDate'];?></td>
+        			    <td>echo $rows['referredBy'];</td>
+        			    <td>echo $rows['referralDate'];</td>
+                    }
+                    ?>
         		</tr>
-        		<?php
-                }
-                ?>
+                
+        		
+                    
+                
         	</table>
-        }
+        
     
 		
 			
