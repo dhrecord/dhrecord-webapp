@@ -67,20 +67,8 @@
     <div class="container my-5">
         <h4 class="mb-5">Referral Tracking</h4>
 
-        <?php
-		session_start();
-		//Database Connection
-		$servername = "localhost";
-		$database = "u922342007_Test";
-		$username = "u922342007_admin";
-		$password = "Aylm@012";
-
-		// Create connection
-		$conn = mysqli_connect($servername, $username, $password, $database);
-
-		
-        
-        session_start();
+        <?php        
+        //session_start();
         
         //Database Connection
         $servername = "localhost";
@@ -126,10 +114,6 @@
         	</table>
         }
     
-
-		
-			
-			
 		
 			
     </div>
