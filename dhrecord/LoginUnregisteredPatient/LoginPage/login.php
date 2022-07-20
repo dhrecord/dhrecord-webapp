@@ -41,6 +41,7 @@
 				//$_SESSION['loggedin'] = TRUE;
 				$_SESSION['username'] = $data['username'];
 				$id = mysql_query("SELECT ID from users where username = '".$_SESSION['username']."'");
+				echo $id;
 				
 				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
 				//$stmt->bind_param('i', $id);
