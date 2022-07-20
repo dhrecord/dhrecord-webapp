@@ -78,32 +78,21 @@
 		// Create connection
 		$conn = mysqli_connect($servername, $username, $password, $database);
 
-		if (!$conn)
-		{
-			die("Connection failed: " . mysqli_connect_error());
-		}
+		
 
-		else
-		{
-			if(!isset($_SESSION["loggedin"]))
-			{
-				header("location:http://www.dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/index.html");
-			}
-
-			$getid = $_SESSION['id'];
-
-			$sql = ("SELECT referralTracking.referredBy, referralTracking.referralDate, referralTracking.patient_ID, registeredPatient.ID,
+		
+			$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate, referralTracking.patient_ID, registeredPatient.ID,
 					registeredPatient.fullName, registeredPatient.users_ID, users.ID FROM referralTracking, registeredPatient, users
 					WHERE referralTracking.patient_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$getid}'");
 
-			$result = mysqli_query($conn, $sql);
-			$conn->close();		
+			$result = mysqli_query($conn, $res);
+					
 
             while($sql = mysqli_fetch_assoc($res)){
                       echo "<tr><td>".$sql["referralTracking.referredBy"]."</td><td>".$sql["referralTracking.referralDate"]."</td></tr>";
                     }
 			?>
-
+            
 
 			
 				<table>
@@ -114,7 +103,7 @@
 					
 				</table>
 			
-		}
+		
 			
     </div>
 
