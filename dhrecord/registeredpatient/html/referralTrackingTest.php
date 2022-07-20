@@ -88,13 +88,13 @@
                 
         
                     //$getid = $_SESSION['id'];
-        	        $res = ("SELECT * FROM referralTracking");
+        	        $res = ("SELECT * FROM `referralTracking`");
 
 			        $result = mysqli_query($conn, $res);
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["referralTracking.referredBy"]."</td><td>".$sql["referralTracking.referralDate"]."</td></tr>";
+                              echo "<tr><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td></tr>";
                             }
 			        ?>         
 
