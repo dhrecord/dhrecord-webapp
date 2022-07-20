@@ -86,36 +86,34 @@
             </select>
         </div>
         <table class="table table-striped">
-            <thead>
-				<tr>
-        			<th>referredBy</th>
-        			<th>referralDate</th>
-        		</tr>    		
-        		<tr>
-                 <?php                           
-					session_start();
-                    //Database Connection
-                    $servername = "localhost";
-                    $database = "u922342007_Test";
-                    $username = "u922342007_admin";
-                    $password = "Aylm@012";
-        
-                    // Create connection
-                    $conn = mysqli_connect($servername, $username, $password, $database);
-                
-        
-                    //$getid = $_SESSION['id'];
-        	        $res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
-        			WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
+			<tr>
+				<th>referredBy</th>
+				<th>referralDate</th>
+			</tr>    		
+			<tr>
+			 <?php                           
+				session_start();
+				//Database Connection
+				$servername = "localhost";
+				$database = "u922342007_Test";
+				$username = "u922342007_admin";
+				$password = "Aylm@012";
+	
+				// Create connection
+				$conn = mysqli_connect($servername, $username, $password, $database);
+			
+	
+				//$getid = $_SESSION['id'];
+				$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
+				WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
-			        $result = mysqli_query($conn, $res);
-					
+				$result = mysqli_query($conn, $res);
+				
 
-                    while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td>"."<td>".$sql["details"]"</td></tr>";
-                            }
-			        ?>         
-            </thead>
+				while($sql = mysqli_fetch_assoc($result)){
+						  echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td>"."<td>".$sql["details"]"</td></tr>";
+						}
+				?>         
         </table>
     </div>
 
