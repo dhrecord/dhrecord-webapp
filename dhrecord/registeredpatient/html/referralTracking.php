@@ -76,7 +76,7 @@
                 
         		<tr>
                  <?php                           
-        
+        	session_start();
                     //Database Connection
                     $servername = "localhost";
                     $database = "u922342007_Test";
