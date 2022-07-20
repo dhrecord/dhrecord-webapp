@@ -66,9 +66,7 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Referral Tracking</h4>
-
-       
-        	<table>
+			<table class="table table-striped">
         		<tr>
         			<th>referredBy</th>
         			<th>referralDate</th>
