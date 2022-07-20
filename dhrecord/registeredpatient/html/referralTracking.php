@@ -21,7 +21,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body onload="findData();">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid container">
             <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./referralTracking.php">Referral Tracking</a>
+                        <a class="nav-link active" href="./referralTrackingTest.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./surveyAndFeedback.html">Survey & Feedback</a>
@@ -67,85 +67,42 @@
     <div class="container my-5">
         <h4 class="mb-5">Referral Tracking</h4>
 
-        <?php
-		session_start();
-		//Database Connection
-		$servername = "localhost";
-		$database = "u922342007_Test";
-		$username = "u922342007_admin";
-		$password = "Aylm@012";
+       
+        	<table>
+        		<tr>
+        			<th>referredBy</th>
+        			<th>referralDate</th>
+        		</tr>    		
+                
+        		<tr>
+                 <?php                           
+        
+                    //Database Connection
+                    $servername = "localhost";
+                    $database = "u922342007_Test";
+                    $username = "u922342007_admin";
+                    $password = "Aylm@012";
+        
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $database);
+                
+        
+                    //$getid = $_SESSION['id'];
+        	        $res = ("SELECT * FROM `referralTracking`");
 
-		// Create connection
-		$conn = mysqli_connect($servername, $username, $password, $database);
+			        $result = mysqli_query($conn, $res);
+					
 
-		if (!$conn)
-		{
-			die("Connection failed: " . mysqli_connect_error());
-		}
+                    while($sql = mysqli_fetch_assoc($result)){
+                              echo "<tr><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td></tr>";
+                            }
+			        ?>         
 
-		else
-		{
-			if(!isset($_SESSION["loggedin"]))
-			{
-				header("location:http://www.dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/index.html");
-			}
-
-			$getid = $_SESSION['id'];
-
-			$sql = ("SELECT referralTracking.referredBy, referralTracking.referralDate, referralTracking.patient_ID, registeredPatient.ID,
-					registeredPatient.fullName, registeredPatient.users_ID, users.ID FROM referralTracking, registeredPatient, users
-					WHERE referralTracking.patient_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$getid}'");
-
-			$result = mysqli_query($conn, $sql);
-			$conn->close();		
-			?>
-
-
-			<body>
-				<table>
-					<tr>
-						<th>referredBy</th>
-						<th>referralDate</th>
-					</tr>
-					<!-- PHP CODE TO FETCH DATA FROM ROWS -->
-					<?php
-						// LOOP TILL END OF DATA
-						while($rows=$result->fetch_assoc())
-						{
-					?>
-					<tr>
-						<!-- FETCHING DATA FROM EACH
-							ROW OF EVERY COLUMN -->
-						<td><?php echo $rows['referredBy'];?></td>
-						<td><?php echo $rows['referralDate'];?></td>
-					</tr>
-					<?php
-						}
-					?>
-				</table>
+        	</table>
+        
+    
+		
 			
-		}
-			<table>
-				<tr>
-					<th>referredBy</th>
-					<th>referralDate</th>
-				</tr>
-				<!-- PHP CODE TO FETCH DATA FROM ROWS -->
-				<?php
-					// LOOP TILL END OF DATA
-					while($rows=$result->fetch_assoc())
-					{
-				?>
-				<tr>
-					<!-- FETCHING DATA FROM EACH
-						ROW OF EVERY COLUMN -->
-					<td><?php echo $rows['referredBy'];?></td>
-					<td><?php echo $rows['referralDate'];?></td>
-				</tr>
-				<?php
-					}
-				?>
-			</table>
     </div>
 
 
@@ -160,4 +117,3 @@
 </body>
 
 </html>
-
