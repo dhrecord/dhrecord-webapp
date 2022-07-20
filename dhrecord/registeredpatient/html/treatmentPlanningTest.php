@@ -82,7 +82,6 @@
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">Current treatment plan</option>
                 <option value="2">Next treatment plan</option>
-
             </select>
         </div>
         <table class="table table-striped">
@@ -104,16 +103,16 @@
 			
 	
 				//$getid = $_SESSION['id'];
-				$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
-				WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
+				$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users
+				WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = treatmentPlan.regPt_ID");
 
 				$result = mysqli_query($conn, $res);
 				
 
 				while($sql = mysqli_fetch_assoc($result)){
-						  echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td>"."<td>".$sql["details"]"</td></tr>";
+						  echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td>"."<td>".$sql["details"]."</td></tr>";
 						}
-				?>         
+				?>
         </table>
     </div>
 
