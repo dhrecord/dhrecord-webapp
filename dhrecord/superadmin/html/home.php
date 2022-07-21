@@ -38,7 +38,7 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="./home.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./clinicspecialization.html">Clinic Specialization</a>
@@ -63,7 +63,7 @@
         </ul>
         <div class="d-flex flex-column align-items-end">
           <p class="navbar-text text-white m-0">
-            Welcome, Username
+            Welcome, <?php echo $_SESSION['username']; ?>
           </p>
           <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
             onclick="document.location.href='./login.html'">Logout</button>
