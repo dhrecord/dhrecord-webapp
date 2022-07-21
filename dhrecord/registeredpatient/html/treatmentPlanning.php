@@ -101,6 +101,9 @@
 	
 			// Create connection
 			$conn = mysqli_connect($servername, $username, $password, $database);
+			$id = mysql_query("SELECT ID from users where username = '".$_SESSION['username']."'");
+			$getid = mysqli_query($conn, $id);
+			echo  "test id: " . $getid;
 			echo "'{$_SESSION['id']}'";
 			$res = ("SELECT * FROM `treatmentPlan` WHERE `treatmentPlan.regPt_ID` = '{$_SESSION['id']}'");
 
