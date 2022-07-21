@@ -101,7 +101,7 @@
 	
 				// Create connection
 				$conn = mysqli_connect($servername, $username, $password, $database);
-			
+				echo "'{$_SESSION['id']}'";
 				$res = ("SELECT * FROM treatmentPlan WHERE treatmentPlan.regPt_ID = '{$_SESSION['id']}'");
 	
 				/*$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users
