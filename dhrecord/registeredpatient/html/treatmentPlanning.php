@@ -104,7 +104,7 @@
 			
 			$id = mysql_query("SELECT ID from users where username = '".$_SESSION['username']."'");
 			$getid = mysqli_query($conn, $id);
-			while($sql = mysqli_fetch_assoc($result)){
+			while($sql = mysqli_fetch_assoc($getid)){
 				echo  "test id: " . $getid;
 			}
 				
