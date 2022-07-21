@@ -103,8 +103,8 @@
 				$conn = mysqli_connect($servername, $username, $password, $database);
 			
 	
-				$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users
-					WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = treatmentPlan.regPt_ID");
+				$res = ("SELECT `treatmentPlan.startDate`, `treatmentPlan.endDate`, `treatmentPlan.details` FROM `treatmentPlan`, `registeredPatient`, `users`
+					WHERE `users.ID` = `{$_SESSION['id']}` AND `users.ID` = `registeredPatient.users_ID` AND `registeredPatient.ID` = `treatmentPlan.regPt_ID`");
 								
 				$result = mysqli_query($conn, $res);
 				
