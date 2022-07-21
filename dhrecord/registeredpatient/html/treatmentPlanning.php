@@ -92,28 +92,28 @@
 			</tr>    		
 			<tr>
 			 <?php                           
-				session_start();
-				//Database Connection
-				$servername = "localhost";
-				$database = "u922342007_Test";
-				$username = "u922342007_admin";
-				$password = "Aylm@012";
+			session_start();
+			//Database Connection
+			$servername = "localhost";
+			$database = "u922342007_Test";
+			$username = "u922342007_admin";
+			$password = "Aylm@012";
 	
-				// Create connection
-				$conn = mysqli_connect($servername, $username, $password, $database);
-				echo "'{$_SESSION['id']}'";
-				$res = ("SELECT * FROM treatmentPlan WHERE treatmentPlan.regPt_ID = '{$_SESSION['id']}'");
-	
-				/*$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users
-					WHERE users.ID = '{$_SESSION['id']}' AND users.ID === registeredPatient.users_ID AND registeredPatient.ID === treatmentPlan.regPt_ID");
-				*/
-				$result = mysqli_query($conn, $res);
-				
+			// Create connection
+			$conn = mysqli_connect($servername, $username, $password, $database);
+			echo "'{$_SESSION['id']}'";
+			$res = ("SELECT * FROM treatmentPlan WHERE treatmentPlan.regPt_ID = '{$_SESSION['id']}'");
 
-				while($sql = mysqli_fetch_assoc($result)){
-					echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
-				}
-				?>
+			/*$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users
+				WHERE users.ID = '{$_SESSION['id']}' AND users.ID === registeredPatient.users_ID AND registeredPatient.ID === treatmentPlan.regPt_ID");
+			*/
+			$result = mysqli_query($conn, $res);
+
+
+			while($sql = mysqli_fetch_assoc($result)){
+				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
+			}
+			?>
         </table>
     </div>
 
