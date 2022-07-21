@@ -1,3 +1,9 @@
+<?php
+
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +30,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid container">
-      <a class="navbar-brand" href="./home.html"><b>DHRecord</b></a>
+      <a class="navbar-brand" href="./home.php"><b>DHRecord</b></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -74,7 +80,7 @@
           <div class="" style="font-size: 80px;"><i class="fa-solid fa-user-gear"></i></div>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <div class="d-flex flex-column justify-content-center">
-            <h1 class="display-5 fw-bold">Hello, Username!</h1>
+            <h1 class="display-5 fw-bold">Hello, <?php echo $_SESSION['username']; ?></h1>
             <h4 class="col-md-8 fs-4">Role: Superadmin</h4>
           </div>
         </div>

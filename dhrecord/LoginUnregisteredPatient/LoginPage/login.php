@@ -53,7 +53,7 @@
 
 				if ($data['role'] === "sa")
 				{
-					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.html');
+					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.php');
 				} 
 				
 				else if ($data['role'] === "pt")
