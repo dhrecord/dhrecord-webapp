@@ -56,7 +56,7 @@
         <div class="bg-light p-5 rounded mt-3">
             <h1>Homepage</h1>
             <hr>
-            <h4 class="lead">Welcome, Username!</h4>
+            <h4 class="lead">Welcome, <? php echo $_SESSION['username']; ?></h4>
             <h4 class="lead">Your next appointment is in 21 days.</h4>
             <hr>
             <p>
