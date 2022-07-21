@@ -1,3 +1,9 @@
+<?php 
+    
+    session_start();
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +48,7 @@
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
-                        Welcome, <? php echo $_SESSION['username']; ?>
+                        Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
                         onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.php'">Logout</button>
@@ -56,7 +62,7 @@
         <div class="bg-light p-5 rounded mt-3">
             <h1>Homepage</h1>
             <hr>
-            <h4 class="lead">Welcome, <? php echo $_SESSION['username']; ?></h4>
+            <h4 class="lead">Welcome, <?php $_SESSION['username']; ?></h4>
             <h4 class="lead">Your next appointment is in 21 days.</h4>
             <hr>
             <p>
