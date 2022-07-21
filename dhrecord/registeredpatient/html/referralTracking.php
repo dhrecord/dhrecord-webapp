@@ -83,13 +83,13 @@
         
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
-                
-        
-                    //$getid = $_SESSION['id'];
-        	        $res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
-        			WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
+				
+			echo "'{$_SESSION['id']}'";
+            
+               		$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
+        		WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
-			        $result = mysqli_query($conn, $res);
+			$result = mysqli_query($conn, $res);
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
