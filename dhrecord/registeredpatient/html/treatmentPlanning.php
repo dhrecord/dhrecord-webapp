@@ -55,7 +55,7 @@
                         Welcome, Username
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
-                        onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.php'">
+                        onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.html'">
                         Logout
                     </button>
                 </div>
@@ -113,7 +113,7 @@
 
 
 			while($sql = mysqli_fetch_assoc($result)){
-				echo $sql["startDate"];
+				echo $sql["startDate"].$sql["endDate"].$sql["details"];
 			}
 			?>
         </table>
