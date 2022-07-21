@@ -65,7 +65,7 @@
 				
 				else if ($data['role'] === "ca")
 				{
-					header('Location: http://dhrecord.com/dhrecord/businessowner/html/');
+					header('Location: http://dhrecord.com/dhrecord/businessowner/html/index.php');
 				}
 			}else{
 				echo "invalid username or password";
