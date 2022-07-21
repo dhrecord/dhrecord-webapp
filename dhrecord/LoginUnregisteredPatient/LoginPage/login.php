@@ -60,7 +60,7 @@
 				{
 					echo $_SESSION['username'];
 					echo $_SESSION['id'];
-					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
+					//header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
 				}
 				
 				else if ($data['role'] === "ca")
