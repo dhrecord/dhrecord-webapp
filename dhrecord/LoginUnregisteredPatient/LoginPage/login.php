@@ -41,6 +41,7 @@
 				//$_SESSION['loggedin'] = TRUE;
 				$_SESSION['username'] = $data['username'];
 				$_SESSION['id'] = $data['ID'];
+				$_SESSION['id'] = $id;
 				//$id = mysql_query("SELECT ID from users where username = '".$_SESSION['username']."'");
 				//echo $id;
 				
