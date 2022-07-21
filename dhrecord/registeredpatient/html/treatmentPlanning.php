@@ -90,7 +90,7 @@
 				<th>endDate</th>
 				<th>details</th>
 			</tr>    		
-			<tr>
+			
 			 <?php                           
 			session_start();
 			//Database Connection
@@ -113,7 +113,7 @@
 
 
 			while($sql = mysqli_fetch_assoc($result)){
-				echo $sql["startDate"].$sql["endDate"].$sql["details"];
+				echo "<td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td>";
 			}
 			?>
         </table>
