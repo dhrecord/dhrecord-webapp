@@ -102,12 +102,12 @@
 			// Create connection
 			$conn = mysqli_connect($servername, $username, $password, $database);
 			
-			$id = mysql_query("SELECT ID from users where username = '".$_SESSION['username']."'");
+			/*$id = mysql_query("SELECT ID from users where username = '".$_SESSION['username']."'");
 			$getid = mysqli_query($conn, $id);
 			while($sql = mysqli_fetch_assoc($getid)){
 				echo  "test id: " . $getid;
 			}
-				
+			*/	
 				
 			echo "'{$_SESSION['id']}'";
 			$res = ("SELECT * FROM `treatmentPlan` WHERE `treatmentPlan.regPt_ID` = '{$_SESSION['id']}'");
@@ -119,7 +119,12 @@
 
 
 			while($sql = mysqli_fetch_assoc($result)){
-				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
+				<tr>
+				<td>echo $sql['startDate'];</td>
+                            	<td>echo $sql['endDate'];</td>
+                            	<td>echo $sql['details'];</td>
+				<tr>
+				//echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
 			}
 			?>
         </table>
