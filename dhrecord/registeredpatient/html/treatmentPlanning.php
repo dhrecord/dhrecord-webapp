@@ -111,7 +111,7 @@
 
 
 			while($sql = mysqli_fetch_assoc($result)){
-				echo $sql["startDate"].$sql["endDate"].$sql["details"];
+				echo $sql["startDate"];
 			}
 			?>
         </table>
