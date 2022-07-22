@@ -98,12 +98,12 @@
 			session_start();
 			//Database Connection
 			$servername = "localhost";
-			$database = "u922342007_Test";
-			$username = "u922342007_admin";
-			$password = "Aylm@012";
-	
-			// Create connection
-			$conn = mysqli_connect($servername, $username, $password, $database);
+                    	$database = "u922342007_Test";
+                   	$username = "u922342007_admin";
+                   	$password = "Aylm@012";
+        
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $database);
 				
 			echo "'{$_SESSION['id']}'";
 			
