@@ -3486,7 +3486,7 @@ Docs & License: https://fullcalendar.io/
     extendedProps: null,
     clinic: String,
     doctor: String,
-    patient: String
+    patient: String,
   };
   var DATE_PROPS = {
     start: null,
