@@ -40,7 +40,7 @@
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./surveyAndFeedback.html">Survey & Feedback</a>
+                        <a class="nav-link" href="./surveyAndFeedback.php">Survey & Feedback</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./treatmentPlanning.php">Treatment Planning</a>

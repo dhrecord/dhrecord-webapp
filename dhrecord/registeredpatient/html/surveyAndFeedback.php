@@ -32,20 +32,19 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../apptScheduling/index.html">Appointment Scheduling &
-                            Reminder</a>
+                        <a class="nav-link" href="../apptScheduling/index.html">Appointment Scheduling & Reminder</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./surveyAndFeedback.html">Survey & Feedback</a>
+                        <a class="nav-link" href="./surveyAndFeedback.php">Survey & Feedback</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./treatmentPlanning.html">Treatment Planning</a>
+                        <a class="nav-link" href="./treatmentPlanning.php">Treatment Planning</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
