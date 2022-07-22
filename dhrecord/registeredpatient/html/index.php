@@ -66,10 +66,29 @@
             <h4 class="lead">Your next appointment is in 21 days.</h4>
             <hr>
             <p>
-                # temporary => later can add notifications and other functionalites <br> # e.g. list of accounts that
+                <!--# temporary => later can add notifications and other functionalites <br> # e.g. list of accounts that
                 need to
                 be
-                reviewed and approved.
+                reviewed and approved.-->
+
+                <?php 
+                
+                    	//Database Connection
+	                    $servername = "localhost";
+	                    $database = "u922342007_Test";
+	                    $username = "u922342007_admin";
+	                    $password = "Aylm@012";
+	                    // Create connection
+	                    $conn = mysqli_connect($servername, $username, $password, $database);
+
+	                    if (!$conn) 
+	                    {
+		                    die("Connection failed: " . mysqli_connect_error());
+	                    }
+
+                ?>
+
+                <br><h5>Name: </h5><br>
             </p>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
         </div>
