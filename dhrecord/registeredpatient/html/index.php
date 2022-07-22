@@ -62,7 +62,7 @@
         <div class="bg-light p-5 rounded mt-3">
             <h1>Homepage</h1>
             <hr>
-            <h4 class="lead">Welcome, <?php $_SESSION['username']; ?></h4>
+            <h4 class="lead">Welcome, <?php echo $_SESSION['username']; ?></h4>
             <h4 class="lead">Your next appointment is in 21 days.</h4>
             <hr>
             <p>
@@ -86,15 +86,22 @@
 		                    die("Connection failed: " . mysqli_connect_error());
 	                    }
 
+                        $sessionID = $_SESSION['id'];
+
+                        $stmt = $conn->prepare("SELECT * FROM registeredPatient where users_ID = ?");
+                        $stmt->bind_param("s", $sessionID);
+                        $stmt->execute();
+		                $stmt_result = $stmt->get_result();
+                        $data = $stmt_result->fetch_assoc();
                 ?>
 
-                <br><h5>Name: </h5><br>
-                <br><h5>NRIC: </h5><br>
-                <br><h5>Contact Number: </h5><br>
-                <br><h5>Email: </h5><br>
-                <br><h5>Address: </h5><br>
-                <br><h5>Medical Conditions: </h5><br>
-                <br><h5>Drug Allergies: </h5><br>
+                <br><h5>Name: <?php echo $_SESSION['fullName']; ?></h5><br>
+                <br><h5>NRIC: <?php echo $_SESSION['nricNumber']; ?></h5><br>
+                <br><h5>Contact Number: <?php echo $_SESSION['contactNumber']; ?></h5><br>
+                <br><h5>Email: <?php echo $_SESSION['email']; ?></h5><br>
+                <br><h5>Address: <?php echo $_SESSION['address']; ?></h5><br>
+                <br><h5>Medical Conditions: <?php echo $_SESSION['medConditions']; ?></h5><br>
+                <br><h5>Drug Allergies: <?php echo $_SESSION['drugAllergies']; ?></h5><br>
             </p>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
         </div>
