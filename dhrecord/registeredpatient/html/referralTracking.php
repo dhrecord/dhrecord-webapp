@@ -74,8 +74,7 @@
         			<th>referredBy</th>
         			<th>referralDate</th>
         		</tr>    		
-                
-        		<tr>
+
                  <?php                           
         	
                     //Database Connection
