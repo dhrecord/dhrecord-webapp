@@ -35,20 +35,20 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="../html/index.html">Home</a>
+            <a class="nav-link" aria-current="page" href="../html/index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="../apptScheduling/index.html">Appointment Scheduling &
               Reminder</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/referralTracking.html">Referral Tracking</a>
+            <a class="nav-link" href="../html/referralTracking.php">Referral Tracking</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/surveyAndFeedback.html">Survey & Feedback</a>
+            <a class="nav-link" href="../html/surveyAndFeedback.php">Survey & Feedback</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/treatmentPlanning.html">Treatment Planning</a>
+            <a class="nav-link" href="../html/treatmentPlanning.php">Treatment Planning</a>
           </li>
         </ul>
         <div class="d-flex flex-column align-items-end">
@@ -62,21 +62,16 @@
     </div>
   </nav>
 
-  <!-- html code -->
   <!-- content -->
   <div class="container my-5">
     <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
     <!-- <img src="./apptschedulingpatient.png" /> -->
 
-    <!-- <div class="d-flex justify-content-end">
-        <p>* click on the timetable to reschedule</p>
-    </div> -->
-
-    <!-- <div class="">
-      <iframe id="Iframe" frameborder="0" noresize="noresize" style="background: transparent; width: 100%;"
-        src=" ../calendar-20/index.html" frameborder="0">
-      </iframe>
-    </div> -->
+    <div class="mb-5 d-flex justify-content-end">
+      <button class="btn btn-dark">Book Appointment</button>
+      <div class="p-2"></div>
+      <button class="btn btn-dark">Reschedule</button>
+    </div>
 
     <div class="calendar-box">
       <div id='calendar-container'>
@@ -85,10 +80,6 @@
     </div>
 
   </div>
-
-  <!-- <div id='calendar-container'>
-    <div id='calendar'></div>
-  </div> -->
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -120,13 +111,13 @@
         events: [
           {
             title: 'Monthly Checkup',
-            start: '2022-07-21T14:00:00',
+            start: '2022-07-27T14:00:00',
             clinic: 'DX Dental',
             doctor: 'Dr. Smith Rowe'
           },
           {
             title: 'Dental Brace',
-            start: '2022-07-26T15:00:00',
+            start: '2022-07-31T15:00:00',
             clinic: 'ZW Dental',
             doctor: 'Dr. Rose'
           },
