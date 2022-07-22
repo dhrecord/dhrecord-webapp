@@ -9083,9 +9083,10 @@ Docs & License: https://fullcalendar.io/
         seg.isStart ? "fc-start" : "fc-not-start",
         seg.isEnd ? "fc-end" : "fc-not-end",
       ].concat(seg.eventRange.ui.classNames);
-      if (isDraggable) {
-        classes.push("fc-draggable");
-      }
+      // remove draggable temporary
+      // if (isDraggable) {
+      //   classes.push("fc-draggable");
+      // }
       if (isResizable) {
         classes.push("fc-resizable");
       }
