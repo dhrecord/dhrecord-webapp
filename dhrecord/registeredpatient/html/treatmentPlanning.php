@@ -102,8 +102,9 @@
                    	$username = "u922342007_admin";
                    	$password = "Aylm@012";
         
-                    // Create connection
-                    $conn = mysqli_connect($servername, $username, $password, $database);
+                    	// Create connection
+                    	$conn = mysqli_connect($servername, $username, $password, $database);
+			if(!$conn) { echo 'Server error. Please try again sometime'; }
 				
 			echo "'{$_SESSION['id']}'";
 			
@@ -114,7 +115,7 @@
 			*/
 			$result = mysqli_query($conn, $res);
 			echo $result;
-			if(!$result) { echo 'Server error. Please try again sometime'; }
+			
 
 
 			while($sql = $result->fetch()){
