@@ -58,7 +58,7 @@
                         Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
-                            onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.php'">
+                            onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.html'">
                         Logout
                     </button>
                 </div>
@@ -75,8 +75,7 @@
         			<th>referralDate</th>
         		</tr>    		
 
-                 <?php                           
-        	
+                 <?php                          
                     //Database Connection
                     $servername = "localhost";
                     $database = "u922342007_Test";
@@ -85,10 +84,8 @@
         
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
-				
-			echo "'{$_SESSION['id']}'";
-            
-               		$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
+				           
+			$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
         		WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
 			$result = mysqli_query($conn, $res);
