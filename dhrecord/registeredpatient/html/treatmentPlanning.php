@@ -104,29 +104,15 @@
         
                     	// Create connection
                     	$conn = mysqli_connect($servername, $username, $password, $database);
-			if(!$conn) { echo 'Server error. Please try again sometime'; }
-				
-			echo "'{$_SESSION['id']}'";
-			
-			/*$res = ("SELECT * FROM treatmentPlan WHERE regPt_ID = '{$_SESSION['id']}'");*/
-				
+								
 			$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users 
 			WHERE treatmentPlan.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}'");
 			
-			$result = mysqli_query($conn, $res);
-			//echo $result;
-			
-
+			$result = mysqli_query($conn, $res);			
 
 			while($sql = mysqli_fetch_assoc($result)){
-				//$sql = $result->fetch()){
-				//$sql = mysqli_fetch_assoc($result)
-			      //$results->fetch_array(MYSQLI_ASSOC)){ 
-				//$rows = $results->fetch_array(MYSQLI_ASSOC);
 				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
-				//var_dump($sql);
 			}
-			error_reporting(E_ALL);
 			?>
         </table>
     </div>
