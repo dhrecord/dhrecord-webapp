@@ -119,7 +119,7 @@
 				//$sql = mysqli_fetch_assoc($result)
 			      //$results->fetch_array(MYSQLI_ASSOC)){ 
 				//$rows = $results->fetch_array(MYSQLI_ASSOC);
-				echo "<td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td>";
+				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
 				//var_dump($sql);
 			}
 			error_reporting(E_ALL);
