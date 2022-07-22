@@ -112,7 +112,8 @@
 			$result = mysqli_query($conn, $res);
 
 
-			while($sql = mysqli_fetch_assoc($result)){
+			while($sql = $result->fetch()){
+				//$sql = mysqli_fetch_assoc($result)
 			      //$results->fetch_array(MYSQLI_ASSOC)){ 
 				//$rows = $results->fetch_array(MYSQLI_ASSOC);
 				echo "<td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td>";
