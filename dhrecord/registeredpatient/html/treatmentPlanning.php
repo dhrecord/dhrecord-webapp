@@ -114,11 +114,12 @@
 				WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = treatmentPlan.regPt_ID");
 			
 			$result = mysqli_query($conn, $res);
-			echo $result;
+			//echo $result;
 			
 
 
-			while($sql = $result->fetch()){
+			while($sql = mysqli_fetch_assoc($result)){
+				//$sql = $result->fetch()){
 				//$sql = mysqli_fetch_assoc($result)
 			      //$results->fetch_array(MYSQLI_ASSOC)){ 
 				//$rows = $results->fetch_array(MYSQLI_ASSOC);
