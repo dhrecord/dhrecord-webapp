@@ -122,6 +122,7 @@
 				echo "<td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td>";
 				//var_dump($sql);
 			}
+			error_reporting(E_ALL);
 			?>
         </table>
     </div>
