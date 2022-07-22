@@ -113,6 +113,7 @@
 				WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = treatmentPlan.regPt_ID");
 			*/
 			$result = mysqli_query($conn, $res);
+			echo $result;
 
 
 			while($sql = $result->fetch()){
