@@ -114,6 +114,7 @@
 			*/
 			$result = mysqli_query($conn, $res);
 			echo $result;
+			if(!$result) { echo 'Server error. Please try again sometime'; }
 
 
 			while($sql = $result->fetch()){
