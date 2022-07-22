@@ -108,7 +108,7 @@
 				
 			echo "'{$_SESSION['id']}'";
 			
-			$res = ("SELECT * FROM treatmentPlan");
+			$res = ("SELECT * FROM treatmentPlan WHERE regPt_ID = '{$_SESSION['id']}'");
 				
 			/*$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users
 				WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = treatmentPlan.regPt_ID");
