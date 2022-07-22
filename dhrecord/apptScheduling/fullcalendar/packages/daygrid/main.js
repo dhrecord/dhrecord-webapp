@@ -267,7 +267,7 @@ Docs & License: https://fullcalendar.io/
       var skinCss = core.cssToStr(this.getSkinCss(eventUi));
       var timeHtml = "";
       var timeText;
-      var titleHtml, clinicDoctorHtml;
+      var titleHtml, clinicHtml, doctorHtml, patientHtml, timeTitleHtml;
       classes.unshift("fc-day-grid-event", "fc-h-event");
       // Only display a timed events time if it is the starting segment
       if (seg.isStart) {
@@ -285,10 +285,26 @@ Docs & License: https://fullcalendar.io/
         (core.htmlEscape(eventDef.title || "") || "&nbsp;") + // we always want one line of height
         "</span>";
 
-      clinicDoctorHtml =
-        '<p class="fc-title mt-1">' +
-        (core.htmlEscape(eventDef.clinic + " - " || "") || "&nbsp;") +
+      timeTitleHtml =
+        '<p class="fc-title my-0">' +
+        timeHtml +
+        " - " +
+        titleHtml +
+        "</p><hr class='p-0 my-1'/>";
+
+      clinicHtml =
+        '<p class="fc-title my-0"><b>Clinic:</b> ' +
+        (core.htmlEscape(eventDef.clinic || "") || "&nbsp;") +
+        "</p>";
+
+      doctorHtml =
+        '<p class="fc-title my-0"><b>Doctor:</b> ' +
         (core.htmlEscape(eventDef.doctor || "") || "&nbsp;") +
+        "</p>";
+
+      patientHtml =
+        '<p class="fc-title my-0"><b>Patient:</b> ' +
+        (core.htmlEscape(eventDef.patient || "") || "&nbsp;") +
         "</p>";
 
       return (
@@ -298,10 +314,16 @@ Docs & License: https://fullcalendar.io/
         (eventDef.url ? ' href="' + core.htmlEscape(eventDef.url) + '"' : "") +
         (skinCss ? ' style="' + skinCss + '"' : "") +
         ">" +
-        '<div class="fc-content">' +
+        '<div class="fc-content d-flex flex-column" style="">' +
         (options.dir === "rtl"
           ? titleHtml + " " + timeHtml // put a natural space in between
-          : timeHtml + " " + titleHtml + " " + clinicDoctorHtml) + //
+          : timeTitleHtml +
+            " " +
+            clinicHtml +
+            " " +
+            doctorHtml +
+            " " +
+            (eventDef.patient ? patientHtml : "")) + //
         "</div>" +
         (isResizableFromStart
           ? '<div class="fc-resizer fc-start-resizer"></div>'
