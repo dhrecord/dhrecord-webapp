@@ -70,7 +70,7 @@
     <div class="container my-5">
         <h4 class="mb-5">Treatment Planning</h4>
         <div class="mb-4 d-flex align-items-center">
-            <div class="d-flex align-items-center">
+            <!-- <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
@@ -87,11 +87,12 @@
                 <option value="2">Next treatment plan</option>
             </select>
         </div>
+	 -->
         <table class="table table-striped">
 			<tr>
-				<th>startDate</th>
-				<th>endDate</th>
-				<th>details</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Details</th>
 			</tr>    		
 			
 			 <?php                           
