@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="./index">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../apptScheduling/index.html">
@@ -90,29 +90,35 @@
 				<th>endDate</th>
 				<th>details</th>
 			</tr>    		
-			<tr>
-			 <?php                           
-				session_start();
-				//Database Connection
-				$servername = "localhost";
-				$database = "u922342007_Test";
-				$username = "u922342007_admin";
-				$password = "Aylm@012";
-	
-				// Create connection
-				$conn = mysqli_connect($servername, $username, $password, $database);
 			
+			 <?php                           
+			session_start();
+			//Database Connection
+			$servername = "localhost";
+			$database = "u922342007_Test";
+			$username = "u922342007_admin";
+			$password = "Aylm@012";
 	
-				$res = ("SELECT `treatmentPlan.startDate`, `treatmentPlan.endDate`, `treatmentPlan.details` FROM `treatmentPlan`, `registeredPatient`, `users`
-					WHERE `users.ID` = `{$_SESSION['id']}` AND `users.ID` = `registeredPatient.users_ID` AND `registeredPatient.ID` = `treatmentPlan.regPt_ID`");
-								
-				$result = mysqli_query($conn, $res);
+			// Create connection
+			$conn = mysqli_connect($servername, $username, $password, $database);
 				
+			echo "'{$_SESSION['id']}'";
+			
+			$res = ("SELECT * FROM treatmentPlan");
+				
+			/*$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users
+				WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = treatmentPlan.regPt_ID");
+			*/
+			$result = mysqli_query($conn, $res);
 
-				while($sql = mysqli_fetch_assoc($result)){
-					echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
-				}
-				?>
+
+			while($sql = mysqli_fetch_assoc($result)){
+			      //$results->fetch_array(MYSQLI_ASSOC)){ 
+				//$rows = $results->fetch_array(MYSQLI_ASSOC);
+				echo "<td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td>";
+				//var_dump($sql);
+			}
+			?>
         </table>
     </div>
 

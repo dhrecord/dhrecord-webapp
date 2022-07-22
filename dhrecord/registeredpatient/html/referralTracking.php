@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="./index">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./apptSchedulingAndReminders.html">
@@ -83,13 +83,13 @@
         
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
-                
-        
-                    //$getid = $_SESSION['id'];
-        	        $res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
-        			WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
+				
+			echo "'{$_SESSION['id']}'";
+            
+               		$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
+        		WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
-			        $result = mysqli_query($conn, $res);
+			$result = mysqli_query($conn, $res);
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
