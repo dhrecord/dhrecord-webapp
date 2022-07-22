@@ -95,13 +95,13 @@
                         $data = $stmt_result->fetch_assoc();
                 ?>
 
-                <br><h5>Name: <?php echo $_SESSION['fullName']; ?></h5><br>
-                <br><h5>NRIC: <?php echo $_SESSION['nricNumber']; ?></h5><br>
-                <br><h5>Contact Number: <?php echo $_SESSION['contactNumber']; ?></h5><br>
-                <br><h5>Email: <?php echo $_SESSION['email']; ?></h5><br>
-                <br><h5>Address: <?php echo $_SESSION['address']; ?></h5><br>
-                <br><h5>Medical Conditions: <?php echo $_SESSION['medConditions']; ?></h5><br>
-                <br><h5>Drug Allergies: <?php echo $_SESSION['drugAllergies']; ?></h5><br>
+                <br><h5>Name: <?php echo $data['fullName']; ?></h5><br>
+                <br><h5>NRIC: <?php echo $data['nricNumber']; ?></h5><br>
+                <br><h5>Contact Number: <?php echo $data['contactNumber']; ?></h5><br>
+                <br><h5>Email: <?php echo $data['email']; ?></h5><br>
+                <br><h5>Address: <?php echo $data['address']; ?></h5><br>
+                <br><h5>Medical Conditions: <?php echo $data['medConditions']; ?></h5><br>
+                <br><h5>Drug Allergies: <?php echo $data['drugAllergies']; ?></h5><br>
             </p>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
         </div>
