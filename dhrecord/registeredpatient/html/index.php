@@ -89,6 +89,12 @@
                 ?>
 
                 <br><h5>Name: </h5><br>
+                <br><h5>NRIC: </h5><br>
+                <br><h5>Contact Number: </h5><br>
+                <br><h5>Email: </h5><br>
+                <br><h5>Address: </h5><br>
+                <br><h5>Medical Conditions: </h5><br>
+                <br><h5>Drug Allergies: </h5><br>
             </p>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
         </div>
