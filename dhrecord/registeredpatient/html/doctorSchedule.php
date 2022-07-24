@@ -15,7 +15,7 @@
 
   <!-- Style -->
   <!-- <link rel="stylesheet" href="../../apptScheduling/css/style.css"> -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
     
   <!-- jquery -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
