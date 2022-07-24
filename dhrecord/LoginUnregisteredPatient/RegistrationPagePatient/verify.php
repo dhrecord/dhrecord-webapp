@@ -32,7 +32,8 @@ if(isset($_GET['vkey'])){
 		 {
 			$toInsert = mysqli_prepare($conn, "SELECT * FROM tempRegisteredPatient WHERE vkey = '$vkey'");
 			$toInsert->execute();
-			$row = $toInsert->fetch_assoc();
+			$toInsert_Result = $toInsert->get_result();
+			$row = $toInsert_Result->fetch_assoc();
 
 			//inserting data
 			$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
@@ -49,7 +50,7 @@ if(isset($_GET['vkey'])){
 			mysqli_stmt_bind_param($stmt, "ssssssss", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['address'], $row['medConditions'], $row['drugAllergies'], $row1['ID']);
 			mysqli_stmt_execute($stmt);
 
-			$deleteRow = mysqli_prepare($conn, "DELETE * FROM tempRegisteredPatient WHERE vkey = '$vkey'");
+			$deleteRow = mysqli_prepare($conn, "DELETE FROM tempRegisteredPatient WHERE vkey = '$vkey'");
 			$deleteRow->execute();
 			
 			if($deleteRow)
@@ -75,7 +76,9 @@ if(isset($_GET['vkey'])){
 	{
 		echo "This account is invalid or already verified";
 	}
-}else{
+}
+
+else{
 	die("Something went wrong D:");
 }
 
