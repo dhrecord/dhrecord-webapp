@@ -40,12 +40,14 @@
 			{
 				//$_SESSION['loggedin'] = TRUE;
 				$_SESSION['username'] = $data['username'];
+				
 				$_SESSION['id'] = $data['ID'];
 				
 				echo $_SESSION["username"].$_SESSION["id"];
-				/*if ($data['role'] === "sa")
+				if ($data['role'] === "sa")
 				{
 					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.php');
+					die;
 				} 
 				
 				else if ($data['role'] === "pt")
@@ -53,13 +55,15 @@
 					//echo $_SESSION['username'];
 					//echo $_SESSION['id'];
 					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
+					die;
 				}
 				
 				else if ($data['role'] === "ca")
 				{
 					header('Location: http://dhrecord.com/dhrecord/businessowner/html/index.php');
+					die;
 				}
-				*/
+				
 				
 			}else{
 				echo "invalid username or password";
