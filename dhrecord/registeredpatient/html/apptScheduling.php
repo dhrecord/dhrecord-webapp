@@ -75,7 +75,10 @@
 
   <!-- content -->
   <div class="container my-5">
-    <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
+  <div class="mb-5 d-flex justify-content-between">
+      <h4>Appointment Scheduling and Reminders</h4>
+      <button class="btn btn-dark"  onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
+    </div>
 
     <div class="container my-5 custom-container">
         <!-- <div class="search-container">
@@ -83,15 +86,27 @@
             <button class="search-button" type="submit">test</button>
         </div> -->
 
-        <div class="mb-4">
+        <div class="mb-5">
             <div class="d-flex align-items-center">
-                <p class="m-0"><b>Search Clinic:</b>&nbsp;&nbsp;&nbsp;</p>
-                <div class="input-group">
+                <div><p class="m-0"><b>Search Clinic:</b></p></div>
+          
+                <div class="input-group mx-4" style="width:fit-content">
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
+                </div>
+
+                <div class="mx-2"> 
+                  <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                style="">
+                    <option selected disabled hidden>Filter By...</option>
+                    <option value="1">Clinic Name</option>
+                    <option value="2">Services</option>
+                    <option value="3">Address</option>
+                    <option value="4">Operating Hours</option>
+                  </select>
                 </div>
             </div>
             <!-- to be applied later -->
@@ -105,7 +120,7 @@
         </div>
         <div class="content-div my-4">
             <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
-                <tr>
+                <tr class="bg-dark text-light">
                     <th class="px-4">Clinic Name</th>
                     <th class="px-4">Clinic Description</th>
                     <th></th>
@@ -113,16 +128,35 @@
                 <tr>
                     <td class="px-4">Ashford Dental Centre</td>
                     <td class="px-4">
-                        <b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br>
-                        <br>
-                        <b>Operating Hours:</b><br>
-                        Monday-Friday: 9am–6pm<br>
-                        Saturday: 1pm-4pm<br>
-                        Sunday: Closed<br><br>
-                        <b>Phone: </b>6265 9146<br>
-                        <b>Appointments: </b>ashforddentalcentre.com.sg<br>
+                        <b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/>
+                        <br/>
+                        <b>Operating Hours:</b><br/>
+                        Monday-Friday: 9am–6pm<br/>
+                        Saturday: 1pm-4pm<br/>
+                        Sunday: Closed<br/><br/>
+
+                        <b>Phone: </b>6265 9146<br/>
+                        <b>Website: </b>ashforddentalcentre.com.sg<br/><br/>
+
+                        <b>Doctors:</b><br>
+                        <table class="table docs">
+                          <tr>
+                            <th class="px-4">Name</th>
+                            <th class="px-4">Services</th>
+                            <th class="px-4"></th>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Smith Rowe</td>
+                            <td class="px-4">Oral Surgery, Dental Surgery</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Elizabeth</td>
+                            <td class="px-4">Orthodontic</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                        </table>              
                     </td>
-                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">Royce Dental Surgery - Woodlands</td>
@@ -133,8 +167,26 @@
                         Monday-Friday: 9am–6pm<br>
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6368 7467<br>
+                        <b>Website: </b>roycedentalsurgery.com<br><br>
+                        <b>Doctors:</b><br>
+                        <table class="table docs">
+                          <tr>
+                            <th class="px-4">Name</th>
+                            <th class="px-4">Services</th>
+                            <th class="px-4"></th>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. James</td>
+                            <td class="px-4">Oral Surgery, Dental Surgery</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Moon</td>
+                            <td class="px-4">Orthodontic</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                        </table>
                     </td>
-                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">National Dental Centre Singapore</td>
@@ -146,8 +198,26 @@
                         Monday-Friday: 8:30am–5:30pm<br>
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6324 8802<br>
+                        <b>Website: </b>nationaldentalcentre.com<br><br>
+                        <b>Doctors:</b><br>
+                        <table class="table docs">
+                          <tr>
+                            <th class="px-4">Name</th>
+                            <th class="px-4">Services</th>
+                            <th class="px-4"></th>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Dan</td>
+                            <td class="px-4">Oral Surgery, Dental Surgery</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Leslie</td>
+                            <td class="px-4">Orthodontic</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                        </table>
                     </td>
-                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">Expat Dental</td>
@@ -159,9 +229,26 @@
                         Monday-Friday: 9am-5pm<br>
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6397 6718<br>
-                        <b>Appointments: </b>expatdental.com<br>
+                        <b>Website: </b>expatdental.com<br><br>
+                        <b>Doctors:</b><br>
+                        <table class="table docs">
+                          <tr>
+                            <th class="px-4">Name</th>
+                            <th class="px-4">Services</th>
+                            <th class="px-4"></th>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Robert</td>
+                            <td class="px-4">Oral Surgery, Dental Surgery</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Ben</td>
+                            <td class="px-4">Orthodontic</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                        </table>
                     </td>
-                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
             </table>
         </div>
@@ -242,6 +329,7 @@
 <script type="application/javascript">
         function tableSearch() {
             let input, filter, table, tr, td, txtValue;
+            let tr2, tr3;
 
             input = document.getElementById("searchInput");
             filter = input.value.toUpperCase();
@@ -256,12 +344,19 @@
 
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
-                    }
+                    } 
 
                     else {
                         tr[i].style.display = "none";
                     }
+                }
 
+                tr2 = document.getElementsByClassName('docs');
+                for (let k = 0; k < tr2.length; k++) {
+                  tr3 = tr2[k].getElementsByTagName("tr");
+                  for (let j = 0; j < tr3.length; j++) {
+                    tr3[j].style.display = "";
+                  }
                 }
             }
         };
