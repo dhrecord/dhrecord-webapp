@@ -54,7 +54,7 @@
 				{
 					//echo $_SESSION['username'];
 					//echo $_SESSION['id'];
-					header('Location: ../../registeredpatient/html/index.html');
+					header('Location: ../../registeredpatient/html/index.php');
 					die;
 				}
 				
