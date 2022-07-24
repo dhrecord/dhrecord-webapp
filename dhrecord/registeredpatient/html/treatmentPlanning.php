@@ -68,7 +68,7 @@
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-5">Treatment History7</h4>
+        <h4 class="mb-5">Treatment History</h4>
         <div class="mb-4 d-flex align-items-center">
             <!-- <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
