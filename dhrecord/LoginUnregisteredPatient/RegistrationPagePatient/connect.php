@@ -32,8 +32,8 @@
 	}
 
 	$subject = "Email Verification";
-	$message = "Hi! Please click the link below to verify your email!<br> <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley'>Register Account</a>";
-	//$message = "Hi! Please click the link below to verify your email!<br> <a href='http://dhrecord.com/dhrecord/LoginUnregisteredPatient/RegistrationPagePatient/verify.php'>Register Account</a>";
+	//$message = "Hi! Please click the link below to verify your email!<br> <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley'>Register Account</a>";
+	$message = "Hi! Please click the link below to verify your email!<br> <a href='http://dhrecord.com/dhrecord/LoginUnregisteredPatient/RegistrationPagePatient/verify.php'>Register Account</a>";
 	//$message = "Hi! Please click the link below to verify your email!<br>";
 	$headers = "From: dentalrecord00@gmail.com \r\n";
 	$headers .= "MIME-version: 1.0" . "\r\n";
