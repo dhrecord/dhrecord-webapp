@@ -12,7 +12,7 @@ session_destroy();
 unset($_SESSION["username"]);
 session_destroy();*/
 // Redirect to the login page:
-header('Location: http://www.dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/index.html');
+header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
 
 die;
 ?>
