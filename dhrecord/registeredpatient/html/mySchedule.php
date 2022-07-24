@@ -127,7 +127,7 @@
           {
             title: 'Monthly Checkup',
             start: '2022-07-27T14:00:00',
-            clinic: 'DX Dental',
+            clinic: 'Ashford Dental Centre',
             doctor: 'Dr. Smith Rowe'
           },
           {

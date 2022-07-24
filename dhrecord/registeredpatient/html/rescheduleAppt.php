@@ -9,23 +9,9 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
 
-  <!-- <link rel="stylesheet" href="../../apptScheduling/fonts/icomoon/style.css">
-  <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/core/main.css">
-  <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/daygrid/main.css"> -->
-
-  <!-- 
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
-  <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
-  <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' /> 
-  -->
-
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-
-  <!-- Style -->
-  <!-- <link rel="stylesheet" href="../../apptScheduling/css/style.css"> -->
 
   <title>DHRecord</title>
 </head>
@@ -91,13 +77,13 @@
         </tr>
         <tr>
           <td>1</td>
-          <td>DX Dental</td>
-          <td>Address</td>
+          <td>Ashford Dental Centre</td>
+          <td>215 Upper Thomson Rd, Singapore 574349</td>
           <td>Dr. Smith Rowe</td>
           <td>Monthly Checkup</td>
           <td>27-07-2002</td>
           <td>02.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark">Reschedule</button></td>
+          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
         </tr>
         <tr>
           <td>2</td>
@@ -107,13 +93,11 @@
           <td>Dental Brace</td>
           <td>31-07-2002</td>
           <td>03.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark">Reschedule</button></td>
+          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
         </tr>
       </table>
     </div>
   </div>
 
-  <!-- <script src="../../apptScheduling/js/main.js"></script> -->
 </body>
-
 </html>

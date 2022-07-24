@@ -65,50 +65,59 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-4 d-flex justify-content-between">
-      <h4>Book An Appointment</h4>
+      <h4>Reschedule Appointment Form</h4>
     </div>
 
     <div class="p-5" style="background: #F2F2F2;">
-      <div class="d-flex">
-        <div>
-            <p class="m-0"><b>Doctor:</b> Dr.Smith Rowe</p>
-            <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
-
-            <br>
-
-            <p class="m-0"><b>Clinic:</b> Ashford Dental Centre</p>
-            <p class="m-0"><b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/></p>
-
-            <br>
-
-            <p class="m-0"> 
-                <b>Operating Hours:</b><br/>
-                Monday-Friday: 9am–6pm<br/>
-                Saturday: 1pm-4pm<br/>
-                Sunday: Closed<br/><br/>
-            </p>
-        </div>
-
-        <div class="mx-5">
+        <div class="d-flex">
             <div>
-                <p><b>Date:</b></p>
-                <input type="text" id="datepicker"/>
-            </div>
-        </div>
+                <p class="m-0"><b>Doctor:</b> Dr.Smith Rowe</p>
+                <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
 
-        <div class="mx-5">
-            <div class="d-flex">
-                <input type="text" id="result" style="display:none;"/>
+                <br>
+
+                <p class="m-0"><b>Clinic:</b>Ashford Dental Centre</p>
+                <p class="m-0"><b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/></p>
+
+                <br>
+
+                <p class="m-0"> 
+                    <b>Operating Hours:</b><br/>
+                    Monday-Friday: 9am–6pm<br/>
+                    Saturday: 1pm-4pm<br/>
+                    Sunday: Closed<br/><br/>
+                </p>
+            </div>
+
+            <div class="mx-5">
+                <div>
+                    <p><b>Current Date:</b></p>
+                    <p>27-07-2022</p>
+                </div>
+                <div>
+                    <p><b>New Date:</b></p>
+                    <input type="text" id="datepicker"/>
+                </div>
+            </div>
+
+            <div class="mx-5">
                 <div>
                     <p><b>Time:</b></p>
-                    <div id="timepicker"></div>
+                    <p>02.00 pm</p>
+                </div>
+                <div class="d-flex">
+                    <input type="text" id="result" style="display:none;"/>
+                    <div>
+                        <p><b>Time:</b></p>
+                        <div id="timepicker"></div>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
-      <div class="text-end">
-        <button class="btn btn-success">Submit</button>
-      </div>
+
+        <div class="text-end">
+            <button class="btn btn-success">Submit</button>
+        </div>
     </div>
   </div>
 
@@ -142,22 +151,6 @@
             altField: "#result"
         });
     });
-
-    // var $datePicker = $("div#datepicker");
-    // var $datePicker = $("div");
-
-    // $datePicker.datepicker({
-    //     changeMonth: true,
-    //     changeYear: true,
-    //     inline: true,
-    //     altField: "#datep",
-    // }).change(function(e){
-    //     setTimeout(function(){   
-    //     $datePicker
-    //         .find('.ui-datepicker-current-day').parent().after('<tr><td colspan="8"><div><button>8:00 am &mdash; 9:00 am</button></div><button>9:00 am &mdash; 10:00 am</button></div><button>10:00 am &mdash; 11:00 am</button></div></td></tr>')
-            
-    //     });
-    // });
   </script>
 </body>
 
