@@ -105,13 +105,13 @@
 
             <div class="mx-5">
                 <div>
-                    <p><b>Time:</b></p>
+                    <p><b>Current Time:</b></p>
                     <p>02.00 pm</p>
                 </div>
                 <div class="d-flex">
                     <input type="text" id="result" style="display:none;"/>
                     <div>
-                        <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i</p>
+                        <p><b>New Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i</p>
                         <div id="timepicker"></div>
                     </div>
                 </div>
