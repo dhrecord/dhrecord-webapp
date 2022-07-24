@@ -22,7 +22,8 @@ if(isset($_GET['vkey'])){
 	$resultSet = $fetchVerified->get_result();
 	
 
-	if($resultSet->num_rows == 1){
+	if($resultSet->num_rows == 1)
+	{
 		 //change verified from 0 to 1
 		 $update = mysqli_prepare($conn, "UPDATE tempRegisteredPatient SET verified = 1 WHERE vkey = '$vkey' LIMIT 1");
 		 $update->execute();
@@ -35,11 +36,11 @@ if(isset($_GET['vkey'])){
 
 			//inserting data
 			$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
-			mysqli_stmt_bind_param($stmt, "sss", $row['role'], $row['userName'], $row['passWord']);
+			mysqli_stmt_bind_param($stmt, "sss", $row['role'], $row['username'], $row['password']);
 			mysqli_stmt_execute($stmt);
 
 			$stmt = $conn->prepare("SELECT ID FROM users where username = ?");
-			$stmt->bind_param("s", $row['userName']);
+			$stmt->bind_param("s", $row['username']);
 			$stmt->execute();
 			$stmt_result = $stmt->get_result();
 			$row1 = $stmt_result->fetch_assoc();
@@ -69,7 +70,9 @@ if(isset($_GET['vkey'])){
 		 }
 
 	}
-	else{
+
+	else
+	{
 		echo "This account is invalid or already verified";
 	}
 }else{
