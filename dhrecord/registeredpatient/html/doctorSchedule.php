@@ -121,13 +121,18 @@
             dateFormat: 'dd-mm-yy',
             onSelect: function(dateText, pickerObj){
                 result.attr("data-course-id", timeslot[dateText]); 
+
+                if (timeslot[dateText]){
+                    let htmlContent= "";
+                    for (let i=0; i<timeslot[dateText].length; i++){
+                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2'>" + timeslot[dateText][i] + "</button>";
+                    }
                 
-                let htmlContent= "";
-                for (let i=0; i<timeslot[dateText].length; i++){
-                    htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2'>" + timeslot[dateText][i] + "</button>";
+                    timepicker.html(htmlContent); 
                 }
-               
-                timepicker.html(htmlContent); 
+                else{
+                    timepicker.html("No Available Slot"); 
+                }
             },
             altField: "#result"
         });
