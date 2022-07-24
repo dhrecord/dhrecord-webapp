@@ -71,75 +71,9 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
-      <h4>My Appoinment Calendar</h4>
-      <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleAppt.php'">Reschedule</button>
+      <h4>Reschedule Appointment</h4>
     </div>
-
-    <div class="calendar-box">
-      <div id='calendar-container'>
-        <div id='calendar'></div>
-      </div>
-    </div>
-
   </div>
-
-  <script src="../../apptScheduling/js/jquery-3.3.1.min.js"></script>
-  <script src="../../apptScheduling/js/popper.min.js"></script>
-  <script src="../../apptScheduling/js/bootstrap.min.js"></script>
-
-  <script src='../../apptScheduling/fullcalendar/packages/core/main.js'></script>
-  <script src='../../apptScheduling/fullcalendar/packages/interaction/main.js'></script>
-  <script src='../../apptScheduling/fullcalendar/packages/daygrid/main.js'></script>
-  <script src='../../apptScheduling/fullcalendar/packages/timegrid/main.js'></script>
-  <script src='../../apptScheduling/fullcalendar/packages/list/main.js'></script>
-
-  <!-- <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-
-  <script src='fullcalendar/packages/core/main.js'></script>
-  <script src='fullcalendar/packages/interaction/main.js'></script>
-  <script src='fullcalendar/packages/daygrid/main.js'></script>
-  <script src='fullcalendar/packages/timegrid/main.js'></script>
-  <script src='fullcalendar/packages/list/main.js'></script> -->
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
-
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
-        height: 'parent',
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-        },
-        defaultView: 'dayGridMonth',
-        defaultDate: new Date(),
-        navLinks: true, // can click day/week names to navigate views
-        editable: true,
-        eventLimit: true, // allow "more" link when too many events
-        events: [
-          {
-            title: 'Monthly Checkup',
-            start: '2022-07-27T14:00:00',
-            clinic: 'DX Dental',
-            doctor: 'Dr. Smith Rowe'
-          },
-          {
-            title: 'Dental Brace',
-            start: '2022-07-31T15:00:00',
-            clinic: 'ZW Dental',
-            doctor: 'Dr. Rose'
-          },
-        ]
-      });
-
-      calendar.render();
-    });
-
-  </script>
 
   <script src="../../apptScheduling/js/main.js"></script>
 </body>

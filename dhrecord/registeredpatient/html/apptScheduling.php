@@ -75,7 +75,10 @@
 
   <!-- content -->
   <div class="container my-5">
-    <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
+  <div class="mb-5 d-flex justify-content-between">
+      <h4>Appointment Scheduling and Reminders</h4>
+      <button class="btn btn-dark"  onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
+    </div>
 
     <div class="container my-5 custom-container">
         <!-- <div class="search-container">
