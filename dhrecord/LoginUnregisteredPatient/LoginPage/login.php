@@ -46,7 +46,7 @@
 				echo $_SESSION["username"].$_SESSION["id"];
 				if ($data['role'] === "sa")
 				{
-					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.php');
+					header('Location: ../../superadmin/html/home.php');
 					die;
 				} 
 				
@@ -54,13 +54,13 @@
 				{
 					//echo $_SESSION['username'];
 					//echo $_SESSION['id'];
-					header('Location: http://dhrecord.com/dhrecord/registeredpatient/html/');
+					header('Location: ../../registeredpatient/html/index.html');
 					die;
 				}
 				
 				else if ($data['role'] === "ca")
 				{
-					header('Location: http://dhrecord.com/dhrecord/businessowner/html/index.php');
+					header('Location: ../../businessowner/html/index.php');
 					die;
 				}
 				
