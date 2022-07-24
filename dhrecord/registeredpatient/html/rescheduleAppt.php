@@ -9,9 +9,9 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../apptScheduling/fonts/icomoon/style.css">
+  <!-- <link rel="stylesheet" href="../../apptScheduling/fonts/icomoon/style.css">
   <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/core/main.css">
-  <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/daygrid/main.css">
+  <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/daygrid/main.css"> -->
 
   <!-- 
   <link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -25,7 +25,7 @@
   <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 
   <!-- Style -->
-  <link rel="stylesheet" href="../../apptScheduling/css/style.css">
+  <!-- <link rel="stylesheet" href="../../apptScheduling/css/style.css"> -->
 
   <title>DHRecord</title>
 </head>
@@ -72,10 +72,48 @@
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
       <h4>Reschedule Appointment</h4>
+      <div>
+        <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/apptscheduling.php'">Book Appointment</button>
+        <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
+      </div>  
+    </div>
+    <div>
+      <table class="table table-striped">
+        <tr class="bg-dark text-white">
+          <th>No</th>
+          <th>Clinic</th>
+          <th>Address</th>
+          <th>Doctor</th>
+          <th>Agenda</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>DX Dental</td>
+          <td>Address</td>
+          <td>Dr. Smith Rowe</td>
+          <td>Monthly Checkup</td>
+          <td>27-07-2002</td>
+          <td>02.00 pm</td>
+          <td class="text-center"><button class="btn btn-sm btn-dark">Reschedule</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>ZW Dental</td>
+          <td>Address</td>
+          <td>Dr. Rose</td>
+          <td>Dental Brace</td>
+          <td>31-07-2002</td>
+          <td>03.00 pm</td>
+          <td class="text-center"><button class="btn btn-sm btn-dark">Reschedule</button></td>
+        </tr>
+      </table>
     </div>
   </div>
 
-  <script src="../../apptScheduling/js/main.js"></script>
+  <!-- <script src="../../apptScheduling/js/main.js"></script> -->
 </body>
 
 </html>
