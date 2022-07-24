@@ -103,7 +103,7 @@
                       <th class="px-4">Clinic Description</th>
                       <th></th>
                   </tr>
-                  <tr>
+                  <tr style="background-color: #F2F2F2">
                       <td class="px-4">Ashford Dental Centre</td>
                       <td class="px-4">
                           <b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/>
@@ -140,7 +140,7 @@
                           </table>              
                       </td>
                   </tr>
-                  <tr>
+                  <tr style="background-color: #F2F2F2">
                       <td class="px-4">Royce Dental Surgery - Woodlands</td>
                       <td class="px-4">
                           <b>Address: </b>Woodlands Ave 1, #01-821 Block 371, Singapore 730371<br>
@@ -174,7 +174,7 @@
                           </table>
                       </td>
                   </tr>
-                  <tr>
+                  <tr style="background-color: #F2F2F2">
                       <td class="px-4">National Dental Centre Singapore</td>
                       <td class="px-4">
                           <b>Located in: </b>Singapore General Hospital<br>
@@ -209,7 +209,7 @@
                           </table>
                       </td>
                   </tr>
-                  <tr>
+                  <tr style="background-color: #F2F2F2">
                     <td class="px-4">Expat Dental</td>
                     <td class="px-4">
                         <b>Located in: </b>E Medical Novena<br>
