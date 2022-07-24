@@ -65,8 +65,8 @@
             <div class="mb-3 row">
                 <label for="fullName" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-5">
-                    <!--input type="text" class="form-control" id="fullName"-->
-                    <?php echo $_SESSION['username']; ?>
+                    <input type="text" class="form-control" id="fullName">
+                    
                 </div>
             </div>
             <div class="mb-3 row">
