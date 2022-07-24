@@ -103,7 +103,7 @@
                   <div class="mx-2"> 
                     <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
                   style="">
-                      <option selected disabled hidden>Quick Filter...</option>
+                      <option selected disabled hidden>Filter By...</option>
                       <option value="1">Show Nearest Clinics</option>
                       <option value="2">Show Highest Rating Clinics</option>
                     </select>
