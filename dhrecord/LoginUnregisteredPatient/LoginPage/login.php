@@ -42,14 +42,8 @@
 				$_SESSION['username'] = $data['username'];
 				$_SESSION['id'] = $data['ID'];
 				
-				//$stmt = $link->prepare('SELECT role FROM users WHERE id = ?');
-				//$stmt->bind_param('i', $id);
-				//$stmt->execute();
-				//$stmt->bind_result($type);
-				//$stmt->fetch();
-				//$stmt->close();
-
-				if ($data['role'] === "sa")
+				echo $_SESSION["username"].$_SESSION["id"];
+				/*if ($data['role'] === "sa")
 				{
 					header('Location: http://dhrecord.com/dhrecord/superadmin/html/home.php');
 				} 
@@ -65,6 +59,8 @@
 				{
 					header('Location: http://dhrecord.com/dhrecord/businessowner/html/index.php');
 				}
+				*/
+				
 			}else{
 				echo "invalid username or password";
 			}
