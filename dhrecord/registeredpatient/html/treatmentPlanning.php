@@ -41,7 +41,7 @@
                         <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../apptScheduling/index.html">Appointment Scheduling & Reminder</a>
+                        <a class="nav-link" href="../html/apptScheduling.php">Appointment Scheduling & Reminder</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
@@ -70,7 +70,7 @@
     <div class="container my-5">
         <h4 class="mb-5">Treatment Planning</h4>
         <div class="mb-4 d-flex align-items-center">
-            <div class="d-flex align-items-center">
+            <!-- <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
@@ -87,42 +87,33 @@
                 <option value="2">Next treatment plan</option>
             </select>
         </div>
+	 -->
         <table class="table table-striped">
 			<tr>
-				<th>startDate</th>
-				<th>endDate</th>
-				<th>details</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Details</th>
 			</tr>    		
 			
 			 <?php                           
 			session_start();
 			//Database Connection
 			$servername = "localhost";
-			$database = "u922342007_Test";
-			$username = "u922342007_admin";
-			$password = "Aylm@012";
-	
-			// Create connection
-			$conn = mysqli_connect($servername, $username, $password, $database);
-				
-			echo "'{$_SESSION['id']}'";
+                    	$database = "u922342007_Test";
+                   	$username = "u922342007_admin";
+                   	$password = "Aylm@012";
+        
+                    	// Create connection
+                    	$conn = mysqli_connect($servername, $username, $password, $database);
+								
+			$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users 
+			WHERE treatmentPlan.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}'");
 			
-			$res = ("SELECT * FROM treatmentPlan");
-				
-			/*$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users
-				WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = treatmentPlan.regPt_ID");
-			*/
-			$result = mysqli_query($conn, $res);
+			$result = mysqli_query($conn, $res);			
 
-
-			while($sql = $result->fetch()){
-				//$sql = mysqli_fetch_assoc($result)
-			      //$results->fetch_array(MYSQLI_ASSOC)){ 
-				//$rows = $results->fetch_array(MYSQLI_ASSOC);
+			while($sql = mysqli_fetch_assoc($result)){
 				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
-				//var_dump($sql);
 			}
-			error_reporting(E_ALL);
 			?>
         </table>
     </div>
