@@ -63,9 +63,10 @@
 
         <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
             <div class="mb-3 row">
-                <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
+                <label for="fullName" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="fullName">
+                    <!--input type="text" class="form-control" id="fullName"-->
+                    <?php echo $_SESSION['username']; ?>
                 </div>
             </div>
             <div class="mb-3 row">
