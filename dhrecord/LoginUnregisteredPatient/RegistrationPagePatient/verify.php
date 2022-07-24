@@ -20,6 +20,7 @@ if(isset($_GET['vkey'])){
 	$fetchVerified = mysqli_prepare($conn, "SELECT verified,vkey FROM tempRegisteredPatient WHERE verified = 0 AND vkey = '$vkey' LIMIT 1");
 	$fetchVerified->execute();
 	$resultSet = $fetchVerified->get_result();
+	$row = $fetchVerified->fetch_assoc();
 
 	if($resultSet->num_rows == 1){
 		 //change verified from 0 to 1
@@ -28,11 +29,26 @@ if(isset($_GET['vkey'])){
 		 
 		 if ($update)
 		 {
-			 echo "Your account has been verified! You may proceed with login!";
+			//inserting data
+			$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
+			mysqli_stmt_bind_param($stmt, "sss", $row['role'], $row['userName'], $row['passWord']);
+			mysqli_stmt_execute($stmt);
+
+			$stmt = $conn->prepare("SELECT ID FROM users where username = ?");
+			$stmt->bind_param("s", $userName);
+			$stmt->execute();
+			$stmt_result = $stmt->get_result();
+			$row1 = $stmt_result->fetch_assoc();
+
+			$stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?)");
+			mysqli_stmt_bind_param($stmt, "ssssssss", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['address'], $row['medConditions'], $row['drugAllergies'], $row1['ID']);
+			mysqli_stmt_execute($stmt);
+			echo "Your account has been verified! You may proceed with login!";
 		 }
+
 		 else
 		 {
-			 echo "something went wrong!";
+			echo "something went wrong!";
 		 }
 
 	}
