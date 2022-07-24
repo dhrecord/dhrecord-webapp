@@ -68,8 +68,8 @@
       <h4>Book An Appointment</h4>
     </div>
 
-    <div class="d-flex">
-        <div class="mb-4">
+    <div class="d-flex p-5" style="background: #F2F2F2;">
+        <div>
             <p class="m-0"><b>Doctor:</b> Dr.Smith Rowe</p>
             <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
 
@@ -102,15 +102,32 @@
         <div class="mx-5">
             <div class="d-flex">
                 <p><b>Date:</b>&nbsp;&nbsp;&nbsp;<input type="text" id="datepicker"></p>
-                <p class="mx-5"><b>Time:</b>&nbsp;&nbsp;&nbsp;<input type="text" id="timepicker"></p>
+                <div>
+                    <p class="mx-5"><b>Time:</b>&nbsp;&nbsp;&nbsp;<span id="timepicker"></span></p>
+                </div>
             </div>
         </div>
     </div>
   </div>
 
   <script>
-     $( function() {
-        $( "#datepicker" ).datepicker();
+    var result;
+    var timepicker = $("#timepicker");
+
+    var timeslot = {
+        "26-07-2022" : "8am",
+        "28-07-2022": "9am"
+    };
+
+    $( function() {
+        $("#datepicker").datepicker({
+            dateFormat: 'dd-mm-yy',
+            onSelect: function(dateText, pickerObj){
+                result = $("#datepicker");
+                result.attr("data-course-id", timeslot[dateText]); 
+                timepicker.text = timeslot[dateText]; 
+            }
+        });
     });
 
     // var $datePicker = $("div#datepicker");
