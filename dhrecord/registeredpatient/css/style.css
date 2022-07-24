@@ -71,3 +71,10 @@ td.ui-datepicker-unselectable:hover a{
 td.ui-datepicker-unselectable:hover{
     background-color: #F2F2F2;
 }
+
+.slot-btn {
+    opacity: 1;
+}
+.slot-btn.transparent {
+    opacity: 0.5;
+}

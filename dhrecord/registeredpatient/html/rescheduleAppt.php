@@ -74,6 +74,7 @@
           <th>Date</th>
           <th>Time</th>
           <th></th>
+          <th></th>
         </tr>
         <tr>
           <td>1</td>
@@ -84,6 +85,7 @@
           <td>27-07-2002</td>
           <td>02.00 pm</td>
           <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
+          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
         </tr>
         <tr>
           <td>2</td>
@@ -94,6 +96,7 @@
           <td>31-07-2002</td>
           <td>03.00 pm</td>
           <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
+          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
         </tr>
       </table>
     </div>

@@ -100,7 +100,7 @@
             <div class="d-flex">
                 <input type="text" id="result" style="display:none;"/>
                 <div>
-                    <p><b>Time:</b></p>
+                    <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                     <div id="timepicker"></div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                 if (timeslot[dateText]){
                     let htmlContent= "";
                     for (let i=0; i<timeslot[dateText].length; i++){
-                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2'>" + timeslot[dateText][i] + "</button>";
+                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[dateText][i] + "</button>";
                     }
                 
                     timepicker.html(htmlContent); 
@@ -140,6 +140,10 @@
                 }
             },
             altField: "#result"
+        });
+
+        $(document).click(function(e) {
+            $(event.target).toggleClass("transparent");
         });
     });
 
