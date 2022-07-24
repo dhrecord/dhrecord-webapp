@@ -269,6 +269,7 @@ Docs & License: https://fullcalendar.io/
       var timeText;
       var titleHtml, clinicHtml, doctorHtml, patientHtml, timeTitleHtml;
       classes.unshift("fc-day-grid-event", "fc-h-event");
+
       // Only display a timed events time if it is the starting segment
       if (seg.isStart) {
         timeText = this.getTimeText(eventRange);
@@ -280,6 +281,7 @@ Docs & License: https://fullcalendar.io/
             "</span>";
         }
       }
+
       titleHtml =
         '<span class="fc-title">' +
         (core.htmlEscape(eventDef.title || "") || "&nbsp;") + // we always want one line of height
@@ -287,7 +289,8 @@ Docs & License: https://fullcalendar.io/
 
       timeTitleHtml =
         '<p class="fc-title my-0">' +
-        timeHtml +
+        (timeText ? timeHtml : "") +
+        // timeHtml +
         " - " +
         titleHtml +
         "</p><hr class='p-0 my-1'/>";
@@ -319,9 +322,9 @@ Docs & License: https://fullcalendar.io/
           ? titleHtml + " " + timeHtml // put a natural space in between
           : timeTitleHtml +
             " " +
-            clinicHtml +
+            (eventDef.clinic ? clinicHtml : "") +
             " " +
-            doctorHtml +
+            (eventDef.doctor ? doctorHtml : "") +
             " " +
             (eventDef.patient ? patientHtml : "")) + //
         "</div>" +
