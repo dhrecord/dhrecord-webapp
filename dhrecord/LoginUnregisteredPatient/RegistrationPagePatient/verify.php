@@ -35,7 +35,7 @@ if(isset($_GET['vkey'])){
 			mysqli_stmt_execute($stmt);
 
 			$stmt = $conn->prepare("SELECT ID FROM users where username = ?");
-			$stmt->bind_param("s", $userName);
+			$stmt->bind_param("s", $row['userName']);
 			$stmt->execute();
 			$stmt_result = $stmt->get_result();
 			$row1 = $stmt_result->fetch_assoc();
@@ -43,7 +43,20 @@ if(isset($_GET['vkey'])){
 			$stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?)");
 			mysqli_stmt_bind_param($stmt, "ssssssss", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['address'], $row['medConditions'], $row['drugAllergies'], $row1['ID']);
 			mysqli_stmt_execute($stmt);
-			echo "Your account has been verified! You may proceed with login!";
+
+			$deleteRow = mysqli_prepare($conn, "DELETE * FROM tempRegisteredPatient WHERE vkey = '$vkey'");
+			$deleteRow->execute();
+			
+			if($deleteRow)
+			{
+				echo "Your account has been verified! You may proceed with login!";
+			}
+
+			else
+			{
+				echo "something went wrong with deletion!";
+			}
+			
 		 }
 
 		 else
