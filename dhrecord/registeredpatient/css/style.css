@@ -1,5 +1,6 @@
 #ui-datepicker-div{
     background-color: #F2F2F2;
+    border: 1px solid #343A40;
     padding: 14px 20px;
     display: none;
 }
@@ -49,7 +50,6 @@ a.ui-datepicker-prev, a.ui-datepicker-next{
 }
 
 a.ui-datepicker-next{
-    margin: 0 10px;
     float: right;
 }
 
