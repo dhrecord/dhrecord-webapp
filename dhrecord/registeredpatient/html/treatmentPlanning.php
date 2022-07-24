@@ -50,7 +50,7 @@
                         <a class="nav-link" href="./surveyAndFeedback.php">Survey & Feedback</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./treatmentPlanning.php">Treatment Planning</a>
+                        <a class="nav-link" href="./treatmentPlanning.php">Treatment History</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
@@ -58,7 +58,7 @@
                         Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
-                        onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.html'">
+                        onclick="document.location.href='http://dhrecord.com/dhrecord/logout.php'">
                         Logout
                     </button>
                 </div>
@@ -68,7 +68,7 @@
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-5">Treatment Planning</h4>
+        <h4 class="mb-5">Treatment History7</h4>
         <div class="mb-4 d-flex align-items-center">
             <!-- <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
@@ -92,7 +92,10 @@
 			<tr>
 				<th>Start Date</th>
 				<th>End Date</th>
-				<th>Details</th>
+				<th>Attending Doctor</th>
+				<th>Symptoms</th>
+				<th>Medication Prescribed</th>
+
 			</tr>    		
 			
 			 <?php                           
@@ -106,13 +109,15 @@
                     	// Create connection
                     	$conn = mysqli_connect($servername, $username, $password, $database);
 								
-			$res = ("SELECT treatmentPlan.startDate, treatmentPlan.endDate, treatmentPlan.details FROM treatmentPlan, registeredPatient, users 
-			WHERE treatmentPlan.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}'");
+			$res = ("SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, treatmentHistory.symptoms, 
+			treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
+			WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}'");
 			
 			$result = mysqli_query($conn, $res);			
 
 			while($sql = mysqli_fetch_assoc($result)){
-				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["details"]."</td></tr>";
+				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["attendingDoctor"]."</td><td>".$sql["symptoms"].
+					"</td><td>".$sql["medicationPrescribed"]."</td></tr>";
 			}
 			?>
         </table>
