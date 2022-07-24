@@ -26,6 +26,10 @@
 	{
 		die("Connection failed: " . mysqli_connect_error());
 	}
+
+	//$subject = "Email Verification";
+	//$message = "Hi! Please click the link below to verify your email! <a href='http://localhost/'>"
+	//$headers = "";
 	
 	$stmt = mysqli_prepare($conn, "insert into tempRegisteredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, role, username, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 	mysqli_stmt_bind_param($stmt, "ssssssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies, $role, $userName, $passWord);
