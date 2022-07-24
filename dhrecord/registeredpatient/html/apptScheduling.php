@@ -101,7 +101,6 @@
                   <tr class="bg-dark text-light">
                       <th class="px-4">Clinic Name</th>
                       <th class="px-4">Clinic Description</th>
-                      <th></th>
                   </tr>
                   <tr style="background-color: #F2F2F2">
                       <td class="px-4">Ashford Dental Centre</td>
