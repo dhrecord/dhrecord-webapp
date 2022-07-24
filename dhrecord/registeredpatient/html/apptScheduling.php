@@ -86,15 +86,27 @@
             <button class="search-button" type="submit">test</button>
         </div> -->
 
-        <div class="mb-4">
+        <div class="mb-5">
             <div class="d-flex align-items-center">
-                <p class="m-0"><b>Search Clinic:</b>&nbsp;&nbsp;&nbsp;</p>
-                <div class="input-group">
+                <div><p class="m-0"><b>Search Clinic:</b></p></div>
+          
+                <div class="input-group mx-4" style="width:fit-content">
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
+                </div>
+
+                <div class="mx-2"> 
+                  <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                style="">
+                    <option selected disabled hidden>Filter By...</option>
+                    <option value="1">Clinic Name</option>
+                    <option value="2">Services</option>
+                    <option value="3">Address</option>
+                    <option value="4">Operating Hours</option>
+                  </select>
                 </div>
             </div>
             <!-- to be applied later -->
@@ -108,7 +120,7 @@
         </div>
         <div class="content-div my-4">
             <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
-                <tr>
+                <tr class="bg-dark text-light">
                     <th class="px-4">Clinic Name</th>
                     <th class="px-4">Clinic Description</th>
                     <th></th>
