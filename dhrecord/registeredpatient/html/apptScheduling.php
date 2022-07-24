@@ -83,9 +83,9 @@
             <button class="search-button" type="submit">test</button>
         </div> -->
 
-        <div class="mb-4 d-flex align-items-center">
+        <div class="mb-4">
             <div class="d-flex align-items-center">
-                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <p class="m-0"><b>Search Clinic:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
@@ -108,6 +108,7 @@
                 <tr>
                     <th class="px-4">Clinic Name</th>
                     <th class="px-4">Clinic Description</th>
+                    <th></th>
                 </tr>
                 <tr>
                     <td class="px-4">Ashford Dental Centre</td>
@@ -121,6 +122,7 @@
                         <b>Phone: </b>6265 9146<br>
                         <b>Appointments: </b>ashforddentalcentre.com.sg<br>
                     </td>
+                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">Royce Dental Surgery - Woodlands</td>
@@ -132,6 +134,7 @@
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6368 7467<br>
                     </td>
+                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">National Dental Centre Singapore</td>
@@ -144,6 +147,7 @@
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6324 8802<br>
                     </td>
+                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">Expat Dental</td>
@@ -156,8 +160,8 @@
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6397 6718<br>
                         <b>Appointments: </b>expatdental.com<br>
-
                     </td>
+                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
             </table>
         </div>
@@ -234,6 +238,34 @@
     // });
 
   </script>
+
+<script type="application/javascript">
+        function tableSearch() {
+            let input, filter, table, tr, td, txtValue;
+
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("clinicTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    }
+
+                    else {
+                        tr[i].style.display = "none";
+                    }
+
+                }
+            }
+        };
+    </script>
 
   <script src="../../apptScheduling/js/main.js"></script>
 </body>
