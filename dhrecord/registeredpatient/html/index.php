@@ -1,7 +1,8 @@
 <?php 
-    
+    error_reporting(E_ALL);
     session_start();
     echo $_SESSION["id"].$_SESSION["username"];
+
 ?>
 
 <!DOCTYPE html>
