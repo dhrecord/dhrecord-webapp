@@ -71,8 +71,12 @@
         <h4 class="mb-5">Referral Tracking</h4>
 			<table class="table table-striped">
         		<tr>
-        			<th>referredBy</th>
-        			<th>referralDate</th>
+        			<th>Referred By</th>
+        			<th>Referral Date</th>
+				<th>Referring Doctor</th>
+				<th>Referred To</th>
+				<th>Tooth Condition</th>
+
         		</tr>    		
 
                  <?php                          
@@ -85,14 +89,16 @@
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
 				           
-			$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate FROM referralTracking, registeredPatient, users
-        		WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
+			$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate, referralTracking.referringDoctor, referralTracking.referredTo, 
+			referralTracking.toothCondition FROM referralTracking, registeredPatient, users WHERE users.ID = '{$_SESSION['id']}' 
+			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
 			$result = mysqli_query($conn, $res);
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td></tr>";
+                              echo "<tr><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]."</td><td>".$sql["referredTo"]
+				      ."</td><td>".$sql["toothCondition"]."</td></tr>";
                             }
 			        ?>         
 
