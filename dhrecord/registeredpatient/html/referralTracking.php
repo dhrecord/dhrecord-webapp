@@ -50,7 +50,7 @@
                         <a class="nav-link" href="./surveyAndFeedback.php">Survey & Feedback</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./treatmentPlanning.php">Treatment Planning</a>
+                        <a class="nav-link" href="./treatmentPlanning.php">Treatment History</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
@@ -58,7 +58,7 @@
                         Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
-                            onclick="document.location.href='http://dhrecord.com/dhrecord/LoginUnregisteredPatient/logout.php'">
+                            onclick="document.location.href='../../LoginUnregisteredPatient/logout.php'">
                         Logout
                     </button>
                 </div>
