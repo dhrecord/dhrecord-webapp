@@ -86,24 +86,21 @@
                 Saturday: 1pm-4pm<br/>
                 Sunday: Closed<br/><br/>
             </p>
+        </div>
 
-            <!-- <div class=" p-5"></div> -->
-        
-            <!-- <div>
-                <p class="m-0"> 
-                    <b>Operating Hours:</b><br/>
-                    Monday-Friday: 9am–6pm<br/>
-                    Saturday: 1pm-4pm<br/>
-                    Sunday: Closed<br/><br/>
-                </p>
-            </div> -->
+        <div class="mx-5">
+            <div>
+                <p><b>Date:</b></p>
+                <input type="text" id="datepicker"/>
+            </div>
         </div>
 
         <div class="mx-5">
             <div class="d-flex">
-                <p><b>Date:</b>&nbsp;&nbsp;&nbsp;<input type="text" id="datepicker"></p>
+                <input type="text" id="result" style="display:none;"/>
                 <div>
-                    <p class="mx-5"><b>Time:</b>&nbsp;&nbsp;&nbsp;<span id="timepicker"></span></p>
+                    <p><b>Time:</b></p>
+                    <div id="timepicker"></div>
                 </div>
             </div>
         </div>
@@ -111,22 +108,28 @@
   </div>
 
   <script>
-    var result;
+    var result = $("#result");
     var timepicker = $("#timepicker");
 
     var timeslot = {
-        "26-07-2022" : "8am",
-        "28-07-2022": "9am"
+        "26-07-2022" : ["08.00 am", "09.00 am", "10.00 am"],
+        "28-07-2022": ["08.00 am", "09.00 am", "11.00 am", "12.00 pm", "01.00 pm"]
     };
 
     $( function() {
         $("#datepicker").datepicker({
             dateFormat: 'dd-mm-yy',
             onSelect: function(dateText, pickerObj){
-                result = $("#datepicker");
                 result.attr("data-course-id", timeslot[dateText]); 
-                timepicker.text = timeslot[dateText]; 
-            }
+                
+                let htmlContent= "";
+                for (let i=0; i<timeslot[dateText].length; i++){
+                    htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2'>" + timeslot[dateText][i] + "</button>";
+                }
+               
+                timepicker.html(htmlContent); 
+            },
+            altField: "#result"
         });
     });
 
