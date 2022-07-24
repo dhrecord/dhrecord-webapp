@@ -121,14 +121,14 @@
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         events: [
-          {
-            title: 'Booked',
-            start: '2022-07-26',
-          },
-          {
-            title: 'Booked',
-            // start: '2022-07-31T15:00:00',
-          },
+        //   {
+        //     title: 'Booked',
+        //     start: '2022-07-26T15:00:00',
+        //   },
+        //   {
+        //     title: 'Booked',
+        //     start: '2022-07-31T15:00:00',
+        //   },
         ]
       });
 
