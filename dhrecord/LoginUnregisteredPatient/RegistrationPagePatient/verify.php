@@ -28,7 +28,7 @@ if(isset($_GET['vkey'])){
 		 
 		 if ($update)
 		 {
-			 echo "Your account has been verified! Please await approval from our staff before login!";
+			 echo "Your account has been verified! You may proceed with login!";
 		 }
 		 else
 		 {
