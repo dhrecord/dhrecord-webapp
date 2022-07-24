@@ -39,9 +39,9 @@
 
 	mail($email,$subject,$message,$headers);
 	
-	$stmt = mysqli_prepare($conn, "insert into tempRegisteredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, role, username, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "ssssssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies, $role, $userName, $passWord);
-	mysqli_stmt_execute($stmt);
+	//$stmt = mysqli_prepare($conn, "insert into tempRegisteredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, role, username, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	//mysqli_stmt_bind_param($stmt, "ssssssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies, $role, $userName, $passWord);
+	//mysqli_stmt_execute($stmt);
 
 	//inserting data
 	//$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
