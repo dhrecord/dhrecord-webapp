@@ -9,10 +9,6 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
 
-  <!-- <link rel="stylesheet" href="../../apptScheduling/fonts/icomoon/style.css">
-  <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/core/main.css">
-  <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/daygrid/main.css"> -->
-
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -23,7 +19,6 @@
     
   <!-- jquery -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script> -->
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
   <title>DHRecord</title>
@@ -96,17 +91,6 @@
         </div>
     </div>
 
-    <!-- <div class="calendar-box">
-      <div id='calendar-container'>
-        <div id='calendar'></div>
-      </div>
-    </div> -->
-
-    <!-- <input type="text" id="datep" />
-    <div id="datepicker">
-    
-    </div> -->
-
     <p><b>Date:</b>&nbsp;&nbsp;&nbsp;<input type="text" id="datepicker"></p>
   </div>
 
@@ -131,52 +115,6 @@
     //     });
     // });
   </script>
-
-  <!-- <script src="../../apptScheduling/js/jquery-3.3.1.min.js"></script>
-  <script src="../../apptScheduling/js/popper.min.js"></script>
-  <script src="../../apptScheduling/js/bootstrap.min.js"></script>
-
-  <script src='../../apptScheduling/fullcalendar/packages/core/main.js'></script>
-  <script src='../../apptScheduling/fullcalendar/packages/interaction/main.js'></script>
-  <script src='../../apptScheduling/fullcalendar/packages/daygrid/main.js'></script>
-  <script src='../../apptScheduling/fullcalendar/packages/timegrid/main.js'></script>
-  <script src='../../apptScheduling/fullcalendar/packages/list/main.js'></script> -->
-
-  <!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
-
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
-        height: 'parent',
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-        },
-        defaultView: 'dayGridMonth',
-        defaultDate: new Date(),
-        navLinks: true, // can click day/week names to navigate views
-        editable: true,
-        eventLimit: true, // allow "more" link when too many events
-        events: [
-        //   {
-        //     title: 'Booked',
-        //     start: '2022-07-26T15:00:00',
-        //   },
-        //   {
-        //     title: 'Booked',
-        //     start: '2022-07-31T15:00:00',
-        //   },
-        ]
-      });
-
-      calendar.render();
-    });
-
-  </script>
-
-  <script src="../../apptScheduling/js/main.js"></script> -->
 </body>
 
 </html>
