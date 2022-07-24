@@ -71,7 +71,7 @@
       </div>
 
       <div class="container my-5 custom-container">
-          <div class="mb-5">
+          <div class="mb-5 d-flex justify-content-between">
               <div class="d-flex align-items-center">
                   <div><p class="m-0"><b>Search Clinic:</b></p></div>
             
@@ -90,7 +90,22 @@
                       <option value="1">Clinic Name</option>
                       <option value="2">Services</option>
                       <option value="3">Address</option>
-                      <option value="4">Operating Hours</option>
+                      <option value="4">Operating Hours (Day)</option>
+                      <option value="5">Operating Hours (Time)</option>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="d-flex align-items-center">
+                  <div class="mx-4" style="width:fit-content">
+                      <b>Quick Filter:</b>
+                  </div>
+                  <div class="mx-2"> 
+                    <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                  style="">
+                      <option selected disabled hidden>Quick Filter...</option>
+                      <option value="1">Show Nearest Clinics</option>
+                      <option value="2">Show Highest Rating Clinics</option>
                     </select>
                   </div>
               </div>
