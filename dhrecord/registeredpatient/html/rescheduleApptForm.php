@@ -100,6 +100,7 @@
                     <p><b>New Date:</b></p>
                     <input type="text" id="datepicker"/>
                 </div>
+                <p class="mt-3"><i>#test: choose 26/7 orr 28/7 for sample slot</i></p>
             </div>
 
             <div class="mx-5">
