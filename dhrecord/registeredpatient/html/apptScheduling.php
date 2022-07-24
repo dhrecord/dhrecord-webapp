@@ -113,16 +113,35 @@
                 <tr>
                     <td class="px-4">Ashford Dental Centre</td>
                     <td class="px-4">
-                        <b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br>
-                        <br>
-                        <b>Operating Hours:</b><br>
-                        Monday-Friday: 9am–6pm<br>
-                        Saturday: 1pm-4pm<br>
-                        Sunday: Closed<br><br>
-                        <b>Phone: </b>6265 9146<br>
-                        <b>Appointments: </b>ashforddentalcentre.com.sg<br>
+                        <b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/>
+                        <br/>
+                        <b>Operating Hours:</b><br/>
+                        Monday-Friday: 9am–6pm<br/>
+                        Saturday: 1pm-4pm<br/>
+                        Sunday: Closed<br/><br/>
+
+                        <b>Phone: </b>6265 9146<br/>
+                        <b>Website: </b>ashforddentalcentre.com.sg<br/><br/>
+
+                        <b>Doctors:</b><br>
+                        <table class="table docs">
+                          <tr>
+                            <th class="px-4">Name</th>
+                            <th class="px-4">Services</th>
+                            <th class="px-4"></th>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Smith Rowe</td>
+                            <td class="px-4">Oral Surgery, Dental Surgery</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Elizabeth</td>
+                            <td class="px-4">Orthodontic</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                        </table>              
                     </td>
-                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">Royce Dental Surgery - Woodlands</td>
@@ -133,8 +152,26 @@
                         Monday-Friday: 9am–6pm<br>
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6368 7467<br>
+                        <b>Website: </b>roycedentalsurgery.com<br><br>
+                        <b>Doctors:</b><br>
+                        <table class="table docs">
+                          <tr>
+                            <th class="px-4">Name</th>
+                            <th class="px-4">Services</th>
+                            <th class="px-4"></th>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. James</td>
+                            <td class="px-4">Oral Surgery, Dental Surgery</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Moon</td>
+                            <td class="px-4">Orthodontic</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                        </table>
                     </td>
-                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">National Dental Centre Singapore</td>
@@ -146,8 +183,26 @@
                         Monday-Friday: 8:30am–5:30pm<br>
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6324 8802<br>
+                        <b>Website: </b>nationaldentalcentre.com<br><br>
+                        <b>Doctors:</b><br>
+                        <table class="table docs">
+                          <tr>
+                            <th class="px-4">Name</th>
+                            <th class="px-4">Services</th>
+                            <th class="px-4"></th>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Dan</td>
+                            <td class="px-4">Oral Surgery, Dental Surgery</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Leslie</td>
+                            <td class="px-4">Orthodontic</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                        </table>
                     </td>
-                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
                 <tr>
                     <td class="px-4">Expat Dental</td>
@@ -159,9 +214,26 @@
                         Monday-Friday: 9am-5pm<br>
                         Saturday-Sunday: Closed<br><br>
                         <b>Phone: </b>6397 6718<br>
-                        <b>Appointments: </b>expatdental.com<br>
+                        <b>Website: </b>expatdental.com<br><br>
+                        <b>Doctors:</b><br>
+                        <table class="table docs">
+                          <tr>
+                            <th class="px-4">Name</th>
+                            <th class="px-4">Services</th>
+                            <th class="px-4"></th>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Robert</td>
+                            <td class="px-4">Oral Surgery, Dental Surgery</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                          <tr>
+                            <td class="px-4 ">Dr. Ben</td>
+                            <td class="px-4">Orthodontic</td>
+                            <td class="px-4"><button class="btn btn-dark">Book</button></td>
+                          </tr>
+                        </table>
                     </td>
-                    <td class="px-4"><button class="btn btn-dark">Book</button></td>
                 </tr>
             </table>
         </div>
@@ -242,6 +314,7 @@
 <script type="application/javascript">
         function tableSearch() {
             let input, filter, table, tr, td, txtValue;
+            let tr2, tr3;
 
             input = document.getElementById("searchInput");
             filter = input.value.toUpperCase();
@@ -256,12 +329,19 @@
 
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
-                    }
+                    } 
 
                     else {
                         tr[i].style.display = "none";
                     }
+                }
 
+                tr2 = document.getElementsByClassName('docs');
+                for (let k = 0; k < tr2.length; k++) {
+                  tr3 = tr2[k].getElementsByTagName("tr");
+                  for (let j = 0; j < tr3.length; j++) {
+                    tr3[j].style.display = "";
+                  }
                 }
             }
         };
