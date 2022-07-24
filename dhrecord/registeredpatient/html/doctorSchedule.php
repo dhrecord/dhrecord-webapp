@@ -68,8 +68,8 @@
       <h4>Book An Appointment</h4>
     </div>
 
-    <div class="mb-5 d-flex">
-        <div>
+    <div class="d-flex">
+        <div class="mb-4">
             <p class="m-0"><b>Doctor:</b> Dr.Smith Rowe</p>
             <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
 
@@ -77,21 +77,35 @@
 
             <p class="m-0"><b>Clinic:</b> Ashford Dental Centre</p>
             <p class="m-0"><b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/></p>
-        </div>
 
-        <div class=" p-5"></div>
-       
-        <div>
+            <br>
+
             <p class="m-0"> 
                 <b>Operating Hours:</b><br/>
                 Monday-Friday: 9am–6pm<br/>
                 Saturday: 1pm-4pm<br/>
                 Sunday: Closed<br/><br/>
             </p>
+
+            <!-- <div class=" p-5"></div> -->
+        
+            <!-- <div>
+                <p class="m-0"> 
+                    <b>Operating Hours:</b><br/>
+                    Monday-Friday: 9am–6pm<br/>
+                    Saturday: 1pm-4pm<br/>
+                    Sunday: Closed<br/><br/>
+                </p>
+            </div> -->
+        </div>
+
+        <div class="mx-5">
+            <div class="d-flex">
+                <p><b>Date:</b>&nbsp;&nbsp;&nbsp;<input type="text" id="datepicker"></p>
+                <p class="mx-5"><b>Time:</b>&nbsp;&nbsp;&nbsp;<input type="text" id="timepicker"></p>
+            </div>
         </div>
     </div>
-
-    <p><b>Date:</b>&nbsp;&nbsp;&nbsp;<input type="text" id="datepicker"></p>
   </div>
 
   <script>
