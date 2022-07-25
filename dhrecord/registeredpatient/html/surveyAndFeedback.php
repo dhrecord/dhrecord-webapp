@@ -98,7 +98,7 @@
                 <div class="mb-3 row">
                     <label for="med-conditions" class="col-sm-2 col-form-label">Remarks</label>
                     <div class="col-sm-10">
-                        <textarea type="text" class="form-control" id="medconds" rows="10" cols="50"></textarea>
+                        <textarea type="text" class="form-control" name="medconds" id="medconds" rows="10" cols="50"></textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
