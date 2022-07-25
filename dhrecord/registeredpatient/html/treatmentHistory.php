@@ -78,15 +78,16 @@
 			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
 			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button> <a href="index.php" type="button" class="btn btn-success"><span class = "glyphicon glyphicon-refresh"><span></a>
 		</form>
+		<!---
             </div>
-            <!-- <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">Current treatment plan</option>
                 <option value="2">Next treatment plan</option>
             </select>
-	-->
         </div>
+		--->
         <table class="table table-striped">
 			<tr>
 				<th>Start Date</th>
@@ -101,12 +102,12 @@
 			session_start();
 			//Database Connection
 			$servername = "localhost";
-                    	$database = "u922342007_Test";
-                   	$username = "u922342007_admin";
-                   	$password = "Aylm@012";
+			$database = "u922342007_Test";
+			$username = "u922342007_admin";
+			$password = "Aylm@012";
         
-                    	// Create connection
-                    	$conn = mysqli_connect($servername, $username, $password, $database);
+			// Create connection
+			$conn = mysqli_connect($servername, $username, $password, $database);
 								
 			/*$res = ("SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, treatmentHistory.symptoms, 
 			treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
@@ -120,7 +121,7 @@
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
 				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' 
-				AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' OR date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
+				AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
 				if($row>0)
@@ -144,12 +145,14 @@
 						<td colspan = "5"><center>Record Not Found</center></td>
 					</tr>';
 				}
-			}else{
+			} else
+			{
 				$query=mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
 				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' ") 
 					or die(mysqli_error());
-				while($fetch=mysqli_fetch_array($query)){
+				while($fetch=mysqli_fetch_array($query))
+				{
 			?>
 			<tr>
 				<td><?php echo $fetch['startDate']?></td>
@@ -159,8 +162,8 @@
 				<td><?php echo $fetch['medicationPrescribed']?></td>
 			</tr>
 			<?php
-					}
 				}
+			}
 			?>
 						    
 			<!--
@@ -185,3 +188,4 @@
 </body>
 
 </html>
+
