@@ -73,7 +73,7 @@
                 <label for="estimatedWait" class="col-sm-2 col-form-label">What was estimated waiting time after
                     scheduled appointment timing?</label>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control" name="estimatedWait" id="estimatedWait">
+                    <input type="text" class="form-control" name="estimatedWait" id="estimatedWait">mins
                 </div>
             </div>
             <div class="mb-3 row">
