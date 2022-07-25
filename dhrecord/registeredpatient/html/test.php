@@ -7,9 +7,9 @@
   $medconds=$_POST['medconds'];
 
   $servername = "localhost";
-  	$database = "u922342007_Test";
-  	$username = "u922342007_admin";
-  	$password = "Aylm@012";
+  $database = "u922342007_Test";
+  $username = "u922342007_admin";
+  $password = "Aylm@012";
 
   $conn = mysqli_connect($servername, $username, $password, $database);
 
