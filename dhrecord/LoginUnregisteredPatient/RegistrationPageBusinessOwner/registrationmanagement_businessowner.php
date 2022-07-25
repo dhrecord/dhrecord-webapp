@@ -3,19 +3,8 @@
 
 <?php
 
-    //Database Connection
-	$servername = "localhost";
-	$database = "u922342007_Test";
-	$username = "u922342007_admin";
-	$password = "Aylm@012";
 
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $database);
 
-	if (!$conn) 
-	{
-		die("Connection failed: " . mysqli_connect_error());
-	}
 ?>
 
 <head>
@@ -139,22 +128,34 @@
                 <div class="mb-3 row">
                     <label for="clinicSpecialization" class="col-sm-2 col-form-label">Clinic Specialization</label>
                     <div class="col-sm-10">
-                    <select name="clinicSpecialization">
                         <?php
                         
-                        $allSpecializations = mysqli_prepare($conn, "SELECT * FROM clinicSpecialization");
-                        $allSpecializations->execute();
+                        //Database Connection
+	                    $servername = "localhost";
+	                    $database = "u922342007_Test";
+	                    $username = "u922342007_admin";
+	                    $password = "Aylm@012";
 
-                        while($specialization = mysqli_fetch_array($allSpecializations,MYSQLI_ASSOC))
+	                    // Create connection
+	                    $conn = mysqli_connect($servername, $username, $password, $database);
+
+	                    if (!$conn) 
+	                    {
+		                    die("Connection failed: " . mysqli_connect_error());
+	                    }
+
+                        $sql = "SELECT * FROM `clinicSpecialization`";
+                        $result = mysqli_query($conn,$sql);
+
+                        echo "<select name='clinicSpecialization'>"
+                        
+                        while($row = mysqli_fetch_array($result))
                         {
-
-                            $allSpecializations_Result = $allSpecializations->get_result();
-			                $row = $allSpecializations_Result->fetch_assoc();
-
                             echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
                         }
+
+                        echo "</select>"
                         ?>
-                    </select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-4">Submit</button>
