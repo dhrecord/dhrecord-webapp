@@ -141,14 +141,14 @@
                               <td class="px-4">Dr. Smith Rowe</td>
                               <td class="px-4">Oral Surgery, Dental Surgery</td>
                               <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/doctorSchedule.php'">Book</button>
+                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
                               </td>
                             </tr>
                             <tr>
                               <td class="px-4">Dr. Elizabeth</td>
                               <td class="px-4">Orthodontic</td>
                               <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/doctorSchedule.php'">Book</button>
+                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
                               </td>
                             </tr>
                           </table>              
@@ -175,14 +175,14 @@
                               <td class="px-4">Dr. James</td>
                               <td class="px-4">Oral Surgery, Dental Surgery</td>
                               <td class="px-4"
-                              ><button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/doctorSchedule.php'">Book</button>
+                              ><button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
                             </td>
                             </tr>
                             <tr>
                               <td class="px-4">Dr. Moon</td>
                               <td class="px-4">Orthodontic</td>
                               <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/doctorSchedule.php'">Book</button>
+                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
                             </td>
                             </tr>
                           </table>
@@ -210,14 +210,14 @@
                               <td class="px-4">Dr. Dan</td>
                               <td class="px-4">Oral Surgery, Dental Surgery</td>
                               <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/doctorSchedule.php'">Book</button>
+                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
                             </td>
                             </tr>
                             <tr>
                               <td class="px-4">Dr. Leslie</td>
                               <td class="px-4">Orthodontic</td>
                               <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/doctorSchedule.php'">Book</button>
+                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
                             </td>
                             </tr>
                           </table>
@@ -245,14 +245,14 @@
                             <td class="px-4">Dr. Robert</td>
                             <td class="px-4">Oral Surgery, Dental Surgery</td>
                             <td class="px-4">
-                              <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/doctorSchedule.php'">Book</button>
+                              <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
                             </td>
                           </tr>
                           <tr>
                             <td class="px-4">Dr. Ben</td>
                             <td class="px-4">Orthodontic</td>
                             <td class="px-4">
-                              <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/doctorSchedule.php'">Book</button>
+                              <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
                             </td>
                           </tr>
                         </table>

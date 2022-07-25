@@ -106,7 +106,7 @@
             <div class="referral-box px-3 py-1">
                 <button type="button" class="btn btn-dark"
                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                        onclick="window.location.href='./AddNewPrescription.php';">
+                        onclick="window.location.href='./AddNewPrescription.html';">
                     Add New Prescription
                 </button>
                 <button onclick="AddInfo();" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal1">
@@ -173,14 +173,12 @@
             <tbody>
                 <?php
                     //Database Connection
-	                //$servername = "localhost";
-	                //$database = "u922342007_Test";
-	                //$username = "u922342007_admin"; 
-	                //$password = "Aylm@012";
+	                $servername = "localhost";
+	                $database = "u922342007_Test";
+	                $username = "u922342007_admin"; 
+	                $password = "Aylm@012";
 	                // Create connection
-	                //$conn = mysqli_connect($servername, $username, $password, $database);
-
-                    require_once("connection.php");
+	                $conn = mysqli_connect($servername, $username, $password, $database);
 
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
                    

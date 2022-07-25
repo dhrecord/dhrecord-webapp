@@ -21,7 +21,8 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-  <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
+  <!-- Style -->
+  <link rel="stylesheet" href="../css/apptSchedulingAndReminders.css?v=<?php echo time(); ?>">
 
   <title>DHRecord</title>
 </head>
@@ -37,20 +38,33 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="../html/index.php">Home</a>
+              <a class="nav-link" aria-current="page" href="./index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../html/apptScheduling.php">Appointment Scheduling &
-              Reminder</a>
+              <a class="nav-link" href="./userManagement.html">User Management</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/referralTracking.php">Referral Tracking</a>
+              <a class="nav-link" href="./referralTracking.html">Referral Tracking</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle  active" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Appointment & Treatment
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="./apptSchedulingAndReminders.html">Appointment Scheduling
+                          & Reminders</a></li>
+                  <li><a class="dropdown-item" href="./treatmentPlanning.html">Treatment Planning</a></li>
+              </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/surveyAndFeedback.php">Survey & Feedback</a>
+              <a class="nav-link" href="./reportingAndStatistics.html">Reporting & Statistics</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/treatmentPlanning.php">Treatment Planning</a>
+              <a class="nav-link" href="./billingInvoicing.html">Payment</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./inventoryManagement-frontend.php">Inventory Management</a>
           </li>
         </ul>
         <div class="d-flex flex-column align-items-end">
@@ -159,6 +173,11 @@
         });
     });
   </script>
+
+  <!-- bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

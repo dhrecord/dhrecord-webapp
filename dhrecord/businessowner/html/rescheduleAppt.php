@@ -27,20 +27,33 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="../html/index.php">Home</a>
+              <a class="nav-link" aria-current="page" href="./index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../html/apptScheduling.php">Appointment Scheduling &
-              Reminder</a>
+              <a class="nav-link" href="./userManagement.html">User Management</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/referralTracking.php">Referral Tracking</a>
+              <a class="nav-link" href="./referralTracking.html">Referral Tracking</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle  active" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Appointment & Treatment
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="./apptSchedulingAndReminders.html">Appointment Scheduling
+                          & Reminders</a></li>
+                  <li><a class="dropdown-item" href="./treatmentPlanning.html">Treatment Planning</a></li>
+              </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/surveyAndFeedback.php">Survey & Feedback</a>
+              <a class="nav-link" href="./reportingAndStatistics.html">Reporting & Statistics</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/treatmentPlanning.php">Treatment Planning</a>
+              <a class="nav-link" href="./billingInvoicing.html">Payment</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./inventoryManagement-frontend.php">Inventory Management</a>
           </li>
         </ul>
         <div class="d-flex flex-column align-items-end">
@@ -57,20 +70,15 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
-      <h4>Reschedule Appointment</h4>
-      <div>
-        <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/apptscheduling.php'">Book Appointment</button>
-        <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
-      </div>  
+      <h4>Reschedule Appointment - {doctor name}</h4>
     </div>
     
     <div>
       <table class="table table-striped">
         <tr class="bg-dark text-white">
           <th>No</th>
-          <th>Clinic</th>
-          <th>Address</th>
           <th>Doctor</th>
+          <th>Patient</th>
           <th>Agenda</th>
           <th>Date</th>
           <th>Time</th>
@@ -79,29 +87,31 @@
         </tr>
         <tr>
           <td>1</td>
-          <td>Ashford Dental Centre</td>
-          <td>215 Upper Thomson Rd, Singapore 574349</td>
           <td>Dr. Smith Rowe</td>
+          <td>Mark Kenneth</td>
           <td>Monthly Checkup</td>
           <td>27-07-2002</td>
           <td>02.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
+          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
           <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
         </tr>
         <tr>
           <td>2</td>
-          <td>ZW Dental</td>
-          <td>Address</td>
-          <td>Dr. Rose</td>
+          <td>Dr. Smith Rowe</td>
+          <td>Fred Curry</td>
           <td>Dental Brace</td>
           <td>31-07-2002</td>
           <td>03.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
+          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
           <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
         </tr>
       </table>
     </div>
   </div>
 
+  <!-- bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </body>
 </html>

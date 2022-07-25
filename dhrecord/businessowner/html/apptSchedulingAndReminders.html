@@ -82,15 +82,79 @@
     <div class="container my-5">
         <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
 
-        <div class="mb-5 d-flex justify-content-end">
+        <!-- <div class="mb-5 d-flex justify-content-end">
             <button class="btn btn-dark">Book Appointment</button>
             <div class="p-2"></div>
             <button class="btn btn-dark">Reschedule</button>
-        </div>
+        </div> -->
 
-        <div class="calendar-box">
+        <!-- <div class="calendar-box">
             <div id='calendar-container'>
                 <div id='calendar'></div>
+            </div>
+        </div> -->
+
+        <!-- for clinic-admin -->
+        <div>
+            <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
+            <p>-</p>
+        </div>
+
+        <!-- for front-desk -->
+        <div>
+            <p># show this if login as a front-desk => list of doctors in a clinic</p>
+            <table class="table table-striped">
+                <tr class="bg-dark text-white">
+                    <th>No</th>
+                    <th>Doctor</th>
+                    <th>Services</th>
+                    <th>Contact</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Dr. Smith Rowe</td>
+                    <td>Oral Surgery, Dental Surgery</td>
+                    <td>+65 4574 7654</td>
+                    <td class="text-center"><button class="btn btn-sm btn-dark"
+                            onclick="document.location.href='../../businessowner/html/doctorSchedule.php'">View
+                            Schedule</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Dr. Elizabeth</td>
+                    <td>Orthodontic</td>
+                    <td>+65 8867 7777</td>
+                    <td class="text-center"><button class="btn btn-sm btn-dark"
+                            onclick="document.location.href='../../businessowner/html/doctorSchedule.php'">View
+                            Schedule</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- separator -->
+        <br><br>
+
+        <!-- for doctor -->
+        <div>
+            <p># show this if login as a doctor => display doctor's calendar</p>
+
+            <div class="d-flex justify-content-end">
+                <div class="my-4">
+                    <button class="btn btn-dark"
+                        onclick="document.location.href='../../businessowner/html/bookAppt.php'">Book
+                        Appointment</button>
+                    <button class="btn btn-dark"
+                        onclick="document.location.href='../../businessowner/html/rescheduleAppt.php'">Reschedule</button>
+                </div>
+            </div>
+
+            <div class="calendar-box">
+                <div id='calendar-container'>
+                    <div id='calendar'></div>
+                </div>
             </div>
         </div>
     </div>
@@ -127,14 +191,12 @@
                     {
                         title: 'Monthly Checkup',
                         start: '2022-07-27T14:00:00',
-                        clinic: 'DX Dental',
                         doctor: 'Dr. Smith Rowe',
                         patient: 'Mr.Dee'
                     },
                     {
                         title: 'Dental Brace',
                         start: '2022-07-31T15:00:00',
-                        clinic: 'ZW Dental',
                         doctor: 'Dr. Rose',
                         patient: 'Mr.Fin'
                     },
@@ -152,8 +214,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <!-- 
-    <script src="../js/index.js"></script> -->
+
+    <script src="../js/index.js"></script>
 </body>
 
 </html>
