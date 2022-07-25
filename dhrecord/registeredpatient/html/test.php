@@ -13,7 +13,7 @@
 
   $conn = mysqli_connect($servername, $username, $password, $database);
 
-  $stmt = mysqli_prepare($conn, "insert into `surveyForm`(`username`,`timeTaken`, `rating`, `recommendation`,`remarks`) values (?,?, ?, ?, ?)");
+  $stmt = mysqli_prepare($conn, "insert into `surveyForm`(`username`,`timeTaken`, `rating`, `recommendation`,`remarks`) values (?, ?, ?, ?, ?)");
 	mysqli_stmt_bind_param($stmt, "ssis", $uName, $estimatedWait, $serviceQuality, $recommended, $medconds);
  //$stmt = mysqli_prepare($conn, "insert into `surveyForm`(`timeTaken`, `rating`, `recommendation`,`remarks`) values (?, ?, ?, ?)");
 	//mysqli_stmt_bind_param($stmt, "ssis", $estimatedWait, $serviceQuality, $recommended, $medconds);
