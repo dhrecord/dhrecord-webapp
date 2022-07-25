@@ -5,7 +5,7 @@
 	$contactNumber = $_POST['contactNumber'];
 	$email = $_POST['email'];
 	$RegistrationNumber = $_POST['RegistrationNumber'];
-	$LicenseNumber = $_POST['RicenseNumber'];
+	$LicenseNumber = $_POST['LicenseNumber'];
 	$nameOfClinic = $_POST['nameOfClinic'];
 	$locationOfClinic = $_POST['locationOfClinic'];
 	$clinicSpecialization = $_POST['clinicSpecialization'];
