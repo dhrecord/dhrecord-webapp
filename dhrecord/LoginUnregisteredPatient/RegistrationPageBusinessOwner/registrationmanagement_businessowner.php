@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-
-
-
-?>
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -147,14 +141,14 @@
                         $sql = "SELECT * FROM `clinicSpecialization`";
                         $result = mysqli_query($conn,$sql);
 
-                        echo "<select name='clinicSpecialization'>"
+                        echo "<select name='clinicSpecialization'>";
                         
                         while($row = mysqli_fetch_array($result))
                         {
                             echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
                         }
 
-                        echo "</select>"
+                        echo "</select>";
                         ?>
                     </div>
                 </div>
