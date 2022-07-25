@@ -181,12 +181,31 @@
 	                $conn = mysqli_connect($servername, $username, $password, $database);
 
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
+                   
+                    while($obj = mysqli_fetch_assoc($res))
+                    {
+
+                        $ID = $obj['ID'];
+                        $prescriptionName = $obj['prescriptionName'];
+	                    $prescriptionDesc = $obj['prescriptionDesc'];
+	                    $prescriptionQty = $obj['Quantity'];
+	                    $Remarks = $obj['Remarks'];
+
+                     // echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
+                     //if ($res) { echo "success"; mysqli_close($conn); } else { echo "error"; mysqli_close($conn); }
                     
-                    while($obj = mysqli_fetch_assoc($res)){
-                      echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
-                    }
-                    //if ($res) { echo "success"; mysqli_close($conn); } else { echo "error"; mysqli_close($conn); }
                 ?>
+                        <tr>
+                            <td><php echo $ID ?></td>
+                            <td><php echo $prescriptionName ?></td>
+                            <td><php echo $prescriptionDesc ?></td>
+                            <td><php echo $prescriptionQty ?></td>
+                            <td><php echo $Remarks ?></td>
+                        </tr>
+                    <?php
+                    }
+                    
+                    ?>
             </tbody>
         </table>
 
