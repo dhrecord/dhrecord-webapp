@@ -70,22 +70,22 @@
     <div class="container my-5">
         <h4 class="mb-5">Treatment History</h4>
         <div class="mb-4 d-flex align-items-center">
-            <!-- <div class="d-flex align-items-center">
-                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
-                <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
-                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="searchName();">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
+            <div class="d-flex align-items-center">
+                <form class="form-inline" method="POST" action="">
+			<label>Date:</label>
+			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>" />
+			<label>To</label>
+			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
+			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button> <a href="index.php" type="button" class="btn btn-success"><span class = "glyphicon glyphicon-refresh"><span></a>
+		</form>
             </div>
-            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+            <!-- <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">Current treatment plan</option>
                 <option value="2">Next treatment plan</option>
             </select>
+	-->
         </div>
 	 -->
         <table class="table table-striped">
@@ -109,17 +109,66 @@
                     	// Create connection
                     	$conn = mysqli_connect($servername, $username, $password, $database);
 								
-			$res = ("SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, treatmentHistory.symptoms, 
+			/*$res = ("SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, treatmentHistory.symptoms, 
 			treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
 			WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}'");
+			*/
+			       
+			if(ISSET($_POST['search'])){
+				$date1 = date("Y-m-d", strtotime($_POST['date1']));
+				$date2 = date("Y-m-d", strtotime($_POST['date2']));
+				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
+				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' 
+				AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
+					or die(mysqli_error());
+				$row=mysqli_num_rows($query);
+				if($row>0){
+					while($fetch=mysqli_fetch_array($query)){
+				?>
+					<tr>
+						<td><?php echo $fetch['startDate']?></td>
+						<td><?php echo $fetch['endDate']?></td>
+						<td><?php echo $fetch['attendingDoctor']?></td>
+						<td><?php echo $fetch['symptoms']?></td>
+						<td><?php echo $fetch['medicationPrescribed']?></td>
+					</tr>
+				<?php
+				}
+				}else{
+					echo'
+					<tr>
+						<td colspan = "4"><center>Record Not Found</center></td>
+					</tr>';
+				}
+			}else{
+				$query=mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
+				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' ") 
+					or die(mysqli_error());
+				while($fetch=mysqli_fetch_array($query)){
+			?>
+			<tr>
+				<td><?php echo $fetch['startDate']?></td>
+				<td><?php echo $fetch['endDate']?></td>
+				<td><?php echo $fetch['attendingDoctor']?></td>
+				<td><?php echo $fetch['symptoms']?></td>
+				<td><?php echo $fetch['medicationPrescribed']?></td>
+			</tr>
+			<?php
+					}
+				}
+			?>
+						    
 			
 			$result = mysqli_query($conn, $res);			
 
-			while($sql = mysqli_fetch_assoc($result)){
+			<!-- while($sql = mysqli_fetch_assoc($result)){
 				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["attendingDoctor"]."</td><td>".$sql["symptoms"].
 					"</td><td>".$sql["medicationPrescribed"]."</td></tr>";
 			}
 			?>
+			-->
         </table>
     </div>
 
