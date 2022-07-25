@@ -196,11 +196,11 @@
                     
                 ?>
                         <tr>
-                            <td><php echo $ID ?></td>
-                            <td><php echo $prescriptionName ?></td>
-                            <td><php echo $prescriptionDesc ?></td>
-                            <td><php echo $prescriptionQty ?></td>
-                            <td><php echo $Remarks ?></td>
+                            <td><?php echo $ID ?></td>
+                            <td><?php echo $prescriptionName ?></td>
+                            <td><?php echo $prescriptionDesc ?></td>
+                            <td><?php echo $prescriptionQty ?></td>
+                            <td><?php echo $Remarks ?></td>
                         </tr>
                     <?php
                     }
