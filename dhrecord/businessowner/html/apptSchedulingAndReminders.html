@@ -96,7 +96,7 @@
 
         <!-- for front-desk -->
         <div>
-            <p># for front-desk => list of doctors in a clinic</p>
+            <p># show this if login as a front-desk => list of doctors in a clinic</p>
             <table class="table table-striped">
                 <tr class="bg-dark text-white">
                     <th>No</th>
@@ -111,7 +111,7 @@
                     <td>Oral Surgery, Dental Surgery</td>
                     <td>+65 4574 7654</td>
                     <td class="text-center"><button class="btn btn-sm btn-dark"
-                            onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">View
+                            onclick="document.location.href='../../businessowner/html/doctorSchedule.php'">View
                             Schedule</button>
                     </td>
                 </tr>
@@ -121,7 +121,7 @@
                     <td>Orthodontic</td>
                     <td>+65 8867 7777</td>
                     <td class="text-center"><button class="btn btn-sm btn-dark"
-                            onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">View
+                            onclick="document.location.href='../../businessowner/html/doctorSchedule.php'">View
                             Schedule</button>
                     </td>
                 </tr>
@@ -133,7 +133,17 @@
 
         <!-- for doctor -->
         <div>
-            <p># for doctor => display doctor's calendar</p>
+            <p># show this if login as a doctor => display doctor's calendar</p>
+
+            <div class="d-flex justify-content-end">
+                <div class="my-4">
+                    <button class="btn btn-dark"
+                        onclick="document.location.href='../../businessowner/html/bookAppt.php'">Book
+                        Appointment</button>
+                    <button class="btn btn-dark"
+                        onclick="document.location.href='../../businessowner/html/rescheduleAppt.php'">Reschedule</button>
+                </div>
+            </div>
 
             <div class="calendar-box">
                 <div id='calendar-container'>
@@ -175,14 +185,12 @@
                     {
                         title: 'Monthly Checkup',
                         start: '2022-07-27T14:00:00',
-                        clinic: 'DX Dental',
                         doctor: 'Dr. Smith Rowe',
                         patient: 'Mr.Dee'
                     },
                     {
                         title: 'Dental Brace',
                         start: '2022-07-31T15:00:00',
-                        clinic: 'ZW Dental',
                         doctor: 'Dr. Rose',
                         patient: 'Mr.Fin'
                     },
