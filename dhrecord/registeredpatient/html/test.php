@@ -17,5 +17,6 @@
 	mysqli_stmt_bind_param($stmt, "ssis", $username, $estimatedWait, $serviceQuality, $recommended, $medconds);
 	mysqli_stmt_execute($stmt);
 
+  header("Location: http://http://dhrecord.com/dhrecord/registeredpatient/html/surveyAndFeedback.php");
   mysqli_close($conn);
 ?>
