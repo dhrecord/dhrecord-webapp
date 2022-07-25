@@ -77,6 +77,7 @@
 			<label>To</label>
 			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
 			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			<br/><br/>
 		</form>
 		
             </div>
@@ -114,14 +115,16 @@
 			       
 			if(ISSET($_POST['search']))
 			{
-				$date1 = date("Y-m-d", strtotime($_POST['date1']));
-				$date2 = date("Y-m-d", strtotime($_POST['date2']));
+				$date1 = date("Y-m-d H:i:s", strtotime($_POST['date1'] + " 00:00:00"));
+				$date2 = date("Y-m-d H:i:s", strtotime($_POST['date2'] + " 23:59:59"));
+				
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
 				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
-				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND datetime(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND 
-				datetime(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND treatmentHistory.startDate BETWEEN '$date1' AND '$date2' AND 
+				treatmentHistory.endDate BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
+				echo datetime($date1).($date2);
 				if($row>0)
 				{
 					while($fetch=mysqli_fetch_array($query))
