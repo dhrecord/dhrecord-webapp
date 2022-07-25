@@ -4,8 +4,8 @@
 	$nricNumber = $_POST['nricNumber'];
 	$contactNumber = $_POST['contactNumber'];
 	$email = $_POST['email'];
-	$registrationNumber = $_POST['registrationNumber'];
-	$licenseNumber = $_POST['licenseNumber'];
+	$RegistrationNumber = $_POST['RegistrationNumber'];
+	$LicenseNumber = $_POST['RicenseNumber'];
 	$nameOfClinic = $_POST['nameOfClinic'];
 	$locationOfClinic = $_POST['locationOfClinic'];
 	$clinicSpecialization = $_POST['clinicSpecialization'];
@@ -41,7 +41,7 @@
 	mail($email, $subject, $message, $headers);
 
 	$stmt = mysqli_prepare($conn, "insert into tempRegisteredBusinessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "ssssiisssssssi", $fullName, $nricNumber, $contactNumber, $email, $registrationNumber, $licenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $passWord, $vkey, $verifiedNegative);
+	mysqli_stmt_bind_param($stmt, "ssssiisssssssi", $fullName, $nricNumber, $contactNumber, $email, $RegistrationNumber, $LicenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $passWord, $vkey, $verifiedNegative);
 	mysqli_stmt_execute($stmt);
 
 	//inserting data
