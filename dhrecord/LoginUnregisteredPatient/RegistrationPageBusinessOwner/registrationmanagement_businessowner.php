@@ -114,7 +114,13 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="locationOfClininc" class="col-sm-2 col-form-label">Location of Clinic</label>
+                    <label for="nameOfClinic" class="col-sm-2 col-form-label">Name of Clinic</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nameOfClinic" name="nameOfClinic">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="locationOfClinic" class="col-sm-2 col-form-label">Location of Clinic</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="locationOfClinic" name="locationOfClinic">
                     </div>
