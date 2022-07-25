@@ -12,7 +12,8 @@ session_destroy();
 unset($_SESSION["username"]);
 session_destroy();*/
 // Redirect to the login page:
-header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
-
+if(!$_SESSION['username']){
+  header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+}
 die;
 ?>
