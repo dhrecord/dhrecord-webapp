@@ -73,9 +73,9 @@
             <div class="d-flex align-items-center">
                 <form class="form-inline" method="POST" action="">
 			<label>Date:</label>
-			<input type="datetime" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>" />
+			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>" />
 			<label>To</label>
-			<input type="datetime" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
+			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
 			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 		</form>
 		
