@@ -2,7 +2,7 @@
 
     require_once("connection.php");
 
-    $ID = $_GET['GETID'];
+    $ID = $_GET['GetID'];
     $query = "select * from `inventoryManagement` where ID='".$ID"'";
     $result = mysqli_query($conn,$query);
 
