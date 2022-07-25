@@ -8,11 +8,11 @@
 
     while($res=mysqli_fetch_assoc($result))
     {
-        $ID = $obj['ID'];
-        $prescriptionName = $obj['prescriptionName'];
-	    $prescriptionDesc = $obj['prescriptionDesc'];
-	    $prescriptionQty = $obj['Quantity'];
-	    $Remarks = $obj['Remarks'];
+        $ID = $res['ID'];
+        $prescriptionName = $res['prescriptionName'];
+	    $prescriptionDesc = $res['prescriptionDesc'];
+	    $prescriptionQty = $res['Quantity'];
+	    $Remarks = $res['Remarks'];
 
     }
 ?>
