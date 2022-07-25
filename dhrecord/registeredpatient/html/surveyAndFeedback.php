@@ -60,7 +60,7 @@
 
     <div class="container my-5">
         <h4 class="mb-4">Survey And Feedback</h4>
-
+        <form method="post" action="./test.php">
         <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
             <div class="mb-3 row">
                 <label for="fullName" class="col-sm-2 col-form-label">Username</label>
@@ -73,7 +73,7 @@
                 <label for="estimatedWait" class="col-sm-2 col-form-label">What was estimated waiting time after
                     scheduled appointment timing?</label>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control" id="estimatedWait">
+                    <input type="text" class="form-control" name="estimatedWait" id="estimatedWait">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -93,12 +93,12 @@
                     or family</label>
                 <div class="col-sm-10">
                     yes <input type="radio" name="recommended" value="yes">
-                    no <input type="radio" name="recommended" value="no" </div>
+                    no <input type="radio" name="recommended" value="no"> </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="med-conditions" class="col-sm-2 col-form-label">Remarks</label>
                     <div class="col-sm-10">
-                        <textarea type="text" class="form-control" id="med-conditions" rows="10" cols="50"></textarea>
+                        <textarea type="text" class="form-control" name="medconds" id="medconds" rows="10" cols="50"></textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -106,6 +106,7 @@
                 </div>
 
             </div>
+            </form>
         </div>
 
         <!-- bootstrap js -->
