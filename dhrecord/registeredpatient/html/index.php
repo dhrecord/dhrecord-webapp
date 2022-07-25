@@ -3,8 +3,7 @@
     session_start();
     $_SESSION["id"].$_SESSION["username"];
 	
-if(!isset($_SESSION['id'])) : 
-      header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/index.html");  
+
 ?>
 
 <!DOCTYPE html>
