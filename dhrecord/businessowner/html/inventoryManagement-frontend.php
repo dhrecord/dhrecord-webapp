@@ -154,7 +154,7 @@
 
         </div>
 
-        <?php include 'inventoryManagement.php'; ?>
+        <?php include 'inventoryManagement.php'; ?> 
         
         <table class="table table-striped">
             <thead>

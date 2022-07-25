@@ -29,7 +29,7 @@
 		mysqli_stmt_bind_param($stmt, "ssis",$prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
 		mysqli_stmt_execute($stmt);
 
-		header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.html");
+		header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.php");
 		mysqli_close($conn);
     }
 
