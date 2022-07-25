@@ -180,7 +180,7 @@
 	                // Create connection
 	                //$conn = mysqli_connect($servername, $username, $password, $database);
 
-                    require_once("connection.php")
+                    require_once("connection.php");
 
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
                    
