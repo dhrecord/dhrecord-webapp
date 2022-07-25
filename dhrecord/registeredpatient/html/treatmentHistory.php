@@ -78,8 +78,9 @@
 			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
 			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button> <a href="index.php" type="button" class="btn btn-success"><span class = "glyphicon glyphicon-refresh"><span></a>
 		</form>
-		<!---
+		
             </div>
+		<!---
             <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
@@ -121,7 +122,7 @@
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
 				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' 
-				AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
+				AND date(treatmentHistory.startDate) >= '$date1' AND '$date2' AND date(treatmentHistory.endDate) <= '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
 				if($row>0)
