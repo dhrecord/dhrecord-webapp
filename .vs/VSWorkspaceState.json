@@ -4,11 +4,10 @@
     "\\dhrecord",
     "\\dhrecord\\LoginUnregisteredPatient",
     "\\dhrecord\\LoginUnregisteredPatient\\LoginPage",
-    "\\dhrecord\\temporary_folder"
+    "\\dhrecord\\LoginUnregisteredPatient\\RegistrationPagePatient",
+    "\\dhrecord\\registeredpatient",
+    "\\dhrecord\\registeredpatient\\html"
   ],
-<<<<<<< HEAD
-  "SelectedNode": "\\dhrecord\\README.md",
-=======
->>>>>>> 7b54bf2869f6ed6dab9803e8cafd26fec613e80a
+  "SelectedNode": "\\dhrecord\\LoginUnregisteredPatient\\RegistrationPagePatient\\verify.php",
   "PreviewInSolutionExplorer": false
 }
