@@ -47,7 +47,7 @@ if(isset($_GET['vkey'])){
 			$row1 = $stmt_result->fetch_assoc();
 
 			$stmt = mysqli_prepare($conn, "insert into businessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			mysqli_stmt_bind_param($stmt, "ssssiisssi", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row['nameOfClinic'], $row['locationOfClinic'], $row['clinicSpecialization'], $row1['ID']);
+			mysqli_stmt_bind_param($stmt, "sssssssssi", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row['nameOfClinic'], $row['locationOfClinic'], $row['clinicSpecialization'], $row1['ID']);
 			mysqli_stmt_execute($stmt);
 
 			$deleteRow = mysqli_prepare($conn, "DELETE FROM tempRegisteredBusinessOwner WHERE vkey = '$vkey'");
