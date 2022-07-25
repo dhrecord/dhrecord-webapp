@@ -106,7 +106,7 @@
             <div class="referral-box px-3 py-1">
                 <button type="button" class="btn btn-dark"
                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                        onclick="window.location.href='./AddNewPrescription.html';">
+                        onclick="window.location.href='./AddNewPrescription.php';">
                     Add New Prescription
                 </button>
                 <button onclick="AddInfo();" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal1">
