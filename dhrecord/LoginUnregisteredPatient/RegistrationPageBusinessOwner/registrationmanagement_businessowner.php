@@ -142,10 +142,12 @@
                     <select name="clinicSpecialization">
                         <?php
                         
+                        $allSpecializations = mysqli_prepare($conn, "SELECT * FROM clinicSpecialization");
+                        $allSpecializations->execute();
+
                         while($specialization = mysqli_fetch_array($allSpecializations,MYSQLI_ASSOC))
                         {
-                            $allSpecializations = mysqli_prepare($conn, "SELECT * FROM 'clinicSpecialization'");
-                            $allSpecializations->execute();
+
                             $allSpecializations_Result = $allSpecializations->get_result();
 			                $row = $allSpecializations_Result->fetch_assoc();
 
