@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+
+    //Database Connection
+	$servername = "localhost";
+	$database = "u922342007_Test";
+	$username = "u922342007_admin";
+	$password = "Aylm@012";
+
+	// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $database);
+
+	if (!$conn) 
+	{
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
+    $sql = "SELECT * FROM clinicSpecialization";
+    $allSpecializations = mysqli_query($conn,$sql);
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -122,7 +142,14 @@
                 <div class="mb-3 row">
                     <label for="clinicSpecialization" class="col-sm-2 col-form-label">Clinic Specialization</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="clinicSpecialization" name="clinicSpecialization">
+                    <select name="clinicSpecialization">
+                        <?php 
+                            while ($specialization = mysqli_fetch_array($allSpecializations,MYSQLI_ASSOC)):;
+                        ?>
+                        <option value="<?php echo $specialization["ID"];?>">
+                            <?php echo $specialization["specName"];?>
+                        </option>
+                    </select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-4">Submit</button>
