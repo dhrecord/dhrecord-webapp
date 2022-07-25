@@ -1,9 +1,21 @@
 <?php
 
+    require_once("connection.php");
 
+    $ID = $_GET['GETID'];
+    $query = "select * from inventoryManagement where ID='".$ID"'";
+    $result = mysqli_query($conn,$query);
 
+    while($res=mysqli_fetch_assoc($result))
+    {
+        $ID = $obj['ID'];
+        $prescriptionName = $obj['prescriptionName'];
+	    $prescriptionDesc = $obj['prescriptionDesc'];
+	    $prescriptionQty = $obj['Quantity'];
+	    $Remarks = $obj['Remarks'];
+
+    }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +100,8 @@
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-5">Inventory Management</h4>
+        <form action = "updateInv.php" method="post">
+        <h4 class="mb-5">Inventory Management (Edit prescription)</h4>
         <div class="mb-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
@@ -133,19 +146,19 @@
                                     <p style="display: none;" id="invisibleID"></p>
                                     <div class="mb-3">
                                         <label for="inputName" class="form-label">Prescription Name</label>
-                                        <input type="text" class="form-control" id="updatePrescriptionName1">
+                                        <input type="text" class="form-control" id="updatePrescriptionName1" value="<?php echo $prescriptionName ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputAddress" class="form-label">Prescription Description</label>
-                                        <input type="text" class="form-control" id="updatePrescriptionDesc1">
+                                        <input type="text" class="form-control" id="updatePrescriptionDesc1" value="<?php echo $prescriptionDesc ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputNRIC" class="form-label">Quantity</label>
-                                        <input type="text" class="form-control" id="updateQty1">
+                                        <input type="text" class="form-control" id="updateQty1" value="<?php echo $prescriptionQty ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputContactNo" class="form-label">Remarks</label>
-                                        <input type="text" class="form-control" id="updateRemarks1">
+                                        <input type="text" class="form-control" id="updateRemarks1" value="<?php echo $Remarks ?>">
                                     </div>
 
                                 </form>
@@ -158,7 +171,7 @@
                     </div>
                 </div>
             </div>
-
+            </form>
         </div>
 
         
