@@ -77,6 +77,7 @@
 			<label>To</label>
 			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
 			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			<br/><br/>
 		</form>
 		
             </div>
