@@ -37,9 +37,11 @@
 	$headers = "From: dentalrecord00@gmail.com \r\n";
 	$headers .= "MIME-version: 1.0" . "\r\n";
 	$headers .= "content-type:text/html;charset=UTF-8" . "\r\n";
+	
+	mail($email, $subject, $message, $headers);
 
 	$stmt = mysqli_prepare($conn, "insert into tempRegisteredBusinessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "ssssiisssssssi", $fullName, $nricNumber, $contactNumber, $email, $registrationNumber, $licenseNumber, $nameOfClinic, $locationOfClinic, clinicSpecialization, $role, $userName, $passWord, $vkey, $verifiedNegative);
+	mysqli_stmt_bind_param($stmt, "ssssiisssssssi", $fullName, $nricNumber, $contactNumber, $email, $registrationNumber, $licenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $passWord, $vkey, $verifiedNegative);
 	mysqli_stmt_execute($stmt);
 
 	//inserting data
