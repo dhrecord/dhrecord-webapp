@@ -87,7 +87,6 @@
             </select>
 	-->
         </div>
-	 -->
         <table class="table table-striped">
 			<tr>
 				<th>Start Date</th>
@@ -114,7 +113,8 @@
 			WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}'");
 			*/
 			       
-			if(ISSET($_POST['search'])){
+			if(ISSET($_POST['search']))
+			{
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
@@ -123,8 +123,10 @@
 				AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' OR date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
-				if($row>0){
-					while($fetch=mysqli_fetch_array($query)){
+				if($row>0)
+				{
+					while($fetch=mysqli_fetch_array($query))
+					{
 				?>
 					<tr>
 						<td><?php echo $fetch['startDate']?></td>
@@ -134,11 +136,12 @@
 						<td><?php echo $fetch['medicationPrescribed']?></td>
 					</tr>
 				<?php
-				}
-				}else{
+					}
+				}else
+				{
 					echo'
 					<tr>
-						<td colspan = "4"><center>Record Not Found</center></td>
+						<td colspan = "5"><center>Record Not Found</center></td>
 					</tr>';
 				}
 			}else{
