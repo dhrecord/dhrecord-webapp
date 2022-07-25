@@ -16,9 +16,6 @@
 	{
 		die("Connection failed: " . mysqli_connect_error());
 	}
-
-    $sql = "SELECT * FROM clinicSpecialization";
-    $allSpecializations = mysqli_query($conn,$sql);
 ?>
 
 <head>
@@ -143,12 +140,18 @@
                     <label for="clinicSpecialization" class="col-sm-2 col-form-label">Clinic Specialization</label>
                     <div class="col-sm-10">
                     <select name="clinicSpecialization">
-                        <?php 
-                            while ($specialization = mysqli_fetch_array($allSpecializations,MYSQLI_ASSOC)):;
+                        <?php
+                        
+                        while($specialization = mysqli_fetch_array($allSpecializations,MYSQLI_ASSOC))
+                        {
+                            $allSpecializations = mysqli_prepare($conn, "SELECT * FROM 'clinicSpecialization'");
+                            $allSpecializations->execute();
+                            $allSpecializations_Result = $allSpecializations->get_result();
+			                $row = $allSpecializations_Result->fetch_assoc();
+
+                            echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
+                        }
                         ?>
-                        <option value="<?php echo $specialization["ID"];?>">
-                            <?php echo $specialization["specName"];?>
-                        </option>
                     </select>
                     </div>
                 </div>
