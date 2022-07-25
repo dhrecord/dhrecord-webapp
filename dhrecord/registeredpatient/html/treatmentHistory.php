@@ -160,10 +160,10 @@
 				}
 			?>
 						    
-			
+			<!--
 			$result = mysqli_query($conn, $res);			
 
-			<!-- while($sql = mysqli_fetch_assoc($result)){
+			while($sql = mysqli_fetch_assoc($result)){
 				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["attendingDoctor"]."</td><td>".$sql["symptoms"].
 					"</td><td>".$sql["medicationPrescribed"]."</td></tr>";
 			}
