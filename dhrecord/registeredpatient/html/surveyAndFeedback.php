@@ -60,7 +60,7 @@
 
     <div class="container my-5">
         <h4 class="mb-4">Survey And Feedback</h4>
-        <form method="post" action="./test.php">
+        <form method="post" action="./surveyForm.php">
         <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
             <div class="mb-3 row">
                 <label for="fullName" class="col-sm-2 col-form-label">Username</label>
@@ -73,7 +73,7 @@
                 <label for="estimatedWait" class="col-sm-2 col-form-label">What was estimated waiting time after
                     scheduled appointment timing?</label>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control" name="estimatedWait" id="estimatedWait">
+                    <input type="text" class="form-control" name="estimatedWait" id="estimatedWait" placeholder="mins...">
                 </div>
             </div>
             <div class="mb-3 row">
