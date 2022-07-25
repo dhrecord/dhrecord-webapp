@@ -14,9 +14,9 @@
   $conn = mysqli_connect($servername, $username, $password, $database);
 
   $stmt = mysqli_prepare($conn, "insert into `surveyForm`(`username`,`timeTaken`, `rating`, `recommendation`,`remarks`) values (?,?, ?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "ssis", $username, $estimatedWait, $serviceQuality, $recommended, $medconds);
+	mysqli_stmt_bind_param($stmt, "ssis", $userName, $estimatedWait, $serviceQuality, $recommended, $medconds);
 	mysqli_stmt_execute($stmt);
 
-  header("Location: http://http://dhrecord.com/dhrecord/registeredpatient/html/surveyAndFeedback.php");
+  header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/surveyAndFeedback.php");
   mysqli_close($conn);
 ?>
