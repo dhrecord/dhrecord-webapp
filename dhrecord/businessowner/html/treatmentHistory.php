@@ -17,7 +17,6 @@
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-	<link href="stylesheet" href"https://cdn.jsdeliver.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"/>
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -74,10 +73,11 @@
             <div class="d-flex align-items-center">
                 <form class="form-inline" method="POST" action="">
 			<label>Date:</label>
-			<input type="datetime" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>" />
+			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>" />
 			<label>To</label>
-			<input type="datetime" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
-			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button> <a href="index.php" type="button" class="btn btn-success"><span class = "glyphicon glyphicon-refresh"><span></a>
+			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
+			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			<br/><br/>
 		</form>
 		
             </div>
@@ -97,6 +97,7 @@
 				<th>Attending Doctor</th>
 				<th>Symptoms</th>
 				<th>Medication Prescribed</th>
+				<th>Patient's Name</th>
 
 			</tr>    		
 			
@@ -110,23 +111,20 @@
         
 			// Create connection
 			$conn = mysqli_connect($servername, $username, $password, $database);
-								
-			/*$res = ("SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, treatmentHistory.symptoms, 
-			treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
-			WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}'");
-			*/
+
 			       
 			if(ISSET($_POST['search']))
 			{
-				$date1 = date("Y-m-d", strtotime($_POST['date1']));
-				$date2 = date("Y-m-d", strtotime($_POST['date2']));
+				$date1 = date("Y-m-d H:i:s", strtotime($_POST['date1'] + " 00:00:00"));
+				$date2 = date("Y-m-d H:i:s", strtotime($_POST['date2'] + " 23:59:59"));
+				
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
-				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' 
-				AND datetime(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND datetime(treatmentHistory.endDate) BETWEEN '$date1' 
-				AND '$date2'") 
+				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND treatmentHistory.startDate BETWEEN '$date1' AND '$date2' AND 
+				treatmentHistory.endDate BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
+				echo datetime($date1).($date2);
 				if($row>0)
 				{
 					while($fetch=mysqli_fetch_array($query))
@@ -138,6 +136,8 @@
 						<td><?php echo $fetch['attendingDoctor']?></td>
 						<td><?php echo $fetch['symptoms']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
+						<td><?php echo $fetch['fullName']?></td>
+						
 					</tr>
 				<?php
 					}
@@ -151,9 +151,8 @@
 			} else
 			{
 				$query=mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
-				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' ") 
-					or die(mysqli_error());
+				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID") or die(mysqli_error());
 				while($fetch=mysqli_fetch_array($query))
 				{
 			?>
@@ -163,21 +162,13 @@
 				<td><?php echo $fetch['attendingDoctor']?></td>
 				<td><?php echo $fetch['symptoms']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
+				<td><?php echo $fetch['fullName']?></td>
 			</tr>
 			<?php
 				}
 			}
 			?>
 						    
-			<!--
-			$result = mysqli_query($conn, $res);			
-
-			while($sql = mysqli_fetch_assoc($result)){
-				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["attendingDoctor"]."</td><td>".$sql["symptoms"].
-					"</td><td>".$sql["medicationPrescribed"]."</td></tr>";
-			}
-			?>
-			-->
         </table>
     </div>
 
@@ -191,4 +182,3 @@
 </body>
 
 </html>
-

@@ -102,19 +102,25 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="registrationNumber" class="col-sm-2 col-form-label">Registration Number</label>
+                    <label for="RegistrationNumber" class="col-sm-2 col-form-label">Registration Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="registrationNumber" name="registrationNumber">
+                        <input type="text" class="form-control" id="RegistrationNumber" name="RegistrationNumber">
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="licenseNumber" class="col-sm-2 col-form-label">License Number</label>
+                    <label for="LicenseNumber" class="col-sm-2 col-form-label">License Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber">
+                        <input type="text" class="form-control" id="LicenseNumber" name="LicenseNumber">
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="locationOfClininc" class="col-sm-2 col-form-label">Location of Clinic</label>
+                    <label for="nameOfClinic" class="col-sm-2 col-form-label">Name of Clinic</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nameOfClinic" name="nameOfClinic">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="locationOfClinic" class="col-sm-2 col-form-label">Location of Clinic</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="locationOfClinic" name="locationOfClinic">
                     </div>
