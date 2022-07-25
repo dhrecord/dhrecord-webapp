@@ -14,10 +14,8 @@ session_destroy();*/
 // Redirect to the login page:
 
 header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
-
-die;
-
 <script type="text/javascript">
   window.history.forward();
 </script>
+die;
 ?>
