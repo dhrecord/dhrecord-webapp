@@ -122,7 +122,7 @@
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
 				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' 
-				AND date(treatmentHistory.startDate) >= '$date1' AND data(treatmentHistory.startDate) <= '$date2' AND date(treatmentHistory.endDate) >= '$date1' AND date(treatmentHistory.endDate) <= '$date2'") 
+				AND date(treatmentHistory.startDate) >= '$date1' AND date(treatmentHistory.startDate) <= '$date2' AND date(treatmentHistory.endDate) >= '$date1' AND date(treatmentHistory.endDate) <= '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
 				if($row>0)
