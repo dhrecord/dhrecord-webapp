@@ -77,7 +77,7 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
-      <h4>Doctor Appoinment Calendar - {doctor name}</h4>
+      <h4>Doctor Appointment Calendar - {doctor name}</h4>
       <div>
         <button class="btn btn-dark" onclick="document.location.href='../../businessowner/html/bookAppt.php'">Book Appointment</button>
         <button class="btn btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleAppt.php'">Reschedule</button>
