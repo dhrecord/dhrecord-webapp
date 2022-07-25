@@ -96,6 +96,7 @@
 				<th>Attending Doctor</th>
 				<th>Symptoms</th>
 				<th>Medication Prescribed</th>
+				<th>Patient's Name</th>
 
 			</tr>    		
 			
@@ -116,9 +117,9 @@
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory
-				WHERE datetime(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND datetime(treatmentHistory.endDate) BETWEEN '$date1' 
-				AND '$date2'") 
+				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND datetime(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND 
+				datetime(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
 				if($row>0)
@@ -132,6 +133,8 @@
 						<td><?php echo $fetch['attendingDoctor']?></td>
 						<td><?php echo $fetch['symptoms']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
+						<td><?php echo $fetch['fullName']?></td>
+						
 					</tr>
 				<?php
 					}
@@ -145,8 +148,8 @@
 			} else
 			{
 				$query=mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory") 
-					or die(mysqli_error());
+				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID") or die(mysqli_error());
 				while($fetch=mysqli_fetch_array($query))
 				{
 			?>
@@ -156,6 +159,7 @@
 				<td><?php echo $fetch['attendingDoctor']?></td>
 				<td><?php echo $fetch['symptoms']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
+				<td><?php echo $fetch['fullName']?></td>
 			</tr>
 			<?php
 				}
