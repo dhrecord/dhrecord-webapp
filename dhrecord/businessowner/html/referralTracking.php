@@ -90,22 +90,24 @@
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
+                    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="searchName();">
+                    <!---
+			<button class="input-group-text" id="basic-addon2">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
+			--->
                 </div>
             </div>
-            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+            <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
-                <option value="1">No</option>
-                <option value="2">Name</option>
-                <option value="3">Referred By</option>
-                <option value="4">Referral Date</option>
-                <option value="5">Referring Doctor</option>
-                <option value="6">Tooth Condition</option>
+                <option value="0">No</option>
+                <option value="1">Name</option>
+                <option value="2">Referred By</option>
+                <option value="3">Referral Date</option>
+                <option value="4">Referring Doctor</option>
+                <option value="5">Tooth Condition</option>
             </select>
         </div>
         <table class="table table-striped">
