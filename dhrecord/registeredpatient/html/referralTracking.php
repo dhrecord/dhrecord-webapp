@@ -118,7 +118,7 @@
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]."</td><td>".$sql["referredTo"]
+                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]."</td><td>".$sql["referredTo"]
 				      ."</td><td>".$sql["toothCondition"]."</td></tr>";
                             }
 			        ?>         
