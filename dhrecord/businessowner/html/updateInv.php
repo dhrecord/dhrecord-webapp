@@ -11,10 +11,10 @@ if(isset($_POST['update']))
 	$prescriptionQty = $_POST['Quantity'];
 	$Remarks = $_POST['Remarks'];
 
-	$query = " update `inventoryManagement` set `prescriptionName` = '".$prescriptionName."', `prescriptionDesc` = '".$prescriptionDesc."', `prescriptionQty` = '".$prescriptionQty."', `Remarks` = '".$Remarks."' where `ID`= '".$ID."'";
-	$result = mysqli_query($conn,$query);
+	$queryy = "UPDATE `inventoryManagement` SET `prescriptionName` = '".$prescriptionName."', `prescriptionDesc` = '".$prescriptionDesc."', `prescriptionQty` = '".$prescriptionQty."', `Remarks` = '".$Remarks."' WHERE `ID`= '".$ID."'";
+	$result1 = mysqli_query($conn,$queryy);
 
-	if($result)
+	if($result1)
 	{
 		header("location:inventoryManagement.php");
 	}
