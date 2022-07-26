@@ -11,7 +11,7 @@ if(isset($_POST['update'])
 	$prescriptionQty = $_POST['Quantity'];
 	$Remarks = $_POST['Remarks'];
 
-	$query = " update inventoryManagement set prescriptionName = '".$prescriptionName."', prescriptionDesc = '".$prescriptionDesc."', prescriptionQty = '".$prescriptionQty."', Remarks = '".$Remarks."' where ID= '".$ID."'";
+	$query = " update `inventoryManagement` set prescriptionName = '".$prescriptionName."', prescriptionDesc = '".$prescriptionDesc."', prescriptionQty = '".$prescriptionQty."', Remarks = '".$Remarks."' where ID= '".$ID."'";
 	$result = mysqli_query($conn,$query);
 
 	if($result)
