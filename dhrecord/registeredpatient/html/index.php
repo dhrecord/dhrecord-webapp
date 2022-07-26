@@ -6,9 +6,12 @@
 <html lang="en">
 
 <head>
-  <script language="javascript" type="text/javascript">
+  <!--script language="javascript" type="text/javascript">
     window.history.forward();
-  </script>
+  </script>-->
+<meta Http-Equiv="Cache-Control" Content="no-cache"/>
+<meta Http-Equiv="Pragma" Content="no-cache"/>
+<meta Http-Equiv="Expires" Content="0"/>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
