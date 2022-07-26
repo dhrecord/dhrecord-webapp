@@ -5,7 +5,7 @@
 if(isset($_POST['update']))
 {
 
-	$TESTID = $_GET['$ID'];
+	$TESTID = $_GET['ID'];
     $prescriptionName = $_POST['prescriptionName'];
 	$prescriptionDesc = $_POST['prescriptionDesc'];
 	$prescriptionQty = $_POST['Quantity'];
