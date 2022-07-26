@@ -63,7 +63,7 @@
         </ul>
         <div class="d-flex flex-column align-items-end">
           <p class="navbar-text text-white m-0">
-            Welcome, Username
+            Welcome, <?php echo $_SESSION['username']; ?>
           </p>
           <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
             onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.html'">Logout</button>
