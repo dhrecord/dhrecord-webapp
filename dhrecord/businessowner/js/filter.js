@@ -14,7 +14,7 @@ searchbar.addEventListener("input", (evt) =>{
         if(value) { //if dropdown list is not empty string, meaning dropdown is selected
             rows.forEach(row => {
                 const matches = row.childNodes[value].textContent.toLowerCase().startsWith(q);
-                row.style.display = "" ? "none";
+                row.style.display = matches ? "" : "none";
             })
         }
         else {
