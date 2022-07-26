@@ -88,7 +88,7 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-4">Inventory Management (Edit Prescription)</h4>
-        <form method="post" action="update.php">
+        <form method="post" action="updateInv.php?ID=<?php echo $ID ?>">
             <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
                 <div class="mb-3 row">
                     <label for="fullName" class="col-sm-2 col-form-label">Prescription Name</label>
@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="mb-3 row">
-                    <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Update</button></div>
+                    <div class="text-center"><button class="btn btn-dark mt-4 px-5" name="update">Update</button></div>
                 </div>
             </div>
         </form>
