@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="mb-3 row">
-                    <div class="text-center"><button class="btn btn-dark mt-4 px-5" name="update">Update</button></div>
+                    <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5" name="update">Update</button></div>
                 </div>
             </div>
         </form>
