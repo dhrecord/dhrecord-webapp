@@ -58,7 +58,7 @@
             <a class="nav-link" href="../html/surveyAndFeedback.php">Survey & Feedback</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/treatmentPlanning.php">Treatment Planning</a>
+            <a class="nav-link" href="../html/treatmentHistory.php">Treatment Planning</a>
           </li>
         </ul>
         <div class="d-flex flex-column align-items-end">
