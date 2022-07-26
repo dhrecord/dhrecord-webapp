@@ -1,9 +1,5 @@
 <?php 
-    error_reporting(E_ALL);
     session_start();
-    $_SESSION["id"].$_SESSION["username"];
-	
-
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +41,7 @@
                         <a class="nav-link" href="./surveyAndFeedback.php">Survey & Feedback</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./treatmentHistory.php">Treatment Planning</a>
+                        <a class="nav-link" href="./treatmentHistory.php">Treatment History</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
