@@ -47,7 +47,6 @@
 				if ($data['role'] === "sa")
 				{
 					header('Location: ../../superadmin/html/home.php');
-					die;
 				} 
 				
 				else if ($data['role'] === "pt")
@@ -55,13 +54,11 @@
 					//echo $_SESSION['username'];
 					//echo $_SESSION['id'];
 					header('Location: ../../registeredpatient/html/index.php');
-					die;
 				}
 				
 				else if ($data['role'] === "ca")
 				{
 					header('Location: ../../businessowner/html/index.html');
-					die;
 				}
 				
 				
