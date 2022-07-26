@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./userManagement.html">User Management</a>
@@ -57,7 +57,7 @@
                                     & Reminders
                                 </a>
                             </li>
-                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
+                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -75,7 +75,7 @@
                         Welcome, <?php echo $_SESSION['username'];?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
-                        onclick="document.location.href='./loginBusinessOwner.html'">
+                        onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/logout.php'">
                         Logout
                     </button>
                 </div>
