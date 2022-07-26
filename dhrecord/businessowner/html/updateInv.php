@@ -20,7 +20,7 @@ if(isset($_POST['update']))
 	}
 	else
 	{
-		echo "please check your query"
+		echo "please check your query";
 	}
 
 }
