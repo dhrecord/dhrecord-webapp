@@ -30,7 +30,7 @@ searchbar.addEventListener("input", (evt) =>{
 dropdown.addEventListener("change",(evt) =>{
     try{
         const value = evt.currentTarget.value;
-        if(value === "3"){
+        if(value === "2"){
             searchbar.setAttribute("type","date")
         }
         else{
