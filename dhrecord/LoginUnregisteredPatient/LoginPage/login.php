@@ -38,7 +38,7 @@
 
 			if($data['password'] === $passWord) 
 			{
-				//$_SESSION['loggedin'] = TRUE;
+				$_SESSION['loggedin'] = TRUE;
 				$_SESSION['username'] = $data['username'];
 				
 				$_SESSION['id'] = $data['ID'];
