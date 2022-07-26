@@ -1,3 +1,10 @@
+<?php
+
+    session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +64,7 @@
         </ul>
         <div class="d-flex flex-column align-items-end">
           <p class="navbar-text text-white m-0">
-            Welcome, Username
+            Welcome, <?php echo $_SESSION['username']; ?>
           </p>
           <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
             onclick="document.location.href='./loginBusinessOwner.html'">Logout</button>
@@ -71,7 +78,7 @@
     <div class="bg-light p-5 rounded mt-3">
       <h1>Homepage</h1>
       <hr>
-      <h4 class="lead">Hi, Username!</h4>
+      <h4 class="lead">Hi, <?php echo $_SESSION['username']; ?>!</h4>
       <h4 class="lead">Role: Clinic Admin</h4>
       <hr>
       <p># temporary => later can add notifications and other functionalites <br> # e.g. list of accounts that need to
