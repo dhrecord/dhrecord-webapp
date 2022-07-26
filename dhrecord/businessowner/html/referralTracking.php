@@ -102,11 +102,10 @@
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">No</option>
                 <option value="2">Name</option>
-                <option value="3">Address</option>
-                <option value="4">NRIC</option>
-                <option value="5">Contact No</option>
-                <option value="6">Email</option>
-                <option value="7">Check Referral</option>
+                <option value="3">Referred By</option>
+                <option value="4">Referral Date</option>
+                <option value="5">Referring Doctor</option>
+                <option value="6">Tooth Condition</option>
             </select>
         </div>
         <table class="table table-striped">
@@ -118,7 +117,6 @@
                     <th scope="col">Referral Date</th>
                     <th scope="col">Referring Doctor</th>
                     <th scope="col">Tooth Condition</th>
-                    <th scope="col">Check Referral</th>
                 </tr>
             </thead>
 
