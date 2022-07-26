@@ -1,3 +1,8 @@
+<?php
+	
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +43,7 @@
                         <a class="nav-link" href="./userManagement.html">User Management</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./referralTracking.html">Referral Tracking</a>
+                        <a class="nav-link active" href="./referralTracking.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -52,7 +57,7 @@
                                     & Reminders
                                 </a>
                             </li>
-                            <li><a class="dropdown-item" href="./treatmentPlanning.html">Treatment Planning</a></li>
+                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -67,7 +72,7 @@
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
-                        Welcome, Username
+                        Welcome, <?php echo $_SESSION['username'];?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
                         onclick="document.location.href='./loginBusinessOwner.html'">
@@ -109,58 +114,38 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">NRIC</th>
-                    <th scope="col">Contact No</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Referred By</th>
+                    <th scope="col">Referral Date</th>
+                    <th scope="col">Referring Doctor</th>
+                    <th scope="col">Tooth Condition</th>
                     <th scope="col">Check Referral</th>
                 </tr>
             </thead>
 
             <tbody id="data">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John Doe</td>
-                    <td>5 Magazine Road #02-01, 059571, Singapore</td>
-                    <td>S5219994H</td>
-                    <td>+65 8950 4262</td>
-                    <td>JohnDoe@gmail.com</td>
-                    <td>
-                        <button class="border-0 edit-btn" data-bs-toggle="modal" data-bs-target="#popupModal">
-                            <u>Check referral</u>
-                        </button>
-                    </td>
+                <?php
+                    $servername = "localhost";
+                    $database = "u922342007_Test";
+                    $username = "u922342007_admin";
+                    $password = "Aylm@012";
+        
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $database);
+                
+                    $res = ("SELECT referralTracking.ID, registeredPatient.fullName, referralTracking.referredBy, referralTracking.referralDate, 
+                    referralTracking.referringDoctor, referralTracking.toothCondition FROM referralTracking, registeredPatient
+                    WHERE referralTracking.patient_ID = registeredPatient.ID");
 
-                </tr>
+                    $result = mysqli_query($conn, $res);
+
+                    while($sql = mysqli_fetch_assoc($result)){
+                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["fullName"]."</td><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td><td>".
+                                  $sql["referringDoctor"]."</td><td>".$sql["toothCondition"]."</td></tr>";
+                            }
+               ?>
             </tbody>
         </table>
     </div>
-    <!-- modal -->
-    <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="popupModalLabel">Referral Information</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <p style="display: none;" id="invisibleID"></p>
-                        <div class="mb-3">
-                            <label for="refDate" class="form-label" id="refDate">Referred DATE:</label>
-                            <br>ddmmyyyy
-                        </div>
-                        <div class="mb-3">
-                            <label for="refBy" class="form-label" id="refBy">Referred BY:</label>
-                            <br>dr.?
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
