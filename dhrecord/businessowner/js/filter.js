@@ -26,3 +26,16 @@ searchbar.addEventListener("input", (evt) =>{
     }
      
 })
+
+dropdown.addEventListener("change",(evt) =>{
+    try{
+        const value = evt.currentTarget.value;
+        if(value === "3"){
+            searchbar.setAttribute("type","date")
+        }
+        else{
+            searchbar.setAttribute("type","text")
+        }
+    }
+    catch (e) {console.log(e)};
+})
