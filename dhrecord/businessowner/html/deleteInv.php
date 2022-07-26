@@ -2,7 +2,7 @@
 
 	require_once("connection.php");	
 
-if(isset($_POST['Delete']))
+if(isset($_GET['Delete']))
 {
 
 	$ID = $_GET['Delete'];    
