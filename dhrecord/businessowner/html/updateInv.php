@@ -5,13 +5,13 @@
 if(isset($_POST['update']))
 {
 
-	$TESTID = $_GET['ID'];
+	$ID = $_GET['ID'];
     $prescriptionName = $_POST['prescriptionName'];
 	$prescriptionDesc = $_POST['prescriptionDesc'];
 	$prescriptionQty = $_POST['Quantity'];
 	$Remarks = $_POST['Remarks'];
 
-	$queryy = "UPDATE `inventoryManagement` SET prescriptionName = '".$prescriptionName."', prescriptionDesc = '".$prescriptionDesc."', prescriptionQty = '".$prescriptionQty."', Remarks = '".$Remarks."' WHERE ID= '".$TESTID."'";
+	$queryy = "UPDATE `inventoryManagement` SET prescriptionName = '".$prescriptionName."', prescriptionDesc = '".$prescriptionDesc."', prescriptionQty = '".$prescriptionQty."', Remarks = '".$Remarks."' WHERE ID= '".$ID."'";
 	$result1 = mysqli_query($conn,$queryy);
 
 	if($result1)
@@ -24,7 +24,9 @@ if(isset($_POST['update']))
 	}
 
 }
-
+//else {
+//	header("location:inventoryManagement.php");
+//}
 
 
 ?>
