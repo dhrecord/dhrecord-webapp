@@ -11,9 +11,9 @@ searchbar.addEventListener("input", (evt) =>{
     try {
         const q = evt.currentTarget.value.toLowerCase(); //standardize lowercase for matching
         const value = dropdown.value;
-        if(value) { //if dropdown list is not empty string, meaning dropdown is selected
+        if(value !== "Filter By...") { //if dropdown list is not empty string, meaning dropdown is selected
             rows.forEach(row => {
-                const matches = row.childNodes[value].textContent.toLowerCase().startsWith(q);
+                const matches = row.childNodes[value].textContent.toLowerCase().includes(q);
                 row.style.display = matches ? "" : "none";
             })
         }
