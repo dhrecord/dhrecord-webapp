@@ -58,7 +58,7 @@
 				
 				else if ($data['role'] === "ca")
 				{
-					header('Location: ../../businessowner/html/index.html');
+					header('Location: ../../businessowner/html/index.php');
 				}
 				
 				
