@@ -24,9 +24,7 @@ if(isset($_POST['update']))
 	}
 
 }
-//else {
-//	header("location:inventoryManagement.php");
-//}
+
 
 
 ?>
