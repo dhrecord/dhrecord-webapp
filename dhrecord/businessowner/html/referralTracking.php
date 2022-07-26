@@ -92,17 +92,11 @@
                 <div class="input-group">
                     <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
-                    <!---
-			<button class="input-group-text" id="basic-addon2">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-			--->
                 </div>
             </div>
             <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
-                <option value="0">No</option>
                 <option value="1">Name</option>
                 <option value="2">Referred By</option>
                 <option value="3">Referral Date</option>
