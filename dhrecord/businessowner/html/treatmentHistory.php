@@ -115,8 +115,8 @@
 			       
 			if(ISSET($_POST['search']))
 			{
-				$date1 = date("Y-M-D", strtotime($_POST['date1']));
-				$date2 = date("Y-M-D", strtotime($_POST['date2']));
+				$date1 = date("Y-m-d", strtotime($_POST['date1']));
+				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 				
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
 				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
