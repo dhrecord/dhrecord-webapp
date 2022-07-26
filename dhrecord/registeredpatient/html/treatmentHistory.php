@@ -13,11 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DHRecord</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-	<link href="stylesheet" href"https://cdn.jsdeliver.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"/>
+	<link rel="stylesheet" href"https://cdn.jsdeliver.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"/>
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -74,9 +75,9 @@
             <div class="d-flex align-items-center">
                 <form class="form-inline" method="POST" action="">
 			<label>Date:</label>
-			<input type="datetime" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>"/>
+			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>"/>
 			<label>To</label>
-			<input type="datetime" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
+			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
 			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button>
 		</form>
 		<br/><br/>
