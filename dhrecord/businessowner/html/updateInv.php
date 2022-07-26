@@ -18,11 +18,15 @@ if(isset($_POST['update']))
 	{
 		header("location:inventoryManagement.php");
 	}
+	else
+	{
+		echo "please check your query"
+	}
 
 }
-else {
-	header("location:inventoryManagement.php");
-}
+//else {
+//	header("location:inventoryManagement.php");
+//}
 
 
 ?>
