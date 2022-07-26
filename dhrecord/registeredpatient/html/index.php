@@ -1,5 +1,10 @@
 <?php 
-    session_start();  
+    session_start();
+if(!$_SESSION["loggedin"])
+{
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
