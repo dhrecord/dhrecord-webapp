@@ -1,6 +1,6 @@
 <?php 
     session_start();
-if(!$_SESSION["loggedin"])
+if(!isset($_SESSION['loggedin']))
 {
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
