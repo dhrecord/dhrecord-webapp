@@ -1,7 +1,8 @@
 <?php 
+	if(!isset($_SESSION['id'])) : 
+		header("Location: ../LoginUnregisteredPatient/LoginPage/index.html"); 
     session_start();
-      if(!isset($_SESSION['id'])) : 
-      header("Location: ../LoginUnregisteredPatient/LoginPage/index.html");  
+       
 ?>
 
 <!DOCTYPE html>
