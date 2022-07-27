@@ -127,10 +127,8 @@
                     <th scope="col">Contact No.</th>
                     <th scope="col">Email</th>
                     <th scope="col">Specialization</th>
-                    <!-- <th scope="col">Registration No.</th>
-                    <th scope="col">License No.</th> -->
-                    <th scope="col">Registration Date</th>
-                    <th scope="col">Contract Period</th>
+                    <th scope="col">Registration No.</th>
+                    <th scope="col">License No.</th>
                     <th scope="col">Account Status</th>
                     <th scope="col">Full Info</th>
                     <th scope="col">Approve</th>
