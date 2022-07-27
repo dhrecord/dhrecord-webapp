@@ -129,8 +129,8 @@
                     <th scope="col">Specialization</th>
                     <th scope="col">Registration No.</th>
                     <th scope="col">License No.</th>
-                    <!--<th scope="col">Account Status</th>
-                    <th scope="col">Full Info</th>-->
+                    <!--<th scope="col">Account Status</th>-->
+                    <th scope="col">Full Info</th>
                     <th scope="col">Approve</th>
                 </tr>
             </thead>
@@ -185,6 +185,8 @@
                                   <td>'.$specialization.'</td> 
                                   <td>'.$RegistrationNo.'</td>
                                   <td>'.$LicenseNo.'</td>
+                                  <td><button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#popupModal3"></td>
+                                  <td><button class="btn btn-sm btn-success"></td>
                               </tr>';
                     }
                 
