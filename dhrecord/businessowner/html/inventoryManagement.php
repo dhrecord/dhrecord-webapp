@@ -150,7 +150,7 @@
                         $ID = $obj['ID'];
                         $prescriptionName = $obj['prescriptionName'];
 	                    $prescriptionDesc = $obj['prescriptionDesc'];
-	                    $prescriptionQty = $obj['Quantity'];
+	                    $prescriptionQty = $obj['prescriptionQty'];
 	                    $Remarks = $obj['Remarks'];
 
                      // echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
