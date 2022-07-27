@@ -174,6 +174,8 @@
                         $specialization = $row["clinicSpecialization"];
                         $RegistrationNo = $row["registrationNumber"];
                         $LicenseNo = $row["licenseNumber"];
+                        $ownerName = $row["fullName"];
+                        $ownerNRIC = $row["nricNumber"];
 
                         //display data
                         echo '<tr> 
@@ -213,12 +215,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="inputName" class="form-label">Owner Name</label>
-                                <input type="text" class="form-control" id="inputName" <?php $ownerName = $row["fullName"];  
-                                echo 'placeholder="'.$ownerName.'"'; ?> readonly>
+                                <input type="text" class="form-control" id="inputName" <?php echo 'placeholder="'.$ownerName.'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputName" class="form-label">Owner NRIC</label>
-                                <input type="text" class="form-control" id="inputNRIC" <?php echo 'placeholder="'.$clinicName.'"'; ?> readonly>
+                                <input type="text" class="form-control" id="inputNRIC" <?php echo 'placeholder="'.$ownerNRIC.'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputAddress" class="form-label">Address</label>
