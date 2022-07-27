@@ -129,12 +129,67 @@
                     <th scope="col">Specialization</th>
                     <th scope="col">Registration No.</th>
                     <th scope="col">License No.</th>
-                    <th scope="col">Account Status</th>
-                    <th scope="col">Full Info</th>
+                    <!--<th scope="col">Account Status</th>
+                    <th scope="col">Full Info</th>-->
                     <th scope="col">Approve</th>
                 </tr>
             </thead>
             <tbody>
+                <?php
+	            //Database Connection
+	            $servername = "localhost";
+	            $database = "u922342007_Test";
+	            $username = "u922342007_admin";
+	            $password = "Aylm@012";
+
+	            // Create connection
+	            $conn = mysqli_connect($servername, $username, $password, $database);
+
+	            if (!$conn) 
+	            {
+		            die("Connection failed: " . mysqli_connect_error());
+	            }
+                
+                //$stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval");
+		        //$stmt->execute();
+		        //$stmt_result = $stmt->get_result();
+                //$row = $stmt_result->fetch_assoc();
+
+                //while($stmt_result)
+                //{
+                //    
+                //}
+
+                $query = "SELECT * FROM businessOwnerForApproval";
+                if ($result = $conn->query($query)) 
+                {
+                    while ($row = $result->fetch_assoc()) 
+                    {
+                    
+                        $No = $row["id"];
+                        $clinicName = $row["nameOfClinic"];
+                        $address = $row["locationOfClinic"];
+                        $contactNo = $row["contactNumber"];
+                        $email = $row["email"];
+                        $specialization = $row["clinicSpecialization"];
+                        $RegistrationNo = $row["registrationNumber"];
+                        $LicenseNo = $row["licenseNumber"];
+
+                        echo '<tr> 
+                                  <td>'.$No.'</td> 
+                                  <td>'.$clinicName.'</td> 
+                                  <td>'.$address.'</td> 
+                                  <td>'.$contactNo.'</td> 
+                                  <td>'.$email.'</td>
+                                  <td>'.$specialization.'</td> 
+                                  <td>'.$RegistrationNo.'</td>
+                                  <td>'.$LicenseNo.'</td>
+                              </tr>';
+                    }
+                
+                }
+
+                ?>
             </tbody>
         </table>
 
