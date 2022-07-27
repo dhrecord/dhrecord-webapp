@@ -1,6 +1,12 @@
 <?php
 
-session_start();
+  session_start();
+  if(!isset($_SESSION['loggedin']))
+  {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+  }
+
   $uName=$_SESSION['username'];
   $estimatedWait=$_POST['estimatedWait'];
   $serviceQuality=$_POST['serviceQuality'];

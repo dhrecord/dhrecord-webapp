@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['loggedin']))
+  {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+  }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -40,15 +49,15 @@
             <a class="nav-link" href="../html/surveyAndFeedback.php">Survey & Feedback</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/treatmentPlanning.php">Treatment Planning</a>
+            <a class="nav-link" href="../html/treatmentHistory.php">Treatment History</a>
           </li>
         </ul>
         <div class="d-flex flex-column align-items-end">
           <p class="navbar-text text-white m-0">
-            Welcome, Username
+            Welcome, <?php echo $_SESSION['username']; ?>
           </p>
           <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
-            onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/index.html'">Logout</button>
+            onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/logout.php'">Logout</button>
         </div>
       </div>
     </div>

@@ -63,7 +63,7 @@
                         <a class="nav-link" href="./billingInvoicing.html">Payment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./inventoryManagement.html">Inventory Management</a>
+                        <a class="nav-link active" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
@@ -82,25 +82,17 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Inventory Management</h4>
+        <form action="" method ="POST">
         <div class="mb-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search..." aria-label="Name"
-                           aria-describedby="basic-addon2" style="max-width: 300px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="search();">
+                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="search" name="search" value="<?php echo $searchkey; ?>" />
+                    <button class="input-group-text" id="basic-addon2" type"submit";">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
 
-                    <!-- <p class="m-0"><b>Filter By:</b>&nbsp;&nbsp;&nbsp;</p> -->
-                    <select class="form-select" id="ddlFilterBy" aria-label="Filter By..." style="margin-left: 80px;">
-                        <option selected disabled hidden>Filter By...</option>
-                        <option value="1">No (Row Number)</option>
-                        <option value="2">Prescription Name</option>
-                        <option value="3">Prescription Description</option>
-                        <option value="4">Quantity</option>
-                        <option value="5">Remarks</option>
-                    </select>
+                    </form>
                 </div>
             </div>
             <div class="referral-box px-3 py-1">
@@ -109,47 +101,7 @@
                         onclick="window.location.href='./AddNewPrescription.php';">
                     Add New Prescription
                 </button>
-                <button onclick="AddInfo();" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal1">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-                <div class="modal fade" id="popupModal1" tabindex="-1" aria-labelledby="popupModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="popupModalLabel">Edit Information</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <p style="display: none;" id="invisibleID"></p>
-                                    <div class="mb-3">
-                                        <label for="inputName" class="form-label">Prescription Name</label>
-                                        <input type="text" class="form-control" id="updatePrescriptionName1">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputAddress" class="form-label">Prescription Description</label>
-                                        <input type="text" class="form-control" id="updatePrescriptionDesc1">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputNRIC" class="form-label">Quantity</label>
-                                        <input type="text" class="form-control" id="updateQty1">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputContactNo" class="form-label">Remarks</label>
-                                        <input type="text" class="form-control" id="updateRemarks1">
-                                    </div>
-
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" onclick="addID();" class="btn btn-primary">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
         </div>
@@ -169,88 +121,51 @@
                     
                 </tr>
             </thead>
-            <!--<tbody id="prescriptionData">-->
+            
             <tbody>
                 <?php
-                    //Database Connection
-	                //$servername = "localhost";
-	                //$database = "u922342007_Test";
-	                //$username = "u922342007_admin"; 
-	                //$password = "Aylm@012";
-	                // Create connection
-	                //$conn = mysqli_connect($servername, $username, $password, $database);
-
-                    require_once("connection.php");
-
-                    $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
-                   
-                    while($obj = mysqli_fetch_assoc($res))
+                
+            require_once("connection.php");
+                
+                if(isset($_POST['search']))
                     {
-
-                        $ID = $obj['ID'];
-                        $prescriptionName = $obj['prescriptionName'];
-	                    $prescriptionDesc = $obj['prescriptionDesc'];
-	                    $prescriptionQty = $obj['Quantity'];
-	                    $Remarks = $obj['Remarks'];
-
-                     // echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
-                     //if ($res) { echo "success"; mysqli_close($conn); } else { echo "error"; mysqli_close($conn); }
-                    
-                ?>
-                        <tr>
-                            <td><?php echo $ID ?></td>
-                            <td><?php echo $prescriptionName ?></td>
-                            <td><?php echo $prescriptionDesc ?></td>
-                            <td><?php echo $prescriptionQty ?></td>
-                            <td><?php echo $Remarks ?></td>
-                            <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
-                            <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
-                        </tr>
-                    <?php
+                        $searchkey= $_POST['search'];
+                        $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
+                            
                     }
+
+                else 
+                    $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
+                
+                    while($obj = mysqli_fetch_assoc($res))
+                        {
+
+                            $ID = $obj['ID'];
+                            $prescriptionName = $obj['prescriptionName'];
+	                        $prescriptionDesc = $obj['prescriptionDesc'];
+	                        $prescriptionQty = $obj['prescriptionQty']; 
+	                        $Remarks = $obj['Remarks'];
+                        
                     
-                    ?>
+                        ?>
+                            <tr>
+                                <td><?php echo $ID ?></td>
+                                <td><?php echo $prescriptionName ?></td>
+                                <td><?php echo $prescriptionDesc ?></td>
+                                <td><?php echo $prescriptionQty ?></td>
+                                <td><?php echo $Remarks ?></td>
+                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
+                            </tr>
+                        <?php
+                        }
+                
+                ?>
             </tbody>
         </table>
 
-        <!-- modal -->
-        <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="popupModalLabel">Edit Information</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <p style="display: none;" id="invisibleID"></p>
-                            <div class="mb-3">
-                                <label for="inputName" class="form-label">Prescription Name</label>
-                                <input type="text" class="form-control" id="updatePrescriptionName">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputAddress" class="form-label">Prescription Description</label>
-                                <input type="text" class="form-control" id="updatePrescriptionDesc">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputNRIC" class="form-label">Quantity</label>
-                                <input type="text" class="form-control" id="updateQty">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputContactNo" class="form-label">Remarks</label>
-                                <input type="text" class="form-control" id="updateRemarks">
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" onclick="saveDetails();" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        
+        
     </div>
 
 
