@@ -81,6 +81,7 @@
 
     <!-- content -->
     <div class="container my-5">
+        <form method="post" action="./searchPrescription.php">
         <h4 class="mb-5">Inventory Management</h4>
         <div class="mb-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
@@ -91,16 +92,7 @@
                     <button class="input-group-text" id="basic-addon2" onclick="search();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-
-                    <!-- <p class="m-0"><b>Filter By:</b>&nbsp;&nbsp;&nbsp;</p> -->
-                    <select class="form-select" id="ddlFilterBy" aria-label="Filter By..." style="margin-left: 80px;">
-                        <option selected disabled hidden>Filter By...</option>
-                        <option value="1">No (Row Number)</option>
-                        <option value="2">Prescription Name</option>
-                        <option value="3">Prescription Description</option>
-                        <option value="4">Quantity</option>
-                        <option value="5">Remarks</option>
-                    </select>
+                                        
                 </div>
             </div>
             <div class="referral-box px-3 py-1">
@@ -144,6 +136,33 @@
 
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
                    
+                    if(isset($_POST['searchInput']))
+                    {
+                        $search= $_POST['searchInput'];
+                        $search_query = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
+
+                        $ID = $obj['ID'];
+                        $prescriptionName = $obj['prescriptionName'];
+	                    $prescriptionDesc = $obj['prescriptionDesc'];
+	                    $prescriptionQty = $obj['prescriptionQty']; 
+	                    $Remarks = $obj['Remarks'];
+                        while($obj = mysqli_fetch_assoc($search_query))
+                        {
+                    ?>
+                   
+                        <tr>
+                            <td><?php echo $ID ?></td>
+                            <td><?php echo $prescriptionName ?></td>
+                            <td><?php echo $prescriptionDesc ?></td>
+                            <td><?php echo $prescriptionQty ?></td>
+                            <td><?php echo $Remarks ?></td>
+                            <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                            <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
+                        </tr>
+                        }
+                    }
+                <?php
+                else {
                     while($obj = mysqli_fetch_assoc($res))
                     {
 
@@ -152,7 +171,7 @@
 	                    $prescriptionDesc = $obj['prescriptionDesc'];
 	                    $prescriptionQty = $obj['prescriptionQty']; 
 	                    $Remarks = $obj['Remarks'];
-
+                        
                      // echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
                      //if ($res) { echo "success"; mysqli_close($conn); } else { echo "error"; mysqli_close($conn); }
                     
@@ -168,13 +187,13 @@
                         </tr>
                     <?php
                     }
-                    
+                }    
                     ?>
             </tbody>
         </table>
 
         
-
+        </form>
     </div>
 
 
