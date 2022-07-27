@@ -1,15 +1,20 @@
 <?php 
-    error_reporting(E_ALL);
     session_start();
-    $_SESSION["id"].$_SESSION["username"];
-	
-
+if(!isset($_SESSION['loggedin']))
+{
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!--script language="javascript" type="text/javascript">
+    window.history.forward();
+  </script>-->
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,7 +50,7 @@
                         <a class="nav-link" href="./surveyAndFeedback.php">Survey & Feedback</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./treatmentHistory.php">Treatment Planning</a>
+                        <a class="nav-link" href="./treatmentHistory.php">Treatment History</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">

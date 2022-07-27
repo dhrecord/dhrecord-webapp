@@ -1,3 +1,9 @@
+<?php 
+    // error_reporting(E_ALL);
+    // session_start();
+    // $_SESSION["id"].$_SESSION["username"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +58,7 @@
                             Appointment & Treatment
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="./apptSchedulingAndReminders.html">Appointment Scheduling
+                            <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
                                     & Reminders</a></li>
                             <li><a class="dropdown-item" href="./treatmentPlanning.html">Treatment Planning</a></li>
                         </ul>
@@ -141,8 +147,36 @@
         <div>
             <p># show this if login as a doctor => display doctor's calendar</p>
 
-            <div class="d-flex justify-content-end">
-                <div class="my-4">
+            <?php        
+                // //Database Connection
+                // $servername = "localhost";
+                // $database = "u922342007_Test";
+                // $username = "u922342007_admin";
+                // $password = "Aylm@012";
+                // // Create connection
+                // $conn = mysqli_connect($servername, $username, $password, $database);
+
+                // if (!$conn) 
+                // {
+                //     die("Connection failed: " . mysqli_connect_error());
+                // }
+
+                // $sessionID = $_SESSION['id'];
+
+                // $stmt = $conn->prepare("SELECT * FROM registeredPatient where users_ID = ?");
+                // $stmt->bind_param("s", $sessionID);
+                // $stmt->execute();
+                // $stmt_result = $stmt->get_result();
+                // $data = $stmt_result->fetch_assoc();
+            ?>
+
+            <div class="my-4 d-flex justify-content-between">
+                <h4>Doctor Appoinment Calendar - {doctor name}</h4>
+                <?php 
+                    // echo $data['fullName']; will replace {doctor name with this code}
+                ?>
+
+                <div>
                     <button class="btn btn-dark"
                         onclick="document.location.href='../../businessowner/html/bookAppt.php'">Book
                         Appointment</button>

@@ -1,7 +1,11 @@
 <?php
 
     session_start();
-
+if(!isset($_SESSION['loggedin']))
+{
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,16 +73,37 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Referral Tracking</h4>
-			<table class="table table-striped">
+	    <div class="mb-4 d-flex align-items-center">
+		    <div class="d-flex align-items-center">
+			<p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+			<div class="input-group">
+			    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..."
+				aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
+			</div>
+		    </div>
+            <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
+                style="margin-left: 70px; max-width: 250px;">
+                <option selected disabled hidden>Filter By...</option>
+                <option value="1">Referred By</option>
+                <option value="2">Referral Date</option>
+                <option value="3">Referring Doctor</option>
+                <option value="4">Referred To</option>
+                <option value="5">Tooth Condition</option>
+            </select>
+        </div>
+	<table class="table table-striped">
+		<thead>
         		<tr>
+				<th>No</th>
         			<th>Referred By</th>
         			<th>Referral Date</th>
 				<th>Referring Doctor</th>
 				<th>Referred To</th>
 				<th>Tooth Condition</th>
-
-        		</tr>    		
-
+        		</tr>
+		</thead>
+		
+		<tbody id="data">
                  <?php                          
                     //Database Connection
                     $servername = "localhost";
@@ -89,7 +114,7 @@
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
 				           
-			$res = ("SELECT referralTracking.referredBy, referralTracking.referralDate, referralTracking.referringDoctor, referralTracking.referredTo, 
+			$res = ("SELECT referralTracking.ID, referralTracking.referredBy, referralTracking.referralDate, referralTracking.referringDoctor, referralTracking.referredTo, 
 			referralTracking.toothCondition FROM referralTracking, registeredPatient, users WHERE users.ID = '{$_SESSION['id']}' 
 			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
@@ -97,17 +122,13 @@
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]."</td><td>".$sql["referredTo"]
+                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]."</td><td>".$sql["referredTo"]
 				      ."</td><td>".$sql["toothCondition"]."</td></tr>";
                             }
 			        ?>         
-
-        	</table>
-        
-    
-		
-			
-    </div>
+		</tbody>
+	</table>		
+    	</div>
 
 
     <!-- bootstrap js -->
@@ -116,6 +137,7 @@
             crossorigin="anonymous"></script>
 
     <script src="../js/index.js"></script>
+	<script src="../js/filter.js"></script>
 
 
 </body>

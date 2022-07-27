@@ -38,10 +38,10 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../html/apptScheduling.php">Appointment Scheduling & Reminder</a>
+                        <a class="nav-link" href="./apptSchedulingAndReminders.php">Appointment Scheduling & Reminder</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
@@ -73,22 +73,13 @@
             <div class="d-flex align-items-center">
                 <form class="form-inline" method="POST" action="">
 			<label>Date:</label>
-			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>" />
+			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>"/>
 			<label>To</label>
 			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
-			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-			<br/><br/>
+			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button>
 		</form>
-		
+		<br/><br/>
             </div>
-		<!---
-            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
-                style="margin-left: 70px; max-width: 250px;">
-                <option selected disabled hidden>Filter By...</option>
-                <option value="1">Current treatment plan</option>
-                <option value="2">Next treatment plan</option>
-            </select>
-		--->
         </div>
         <table class="table table-striped">
 			<tr>
@@ -115,16 +106,16 @@
 			       
 			if(ISSET($_POST['search']))
 			{
-				$date1 = date("YYYY-MM-DD HH:MI:SS", strtotime($_POST['date1'] + " 00:00:00"));
-				$date2 = date("YYYY-MM-DD HH:MI:SS", strtotime($_POST['date2'] + " 23:59:59"));
+				$date1 = date("Y-m-d", strtotime($_POST['date1']));
+				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 				
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
 				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
-				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND treatmentHistory.startDate BETWEEN '$date1' AND '$date2' AND 
-				treatmentHistory.endDate BETWEEN '$date1' AND '$date2'") 
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND 
+				date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
+				
 				$row=mysqli_num_rows($query);
-				echo datetime($date1).($date2);
 				if($row>0)
 				{
 					while($fetch=mysqli_fetch_array($query))
@@ -145,7 +136,7 @@
 				{
 					echo'
 					<tr>
-						<td colspan = "5"><center>Record Not Found</center></td>
+						<td colspan = "6"><center>Record Not Found</center></td>
 					</tr>';
 				}
 			} else
