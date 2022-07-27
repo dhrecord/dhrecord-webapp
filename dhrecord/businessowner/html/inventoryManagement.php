@@ -109,47 +109,7 @@
                         onclick="window.location.href='./AddNewPrescription.php';">
                     Add New Prescription
                 </button>
-                <button onclick="AddInfo();" class="border-0" data-bs-toggle="modal" data-bs-target="#popupModal1">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-                <div class="modal fade" id="popupModal1" tabindex="-1" aria-labelledby="popupModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="popupModalLabel">Edit Information</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <p style="display: none;" id="invisibleID"></p>
-                                    <div class="mb-3">
-                                        <label for="inputName" class="form-label">Prescription Name</label>
-                                        <input type="text" class="form-control" id="updatePrescriptionName1">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputAddress" class="form-label">Prescription Description</label>
-                                        <input type="text" class="form-control" id="updatePrescriptionDesc1">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputNRIC" class="form-label">Quantity</label>
-                                        <input type="text" class="form-control" id="updateQty1">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputContactNo" class="form-label">Remarks</label>
-                                        <input type="text" class="form-control" id="updateRemarks1">
-                                    </div>
-
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" onclick="addID();" class="btn btn-primary">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
         </div>
@@ -213,43 +173,7 @@
             </tbody>
         </table>
 
-        <!-- modal -->
-        <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="popupModalLabel">Edit Information</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <p style="display: none;" id="invisibleID"></p>
-                            <div class="mb-3">
-                                <label for="inputName" class="form-label">Prescription Name</label>
-                                <input type="text" class="form-control" id="updatePrescriptionName">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputAddress" class="form-label">Prescription Description</label>
-                                <input type="text" class="form-control" id="updatePrescriptionDesc">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputNRIC" class="form-label">Quantity</label>
-                                <input type="text" class="form-control" id="updateQty">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputContactNo" class="form-label">Remarks</label>
-                                <input type="text" class="form-control" id="updateRemarks">
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" onclick="saveDetails();" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
     </div>
 
