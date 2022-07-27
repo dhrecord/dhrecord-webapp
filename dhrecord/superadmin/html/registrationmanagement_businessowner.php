@@ -127,9 +127,9 @@
                     <th scope="col">Contact No.</th>
                     <th scope="col">Email</th>
                     <th scope="col">Specialization</th>
-                    <th scope="col">Registration No.</th>
+                    <!--<th scope="col">Registration No.</th>
                     <th scope="col">License No.</th>
-                    <!--<th scope="col">Account Status</th>-->
+                    <th scope="col">Account Status</th>-->
                     <th scope="col">Full Info</th>
                     <th scope="col">Approve</th>
                 </tr>
@@ -171,7 +171,13 @@
                         $address = $row["locationOfClinic"];
                         $contactNo = $row["contactNumber"];
                         $email = $row["email"];
-                        $specialization = $row["clinicSpecialization"];
+                        $specializationNo = $row["clinicSpecialization"];
+
+                        $query1 = "SELECT * FROM clinicSpecialization WHERE ID=$specializationNo";
+                        $result1 = $conn->query($query1);
+                        $row1 = $result1->fetch_assoc()
+
+                        $specialization = $row1["$specName"];
                         $RegistrationNo = $row["registrationNumber"];
                         $LicenseNo = $row["licenseNumber"];
                         $ownerName = $row["fullName"];
@@ -185,8 +191,6 @@
                                   <td>'.$contactNo.'</td> 
                                   <td>'.$email.'</td>
                                   <td>'.$specialization.'</td> 
-                                  <td>'.$RegistrationNo.'</td>
-                                  <td>'.$LicenseNo.'</td>
                                   <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal3">View</button></td>
                                   <td><button type="button" class="btn btn-sm btn-success">Approve</button></td>
                               </tr>';
