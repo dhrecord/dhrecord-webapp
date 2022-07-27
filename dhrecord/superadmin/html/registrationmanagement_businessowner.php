@@ -175,6 +175,7 @@
                         $RegistrationNo = $row["registrationNumber"];
                         $LicenseNo = $row["licenseNumber"];
 
+                        //display data
                         echo '<tr> 
                                   <td>'.$No.'</td> 
                                   <td>'.$clinicName.'</td> 
