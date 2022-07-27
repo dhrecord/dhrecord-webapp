@@ -185,8 +185,8 @@
                                   <td>'.$specialization.'</td> 
                                   <td>'.$RegistrationNo.'</td>
                                   <td>'.$LicenseNo.'</td>
-                                  <td><button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#popupModal3"></td>
-                                  <td><button class="btn btn-sm btn-success"></td>
+                                  <td><button type=button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#myModal">View Info</button></td>
+                                  <td><button type=button class="btn btn-sm btn-success">Approve</button></td>
                               </tr>';
                     }
                 
@@ -197,7 +197,7 @@
         </table>
 
         <!-- modal -->
-        <div class="modal fade" id="popupModal3" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+        <!--<div class="modal fade" id="popupModal3" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -257,6 +257,12 @@
                     </div>
                 </div>
             </div>
+        </div>-->
+        
+        <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-body">
+                    <p>This is a large modal.</p>
+                </div>
         </div>
 
 
