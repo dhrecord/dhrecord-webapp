@@ -123,46 +123,7 @@
             </thead>
             <!--<tbody id="prescriptionData">-->
             <tbody>
-                <?php
-                    //Database Connection
-	                //$servername = "localhost";
-	                //$database = "u922342007_Test";
-	                //$username = "u922342007_admin"; 
-	                //$password = "Aylm@012";
-	                // Create connection a
-	                //$conn = mysqli_connect($servername, $username, $password, $database);
-
-                    require_once("connection.php");
-
-                   
-                    if(isset($_POST['searchInput']))
-                    {
-                        $search= $_POST['searchInput'];
-                        $search_query = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$search%'");
-
-                        $ID = $obj['ID'];
-                        $prescriptionName = $obj['prescriptionName'];
-	                    $prescriptionDesc = $obj['prescriptionDesc'];
-	                    $prescriptionQty = $obj['prescriptionQty']; 
-	                    $Remarks = $obj['Remarks'];
-                        while($obj = mysqli_fetch_assoc($search_query))
-                            {
-                        ?>
-                   
-                            <tr>
-                                <td><?php echo $ID ?></td>
-                                <td><?php echo $prescriptionName ?></td>
-                                <td><?php echo $prescriptionDesc ?></td>
-                                <td><?php echo $prescriptionQty ?></td>
-                                <td><?php echo $Remarks ?></td>
-                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
-                                <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
-                            </tr>
-                            }
-                    }
-                        <?php
-                else 
-                {
+            <?php
                     require_once("connection.php");
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
                     while($obj = mysqli_fetch_assoc($res))
@@ -189,7 +150,6 @@
                             </tr>
                         
                         }
-                }    
                     
             </tbody>
         </table>
