@@ -63,7 +63,7 @@
                         <a class="nav-link" href="./billingInvoicing.html">Payment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./inventoryManagement.html">Inventory Management</a>
+                        <a class="nav-link active" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
@@ -81,18 +81,18 @@
 
     <!-- content -->
     <div class="container my-5">
-        <form method="post" action="./searchPrescription.php">
         <h4 class="mb-5">Inventory Management</h4>
+        <form action="" method ="POST">
         <div class="mb-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search..." aria-label="Name"
-                           aria-describedby="basic-addon2" style="max-width: 300px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="search();">
+                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="search" name="search" value="<?php echo $searchkey; ?>" />
+                    <button class="input-group-text" id="basic-addon2" type"submit";">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                                        
+
+                    </form>
                 </div>
             </div>
             <div class="referral-box px-3 py-1">
@@ -121,11 +121,22 @@
                     
                 </tr>
             </thead>
-            <!--<tbody id="prescriptionData">-->
+            
             <tbody>
-            <?php
-                    require_once("connection.php");
+                <?php
+                
+            require_once("connection.php");
+                
+                if(isset($_POST['search']))
+                    {
+                        $searchkey= $_POST['search'];
+                        $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
+                            
+                    }
+
+                else 
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
+                
                     while($obj = mysqli_fetch_assoc($res))
                         {
 
@@ -135,8 +146,6 @@
 	                        $prescriptionQty = $obj['prescriptionQty']; 
 	                        $Remarks = $obj['Remarks'];
                         
-                         // echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
-                         //if ($res) { echo "success"; mysqli_close($conn); } else { echo "error"; mysqli_close($conn); }
                     
                         ?>
                             <tr>
@@ -148,14 +157,15 @@
                                 <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
                                 <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
                             </tr>
-                        
+                        <?php
                         }
-                    
+                
+                ?>
             </tbody>
         </table>
 
         
-        </form>
+        
     </div>
 
 
