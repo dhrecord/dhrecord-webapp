@@ -137,7 +137,7 @@
 	                //$database = "u922342007_Test";
 	                //$username = "u922342007_admin"; 
 	                //$password = "Aylm@012";
-	                // Create connection
+	                // Create connection a
 	                //$conn = mysqli_connect($servername, $username, $password, $database);
 
                     require_once("connection.php");
