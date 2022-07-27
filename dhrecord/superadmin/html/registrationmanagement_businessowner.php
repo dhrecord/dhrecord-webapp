@@ -209,7 +209,15 @@
                             <p style="display: none;" id="invisibleID"></p>
                             <div class="mb-3">
                                 <label for="inputName" class="form-label">Clinic Name</label>
+                                <input type="text" class="form-control" id="inputClinicName" readonly><?php echo $clinicName?></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputName" class="form-label">Owner Name</label>
                                 <input type="text" class="form-control" id="inputName" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputName" class="form-label">Owner NRIC</label>
+                                <input type="text" class="form-control" id="inputNRIC" readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputAddress" class="form-label">Address</label>
@@ -236,22 +244,6 @@
                             <div class="mb-3">
                                 <label for="inputLicenseNo" class="form-label">License No.</label>
                                 <input type="text" class="form-control" id="inputLicenseNo" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputRegistrationDate" class="form-label">Registration Date</label>
-                                <input type="text" class="form-control" id="inputRegistrationDate" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputContractPeriod" class="form-label">Contract Period</label>
-                                <input type="text" class="form-control" id="inputContractPeriod" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputAccountStatus" class="form-label">Account Status</label>
-                                <input type="text" class="form-control" id="inputAccountStatus" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputScannedLicense" class="form-label">Scanned License</label>
-                                <div class="bg-dark text-white p-5 text-center">Sample Scanned License</div>
                             </div>
                         </form>
                     </div>
