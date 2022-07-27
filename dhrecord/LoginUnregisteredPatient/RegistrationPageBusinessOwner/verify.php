@@ -35,27 +35,31 @@ if(isset($_GET['vkey'])){
 			$toInsert_Result = $toInsert->get_result();
 			$row = $toInsert_Result->fetch_assoc();
 
+			$stmt = mysqli_prepare($conn, "insert into businessOwnerForApproval(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			mysqli_stmt_bind_param($stmt, "ssssssssssss", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row['nameOfClinic'], $row['locationOfClinic'], $row['clinicSpecialization'], $row['role'], $row['username'], $row['password']);
+			mysqli_stmt_execute($stmt);
+
 			//inserting data
-			$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
-			mysqli_stmt_bind_param($stmt, "sss", $row['role'], $row['username'], $row['password']);
-			mysqli_stmt_execute($stmt);
+			//$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
+			//mysqli_stmt_bind_param($stmt, "sss", $row['role'], $row['username'], $row['password']);
+			//mysqli_stmt_execute($stmt);
 
-			$stmt = $conn->prepare("SELECT ID FROM users where username = ?");
-			$stmt->bind_param("s", $row['username']);
-			$stmt->execute();
-			$stmt_result = $stmt->get_result();
-			$row1 = $stmt_result->fetch_assoc();
+			//$stmt = $conn->prepare("SELECT ID FROM users where username = ?");
+			//$stmt->bind_param("s", $row['username']);
+			//$stmt->execute();
+			//$stmt_result = $stmt->get_result();
+			//$row1 = $stmt_result->fetch_assoc();
 
-			$stmt = mysqli_prepare($conn, "insert into businessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			mysqli_stmt_bind_param($stmt, "sssssssssi", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row['nameOfClinic'], $row['locationOfClinic'], $row['clinicSpecialization'], $row1['ID']);
-			mysqli_stmt_execute($stmt);
+			//$stmt = mysqli_prepare($conn, "insert into businessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			//mysqli_stmt_bind_param($stmt, "sssssssssi", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row['nameOfClinic'], $row['locationOfClinic'], $row['clinicSpecialization'], $row1['ID']);
+			//mysqli_stmt_execute($stmt);
 
 			$deleteRow = mysqli_prepare($conn, "DELETE FROM tempRegisteredBusinessOwner WHERE vkey = '$vkey'");
 			$deleteRow->execute();
 			
 			if($deleteRow)
 			{
-				echo "Your account has been verified! You may proceed with login!";
+				echo "Your account has been verified! Please await your account approval in your Email!";
 			}
 
 			else
