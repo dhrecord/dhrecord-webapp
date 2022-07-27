@@ -162,7 +162,7 @@
                     }
                 <?php
                 else {
-                    
+                    require_once("connection.php");
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
                     while($obj = mysqli_fetch_assoc($res))
                     {
