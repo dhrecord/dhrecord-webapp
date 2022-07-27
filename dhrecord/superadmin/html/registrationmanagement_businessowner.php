@@ -161,6 +161,10 @@
                 //}
 
                 $query = "SELECT * FROM businessOwnerForApproval";
+                $query1 = "SELECT * FROM clinicSpecialization WHERE ID = '$specializationNo'";
+                $result1 = $conn->query($query1);
+                $row1 = $result1->fetch_assoc()
+
                 if ($result = $conn->query($query)) 
                 {
                     while ($row = $result->fetch_assoc()) 
@@ -172,12 +176,7 @@
                         $contactNo = $row["contactNumber"];
                         $email = $row["email"];
                         $specializationNo = $row["clinicSpecialization"];
-
-                        $query1 = "SELECT * FROM clinicSpecialization WHERE ID=$specializationNo";
-                        $result1 = $conn->query($query1);
-                        $row1 = $result1->fetch_assoc()
-
-                        $specialization = $row1["$specName"];
+                        $specialization = $row1["specName"];
                         $RegistrationNo = $row["registrationNumber"];
                         $LicenseNo = $row["licenseNumber"];
                         $ownerName = $row["fullName"];
@@ -239,7 +238,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="inputSpecialization" class="form-label">Specialization</label>
-                                <textarea rows=3 type="text" class="form-control" id="inputSpecialization" <?php echo 'placeholder="'.$specialization.'"'; ?> readonly></textarea>
+                                <textarea type="text" class="form-control" id="inputSpecialization" <?php echo 'placeholder="'.$specialization.'"'; ?> readonly></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="inputRegistrationNo" class="form-label">Registration No.</label>
