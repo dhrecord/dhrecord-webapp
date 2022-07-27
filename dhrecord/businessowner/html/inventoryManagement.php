@@ -146,50 +146,51 @@
 	                    $prescriptionQty = $obj['prescriptionQty']; 
 	                    $Remarks = $obj['Remarks'];
                         while($obj = mysqli_fetch_assoc($search_query))
-                        {
-                    ?>
+                            {
+                        ?>
                    
-                        <tr>
-                            <td><?php echo $ID ?></td>
-                            <td><?php echo $prescriptionName ?></td>
-                            <td><?php echo $prescriptionDesc ?></td>
-                            <td><?php echo $prescriptionQty ?></td>
-                            <td><?php echo $Remarks ?></td>
-                            <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
-                            <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
-                        </tr>
-                        }
+                            <tr>
+                                <td><?php echo $ID ?></td>
+                                <td><?php echo $prescriptionName ?></td>
+                                <td><?php echo $prescriptionDesc ?></td>
+                                <td><?php echo $prescriptionQty ?></td>
+                                <td><?php echo $Remarks ?></td>
+                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
+                            </tr>
+                            }
                     }
-                <?php
-                else {
+                        <?php
+                else 
+                {
                     require_once("connection.php");
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
                     while($obj = mysqli_fetch_assoc($res))
-                    {
+                        {
 
-                        $ID = $obj['ID'];
-                        $prescriptionName = $obj['prescriptionName'];
-	                    $prescriptionDesc = $obj['prescriptionDesc'];
-	                    $prescriptionQty = $obj['prescriptionQty']; 
-	                    $Remarks = $obj['Remarks'];
+                            $ID = $obj['ID'];
+                            $prescriptionName = $obj['prescriptionName'];
+	                        $prescriptionDesc = $obj['prescriptionDesc'];
+	                        $prescriptionQty = $obj['prescriptionQty']; 
+	                        $Remarks = $obj['Remarks'];
                         
-                     // echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
-                     //if ($res) { echo "success"; mysqli_close($conn); } else { echo "error"; mysqli_close($conn); }
+                         // echo "<tr><td>".$obj["ID"]."</td><td>".$obj["prescriptionName"]."</td><td>".$obj["prescriptionDesc"]."</td><td>".$obj["prescriptionQty"]."</td><td>".$obj['Remarks']."</td></tr>";
+                         //if ($res) { echo "success"; mysqli_close($conn); } else { echo "error"; mysqli_close($conn); }
                     
-                ?>
-                        <tr>
-                            <td><?php echo $ID ?></td>
-                            <td><?php echo $prescriptionName ?></td>
-                            <td><?php echo $prescriptionDesc ?></td>
-                            <td><?php echo $prescriptionQty ?></td>
-                            <td><?php echo $Remarks ?></td>
-                            <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
-                            <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
-                        </tr>
-                    <?php
-                    }
+                        ?>
+                            <tr>
+                                <td><?php echo $ID ?></td>
+                                <td><?php echo $prescriptionName ?></td>
+                                <td><?php echo $prescriptionDesc ?></td>
+                                <td><?php echo $prescriptionQty ?></td>
+                                <td><?php echo $Remarks ?></td>
+                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
+                            </tr>
+                        
+                        }
                 }    
-                    ?>
+                    
             </tbody>
         </table>
 
