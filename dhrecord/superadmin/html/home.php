@@ -41,13 +41,13 @@
             <a class="nav-link active" aria-current="page" href="./home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./clinicspecialization.html">Clinic Specialization</a>
+            <a class="nav-link" href="./clinicspecialization.php">Clinic Specialization</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./auditlog.html">Audit Log</a>
+            <a class="nav-link" href="./auditlog.php">Audit Log</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./usermanagement.html">User Management</a>
+            <a class="nav-link" href="./usermanagement.php">User Management</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -55,8 +55,8 @@
               Registration Management
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="./registrationmanagement_businessowner.html">Business Owner</a></li>
-              <li><a class="dropdown-item" href="./registrationmanagement_patientaccount.html">Patient Account</a></li>
+              <li><a class="dropdown-item" href="./registrationmanagement_businessowner.php">Business Owner</a></li>
+              <li><a class="dropdown-item" href="./registrationmanagement_patientaccount.php">Patient Account</a></li>
             </ul>
           </li>
 
@@ -66,7 +66,7 @@
             Welcome, <?php echo $_SESSION['username']; ?>
           </p>
           <button type="button" class="btn btn-light ml-3 btn-sm mb-2" style="width: 90px;"
-            onclick="document.location.href='./login.html'">Logout</button>
+            onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/logout.php'">Logout</button>
         </div>
       </div>
     </div>
