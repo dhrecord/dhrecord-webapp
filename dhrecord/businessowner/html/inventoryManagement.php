@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['loggedin']))
+  {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,13 +42,13 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./userManagement.html">User Management</a>
+                        <a class="nav-link" href="./userManagement.php">User Management</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./referralTracking.html">Referral Tracking</a>
+                        <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -53,14 +62,14 @@
                                     & Reminders
                                 </a>
                             </li>
-                            <li><a class="dropdown-item" href="./treatmentPlanning.html">Treatment Planning</a></li>
+                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./reportingAndStatistics.html">Reporting & Statistics</a>
+                        <a class="nav-link" href="./reportingAndStatistics.php">Reporting & Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./billingInvoicing.html">Payment</a>
+                        <a class="nav-link" href="./billingInvoicing.php">Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="./inventoryManagement.php">Inventory Management</a>
@@ -68,10 +77,10 @@
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
-                        Welcome, Username
+                        Welcome, <?php echo $_SESSION['username'];?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
-                            onclick="document.location.href='./loginBusinessOwner.html'">
+                            onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/logout.php'">
                         Logout
                     </button>
                 </div>
