@@ -151,7 +151,7 @@
                       {
                         echo
                         '<tr style="background-color: #F2F2F2">
-                          <td class="px-4">'
+                          <td class="px-4">';
 
                         $field1 = $show['nameOfClinic'];
                         echo "$field1";
@@ -159,7 +159,7 @@
                         echo
                           '</td>
                           <td class="px-4">
-                              <b>Address: </b>'
+                              <b>Address: </b>';
                               
                         $field2 = $show['locationOfClinic'];
                         echo "$field2"; 
@@ -172,7 +172,7 @@
                               Saturday: 1pm-4pm<br/>
                               Sunday: Closed<br/><br/>
     
-                              <b>Phone: </b>'
+                              <b>Phone: </b>';
                               
                         $field3 = $show['contactNumber'];
                         echo "$field3"; 
@@ -205,7 +205,7 @@
                               </table>              
                           </td>
                         </tr>
-                        '
+                        ';
 
                         // $field1 = $show['effectiveness'];
                         // $field2 = $show['Score'];
