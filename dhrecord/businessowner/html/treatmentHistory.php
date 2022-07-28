@@ -41,20 +41,34 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                   <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./apptSchedulingAndReminders.php">Appointment Scheduling & Reminder</a>
+                        <a class="nav-link" href="./userManagement.php">User Management</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./surveyAndFeedback.php">Survey & Feedback</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Appointment & Treatment
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
+                                    & Reminders</a></li>
+                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./treatmentHistory.php">Treatment History</a>
+                        <a class="nav-link" href="./reportingAndStatistics.php">Reporting & Statistics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./billingInvoicing.php">Payment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
