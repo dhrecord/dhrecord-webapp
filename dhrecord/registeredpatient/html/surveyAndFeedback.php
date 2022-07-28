@@ -69,7 +69,16 @@ if(!isset($_SESSION['loggedin']))
             <div class="mb-3 row">
                 <label for="fullName" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-5">
-                    <?php echo $_SESSION['username']; ?>
+                    <?php 
+                    $res = ("SELECT registeredPatient.fullName FROM registeredPatient WHERE users.ID = '{$_SESSION['id']}' 
+                    AND users.ID = registeredPatient.users_ID");
+
+			        $result = mysqli_query($conn, $res);
+					
+                    while($sql = mysqli_fetch_assoc($result)){
+                              echo "<tr><td>".$sql["fullName"]."</td></tr>";
+                            }
+                   ?>
                     
                 </div>
             </div>
