@@ -1,6 +1,6 @@
 <?php
 
-	$id = $_GET['id']
+	$id = $_GET['id'];
 	
 	//Database Connection
 	$servername = "localhost";
@@ -33,18 +33,18 @@
 	$stmt_result = $stmt->get_result();
 	$row1 = $stmt_result->fetch_assoc();
 
-	$stmt = mysqli_prepare($conn, "insert into businessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "sssssssssi", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row['nameOfClinic'], $row['locationOfClinic'], $row['clinicSpecialization'], $row1['ID']);
+	$stmt = mysqli_prepare($conn, "insert into businessOwner(nameOfClinic, locationOfClinic, fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	mysqli_stmt_bind_param($stmt, "ssssssssi", $row['nameOfClinic'], $row['locationOfClinic'], $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row1['ID']);
 	mysqli_stmt_execute($stmt);
 
 	$sql = "DELETE FROM businessOwnerForApproval WHERE id = $id"; 
 	
 	if(mysqli_query($conn,$sql)){
 		mysqli_close($conn);
-		header('Location: registrationmanagement_businessowner.php')
+		header('Location: registrationmanagement_businessowner.php');
 	}
 	else{
-		echo "Error Approving, please try again"
+		echo "Error Approving, please try again";
 	}
 
 ?>
