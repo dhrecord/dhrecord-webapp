@@ -41,7 +41,7 @@
                         <a class="nav-link" href="./userManagement.html">User Management</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./referralTracking.html">Referral Tracking</a>
+                        <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
