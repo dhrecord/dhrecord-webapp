@@ -142,12 +142,6 @@
                     }
 
                       $sessionID = $_SESSION['id'];
-
-                      // $stmt = $conn->prepare("SELECT * FROM businessOwner");
-                      
-                      // $stmt_result = $stmt->get_result();
-                      // $data = $stmt_result->fetch_assoc();
-                      // echo "hello"; 
                       $result = $conn->query("SELECT * FROM businessOwner");
 
                       while ($row = $result->fetch_assoc())
@@ -181,7 +175,17 @@
                               
                         echo      
                               '<br/>
-                              <b>Website: </b>ashforddentalcentre.com.sg<br/><br/>
+                              <b>Website: </b>';
+
+                        $field4 = $row['website'];
+                        if ($field4 === NULL){
+                          echo "-";
+                        } else{
+                          echo $field4; 
+                        }
+                        
+                        echo
+                              '<br/><br/>
     
                               <b>Doctors:</b><br>
                               <table class="table docs">
@@ -208,161 +212,10 @@
                           </td>
                         </tr>
                         ';
-
-                        // $field1 = $show['effectiveness'];
-                        // $field2 = $show['Score'];
-                      
-                        // echo "$field1: ";
-                        // echo "$field2%<br/><br/>";
                     }
 
                     mysqli_close($conn);
                   ?>
-
-                  <!-- <tr style="background-color: #F2F2F2">
-                      <td class="px-4">Ashford Dental Centre</td>
-                      <td class="px-4">
-                          <b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/>
-                          <br/>
-                          <b>Operating Hours:</b><br/>
-                          Monday-Friday: 9am–6pm<br/>
-                          Saturday: 1pm-4pm<br/>
-                          Sunday: Closed<br/><br/>
-
-                          <b>Phone: </b>6265 9146<br/>
-                          <b>Website: </b>ashforddentalcentre.com.sg<br/><br/>
-
-                          <b>Doctors:</b><br>
-                          <table class="table docs">
-                            <tr>
-                              <th class="px-4">Name</th>
-                              <th class="px-4">Services</th>
-                              <th class="px-4"></th>
-                            </tr>
-                            <tr>
-                              <td class="px-4">Dr. Smith Rowe</td>
-                              <td class="px-4">Oral Surgery, Dental Surgery</td>
-                              <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="px-4">Dr. Elizabeth</td>
-                              <td class="px-4">Orthodontic</td>
-                              <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
-                              </td>
-                            </tr>
-                          </table>              
-                      </td>
-                  </tr>
-
-                  <tr style="background-color: #F2F2F2">
-                      <td class="px-4">Royce Dental Surgery - Woodlands</td>
-                      <td class="px-4">
-                          <b>Address: </b>Woodlands Ave 1, #01-821 Block 371, Singapore 730371<br>
-                          <br>
-                          <b>Operating Hours:</b><br>
-                          Monday-Friday: 9am–6pm<br>
-                          Saturday-Sunday: Closed<br><br>
-                          <b>Phone: </b>6368 7467<br>
-                          <b>Website: </b>roycedentalsurgery.com<br><br>
-                          <b>Doctors:</b><br>
-                          <table class="table docs">
-                            <tr>
-                              <th class="px-4">Name</th>
-                              <th class="px-4">Services</th>
-                              <th class="px-4"></th>
-                            </tr>
-                            <tr>
-                              <td class="px-4">Dr. James</td>
-                              <td class="px-4">Oral Surgery, Dental Surgery</td>
-                              <td class="px-4"
-                              ><button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
-                            </td>
-                            </tr>
-                            <tr>
-                              <td class="px-4">Dr. Moon</td>
-                              <td class="px-4">Orthodontic</td>
-                              <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
-                            </td>
-                            </tr>
-                          </table>
-                      </td>
-                  </tr>
-
-                  <tr style="background-color: #F2F2F2">
-                      <td class="px-4">National Dental Centre Singapore</td>
-                      <td class="px-4">
-                          <b>Located in: </b>Singapore General Hospital<br>
-                          <b>Address: </b>5 Second Hospital Ave, Singapore 168938<br>
-                          <br>
-                          <b>Operating Hours:</b><br>
-                          Monday-Friday: 8:30am–5:30pm<br>
-                          Saturday-Sunday: Closed<br><br>
-                          <b>Phone: </b>6324 8802<br>
-                          <b>Website: </b>nationaldentalcentre.com<br><br>
-                          <b>Doctors:</b><br>
-                          <table class="table docs">
-                            <tr>
-                              <th class="px-4">Name</th>
-                              <th class="px-4">Services</th>
-                              <th class="px-4"></th>
-                            </tr>
-                            <tr>
-                              <td class="px-4">Dr. Dan</td>
-                              <td class="px-4">Oral Surgery, Dental Surgery</td>
-                              <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
-                            </td>
-                            </tr>
-                            <tr>
-                              <td class="px-4">Dr. Leslie</td>
-                              <td class="px-4">Orthodontic</td>
-                              <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
-                            </td>
-                            </tr>
-                          </table>
-                      </td>
-                  </tr>
-
-                  <tr style="background-color: #F2F2F2">
-                    <td class="px-4">Expat Dental</td>
-                    <td class="px-4">
-                        <b>Located in: </b>E Medical Novena<br>
-                        <b>Address: </b>10 Sinaran Drive Unit 08-15/16 Novena Medical Centre, 307506<br>
-                        <br>
-                        <b>Operating Hours:</b><br>
-                        Monday-Friday: 9am-5pm<br>
-                        Saturday-Sunday: Closed<br><br>
-                        <b>Phone: </b>6397 6718<br>
-                        <b>Website: </b>expatdental.com<br><br>
-                        <b>Doctors:</b><br>
-                        <table class="table docs">
-                          <tr>
-                            <th class="px-4">Name</th>
-                            <th class="px-4">Services</th>
-                            <th class="px-4"></th>
-                          </tr>
-                          <tr>
-                            <td class="px-4">Dr. Robert</td>
-                            <td class="px-4">Oral Surgery, Dental Surgery</td>
-                            <td class="px-4">
-                              <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="px-4">Dr. Ben</td>
-                            <td class="px-4">Orthodontic</td>
-                            <td class="px-4">
-                              <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/bookAppt.php'">Book</button>
-                            </td>
-                          </tr>
-                        </table>
-                    </td>
-                  </tr> -->
               </table>
           </div>
       </div>
