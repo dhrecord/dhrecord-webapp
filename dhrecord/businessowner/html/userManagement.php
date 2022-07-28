@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['loggedin']))
+  {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,13 +41,13 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./userManagement.html">User Management</a>
+                        <a class="nav-link active" href="./userManagement.php">User Management</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./referralTracking.html">Referral Tracking</a>
+                        <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -48,7 +57,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
                                     & Reminders</a></li>
-                            <li><a class="dropdown-item" href="./treatmentPlanning.html">Treatment Planning</a></li>
+                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -58,15 +67,15 @@
                         <a class="nav-link" href="./billingInvoicing.html">Payment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./inventoryManagement.html">Inventory Management</a>
+                        <a class="nav-link" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
-                        Welcome, Username
+                        Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
-                        onclick="document.location.href='./loginBusinessOwner.html'">Logout</button>
+                        onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/logout.php'">Logout</button>
                 </div>
             </div>
         </div>
@@ -75,20 +84,28 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">User Management</h4>
-        <div class="mb-4 d-flex align-items-center justify-content-between">
+        <div class="mb-4 d-flex align-items-center">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Name" aria-label="Name"
-                        aria-describedby="basic-addon2" style="max-width: 300px;" />
+                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
+                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="searchName();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
-            <div class="referral-box px-3 py-1">
-                <p class="m-0"><b>Referral Letter: ASX7aJWs</b></p>
-            </div>
+            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+                style="margin-left: 70px; max-width: 250px;">
+                <option selected disabled hidden>Filter By...</option>
+                <option value="1">No</option>
+                <option value="2">Name</option>
+                <option value="3">Address</option>
+                <option value="4">NRIC</option>
+                <option value="5">Contact No</option>
+                <option value="6">Email</option>
+                <option value="7">Check Referral</option>
+            </select>
         </div>
         <table class="table table-striped">
             <thead>
@@ -194,7 +211,6 @@
                                 <label for="inputCheckReferral" class="form-label">Check Referral</label>
                                 <input type="text" class="form-control" id="inputCheckReferral">
                             </div>
-
                         </form>
                     </div>
                     <div class="modal-footer">

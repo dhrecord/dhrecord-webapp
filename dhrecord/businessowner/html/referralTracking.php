@@ -1,6 +1,11 @@
 <?php
 	
 	session_start();
+  if(!isset($_SESSION['loggedin']))
+  {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +45,7 @@
                         <a class="nav-link" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./userManagement.html">User Management</a>
+                        <a class="nav-link" href="./userManagement.php">User Management</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="./referralTracking.php">Referral Tracking</a>
@@ -67,7 +72,7 @@
                         <a class="nav-link" href="./billingInvoicing.html">Payment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./inventoryManagement.html">Inventory Management</a>
+                        <a class="nav-link" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">

@@ -143,26 +143,28 @@
 
                       $sessionID = $_SESSION['id'];
 
-                      $stmt = $conn->prepare("SELECT * FROM businessOwner");
-                      $stmt_result = $stmt->get_result();
+                      // $stmt = $conn->prepare("SELECT * FROM businessOwner");
+                      
+                      // $stmt_result = $stmt->get_result();
                       // $data = $stmt_result->fetch_assoc();
+                      // echo "hello"; 
+                      $result = $conn->query("SELECT * FROM businessOwner");
 
-                      while ($data = mysql_fetch_assoc($stmt_result))
+                      while ($row = $result->fetch_assoc())
                       {
-                        echo
-                        '<tr style="background-color: #F2F2F2">
+                        echo '<tr style="background-color: #F2F2F2">
                           <td class="px-4">';
 
-                        $field1 = $show['nameOfClinic'];
-                        echo "$field1";
+                        $field1 = $row['nameOfClinic'];
+                        echo $field1;
 
                         echo
                           '</td>
                           <td class="px-4">
                               <b>Address: </b>';
                               
-                        $field2 = $show['locationOfClinic'];
-                        echo "$field2"; 
+                        $field2 = $row['locationOfClinic'];
+                        echo $field2; 
                         
                         echo      
                               '<br/>
@@ -174,8 +176,8 @@
     
                               <b>Phone: </b>';
                               
-                        $field3 = $show['contactNumber'];
-                        echo "$field3"; 
+                        $field3 = $row['contactNumber'];
+                        echo $field3; 
                               
                         echo      
                               '<br/>
@@ -212,10 +214,12 @@
                       
                         // echo "$field1: ";
                         // echo "$field2%<br/><br/>";
-                      }
+                    }
+
+                    mysqli_close($conn);
                   ?>
 
-                  <tr style="background-color: #F2F2F2">
+                  <!-- <tr style="background-color: #F2F2F2">
                       <td class="px-4">Ashford Dental Centre</td>
                       <td class="px-4">
                           <b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/>
@@ -287,6 +291,7 @@
                           </table>
                       </td>
                   </tr>
+
                   <tr style="background-color: #F2F2F2">
                       <td class="px-4">National Dental Centre Singapore</td>
                       <td class="px-4">
@@ -322,6 +327,7 @@
                           </table>
                       </td>
                   </tr>
+
                   <tr style="background-color: #F2F2F2">
                     <td class="px-4">Expat Dental</td>
                     <td class="px-4">
@@ -356,7 +362,7 @@
                           </tr>
                         </table>
                     </td>
-                  </tr>
+                  </tr> -->
               </table>
           </div>
       </div>
