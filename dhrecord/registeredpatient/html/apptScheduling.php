@@ -145,74 +145,75 @@
 
                       $stmt = $conn->prepare("SELECT * FROM businessOwner");
                       $stmt_result = $stmt->get_result();
-                      // $data = $stmt_result->fetch_assoc();
+                      $data = $stmt_result->fetch_assoc();
+                      echo $data['nameOfClinic']; 
 
-                      while ($data = mysql_fetch_assoc($stmt_result))
-                      {
-                        echo
-                        '<tr style="background-color: #F2F2F2">
-                          <td class="px-4">';
+                      // while ($data = mysql_fetch_assoc($stmt_result))
+                      // {
+                      //   echo
+                      //   '<tr style="background-color: #F2F2F2">
+                      //     <td class="px-4">';
 
-                        $field1 = $show['nameOfClinic'];
-                        echo "$field1";
+                      //   $field1 = $show['nameOfClinic'];
+                      //   echo "$field1";
 
-                        echo
-                          '</td>
-                          <td class="px-4">
-                              <b>Address: </b>';
+                      //   echo
+                      //     '</td>
+                      //     <td class="px-4">
+                      //         <b>Address: </b>';
                               
-                        $field2 = $show['locationOfClinic'];
-                        echo "$field2"; 
+                      //   $field2 = $show['locationOfClinic'];
+                      //   echo "$field2"; 
                         
-                        echo      
-                              '<br/>
-                              <br/>
-                              <b>Operating Hours:</b><br/>
-                              Monday-Friday: 9am–6pm<br/>
-                              Saturday: 1pm-4pm<br/>
-                              Sunday: Closed<br/><br/>
+                      //   echo      
+                      //         '<br/>
+                      //         <br/>
+                      //         <b>Operating Hours:</b><br/>
+                      //         Monday-Friday: 9am–6pm<br/>
+                      //         Saturday: 1pm-4pm<br/>
+                      //         Sunday: Closed<br/><br/>
     
-                              <b>Phone: </b>';
+                      //         <b>Phone: </b>';
                               
-                        $field3 = $show['contactNumber'];
-                        echo "$field3"; 
+                      //   $field3 = $show['contactNumber'];
+                      //   echo "$field3"; 
                               
-                        echo      
-                              '<br/>
-                              <b>Website: </b>ashforddentalcentre.com.sg<br/><br/>
+                      //   echo      
+                      //         '<br/>
+                      //         <b>Website: </b>ashforddentalcentre.com.sg<br/><br/>
     
-                              <b>Doctors:</b><br>
-                              <table class="table docs">
-                                <tr>
-                                  <th class="px-4">Name</th>
-                                  <th class="px-4">Services</th>
-                                  <th class="px-4"></th>
-                                </tr>
-                                <tr>
-                                  <td class="px-4">Dr. Smith Rowe</td>
-                                  <td class="px-4">Oral Surgery, Dental Surgery</td>
-                                  <td class="px-4">
-                                    <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="px-4">Dr. Elizabeth</td>
-                                  <td class="px-4">Orthodontic</td>
-                                  <td class="px-4">
-                                    <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                                  </td>
-                                </tr>
-                              </table>              
-                          </td>
-                        </tr>
-                        ';
+                      //         <b>Doctors:</b><br>
+                      //         <table class="table docs">
+                      //           <tr>
+                      //             <th class="px-4">Name</th>
+                      //             <th class="px-4">Services</th>
+                      //             <th class="px-4"></th>
+                      //           </tr>
+                      //           <tr>
+                      //             <td class="px-4">Dr. Smith Rowe</td>
+                      //             <td class="px-4">Oral Surgery, Dental Surgery</td>
+                      //             <td class="px-4">
+                      //               <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                      //             </td>
+                      //           </tr>
+                      //           <tr>
+                      //             <td class="px-4">Dr. Elizabeth</td>
+                      //             <td class="px-4">Orthodontic</td>
+                      //             <td class="px-4">
+                      //               <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                      //             </td>
+                      //           </tr>
+                      //         </table>              
+                      //     </td>
+                      //   </tr>
+                      //   ';
 
-                        // $field1 = $show['effectiveness'];
-                        // $field2 = $show['Score'];
+                      //   // $field1 = $show['effectiveness'];
+                      //   // $field2 = $show['Score'];
                       
-                        // echo "$field1: ";
-                        // echo "$field2%<br/><br/>";
-                      }
+                      //   // echo "$field1: ";
+                      //   // echo "$field2%<br/><br/>";
+                      // }
                   ?>
 
                   <tr style="background-color: #F2F2F2">
