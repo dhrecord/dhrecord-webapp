@@ -75,7 +75,7 @@ if(!isset($_SESSION['loggedin']))
                     	AND users.ID = '{$_SESSION['id']}' ");
 			$result = mysqli_query($conn, $res);
 					
-                    	while($sql = mysqli_fetch_row($result))
+                    	while($sql = mysqli_fetch_array($result))
 			{
                               echo $sql["fullName"];
                         }
