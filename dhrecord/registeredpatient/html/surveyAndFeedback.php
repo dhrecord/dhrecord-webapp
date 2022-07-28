@@ -71,7 +71,7 @@ if(!isset($_SESSION['loggedin']))
                 <div class="col-sm-5">
                     <?php 
                     
-			$res = ("SELECT registeredPatient.fullName FROM registeredPatient WHERE users.ID = registeredPatient.users_ID
+			$res = ("SELECT registeredPatient.fullName FROM registeredPatient, users WHERE users.ID = registeredPatient.users_ID
                     	AND users.ID = '{$_SESSION['id']}' ");
 			$result = mysqli_query($conn, $res);
 					
