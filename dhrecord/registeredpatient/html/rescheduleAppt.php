@@ -67,8 +67,9 @@
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
       <h4>Reschedule Appointment</h4>
+      <!-- buttons -->
       <div>
-        <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/apptscheduling.php'">Book Appointment</button>
+        <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/apptScheduling.php'">Book Appointment</button>
         <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
       </div>  
     </div>
