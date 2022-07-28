@@ -67,10 +67,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./reportingAndStatistics.html">Reporting & Statistics</a>
+                        <a class="nav-link" href="./reportingAndStatistics.php">Reporting & Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./billingInvoicing.html">Payment</a>
+                        <a class="nav-link" href="./billingInvoicing.php">Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./inventoryManagement-frontend.php">Inventory Management</a>
