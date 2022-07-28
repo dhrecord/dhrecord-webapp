@@ -144,13 +144,14 @@
                       $sessionID = $_SESSION['id'];
 
                       $stmt = $conn->prepare("SELECT * FROM businessOwner");
+                      
                       $stmt_result = $stmt->get_result();
                       // $data = $stmt_result->fetch_assoc();
-                      echo "hello"; 
+                      // echo "hello"; 
 
-                      // while ($data = mysql_fetch_assoc($stmt_result))
-                      // {
-                      //   echo
+                      while ($data = mysql_fetch_assoc($stmt_result))
+                      {
+                        echo "hello"
                       //   '<tr style="background-color: #F2F2F2">
                       //     <td class="px-4">';
 
@@ -213,7 +214,7 @@
                       
                       //   // echo "$field1: ";
                       //   // echo "$field2%<br/><br/>";
-                      // }
+                      }
                   ?>
 
                   <tr style="background-color: #F2F2F2">
