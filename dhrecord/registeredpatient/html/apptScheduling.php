@@ -179,7 +179,7 @@
 
                         $field4 = $row['website'];
                         if ($field4 === NULL){
-                          echo "&mdash";
+                          echo "&mdash;";
                         } else{
                           echo $field4; 
                         }
