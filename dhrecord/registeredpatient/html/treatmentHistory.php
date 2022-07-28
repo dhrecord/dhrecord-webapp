@@ -44,7 +44,7 @@ if(!isset($_SESSION['loggedin']))
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+                        <a class="nav-link" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../html/apptScheduling.php">Appointment Scheduling & Reminder</a>
@@ -56,7 +56,7 @@ if(!isset($_SESSION['loggedin']))
                         <a class="nav-link" href="./surveyAndFeedback.php">Survey & Feedback</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./treatmentHistory.php">Treatment History</a>
+                        <a class="nav-link active" href="./treatmentHistory.php">Treatment History</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
