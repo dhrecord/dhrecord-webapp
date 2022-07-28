@@ -73,12 +73,11 @@ if(!isset($_SESSION['loggedin']))
                     
 			$res = ("SELECT registeredPatient.fullName FROM registeredPatient WHERE users.ID = registeredPatient.users_ID
                     	AND users.ID = '{$_SESSION['id']}' ");
-			echo $_SESSION['id'];
 			$result = mysqli_query($conn, $res);
 					
                     	while($sql = mysqli_fetch_row($result))
 			{
-                              echo "<tr><td>".$sql[0]."</td></tr>";
+                              echo $sql[0];
                         }
                    ?>
                     
