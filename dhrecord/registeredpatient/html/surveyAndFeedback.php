@@ -78,7 +78,7 @@ if(!isset($_SESSION['loggedin']))
 					
                     	while($sql = mysqli_fetch_row($result))
 			{
-                              echo "<tr><td>".$sql["fullName"]."</td></tr>";
+                              echo "<tr><td>".$sql[0]."</td></tr>";
                         }
                    ?>
                     
