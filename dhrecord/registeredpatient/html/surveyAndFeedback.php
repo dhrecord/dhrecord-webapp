@@ -71,9 +71,9 @@ if(!isset($_SESSION['loggedin']))
                 <div class="col-sm-5">
                     <?php 
                     
-			$res = ("SELECT registeredPatient.fullName FROM registeredPatient WHERE users.ID = '{$_SESSION['id']}' 
-                    	AND users.ID = registeredPatient.users_ID");
-
+			$res = ("SELECT registeredPatient.fullName FROM registeredPatient WHERE users.ID = registeredPatient.users_ID
+                    	AND users.ID = '{$_SESSION['id']}' ");
+			echo $_SESSION['id'];
 			$result = mysqli_query($conn, $res);
 					
                     	while($sql = mysqli_fetch_row($result))
