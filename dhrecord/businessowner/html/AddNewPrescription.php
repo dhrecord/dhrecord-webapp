@@ -35,10 +35,10 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./userManagement.html">User Management</a>
+                        <a class="nav-link" href="./userManagement.php">User Management</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
@@ -55,13 +55,13 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./reportingAndStatistics.html">Reporting & Statistics</a>
+                        <a class="nav-link" href="./reportingAndStatistics.php">Reporting & Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./billingInvoicing.html">Payment</a>
+                        <a class="nav-link" href="./billingInvoicing.php">Payment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./inventoryManagement.html">Inventory Management</a>
+                        <a class="nav-link active" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
