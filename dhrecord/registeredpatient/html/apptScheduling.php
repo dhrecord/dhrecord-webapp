@@ -151,7 +151,7 @@
 
                       while ($data = mysql_fetch_assoc($stmt_result))
                       {
-                        echo "hello"
+                        echo "hello";
                       //   '<tr style="background-color: #F2F2F2">
                       //     <td class="px-4">';
 
@@ -214,7 +214,7 @@
                       
                       //   // echo "$field1: ";
                       //   // echo "$field2%<br/><br/>";
-                      }
+                    };
                   ?>
 
                   <tr style="background-color: #F2F2F2">
