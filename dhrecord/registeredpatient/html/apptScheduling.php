@@ -145,8 +145,7 @@
 
                       $stmt = $conn->prepare("SELECT * FROM businessOwner");
                       $stmt_result = $stmt->get_result();
-                      $data = $stmt_result->fetch_assoc();
-                      echo $data['nameOfClinic']; 
+                      // $data = $stmt_result->fetch_assoc();
                       echo "hello"; 
 
                       // while ($data = mysql_fetch_assoc($stmt_result))
