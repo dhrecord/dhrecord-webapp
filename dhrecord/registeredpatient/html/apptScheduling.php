@@ -149,7 +149,7 @@
                       // $data = $stmt_result->fetch_assoc();
                       // echo "hello"; 
 
-                      while ($data = mysql_fetch_assoc($stmt_result))
+                      while ($data = $stmt_result->fetch_assoc())
                       {
                         echo "hello";
                       //   '<tr style="background-color: #F2F2F2">
