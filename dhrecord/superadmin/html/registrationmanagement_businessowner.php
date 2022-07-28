@@ -214,39 +214,39 @@
                             <p style="display: none;" id="invisibleID"></p>
                             <div class="mb-3">
                                 <label for="inputName" class="form-label">Clinic Name</label>
-                                <input type="text" class="form-control" id="inputClinicName" <?php echo 'placeholder="'.$clinicName.'"'; ?> readonly></input>
+                                <input type="text" class="form-control" id="inputClinicName" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$clinicName.'"';} ?> readonly></input>
                             </div>
                             <div class="mb-3">
                                 <label for="inputName" class="form-label">Owner Name</label>
-                                <input type="text" class="form-control" id="inputName" <?php echo 'placeholder="'.$ownerName.'"'; ?> readonly>
+                                <input type="text" class="form-control" id="inputName" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$ownerName.'"';} ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputName" class="form-label">Owner NRIC</label>
-                                <input type="text" class="form-control" id="inputNRIC" <?php echo 'placeholder="'.$ownerNRIC.'"'; ?> readonly>
+                                <input type="text" class="form-control" id="inputNRIC" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$ownerNRIC.'"';} ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputAddress" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="inputAddress" <?php echo 'placeholder="'.$address.'"'; ?> readonly>
+                                <input type="text" class="form-control" id="inputAddress" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$address.'"';} ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputContactNo" class="form-label">Contact No.</label>
-                                <input type="text" class="form-control" id="inputContactNo" <?php echo 'placeholder="'.$contactNo.'"'; ?> readonly>
+                                <input type="text" class="form-control" id="inputContactNo" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$contactNo.'"';} ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" <?php echo 'placeholder="'.$email.'"'; ?> readonly>
+                                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$email.'"';} ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputSpecialization" class="form-label">Specialization</label>
-                                <textarea type="text" class="form-control" id="inputSpecialization" <?php echo 'placeholder="'.$specialization.'"'; ?> readonly></textarea>
+                                <textarea type="text" class="form-control" id="inputSpecialization" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$specialization.'"';} ?> readonly></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="inputRegistrationNo" class="form-label">Registration No.</label>
-                                <input type="text" class="form-control" id="inputRegistrationNo" <?php echo 'placeholder="'.$RegistrationNo.'"'; ?> readonly>
+                                <input type="text" class="form-control" id="inputRegistrationNo" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$RegistrationNo.'"';} ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="inputLicenseNo" class="form-label">License No.</label>
-                                <input type="text" class="form-control" id="inputLicenseNo" <?php echo 'placeholder="'.$LicenseNo.'"'; ?> readonly>
+                                <input type="text" class="form-control" id="inputLicenseNo" <?php while ($row = $result->fetch_assoc()){echo 'placeholder="'.$LicenseNo.'"';} ?> readonly>
                             </div>
                         </form>
                     </div>
