@@ -152,7 +152,7 @@
 
                       while ($row = $result->fetch_assoc())
                       {
-                        '<tr style="background-color: #F2F2F2">
+                        echo '<tr style="background-color: #F2F2F2">
                           <td class="px-4">';
 
                         $field1 = $row['nameOfClinic'];
