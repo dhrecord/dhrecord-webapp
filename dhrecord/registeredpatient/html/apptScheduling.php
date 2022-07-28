@@ -178,7 +178,7 @@
                               <b>Website: </b>';
 
                         $field4 = $row['website'];
-                        if ($field4 === NULL){
+                        if ($field4 === ""){
                           echo "&mdash;";
                         } else{
                           echo $field4; 
