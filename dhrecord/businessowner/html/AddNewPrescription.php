@@ -51,7 +51,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
                                     & Reminders</a></li>
-                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
+                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
