@@ -147,6 +147,7 @@
                       $stmt_result = $stmt->get_result();
                       $data = $stmt_result->fetch_assoc();
                       echo $data['nameOfClinic']; 
+                      echo "hello"; 
 
                       // while ($data = mysql_fetch_assoc($stmt_result))
                       // {
