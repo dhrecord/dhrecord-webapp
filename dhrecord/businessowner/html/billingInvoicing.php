@@ -101,7 +101,7 @@
                 <input type="radio" name="paymentMode" value="billing"> Billing
                 <br><br>
                 <button type="button" class="btn btn-lg btn-primary text-center"
-                    onclick="window.location.href='./modeOfPayment.html'">Next</button>
+                    onclick="window.location.href='./modeOfPayment.php'">Next</button>
             </form>
         </div>
     </div>
