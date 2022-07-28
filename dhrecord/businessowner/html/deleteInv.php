@@ -1,5 +1,10 @@
 <?php
-
+	session_start();
+	if(!isset($_SESSION['loggedin']))
+	{
+		header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+	    	exit;
+	}
 	require_once("connection.php");	
 
 if(isset($_GET['Delete']))
