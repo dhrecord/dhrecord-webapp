@@ -163,7 +163,7 @@
                 $query = "SELECT * FROM businessOwnerForApproval";
                 $query1 = "SELECT * FROM clinicSpecialization WHERE ID = '$specializationNo'";
                 $result1 = $conn->query($query1);
-                $row1 = $result1->fetch_assoc()
+                $row1 = $result1->fetch_assoc();
 
                 if ($result = $conn->query($query)) 
                 {
