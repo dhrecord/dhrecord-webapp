@@ -142,9 +142,11 @@
                     }
 
                     $sessionID = $_SESSION['id'];
-                    $result = $conn->query("SELECT * FROM businessOwner");
 
-                    while ($row = $result->fetch_assoc())
+                    // GET THE LIST OF CLINICS
+                    $resultBO = $conn->query("SELECT * FROM businessOwner");
+
+                    while ($row = $resultBO->fetch_assoc())
                     {
                       echo '<tr style="background-color: #F2F2F2">
                         <td class="px-4">';
@@ -163,12 +165,33 @@
                       echo      
                             '<br/>
                             <br/>
-                            <b>Operating Hours:</b><br/>
-                            Monday-Friday: 9am–6pm<br/>
-                            Saturday: 1pm-4pm<br/>
-                            Sunday: Closed<br/><br/>
-  
-                            <b>Phone: </b>';
+                            <b>Operating Hours:</b><br/>';
+                          
+                      // GET THE OPERATING HOURS OF THE CLINIC
+                      $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
+                                                FROM operatingHours 
+                                                WHERE operatingHours.clinicID = ?");
+                      $stmtOH->bind_param("s", $row['ID']);
+                      $stmtOH->execute();
+                      $resultOH = $stmtOH->get_result();
+
+                      while ($rowOH = $resultOH->fetch_assoc()){
+                        if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                          echo $rowOH['day'];
+                          echo ': Closed';
+                          echo '<br/>';
+                        } else {
+                          echo $rowOH['day'];
+                          echo ': ';
+                          echo $rowOH['start_time'];
+                          echo '-';
+                          echo $rowOH['end_time'];
+                          echo '<br/>';
+                        }
+                      }
+
+                      echo
+                          '<br/><b>Phone: </b>';
                             
                       $field3 = $row['contactNumber'];
                       echo $field3; 
@@ -194,38 +217,40 @@
                                 <th class="px-4">Services</th>
                                 <th class="px-4"></th>
                               </tr>';
-
-                      $stmt = $conn->prepare("SELECT DISTINCT doctor.doctorID, doctor.fullName 
+                      
+                      // GET THE LIST OF DOCTORS IN THE CLINIC
+                      $stmtDoc = $conn->prepare("SELECT DISTINCT doctor.doctorID, doctor.fullName 
                                                 FROM doctorClinic 
                                                 JOIN doctor ON doctorClinic.doctorID = doctor.doctorID 
                                                 WHERE doctorClinic.clinicID = ?");
-                      $stmt->bind_param("s", $row['ID']);
-                      $stmt->execute();
-                      $result2 = $stmt->get_result();
+                      $stmtDoc->bind_param("s", $row['ID']);
+                      $stmtDoc->execute();
+                      $resultDoc = $stmtDoc->get_result();
 
-                      while ($row2 = $result2->fetch_assoc()){
+                      while ($rowDoc = $resultDoc->fetch_assoc()){
                         echo
                             '<tr>
                               <td class="px-4">';
 
-                        echo $row2['fullName'];
+                        echo $rowDoc['fullName'];
                          
                         echo
                               '</td>
                               <td class="px-4">';
-                              
-                        $stmt2 = $conn->prepare("SELECT clinicSpecialization.specName 
+                        
+                        // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
+                        $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
                                                   FROM doctorSpecialization
                                                   JOIN clinicSpecialization 
                                                   ON clinicSpecialization.ID = doctorSpecialization.specializationID 
                                                   WHERE doctorSpecialization.doctorID=?");
-                        $stmt2->bind_param("s", $row2['doctorID']);
-                        $stmt2->execute();
-                        $result3 = $stmt2->get_result();
+                        $stmtSpec->bind_param("s", $rowDoc['doctorID']);
+                        $stmtSpec->execute();
+                        $resultSpec = $stmtSpec->get_result();
 
                         $specializations = array();
-                        while ($row3 = $result3->fetch_assoc()){
-                          array_push($specializations, $row3["specName"]);
+                        while ($rowSpec = $resultSpec->fetch_assoc()){
+                          array_push($specializations, $rowSpec["specName"]);
                         }
                         
                         $array_length = count($specializations);
