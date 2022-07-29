@@ -46,7 +46,7 @@
             <a class="nav-link" aria-current="page" href="./home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./clinicspecialization.php">Clinic Specialization</a>
+            <a class="nav-link active" href="./clinicspecialization.php">Clinic Specialization</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./auditlog.php">Audit Log</a>
@@ -55,7 +55,7 @@
             <a class="nav-link" href="./usermanagement.php">User Management</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               Registration Management
             </a>
