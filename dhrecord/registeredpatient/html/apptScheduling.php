@@ -212,32 +212,30 @@
                          
                         echo
                               '</td>
-                              <td class="px-4">oi';
+                              <td class="px-4">';
                               
-                        // $stmt2 = $conn->prepare("SELECT clinicSpecialization.specName 
-                        //                           FROM doctorSpecialization
-                        //                           JOIN clinicSpecialization 
-                        //                           ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                        //                           WHERE doctorSpecialization.doctorID=?");
-                        // $stmt2->bind_param("s", $row2['doctorID']);
-                        // $stmt2->execute();
-                        // $result3 = $stmt2->get_result();
+                        $stmt2 = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                  FROM doctorSpecialization
+                                                  JOIN clinicSpecialization 
+                                                  ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                  WHERE doctorSpecialization.doctorID=?");
+                        $stmt2->bind_param("s", $row2['doctorID']);
+                        $stmt2->execute();
+                        $result3 = $stmt2->get_result();
 
-                        // $specializations = array();
-                        // while ($row3 = $result3->fetch_assoc()){
-                        //   array_push($specializations, $row3["specName"]);
-                        // }
+                        $specializations = array();
+                        while ($row3 = $result3->fetch_assoc()){
+                          array_push($specializations, $row3["specName"]);
+                        }
                         
-                        // $array_length = count($specializations);
-                        // for ($i = 0; $i < $array_length; $i++)  {
-                        //   echo $specializations[$i];
-                        //   echo ", ";
-                        //   if ($i < $array_length-1){
-                        //     echo ", ";
-                        //   } else {
-                        //     echo "; ";
-                        //   }
-                        // }
+                        $array_length = count($specializations);
+                        for ($i = 0; $i < $array_length; $i++)  {
+                          echo $specializations[$i];
+
+                          if ($i < $array_length-1){
+                            echo ", ";
+                          }
+                        }
                               
                         echo
                               '</td>
@@ -247,22 +245,8 @@
                             </tr>';
                       }
 
-                              // '<tr>
-                              //   <td class="px-4">Dr. Smith Rowe</td>
-                              //   <td class="px-4">Oral Surgery, Dental Surgery</td>
-                              //   <td class="px-4">
-                              //     <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                              //   </td>
-                              // </tr>
-                              // <tr>
-                              //   <td class="px-4">Dr. Elizabeth</td>
-                              //   <td class="px-4">Orthodontic</td>
-                              //   <td class="px-4">
-                              //     <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                              //   </td>
-                              // </tr>'
                     echo
-                            '</table>              
+                          '</table>              
                         </td>
                       </tr>
                       ';
