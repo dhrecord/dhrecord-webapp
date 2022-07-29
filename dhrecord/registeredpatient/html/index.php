@@ -66,7 +66,7 @@ if(!isset($_SESSION['loggedin']))
 
 
     <main class="container my-5">
-        <div class="bg-light p-5 rounded mt-3">
+        <div class="bg-light pt-4 pb-5 px-5 rounded mt-3">
             <!-- <h1>Homepage</h1> -->
             <hr>
             <h4 class="lead">Welcome, <?php echo $_SESSION['username']; ?></h4>
