@@ -199,7 +199,10 @@
                       //                           FROM `doctorClinic` 
                       //                           JOIN `doctor` ON doctorClinic.doctorID = doctor.doctorID 
                       //                           WHERE doctorClinic.clinicID=?");
-                      $stmt = $conn->prepare("SELECT * FROM registeredPatient where users_ID = ?");
+                      $stmt = $conn->prepare("SELECT DISTINCT doctor.doctorID, doctor.fullName 
+                                                FROM `doctorClinic` 
+                                                JOIN `doctor` ON doctorClinic.doctorID = doctor.doctorID 
+                                                WHERE doctorClinic.clinicID=?");
                       $stmt->bind_param("s", $row['ID']);
                       $stmt->execute();
                       $result2 = $stmt->get_result();
