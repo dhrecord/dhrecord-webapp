@@ -78,6 +78,211 @@
         <h4>Appointment Scheduling and Reminders</h4>
         <button class="btn btn-dark"  onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
       </div>
+
+      <div class="container my-5 custom-container">
+          <div class="mb-5 d-flex justify-content-between">
+              <div class="d-flex align-items-center">
+                  <div><p class="m-0"><b>Search Clinic:</b></p></div>
+            
+                  <div class="input-group mx-4" style="width:fit-content">
+                      <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
+                          aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
+                      <button class="input-group-text" id="basic-addon2">
+                      <!-- onclick="tableSearch();" -->
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                      </button>
+                  </div>
+
+                  <div class="mx-2"> 
+                    <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                  style="">
+                      <option selected disabled hidden>Filter By...</option>
+                      <option value="1">Clinic Name</option>
+                      <option value="2">Services</option>
+                      <option value="3">Address</option>
+                      <option value="4">Operating Hours (Day)</option>
+                      <option value="5">Operating Hours (Time)</option>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="d-flex align-items-center">
+                  <div class="mx-4" style="width:fit-content">
+                      <b>Quick Filter:</b>
+                  </div>
+                  <div class="mx-2"> 
+                    <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                  style="">
+                      <option selected disabled hidden>Filter By...</option>
+                      <option value="1">Show Nearest Clinics</option>
+                      <option value="2">Show Highest Rating Clinics</option>
+                    </select>
+                  </div>
+              </div>
+          </div>
+
+          <div class="content-div my-4">
+              <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
+                  <tr class="bg-dark text-light">
+                      <th class="px-4">Clinic Name</th>
+                      <th class="px-4">Clinic Description</th>
+                  </tr>
+
+                  <?php 
+                    // Database Connection
+                    $servername = "localhost";
+                    $database = "u922342007_Test";
+                    $username = "u922342007_admin";
+                    $password = "Aylm@012";
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $database);
+
+                    if (!$conn) 
+                    {
+                      die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $sessionID = $_SESSION['id'];
+
+                    // GET THE LIST OF CLINICS
+                    $resultBO = $conn->query("SELECT * FROM businessOwner");
+
+                    while ($row = $resultBO->fetch_assoc())
+                    {
+                      echo '<tr style="background-color: #F2F2F2">
+                        <td class="px-4">';
+
+                      $field1 = $row['nameOfClinic'];
+                      echo $field1;
+
+                      echo
+                        '</td>
+                        <td class="px-4">
+                            <b>Address: </b>';
+                            
+                      $field2 = $row['locationOfClinic'];
+                      echo $field2; 
+                      
+                      echo      
+                            '<br/>
+                            <br/>
+                            <b>Operating Hours:</b><br/>';
+                          
+                      // GET THE OPERATING HOURS OF THE CLINIC
+                      $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
+                                                FROM operatingHours 
+                                                WHERE operatingHours.clinicID = ?");
+                      $stmtOH->bind_param("s", $row['ID']);
+                      $stmtOH->execute();
+                      $resultOH = $stmtOH->get_result();
+
+                      while ($rowOH = $resultOH->fetch_assoc()){
+                        if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                          echo $rowOH['day'];
+                          echo ': Closed';
+                          echo '<br/>';
+                        } else {
+                          echo $rowOH['day'];
+                          echo ': ';
+                          echo $rowOH['start_time'];
+                          echo '-';
+                          echo $rowOH['end_time'];
+                          echo '<br/>';
+                        }
+                      }
+
+                      echo
+                          '<br/><b>Phone: </b>';
+                            
+                      $field3 = $row['contactNumber'];
+                      echo $field3; 
+                            
+                      echo      
+                            '<br/>
+                            <b>Website: </b>';
+
+                      $field4 = $row['website'];
+                      if ($field4 === ""){
+                        echo "&#45;";
+                      } else{
+                        echo $field4; 
+                      }
+                      
+                      echo
+                            '<br/><br/>
+  
+                            <b>Doctors:</b><br>
+                            <table class="table docs">
+                              <tr>
+                                <th class="px-4">Name</th>
+                                <th class="px-4">Services</th>
+                                <th class="px-4"></th>
+                              </tr>';
+                      
+                      // GET THE LIST OF DOCTORS IN THE CLINIC
+                      $stmtDoc = $conn->prepare("SELECT DISTINCT doctor.doctorID, doctor.fullName 
+                                                FROM doctorClinic 
+                                                JOIN doctor ON doctorClinic.doctorID = doctor.doctorID 
+                                                WHERE doctorClinic.clinicID = ?");
+                      $stmtDoc->bind_param("s", $row['ID']);
+                      $stmtDoc->execute();
+                      $resultDoc = $stmtDoc->get_result();
+
+                      while ($rowDoc = $resultDoc->fetch_assoc()){
+                        echo
+                            '<tr>
+                              <td class="px-4">';
+
+                        echo $rowDoc['fullName'];
+                         
+                        echo
+                              '</td>
+                              <td class="px-4">';
+                        
+                        // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
+                        $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                  FROM doctorSpecialization
+                                                  JOIN clinicSpecialization 
+                                                  ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                  WHERE doctorSpecialization.doctorID=?");
+                        $stmtSpec->bind_param("s", $rowDoc['doctorID']);
+                        $stmtSpec->execute();
+                        $resultSpec = $stmtSpec->get_result();
+
+                        $specializations = array();
+                        while ($rowSpec = $resultSpec->fetch_assoc()){
+                          array_push($specializations, $rowSpec["specName"]);
+                        }
+                        
+                        $array_length = count($specializations);
+                        for ($i = 0; $i < $array_length; $i++)  {
+                          echo $specializations[$i];
+
+                          if ($i < $array_length-1){
+                            echo ", ";
+                          }
+                        }
+                              
+                        echo
+                              '</td>
+                              <td class="px-4">
+                                <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                              </td>
+                            </tr>';
+                      }
+
+                    echo
+                          '</table>              
+                        </td>
+                      </tr>
+                      ';
+                    }
+
+                    mysqli_close($conn);
+                  ?>
+              </table>
+          </div>
+      </div>
   </div>
 
   <!-- <script type="application/javascript">
