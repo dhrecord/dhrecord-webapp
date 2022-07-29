@@ -223,8 +223,8 @@
                         $stmt2->execute();
                         $result3 = $stmt2->get_result();
 
-                        while ($row2 = $result2->fetch_assoc()){
-                          echo $row2["specName"];
+                        while ($row3 = $result3->fetch_assoc()){
+                          echo $row3["specName"];
                         }
                               // Oral Surgery, Dental Surgery
                               
