@@ -194,7 +194,7 @@
                           <td><?php echo $row["email"]; ?></td>
                           <td><?php echo $row1["specName"]; ?></td> 
                           <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["id"]; ?>">View</button></td>
-                          <td><button type="button" class="btn btn-sm btn-success"><a href='approve.php?id=<?php echo $row["id"]; ?>'>Approve</button></td>
+                          <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='approve.php?id=<?php echo $row["id"]; ?>'">Approve</button></td>
                         </tr>
 
         <!-- modal -->
