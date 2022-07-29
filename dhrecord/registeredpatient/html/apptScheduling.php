@@ -200,32 +200,34 @@
                       //                           JOIN `doctor` ON doctorClinic.doctorID = doctor.doctorID 
                       //                           WHERE doctorClinic.clinicID=?");
                       $stmt = $conn->prepare("SELECT DISTINCT doctor.doctorID, doctor.fullName 
-                                                FROM `doctorClinic` 
-                                                JOIN `doctor` ON doctorClinic.doctorID = doctor.doctorID 
-                                                WHERE doctorClinic.clinicID=?");
+                                                FROM doctorClinic 
+                                                JOIN doctor ON doctorClinic.doctorID = doctor.doctorID 
+                                                WHERE doctorClinic.clinicID = ?");
                       $stmt->bind_param("s", $row['ID']);
                       $stmt->execute();
                       $result2 = $stmt->get_result();
 
                       while ($row2 = $result2->fetch_assoc()){
+                        echo "hi";
                         echo $row2['fullName'];
                       }
 
-                              '<tr>
-                                <td class="px-4">Dr. Smith Rowe</td>
-                                <td class="px-4">Oral Surgery, Dental Surgery</td>
-                                <td class="px-4">
-                                  <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="px-4">Dr. Elizabeth</td>
-                                <td class="px-4">Orthodontic</td>
-                                <td class="px-4">
-                                  <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                                </td>
-                              </tr>
-                            </table>              
+                              // '<tr>
+                              //   <td class="px-4">Dr. Smith Rowe</td>
+                              //   <td class="px-4">Oral Surgery, Dental Surgery</td>
+                              //   <td class="px-4">
+                              //     <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                              //   </td>
+                              // </tr>
+                              // <tr>
+                              //   <td class="px-4">Dr. Elizabeth</td>
+                              //   <td class="px-4">Orthodontic</td>
+                              //   <td class="px-4">
+                              //     <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                              //   </td>
+                              // </tr>'
+                    echo
+                            '</table>              
                         </td>
                       </tr>
                       ';
