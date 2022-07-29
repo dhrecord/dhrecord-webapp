@@ -191,7 +191,7 @@
                       }
 
                       echo
-                          '<br/><b>Phone: </b>';
+                          '<br/><b>Phone test: </b>';
                             
                       $field3 = $row['contactNumber'];
                       echo $field3; 
