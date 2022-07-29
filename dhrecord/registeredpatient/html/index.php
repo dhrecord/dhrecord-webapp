@@ -102,7 +102,7 @@ if(!isset($_SESSION['loggedin']))
                         $data = $stmt_result->fetch_assoc();
                 ?>
 
-                <br><h5>Name: </h5><p style="font-size: 1.25rem;"><?php echo $data['fullName']; ?></p><br>
+                <br><p style="font-size: 1.25rem;"><b>Name: </b><?php echo $data['fullName']; ?></p><br>
                 <br><h5>NRIC: <?php echo $data['nricNumber']; ?></h5><br>
                 <br><h5>Contact Number: <?php echo $data['contactNumber']; ?></h5><br>
                 <br><h5>Email: <?php echo $data['email']; ?></h5><br>
