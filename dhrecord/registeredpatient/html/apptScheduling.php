@@ -141,77 +141,91 @@
                       die("Connection failed: " . mysqli_connect_error());
                     }
 
-                      $sessionID = $_SESSION['id'];
-                      $result = $conn->query("SELECT * FROM businessOwner");
+                    $sessionID = $_SESSION['id'];
+                    $result = $conn->query("SELECT * FROM businessOwner");
 
-                      while ($row = $result->fetch_assoc())
-                      {
-                        echo '<tr style="background-color: #F2F2F2">
-                          <td class="px-4">';
+                    while ($row = $result->fetch_assoc())
+                    {
+                      echo '<tr style="background-color: #F2F2F2">
+                        <td class="px-4">';
 
-                        $field1 = $row['nameOfClinic'];
-                        echo $field1;
+                      $field1 = $row['nameOfClinic'];
+                      echo $field1;
 
-                        echo
-                          '</td>
-                          <td class="px-4">
-                              <b>Address: </b>';
-                              
-                        $field2 = $row['locationOfClinic'];
-                        echo $field2; 
-                        
-                        echo      
-                              '<br/>
-                              <br/>
-                              <b>Operating Hours:</b><br/>
-                              Monday-Friday: 9am–6pm<br/>
-                              Saturday: 1pm-4pm<br/>
-                              Sunday: Closed<br/><br/>
-    
-                              <b>Phone: </b>';
-                              
-                        $field3 = $row['contactNumber'];
-                        echo $field3; 
-                              
-                        echo      
-                              '<br/>
-                              <b>Website: </b>';
+                      echo
+                        '</td>
+                        <td class="px-4">
+                            <b>Address: </b>';
+                            
+                      $field2 = $row['locationOfClinic'];
+                      echo $field2; 
+                      
+                      echo      
+                            '<br/>
+                            <br/>
+                            <b>Operating Hours:</b><br/>
+                            Monday-Friday: 9am–6pm<br/>
+                            Saturday: 1pm-4pm<br/>
+                            Sunday: Closed<br/><br/>
+  
+                            <b>Phone: </b>';
+                            
+                      $field3 = $row['contactNumber'];
+                      echo $field3; 
+                            
+                      echo      
+                            '<br/>
+                            <b>Website: </b>';
 
-                        $field4 = $row['website'];
-                        if ($field4 === ""){
-                          echo "&#45;";
-                        } else{
-                          echo $field4; 
-                        }
-                        
-                        echo
-                              '<br/><br/>
-    
-                              <b>Doctors:</b><br>
-                              <table class="table docs">
-                                <tr>
-                                  <th class="px-4">Name</th>
-                                  <th class="px-4">Services</th>
-                                  <th class="px-4"></th>
-                                </tr>
-                                <tr>
-                                  <td class="px-4">Dr. Smith Rowe</td>
-                                  <td class="px-4">Oral Surgery, Dental Surgery</td>
-                                  <td class="px-4">
-                                    <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="px-4">Dr. Elizabeth</td>
-                                  <td class="px-4">Orthodontic</td>
-                                  <td class="px-4">
-                                    <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                                  </td>
-                                </tr>
-                              </table>              
-                          </td>
-                        </tr>
-                        ';
+                      $field4 = $row['website'];
+                      if ($field4 === ""){
+                        echo "&#45;";
+                      } else{
+                        echo $field4; 
+                      }
+                      
+                      echo
+                            '<br/><br/>
+  
+                            <b>Doctors:</b><br>
+                            <table class="table docs">
+                              <tr>
+                                <th class="px-4">Name</th>
+                                <th class="px-4">Services</th>
+                                <th class="px-4"></th>
+                              </tr>';
+                      
+                      // $result2 = $conn->query("SELECT DISTINCT doctor.doctorID, doctor.fullName 
+                      //                           FROM `doctorClinic` 
+                      //                           JOIN `doctor` ON doctorClinic.doctorID = doctor.doctorID 
+                      //                           WHERE doctorClinic.clinicID=?");
+                      $stmt = $conn->prepare("SELECT * FROM registeredPatient where users_ID = ?");
+                      $stmt->bind_param("s", $row['ID']);
+                      $stmt->execute();
+                      $result2 = $stmt->get_result();
+
+                      while ($row2 = $result2->fetch_assoc()){
+                        echo $row2['fullName'];
+                      }
+
+                              '<tr>
+                                <td class="px-4">Dr. Smith Rowe</td>
+                                <td class="px-4">Oral Surgery, Dental Surgery</td>
+                                <td class="px-4">
+                                  <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="px-4">Dr. Elizabeth</td>
+                                <td class="px-4">Orthodontic</td>
+                                <td class="px-4">
+                                  <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                                </td>
+                              </tr>
+                            </table>              
+                        </td>
+                      </tr>
+                      ';
                     }
 
                     mysqli_close($conn);
