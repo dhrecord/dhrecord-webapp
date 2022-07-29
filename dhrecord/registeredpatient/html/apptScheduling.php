@@ -176,23 +176,30 @@
                       $stmtOH->execute();
                       $resultOH = $stmtOH->get_result();
 
+                      echo '<table class="table">';
+
                       while ($rowOH = $resultOH->fetch_assoc()){
                         if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                          echo '<tr><td>';
                           echo $rowOH['day'];
-                          echo ': Closed';
-                          echo '<br/>';
+                          echo '</td><td class="px-3">Closed</td>';
                         } else {
+                          echo '<tr><td>';
                           echo $rowOH['day'];
-                          echo ': ';
-                          echo $rowOH['start_time'];
+                          echo '</td><td class="px-3">';
+                          $start_time = $rowOH['start_time']; 
+                          echo substr($start_time, 0, 5);
                           echo '-';
-                          echo $rowOH['end_time'];
-                          echo '<br/>';
+                          $end_time = $rowOH['end_time']; 
+                          echo substr($end_time, 0, 5);
+                          echo '</td></tr>';
                         }
                       }
 
+                      echo '</table>';
+
                       echo
-                          '<br/><b>Phone: </b>';
+                          '<b>Phone: </b>';
                             
                       $field3 = $row['contactNumber'];
                       echo $field3; 
