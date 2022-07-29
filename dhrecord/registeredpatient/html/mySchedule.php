@@ -22,16 +22,10 @@
   <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/core/main.css">
   <link rel="stylesheet" href="../../apptScheduling/fullcalendar/packages/daygrid/main.css">
 
-  <!-- 
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
-  <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
-  <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' /> 
-  -->
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 
   <!-- Style -->
   <link rel="stylesheet" href="../../apptScheduling/css/style.css">
@@ -105,16 +99,6 @@
   <script src='../../apptScheduling/fullcalendar/packages/timegrid/main.js'></script>
   <script src='../../apptScheduling/fullcalendar/packages/list/main.js'></script>
 
-  <!-- <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-
-  <script src='fullcalendar/packages/core/main.js'></script>
-  <script src='fullcalendar/packages/interaction/main.js'></script>
-  <script src='fullcalendar/packages/daygrid/main.js'></script>
-  <script src='fullcalendar/packages/timegrid/main.js'></script>
-  <script src='fullcalendar/packages/list/main.js'></script> -->
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
@@ -142,8 +126,8 @@
           {
             title: 'Dental Brace',
             start: '2022-07-31T15:00:00',
-            clinic: 'ZW Dental',
-            doctor: 'Dr. Rose'
+            clinic: 'Expat Dental',
+            doctor: 'Dr. Robert Reddington'
           },
         ]
       });
