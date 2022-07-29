@@ -1,13 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\dhrecord",
-    "\\dhrecord\\LoginUnregisteredPatient",
-    "\\dhrecord\\LoginUnregisteredPatient\\LoginPage",
-    "\\dhrecord\\LoginUnregisteredPatient\\RegistrationPagePatient",
-    "\\dhrecord\\registeredpatient",
-    "\\dhrecord\\registeredpatient\\html"
+    ""
   ],
-  "SelectedNode": "\\dhrecord\\LoginUnregisteredPatient\\RegistrationPagePatient\\verify.php",
+  "SelectedNode": "\\C:\\Users\\joven\\source\\repos\\dhrecord-webapp-updated",
   "PreviewInSolutionExplorer": false
 }
