@@ -102,13 +102,13 @@ if(!isset($_SESSION['loggedin']))
                         $data = $stmt_result->fetch_assoc();
                 ?>
 
-                <br><p style="font-size: 1.25rem;"><b>Name: </b><?php echo $data['fullName']; ?></p><br>
-                <br><h5>NRIC: <?php echo $data['nricNumber']; ?></h5><br>
-                <br><h5>Contact Number: <?php echo $data['contactNumber']; ?></h5><br>
-                <br><h5>Email: <?php echo $data['email']; ?></h5><br>
-                <br><h5>Address: <?php echo $data['address']; ?></h5><br>
-                <br><h5>Medical Conditions: <?php echo $data['medConditions']; ?></h5><br>
-                <br><h5>Drug Allergies: <?php echo $data['drugAllergies']; ?></h5><br>
+                <br><p style="font-size: 1.25rem;"><b>Name: </b><?php echo $data['fullName']; ?></p>
+                <br><p style="font-size: 1.25rem;"><b>NRIC: </b><?php echo $data['nricNumber']; ?></p>
+                <br><p style="font-size: 1.25rem;"><b>Contact Number: </b><?php echo $data['contactNumber']; ?></p>
+                <br><p style="font-size: 1.25rem;"><b>Email: </b><?php echo $data['email']; ?></p>
+                <br><p style="font-size: 1.25rem;"><b>Address: </b><?php echo $data['address']; ?></p>
+                <br><p style="font-size: 1.25rem;"><b>Medical Conditions: </b><?php echo $data['medConditions']; ?></p>
+                <br><p style="font-size: 1.25rem;"><b>Drug Allergies: </b><?php echo $data['drugAllergies']; ?></p>
             </p>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
         </div>
