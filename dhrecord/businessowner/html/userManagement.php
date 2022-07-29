@@ -6,8 +6,6 @@
     exit;
   }
 
-  $sessionID = $_SESSION['ID'];
-
   //Database Connection
   $servername = "localhost";
   $database = "u922342007_Test";
@@ -21,7 +19,14 @@
   {
 	die("Connection failed: " . mysqli_connect_error());
   }
-
+  
+  $sessionID = $_SESSION['id'];
+  
+  $query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
+  $clinicInfo = mysqli_query($conn,$query);
+  $row = $clinicInfo->fetch_assoc();
+  
+  $clinicID = $row['ID'];
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +94,7 @@
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
-                        Welcome, <?php echo $_SESSION['username']; echo $sessionID; ?>
+                        Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
                         onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/logout.php'">Logout</button>
@@ -124,12 +129,7 @@
             </select>
 
             <div class="referral-box px-3"> 
-                <button type="button" class="btn btn-dark"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 500px;"
-                        >
-                    Add New User
-                </button>
-                
+                <button type="button" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 500px;" onclick="window.location.href='./addNewUser.php';">Add New User</button>
             </div>
         </div>
         <table class="table table-striped">
@@ -242,8 +242,8 @@
                 </div>
             </div>
         </div>
+        
     </div>
-
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -20,7 +20,6 @@ if(isset($_GET['vkey'])){
 	$fetchVerified = mysqli_prepare($conn, "SELECT verified,vkey FROM tempRegisteredBusinessOwner WHERE verified = 0 AND vkey = '$vkey' LIMIT 1");
 	$fetchVerified->execute();
 	$resultSet = $fetchVerified->get_result();
-	
 
 	if($resultSet->num_rows == 1)
 	{
