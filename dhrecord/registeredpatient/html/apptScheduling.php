@@ -225,7 +225,7 @@
 
                         $specializations = array();
                         while ($row3 = $result3->fetch_assoc()){
-                          array_push($flowers, $row3["specName"]);
+                          array_push($specializations, $row3["specName"]);
                         }
                         
                         $array_length = count($specializations);
