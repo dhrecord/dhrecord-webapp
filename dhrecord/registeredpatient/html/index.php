@@ -102,7 +102,7 @@ if(!isset($_SESSION['loggedin']))
 		                $stmt_result = $stmt->get_result();
                         $data = $stmt_result->fetch_assoc();
                 ?>
-                <div class="p-5 rounded border">
+                <div class="mt-1 p-2 rounded border">
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Name: </span><?php echo $data['fullName']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">NRIC: </span><?php echo $data['nricNumber']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Contact Number: </b><?php echo $data['contactNumber']; ?></p>
