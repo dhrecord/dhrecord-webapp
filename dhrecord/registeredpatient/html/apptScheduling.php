@@ -223,10 +223,19 @@
                         $stmt2->execute();
                         $result3 = $stmt2->get_result();
 
+                        $specializations = array();
                         while ($row3 = $result3->fetch_assoc()){
-                          echo $row3["specName"];
+                          array_push($flowers, $row3["specName"]);
                         }
-                              // Oral Surgery, Dental Surgery
+                        
+                        $array_length = count($specializations);
+                        for ($i = 0; $i < $array_length; $i++)  {
+                          echo $specializations[$i];
+                          
+                          if (i === $array_length-1){
+                            echo ", ";
+                          }
+                        }
                               
                         echo
                               '</td>
