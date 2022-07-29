@@ -106,6 +106,11 @@
                 <option value="6">Email</option>
                 <option value="7">Check Referral</option>
             </select>
+
+            <button type="button" class="btn btn-dark"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                +
+            </button>
         </div>
         <table class="table table-striped">
             <thead>
