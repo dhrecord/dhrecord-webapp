@@ -204,8 +204,8 @@
                       $result2 = $stmt->get_result();
 
                       while ($row2 = $result2->fetch_assoc()){
-                        echo '
-                            <tr>
+                        echo
+                            '<tr>
                               <td class="px-4">';
 
                         echo $row2['fullName'];
@@ -231,8 +231,8 @@
                         $array_length = count($specializations);
                         for ($i = 0; $i < $array_length; $i++)  {
                           echo $specializations[$i];
-                          
-                          if (i === $array_length-1){
+
+                          if ($i < $array_length-1){
                             echo ", ";
                           }
                         }
@@ -245,22 +245,8 @@
                             </tr>';
                       }
 
-                              // '<tr>
-                              //   <td class="px-4">Dr. Smith Rowe</td>
-                              //   <td class="px-4">Oral Surgery, Dental Surgery</td>
-                              //   <td class="px-4">
-                              //     <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                              //   </td>
-                              // </tr>
-                              // <tr>
-                              //   <td class="px-4">Dr. Elizabeth</td>
-                              //   <td class="px-4">Orthodontic</td>
-                              //   <td class="px-4">
-                              //     <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                              //   </td>
-                              // </tr>'
                     echo
-                            '</table>              
+                          '</table>              
                         </td>
                       </tr>
                       ';
