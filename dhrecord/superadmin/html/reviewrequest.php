@@ -82,7 +82,7 @@
         <h4 class="mb-4">Clinic Specialization - Review Request</h4>
 
         <div class="d-flex justify-content-end">
-            <a href="./clinicspecialization.html" class="btn btn-dark">Clinic Specialization</a>
+            <a href="./clinicspecialization.php" class="btn btn-dark">Clinic Specialization</a>
         </div>
 
         <!-- alert -->
