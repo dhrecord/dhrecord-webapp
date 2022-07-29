@@ -229,11 +229,15 @@
                         }
                         
                         $array_length = count($specializations);
+                        echo $array_length;
+                        echo $array_length-1;
                         for ($i = 0; $i < $array_length; $i++)  {
                           echo $specializations[$i];
                           
                           if ($i < $array_length-1){
                             echo ", ";
+                          } else {
+                            echo "; ";
                           }
                         }
                               
