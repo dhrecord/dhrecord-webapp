@@ -5,6 +5,23 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
+
+  $sessionID = $_SESSION['ID']
+
+  //Database Connection
+  $servername = "localhost";
+  $database = "u922342007_Test";
+  $username = "u922342007_admin";
+  $password = "Aylm@012";
+
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $database);
+
+  if (!$conn) 
+  {
+	die("Connection failed: " . mysqli_connect_error());
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +89,7 @@
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
-                        Welcome, <?php echo $_SESSION['username']; ?>
+                        Welcome, <?php echo $_SESSION['username']; echo $sessionID; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
                         onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/logout.php'">Logout</button>
@@ -104,24 +121,24 @@
                 <option value="4">NRIC</option>
                 <option value="5">Contact No</option>
                 <option value="6">Email</option>
-                <option value="7">Check Referral</option>
             </select>
 
-            <button type="button" class="btn btn-dark"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                +
-            </button>
+            <div class="referral-box px-3"> 
+                <button type="button" class="btn btn-dark"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 500px;"
+                        >
+                    Add New User
+                </button>
+                
+            </div>
         </div>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">NRIC</th>
                     <th scope="col">Contact No</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Check Referral</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
