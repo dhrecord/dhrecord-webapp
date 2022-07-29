@@ -204,8 +204,8 @@
                       $result2 = $stmt->get_result();
 
                       while ($row2 = $result2->fetch_assoc()){
-                        echo '
-                            <tr>
+                        echo
+                            '<tr>
                               <td class="px-4">';
 
                         echo $row2['fullName'];
@@ -230,7 +230,7 @@
                         
                         $array_length = count($specializations);
                         for ($i = 0; $i < $array_length; $i++)  {
-                          echo $specializations[$i];
+                          // echo $specializations[$i];
                           echo ", ";
                           // if ($i < $array_length-1){
                           //   echo ", ";
