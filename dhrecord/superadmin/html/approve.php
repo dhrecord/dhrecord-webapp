@@ -1,5 +1,12 @@
 <?php
 
+	session_start();
+	  if(!isset($_SESSION['loggedin']))
+	  {
+	    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+	    exit;
+	  }
+
 	$id = $_GET['id'];
 	
 	//Database Connection
