@@ -102,14 +102,15 @@ if(!isset($_SESSION['loggedin']))
 		                $stmt_result = $stmt->get_result();
                         $data = $stmt_result->fetch_assoc();
                 ?>
-
-                <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Name: </span><?php echo $data['fullName']; ?></p>
-                <p style="font-size: 1.25rem;"><span style="font-weight: 500;">NRIC: </span><?php echo $data['nricNumber']; ?></p>
-                <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Contact Number: </b><?php echo $data['contactNumber']; ?></p>
-                <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Email: </span><?php echo $data['email']; ?></p>
-                <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Address: </span><?php echo $data['address']; ?></p>
-                <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Medical Conditions: </span><?php echo $data['medConditions']; ?></p>
-                <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Drug Allergies: </span><?php echo $data['drugAllergies']; ?></p>
+                <div class="mt-4 p-5 bg-dark text-white rounded">
+                    <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Name: </span><?php echo $data['fullName']; ?></p>
+                    <p style="font-size: 1.25rem;"><span style="font-weight: 500;">NRIC: </span><?php echo $data['nricNumber']; ?></p>
+                    <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Contact Number: </b><?php echo $data['contactNumber']; ?></p>
+                    <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Email: </span><?php echo $data['email']; ?></p>
+                    <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Address: </span><?php echo $data['address']; ?></p>
+                    <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Medical Conditions: </span><?php echo $data['medConditions']; ?></p>
+                    <p style="font-size: 1.25rem;"><span style="font-weight: 500;">Drug Allergies: </span><?php echo $data['drugAllergies']; ?></p>
+                </div>
             </div>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
         </div>
