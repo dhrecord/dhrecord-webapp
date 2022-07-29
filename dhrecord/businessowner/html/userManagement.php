@@ -6,7 +6,7 @@
     exit;
   }
 
-  $sessionID = $_SESSION['ID']
+  $sessionID = $_SESSION['ID'];
 
   //Database Connection
   $servername = "localhost";
