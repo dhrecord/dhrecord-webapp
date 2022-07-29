@@ -176,27 +176,31 @@
                       $stmtOH->execute();
                       $resultOH = $stmtOH->get_result();
 
-                      echo '<table class="table">';
-
-                      while ($rowOH = $resultOH->fetch_assoc()){
-                        if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
-                          echo '<tr><td>';
-                          echo $rowOH['day'];
-                          echo '</td><td class="px-3">Closed</td>';
-                        } else {
-                          echo '<tr><td>';
-                          echo $rowOH['day'];
-                          echo '</td><td class="px-3">';
-                          $start_time = $rowOH['start_time']; 
-                          echo substr($start_time, 0, 5);
-                          echo '-';
-                          $end_time = $rowOH['end_time']; 
-                          echo substr($end_time, 0, 5);
-                          echo '</td></tr>';
+                      if ($resultOH->num_rows === 0) {
+                        echo '- <br/><br/>';
+                      } else {
+                        echo '<table class="table">';
+                      
+                        while ($rowOH = $resultOH->fetch_assoc()){
+                          if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                            echo '<tr><td>';
+                            echo $rowOH['day'];
+                            echo '</td><td class="px-3">Closed</td>';
+                          } else {
+                            echo '<tr><td>';
+                            echo $rowOH['day'];
+                            echo '</td><td class="px-3">';
+                            $start_time = $rowOH['start_time']; 
+                            echo substr($start_time, 0, 5);
+                            echo '-';
+                            $end_time = $rowOH['end_time']; 
+                            echo substr($end_time, 0, 5);
+                            echo '</td></tr>';
+                          }
                         }
+  
+                        echo '</table>';
                       }
-
-                      echo '</table>';
 
                       echo
                           '<b>Phone: </b>';
@@ -235,54 +239,58 @@
                       $stmtDoc->execute();
                       $resultDoc = $stmtDoc->get_result();
 
-                      while ($rowDoc = $resultDoc->fetch_assoc()){
-                        echo
-                            '<tr>
-                              <td class="px-4">';
-
-                        echo $rowDoc['fullName'];
-                         
-                        echo
-                              '</td>
-                              <td class="px-4">';
-                        
-                        // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
-                        $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
-                                                  FROM doctorSpecialization
-                                                  JOIN clinicSpecialization 
-                                                  ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                                                  WHERE doctorSpecialization.doctorID=?");
-                        $stmtSpec->bind_param("s", $rowDoc['doctorID']);
-                        $stmtSpec->execute();
-                        $resultSpec = $stmtSpec->get_result();
-
-                        $specializations = array();
-                        while ($rowSpec = $resultSpec->fetch_assoc()){
-                          array_push($specializations, $rowSpec["specName"]);
-                        }
-                        
-                        $array_length = count($specializations);
-                        for ($i = 0; $i < $array_length; $i++)  {
-                          echo $specializations[$i];
-
-                          if ($i < $array_length-1){
-                            echo ", ";
+                      if ($resultDoc->num_rows === 0) {
+                        echo '<tr><td class="px-4">-</td><td class="px-4">-</td><td></td></tr>';
+                      } else {
+                        while ($rowDoc = $resultDoc->fetch_assoc()){
+                          echo
+                              '<tr>
+                                <td class="px-4">';
+  
+                          echo $rowDoc['fullName'];
+                           
+                          echo
+                                '</td>
+                                <td class="px-4">';
+                          
+                          // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
+                          $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                    FROM doctorSpecialization
+                                                    JOIN clinicSpecialization 
+                                                    ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                    WHERE doctorSpecialization.doctorID=?");
+                          $stmtSpec->bind_param("s", $rowDoc['doctorID']);
+                          $stmtSpec->execute();
+                          $resultSpec = $stmtSpec->get_result();
+  
+                          $specializations = array();
+                          while ($rowSpec = $resultSpec->fetch_assoc()){
+                            array_push($specializations, $rowSpec["specName"]);
                           }
+                          
+                          $array_length = count($specializations);
+                          for ($i = 0; $i < $array_length; $i++)  {
+                            echo $specializations[$i];
+  
+                            if ($i < $array_length-1){
+                              echo ", ";
+                            }
+                          }
+                                
+                          echo
+                                '</td>
+                                <td class="px-4">
+                                  <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                                </td>
+                              </tr>';
                         }
-                              
-                        echo
-                              '</td>
-                              <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                              </td>
-                            </tr>';
                       }
 
-                    echo
-                          '</table>              
-                        </td>
-                      </tr>
-                      ';
+                      echo
+                            '</table>              
+                          </td>
+                        </tr>
+                        ';
                     }
 
                     mysqli_close($conn);
