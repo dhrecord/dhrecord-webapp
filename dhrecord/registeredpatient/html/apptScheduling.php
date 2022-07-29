@@ -87,7 +87,8 @@
                   <div class="input-group mx-4" style="width:fit-content">
                       <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
                           aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
-                      <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
+                      <button class="input-group-text" id="basic-addon2">
+                      <!-- onclick="tableSearch();" -->
                           <i class="fa-solid fa-magnifying-glass"></i>
                       </button>
                   </div>
@@ -299,7 +300,7 @@
       </div>
   </div>
 
-  <script type="application/javascript">
+  <!-- <script type="application/javascript">
     function tableSearch() {
         let input, filter, table, tr, td, txtValue;
         let tr2, tr3;
@@ -333,7 +334,7 @@
             }
         }
     };
-    </script>
+  </script> -->
 
 </body>
 
