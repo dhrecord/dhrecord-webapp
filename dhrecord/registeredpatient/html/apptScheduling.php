@@ -212,32 +212,32 @@
                          
                         echo
                               '</td>
-                              <td class="px-4">';
+                              <td class="px-4">oi';
                               
-                        $stmt2 = $conn->prepare("SELECT clinicSpecialization.specName 
-                                                  FROM doctorSpecialization
-                                                  JOIN clinicSpecialization 
-                                                  ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                                                  WHERE doctorSpecialization.doctorID=?");
-                        $stmt2->bind_param("s", $row2['doctorID']);
-                        $stmt2->execute();
-                        $result3 = $stmt2->get_result();
+                        // $stmt2 = $conn->prepare("SELECT clinicSpecialization.specName 
+                        //                           FROM doctorSpecialization
+                        //                           JOIN clinicSpecialization 
+                        //                           ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                        //                           WHERE doctorSpecialization.doctorID=?");
+                        // $stmt2->bind_param("s", $row2['doctorID']);
+                        // $stmt2->execute();
+                        // $result3 = $stmt2->get_result();
 
-                        $specializations = array();
-                        while ($row3 = $result3->fetch_assoc()){
-                          array_push($specializations, $row3["specName"]);
-                        }
+                        // $specializations = array();
+                        // while ($row3 = $result3->fetch_assoc()){
+                        //   array_push($specializations, $row3["specName"]);
+                        // }
                         
-                        $array_length = count($specializations);
-                        for ($i = 0; $i < $array_length; $i++)  {
-                          // echo $specializations[$i];
-                          echo ", ";
-                          // if ($i < $array_length-1){
-                          //   echo ", ";
-                          // } else {
-                          //   echo "; ";
-                          // }
-                        }
+                        // $array_length = count($specializations);
+                        // for ($i = 0; $i < $array_length; $i++)  {
+                        //   echo $specializations[$i];
+                        //   echo ", ";
+                        //   if ($i < $array_length-1){
+                        //     echo ", ";
+                        //   } else {
+                        //     echo "; ";
+                        //   }
+                        // }
                               
                         echo
                               '</td>
