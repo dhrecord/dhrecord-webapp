@@ -152,16 +152,26 @@
                       echo '<tr style="background-color: #F2F2F2">
                         <td class="px-4"><b>';
 
-                      $field1 = $row['nameOfClinic'];
-                      echo $field1;
+                      $fieldNOC = $row['nameOfClinic'];
+                      echo $fieldNOC;
 
                       echo
                         '</b></td>
                         <td class="px-4">
                             <b>Address: </b>';
                             
-                      $field2 = $row['locationOfClinic'];
-                      echo $field2; 
+                      $fieldLOC = $row['locationOfClinic'];
+                      echo $fieldLOC; 
+
+                      echo '<br/><b>Postal Code: </b>';
+
+                      $fieldPC = $row['locationOfClinic'];
+                      if($fieldPC){
+                        echo $fieldPC;
+                      } else {
+                        echo '-';
+                      }
+                       
                       
                       echo      
                             '<br/>
