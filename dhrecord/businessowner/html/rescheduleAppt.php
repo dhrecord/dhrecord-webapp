@@ -104,9 +104,9 @@
           <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
         </tr>
         <tr>
-          <td>Expat Dental</td>
-          <td>10 Sinaran Drive Unit 08-15/16 Novena Medical Centre</td>
-          <td>Dr. Robert Reddington</td>
+          <td>2</td>          
+          <td>Dr. Smith Rowe</td>
+          <td>Mariah Owen</td>
           <td>Dental Brace</td>
           <td>31-07-2002</td>
           <td>03.00 pm</td>

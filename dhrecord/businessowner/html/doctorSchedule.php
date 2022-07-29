@@ -133,13 +133,13 @@
             title: 'Monthly Checkup',
             start: '2022-07-27T14:00:00',
             doctor: 'Dr. Smith Rowe',
-            patient: 'Mr.Dee'
+            patient: 'Mark Kenneth'
           },
           {
             title: 'Dental Brace',
             start: '2022-07-31T15:00:00',
-            doctor: 'Dr. Rose',
-            patient: 'Mr.Fin'
+            doctor: 'Dr. Smith Rowe',
+            patient: 'Mariah Owen'
           },
         ]
       });
