@@ -42,10 +42,10 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./home.php">Home</a>
+            <a class="nav-link" aria-current="page" href="./home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./clinicspecialization.php">Clinic Specialization</a>
+            <a class="nav-link active" href="./clinicspecialization.php">Clinic Specialization</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./auditlog.php">Audit Log</a>
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <a href="./reviewrequest.html" class="btn btn-dark">Review Request</a>
+                <a href="./reviewrequest.php" class="btn btn-dark">Review Request</a>
                 &nbsp;&nbsp;&nbsp;
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal5">Add
                     Specialization</button>
