@@ -82,7 +82,7 @@
     </div>
     
     <div>
-        <form>
+        <!-- <form> -->
             <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
                 <div class="mb-3 row">
                     <label for="symptoms" class="col-sm-2 col-form-label">Symptoms: </label>
@@ -118,7 +118,7 @@
                     <div class="text-center"><button class="btn btn-dark mt-4 px-5" name="finish" onclick="document.location.href='../../businessowner/html/apptSchedulingAndReminders.php'">Finish</button></div>
                 </div>
             </div>
-        </form>
+        <!-- </form> -->
     </div>
   </div>
 
