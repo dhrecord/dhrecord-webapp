@@ -232,7 +232,7 @@
                         for ($i = 0; $i < $array_length; $i++)  {
                           echo $specializations[$i];
                           
-                          if (i === $array_length-1){
+                          if (i < $array_length-1){
                             echo ", ";
                           }
                         }
