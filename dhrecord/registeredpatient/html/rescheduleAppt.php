@@ -100,9 +100,9 @@
         </tr>
         <tr>
           <td>2</td>
-          <td>ZW Dental</td>
-          <td>Address</td>
-          <td>Dr. Rose</td>
+          <td>Expat Dental</td>
+          <td>10 Sinaran Drive Unit 08-15/16 Novena Medical Centre</td>
+          <td>Dr. Robert Reddington</td>
           <td>Dental Brace</td>
           <td>31-07-2002</td>
           <td>03.00 pm</td>
