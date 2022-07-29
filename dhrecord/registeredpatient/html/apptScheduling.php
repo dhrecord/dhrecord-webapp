@@ -165,7 +165,7 @@
 
                       echo '<br/><b>Postal Code: </b>';
 
-                      $fieldPC = $row['locationOfClinic'];
+                      $fieldPC = $row['postalCode'];
                       if($fieldPC){
                         echo $fieldPC;
                       } else {
