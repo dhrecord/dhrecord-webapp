@@ -72,11 +72,12 @@ if(!isset($_SESSION['loggedin']))
             <h4 class="lead">Welcome, <?php echo $_SESSION['username']; ?></h4>
             <h4 class="lead">Your next appointment is in 21 days.</h4>
             <hr>
-            <p>
+            <div>
                 <!--# temporary => later can add notifications and other functionalites <br> # e.g. list of accounts that
                 need to
                 be
                 reviewed and approved.-->
+                <h5>Profile Details</h5>
 
                 <?php 
                 
@@ -102,14 +103,14 @@ if(!isset($_SESSION['loggedin']))
                         $data = $stmt_result->fetch_assoc();
                 ?>
 
-                <br><p style="font-size: 1.25rem;"><b>Name: </b><?php echo $data['fullName']; ?></p>
-                <br><p style="font-size: 1.25rem;"><b>NRIC: </b><?php echo $data['nricNumber']; ?></p>
-                <br><p style="font-size: 1.25rem;"><b>Contact Number: </b><?php echo $data['contactNumber']; ?></p>
-                <br><p style="font-size: 1.25rem;"><b>Email: </b><?php echo $data['email']; ?></p>
-                <br><p style="font-size: 1.25rem;"><b>Address: </b><?php echo $data['address']; ?></p>
-                <br><p style="font-size: 1.25rem;"><b>Medical Conditions: </b><?php echo $data['medConditions']; ?></p>
-                <br><p style="font-size: 1.25rem;"><b>Drug Allergies: </b><?php echo $data['drugAllergies']; ?></p>
-            </p>
+                <p style="font-size: 1.25rem;"><b>Name: </b><?php echo $data['fullName']; ?></p>
+                <p style="font-size: 1.25rem;"><b>NRIC: </b><?php echo $data['nricNumber']; ?></p>
+                <p style="font-size: 1.25rem;"><b>Contact Number: </b><?php echo $data['contactNumber']; ?></p>
+                <p style="font-size: 1.25rem;"><b>Email: </b><?php echo $data['email']; ?></p>
+                <p style="font-size: 1.25rem;"><b>Address: </b><?php echo $data['address']; ?></p>
+                <p style="font-size: 1.25rem;"><b>Medical Conditions: </b><?php echo $data['medConditions']; ?></p>
+                <p style="font-size: 1.25rem;"><b>Drug Allergies: </b><?php echo $data['drugAllergies']; ?></p>
+            </div>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
         </div>
     </main>
