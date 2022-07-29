@@ -133,7 +133,7 @@
             title: 'Monthly Checkup',
             start: '2022-07-27T14:00:00',
             doctor: 'Dr. Smith Rowe',
-            patient: 'Mark Kenneth'
+            patient: 'Mark Ken'
           },
           {
             title: 'Dental Brace',

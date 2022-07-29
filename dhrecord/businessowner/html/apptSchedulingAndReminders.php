@@ -91,18 +91,6 @@
     <div class="container my-5">
         <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
 
-        <!-- <div class="mb-5 d-flex justify-content-end">
-            <button class="btn btn-dark">Book Appointment</button>
-            <div class="p-2"></div>
-            <button class="btn btn-dark">Reschedule</button>
-        </div> -->
-
-        <!-- <div class="calendar-box">
-            <div id='calendar-container'>
-                <div id='calendar'></div>
-            </div>
-        </div> -->
-
         <!-- for clinic-admin -->
         <div>
             <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
@@ -229,13 +217,13 @@
                         title: 'Monthly Checkup',
                         start: '2022-07-27T14:00:00',
                         doctor: 'Dr. Smith Rowe',
-                        patient: 'Mr.Dee'
+                        patient: 'Mark Ken'
                     },
                     {
                         title: 'Dental Brace',
                         start: '2022-07-31T15:00:00',
-                        doctor: 'Dr. Rose',
-                        patient: 'Mr.Fin'
+                        doctor: 'Dr. Smith Rowe',
+                        patient: 'Mariah Owen'
                     },
                 ]
             });

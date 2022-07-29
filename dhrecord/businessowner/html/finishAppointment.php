@@ -78,44 +78,47 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
-      <h4>Reschedule Appointment - {doctor name}</h4>
+      <h4>Finish Appointment Form</h4>
     </div>
     
     <div>
-      <table class="table table-striped">
-        <tr class="bg-dark text-white">
-          <th>No</th>
-          <th>Doctor</th>
-          <th>Patient</th>
-          <th>Agenda</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Dr. Smith Rowe</td>
-          <td>Mark Ken</td>
-          <td>Monthly Checkup</td>
-          <td>27-07-2002</td>
-          <td>02.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger" onclick="document.location.href='../../businessowner/html/finishAppointment.php'">Finish</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr>
-        <tr>
-          <td>2</td>          
-          <td>Dr. Smith Rowe</td>
-          <td>Mariah Owen</td>
-          <td>Dental Brace</td>
-          <td>31-07-2002</td>
-          <td>03.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger" onclick="document.location.href='../../businessowner/html/finishAppointment.php'">Finish</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr>
-      </table>
+        <form method="post" action="">
+            <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
+                <div class="mb-3 row">
+                    <label for="symptoms" class="col-sm-2 col-form-label">Symptoms: </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="symptoms" name="symptoms">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="diagnosis" class="col-sm-2 col-form-label">Diagnosis: </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="diagnosis" name="diagnosis">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="prescriptionName" class="col-sm-2 col-form-label">Prescription Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="prescriptionName" name="prescriptionName">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Quantity" name="Quantity">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="prescriptionDesc" class="col-sm-2 col-form-label">Comments</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="prescriptionDesc" name="prescriptionDesc">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5" name="finish" onclick="document.location.href='../../businessowner/html/apptSchedulingAndReminders.php'">Finish</button></div>
+                </div>
+            </div>
+        </form>
     </div>
   </div>
 
