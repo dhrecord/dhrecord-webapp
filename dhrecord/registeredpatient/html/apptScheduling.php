@@ -194,11 +194,7 @@
                                 <th class="px-4">Services</th>
                                 <th class="px-4"></th>
                               </tr>';
-                      
-                      // $result2 = $conn->query("SELECT DISTINCT doctor.doctorID, doctor.fullName 
-                      //                           FROM `doctorClinic` 
-                      //                           JOIN `doctor` ON doctorClinic.doctorID = doctor.doctorID 
-                      //                           WHERE doctorClinic.clinicID=?");
+
                       $stmt = $conn->prepare("SELECT DISTINCT doctor.doctorID, doctor.fullName 
                                                 FROM doctorClinic 
                                                 JOIN doctor ON doctorClinic.doctorID = doctor.doctorID 
@@ -208,8 +204,36 @@
                       $result2 = $stmt->get_result();
 
                       while ($row2 = $result2->fetch_assoc()){
-                        echo "hi";
+                        echo '
+                            <tr>
+                              <td class="px-4">';
+
                         echo $row2['fullName'];
+                         
+                        echo
+                              '</td>
+                              <td class="px-4">';
+                              
+                        $stmt2 = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                  FROM doctorSpecialization
+                                                  JOIN clinicSpecialization 
+                                                  ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                  WHERE doctorSpecialization.doctorID=?");
+                        $stmt2->bind_param("s", $row2['doctorID']);
+                        $stmt2->execute();
+                        $result3 = $stmt2->get_result();
+
+                        while ($row2 = $result2->fetch_assoc()){
+                          echo $row2["specName"];
+                        }
+                              // Oral Surgery, Dental Surgery
+                              
+                        echo
+                              '</td>
+                              <td class="px-4">
+                                <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                              </td>
+                            </tr>';
                       }
 
                               // '<tr>
