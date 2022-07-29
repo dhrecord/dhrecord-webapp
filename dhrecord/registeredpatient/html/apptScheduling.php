@@ -87,7 +87,8 @@
                   <div class="input-group mx-4" style="width:fit-content">
                       <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
                           aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
-                      <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
+                      <button class="input-group-text" id="basic-addon2">
+                      <!-- onclick="tableSearch();" -->
                           <i class="fa-solid fa-magnifying-glass"></i>
                       </button>
                   </div>
@@ -149,13 +150,13 @@
                     while ($row = $resultBO->fetch_assoc())
                     {
                       echo '<tr style="background-color: #F2F2F2">
-                        <td class="px-4">';
+                        <td class="px-4"><b>';
 
                       $field1 = $row['nameOfClinic'];
                       echo $field1;
 
                       echo
-                        '</td>
+                        '</b></td>
                         <td class="px-4">
                             <b>Address: </b>';
                             
@@ -175,23 +176,34 @@
                       $stmtOH->execute();
                       $resultOH = $stmtOH->get_result();
 
-                      while ($rowOH = $resultOH->fetch_assoc()){
-                        if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
-                          echo $rowOH['day'];
-                          echo ': Closed';
-                          echo '<br/>';
-                        } else {
-                          echo $rowOH['day'];
-                          echo ': ';
-                          echo $rowOH['start_time'];
-                          echo '-';
-                          echo $rowOH['end_time'];
-                          echo '<br/>';
+                      if ($resultOH->num_rows === 0) {
+                        echo '- <br/><br/>';
+                      } else {
+                        echo '<table class="table">';
+                      
+                        while ($rowOH = $resultOH->fetch_assoc()){
+                          if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                            echo '<tr><td>';
+                            echo $rowOH['day'];
+                            echo '</td><td class="px-3">Closed</td>';
+                          } else {
+                            echo '<tr><td>';
+                            echo $rowOH['day'];
+                            echo '</td><td class="px-3">';
+                            $start_time = $rowOH['start_time']; 
+                            echo substr($start_time, 0, 5);
+                            echo '-';
+                            $end_time = $rowOH['end_time']; 
+                            echo substr($end_time, 0, 5);
+                            echo '</td></tr>';
+                          }
                         }
+  
+                        echo '</table>';
                       }
 
                       echo
-                          '<br/><b>Phone: </b>';
+                          '<b>Phone: </b>';
                             
                       $field3 = $row['contactNumber'];
                       echo $field3; 
@@ -227,54 +239,58 @@
                       $stmtDoc->execute();
                       $resultDoc = $stmtDoc->get_result();
 
-                      while ($rowDoc = $resultDoc->fetch_assoc()){
-                        echo
-                            '<tr>
-                              <td class="px-4">';
-
-                        echo $rowDoc['fullName'];
-                         
-                        echo
-                              '</td>
-                              <td class="px-4">';
-                        
-                        // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
-                        $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
-                                                  FROM doctorSpecialization
-                                                  JOIN clinicSpecialization 
-                                                  ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                                                  WHERE doctorSpecialization.doctorID=?");
-                        $stmtSpec->bind_param("s", $rowDoc['doctorID']);
-                        $stmtSpec->execute();
-                        $resultSpec = $stmtSpec->get_result();
-
-                        $specializations = array();
-                        while ($rowSpec = $resultSpec->fetch_assoc()){
-                          array_push($specializations, $rowSpec["specName"]);
-                        }
-                        
-                        $array_length = count($specializations);
-                        for ($i = 0; $i < $array_length; $i++)  {
-                          echo $specializations[$i];
-
-                          if ($i < $array_length-1){
-                            echo ", ";
+                      if ($resultDoc->num_rows === 0) {
+                        echo '<tr><td class="px-4">-</td><td class="px-4">-</td><td></td></tr>';
+                      } else {
+                        while ($rowDoc = $resultDoc->fetch_assoc()){
+                          echo
+                              '<tr>
+                                <td class="px-4">';
+  
+                          echo $rowDoc['fullName'];
+                           
+                          echo
+                                '</td>
+                                <td class="px-4">';
+                          
+                          // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
+                          $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                    FROM doctorSpecialization
+                                                    JOIN clinicSpecialization 
+                                                    ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                    WHERE doctorSpecialization.doctorID=?");
+                          $stmtSpec->bind_param("s", $rowDoc['doctorID']);
+                          $stmtSpec->execute();
+                          $resultSpec = $stmtSpec->get_result();
+  
+                          $specializations = array();
+                          while ($rowSpec = $resultSpec->fetch_assoc()){
+                            array_push($specializations, $rowSpec["specName"]);
                           }
+                          
+                          $array_length = count($specializations);
+                          for ($i = 0; $i < $array_length; $i++)  {
+                            echo $specializations[$i];
+  
+                            if ($i < $array_length-1){
+                              echo ", ";
+                            }
+                          }
+                                
+                          echo
+                                '</td>
+                                <td class="px-4">
+                                  <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                                </td>
+                              </tr>';
                         }
-                              
-                        echo
-                              '</td>
-                              <td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                              </td>
-                            </tr>';
                       }
 
-                    echo
-                          '</table>              
-                        </td>
-                      </tr>
-                      ';
+                      echo
+                            '</table>              
+                          </td>
+                        </tr>
+                        ';
                     }
 
                     mysqli_close($conn);
@@ -284,7 +300,7 @@
       </div>
   </div>
 
-  <script type="application/javascript">
+  <!-- <script type="application/javascript">
     function tableSearch() {
         let input, filter, table, tr, td, txtValue;
         let tr2, tr3;
@@ -318,7 +334,8 @@
             }
         }
     };
-    </script>
+  </script> -->
+
 </body>
 
 </html>
