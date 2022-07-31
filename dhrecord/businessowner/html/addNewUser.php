@@ -53,7 +53,7 @@ if($role === "ca")
 	$stmt = mysqli_prepare($conn, "insert into clinicAdmin(userID, fullName, contactNumber, email, clinicID) values(?, ?, ?, ?, ?)");
 	mysqli_stmt_bind_param($stmt, "isssi", $row1['ID'], $fullName, $contactNumber, $email, $clinicID);
 	mysqli_stmt_execute($stmt);
-	header('Location: addNewUser.php');
+	header('Location: addUser.php');
 }
 
 if($role === "fd")
@@ -61,7 +61,7 @@ if($role === "fd")
 	$stmt = mysqli_prepare($conn, "insert into frontDesk(userID, fullName, contactNumber, email, clinicID) values(?, ?, ?, ?, ?)");
 	mysqli_stmt_bind_param($stmt, "isssi", $row1['ID'], $fullName, $contactNumber, $email, $clinicID);
 	mysqli_stmt_execute($stmt);
-	header('Location: addNewUser.php');
+	header('Location: addUser.php');
 }
 
 

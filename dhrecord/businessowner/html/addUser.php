@@ -101,7 +101,7 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-4">Add New User</h4>
-        <form method="post" action="./addUser.php" method="POST">
+        <form method="post" action="./addNewUser.php" method="POST">
             <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
                 <div class="mb-3 row">
                     <label for="clinicID" class="col-sm-2 col-form-label">Clinic ID</label>
