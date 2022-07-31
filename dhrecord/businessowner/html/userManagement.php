@@ -197,7 +197,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="clinicID" class="form-label">Clinic ID</label>
-                                <input type="text" class="form-control" id="inputContactNo" <?php echo 'value="'.$row["clinicID"].'"'; ?> disabled>
+                                <input type="text" class="form-control" id="clinicID" <?php echo 'value="'.$row["clinicID"].'"'; ?> disabled>
                             </div>
                             <div class="mb-3 row">
                                 <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
