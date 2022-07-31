@@ -151,8 +151,8 @@
                 {
                     while ($row = $result->fetch_assoc()) 
                     {
-                        $clinicadminID = $row["clinicadminID"];
-                        $query1 = "SELECT * FROM users WHERE ID = $clinicadminID";
+                        $clinicadminUserID = $row["userID"];
+                        $query1 = "SELECT * FROM users WHERE ID = $clinicadminUserID";
                         $result1 = $conn->query($query1);
                         $row1 = $result1->fetch_assoc();
                 ?>
@@ -220,8 +220,8 @@
                 {
                     while ($row2 = $result2->fetch_assoc()) 
                     {
-                        $frontdeskID = $row2["frontdeskID"];
-                        $query3 = "SELECT * FROM users WHERE ID = $clinicadminID";
+                        $frontdeskUserID = $row2["userID"];
+                        $query3 = "SELECT * FROM users WHERE ID = $frontdeskUserID";
                         $result3 = $conn->query($query3);
                         $row3 = $result3->fetch_assoc();
                 ?>
@@ -275,6 +275,11 @@
                 </div>
             </div>
         </div>
+        
+        <?php
+            }
+        }
+        ?>
             </tbody>
         </table>
     </div>
