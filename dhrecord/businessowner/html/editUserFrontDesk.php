@@ -1,6 +1,6 @@
 <?php
 
-$clinicadminID = intval($_POST['clinicadminID']);
+$frontdeskID = intval($_POST['frontdeskID']);
 $fullName = $_POST['fullName'];
 $contactNumber = $_POST['contactNumber'];
 $email = $_POST['email'];
@@ -20,7 +20,7 @@ if (!$conn)
 	die("Connection failed: " . mysqli_connect_error());
 }
 
-$query = "UPDATE clinicAdmin SET fullName='$fullName', contactNumber='$contactNumber', email='$email' WHERE clinicadminID='$clinicadminID'";
+$query = "UPDATE frontDesk SET fullName='$fullName', contactNumber='$contactNumber', email='$email' WHERE frontdeskID='$frontdeskID'";
 
 if (mysqli_query($conn,$query)) 
 {
