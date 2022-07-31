@@ -86,7 +86,7 @@
                         <input type="text" class="form-control" id="clinicID" name="clinicID" disabled>
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-5 row">
                     <label for="role" class="col-sm-2 col-form-label">Role</label>
                     <div class="col-sm-10">
                         <select name="role" id="role">
