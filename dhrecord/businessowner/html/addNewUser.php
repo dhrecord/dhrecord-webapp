@@ -86,13 +86,14 @@
                         <input type="text" class="form-control" id="clinicID" name="clinicID" disabled>
                     </div>
                 </div>
-                <div class="mb-5 row">
+                <div class="mb-3 row">
                     <label for="role" class="col-sm-2 col-form-label">Role</label>
                     <div class="col-sm-10">
                         <select name="role" id="role">
                         <option value="dr">Doctor</option>
                         <option value="ca">Clinic Admin</option>
                         <option value="fd">Front Desk</option>
+                        </select>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -120,7 +121,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="passWord" class="col-sm-2 col-form-label">password</label>
+                    <label for="passWord" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="passWord" name="passWord">
                     </div>
