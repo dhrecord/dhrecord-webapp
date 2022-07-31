@@ -158,18 +158,13 @@
                 ?>
                     <tr>
                         <td><?php echo $row["fullName"]; ?></td>
-                        <td><?php echo $row1["ID"]; ?></td> 
+                        <td><?php echo $row1["role"]; ?></td> 
                         <td><?php echo $row["contactNumber"]; ?></td> 
                         <td><?php echo $row["email"]; ?></td>
                         <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["clinicadminID"]; ?>">Edit</button></td>
                         <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?clinicadminID=<?php echo $row["clinicadminID"]; ?>'">Delete</button></td>
                     </tr>
 
-
-                <?php
-                    }
-                }
-                ?>
             </tbody>
         </table>
 
@@ -181,8 +176,8 @@
                         <h5 class="modal-title" id="popupModalLabel">View/Edit Full Information</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" action="./editUserClinicAdmin.php" method="post">
-                        <form>
+                    <div class="modal-body">
+                        <form action="./editUserClinicAdmin.php" method="post">
                             <p style="display: none;" id="invisibleID"></p>
                             <div class="mb-3">
                                 <label for="clinicadminID" class="form-label">Clinic Admin ID</label>
@@ -204,10 +199,6 @@
                                 <label for="clinicID" class="form-label">Clinic ID</label>
                                 <input type="text" class="form-control" id="inputContactNo" <?php echo 'value="'.$row["clinicID"].'"'; ?> disabled>
                             </div>
-                            <div class="mb-3">
-                                <label for="inputEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" <?php echo 'placeholder="'.$email.'"'; ?> readonly>
-                            </div>
                             <div class="mb-3 row">
                                 <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
                             </div>
@@ -216,6 +207,11 @@
                 </div>
             </div>
         </div>
+        
+        <?php
+            }
+        }
+        ?>
         
     </div>
 
