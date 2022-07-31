@@ -5,6 +5,15 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
+
+  $sessionID = $_SESSION['id'];
+  
+  $query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
+  $clinicInfo = mysqli_query($conn,$query);
+  $row = $clinicInfo->fetch_assoc();
+  
+  $clinicID = $row['ID'];
+
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +92,7 @@
                 <div class="mb-3 row">
                     <label for="clinicID" class="col-sm-2 col-form-label">Clinic ID</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="clinicID" name="clinicID" disabled>
+                        <input type="text" class="form-control" id="clinicID" name="clinicID" <?php echo 'value = "'.$clinicID. '"'; ?> disabled> 
                     </div>
                 </div>
                 <div class="mb-3 row">
