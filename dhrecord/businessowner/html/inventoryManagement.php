@@ -5,7 +5,7 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
-  //test6
+  //test7
 ?>
 
 <!DOCTYPE html>
