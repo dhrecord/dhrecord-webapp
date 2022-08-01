@@ -93,7 +93,6 @@ if(!isset($_SESSION['loggedin']))
 				<th>Attending Doctor</th>
 				<th>Symptoms</th>
 				<th>Medication Prescribed</th>
-
 			</tr>    		
 			
 			 <?php                           
@@ -145,7 +144,7 @@ if(!isset($_SESSION['loggedin']))
 			} else
 			{
 				$query=mysqli_query($conn, "SELECT treatmentHistory.date, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
+				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' ") 
 					or die(mysqli_error());
 				while($fetch=mysqli_fetch_array($query))
