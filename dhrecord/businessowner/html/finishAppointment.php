@@ -131,21 +131,21 @@
                           // GET THE LIST OF CLINICS
                           $resultBO = $conn->query("SELECT * FROM businessOwner");
 
-                          // while ($row = $resultClinics->fetch_assoc())
-                          // {
-                          //   echo '<option value="';
+                          while ($row = $resultBO->fetch_assoc())
+                          {
+                            echo '<option value="';
                             
-                          //   $fieldNOC = $row['nameOfClinic'];
-                          //   echo $fieldNOC;
+                            $fieldNOC = $row['nameOfClinic'];
+                            echo $fieldNOC;
 
-                          //   echo '">';
+                            echo '">';
       
-                          //   echo $fieldNOC;
+                            echo $fieldNOC;
 
-                          //   echo '</option>';
-                          // }
+                            echo '</option>';
+                          }
 
-                          // mysqli_close($conn);
+                          mysqli_close($conn);
                         ?>
                       </select>
                     </div>
