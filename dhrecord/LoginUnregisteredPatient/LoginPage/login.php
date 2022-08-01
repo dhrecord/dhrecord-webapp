@@ -40,6 +40,7 @@
 			{
 				$_SESSION['loggedin'] = TRUE;
 				$_SESSION['username'] = $data['username'];
+				$_SESSION['role'] = $data['role'];
 				
 				$_SESSION['id'] = $data['ID'];
 				

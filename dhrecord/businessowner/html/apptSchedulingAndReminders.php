@@ -138,36 +138,43 @@
         <div>
             <p># show this if login as a doctor => display doctor's calendar</p>
 
-            <?php        
-                // //Database Connection
-                // $servername = "localhost";
-                // $database = "u922342007_Test";
-                // $username = "u922342007_admin";
-                // $password = "Aylm@012";
-                // // Create connection
-                // $conn = mysqli_connect($servername, $username, $password, $database);
+            <?php
+                echo $_SESSION['role'];
 
-                // if (!$conn) 
-                // {
-                //     die("Connection failed: " . mysqli_connect_error());
-                // }
+                if ($_SESSION['role'] === "dr"){
+                    echo '<div class="my-4 d-flex justify-content-between">
+                    <h4>Doctor Appoinment Calendar - </h4>';
 
-                // $sessionID = $_SESSION['id'];
+                    echo '<h4>';
+                    echo $_SESSION['username'];
+                    echo '</h4>';
 
-                // $stmt = $conn->prepare("SELECT * FROM registeredPatient where users_ID = ?");
-                // $stmt->bind_param("s", $sessionID);
-                // $stmt->execute();
-                // $stmt_result = $stmt->get_result();
-                // $data = $stmt_result->fetch_assoc();
+                    echo '<div>
+                            <button class="btn btn-dark"
+                                onclick="document.location.href=\'../../businessowner/html/bookAppt.php\'">Book
+                                Appointment</button>
+                            <button class="btn btn-dark"
+                                onclick="document.location.href=\'../../businessowner/html/rescheduleAppt.php\'">Reschedule</button>
+                        </div>
+                    </div>';
+
+                    echo '<div class="calendar-box">
+                            <div id="calendar-container">
+                                <div id="calendar"></div>
+                            </div>
+                        </div>';
+                }
             ?>
 
-            <div class="my-4 d-flex justify-content-between">
-                <h4>Doctor Appoinment Calendar - {doctor name}</h4>
+            <!-- <div class="my-4 d-flex justify-content-between">
+                <h4>Doctor Appoinment Calendar - </h4> -->
                 <?php 
-                    // echo $data['fullName']; will replace {doctor name with this code}
+                    // echo '<h4>';
+                    // echo $_SESSION['username'];
+                    // echo '</h4>';
                 ?>
 
-                <div>
+                <!-- <div>
                     <button class="btn btn-dark"
                         onclick="document.location.href='../../businessowner/html/bookAppt.php'">Book
                         Appointment</button>
@@ -180,7 +187,8 @@
                 <div id='calendar-container'>
                     <div id='calendar'></div>
                 </div>
-            </div>
+            </div> -->
+
         </div>
     </div>
 
