@@ -82,7 +82,7 @@ if(!isset($_SESSION['loggedin']))
 			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>"/>
 			<label>To</label>
 			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
-			<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button>
+			<button class="btn btn-primary" name="filter"><span class="glyphicon glyphicon-search"></span></button>
 		</form>
 		<br/><br/>
             </div>
@@ -105,13 +105,8 @@ if(!isset($_SESSION['loggedin']))
         
 			// Create connection
 			$conn = mysqli_connect($servername, $username, $password, $database);
-								
-			/*$res = ("SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, treatmentHistory.symptoms, 
-			treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
-			WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}'");
-			*/
 			       
-			if(ISSET($_POST['search']))
+			if(ISSET($_POST['filter']))
 			{
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
@@ -138,7 +133,7 @@ if(!isset($_SESSION['loggedin']))
 				{
 					echo'
 					<tr>
-						<td colspan = "5"><center>Record Not Found</center></td>
+						<td colspan = "4"><center>Record Not Found</center></td>
 					</tr>';
 				}
 			} else
