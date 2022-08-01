@@ -129,7 +129,7 @@
                           $sessionID = $_SESSION['id'];
 
                           // GET THE LIST OF CLINICS
-                          // $resultClinics = $conn->query("SELECT * FROM businessOwner");
+                          $resultBO = $conn->query("SELECT * FROM businessOwner");
 
                           // while ($row = $resultClinics->fetch_assoc())
                           // {
