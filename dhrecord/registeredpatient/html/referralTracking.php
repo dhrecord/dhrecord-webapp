@@ -84,21 +84,19 @@ if(!isset($_SESSION['loggedin']))
             <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
-                <option value="1">Referred By</option>
+                <option value="1">Referred To</option>
                 <option value="2">Referral Date</option>
                 <option value="3">Referring Doctor</option>
-                <option value="4">Referred To</option>
-                <option value="5">Tooth Condition</option>
+                <option value="4">Tooth Condition</option>
             </select>
         </div>
 	<table class="table table-striped">
 		<thead>
         		<tr>
 				<th>No</th>
-        			<th>Referred By</th>
+        			<th>Referred To</th>
         			<th>Referral Date</th>
 				<th>Referring Doctor</th>
-				<th>Referred To</th>
 				<th>Tooth Condition</th>
         		</tr>
 		</thead>
@@ -114,7 +112,7 @@ if(!isset($_SESSION['loggedin']))
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
 				           
-			$res = ("SELECT referralTracking.ID, referralTracking.referredBy, referralTracking.referralDate, referralTracking.referringDoctor, referralTracking.referredTo, 
+			$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, referralTracking.referringDoctor, 
 			referralTracking.toothCondition FROM referralTracking, registeredPatient, users WHERE users.ID = '{$_SESSION['id']}' 
 			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
@@ -122,7 +120,7 @@ if(!isset($_SESSION['loggedin']))
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]."</td><td>".$sql["referredTo"]
+                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]
 				      ."</td><td>".$sql["toothCondition"]."</td></tr>";
                             }
 			        ?>         
