@@ -56,7 +56,7 @@
 					header('Location: ../../registeredpatient/html/index.php');
 				}
 				
-				else if ($data['role'] === "ca")
+				else if ($data['role'] === "ca" or $data['role'] === "dr" or $data['role'] === "fd")
 				{
 					header('Location: ../../businessowner/html/index.php');
 				}
