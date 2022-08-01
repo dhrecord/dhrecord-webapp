@@ -91,105 +91,81 @@
     <div class="container my-5">
         <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
 
-        <!-- for clinic-admin -->
-        <div>
-            <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
-            <p>-</p>
-        </div>
-
-        <!-- for front-desk -->
-        <div>
-            <p># show this if login as a front-desk => list of doctors in a clinic</p>
-            <table class="table table-striped">
-                <tr class="bg-dark text-white">
-                    <th>No</th>
-                    <th>Doctor</th>
-                    <th>Services</th>
-                    <th>Contact</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Dr. Smith Rowe</td>
-                    <td>Oral Surgery, Dental Surgery</td>
-                    <td>+65 4574 7654</td>
-                    <td class="text-center"><button class="btn btn-sm btn-dark"
-                            onclick="document.location.href='../../businessowner/html/doctorSchedule.php'">View
-                            Schedule</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Dr. Elizabeth</td>
-                    <td>Orthodontic</td>
-                    <td>+65 8867 7777</td>
-                    <td class="text-center"><button class="btn btn-sm btn-dark"
-                            onclick="document.location.href='../../businessowner/html/doctorSchedule.php'">View
-                            Schedule</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- separator -->
-        <br><br>
-
-        <!-- for doctor -->
-        <div>
-            <p># show this if login as a doctor => display doctor's calendar</p>
-
-            <?php
-                echo $_SESSION['role'];
-
-                if ($_SESSION['role'] === "dr"){
-                    echo '<div class="my-4 d-flex justify-content-between">
-                    <h4>Doctor Appoinment Calendar - </h4>';
-
-                    echo '<h4>';
-                    echo $_SESSION['username'];
-                    echo '</h4>';
-
-                    echo '<div>
-                            <button class="btn btn-dark"
-                                onclick="document.location.href=\'../../businessowner/html/bookAppt.php\'">Book
-                                Appointment</button>
-                            <button class="btn btn-dark"
-                                onclick="document.location.href=\'../../businessowner/html/rescheduleAppt.php\'">Reschedule</button>
-                        </div>
+        <!-- show this if login as a clinic admin -->
+        <?php
+            if ($_SESSION['role'] === "ca"){
+                echo '<div>
+                        <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
+                        <p>-</p>
+                    </div>
+                    <div>
+                        <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
+                        <p>-</p>
                     </div>';
+            }
+        ?>
 
-                    echo '<div class="calendar-box">
-                            <div id="calendar-container">
-                                <div id="calendar"></div>
-                            </div>
-                        </div>';
-                }
-            ?>
+        <!-- show this if login as a front-desk -->
+        <?php
+            if ($_SESSION['role'] === "fd"){
+                echo '<div>
+                        <table class="table table-striped">
+                            <tr class="bg-dark text-white">
+                                <th>No</th>
+                                <th>Doctor</th>
+                                <th>Services</th>
+                                <th>Contact</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Dr. Smith Rowe</td>
+                                <td>Oral Surgery, Dental Surgery</td>
+                                <td>+65 4574 7654</td>
+                                <td class="text-center"><button class="btn btn-sm btn-dark"
+                                        onclick="document.location.href=\'../../businessowner/html/doctorSchedule.php\'">View
+                                        Schedule</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Dr. Elizabeth</td>
+                                <td>Orthodontic</td>
+                                <td>+65 8867 7777</td>
+                                <td class="text-center"><button class="btn btn-sm btn-dark"
+                                        onclick="document.location.href=\'../../businessowner/html/doctorSchedule.php\'">View
+                                        Schedule</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>';
+            }
+        ?>
 
-            <!-- <div class="my-4 d-flex justify-content-between">
-                <h4>Doctor Appoinment Calendar - </h4> -->
-                <?php 
-                    // echo '<h4>';
-                    // echo $_SESSION['username'];
-                    // echo '</h4>';
-                ?>
+        <!-- show this if login as a doctor -->
+        <?php
+            if ($_SESSION['role'] === "dr"){
+                echo '<div><div class="my-4 d-flex justify-content-between">
+                <h4>Doctor Appoinment Calendar - ';
+                echo $_SESSION['username'];
+                echo '</h4>';
 
-                <!-- <div>
-                    <button class="btn btn-dark"
-                        onclick="document.location.href='../../businessowner/html/bookAppt.php'">Book
-                        Appointment</button>
-                    <button class="btn btn-dark"
-                        onclick="document.location.href='../../businessowner/html/rescheduleAppt.php'">Reschedule</button>
-                </div>
-            </div>
+                echo '<div>
+                        <button class="btn btn-dark"
+                            onclick="document.location.href=\'../../businessowner/html/bookAppt.php\'">Book
+                            Appointment</button>
+                        <button class="btn btn-dark"
+                            onclick="document.location.href=\'../../businessowner/html/rescheduleAppt.php\'">Reschedule</button>
+                    </div>
+                </div>';
 
-            <div class="calendar-box">
-                <div id='calendar-container'>
-                    <div id='calendar'></div>
-                </div>
-            </div> -->
-
-        </div>
+                echo '<div class="calendar-box">
+                        <div id="calendar-container">
+                            <div id="calendar"></div>
+                        </div>
+                    </div></div>';
+            }
+        ?>
     </div>
 
     <script src="../../apptScheduling/js/jquery-3.3.1.min.js"></script>
