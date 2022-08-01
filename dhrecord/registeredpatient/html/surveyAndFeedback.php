@@ -80,9 +80,24 @@ if(!isset($_SESSION['loggedin']))
                 <label for="estimatedWait" class="col-sm-2 col-form-label">What was estimated waiting time after
                     scheduled appointment timing?</label>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control" name="estimatedWait" id="estimatedWait" placeholder="mins...">
+                    <input type="text" class="form-control" name="estimatedWait" id="estimatedWait" placeholder="mins">
                 </div>
             </div>
+	 <div class="mb-3 row">
+                <label for="pickDoc" class="col-sm-2 col-form-label">Doctor name?</label>
+                <div class="col-sm-1">
+                    <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
+                style="margin-left: 70px; max-width: 250px;">
+			<option selected disabled hidden>Select doctor</option>
+			<option value="1">testing</option>
+			<option value="2"></option>
+			<option value="3"></option>
+			<option value="4"></option>
+			<option value="5"></option>
+           	 </select>
+                </div>
+            </div>
+		
             <div class="mb-3 row">
                 <label for="serviceQuality" class="col-sm-2 col-form-label">On a scale of 1-5 how was the quality of the
                     service you recieved</label>
