@@ -109,6 +109,44 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
+                    <label for="ReferTo" class="col-sm-2 col-form-label">Refer to (Other Clinic):</label>
+                    <div class="col-sm-10">
+                      <select name="ReferTo" id="ReferTo">
+                        <?php 
+                          // Database Connection
+                          $servername = "localhost";
+                          $database = "u922342007_Test";
+                          $username = "u922342007_admin";
+                          $password = "Aylm@012";
+                          // Create connection
+                          $conn = mysqli_connect($servername, $username, $password, $database);
+
+                          if (!$conn) 
+                          {
+                            die("Connection failed: " . mysqli_connect_error());
+                          }
+
+                          $sessionID = $_SESSION['id'];
+
+                          // GET THE LIST OF CLINICS
+                          $resultClinics = $conn->query("SELECT * FROM businessOwner");
+
+                          while ($row = $resultClinics->fetch_assoc())
+                          {
+                            echo '<option value="volvo">';
+      
+                            $fieldNOC = $row['nameOfClinic'];
+                            echo $fieldNOC;
+
+                            echo '</option>';
+                          }
+
+                          mysqli_close($conn);
+                        ?>
+                      </select>
+                    </div>
+                </div>
+                <div class="mb-3 row">
                     <label for="prescriptionDesc" class="col-sm-2 col-form-label">Comments</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="prescriptionDesc" name="prescriptionDesc">
