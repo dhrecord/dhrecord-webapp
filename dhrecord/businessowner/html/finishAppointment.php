@@ -97,9 +97,9 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="prescriptionName" class="col-sm-2 col-form-label">Prescription Name</label>
+                    <label for="medicationPrescribed" class="col-sm-2 col-form-label">Medication Prescribed</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="prescriptionName" name="prescriptionName">
+                        <input type="text" class="form-control" id="medicationPrescribed" name="medicationPrescribed">
                     </div>
                 </div>
                 <div class="mb-3 row">
