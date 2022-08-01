@@ -141,7 +141,7 @@
                             echo '">';
       
                             echo $fieldNOC;
-
+                            echo "<option value="null">null</option>"
                             echo '</option>';
                           }
 
