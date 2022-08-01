@@ -89,12 +89,10 @@ if(!isset($_SESSION['loggedin']))
         </div>
         <table class="table table-striped">
 			<tr>
-				<th>Start Date</th>
-				<th>End Date</th>
+				<th>Date</th>
 				<th>Attending Doctor</th>
 				<th>Symptoms</th>
 				<th>Medication Prescribed</th>
-
 			</tr>    		
 			
 			 <?php                           
@@ -117,10 +115,10 @@ if(!isset($_SESSION['loggedin']))
 			{
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
-				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
+				$query = mysqli_query($conn, "SELECT treatmentHistory.date, treatmentHistory.attendingDoctor, treatmentHistory.symptoms,
+				treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' 
-				AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
+				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
 				if($row>0)
@@ -129,8 +127,7 @@ if(!isset($_SESSION['loggedin']))
 					{
 				?>
 					<tr>
-						<td><?php echo $fetch['startDate']?></td>
-						<td><?php echo $fetch['endDate']?></td>
+						<td><?php echo $fetch['date']?></td>
 						<td><?php echo $fetch['attendingDoctor']?></td>
 						<td><?php echo $fetch['symptoms']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
@@ -146,16 +143,15 @@ if(!isset($_SESSION['loggedin']))
 				}
 			} else
 			{
-				$query=mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed  FROM treatmentHistory, registeredPatient, users 
+				$query=mysqli_query($conn, "SELECT treatmentHistory.date, treatmentHistory.attendingDoctor, 
+				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' ") 
 					or die(mysqli_error());
 				while($fetch=mysqli_fetch_array($query))
 				{
 			?>
 			<tr>
-				<td><?php echo $fetch['startDate']?></td>
-				<td><?php echo $fetch['endDate']?></td>
+				<td><?php echo $fetch['date']?></td>
 				<td><?php echo $fetch['attendingDoctor']?></td>
 				<td><?php echo $fetch['symptoms']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
@@ -164,16 +160,6 @@ if(!isset($_SESSION['loggedin']))
 				}
 			}
 			?>
-						    
-			<!--
-			$result = mysqli_query($conn, $res);			
-
-			while($sql = mysqli_fetch_assoc($result)){
-				echo "<tr><td>".$sql["startDate"]."</td><td>".$sql["endDate"]."</td><td>".$sql["attendingDoctor"]."</td><td>".$sql["symptoms"].
-					"</td><td>".$sql["medicationPrescribed"]."</td></tr>";
-			}
-			?>
-			-->
         </table>
     </div>
 
