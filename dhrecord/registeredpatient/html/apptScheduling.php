@@ -379,12 +379,15 @@
         crossorigin="anonymous"></script>
 
   <script type="application/javascript">
-    function passData(docName, specializations) {
+    function passData(docName, specializations, operatingHours) {
       const dn = document.getElementById("d_name");
       dn.innerHTML = docName;
 
       const sl = document.getElementById("spec_list");
       sl.innerHTML = specializations;
+
+      const oh = document.getElementById("o_hours");
+      oh.innerHTML = operatingHours;
     }
   </script>
 
