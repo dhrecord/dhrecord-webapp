@@ -141,37 +141,24 @@
           $resultAAppt = $stmtAppt->get_result();
 
           while ($rowAppt = $resultAAppt->fetch_assoc()){
-            echo 'alert(';
+            echo 'appts.push({start:"';
             echo $rowAppt['date'];
-            echo ');';
-
-            echo 'appts.push({"date":"';
-            echo $rowAppt['date'];
-
-            echo '", "time":"';
+            echo 'T';
             echo $rowAppt['time'];
 
-            echo '", "agenda":"';
+            echo '", title:"';
             echo $rowAppt['agenda'];
             
-            echo '", "clinic name":"';
+            echo '", clinic:"';
             echo $rowAppt['nameOfClinic'];
 
-            echo '", "doctor":"';
+            echo '", doctor:"';
             echo $rowAppt['fullName'];
 
             echo '"});';
           }
         }
-
-        echo 'for (var i = 0; i < appts.length; ++i) {
-          console.log(appts[i].date + ", " + appts[i].time);
-        }';
       ?>
-
-      // for (var i = 0; i < appts.length; ++i) {
-      //   console.log(appts[i].date + ", " + appts[i].time);
-      // }
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
@@ -186,20 +173,7 @@
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         eventLimit: true, // allow "more" link when too many events
-        events: [
-          {
-            title: 'Monthly Checkup',
-            start: '2022-07-27T14:00:00',
-            clinic: 'Ashford Dental Centre',
-            doctor: 'Dr. Smith Rowe'
-          },
-          {
-            title: 'Dental Brace',
-            start: '2022-07-31T15:00:00',
-            clinic: 'Expat Dental',
-            doctor: 'Dr. Robert Reddington'
-          },
-        ]
+        events: appts;
       });
 
       calendar.render();
