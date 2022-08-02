@@ -421,7 +421,7 @@
                 txtValue = td.innerHTML;
                 let split_content = txtValue.split("<b>")[1];
 
-                if (split_content > 2){
+                if (split_content.length > 2){
                   console.log(split_content.split("/b>")[1].split("<br>")[0]);
                 }
 
