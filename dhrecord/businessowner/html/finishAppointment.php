@@ -21,21 +21,31 @@
   //get form data and insert into tables
   if (isset($_POST['submit'])) 
   {
+    $apptID = $_POST["apptID"];
+    $apptDate = $_POST["apptDate"];
+    $apptAgenda = $_POST["apptAgenda"];
+    $apptDoctorID = $_POST["apptDoctorID"];
+    $apptPatientID = $_POST["apptPatientID"];
+    $toothCondition = $_POST["toothCondition"];
+    $referredTo = $_POST["referTo"];
+    $medicationPrescribed = $_POST["medicationPrescribed"];
+    $comments = $_POST["comments"];
+    
     if (!isset($_POST["referTo"]) || $_POST["referTo"] == "")
     {
-      //submit into treatmentHistory
+      $res = "INSERT INTO treatmentHistory (date, attendingDoctor, toothCondition, medicationPrescribed, pt_ID)
+      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$medicationPrescribed}', '{$apptPatientID}')";
+    
+      if (mysqli_query($conn, $res)) 
+      {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $res . "<br>" . mysqli_error($conn);
+      }
     } else
     { 
-      $apptID = $_POST["apptID"];
-      $apptDate = $_POST["apptDate"];
-      $apptAgenda = $_POST["apptAgenda"];
-      $apptDoctorID = $_POST["apptDoctorID"];
-      $apptPatientID = $_POST["apptPatientID"];
-      $toothCondition = $_POST["toothCondition"];
-      $referredTo = $_POST["referTo"];
-    
-      $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, patient_ID)
-      VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$apptPatientID}')";
+      $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, comments, patient_ID)
+      VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$comments}', '{$apptPatientID}')";
     
       if (mysqli_query($conn, $res)) 
       {
@@ -214,9 +224,9 @@
                  </div>
              </div>
              <div class="mb-3 row">
-                 <label for="prescriptionDesc" class="col-sm-2 col-form-label">Comments</label>
+                 <label for="comments" class="col-sm-2 col-form-label">Comments</label>
                  <div class="col-sm-10">
-                     <input type="text" class="form-control" id="prescriptionDesc" name="prescriptionDesc">
+                     <input type="text" class="form-control" id="comments" name="comments">
                  </div>
              </div>
              <div class="mb-3 row">
