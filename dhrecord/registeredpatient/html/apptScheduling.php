@@ -293,13 +293,13 @@
                         
                         echo
                             '</td><td class="px-4">
+                              <form action="../../registeredpatient/html/bookAppt.php">
                               <button type="submit" name="doc_id" value="';
 
                         echo $rowDoc['doctorID'];
                                 
                         echo       
-                            '" class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                              </td></tr>';
+                            '" class="btn btn-dark">Book</button></form></td></tr>';
                       }
                     }
 
