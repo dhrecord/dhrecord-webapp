@@ -129,8 +129,7 @@
 				
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
 				treatmentHistory.toothCondition, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
-				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND 
-				date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
+				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				
 				$row=mysqli_num_rows($query);
