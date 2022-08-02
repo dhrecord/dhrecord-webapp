@@ -290,15 +290,15 @@
                         echo $join_specializations;
                               
                         echo '</td><td class="px-4 text-center">';
-                        echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(';
+                        echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(\'';
 
                         echo $rowDoc['fullName'];
-                        // echo ",";
-                        // echo $join_specializations;
+                        echo ",";
+                        echo $join_specializations;
                         // echo ",";
                         // echo $rowDoc['fullName'];
                         
-                        echo ');">View</button>';
+                        echo '\');">View</button>';
                         
                         echo
                               '</td><td class="px-4">
@@ -349,14 +349,9 @@
         crossorigin="anonymous"></script>
 
   <script type="application/javascript">
-
-    function passData() {
-      alert("hi2");
-      // alert(docName);
-    }
-    function passData(docName) {
-      alert("hi");
-      // alert(docName);
+    function passData(docName, specializations) {
+      alert(docName);
+      alert(specializations);
     }
   </script>
 
