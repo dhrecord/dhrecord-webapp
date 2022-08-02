@@ -102,7 +102,7 @@
           <td>27-07-2002</td>
           <td>02.00 pm</td>
           <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><a href="finishAppointment.php?apptID=1"></td>
+          <td class="text-center"><a href="finishAppointment.php?apptID=1">Finish</a></td>
           <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
         </tr>
         <tr>
