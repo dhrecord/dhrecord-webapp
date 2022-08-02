@@ -8,7 +8,6 @@ if(!isset($_SESSION['loggedin']))
 }
 
 $userID = $_POST['userID'];
-$userName = $_POST['userName'];
 $newPassWord = $_POST['newPassWord'];
 $confirmNewPassWord = $_POST['confirmNewPassWord'];
 
@@ -26,23 +25,29 @@ if (!$conn)
 	die("Connection failed: " . mysqli_connect_error());
 }
 
-if($newPassWord = $confirmNewPassWord)
+if(isset($newPassword))
 {
-	$query = "UPDATE users SET username='$userName', password='$newPassWord' WHERE ID='$userID'";
-	if (mysqli_query($conn,$query)) 
-	{
-		header('Location: changeUsernameOrPassword.php');
-	}
-
-	else
-	{
-		echo "something went wrong!";
-	}
+    if($newPassWord == $confirmNewPassWord)
+    {
+    	$query = "UPDATE users SET password='$newPassWord' WHERE ID='$userID'";
+    	if (mysqli_query($conn,$query)) 
+    	{
+    		header('Location: changeUsernameOrPassword.php');
+    	}
+    
+    	else
+    	{
+    		echo "something went wrong!";
+    	}
+    }
+    else 
+    {
+    	header('Location: passwordsDontMatch.php');
+    }
 }
 else 
 {
-	echo "passwords do not match!";
-	header('Location: changeUsernameOrPassword.php');
+    header('Location: changeUsernameOrPassword.php');
 }
 
 
