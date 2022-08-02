@@ -99,7 +99,7 @@
                     }
 
                     // GET THE DOCTOR'S FULLNAME
-                    $stmtDocName = $conn->prepare("SELECT DISTINCT doctor.fullName, doctor.doctorID
+                    $stmtDocName = $conn->prepare("SELECT DISTINCT doctor.fullName, doctor.doctorID, appointment.date, appointment.time
                                                     FROM doctor
                                                     JOIN appointment ON doctor.doctorID = appointment.doctorID
                                                     WHERE appointment.apptID=?");
@@ -107,10 +107,14 @@
                     $stmtDocName->execute();
                     $resultDocName = $stmtDocName->get_result();
                     $docID = "";
+                    $apptDate = "";
+                    $apptTime = "";
 
                     while ($rowDocName = $resultDocName->fetch_assoc()){
                       echo $rowDocName['fullName'];
                       $docID = $rowDocName['doctorID'];
+                      $apptDate = $rowDocName['date'];
+                      $apptTime = $rowDocName['time'];
                     }
                   ?>
                 </p>
@@ -201,7 +205,7 @@
             <div class="mx-5">
                 <div>
                     <p><b>Current Date:</b></p>
-                    <p>27-07-2022</p>
+                    <p><?=$apptDate?></p>
                 </div>
                 <div>
                     <p><b>New Date:</b></p>
@@ -213,7 +217,7 @@
             <div class="mx-5">
                 <div>
                     <p><b>Current Time:</b></p>
-                    <p>02.00 pm</p>
+                    <p><?=$apptTime?></p>
                 </div>
                 <div class="d-flex">
                     <input type="text" id="result" style="display:none;"/>
