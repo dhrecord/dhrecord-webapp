@@ -130,8 +130,7 @@
 
         while ($rowPatName = $resultPatName->fetch_assoc()){
           // GET THE APPOINTMENT DETAILS
-          $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appoinment.time, appointment.agenda, 
-                                                      businessOwner.nameOfClinic, doctor.fullName
+          $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appoinment.time, appointment.agenda, businessOwner.nameOfClinic, doctor.fullName
                                         FROM appointment
                                         JOIN doctor ON appointment.doctorID = doctor.doctorID
                                         JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
