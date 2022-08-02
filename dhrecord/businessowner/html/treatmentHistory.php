@@ -104,7 +104,7 @@
 				<th>Start Date</th>
 				<th>End Date</th>
 				<th>Attending Doctor</th>
-				<th>Symptoms</th>
+				<th>Tooth Condition</th>
 				<th>Medication Prescribed</th>
 				<th>Patient's Name</th>
 
@@ -128,7 +128,7 @@
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 				
 				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
+				treatmentHistory.toothCondition, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND date(treatmentHistory.startDate) BETWEEN '$date1' AND '$date2' AND 
 				date(treatmentHistory.endDate) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
@@ -143,7 +143,7 @@
 						<td><?php echo $fetch['startDate']?></td>
 						<td><?php echo $fetch['endDate']?></td>
 						<td><?php echo $fetch['attendingDoctor']?></td>
-						<td><?php echo $fetch['symptoms']?></td>
+						<td><?php echo $fetch['toothCondition']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
 						<td><?php echo $fetch['fullName']?></td>
 						
@@ -160,7 +160,7 @@
 			} else
 			{
 				$query=mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
+				treatmentHistory.toothCondition, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID") or die(mysqli_error());
 				while($fetch=mysqli_fetch_array($query))
 				{
@@ -169,7 +169,7 @@
 				<td><?php echo $fetch['startDate']?></td>
 				<td><?php echo $fetch['endDate']?></td>
 				<td><?php echo $fetch['attendingDoctor']?></td>
-				<td><?php echo $fetch['symptoms']?></td>
+				<td><?php echo $fetch['toothCondition']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
 				<td><?php echo $fetch['fullName']?></td>
 			</tr>
