@@ -391,15 +391,16 @@
       if (operatingHours !== '-'){
         let oh_item = operatingHours.split(', ');
 
-        oh_html = "";
+        oh_html = "<p>";
         for (let i = 0; i < oh_item.length; i++) {
-          let oh_item_day = "<p>";
+          let oh_item_day = "";
           oh_item_day += oh_item[i].substring(1, oh_item[i].length-1);
-          oh_item_day += "</p>";
+          oh_item_day += "<br/>";
 
           oh_html += oh_item_day;
         }
 
+        oh_html += "</p>";
         oh.innerHTML = oh_html;
       } else {
         oh.innerHTML = "-";
