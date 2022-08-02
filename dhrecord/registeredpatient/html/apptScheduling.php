@@ -293,7 +293,7 @@
                         echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(\'';
 
                         echo $rowDoc['fullName'];
-                        echo "\',\'";
+                        echo '\',\'';
                         echo $join_specializations;
                         // echo ",";
                         // echo $rowDoc['fullName'];
