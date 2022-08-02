@@ -120,7 +120,7 @@
                 <div class="mb-3 row">
                     <label for="passWord" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$passWord. '"'; ?> readonly>>
+                        <input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$passWord. '"'; ?> readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
