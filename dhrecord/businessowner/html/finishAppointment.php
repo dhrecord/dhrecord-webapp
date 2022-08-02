@@ -130,6 +130,7 @@
 
                           // GET THE LIST OF CLINICS
                           $resultBO = $conn->query("SELECT * FROM businessOwner");
+                          echo '<option value="">""</option>';
 
                           while ($row = $resultBO->fetch_assoc())
                           {
