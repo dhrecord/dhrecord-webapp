@@ -21,11 +21,11 @@
   //get form data and insert into tables
   if (isset($_POST['submit'])) 
   {
-    //if (!isset($_POST["referTo"]) || $_POST["referTo"] == "")
-    //{
+    if (!isset($_POST["referTo"]) || $_POST["referTo"] == "")
+    {
       //submit into treatmentHistory
-    //} else
-    //{ 
+    } else
+    { 
       $apptID = $_POST["apptID"];
       $apptDate = $_POST["apptDate"];
       $apptAgenda = $_POST["apptAgenda"];
@@ -33,25 +33,19 @@
       $apptPatientID = $_POST["apptPatientID"];
       $toothCondition = $_POST["toothCondition"];
       $referredTo = $_POST["referTo"];
-     
-      echo $apptID;
-      echo $apptDate;
-      echo $apptDoctorID;
-      echo $toothCondition;
-      echo $referredTo;
     
       $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, patient_ID)
       VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$apptPatientID}')";
     
-    if (mysqli_query($conn, $res)) 
-    {
-      echo "New record created successfully";
-    } else {
-      echo "Error: " . $res . "<br>" . mysqli_error($conn);
-    }
+      if (mysqli_query($conn, $res)) 
+      {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $res . "<br>" . mysqli_error($conn);
+      }
     
-    //}
-    //header('Location: ./apptSchedulingAndReminders.php');
+    }
+    header('Location: ./apptSchedulingAndReminders.php');
   }
 
   $res = "SELECT * FROM appointment WHERE apptID = " .$_GET['apptID']. " ";
@@ -65,13 +59,6 @@
               $apptAgenda = $sql["agenda"];
               $apptDoctorID = $sql["doctorID"];
               $apptPatientID = $sql["patientID"];
-      
-       echo $apptID;
-      echo $apptDate;
-      echo $apptDoctorID;
-      echo $toothCondition;
-      echo $referredTo;
-      
     }
 ?>
 
@@ -160,13 +147,6 @@
            <?php echo "<input type='hidden' id='apptAgenda' name='apptAgenda' value='".$apptAgenda."'>"; ?>
            <?php echo "<input type='hidden' id='apptDoctorID' name='apptDoctorID' value='".$apptDoctorID."'>"; ?>
            <?php echo "<input type='hidden' id='apptPatientID' name='apptPatientID' value='".$apptPatientID."'>"; ?>
-
-            <!--
-           <input type="hidden" id="apptDate" name="apptDate" value=".<?php echo $apptDate ?>.">
-           <input type="hidden" id="apptAgenda" name="apptAgenda" value=".<?php echo $apptAgenda ?>.">
-           <input type="hidden" id="apptDoctorID" name="apptDoctorID" value=".<?php echo $apptDoctorID ?>.">
-           <input type="hidden" id="apptPatientID" name="apptPatientID" value=".<?php echo $apptPatientID ?>.">
-           -->
            
              <div class="mb-3 row">
                  <label for="toothCondition" class="col-sm-2 col-form-label">Tooth Condition: </label>
