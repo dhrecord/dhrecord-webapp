@@ -217,7 +217,7 @@
             <div class="mx-5">
                 <div>
                     <p><b>Current Time:</b></p>
-                    <p><?=$apptTime?></p>
+                    <p><?=substr($apptTime, 0, 5)?></p>
                 </div>
                 <div class="d-flex">
                     <input type="text" id="result" style="display:none;"/>
