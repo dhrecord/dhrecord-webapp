@@ -350,7 +350,8 @@
 
   <script type="application/javascript">
     function passData(docName, specializations) {
-      alert(docName + " " + specializations);
+      alert("hi");
+      alert(docName);
     }
   </script>
 
