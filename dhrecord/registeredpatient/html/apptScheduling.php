@@ -88,7 +88,6 @@
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
-                    <!-- onclick="tableSearch();" -->
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
