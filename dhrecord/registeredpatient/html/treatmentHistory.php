@@ -91,7 +91,7 @@ if(!isset($_SESSION['loggedin']))
 			<tr>
 				<th>Date</th>
 				<th>Attending Doctor</th>
-				<th>Symptoms</th>
+				<th>Tooth Condition</th>
 				<th>Medication Prescribed</th>
 			</tr>    		
 			
@@ -124,7 +124,7 @@ if(!isset($_SESSION['loggedin']))
 					<tr>
 						<td><?php echo $fetch['date']?></td>
 						<td><?php echo $fetch['attendingDoctor']?></td>
-						<td><?php echo $fetch['symptoms']?></td>
+						<td><?php echo $fetch['toothCondition']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
 					</tr>
 				<?php
@@ -139,7 +139,7 @@ if(!isset($_SESSION['loggedin']))
 			} else
 			{
 				$query=mysqli_query($conn, "SELECT treatmentHistory.date, treatmentHistory.attendingDoctor, 
-				treatmentHistory.symptoms, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
+				treatmentHistory.toothCondition, treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users 
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' ") 
 					or die(mysqli_error());
 				while($fetch=mysqli_fetch_array($query))
@@ -148,7 +148,7 @@ if(!isset($_SESSION['loggedin']))
 			<tr>
 				<td><?php echo $fetch['date']?></td>
 				<td><?php echo $fetch['attendingDoctor']?></td>
-				<td><?php echo $fetch['symptoms']?></td>
+				<td><?php echo $fetch['toothCondition']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
 			</tr>
 			<?php
