@@ -134,7 +134,7 @@
     <div>
         <!-- <form> -->
          <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
-         <form name="form" action="" method="post">
+         <form name="form" action="#" method="post">
            <input type="hidden" id="apptID" name="apptID" value="<?php echo $apptID ?>">
            <input type="hidden" id="apptDate" name="apptDate" value="<?php echo $apptDate ?>">
            <input type="hidden" id="apptAgenda" name="apptAgenda" value="<?php echo $apptAgenda ?>">
