@@ -130,7 +130,7 @@
             </select>-->
 
             <div class="referral-box px-3"> 
-                <button type="button" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 500px;" onclick="window.location.href='./addUser.php';">Add New User</button>
+                <button type="button" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 800px;" onclick="window.location.href='./addUser.php';">Add New User</button>
             </div>
         </div>
         <table class="table table-striped">
@@ -250,8 +250,8 @@
                         <form action="./editUserFrontDesk.php" method="post">
                             <p style="display: none;" id="invisibleID"></p>
                             <div class="mb-3">
-                                <label for="clinicadminID" class="form-label">Front Desk ID</label>
-                                <input type="text" class="form-control" id="clinicadminID" name="frontdeskID" <?php echo 'value="'.$row2["frontdeskID"].'"'; ?> readonly>
+                                <label for="frontdeskID" class="form-label">Front Desk ID</label>
+                                <input type="text" class="form-control" id="frontdeskID" name="frontdeskID" <?php echo 'value="'.$row2["frontdeskID"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="fullName" class="form-label">Full Name</label>

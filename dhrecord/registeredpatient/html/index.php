@@ -110,7 +110,59 @@ if(!isset($_SESSION['loggedin']))
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Address: </span><?php echo $data['address']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Medical Conditions: </span><?php echo $data['medConditions']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Drug Allergies: </span><?php echo $data['drugAllergies']; ?></p>
-                    <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='editPatient.php?UserID=$sessionID'">Delete</button></p>
+                    <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $data["users_ID"]; ?>">Edit</button></p>
+                </div>
+
+                        <!-- modal -->
+                <div class="modal fade" id="popupModal<?php echo $data["users_ID"] ?>" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="popupModalLabel">View/Edit Full Information</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="./editPatient.php" method="post">
+                                    <p style="display: none;" id="invisibleID"></p>
+                                    <div class="mb-3">
+                                        <label for="patientID" class="form-label">patientID</label>
+                                        <input type="text" class="form-control" id="patientID" name="patientID" <?php echo 'value="'.$data["users_ID"].'"'; ?> readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="fullName" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="fullName" name="fullName" <?php echo 'value="'.$data["fullName"].'"'; ?>>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nricNumber" class="form-label">nricNumber</label>
+                                        <input type="text" class="form-control" id="nricNumber" name="nricNumber" <?php echo 'value="'.$data["nricNumber"].'"'; ?> readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="contactNumber" class="form-label">Contact Number</label>
+                                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" <?php echo 'value="'.$data["contactNumber"].'"'; ?>>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" class="form-control" id="email" name="email" <?php echo 'value="'.$data["email"].'"'; ?>>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="address" name="address"<?php echo 'value="'.$data["address"].'"'; ?>>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="medConditions" class="form-label">Medical Conditions:</label>
+                                        <input type="textarea" class="form-control" id="medConditions" name="medConditions"<?php echo 'value="'.$data["medConditions"].'"'; ?> readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="drugAllergies" class="form-label">Drug Allergies:</label>
+                                        <input type="textarea" class="form-control" id="drugAllergies" name="drugAllergies"<?php echo 'value="'.$data["drugAllergies"].'"'; ?> readonly>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
