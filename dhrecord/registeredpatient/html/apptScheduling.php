@@ -111,7 +111,7 @@
                     <b>Quick Filter:</b>
                 </div>
                 <div class="mx-2"> 
-                  <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                  <select class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
                 style="">
                     <option selected disabled hidden>Filter By...</option>
                     <option value="1">Show Nearest Clinics</option>
@@ -375,6 +375,9 @@
 
   <script type="application/javascript">
     function tableSearch() {
+        let select = document.getElementById('auditLog_ddlFilterBy');
+        let value = select.options[select.selectedIndex].value;
+
         let input, filter, table, tr, td, txtValue;
         let tr2, tr3;
 
@@ -383,7 +386,9 @@
         table = document.getElementById("clinicTable");
         tr = table.getElementsByTagName("tr");
 
-        for (let i = 0; i < tr.length; i++) {
+        // if search by clinic name
+        if (value === "1"){
+          for (let i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
 
             if (td) {
@@ -405,7 +410,10 @@
                 tr3[j].style.display = "";
               }
             }
+          }
         }
+
+      
     };
   </script>
 
