@@ -417,10 +417,9 @@
           for (let i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[1];
 
-            if (td) {
-                let p = td.getElementsByTagName("p")[0];
-                alert(p.innerText);
-                // txtValue = td.textContent || td.innerText;
+            if (td) {  
+                txtValue = td.textContent || td.innerText;
+                alert(txtValue);
 
                 // if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 //     tr[i].style.display = "";
