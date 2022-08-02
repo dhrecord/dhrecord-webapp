@@ -236,6 +236,7 @@
                               <tr>
                                 <th class="px-4">Name</th>
                                 <th class="px-4">Services</th>
+                                <th class="px-4">Operating Hours</th>
                                 <th class="px-4"></th>
                               </tr>';
                       
@@ -287,8 +288,12 @@
                           }
                                 
                           echo
-                                '</td>
-                                <td class="px-4">
+                                '</td><td class="px-4">';
+
+                          echo '<button class="btn btn-dark">View</button>';
+                          
+                          echo
+                                '</td><td class="px-4">
                                   <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
                                 </td>
                               </tr>';
