@@ -85,6 +85,7 @@
             <div>
                 <p class="m-0"><b>Doctor: </b>
                   <?php
+                  echo $_POST['appt_id'];
                     // Database Connection
                     $servername = "localhost";
                     $database = "u922342007_Test";
