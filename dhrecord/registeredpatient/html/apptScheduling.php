@@ -330,11 +330,11 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <p><b>Doctor Name:</b> <span id="d_name"></span>
+                <p><b>Doctor Name:</b><br/><span id="d_name"></span>
                 <br/>
-                <b>Services:</b> <span id="spec_list"></span>
+                <b>Services:</b><br/><span id="spec_list"></span>
                 <br/>
-                <b>Operating Hours: </b> <span id="o_hours"></span>
+                <b>Operating Hours:</b><br/><span id="o_hours"></span>
                 </p>
               </div>
           </div>
