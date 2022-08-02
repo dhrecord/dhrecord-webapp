@@ -142,23 +142,23 @@
 
           while ($rowAppt = $resultAAppt->fetch_assoc()){
             echo 'alert(';
-            echo $rowAppt['appointment.date'];
+            echo $rowAppt['date'];
             echo ');';
 
             echo 'appts.push({"date":"';
-            echo $rowAppt['appointment.date'];
+            echo $rowAppt['date'];
 
             echo '", "time":"';
-            echo $rowAppt['appointment.time'];
+            echo $rowAppt['time'];
 
             echo '", "agenda":"';
-            echo $rowAppt['appointment.agenda'];
+            echo $rowAppt['agenda'];
             
             echo '", "clinic name":"';
-            echo $rowAppt['businessOwner.nameOfClinic'];
+            echo $rowAppt['nameOfClinic'];
 
             echo '", "doctor":"';
-            echo $rowAppt['doctor.fullName'];
+            echo $rowAppt['fullName'];
 
             echo '"});';
           }
