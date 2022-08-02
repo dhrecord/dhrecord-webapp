@@ -290,13 +290,8 @@
                         echo
                               '</td><td class="px-4 text-center">';
 
-                        // CREATE FUNCTION FOR PASSING DATA TO MODAL
-                        // function passData($docName, $services, $operatingHours){
-
-                        // }
-
-                        // echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal">View</button>';
-                        echo '<form method="post"><input type="submit" name="viewButton" value="View" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal"/></form>';
+                        echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData();">View</button>';
+                        // echo '<form method="post"><input type="submit" name="viewButton" value="View" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal"/></form>';
                         
                         echo
                               '</td><td class="px-4">
@@ -345,6 +340,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+  <script type="application/javascript">
+    function passData() {
+      alert("hi");
+    }
+  </script>
 
   <!-- <script type="application/javascript">
     function tableSearch() {
