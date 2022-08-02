@@ -393,8 +393,8 @@
 
         oh_html = "";
         for (let i = 0; i < oh_item.length; i++) {
-          let oh_item_day = "<p>";
-          oh_item_day += oh_item[i][1:-1];
+          let oh_item_day = "<p>test";
+          // oh_item_day += oh_item[i][1:-1];
           oh_item_day += "</p>";
 
           oh_html += oh_item_day;
