@@ -25,7 +25,11 @@ if (!$conn)
 	die("Connection failed: " . mysqli_connect_error());
 }
 
-if(isset($newPassword))
+if(empty($newPassWord))
+{
+    header('Location: index.php');
+}
+else
 {
     if($newPassWord == $confirmNewPassWord)
     {
@@ -45,10 +49,7 @@ if(isset($newPassword))
     	header('Location: passwordsDontMatch.php');
     }
 }
-else 
-{
-    header('Location: changeUsernameOrPassword.php');
-}
+
 
 
 ?>
