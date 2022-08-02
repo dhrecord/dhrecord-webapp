@@ -142,7 +142,7 @@
 
           while ($rowAppt = $resultAAppt->fetch_assoc()){
             // echo $rowAppt['ID'];
-            echo 'appt.push({"date":"';
+            echo 'appts.push({"date":"';
             echo $rowAppt['appointment.date'];
 
             echo '", "time":"';
