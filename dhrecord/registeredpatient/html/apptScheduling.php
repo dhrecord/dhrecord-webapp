@@ -236,7 +236,7 @@
                               <tr>
                                 <th class="px-4">Name</th>
                                 <th class="px-4">Services</th>
-                                <th class="px-4">Operating Hours</th>
+                                <th class="px-4 text-center">Operating Hours</th>
                                 <th class="px-4"></th>
                               </tr>';
                       
