@@ -82,7 +82,7 @@
         <div>
             <p class="m-0"><b>Doctor: </b>
               <?php
-                echo $_POST['doc_id'];
+                // echo $_POST['doc_id'];
                 // Database Connection
                 $servername = "localhost";
                 $database = "u922342007_Test";
@@ -97,18 +97,38 @@
                 }
 
                 // GET THE DOCTOR'S FULLNAME
-                $stmtSpecDocName = $conn->prepare("SELECT doctor.fullName
+                $stmtDocName = $conn->prepare("SELECT doctor.fullName
                                               FROM doctor
                                               WHERE doctor.doctorID=?");
-                $stmtSpecDocName->bind_param("s", $_POST['doc_id']);
-                $stmtSpecDocName->execute();
-                $resultSpecDocName = $stmtSpecDocName->get_result();
-                echo $resultSpecDocName;
+                $stmtDocName->bind_param("s", $_POST['doc_id']);
+                $stmtDocName->execute();
+                $resultDocName = $stmtDocName->get_result();
+                echo $resultDocName['fullName'];
               ?>
             </p>
-            <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
+            <p class="m-0"><b>Specialization: </b>
+                <?php
+                 // GET THE DOCTOR'S SPECIALIZATION
+                 $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                              FROM doctorSpecialization
+                                              JOIN clinicSpecialization 
+                                              ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                              WHERE doctorSpecialization.doctorID=?");
+                  $stmtSpec->bind_param("s", $_POST['doc_id']);
+                  $stmtSpec->execute();
+                  $resultSpec = $stmtSpec->get_result();
 
-            <br>
+                  $specializations = array();
+                  while ($rowSpec = $resultSpec->fetch_assoc()){
+                    array_push($specializations, $rowSpec["specName"]);
+                  }
+
+                  $join_specializations = implode(', ', $specializations);
+                  echo $join_specializations;
+                ?>
+            </p>
+
+            <br/>
 
             <p class="m-0"><b>Clinic:</b> Ashford Dental Centre</p>
             <p class="m-0"><b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/></p>
