@@ -295,9 +295,39 @@
                         echo $rowDoc['fullName'];
                         echo '\',\'';
                         echo $join_specializations;
-                        // echo ",";
-                        // echo $rowDoc['fullName'];
-                        
+                        echo '\',\'';
+
+                        // GET THE OPERATING HOURS OF THE CLINIC
+                        $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
+                                                  FROM operatingHours 
+                                                  WHERE operatingHours.doctorID = ?");
+                        $stmtOH->bind_param("s", $rowDoc['doctorID']);
+                        $stmtOH->execute();
+                        $resultOH = $stmtOH->get_result();
+
+                        if ($resultOH->num_rows === 0) {
+                          echo '-';
+                        } else { 
+                          while ($rowOH = $resultOH->fetch_assoc()){
+                            if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                              echo '(';
+                              echo $rowOH['day'];
+                              echo ': Closed)\'';
+                            } else {
+                              echo '(';
+                              echo $rowOH['day'];
+                              echo ': ';
+                              $start_time = $rowOH['start_time']; 
+                              echo substr($start_time, 0, 5);
+                              echo '-';
+                              $end_time = $rowOH['end_time']; 
+                              echo substr($end_time, 0, 5);
+                              echo ')';
+                            }
+                            echo ', ';
+                          }
+                        }
+
                         echo '\');">View</button>';
                         
                         echo
