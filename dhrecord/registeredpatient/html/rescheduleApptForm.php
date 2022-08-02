@@ -106,11 +106,11 @@
                     $stmtDocName->bind_param("s", $_POST['appt_id']);
                     $stmtDocName->execute();
                     $resultDocName = $stmtDocName->get_result();
-                    // $docID = "";
+                    $docID = "";
 
                     while ($rowDocName = $resultDocName->fetch_assoc()){
                       echo $rowDocName['fullName'];
-                      // $docID = $rowDocName['doctorID'];
+                      $docID = $rowDocName['doctorID'];
                     }
                   ?>
                 </p>
