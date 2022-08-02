@@ -17,7 +17,9 @@
   {
     die("Connection failed: " . mysqli_connect_error());
   }
+  
 
+  echo $_POST['submit'];
   //get form data and insert into tables
   if (isset($_POST['submit'])) 
   {
