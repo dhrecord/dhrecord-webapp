@@ -133,8 +133,25 @@
 
             <br/>
 
-            <p class="m-0"><b>Clinic:</b> Ashford Dental Centre</p>
-            <p class="m-0"><b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/></p>
+            <?php
+                // GET THE DOCTOR'S SPECIALIZATION
+                $stmtClinic = $conn->prepare("SELECT DISTINCT businessOwner.nameOfClinic, businessOwner.locationOfClinic
+                                            FROM businessOwner
+                                            JOIN doctorClinic
+                                            ON doctorClinic.clinicID = businessOwner.ID
+                                            WHERE doctorClinic.doctorID=?");
+                $stmtClinic->bind_param("s", $_POST['doc_id']);
+                $stmtClinic->execute();
+                $resultClinic = $stmtClinic->get_result();
+
+                while ($rowClinic = $resultClinic->fetch_assoc()){
+                  echo '<p class="m-0"><b>Clinic: </b>';
+                  echo $rowClinic['nameOfClinic'];
+                  echo '</p><p class="m-0"><b>Address: </b>';
+                  echo $rowClinic['locationOfClinic'];
+                  echo '<br/></p>';
+                }
+            ?>
 
             <br>
 
