@@ -290,7 +290,13 @@
                         echo
                               '</td><td class="px-4 text-center">';
 
-                        echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal">View</button>';
+                        // CREATE FUNCTION FOR PASSING DATA TO MODAL
+                        // function passData($docName, $services, $operatingHours){
+
+                        // }
+
+                        // echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal">View</button>';
+                        echo '<form method="post"><input type="submit" name="viewButton" value="View" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal"/></form>';
                         
                         echo
                               '</td><td class="px-4">
