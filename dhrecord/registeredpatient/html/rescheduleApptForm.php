@@ -85,7 +85,6 @@
             <div>
                 <p class="m-0"><b>Doctor: </b>
                   <?php
-                  echo $_POST['appt_id'];
                     // Database Connection
                     $servername = "localhost";
                     $database = "u922342007_Test";
@@ -103,7 +102,7 @@
                     $stmtDocName = $conn->prepare("SELECT DISTINCT doctor.fullName, doctor.doctorID
                                                     FROM doctor
                                                     JOIN appointment ON doctor.doctorID = appointment.doctorID
-                                                    WHERE appoinment.apptID=?");
+                                                    WHERE appointment.apptID=?");
                     $stmtDocName->bind_param("s", $_POST['appt_id']);
                     $stmtDocName->execute();
                     $resultDocName = $stmtDocName->get_result();
@@ -118,24 +117,24 @@
 
                 <p class="m-0"><b>Specialization: </b>
                   <?php
-                  //   // GET THE DOCTOR'S SPECIALIZATION
-                  //   $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
-                  //                               FROM doctorSpecialization
-                  //                               JOIN clinicSpecialization 
-                  //                               ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                  //                               WHERE doctorSpecialization.doctorID=?");
-                  //   $stmtSpec->bind_param("s", $docID);
-                  //   $stmtSpec->execute();
-                  //   $resultSpec = $stmtSpec->get_result();
+                    // GET THE DOCTOR'S SPECIALIZATION
+                    $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                FROM doctorSpecialization
+                                                JOIN clinicSpecialization 
+                                                ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                WHERE doctorSpecialization.doctorID=?");
+                    $stmtSpec->bind_param("s", $docID);
+                    $stmtSpec->execute();
+                    $resultSpec = $stmtSpec->get_result();
 
-                  //   $specializations = array();
-                  //   while ($rowSpec = $resultSpec->fetch_assoc()){
-                  //     array_push($specializations, $rowSpec["specName"]);
-                  //   }
+                    $specializations = array();
+                    while ($rowSpec = $resultSpec->fetch_assoc()){
+                      array_push($specializations, $rowSpec["specName"]);
+                    }
 
-                  //   $join_specializations = implode(', ', $specializations);
-                  //   echo $join_specializations;
-                  // ?>
+                    $join_specializations = implode(', ', $specializations);
+                    echo $join_specializations;
+                  ?>
                 </p>
 
                 <br>
