@@ -165,9 +165,9 @@
                  </div>
              </div>
              <div class="mb-3 row">
-                 <label for="ReferTo" class="col-sm-2 col-form-label">Refer to (Other Clinic)</label>
+                 <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
                  <div class="col-sm-10">
-                     <select name="ReferTo" id="ReferTo">
+                     <select name="referTo" id="referTo">
                          <option selected value=""></option>
                          <?php
                             // Database Connection
