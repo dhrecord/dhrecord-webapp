@@ -293,8 +293,8 @@
                         echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(';
 
                         echo $rowDoc['fullName'];
-                        echo ",";
-                        echo $join_specializations;
+                        // echo ",";
+                        // echo $join_specializations;
                         // echo ",";
                         // echo $rowDoc['fullName'];
                         
@@ -349,7 +349,7 @@
         crossorigin="anonymous"></script>
 
   <script type="application/javascript">
-    function passData(docName, specializations) {
+    function passData(docName) {
       alert("hi");
       alert(docName);
     }
