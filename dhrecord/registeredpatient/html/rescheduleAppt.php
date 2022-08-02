@@ -87,7 +87,76 @@
           <th></th>
           <th></th>
         </tr>
-        <tr>
+
+        <?php
+          // Database Connection
+          $servername = "localhost";
+          $database = "u922342007_Test";
+          $username = "u922342007_admin";
+          $password = "Aylm@012";
+          // Create connection
+          $conn = mysqli_connect($servername, $username, $password, $database);
+
+          if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+          }
+
+          $sessionID = $_SESSION['id'];
+
+          // GET THE PatientID from UserID
+          $stmtPatName = $conn->prepare("SELECT DISTINCT registeredPatient.ID
+                                          FROM registeredPatient
+                                          WHERE registeredPatient.users_ID=?");
+          $stmtPatName->bind_param("s", $sessionID);
+          $stmtPatName->execute();
+          $resultPatName = $stmtPatName->get_result();
+
+          while ($rowPatName = $resultPatName->fetch_assoc()){
+            // GET THE APPOINTMENT DETAILS
+            $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, businessOwner.locationOfClinic, doctor.fullName
+                                          FROM appointment
+                                          JOIN doctor ON appointment.doctorID = doctor.doctorID
+                                          JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
+                                          JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
+                                          WHERE appointment.patientID=?");
+            $stmtAppt->bind_param("s", $rowPatName['ID']);
+            $stmtAppt->execute();
+            $resultAAppt = $stmtAppt->get_result();
+
+            $stmtAppt = 1;
+
+            while ($rowAppt = $resultAAppt->fetch_assoc()){
+              echo '<tr><td>';
+              echo $stmtAppt;
+
+              echo '</td><td>';
+              echo $rowAppt['nameOfClinic'];
+
+              echo '</td><td>';
+              echo $rowAppt['locationOfClinic'];
+
+              echo '</td><td>';
+              echo $rowAppt['fullName'];
+
+              echo '</td><td>';
+              echo $rowAppt['agenda'];
+
+              echo '</td><td>';
+              echo $rowAppt['date'];
+
+              echo '</td><td>';
+              echo $rowAppt['time'];
+              echo '</td>';
+
+              echo '<td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href=\'../../registeredpatient/html/rescheduleApptForm.php\'">Reschedule</button></td>
+              <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>';
+
+              $stmtAppt += 1;
+            }
+          }
+        ?>
+
+        <!-- <tr>
           <td>1</td>
           <td>Ashford Dental Centre</td>
           <td>215 Upper Thomson Rd, Singapore 574349</td>
@@ -108,7 +177,7 @@
           <td>03.00 pm</td>
           <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
           <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr>
+        </tr> -->
       </table>
     </div>
   </div>
