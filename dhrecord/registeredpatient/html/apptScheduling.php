@@ -313,28 +313,32 @@
         </div>
     </div>
 
-      <!-- modal -->
-      <!-- edit row -->
-      <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="popupModalLabel">Operating Hours</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <p><b>Doctor Name:</b> -
-                  <br/>
-                  <b>Services:</b> -
-                  <br/>
-                  <b>Operating Hours: -</b>
-                  </p>
-                </div>
-            </div>
-        </div>
+    <!-- modal -->
+    <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="popupModalLabel">Operating Hours</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><b>Doctor Name:</b> -
+                <br/>
+                <b>Services:</b> -
+                <br/>
+                <b>Operating Hours: -</b>
+                </p>
+              </div>
+          </div>
       </div>
+    </div>
 
   </div>
+
+  <!-- bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
   <!-- <script type="application/javascript">
     function tableSearch() {
