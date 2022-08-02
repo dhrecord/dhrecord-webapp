@@ -331,9 +331,9 @@
               </div>
               <div class="modal-body">
                 <p><b>Doctor Name:</b><br/><span id="d_name"></span>
-                <br/>
+                <br/><br/>
                 <b>Services:</b><br/><span id="spec_list"></span>
-                <br/>
+                <br/><br/>
                 <b>Operating Hours:</b><br/><span id="o_hours"></span>
                 </p>
               </div>
