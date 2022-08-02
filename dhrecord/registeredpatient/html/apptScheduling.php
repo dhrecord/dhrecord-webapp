@@ -290,7 +290,7 @@
                           echo
                                 '</td><td class="px-4">';
 
-                          echo '<button class="btn btn-dark">View</button>';
+                          echo '<button class="btn btn-dark text-center">View</button>';
                           
                           echo
                                 '</td><td class="px-4">
