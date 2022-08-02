@@ -110,6 +110,7 @@ if(!isset($_SESSION['loggedin']))
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Address: </span><?php echo $data['address']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Medical Conditions: </span><?php echo $data['medConditions']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Drug Allergies: </span><?php echo $data['drugAllergies']; ?></p>
+                    <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='editPatient.php?UserID=$sessionID'">Delete</button></p>
                 </div>
             </div>
             <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->

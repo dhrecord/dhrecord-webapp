@@ -119,7 +119,7 @@
                     </button>
                 </div>
             </div>
-            <select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
+            <!--<select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="2">Name</option>
@@ -127,7 +127,7 @@
                 <option value="4">NRIC</option>
                 <option value="5">Contact No</option>
                 <option value="6">Email</option>
-            </select>
+            </select>-->
 
             <div class="referral-box px-3"> 
                 <button type="button" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 500px;" onclick="window.location.href='./addUser.php';">Add New User</button>
