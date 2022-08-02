@@ -102,7 +102,7 @@
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-4">Change Username/Password</h4>
+        <h4 class="mb-4">Change Password</h4>
         <form action="./toChange.php" method="POST">
             <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
                 <div class="mb-3 row">
