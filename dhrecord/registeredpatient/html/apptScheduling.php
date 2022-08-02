@@ -387,7 +387,23 @@
       sl.innerHTML = specializations;
 
       const oh = document.getElementById("o_hours");
-      oh.innerHTML = operatingHours;
+
+      if (operatingHours !== '-'){
+        let oh_item = operatingHours.split(', ');
+
+        oh_html = "";
+        for (let i = 0; i < oh_item.length; i++) {
+          let oh_item_day = "<p>";
+          oh_item_day += oh_item[i][1:-1];
+          oh_item_day += "</p>";
+
+          oh_html += oh_item_day;
+        }
+
+        oh.innerHTML = oh_html;
+      } else {
+        oh.innerHTML = "-";
+      }
     }
   </script>
 
