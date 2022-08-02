@@ -103,7 +103,7 @@
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">Name</option>
-                <option value="2">Referred By</option>
+                <option value="2">Referred To</option>
                 <option value="3">Referral Date</option>
                 <option value="4">Referring Doctor</option>
                 <option value="5">Tooth Condition</option>
@@ -114,7 +114,7 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Referred By</th>
+                    <th scope="col">Referred To</th>
                     <th scope="col">Referral Date</th>
                     <th scope="col">Referring Doctor</th>
                     <th scope="col">Tooth Condition</th>
@@ -131,14 +131,14 @@
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
                 
-                    $res = ("SELECT referralTracking.ID, registeredPatient.fullName, referralTracking.referredBy, referralTracking.referralDate, 
+                    $res = ("SELECT referralTracking.ID, registeredPatient.fullName, referralTracking.referredTo, referralTracking.referralDate, 
                     referralTracking.referringDoctor, referralTracking.toothCondition FROM referralTracking, registeredPatient
                     WHERE referralTracking.patient_ID = registeredPatient.ID");
 
                     $result = mysqli_query($conn, $res);
 
                     while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["fullName"]."</td><td>".$sql["referredBy"]."</td><td>".$sql["referralDate"]."</td><td>".
+                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["fullName"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".
                                   $sql["referringDoctor"]."</td><td>".$sql["toothCondition"]."</td></tr>";
                             }
                ?>
