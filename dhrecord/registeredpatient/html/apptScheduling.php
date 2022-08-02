@@ -294,12 +294,12 @@
                         echo
                             '</td><td class="px-4">
                               <form method="POST" action="../../registeredpatient/html/bookAppt.php">
-                              <button type="submit" name="doc_id" value="';
+                              <button class="btn btn-dark btn-sm" type="submit" name="doc_id" value="';
 
                         echo $rowDoc['doctorID'];
                                 
                         echo       
-                            '" class="btn btn-dark">Book</button></form></td></tr>';
+                            '" class="btn btn-dark btn-sm">Book</button></form></td></tr>';
                       }
                     }
 

@@ -155,7 +155,7 @@
               echo $rowAppt['apptID'];
                                 
               echo       
-                  '" class="btn btn-dark">Reschedule</button></form>
+                  '" class="btn btn-dark btn-sm">Reschedule</button></form>
                   </td><td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>';
 
               $stmtAppt += 1;
