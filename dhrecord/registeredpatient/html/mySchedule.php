@@ -160,11 +160,15 @@
             echo '"});';
           }
         }
+
+        echo 'for (var i = 0; i < appts.length; ++i) {
+          console.log(appts[i].date + ", " + appts[i].time);
+        }';
       ?>
 
-      for (var i = 0; i < appts.length; ++i) {
-        console.log(appts[i].date + ", " + appts[i].time);
-      }
+      // for (var i = 0; i < appts.length; ++i) {
+      //   console.log(appts[i].date + ", " + appts[i].time);
+      // }
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
