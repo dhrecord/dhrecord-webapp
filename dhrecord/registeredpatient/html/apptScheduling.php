@@ -350,8 +350,8 @@
 
   <script type="application/javascript">
     function passData(docName, specializations) {
-      document.getElementById("d_name").val(docName);
-      document.getElementById("spec_list").val(specializations);
+      document.getElementById("d_name").value = docName;
+      document.getElementById("spec_list").value = specializations;
     }
   </script>
 
