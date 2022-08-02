@@ -6,11 +6,11 @@
     exit;
   }
 
+  //db connection
   $servername = "localhost";
   $database = "u922342007_Test";
   $username = "u922342007_admin";
   $password = "Aylm@012";
-  // Create connection
   $conn = mysqli_connect($servername, $username, $password, $database);
 
   if (!$conn) 
@@ -18,17 +18,40 @@
     die("Connection failed: " . mysqli_connect_error());
   }
 
+  //get form data and insert into tables
+  if (isset($_POST['submit'])) 
+  {
+    if (!isset($_POST["referTo"]) || $_POST["referTo"] == "")
+    {
+      //submit into treatmentHistory
+    } else
+    { 
+      $apptID = $_POST["apptID"];
+      $apptDate = $_POST["apptDate"];
+      $apptAgenda = $_POST["apptAgenda"];
+      $apptDoctorID = $_POST["apptDoctorID"];
+      $apptPatientID = $_POST["apptPatientID"];
+      $toothCondition = $_POST["toothCondition"];
+      $referredTo = $_POST["referTo"];
+     
+      $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, patient_ID)
+      VALUES ('{$referTo}', '{$apptDate}', '{$apptDoctorId}', '{$toothCondition}', '{$apptPatientID}')";
+    }
+    header('Location: ./apptSchedulingAndReminders.php');
+  }
+
   $res = "SELECT * FROM appointment WHERE apptID = $_GET['appt_ID']";
 
   $result = mysqli_query($conn, $res);
-
-  while($sql = mysqli_fetch_assoc($result)){
-            $apptID = $sql["apptID"];
-            $apptDate = $sql["date"];
-            $apptAgenda = $sql["agenda"];
-            $apptDoctorID = $sql["doctorID"];
-            $apptPatientID = $sql["patientID"];
-          }
+  
+    while($sql = mysqli_fetch_assoc($result))
+    {
+              $apptID = $sql["apptID"];
+              $apptDate = $sql["date"];
+              $apptAgenda = $sql["agenda"];
+              $apptDoctorID = $sql["doctorID"];
+              $apptPatientID = $sql["patientID"];
+    }
 ?>
 
 <!doctype html>
@@ -108,70 +131,89 @@
     
     <div>
         <!-- <form> -->
-            <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
-                <div class="mb-3 row">
-                    <label for="symptoms" class="col-sm-2 col-form-label">Symptoms: </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="symptoms" name="symptoms">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="diagnosis" class="col-sm-2 col-form-label">Diagnosis: </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="diagnosis" name="diagnosis">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="medicationPrescribed" class="col-sm-2 col-form-label">Medication Prescribed</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="medicationPrescribed" name="medicationPrescribed">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="Quantity" name="Quantity">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="ReferTo" class="col-sm-2 col-form-label">Refer to (Other Clinic)</label>
-                    <div class="col-sm-10">
-                      <select name="ReferTo" id="ReferTo">
-                        <option selected value=""></option>
-                        <?php                           
-                          $sessionID = $_SESSION['id'];
+         <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
+         <form name="form" action="" method="post">
+           <input type="hidden" id="apptID" name="apptID" value="<?php echo $apptID ?>">
+           <input type="hidden" id="apptDate" name="apptDate" value="<?php echo $apptDate ?>">
+           <input type="hidden" id="apptAgenda" name="apptAgenda" value="<?php echo $apptAgenda ?>">
+           <input type="hidden" id="apptDoctorID" name="apptDoctorID" value="<?php echo $apptDoctorID ?>">
+           <input type="hidden" id="apptPatientID" name="apptPatientID" value="<?php echo $apptPatientID ?>">
+             <div class="mb-3 row">
+                 <label for="toothCondition" class="col-sm-2 col-form-label">Tooth Condition: </label>
+                 <div class="col-sm-10">
+                     <input type="text" class="form-control" id="toothCondition" name="toothCondition">
+                 </div>
+             </div>
+             <div class="mb-3 row">
+                 <label for="diagnosis" class="col-sm-2 col-form-label">Diagnosis: </label>
+                 <div class="col-sm-10">
+                     <input type="text" class="form-control" id="diagnosis" name="diagnosis">
+                 </div>
+             </div>
+             <div class="mb-3 row">
+                 <label for="medicationPrescribed" class="col-sm-2 col-form-label">Medication Prescribed</label>
+                 <div class="col-sm-10">
+                     <input type="text" class="form-control" id="medicationPrescribed" name="medicationPrescribed">
+                 </div>
+             </div>
+             <div class="mb-3 row">
+                 <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
+                 <div class="col-sm-10">
+                     <input type="text" class="form-control" id="Quantity" name="Quantity">
+                 </div>
+             </div>
+             <div class="mb-3 row">
+                 <label for="ReferTo" class="col-sm-2 col-form-label">Refer to (Other Clinic)</label>
+                 <div class="col-sm-10">
+                     <select name="ReferTo" id="ReferTo">
+                         <option selected value=""></option>
+                         <?php
+                            // Database Connection
+                            $servername = "localhost";
+                            $database = "u922342007_Test";
+                            $username = "u922342007_admin";
+                            $password = "Aylm@012";
+                            // Create connection
+                            $conn = mysqli_connect($servername, $username, $password, $database);
 
-                          // GET THE LIST OF CLINICS
-                          $resultBO = $conn->query("SELECT * FROM businessOwner");
+                            if (!$conn) {
+                                die("Connection failed: " . mysqli_connect_error());
+                            }
 
-                          while ($row = $resultBO->fetch_assoc())
-                          {
-                            echo '<option value="';
-                            
-                            $fieldNOC = $row['nameOfClinic'];
-                            echo $fieldNOC;
+                            $sessionID = $_SESSION['id'];
 
-                            echo '">';
-      
-                            echo $fieldNOC;
-                            echo '</option>';
-                          }
+                            // GET THE LIST OF CLINICS
+                            $resultBO = $conn->query("SELECT * FROM businessOwner");
+                            //echo '<option value="">""</option>';
 
-                          mysqli_close($conn);
-                        ?>
-                      </select>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="prescriptionDesc" class="col-sm-2 col-form-label">Comments</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="prescriptionDesc" name="prescriptionDesc">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <div class="text-center"><button class="btn btn-dark mt-4 px-5" name="finish" onclick="document.location.href='../../businessowner/html/apptSchedulingAndReminders.php'">Finish</button></div>
-                </div>
-            </div>
+                            while ($row = $resultBO->fetch_assoc()) {
+                                echo '<option value="';
+
+                                $fieldNOC = $row['nameOfClinic'];
+                                echo $fieldNOC;
+
+                                echo '">';
+
+                                echo $fieldNOC;
+                                echo '</option>';
+                            }
+
+                            mysqli_close($conn);
+                            ?>
+                     </select>
+                 </div>
+             </div>
+             <div class="mb-3 row">
+                 <label for="prescriptionDesc" class="col-sm-2 col-form-label">Comments</label>
+                 <div class="col-sm-10">
+                     <input type="text" class="form-control" id="prescriptionDesc" name="prescriptionDesc">
+                 </div>
+             </div>
+             <div class="mb-3 row">
+                 <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5" name="finish">Finish</button></div>
+             </div>
+         </form>
+     </div>
         <!-- </form> -->
     </div>
   </div>
