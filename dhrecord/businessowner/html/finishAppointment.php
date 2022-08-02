@@ -5,7 +5,32 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
+
+  $servername = "localhost";
+  $database = "u922342007_Test";
+  $username = "u922342007_admin";
+  $password = "Aylm@012";
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $database);
+
+  if (!$conn) 
+  {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  $res = "SELECT * FROM appointment WHERE apptID = $_GET['appt_ID']";
+
+  $result = mysqli_query($conn, $res);
+
+  while($sql = mysqli_fetch_assoc($result)){
+            $apptID = $sql["apptID"];
+            $apptDate = $sql["date"];
+            $apptAgenda = $sql["agenda"];
+            $apptDoctorID = $sql["doctorID"];
+            $apptPatientID = $sql["patientID"];
+          }
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -113,25 +138,11 @@
                     <div class="col-sm-10">
                       <select name="ReferTo" id="ReferTo">
                         <option selected value=""></option>
-                        <?php 
-                          // Database Connection
-                          $servername = "localhost";
-                          $database = "u922342007_Test";
-                          $username = "u922342007_admin";
-                          $password = "Aylm@012";
-                          // Create connection
-                          $conn = mysqli_connect($servername, $username, $password, $database);
-
-                          if (!$conn) 
-                          {
-                            die("Connection failed: " . mysqli_connect_error());
-                          }
-
+                        <?php                           
                           $sessionID = $_SESSION['id'];
 
                           // GET THE LIST OF CLINICS
                           $resultBO = $conn->query("SELECT * FROM businessOwner");
-                          //echo '<option value="">""</option>';
 
                           while ($row = $resultBO->fetch_assoc())
                           {
