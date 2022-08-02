@@ -278,20 +278,27 @@
                           array_push($specializations, $rowSpec["specName"]);
                         }
                         
-                        $array_length = count($specializations);
-                        for ($i = 0; $i < $array_length; $i++)  {
-                          echo $specializations[$i];
+                        // $array_length = count($specializations);
+                        // for ($i = 0; $i < $array_length; $i++)  {
+                        //   echo $specializations[$i];
 
-                          if ($i < $array_length-1){
-                            echo ", ";
-                          }
-                        }
+                        //   if ($i < $array_length-1){
+                        //     echo ", ";
+                        //   }
+                        // }
+                        $join_specializations = implode(', ', $specializations);
+                        echo $join_specializations;
                               
-                        echo
-                              '</td><td class="px-4 text-center">';
+                        echo '</td><td class="px-4 text-center">';
+                        echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(';
 
-                        echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData();">View</button>';
-                        // echo '<form method="post"><input type="submit" name="viewButton" value="View" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal"/></form>';
+                        echo $rowDoc['fullName'];
+                        echo ",";
+                        echo $join_specializations;
+                        // echo ",";
+                        // echo $rowDoc['fullName'];
+                        
+                        echo ');">View</button>';
                         
                         echo
                               '</td><td class="px-4">
@@ -342,8 +349,8 @@
         crossorigin="anonymous"></script>
 
   <script type="application/javascript">
-    function passData() {
-      alert("hi");
+    function passData(docName, specializations) {
+      alert(docName + " " + specializations);
     }
   </script>
 
