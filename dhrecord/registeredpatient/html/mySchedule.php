@@ -103,6 +103,37 @@
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
 
+      <?php
+        // Database Connection
+        $servername = "localhost";
+        $database = "u922342007_Test";
+        $username = "u922342007_admin";
+        $password = "Aylm@012";
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $database);
+
+        if (!$conn) 
+        {
+          die("Connection failed: " . mysqli_connect_error());
+        }
+
+        $sessionID = $_SESSION['id'];
+
+        // GET THE PatientID from UserID
+        $stmtPatName = $conn->prepare("SELECT DISTINCT registeredPatient.ID
+                                        FROM registeredPatient
+                                        WHERE registeredPatient.users_ID=?");
+        $stmtPatName->bind_param("s", $sessionID);
+        $stmtPatName->execute();
+        $resultPatName = $stmtPatName->get_result();
+
+        while ($rowPatName = $resultPatName->fetch_assoc()){
+          echo 'alert("';
+          echo $rowPatName['ID'];
+          echo '")';
+        }
+      ?>
+
       var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
         height: 'parent',
