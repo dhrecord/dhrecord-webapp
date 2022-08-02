@@ -29,11 +29,19 @@ if (!$conn)
 if($newPassWord = $confirmNewPassWord)
 {
 	$query = "UPDATE users SET username='$userName', password='$newPassWord' WHERE ID='$userID'";
+	if (mysqli_query($conn,$query)) 
+	{
+		header('Location: userManagement.php');
+	}
+
+	else
+	{
+		echo "something went wrong!";
+	}
 }
 else 
 {
 	echo "passwords do not match!";
-	header(location: changeUsernameOrPassword.php);
 }
 
 
