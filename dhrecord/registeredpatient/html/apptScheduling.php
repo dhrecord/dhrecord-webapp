@@ -419,7 +419,7 @@
 
             if (td) {  
                 txtValue = td.innerHTML;
-                console.log(txtValue.split("<b>"));
+                console.log(txtValue.split("<b>")[1].split("/b>")[1].split("<br>")[0]);
 
                 // if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 //     tr[i].style.display = "";
