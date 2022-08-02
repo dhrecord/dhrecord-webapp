@@ -142,19 +142,19 @@
 
           while ($rowAppt = $resultAAppt->fetch_assoc()){
             // echo $rowAppt['ID'];
-            echo 'appt.push({date:"';
+            echo 'appt.push({"date":"';
             echo $rowAppt['appointment.date'];
 
-            echo '", time:"';
+            echo '", "time":"';
             echo $rowAppt['appointment.time'];
 
-            echo '", agenda:"';
+            echo '", "agenda":"';
             echo $rowAppt['appointment.agenda'];
             
-            echo '", clinic name:"';
+            echo '", "clinic" name:"';
             echo $rowAppt['businessOwner.nameOfClinic'];
 
-            echo '", doctor:"';
+            echo '", "doctor":"';
             echo $rowAppt['doctor.fullName'];
 
             echo '"});';
@@ -163,7 +163,7 @@
       ?>
 
       for (var i = 0; i < appts.length; ++i) {
-          console.log(appts[i].date + ", " + appts[i].time);
+        console.log(appts[i].date + ", " + appts[i].time);
       }
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
