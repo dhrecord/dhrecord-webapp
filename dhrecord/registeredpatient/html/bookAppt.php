@@ -84,6 +84,7 @@
               <?php
                 echo $_POST['doc_id'];
               ?>
+              <input class="commonInput" type="text" id="inputDoc" value="<?= $_POST['doc_id'] ?>"/>
             </p>
             <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
 
