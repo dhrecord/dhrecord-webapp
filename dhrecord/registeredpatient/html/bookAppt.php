@@ -83,8 +83,28 @@
             <p class="m-0"><b>Doctor: </b>
               <?php
                 echo $_POST['doc_id'];
+                // Database Connection
+                $servername = "localhost";
+                $database = "u922342007_Test";
+                $username = "u922342007_admin";
+                $password = "Aylm@012";
+                // Create connection
+                $conn = mysqli_connect($servername, $username, $password, $database);
+
+                if (!$conn) 
+                {
+                  die("Connection failed: " . mysqli_connect_error());
+                }
+
+                // GET THE DOCTOR'S FULLNAME
+                $stmtSpecDocName = $conn->prepare("SELECT doctor.fullName
+                                              FROM doctor
+                                              WHERE doctor.doctorID=?");
+                $stmtSpecDocName->bind_param("s", $_POST['doc_id']);
+                $stmtSpecDocName->execute();
+                $resultSpecDocName = $stmtSpecDocName->get_result();
+                echo $resultSpecDocName;
               ?>
-              <input class="commonInput" type="text" id="inputDoc" value="<?= $_POST['doc_id'] ?>"/>
             </p>
             <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
 
