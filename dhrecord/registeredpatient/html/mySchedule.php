@@ -102,7 +102,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
-      var test = ""
+      var appts = [];
 
       <?php
         // Database Connection
@@ -129,13 +129,42 @@
         $resultPatName = $stmtPatName->get_result();
 
         while ($rowPatName = $resultPatName->fetch_assoc()){
-          echo 'test=';
-          echo $rowPatName['ID'];
-          echo ';';
+          // GET THE APPOINTMENT DETAILS
+          $stmtAppt = $conn->prepare("SELECT DISTINCT *
+                                        FROM appointment
+                                        JOIN doctor ON appointment.doctorID = doctor.doctorID
+                                        JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
+                                        JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
+                                        WHERE appointment.patientID=?");
+          $stmtAppt->bind_param("s", $rowPatName['ID']);
+          $stmtAppt->execute();
+          $resultAAppt = $stmtAppt->get_result();
+
+          while ($rowAppt = $resultAAppt->fetch_assoc()){
+            // echo $rowAppt['ID'];
+            echo 'appt.push({date:"';
+            echo $rowAppt['appointment.date'];
+
+            echo '", time:"';
+            echo $rowAppt['appointment.time'];
+
+            echo '", agenda:"';
+            echo $rowAppt['appointment.agenda'];
+            
+            echo '", clinic name:"';
+            echo $rowAppt['businessOwner.nameOfClinic'];
+
+            echo '", doctor:"';
+            echo $rowAppt['doctor.fullName'];
+
+            echo '"});';
+          }
         }
       ?>
 
-      alert(test);
+      for (var i = 0; i < appts.length; ++i) {
+          console.log(appts[i].date + ", " + appts[i].time);
+      }
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
