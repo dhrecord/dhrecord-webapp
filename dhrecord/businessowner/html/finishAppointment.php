@@ -23,11 +23,11 @@
   //get form data and insert into tables
   if (isset($_POST['submit'])) 
   {
-    if (!isset($_POST["referTo"]) || $_POST["referTo"] == "")
-    {
+    //if (!isset($_POST["referTo"]) || $_POST["referTo"] == "")
+    //{
       //submit into treatmentHistory
-    } else
-    { 
+    //} else
+    //{ 
       $apptID = $_POST["apptID"];
       $apptDate = $_POST["apptDate"];
       $apptAgenda = $_POST["apptAgenda"];
@@ -38,7 +38,7 @@
      
       $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, patient_ID)
       VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$apptPatientID}')";
-    }
+    //}
     //header('Location: ./apptSchedulingAndReminders.php');
   }
 
