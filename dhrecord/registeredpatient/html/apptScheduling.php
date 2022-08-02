@@ -292,10 +292,14 @@
                         echo '\');">View</button>';
                         
                         echo
-                              '</td><td class="px-4">
-                                <button class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
-                              </td>
-                            </tr>';
+                            '</td><td class="px-4">
+                              <button type="submit" name="doc_id" value="';
+
+                        echo $rowDoc['doctorID'];
+                                
+                        echo       
+                            '" class="btn btn-dark" onclick="document.location.href=\'../../registeredpatient/html/bookAppt.php\'">Book</button>
+                              </td></tr>';
                       }
                     }
 

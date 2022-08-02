@@ -80,7 +80,11 @@
     <div class="p-5" style="background: #F2F2F2;">
       <div class="d-flex">
         <div>
-            <p class="m-0"><b>Doctor:</b> Dr.Smith Rowe</p>
+            <p class="m-0"><b>Doctor: </b>
+              <?php
+                echo $_POST['doc_id'];
+              ?>
+            </p>
             <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
 
             <br>
