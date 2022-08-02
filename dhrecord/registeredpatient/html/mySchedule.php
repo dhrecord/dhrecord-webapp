@@ -102,6 +102,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
+      var test = ""
 
       <?php
         // Database Connection
@@ -128,11 +129,13 @@
         $resultPatName = $stmtPatName->get_result();
 
         while ($rowPatName = $resultPatName->fetch_assoc()){
-          echo 'alert("';
+          echo 'test=';
           echo $rowPatName['ID'];
-          echo '")';
+          echo ';';
         }
       ?>
+
+      alert(test);
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
