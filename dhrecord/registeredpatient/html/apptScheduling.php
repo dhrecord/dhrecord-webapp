@@ -100,8 +100,9 @@
                     <option value="1">Clinic Name</option>
                     <option value="2">Services</option>
                     <option value="3">Address</option>
-                    <option value="4">Operating Hours (Day)</option>
-                    <option value="5">Operating Hours (Time)</option>
+                    <option value="4">Postal Code</option>
+                    <option value="5">Operating Hours (Day)</option>
+                    <option value="6">Operating Hours (Time)</option>
                   </select>
                 </div>
             </div>
