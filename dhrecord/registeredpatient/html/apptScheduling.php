@@ -390,8 +390,8 @@
 
       if (operatingHours !== '-'){
         let oh_item = operatingHours.split(', ');
-
-        oh_html = "<p>";
+        let oh_html = "<p>";
+        
         for (let i = 0; i < oh_item.length; i++) {
           let oh_item_day = "";
           oh_item_day += oh_item[i].substring(1, oh_item[i].length-1);
