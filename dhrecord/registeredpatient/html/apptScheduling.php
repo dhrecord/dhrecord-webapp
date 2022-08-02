@@ -212,7 +212,7 @@
                       // }
 
                       echo
-                          '<b>Phone: </b>';
+                          '<br/><b>Phone: </b>';
                             
                       $field3 = $row['contactNumber'];
                       echo $field3; 
