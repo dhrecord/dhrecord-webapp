@@ -18,8 +18,6 @@
     die("Connection failed: " . mysqli_connect_error());
   }
   
-
-  echo $_POST['submit'];
   //get form data and insert into tables
   if (isset($_POST['submit'])) 
   {
@@ -149,11 +147,20 @@
         <!-- <form> -->
          <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
          <form name="form" action="#" method="post">
-           <input type="hidden" id="apptID" name="apptID" value=".<?php echo $apptID ?>.">
+           <!-- echo "<input name='test' value=".$row['test'].">"; -->
+           <?php echo "<input type='hidden' id='apptID' name='apptID' value='".$apptID."'>"; ?>
+           <?php echo "<input type='hidden' id='apptDate' name='apptDate' value='".$apptDate."'>"; ?>
+           <?php echo "<input type='hidden' id='apptAgenda' name='apptAgenda' value='".$apptAgenda."'>"; ?>
+           <?php echo "<input type='hidden' id='apptDoctorID' name='apptDoctorID' value='".$apptDoctorID."'>"; ?>
+           <?php echo "<input type='hidden' id='apptPatientID' name='apptPatientID' value='".$apptPatientID."'>"; ?>
+
+            <!--
            <input type="hidden" id="apptDate" name="apptDate" value=".<?php echo $apptDate ?>.">
            <input type="hidden" id="apptAgenda" name="apptAgenda" value=".<?php echo $apptAgenda ?>.">
            <input type="hidden" id="apptDoctorID" name="apptDoctorID" value=".<?php echo $apptDoctorID ?>.">
            <input type="hidden" id="apptPatientID" name="apptPatientID" value=".<?php echo $apptPatientID ?>.">
+           -->
+           
              <div class="mb-3 row">
                  <label for="toothCondition" class="col-sm-2 col-form-label">Tooth Condition: </label>
                  <div class="col-sm-10">
