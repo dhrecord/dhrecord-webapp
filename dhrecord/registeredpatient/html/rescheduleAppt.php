@@ -145,7 +145,7 @@
               echo $rowAppt['date'];
 
               echo '</td><td>';
-              echo $rowAppt['time'];
+              echo substr($rowAppt['time'], 0, 5);
               echo '</td>';
 
               echo '<td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href=\'../../registeredpatient/html/rescheduleApptForm.php\'">Reschedule</button></td>
