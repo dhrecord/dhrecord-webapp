@@ -137,18 +137,64 @@
                   ?>
                 </p>
 
-                <br>
+                <br/>
 
-                <p class="m-0"><b>Clinic:</b>Ashford Dental Centre</p>
-                <p class="m-0"><b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/></p>
+                <?php
+                    // GET THE DOCTOR'S SPECIALIZATION
+                    $stmtClinic = $conn->prepare("SELECT DISTINCT businessOwner.nameOfClinic, businessOwner.locationOfClinic
+                                                FROM businessOwner
+                                                JOIN doctorClinic
+                                                ON doctorClinic.clinicID = businessOwner.ID
+                                                WHERE doctorClinic.doctorID=?");
+                    $stmtClinic->bind_param("s", $docID);
+                    $stmtClinic->execute();
+                    $resultClinic = $stmtClinic->get_result();
 
-                <br>
+                    while ($rowClinic = $resultClinic->fetch_assoc()){
+                      echo '<p class="m-0"><b>Clinic: </b>';
+                      echo $rowClinic['nameOfClinic'];
+                      echo '</p><p class="m-0"><b>Address: </b>';
+                      echo $rowClinic['locationOfClinic'];
+                      echo '<br/></p>';
+                    }
+                ?>
+
+                <br/>
 
                 <p class="m-0"> 
                     <b>Operating Hours:</b><br/>
-                    Monday-Friday: 9am–6pm<br/>
-                    Saturday: 1pm-4pm<br/>
-                    Sunday: Closed<br/><br/>
+                    
+                    <?php
+                      // GET THE OPERATING HOURS OF THE CLINIC
+                      $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
+                                                  FROM operatingHours 
+                                                  WHERE operatingHours.doctorID = ?");
+                      $stmtOH->bind_param("s", $docID);
+                      $stmtOH->execute();
+                      $resultOH = $stmtOH->get_result();
+
+                      echo '<p>';
+                      if ($resultOH->num_rows === 0) {
+                        echo '-';
+                      } else { 
+                        while ($rowOH = $resultOH->fetch_assoc()){
+                          if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                            echo $rowOH['day'];
+                            echo ': Closed<br/>';
+                          } else {
+                            echo $rowOH['day'];
+                            echo ': ';
+                            $start_time = $rowOH['start_time']; 
+                            echo substr($start_time, 0, 5);
+                            echo '-';
+                            $end_time = $rowOH['end_time']; 
+                            echo substr($end_time, 0, 5);
+                            echo '<br/>';
+                          }
+                        }
+                      }
+                      echo '</p>';
+                    ?>
                 </p>
             </div>
 
