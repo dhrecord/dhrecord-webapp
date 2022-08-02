@@ -293,7 +293,7 @@
                         echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(\'';
 
                         echo $rowDoc['fullName'];
-                        echo ",";
+                        echo "\',\'";
                         echo $join_specializations;
                         // echo ",";
                         // echo $rowDoc['fullName'];
@@ -330,11 +330,11 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <p><b>Doctor Name:</b> -
+                <p><b>Doctor Name:</b> <span id="d_name"></span>
                 <br/>
-                <b>Services:</b> -
+                <b>Services:</b> <span id="spec_list"></span>
                 <br/>
-                <b>Operating Hours: </b> -
+                <b>Operating Hours: </b> <span id="o_hours"></span>
                 </p>
               </div>
           </div>
@@ -350,8 +350,8 @@
 
   <script type="application/javascript">
     function passData(docName, specializations) {
-      alert(docName);
-      alert(specializations);
+      document.getElementById("d_name").val(docName);
+      document.getElementById("spec_list").val(specializations);
     }
   </script>
 
