@@ -172,45 +172,44 @@
                         echo '-';
                       }
                        
-                      
-                      echo      
-                            '<br/>
-                            <br/>
-                            <b>Operating Hours:</b><br/>';
+                      // echo      
+                      //       '<br/>
+                      //       <br/>
+                      //       <b>Operating Hours:</b><br/>';
                           
-                      // GET THE OPERATING HOURS OF THE CLINIC
-                      $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
-                                                FROM operatingHours 
-                                                WHERE operatingHours.clinicID = ?");
-                      $stmtOH->bind_param("s", $row['ID']);
-                      $stmtOH->execute();
-                      $resultOH = $stmtOH->get_result();
+                      // // GET THE OPERATING HOURS OF THE CLINIC
+                      // $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
+                      //                           FROM operatingHours 
+                      //                           WHERE operatingHours.clinicID = ?");
+                      // $stmtOH->bind_param("s", $row['ID']);
+                      // $stmtOH->execute();
+                      // $resultOH = $stmtOH->get_result();
 
-                      if ($resultOH->num_rows === 0) {
-                        echo '- <br/><br/>';
-                      } else {
-                        echo '<table class="table">';
+                      // if ($resultOH->num_rows === 0) {
+                      //   echo '- <br/><br/>';
+                      // } else {
+                      //   echo '<table class="table">';
                       
-                        while ($rowOH = $resultOH->fetch_assoc()){
-                          if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
-                            echo '<tr><td>';
-                            echo $rowOH['day'];
-                            echo '</td><td class="px-3">Closed</td>';
-                          } else {
-                            echo '<tr><td>';
-                            echo $rowOH['day'];
-                            echo '</td><td class="px-3">';
-                            $start_time = $rowOH['start_time']; 
-                            echo substr($start_time, 0, 5);
-                            echo '-';
-                            $end_time = $rowOH['end_time']; 
-                            echo substr($end_time, 0, 5);
-                            echo '</td></tr>';
-                          }
-                        }
+                      //   while ($rowOH = $resultOH->fetch_assoc()){
+                      //     if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                      //       echo '<tr><td>';
+                      //       echo $rowOH['day'];
+                      //       echo '</td><td class="px-3">Closed</td>';
+                      //     } else {
+                      //       echo '<tr><td>';
+                      //       echo $rowOH['day'];
+                      //       echo '</td><td class="px-3">';
+                      //       $start_time = $rowOH['start_time']; 
+                      //       echo substr($start_time, 0, 5);
+                      //       echo '-';
+                      //       $end_time = $rowOH['end_time']; 
+                      //       echo substr($end_time, 0, 5);
+                      //       echo '</td></tr>';
+                      //     }
+                      //   }
   
-                        echo '</table>';
-                      }
+                      //   echo '</table>';
+                      // }
 
                       echo
                           '<b>Phone: </b>';
