@@ -65,6 +65,13 @@
               $apptAgenda = $sql["agenda"];
               $apptDoctorID = $sql["doctorID"];
               $apptPatientID = $sql["patientID"];
+      
+       echo $apptID;
+      echo $apptDate;
+      echo $apptDoctorID;
+      echo $toothCondition;
+      echo $referredTo;
+      
     }
 ?>
 
