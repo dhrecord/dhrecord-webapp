@@ -112,6 +112,7 @@
                     <label for="ReferTo" class="col-sm-2 col-form-label">Refer to (Other Clinic)</label>
                     <div class="col-sm-10">
                       <select name="ReferTo" id="ReferTo">
+                        <option value="">""</option>
                         <?php 
                           // Database Connection
                           $servername = "localhost";
@@ -130,7 +131,7 @@
 
                           // GET THE LIST OF CLINICS
                           $resultBO = $conn->query("SELECT * FROM businessOwner");
-                          echo '<option value="">""</option>';
+                          //echo '<option value="">""</option>';
 
                           while ($row = $resultBO->fetch_assoc())
                           {
