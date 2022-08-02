@@ -40,7 +40,7 @@
     header('Location: ./apptSchedulingAndReminders.php');
   }
 
-  $res = "SELECT * FROM appointment WHERE apptID = $_GET['appt_ID']";
+  $res = "SELECT * FROM appointment WHERE apptID = " .$_GET['appt_ID']. " ";
 
   $result = mysqli_query($conn, $res);
   
