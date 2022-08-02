@@ -153,7 +153,7 @@
             echo $rowAppt['nameOfClinic'];
 
             echo '", doctor:"';
-            echo $rowAppt['fullName'];
+            echo $rowAppt['doctor.fullName'];
 
             echo '"});';
           }
