@@ -37,9 +37,9 @@
       $referredTo = $_POST["referTo"];
      
       $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, patient_ID)
-      VALUES ('{$referTo}', '{$apptDate}', '{$apptDoctorId}', '{$toothCondition}', '{$apptPatientID}')";
+      VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorId}', '{$toothCondition}', '{$apptPatientID}')";
     }
-    header('Location: ./apptSchedulingAndReminders.php');
+    //header('Location: ./apptSchedulingAndReminders.php');
   }
 
   $res = "SELECT * FROM appointment WHERE apptID = " .$_GET['appt_ID']. " ";
