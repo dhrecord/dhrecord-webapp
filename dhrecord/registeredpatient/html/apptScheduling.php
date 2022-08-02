@@ -386,7 +386,7 @@
         table = document.getElementById("clinicTable");
         tr = table.getElementsByTagName("tr");
 
-        // if search by clinic name
+        // search by clinic name
         if (value === "1"){
           for (let i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
@@ -410,6 +410,34 @@
                 tr3[j].style.display = "";
               }
             }
+          }
+        }
+        // search by address
+        else if(value === "3"){
+          for (let i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+
+            if (td) {
+                let p = td.getElementsByTagName("p")[0];
+                alert(p.innerText);
+                // txtValue = td.textContent || td.innerText;
+
+                // if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                //     tr[i].style.display = "";
+                // } 
+
+                // else {
+                //     tr[i].style.display = "none";
+                // }
+            }
+
+            // tr2 = document.getElementsByClassName('docs');
+            // for (let k = 0; k < tr2.length; k++) {
+            //   tr3 = tr2[k].getElementsByTagName("tr");
+            //   for (let j = 0; j < tr3.length; j++) {
+            //     tr3[j].style.display = "";
+            //   }
+            // }
           }
         }
 
