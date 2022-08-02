@@ -161,7 +161,11 @@
                           <b>Address: </b>';
                           
                     $fieldLOC = $row['locationOfClinic'];
-                    echo $fieldLOC; 
+                    if($fieldLOC){
+                      echo $fieldLOC;
+                    } else {
+                      echo '-';
+                    }
 
                     echo '<br/><b>Postal Code: </b>';
 
@@ -171,61 +175,26 @@
                     } else {
                       echo '-';
                     }
-                      
-                    // echo      
-                    //       '<br/>
-                    //       <br/>
-                    //       <b>Operating Hours:</b><br/>';
-                        
-                    // // GET THE OPERATING HOURS OF THE CLINIC
-                    // $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
-                    //                           FROM operatingHours 
-                    //                           WHERE operatingHours.clinicID = ?");
-                    // $stmtOH->bind_param("s", $row['ID']);
-                    // $stmtOH->execute();
-                    // $resultOH = $stmtOH->get_result();
-
-                    // if ($resultOH->num_rows === 0) {
-                    //   echo '- <br/><br/>';
-                    // } else {
-                    //   echo '<table class="table">';
-                    
-                    //   while ($rowOH = $resultOH->fetch_assoc()){
-                    //     if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
-                    //       echo '<tr><td>';
-                    //       echo $rowOH['day'];
-                    //       echo '</td><td class="px-3">Closed</td>';
-                    //     } else {
-                    //       echo '<tr><td>';
-                    //       echo $rowOH['day'];
-                    //       echo '</td><td class="px-3">';
-                    //       $start_time = $rowOH['start_time']; 
-                    //       echo substr($start_time, 0, 5);
-                    //       echo '-';
-                    //       $end_time = $rowOH['end_time']; 
-                    //       echo substr($end_time, 0, 5);
-                    //       echo '</td></tr>';
-                    //     }
-                    //   }
-
-                    //   echo '</table>';
-                    // }
 
                     echo
                         '<br/><b>Phone: </b>';
                           
                     $field3 = $row['contactNumber'];
-                    echo $field3; 
+                    if($field3){
+                      echo $field3;
+                    } else {
+                      echo '-';
+                    }
                           
                     echo      
                           '<br/>
                           <b>Website: </b>';
 
                     $field4 = $row['website'];
-                    if ($field4 === ""){
-                      echo "&#45;";
-                    } else{
+                    if ($field4){
                       echo $field4; 
+                    } else{
+                      echo '-';
                     }
                     
                     echo
@@ -250,7 +219,7 @@
                     $resultDoc = $stmtDoc->get_result();
 
                     if ($resultDoc->num_rows === 0) {
-                      echo '<tr><td class="px-4">-</td><td class="px-4">-</td><td></td></tr>';
+                      echo '<tr><td class="px-4">-</td><td class="px-4">-</td><td class="text-center">-</td><td></td></tr>';
                     } else {
                       while ($rowDoc = $resultDoc->fetch_assoc()){
                         echo
@@ -278,14 +247,6 @@
                           array_push($specializations, $rowSpec["specName"]);
                         }
                         
-                        // $array_length = count($specializations);
-                        // for ($i = 0; $i < $array_length; $i++)  {
-                        //   echo $specializations[$i];
-
-                        //   if ($i < $array_length-1){
-                        //     echo ", ";
-                        //   }
-                        // }
                         $join_specializations = implode(', ', $specializations);
                         echo $join_specializations;
                               
