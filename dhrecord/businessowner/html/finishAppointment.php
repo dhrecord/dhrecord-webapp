@@ -112,7 +112,7 @@
                     <label for="ReferTo" class="col-sm-2 col-form-label">Refer to (Other Clinic)</label>
                     <div class="col-sm-10">
                       <select name="ReferTo" id="ReferTo">
-                        <option value="">""</option>
+                        <option selected value=""></option>
                         <?php 
                           // Database Connection
                           $servername = "localhost";
