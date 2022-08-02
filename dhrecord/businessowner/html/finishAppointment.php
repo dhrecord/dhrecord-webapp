@@ -36,8 +36,22 @@
       $toothCondition = $_POST["toothCondition"];
       $referredTo = $_POST["referTo"];
      
+      echo $apptID;
+      echo $apptDate;
+      echo $apptDoctorID;
+      echo $toothCondition;
+      echo $referredTo;
+    
       $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, patient_ID)
       VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$apptPatientID}')";
+    
+    if (mysqli_query($conn, $res)) 
+    {
+      echo "New record created successfully";
+    } else {
+      echo "Error: " . $res . "<br>" . mysqli_error($conn);
+    }
+    
     //}
     //header('Location: ./apptSchedulingAndReminders.php');
   }
@@ -135,11 +149,11 @@
         <!-- <form> -->
          <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
          <form name="form" action="#" method="post">
-           <input type="hidden" id="apptID" name="apptID" value="<?php echo $apptID ?>">
-           <input type="hidden" id="apptDate" name="apptDate" value="<?php echo $apptDate ?>">
-           <input type="hidden" id="apptAgenda" name="apptAgenda" value="<?php echo $apptAgenda ?>">
-           <input type="hidden" id="apptDoctorID" name="apptDoctorID" value="<?php echo $apptDoctorID ?>">
-           <input type="hidden" id="apptPatientID" name="apptPatientID" value="<?php echo $apptPatientID ?>">
+           <input type="hidden" id="apptID" name="apptID" value=".<?php echo $apptID ?>.">
+           <input type="hidden" id="apptDate" name="apptDate" value=".<?php echo $apptDate ?>.">
+           <input type="hidden" id="apptAgenda" name="apptAgenda" value=".<?php echo $apptAgenda ?>.">
+           <input type="hidden" id="apptDoctorID" name="apptDoctorID" value=".<?php echo $apptDoctorID ?>.">
+           <input type="hidden" id="apptPatientID" name="apptPatientID" value=".<?php echo $apptPatientID ?>.">
              <div class="mb-3 row">
                  <label for="toothCondition" class="col-sm-2 col-form-label">Tooth Condition: </label>
                  <div class="col-sm-10">
