@@ -83,8 +83,59 @@
     <div class="p-5" style="background: #F2F2F2;">
         <div class="d-flex">
             <div>
-                <p class="m-0"><b>Doctor:</b> Dr.Smith Rowe</p>
-                <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
+                <p class="m-0"><b>Doctor: </b>
+                  <?php
+                    // Database Connection
+                    $servername = "localhost";
+                    $database = "u922342007_Test";
+                    $username = "u922342007_admin";
+                    $password = "Aylm@012";
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $database);
+
+                    if (!$conn) 
+                    {
+                      die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    // GET THE DOCTOR'S FULLNAME
+                    $stmtDocName = $conn->prepare("SELECT DISTINCT doctor.fullName, doctor.doctorID
+                                                    FROM doctor
+                                                    JOIN appointment ON doctor.doctorID = appointment.doctorID
+                                                    WHERE appoinment.apptID=?");
+                    $stmtDocName->bind_param("s", $_POST['appt_id']);
+                    $stmtDocName->execute();
+                    $resultDocName = $stmtDocName->get_result();
+                    $docID = "";
+
+                    while ($rowDocName = $resultDocName->fetch_assoc()){
+                      echo $rowDocName['fullName'];
+                      $docID = $rowDocName['doctorID'];
+                    }
+                  ?>
+                </p>
+
+                <p class="m-0"><b>Specialization: </b>
+                  <?php
+                    // GET THE DOCTOR'S SPECIALIZATION
+                    $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                FROM doctorSpecialization
+                                                JOIN clinicSpecialization 
+                                                ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                WHERE doctorSpecialization.doctorID=?");
+                    $stmtSpec->bind_param("s", $docID);
+                    $stmtSpec->execute();
+                    $resultSpec = $stmtSpec->get_result();
+
+                    $specializations = array();
+                    while ($rowSpec = $resultSpec->fetch_assoc()){
+                      array_push($specializations, $rowSpec["specName"]);
+                    }
+
+                    $join_specializations = implode(', ', $specializations);
+                    echo $join_specializations;
+                  ?>
+                </p>
 
                 <br>
 

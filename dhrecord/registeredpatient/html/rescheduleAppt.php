@@ -113,7 +113,7 @@
 
           while ($rowPatName = $resultPatName->fetch_assoc()){
             // GET THE APPOINTMENT DETAILS
-            $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, businessOwner.locationOfClinic, doctor.fullName
+            $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.apptID, appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, businessOwner.locationOfClinic, doctor.fullName
                                           FROM appointment
                                           JOIN doctor ON appointment.doctorID = doctor.doctorID
                                           JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
@@ -148,36 +148,20 @@
               echo substr($rowAppt['time'], 0, 5);
               echo '</td>';
 
-              echo '<td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href=\'../../registeredpatient/html/rescheduleApptForm.php\'">Reschedule</button></td>
-              <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>';
+              echo '<td class="text-center">
+              <form method="POST" action="../../registeredpatient/html/rescheduleApptForm.php">
+              <button type="submit" name="appt_id" value="';
+              
+              echo $rowAppt['apptID'];
+                                
+              echo       
+                  '" class="btn btn-dark">Reschedule</button></form>
+                  </td><td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>';
 
               $stmtAppt += 1;
             }
           }
         ?>
-
-        <!-- <tr>
-          <td>1</td>
-          <td>Ashford Dental Centre</td>
-          <td>215 Upper Thomson Rd, Singapore 574349</td>
-          <td>Dr. Smith Rowe</td>
-          <td>Monthly Checkup</td>
-          <td>27-07-2002</td>
-          <td>02.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Expat Dental</td>
-          <td>10 Sinaran Drive Unit 08-15/16 Novena Medical Centre</td>
-          <td>Dr. Robert Reddington</td>
-          <td>Dental Brace</td>
-          <td>31-07-2002</td>
-          <td>03.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr> -->
       </table>
     </div>
   </div>
