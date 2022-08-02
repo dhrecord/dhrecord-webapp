@@ -151,7 +151,7 @@
             echo '", "agenda":"';
             echo $rowAppt['appointment.agenda'];
             
-            echo '", "clinic" name:"';
+            echo '", "clinic name":"';
             echo $rowAppt['businessOwner.nameOfClinic'];
 
             echo '", "doctor":"';
