@@ -111,24 +111,24 @@
             </p>
             <p class="m-0"><b>Specialization: </b>
                 <?php
-                //  // GET THE DOCTOR'S SPECIALIZATION
-                //  $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
-                //                               FROM doctorSpecialization
-                //                               JOIN clinicSpecialization 
-                //                               ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                //                               WHERE doctorSpecialization.doctorID=?");
-                //   $stmtSpec->bind_param("s", $_POST['doc_id']);
-                //   $stmtSpec->execute();
-                //   $resultSpec = $stmtSpec->get_result();
+                  // GET THE DOCTOR'S SPECIALIZATION
+                  $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                              FROM doctorSpecialization
+                                              JOIN clinicSpecialization 
+                                              ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                              WHERE doctorSpecialization.doctorID=?");
+                  $stmtSpec->bind_param("s", $_POST['doc_id']);
+                  $stmtSpec->execute();
+                  $resultSpec = $stmtSpec->get_result();
 
-                //   $specializations = array();
-                //   while ($rowSpec = $resultSpec->fetch_assoc()){
-                //     array_push($specializations, $rowSpec["specName"]);
-                //   }
+                  $specializations = array();
+                  while ($rowSpec = $resultSpec->fetch_assoc()){
+                    array_push($specializations, $rowSpec["specName"]);
+                  }
 
-                //   $join_specializations = implode(', ', $specializations);
-                //   echo $join_specializations;
-                // ?>
+                  $join_specializations = implode(', ', $specializations);
+                  echo $join_specializations;
+                ?>
             </p>
 
             <br/>
