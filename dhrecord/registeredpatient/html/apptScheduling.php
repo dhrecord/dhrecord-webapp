@@ -288,9 +288,9 @@
                           }
                                 
                           echo
-                                '</td><td class="px-4">';
+                                '</td><td class="px-4 text-center">';
 
-                          echo '<button class="btn btn-dark text-center">View</button>';
+                          echo '<button class="btn btn-dark">View</button>';
                           
                           echo
                                 '</td><td class="px-4">
