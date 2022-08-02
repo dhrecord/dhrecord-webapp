@@ -312,7 +312,7 @@
                             if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
                               echo '(';
                               echo $rowOH['day'];
-                              echo ': Closed)\'';
+                              echo ': Closed)';
                             } else {
                               echo '(';
                               echo $rowOH['day'];
