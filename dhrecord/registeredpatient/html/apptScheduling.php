@@ -451,10 +451,12 @@
             if (td) {  
                 txtValue = td.innerHTML;
                 let split_content = txtValue.split("<b>");
-                console.log(split_content);
 
                 if (split_content.length > 1){
                   let addr = split_content[2].split("/b>")[1].split("<br>")[0];
+
+                  console.log(addr);
+                  console.log(addr.toUpperCase().indexOf(filter));
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
