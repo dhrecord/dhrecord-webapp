@@ -84,7 +84,7 @@ if(!isset($_SESSION['loggedin']))
                 </div>
             </div>
 	 <div class="mb-3 row">
-                <label for="pickDoc" class="col-sm-2 col-form-label">Doctor name?</label>
+                <label for="pickDoc" class="col-sm-2 col-form-label">Name of clinic</label>
                 <div class="col-sm-1">
                     <select class="form-select" id="referralTracking_ddlfilter" aria-label="Name of clinic" max-width: 250px;">
 			<option selected disabled hidden>Select</option>
