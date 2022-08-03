@@ -31,30 +31,22 @@
     $medicationPrescribed = $_POST["medicationPrescribed"];
     $comments = $_POST["comments"];
     
-    if (!isset($_POST["referTo"]) || $_POST["referTo"] == "")
+    if (isset($_POST["referTo"]) || $_POST["referTo"] != "")
     {
-      $res = "INSERT INTO treatmentHistory (date, attendingDoctor, toothCondition, medicationPrescribed, pt_ID)
-      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$medicationPrescribed}', '{$apptPatientID}')";
-    
-      if (mysqli_query($conn, $res)) 
-      {
-        echo "New record created successfully";
-      } else {
-        echo "Error: " . $res . "<br>" . mysqli_error($conn);
-      }
-    } else
-    { 
       $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, comments, patient_ID)
       VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$comments}', '{$apptPatientID}')";
     
       if (mysqli_query($conn, $res)) 
       {
-        echo "New record created successfully";
+        //echo "New record created successfully";
       } else {
-        echo "Error: " . $res . "<br>" . mysqli_error($conn);
+        //echo "Error: " . $res . "<br>" . mysqli_error($conn);
       }
     
     }
+    $res = "INSERT INTO treatmentHistory (date, attendingDoctor, toothCondition, medicationPrescribed, pt_ID)
+      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$medicationPrescribed}', '{$apptPatientID}')";
+        
     header('Location: ./apptSchedulingAndReminders.php');
   }
 
