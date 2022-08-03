@@ -187,16 +187,16 @@
               let btn_id = this.id.split("-")[2];
               <?php
                 // Cancel Appointment
-                $btn_id = 7; // testing
+                $btn_id = null; // testing => later need to pass the value from js var 'btn_id' 
                 $query = "DELETE FROM appointment WHERE apptID = '$btn_id'";
                 if (mysqli_query($conn,$query)) 
                 {
-                  echo "deleted!";
+                  echo "console.log('deleted!')";
                 }
               
                 else
                 {
-                  echo "something went wrong!";
+                  echo "console.log('something went wrong!')";
                 }
               ?>
           }
