@@ -413,8 +413,8 @@
           }
         }
 
-         // search by services
-         else if(value === "2"){
+        // search by services
+        else if(value === "2"){
           for (let i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[1];
 
@@ -422,18 +422,17 @@
                 txtValue = td.innerHTML;
                 let split_content = txtValue.split("<tbody>");
 
-                if (split_content.length == 1){
+                if (split_content.length === 1){
                   let addr = split_content[0];
-                  console.log(addr);
-                  console.log(addr.toUpperCase().indexOf(filter));
-                  console.log("=");
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
+                    console.log("top");
+                    console.log(tr[i].innerHTML);
                     tr[i].style.display = "";
-                    console.log("here-top");
                   } else {
+                    console.log("bottom");
+                    console.log(tr[i].innerHTML);
                     tr[i].style.display = "none";
-                    console.log("here-bottom");
                   }
                 }
             }
