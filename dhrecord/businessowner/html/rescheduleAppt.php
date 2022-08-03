@@ -92,7 +92,7 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
-      <h4>Reschedule Appointment - {doctor name}</h4>
+      <h4>Reschedule Appointment - <?php $_SESSION['username']?></h4>
     </div>
     
     <div>
@@ -132,7 +132,7 @@
                   "</td><td>".$sql['date'].
                   "</td><td>".$sql['time'].
                   "</td><td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
-                  <td class='text-center'><button class='btn btn-sm btn-success' onclick='document.location.href='finishAppointment.php?apptID=".$sql['apptID']."'>Finish</button></td>
+                  <td class='text-center'><button class='btn btn-sm btn-success' onclick='document.location.href='finishAppointment.php?apptID=.$sql['apptID'].'>Finish</button></td>
                   <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
           }
           ?>
