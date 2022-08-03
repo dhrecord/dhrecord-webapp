@@ -216,7 +216,7 @@ footer {
                 <tr>
                     <th>Referring Doctor</th>
                     <td>
-                        " . $referringDoctor . "
+                        " . $referringDoc . "
                     </td>
                 </tr>
                 <tr>
