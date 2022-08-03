@@ -59,8 +59,22 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="./userManagement.php">User Management</a>
+                    </li>-->
+                    <!--<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="nav-link" href="./userManagement.php">User Management</a></li>
+                        <li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>
+                    </ul>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            User & Records
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="./userManagement.php">User Management</a></li>
+                            <li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
@@ -123,9 +137,9 @@
                     <th scope="col">NRIC</th>
                     <th scope="col">Contact No</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Check Referral</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Check Referral</th>
                 </tr>
             </thead>
             <tbody id="data">
@@ -148,7 +162,7 @@
                     <td><?php echo $row["contactNumber"]; ?></td>
                     <td><?php echo $row["email"]; ?></td>
                     <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["ID"]; ?>">Edit</button></td>
-                    <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row["userID"]; ?>'">Delete</button></td>
+                    <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deletePatient.php?UserID=<?php echo $row["users_ID"]; ?>'">Delete</button></td>
                </tr>
 
 
@@ -187,7 +201,7 @@
                                 <label for="medConditions" class="form-label">Medical Conditions</label>
                                 <input type="text" class="form-control" id="medConditions" name="medConditions" <?php echo 'value="'.$row["medConditions"].'"'; ?>>
                             </div>
-                                                        <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="drugAllergies" class="form-label">Drug Allergies</label>
                                 <input type="text" class="form-control" id="drugAllergies" name="drugAllergies" <?php echo 'value="'.$row["drugAllergies"].'"'; ?>>
                             </div>
