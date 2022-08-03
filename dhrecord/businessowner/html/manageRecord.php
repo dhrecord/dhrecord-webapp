@@ -59,8 +59,22 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="./userManagement.php">User Management</a>
+                    </li>-->
+                    <!--<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="nav-link" href="./userManagement.php">User Management</a></li>
+                        <li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>
+                    </ul>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            User and Record Management
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="nav-link" href="./userManagement.php">User Management</a></li>
+                            <li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
