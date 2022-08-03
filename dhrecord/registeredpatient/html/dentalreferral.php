@@ -7,19 +7,43 @@ use Dompdf\Dompdf;
 // instantiate and use the dompdf class]
 $dompdf = new Dompdf();
 
+$referralID = $_GET['ID'];
+
+$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, referralTracking.toothCondition, referralTracking.comments,
+registeredPatient.fullName,  registeredPatient.nricNumber, registeredPatient.contactNumber, registeredPatient.address, registeredPatient.medConditions, 
+registeredPatient.drugAllergies, doctor.fullName FROM referralTracking, registeredPatient, doctor, users 
+WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID 
+AND referralTracking.referringDoctor = doctor.ID AND referralTracking.ID = '{$referralID}'");
+
+$result = mysqli_query($conn, $res);
+
+ while($sql = mysqli_fetch_assoc($result))
+    {
+     $name = $sql["fullName"];
+     $nric = $sql["nricNumber"];
+     $hp = $sql["contactNumber"];
+     $addr = $sql["address"];
+     $mc = $sql["medConditions"];
+     $da = $sql["drugAllergies"];
+     $referredTo = $sql["referredTo"];
+     $referralDate = $sql["referralDate"];
+     $referringDoc = $sq["referringDoctor"];
+     $toothCondi = $sql["toothCondition"];
+     $comments = $sql["comments"];
+   }
 
 
 date_default_timezone_set('Asia/Singapore');
 $date =  date("d/m/y g:i a");
 echo $date;
+
 //Get variable values from sql
+/*
 $name = "Bryan Ong";
-$homeStreet = "ba ba blacksheep";
-$homeUnit = "#03-03";
-$homePostalCode = "Singapore 390012";
-$dob = "09/07/1999";
+$address = ;
+//$dob = "09/07/1999";
 $phoneNumber = "9876 5432";
-$sex = "F";
+//$sex = "F";
 $referringDoctor = "SIM, SETH TAN [P2695J]";
 $referredClinic = "Allergy Clinic";
 $institution = "National University Hospital";
@@ -29,8 +53,7 @@ $schedulingInstructions = "Routine";
 $diagnosis = "The encounter diagnosis was Allergic drug reaction";
 $activeProblem = "2021-12: Viral exanthem";
 $allergies = "She is allergic to amoxicillin, clavulanic acid, and etoricoxib";
-
-$img = "";
+*/
 
 $html = "  
 <style>
@@ -133,8 +156,7 @@ footer {
 </style>
 <body>
     <header>
-        <img src='logo.jpg' alt='logo'>
-        <h2>DH Record</h2>
+        <h2>DHRecord</h2>
 
     </header>
     <main>
@@ -144,23 +166,21 @@ footer {
                 <tr>
                     <td>Patient's Name: " . $name . "<br>
                         Patient's Address:<br>
-                        <p>" . $homeStreet . "<br>
-                        " . $homeUnit . "<br>
-                        " . $homePostalCode . "</p>
+                        <p>" .$addr. "<br>
+                        </p>
                     </td>
                     <td>
-                        MRN: <br>
-                        DOB: " . $dob . "
+                        NRIC: " . $nric . "
                     </td>
                 </tr>
                 <tr>
-                    <td>Contact Number: " . $phoneNumber . "</td>
-                    <td>Sex: " . $sex . "</td>
+                    <td>Contact Number: " . $hp . "</td>
                 </tr>
                 <tr>
-                    <td>Referring Doctor: <br>
-                    " . $referringDoctor . "
-                    </td>
+                    <td>Medical Conditions: " . $mc . "</td>
+                </tr>
+                <tr>
+                    <td>Drug Allergies: " . $da . "</td>
                 </tr>
             </table>
             
@@ -175,60 +195,40 @@ footer {
                 <tr>
                     <th>Department \ Sub-Specialty</th>
                     <td>
-                        " . $referredClinic . "<br>
-                        " . $referralReason . "
+                        " . $referredTo . "<br>
                     </td>
                 </tr>
                 <tr>
-                    <th>Institution</th>
+                    <th>Referring Doctor</th>
                     <td>
-                       " . $institution . "
+                        " . $referringDoctor . "
                     </td>
                 </tr>
                 <tr>
-                    <th>Reason for Referral</th>
+                    <th>Referral Date</th>
                     <td>
-                        " . $referralReason . "
+                        " . $referralDate . "
                     </td>
                 </tr>
                 <tr>
-                    <th>Referral Type</th>
+                    <th>Tooth Condition</th>
                     <td>
-                        " . $referralType . "
+                        " . $toothCondi . "
                     </td>
                 </tr>
-                <tr>
-                    <th>Scheduling instructions</th>
-                    <td>
-                        " . $schedulingInstructions . "
-                    </td>
-                </tr>
-
             </table>
         </section>
         <section class='comments'>
             <h4>Comments:</h4>
             <div class='comment-group'>
-                Diagnoses:<br>
-                <p>" . $diagnosis . "</p>
-            </div>
-            <div class='comment-group'>
-                Active Problem List<br>
-                " . $activeProblem . "
-            </div>
-            <div class='comment-group'>
-                Allergies<br>
-                <p>" . $allergies . "</p>
+                <p>" . $comments . "</p>
             </div>
         </section>
         
     </main>
     
     <footer>
-    <address>
-            <p> Company name, street name, Singapore postal code</p><br>
-        </address>
-        <p id='printDate'>printed on
+        <p id='printDate'>Printed on
         " . $date . "</p>
     </footer>
 </body>
