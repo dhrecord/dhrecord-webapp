@@ -121,11 +121,11 @@
                                           WHERE appointment.patientID=?");
             $stmtAppt->bind_param("s", $rowPatName['ID']);
             $stmtAppt->execute();
-            $resultAAppt = $stmtAppt->get_result();
+            $resultAppt = $stmtAppt->get_result();
 
             $stmtAppt = 1;
 
-            while ($rowAppt = $resultAAppt->fetch_assoc()){
+            while ($rowAppt = $resultAppt->fetch_assoc()){
               echo '<tr><td>';
               echo $stmtAppt;
 
@@ -176,24 +176,32 @@
           crossorigin="anonymous"></script>
 
   <script>
+    // Cancel Appointment Button
     var buttons = document.getElementsByClassName("btn-danger");
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", function(e) {
           var dialog = confirm("Are you sure want to cancel the appointment?");
           if (dialog) {
-              console.log('Deleted');
+              console.log('Appointment is Cancelled!');
 
               let btn_id = this.id.split("-")[2];
               <?php
                 // Cancel Appointment
-                // $stmtAppt = $conn->prepare("DELETE FROM appointemnt WHERE apptID = ?");
-                // $stmtAppt->bind_param("s", btn_id);
-                // $stmtAppt->execute();
-                // $resultAAppt = $stmtAppt->get_result();
+                $btn_id = 7; // testing
+                $query = "DELETE FROM appointment WHERE apptID = '$btn_id'";
+                if (mysqli_query($conn,$query)) 
+                {
+                  echo "deleted!";
+                }
+              
+                else
+                {
+                  echo "something went wrong!";
+                }
               ?>
           }
           else {
-              console.log('Cancelled');
+              console.log('Appointment is not Cancelled');
           }
         });
     }
