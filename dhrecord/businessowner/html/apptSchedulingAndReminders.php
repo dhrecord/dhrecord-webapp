@@ -112,10 +112,6 @@
                         <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
                         <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
                         <p>-</p>
-                    </div>
-                    <div>
-                        <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
-                        <p>-</p>
                     </div>';
             }
         ?>
