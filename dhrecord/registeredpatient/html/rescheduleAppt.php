@@ -179,7 +179,22 @@
     var buttons = document.getElementsByClassName("btn-danger");
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener("click", function(e) {
-            alert(this.id);
+          var dialog = confirm("Are you sure want to cancel the appointment?");
+          if (dialog) {
+              console.log('Deleted');
+
+              let btn_id = this.id.split("-")[2];
+              <?php
+                // Cancel Appointment
+                // $stmtAppt = $conn->prepare("DELETE FROM appointemnt WHERE apptID = ?");
+                // $stmtAppt->bind_param("s", btn_id);
+                // $stmtAppt->execute();
+                // $resultAAppt = $stmtAppt->get_result();
+              ?>
+          }
+          else {
+              console.log('Cancelled');
+          }
         });
     }
   </script>
