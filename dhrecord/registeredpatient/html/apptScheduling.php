@@ -427,17 +427,9 @@
                   let addr = split_content[0];
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
-                    console.log("top");
-                    console.log(tr[i-2].innerHTML);
-                    console.log("===");
-                    console.log(tr[i].innerHTML);
-                    tr[i].style.display = "";
+                    tr[i-2].style.display = "";
                   } else {
-                    console.log("bottom");
-                    console.log(tr[i-2].innerHTML);
-                    console.log("===");
-                    console.log(tr[i].innerHTML);
-                    tr[i].style.display = "none";
+                    tr[i-2].style.display = "none";
                   }
                 }
             }
