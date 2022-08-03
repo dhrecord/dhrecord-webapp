@@ -125,15 +125,15 @@
           $result = mysqli_query($conn, $res);
           while($sql = mysqli_fetch_assoc($result))
           {
-
-              echo "<tr><td>".$sql['apptID'].
+		$link = 'document.location.href="finishAppointment.php?apptID='.$sql['apptID'].'"';
+             	echo "<tr><td>".$sql['apptID'].
                   "</td><td>".$sql['docName'].
                   "</td><td>".$sql['ptName'].
                   "</td><td>".$sql['date'].
                   "</td><td>".$sql['time'].
-                  "</td><td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>".
-                  "<td class='text-center'><button class='btn btn-sm btn-success' onclick='document.location.href='finishAppointment.php'>Finish</button></td>"
-                  "<td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
+                  "</td><td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
+                  <td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>
+                  <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
           }
           ?>
       </table>
