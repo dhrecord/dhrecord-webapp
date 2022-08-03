@@ -424,6 +424,9 @@
 
                 if (split_content.length == 1){
                   let addr = split_content[0];
+                  console.log(addr);
+                  console.log(addr.toUpperCase().indexOf(filter));
+                  console.log("=");
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
