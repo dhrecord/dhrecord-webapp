@@ -239,7 +239,7 @@ footer {
     </main>
     
     <footer>
-        <p id='printDate'>Printed on
+        <p id='printDate'>  Printed on
         " . $date . "</p>
     </footer>
 </body>
