@@ -1,5 +1,5 @@
 <?php
-require_once '../dompdf\autoload.inc.php';
+require once __DIR__. "/../dompdf\autoload.inc.php";
 
 use Dompdf\Dompdf;
 
@@ -10,8 +10,8 @@ $dompdf = new Dompdf();
 $referralID = $_GET['ID'];
 
 $res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, referralTracking.toothCondition, referralTracking.comments,
-registeredPatient.fullName,  registeredPatient.nricNumber, registeredPatient.contactNumber, registeredPatient.address, registeredPatient.medConditions, 
-registeredPatient.drugAllergies, doctor.fullName FROM referralTracking, registeredPatient, doctor, users 
+registeredPatient.fullName AS ptName,  registeredPatient.nricNumber, registeredPatient.contactNumber, registeredPatient.address, registeredPatient.medConditions, 
+registeredPatient.drugAllergies, doctor.fullName AS docName FROM referralTracking, registeredPatient, doctor, users 
 WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID 
 AND referralTracking.referringDoctor = doctor.ID AND referralTracking.ID = '{$referralID}'");
 
@@ -19,7 +19,7 @@ $result = mysqli_query($conn, $res);
 
  while($sql = mysqli_fetch_assoc($result))
     {
-     $name = $sql["fullName"];
+     $name = $sql["ptName"];
      $nric = $sql["nricNumber"];
      $hp = $sql["contactNumber"];
      $addr = $sql["address"];
@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $res);
      $da = $sql["drugAllergies"];
      $referredTo = $sql["referredTo"];
      $referralDate = $sql["referralDate"];
-     $referringDoc = $sq["referringDoctor"];
+     $referringDoc = $sq["docName"];
      $toothCondi = $sql["toothCondition"];
      $comments = $sql["comments"];
    }
