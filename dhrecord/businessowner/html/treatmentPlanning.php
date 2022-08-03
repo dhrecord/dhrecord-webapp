@@ -83,7 +83,7 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Inventory Management</h4>
-        <form action="" method ="POST">
+        <form action="prescriptionTest.php" method ="POST">
         <div class="mb-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
@@ -124,11 +124,17 @@
             </thead>
             
             <tbody>
-                <?php
+            <?php
+                require_once("connection.php");
                 
-            require_once("connection.php");
-                
-                 
+                if(isset($_POST['search']))
+                    {
+                        $searchkey= $_POST['search'];
+                        $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
+                            
+                    }
+
+                else 
                     $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
                 
                     while($obj = mysqli_fetch_assoc($res))
@@ -151,7 +157,6 @@
                                 <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
                                 <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
                             </tr>
-                            
                         <?php
                         }
                         
