@@ -33,7 +33,7 @@ $queryDelete2 = "DELETE FROM users WHERE ID='$UserID'";
 if (mysqli_query($conn,$queryDelete1) && mysqli_query($conn,$queryDelete2))
 {
 	mysqli_close();
-	header('Location: userManagement.php');
+	header('Location: manageRecord.php');
 }
 
 else
