@@ -158,9 +158,20 @@
                                 <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
                                 <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
                             </tr>
+                            
                         <?php
                         }
-                
+                        
+                            $queryusers = "SELECT * FROM finance";
+                            $query = mysqli_query($con, $queryusers) or die (mysqli_error());
+                            echo '<div class="label">Select Name:</div>';
+                            echo '<select username="username">';
+                            echo '<option value = "">---Select---</option>';
+                            while ( $d=mysqli_fetch_array($query)) {
+                            echo "<option value='{".$d['ID']."}'>".$d['prescriptionName']."</option>";
+                            }
+                            echo '</select>';
+                            
                 ?>
             </tbody>
         </table>
