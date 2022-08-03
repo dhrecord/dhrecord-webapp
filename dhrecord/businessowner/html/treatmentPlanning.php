@@ -89,6 +89,7 @@
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="search" name="search" value="<?php echo $searchkey; ?>" />
+                    <input type="text" class="form-control" placeholder="Quantity Given" style="max-width:300px; id="qty" name="qty"">
                     <button class="input-group-text" id="basic-addon2" type"submit";">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -130,9 +131,12 @@
                 
                 if(isset($_POST['search']))
                     {
-                        $searchkey= $_POST['search'];
-                        $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
-                            
+                        //$searchkey= $_POST['search'];
+                        $prescription= $_POST['prescription'];
+                        $qty= $_POST['qty'];
+                        $prescriptionGiven = $res['prescriptionQty'] - $qty; 
+                        $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
+                        $queryy = "UPDATE `inventoryManagement` SET prescriptionQty = '".$prescriptionGiven."' WHERE ID= '".$prescription."'";   
                     }
 
                 else 
@@ -165,10 +169,10 @@
                             $queryusers = "SELECT * FROM `inventoryManagement`";
                             $query = mysqli_query($conn, $queryusers) or die (mysqli_error());
                             echo '<div class="label">Select Name:</div>';
-                            echo '<select username="username">';
+                            echo '<select username="prescription">';
                             echo '<option value = "">---Select---</option>';
                             while ( $d=mysqli_fetch_array($query)) {
-                            echo "<option value='{".$d['prescriptionName']."}'>".$d['prescriptionName']."</option>";
+                            echo "<option value='{".$d['ID']."}'>".$d['prescriptionName']."</option>";
                             }
                             echo '</select>';
                             
