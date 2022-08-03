@@ -53,7 +53,16 @@
       } else {
         //echo "Error: " . $res . "<br>" . mysqli_error($conn);
       }
-        
+    
+    $res = ("UPDATE appointment SET status = 'finished' WHERE apptID = '{$apptID}'");
+    
+    if (mysqli_query($conn, $res)) 
+      {
+        //echo "New record created successfully";
+      } else {
+        //echo "Error: " . $res . "<br>" . mysqli_error($conn);
+      }
+    
     header('Location: ./apptSchedulingAndReminders.php');
   }
 
