@@ -122,7 +122,7 @@ if(!isset($_SESSION['loggedin']))
 
                     while($sql = mysqli_fetch_assoc($result)){
                               echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]
-				      ."</td><td>".$sql["toothCondition"]."</td><td><a href='./dentalreferral.php?ID=".$sql["ID"]."'";
+				      ."</td><td>".$sql["toothCondition"]."</td><td><a href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
                             }
 			        ?>         
 		</tbody>
