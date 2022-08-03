@@ -88,6 +88,7 @@ if(!isset($_SESSION['loggedin']))
                 <option value="2">Referral Date</option>
                 <option value="3">Referring Doctor</option>
                 <option value="4">Tooth Condition</option>
+	    	<option value="5">Comments</option>
             </select>
         </div>
 	<table class="table table-striped">
@@ -98,6 +99,7 @@ if(!isset($_SESSION['loggedin']))
         			<th>Referral Date</th>
 				<th>Referring Doctor</th>
 				<th>Tooth Condition</th>
+				<th>Comments</th>
 				<th>Referral Letter</th>
         		</tr>
 		</thead>
@@ -114,7 +116,7 @@ if(!isset($_SESSION['loggedin']))
                     $conn = mysqli_connect($servername, $username, $password, $database);
 				           
 			$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, referralTracking.referringDoctor, 
-			referralTracking.toothCondition FROM referralTracking, registeredPatient, users WHERE users.ID = '{$_SESSION['id']}' 
+			referralTracking.toothCondition, referralTracking.comments FROM referralTracking, registeredPatient, users WHERE users.ID = '{$_SESSION['id']}' 
 			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
 			$result = mysqli_query($conn, $res);
@@ -122,7 +124,7 @@ if(!isset($_SESSION['loggedin']))
 
                     while($sql = mysqli_fetch_assoc($result)){
                               echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]
-				      ."</td><td>".$sql["toothCondition"]."</td><td><a href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
+				      ."</td><td>".$sql["toothCondition"]."</td><td>".$sql["comments"]."</td><td><a href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
                             }
 			        ?>         
 		</tbody>
