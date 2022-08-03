@@ -430,10 +430,10 @@
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
-                    console,log("here-top");
+                    console.log("here-top");
                   } else {
                     tr[i].style.display = "none";
-                    console,log("here-bottom");
+                    console.log("here-bottom");
                   }
                 }
             }
