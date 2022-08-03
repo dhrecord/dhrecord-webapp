@@ -156,7 +156,11 @@
                                 
               echo       
                   '" class="btn btn-dark btn-sm">Reschedule</button></form>
-                  </td><td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>';
+                  </td><td class="text-center"><button class="btn btn-sm btn-danger" id="cancel-btn-';
+
+              echo $rowAppt['apptID'];
+                  
+              echo '">Cancel</button></td>';
 
               $stmtAppt += 1;
             }
@@ -170,5 +174,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
           crossorigin="anonymous"></script>
+
+  <script>
+    var buttons = document.getElementsByClassName("btn-danger");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
+            alert(this.id);
+        });
+    }
+  </script>
 </body>
 </html>
