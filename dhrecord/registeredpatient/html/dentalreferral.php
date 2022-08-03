@@ -1,5 +1,5 @@
 <?php
-require once __DIR__. "/../dompdf\autoload.inc.php";
+require once(__DIR__.'/../dompdf\autoload.inc.php');
 
 use Dompdf\Dompdf;
 
