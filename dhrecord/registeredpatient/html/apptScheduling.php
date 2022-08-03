@@ -422,17 +422,19 @@
                 txtValue = td.innerHTML;
                 let split_content = txtValue.split("<tbody>");
 
-                console.log(split_content);
+                // console.log(split_content);
 
-                // if (split_content.length > 1){
-                //   let addr = split_content[1].split("/b>")[1].split("<br>")[0];
+                if (split_content.length == 1){
+                  // let addr = split_content[1].split("/b>")[1].split("<br>")[0];
+                  let addr = split_content[0];
+                  console.log(addr);
 
-                //   if (addr.toUpperCase().indexOf(filter) > -1) {
-                //     tr[i].style.display = "";
-                //   } else {
-                //     tr[i].style.display = "none";
-                //   }
-                // }
+                  if (addr.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }
             }
 
             // tr2 = document.getElementsByClassName('docs');
