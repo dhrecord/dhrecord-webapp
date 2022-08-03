@@ -151,6 +151,7 @@ main {
 
 #printDate {
     display: inline;
+    margin-left: 5px;
 }
 
 footer {
