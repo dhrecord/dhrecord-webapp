@@ -417,9 +417,12 @@
         else if(value === "2"){
           let temp = 0;
           for (let i = 0; i < tr.length; i++) {
+            console.log(tr[i].innerHTML);
             if (tr[i].innerHTML.indexOf("<th class=\"px-4\">Name</th><th class=\"px-4\">Services</th>") > -1) {
               temp = i-1;
+              console.log("inside");
             }
+            console.log("outside");
 
             td = tr[i].getElementsByTagName("td")[1];
 
@@ -431,9 +434,15 @@
                   let addr = split_content[0];
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
-                    tr[temp].style.display = "";
+                    tr[i].style.display = "";
+                    console.log(tr[i]);
+                    console.log("===");
+                    console.log(tr[temp]);
                   } else {
-                    tr[temp].style.display = "none";
+                    tr[i].style.display = "none";
+                    console.log(tr[i]);
+                    console.log("===");
+                    console.log(tr[temp]);
                   }
                 }
             }
