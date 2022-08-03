@@ -88,10 +88,13 @@
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="qty" name="qty" value="" />
-                    <button class="input-group-text" id="basic-addon2" type="submit" name="submit";">
+                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px";id="search" name="search" value="<?php echo $searchkey; ?>" />
+                    <button class="input-group-text" id="basic-addon2" type="submit" name="search";">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
+                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="qty" name="qty" value="" />
+                    <button type="button" class="btn btn-dark" type="submit" name="submit"/>
+                    
 
                     </form>
                 </div>
@@ -154,7 +157,7 @@
                                 <td><?php echo $prescriptionDesc ?></td>
                                 <td><?php echo $prescriptionQty ?></td>
                                 <td><?php echo $Remarks ?></td>
-                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                                
                                 <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
                             </tr>
                         <?php

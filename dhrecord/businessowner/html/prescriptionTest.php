@@ -2,16 +2,17 @@
 
 	require_once("connection.php");	
 
-if(isset($_POST['update']))
+if(isset($_POST['submit']))
 {
 
-	$ID = $_GET['ID'];
-    $prescriptionName = $_POST['prescriptionName'];
-	$prescriptionDesc = $_POST['prescriptionDesc'];
-	$prescriptionQty = $_POST['Quantity'];
-	$Remarks = $_POST['Remarks'];
+	//$ID = $_GET['ID'];
+    //$prescriptionName = $_POST['prescriptionName'];
+	//$prescriptionDesc = $_POST['prescriptionDesc'];
+	$ID = $_POST['prescription'];
+	$prescriptionQty = $_POST['qty'];
+	
 
-	$queryy = "UPDATE `inventoryManagement` SET prescriptionName = '".$prescriptionName."', prescriptionDesc = '".$prescriptionDesc."', prescriptionQty = '".$prescriptionQty."', Remarks = '".$Remarks."' WHERE ID= '".$ID."'";
+	$queryy = "UPDATE `inventoryManagement` SET prescriptionQty = '".$prescriptionQty."'WHERE ID= '".$ID."'";
 	$result1 = mysqli_query($conn,$queryy);
 
 	if($result1)
