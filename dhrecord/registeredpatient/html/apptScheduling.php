@@ -415,6 +415,7 @@
 
         // search by services
         else if(value === "2"){
+          console.log(tr);
           for (let i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[1];
 
@@ -432,7 +433,7 @@
                   } else {
                     console.log("bottom");
                     console.log(tr[i].innerHTML);
-                    tr[i].style.display = "none!important";
+                    tr[i].style.display = "none";
                   }
                 }
             }
