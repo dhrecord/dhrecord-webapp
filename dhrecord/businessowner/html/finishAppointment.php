@@ -46,6 +46,13 @@
     }
     $res = "INSERT INTO treatmentHistory (date, attendingDoctor, toothCondition, medicationPrescribed, pt_ID)
       VALUES ('{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$medicationPrescribed}', '{$apptPatientID}')";
+    
+    if (mysqli_query($conn, $res)) 
+      {
+        //echo "New record created successfully";
+      } else {
+        //echo "Error: " . $res . "<br>" . mysqli_error($conn);
+      }
         
     header('Location: ./apptSchedulingAndReminders.php');
   }
