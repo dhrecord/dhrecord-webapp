@@ -102,6 +102,63 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
+      var appts = [];
+
+      <?php
+        // Database Connection
+        $servername = "localhost";
+        $database = "u922342007_Test";
+        $username = "u922342007_admin";
+        $password = "Aylm@012";
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $database);
+
+        if (!$conn) 
+        {
+          die("Connection failed: " . mysqli_connect_error());
+        }
+
+        $sessionID = $_SESSION['id'];
+
+        // GET THE PatientID from UserID
+        $stmtPatName = $conn->prepare("SELECT DISTINCT registeredPatient.ID
+                                        FROM registeredPatient
+                                        WHERE registeredPatient.users_ID=?");
+        $stmtPatName->bind_param("s", $sessionID);
+        $stmtPatName->execute();
+        $resultPatName = $stmtPatName->get_result();
+
+        while ($rowPatName = $resultPatName->fetch_assoc()){
+          // GET THE APPOINTMENT DETAILS
+          $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, doctor.fullName
+                                        FROM appointment
+                                        JOIN doctor ON appointment.doctorID = doctor.doctorID
+                                        JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
+                                        JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
+                                        WHERE appointment.patientID=?");
+          $stmtAppt->bind_param("s", $rowPatName['ID']);
+          $stmtAppt->execute();
+          $resultAAppt = $stmtAppt->get_result();
+
+          while ($rowAppt = $resultAAppt->fetch_assoc()){
+            echo 'appts.push({start:"';
+            echo $rowAppt['date'];
+            echo 'T';
+            echo $rowAppt['time'];
+
+            echo '", title:"';
+            echo $rowAppt['agenda'];
+            
+            echo '", clinic:"';
+            echo $rowAppt['nameOfClinic'];
+
+            echo '", doctor:"';
+            echo $rowAppt['fullName'];
+
+            echo '"});';
+          }
+        }
+      ?>
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
@@ -116,26 +173,18 @@
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         eventLimit: true, // allow "more" link when too many events
-        events: [
-          {
-            title: 'Monthly Checkup',
-            start: '2022-07-27T14:00:00',
-            clinic: 'Ashford Dental Centre',
-            doctor: 'Dr. Smith Rowe'
-          },
-          {
-            title: 'Dental Brace',
-            start: '2022-07-31T15:00:00',
-            clinic: 'Expat Dental',
-            doctor: 'Dr. Robert Reddington'
-          },
-        ]
+        events: appts
       });
 
       calendar.render();
     });
 
   </script>
+
+  <!-- bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
 
   <script src="../../apptScheduling/js/main.js"></script>
 </body>

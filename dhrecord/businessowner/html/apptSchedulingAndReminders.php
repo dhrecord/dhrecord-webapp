@@ -89,12 +89,13 @@
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
+        <!-- <h4 class="mb-5">Appointment Scheduling and Reminders</h4> -->
 
         <!-- show this if login as a clinic admin -->
         <?php
             if ($_SESSION['role'] === "ca"){
                 echo '<div>
+                        <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
                         <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
                         <p>-</p>
                     </div>
@@ -109,6 +110,7 @@
         <?php
             if ($_SESSION['role'] === "fd"){
                 echo '<div>
+                        <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
                         <table class="table table-striped">
                             <tr class="bg-dark text-white">
                                 <th>No</th>
@@ -147,6 +149,23 @@
             if ($_SESSION['role'] === "dr"){
                 echo '<div><div class="my-4 d-flex justify-content-between">
                 <h4>Doctor Appoinment Calendar - ';
+
+                 // Database Connection
+                 $servername = "localhost";
+                 $database = "u922342007_Test";
+                 $username = "u922342007_admin";
+                 $password = "Aylm@012";
+                 // Create connection
+                 $conn = mysqli_connect($servername, $username, $password, $database);
+
+                 if (!$conn) 
+                 {
+                   die("Connection failed: " . mysqli_connect_error());
+                 }
+
+                // GET THE LIST OF CLINICS
+                $resultBO = $conn->query("SELECT * FROM businessOwner");
+
                 echo $_SESSION['username'];
                 echo '</h4>';
 

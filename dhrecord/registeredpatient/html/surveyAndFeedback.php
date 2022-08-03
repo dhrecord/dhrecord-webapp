@@ -84,11 +84,45 @@ if(!isset($_SESSION['loggedin']))
                 </div>
             </div>
 	 <div class="mb-3 row">
-                <label for="pickDoc" class="col-sm-2 col-form-label">Doctor name?</label>
+                <label for="pickDoc" class="col-sm-2 col-form-label">Name of clinic</label>
                 <div class="col-sm-1">
-                    <select class="form-select" id="referralTracking_ddlfilter" aria-label="Doctor name" max-width: 250px;">
-			<option selected disabled hidden>Select doctor</option>
-			
+                    <select class="form-select" id="referralTracking_ddlfilter" aria-label="Name of clinic" max-width: 250px;">
+			<option selected disabled hidden>Select</option>
+			<?php
+                          // Database Connection
+                          $servername = "localhost";
+                          $database = "u922342007_Test";
+                          $username = "u922342007_admin";
+                          $password = "Aylm@012";
+                          // Create connection
+                          $conn = mysqli_connect($servername, $username, $password, $database);
+
+                          if (!$conn)
+                          {
+                            die("Connection failed: " . mysqli_connect_error());
+                          }
+
+                          $sessionID = $_SESSION['id'];
+
+                          // GET THE LIST OF CLINICS
+                          $resultBO = $conn->query("SELECT * FROM businessOwner");
+
+                          while ($row = $resultBO->fetch_assoc())
+                          {
+                            echo '<option value="';
+
+                            $fieldNOC = $row['nameOfClinic'];
+                            echo $fieldNOC;
+
+                            echo '">';
+
+                            echo $fieldNOC;
+
+                            echo '</option>';
+                          }
+
+                          mysqli_close($conn);
+                        ?>
            	 </select>
                 </div>
             </div>
