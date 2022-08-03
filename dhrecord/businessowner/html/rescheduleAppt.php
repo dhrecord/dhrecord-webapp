@@ -132,7 +132,7 @@
                   "</td><td>".$sql['date'].
                   "</td><td>".$sql['time'].
                   "</td><td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
-                  <td class='text-center'><button class='btn btn-sm btn-success' onclick='document.location.href='finishAppointment.php?apptID=.$sql['apptID'].'>Finish</button></td>
+                  <td class='text-center'><button class='btn btn-sm btn-success' onclick='document.location.href='finishAppointment.php'>Finish</button></td>
                   <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
           }
           ?>
