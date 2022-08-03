@@ -69,10 +69,10 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            User and Record Management
+                            User & Records
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="nav-link" href="./userManagement.php">User Management</a></li>
+                            <li><a class="dropdown-item" href="./userManagement.php">User Management</a></li>
                             <li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>
                         </ul>
                     </li>
