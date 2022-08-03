@@ -133,4 +133,14 @@ function tableSearch() {
       }
     }
   }
+
+  // search by day
+  else if (value === "5") {
+    for (let i = 0; i < tr.length; i++) {}
+  }
+
+  // search by time
+  else if (value === "6") {
+    for (let i = 0; i < tr.length; i++) {}
+  }
 }

@@ -343,6 +343,23 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+  <script>
+    var db_result = "";
+    let local_input = document.getElementById("searchInput");
+    let local_filter = local_input.value.toUpperCase();
+    <?php
+      // GET THE LIST OF DOCTORS IN THE CLINIC
+      // $stmtOHQuery = $conn->prepare("SELECT * FROM operatingHours WHERE UPPER(day) = ? AND start_time != \"00:00:00\"");
+      // $stmtOHQuery->bind_param("s", ?);
+      // $stmtOHQuery->execute();
+      // $resultOHQuery = $stmtOHQuery->get_result();
+
+      // while ($rowOHQuery = $resultOHQuery->fetch_assoc()){
+
+      // }
+    ?>
+  </script>
+
   <script src="../js/passDataToModal.js"></script>
   <script src="../js/searchClinicFilter.js"></script>
 
