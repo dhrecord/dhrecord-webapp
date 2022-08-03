@@ -33,7 +33,7 @@ $result = mysqli_query($conn, $res);
      $da = $sql["drugAllergies"];
      $referredTo = $sql["referredTo"];
      $referralDate = $sql["referralDate"];
-     $referringDoc = $sq["docName"];
+     $referringDoc = $sql["docName"];
      $toothCondi = $sql["toothCondition"];
      $comments = $sql["comments"];
    }
@@ -150,7 +150,7 @@ main {
 }
 
 #printDate {
-    display: none;
+    display: inline;
 }
 
 footer {
@@ -163,11 +163,7 @@ footer {
     border-top: 0.5px solid grey;
 }
 
-@media print {
-    #printDate {
-        display: inline;
-    }
-}
+
 </style>
 <body>
     <header>
