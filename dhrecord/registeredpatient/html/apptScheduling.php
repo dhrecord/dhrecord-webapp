@@ -418,7 +418,7 @@
           let temp = 0;
           for (let i = 0; i < tr.length; i++) {
             console.log(tr[i].innerHTML);
-            if (tr[i].innerHTML.indexOf("<th class=\"px-4\">Name</th><th class=\"px-4\">Services</th>") > -1) {
+            if (tr[i].innerHTML.indexOf("<th class=\"px-4\">Services</th>") > -1) {
               temp = i-1;
               console.log("inside");
             }
