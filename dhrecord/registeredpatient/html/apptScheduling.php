@@ -432,7 +432,7 @@
                   } else {
                     console.log("bottom");
                     console.log(tr[i].innerHTML);
-                    tr[i].style.display = "none";
+                    tr[i].style.display = "none!important";
                   }
                 }
             }
