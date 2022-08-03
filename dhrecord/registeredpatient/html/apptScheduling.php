@@ -453,24 +453,24 @@
                 let split_content = txtValue.split("<b>");
                 console.log(split_content);
 
-                // if (split_content.length > 1){
-                //   let addr = split_content[1].split("/b>")[1].split("<br>")[0];
+                if (split_content.length > 1){
+                  let addr = split_content[2].split("/b>")[1].split("<br>")[0];
 
-                //   if (addr.toUpperCase().indexOf(filter) > -1) {
-                //     tr[i].style.display = "";
-                //   } else {
-                //     tr[i].style.display = "none";
-                //   }
-                // }
+                  if (addr.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }
             }
 
-            // tr2 = document.getElementsByClassName('docs');
-            // for (let k = 0; k < tr2.length; k++) {
-            //   tr3 = tr2[k].getElementsByTagName("tr");
-            //   for (let j = 0; j < tr3.length; j++) {
-            //     tr3[j].style.display = "";
-            //   }
-            // }
+            tr2 = document.getElementsByClassName('docs');
+            for (let k = 0; k < tr2.length; k++) {
+              tr3 = tr2[k].getElementsByTagName("tr");
+              for (let j = 0; j < tr3.length; j++) {
+                tr3[j].style.display = "";
+              }
+            }
           }
         }
     };
