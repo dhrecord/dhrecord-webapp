@@ -162,8 +162,8 @@
                         <?php
                         }
                         
-                            $queryusers = "SELECT * FROM finance";
-                            $query = mysqli_query($con, $queryusers) or die (mysqli_error());
+                            $queryusers = "SELECT * FROM `inventoryManagement`";
+                            $query = mysqli_query($conn, $queryusers) or die (mysqli_error());
                             echo '<div class="label">Select Name:</div>';
                             echo '<select username="username">';
                             echo '<option value = "">---Select---</option>';
