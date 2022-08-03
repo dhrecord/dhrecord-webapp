@@ -416,8 +416,8 @@
         // search by services
         else if(value === "2"){
           let temp = 0;
+          let last = 0;
           for (let i = 0; i < tr.length; i++) {
-            console.log(tr[i].innerHTML);
             if (tr[i].innerHTML.indexOf("<th class=\"px-4\">Services</th>") > -1) {
               temp = i-1;
             }
@@ -433,8 +433,11 @@
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
                     tr[temp].style.display = "";
+                    last = temp
                   } else {
-                    tr[temp].style.display = "none";
+                    if (last !== temp){
+                      tr[temp].style.display = "none";
+                    }
                   }
                 }
             }
