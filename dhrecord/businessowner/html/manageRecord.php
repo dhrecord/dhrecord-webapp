@@ -187,7 +187,7 @@
                                 <label for="medConditions" class="form-label">Medical Conditions</label>
                                 <input type="text" class="form-control" id="medConditions" name="medConditions" <?php echo 'value="'.$row["medConditions"].'"'; ?>>
                             </div>
-                                                        <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="drugAllergies" class="form-label">Drug Allergies</label>
                                 <input type="text" class="form-control" id="drugAllergies" name="drugAllergies" <?php echo 'value="'.$row["drugAllergies"].'"'; ?>>
                             </div>
