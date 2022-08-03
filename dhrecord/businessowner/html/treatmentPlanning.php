@@ -134,8 +134,9 @@
                         //$searchkey= $_POST['search'];
                         $prescription= $_POST['prescription'];
                         $qty= $_POST['qty'];
-                        $prescriptionGiven = $res['prescriptionQty'] - $qty; 
+                        
                         $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
+                        $prescriptionGiven = $res['prescriptionQty'] - $qty; 
                         $queryy = "UPDATE `inventoryManagement` SET prescriptionQty = '".$prescriptionGiven."' WHERE ID= '".$prescription."'";   
                     }
 
