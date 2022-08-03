@@ -109,27 +109,33 @@
           <th></th>
         </tr>
         <tr>
-          <td>1</td>
-          <td>Dr. Smith Rowe</td>
-          <td>Mark Ken</td>
-          <td>Monthly Checkup</td>
-          <td>27-07-2002</td>
-          <td>02.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><a href="finishAppointment.php?apptID=1">Finish</a></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr>
-        <tr>
-          <td>2</td>          
-          <td>Dr. Smith Rowe</td>
-          <td>Mariah Owen</td>
-          <td>Dental Brace</td>
-          <td>31-07-2002</td>
-          <td>03.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-success" onclick="document.location.href='../../businessowner/html/finishAppointment.php'">Finish</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr>
+          <?php
+          $servername = "localhost";
+          $database = "u922342007_Test";
+          $username = "u922342007_admin";
+          $password = "Aylm@012";
+
+          // Create connection
+          $conn = mysqli_connect($servername, $username, $password, $database);
+				           
+          $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
+          FROM appointment,doctor,registeredPatient WHERE appointment.doctorID = doctor.doctorID AND appointment.patientID = registeredPatient.ID 
+          AND appointment.status != 'finished'");
+
+          $result = mysqli_query($conn, $res);
+          while($sql = mysqli_fetch_assoc($result))
+          {
+
+              echo "<tr><td>".$sql['apptID'].
+                  "</td><td>".$sql['docName'].
+                  "</td><td>".$sql['ptName'].
+                  "</td><td>".$sql['date'].
+                  "</td><td>".$sql['time'].
+                  "</td><td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
+                  <td class='text-center'><button class='btn btn-sm btn-success' onclick='document.location.href='finishAppointment.php?apptID=".$sql['apptID']."'>Finish</button></td>
+                  <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
+          }
+          ?>
       </table>
     </div>
   </div>
