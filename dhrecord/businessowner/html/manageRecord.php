@@ -123,9 +123,9 @@
                     <th scope="col">NRIC</th>
                     <th scope="col">Contact No</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Check Referral</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Check Referral</th>
                 </tr>
             </thead>
             <tbody id="data">
