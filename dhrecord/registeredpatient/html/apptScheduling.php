@@ -415,8 +415,12 @@
 
         // search by services
         else if(value === "2"){
-          console.log(tr);
+          let temp = 0;
           for (let i = 0; i < tr.length; i++) {
+            if (tr[i].innerHTML.toUpperCase().indexOf("<th class=\"px-4\">Name</th><th class=\"px-4\">Services</th>") > -1) {
+              temp = i-1;
+            }
+
             td = tr[i].getElementsByTagName("td")[1];
 
             if (td) {  
@@ -427,9 +431,9 @@
                   let addr = split_content[0];
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
-                    tr[i-2].style.display = "";
+                    tr[temp].style.display = "";
                   } else {
-                    tr[i-2].style.display = "none";
+                    tr[temp].style.display = "none";
                   }
                 }
             }
