@@ -88,6 +88,7 @@ if(!isset($_SESSION['loggedin']))
                 <option value="2">Referral Date</option>
                 <option value="3">Referring Doctor</option>
                 <option value="4">Tooth Condition</option>
+	    	<option value="5">Comments</option>
             </select>
         </div>
 	<table class="table table-striped">
@@ -98,6 +99,7 @@ if(!isset($_SESSION['loggedin']))
         			<th>Referral Date</th>
 				<th>Referring Doctor</th>
 				<th>Tooth Condition</th>
+				<th>Comments</th>
 				<th>Referral Letter</th>
         		</tr>
 		</thead>
