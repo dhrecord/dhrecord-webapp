@@ -428,10 +428,14 @@
 
                   if (addr.toUpperCase().indexOf(filter) > -1) {
                     console.log("top");
+                    console.log(tr[i-1].innerHTML);
+                    console.log("===");
                     console.log(tr[i].innerHTML);
                     tr[i].style.display = "";
                   } else {
                     console.log("bottom");
+                    console.log(tr[i-1].innerHTML);
+                    console.log("===");
                     console.log(tr[i].innerHTML);
                     tr[i].style.display = "none";
                   }
