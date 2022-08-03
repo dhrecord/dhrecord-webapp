@@ -1,12 +1,3 @@
-<?php
-  session_start();
-  if(!isset($_SESSION['loggedin']))
-  {
-    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
-    exit;
-  }
-  //test7
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +69,7 @@
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
-                        Welcome, <?php echo $_SESSION['username'];?>
+                        <!-- Welcome, <?php echo $_SESSION['username'];?> -->
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
                             onclick="document.location.href='../../LoginUnregisteredPatient/LoginPage/logout.php'">
@@ -97,10 +88,13 @@
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="search" name="search" value="<?php echo $searchkey; ?>" />
-                    <button class="input-group-text" id="basic-addon2" type"submit";">
+                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="search" name="search" value="" />
+                    <button class="input-group-text" id="basic-addon2" type="submit" name="search1";">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
+                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="qty" name="qty" value="" />
+                    <button type="button" class="btn btn-dark" type="submit" name="submit"/>
+                    
 
                     </form>
                 </div>
@@ -133,9 +127,8 @@
             </thead>
             
             <tbody>
-                <?php
-                
-            require_once("connection.php");
+            <?php
+                require_once("connection.php");
                 
                 if(isset($_POST['search']))
                     {
@@ -155,8 +148,7 @@
 	                        $prescriptionDesc = $obj['prescriptionDesc'];
 	                        $prescriptionQty = $obj['prescriptionQty']; 
 	                        $Remarks = $obj['Remarks'];
-                        
-                    
+                            
                         ?>
                             <tr>
                                 <td><?php echo $ID ?></td>
@@ -164,12 +156,26 @@
                                 <td><?php echo $prescriptionDesc ?></td>
                                 <td><?php echo $prescriptionQty ?></td>
                                 <td><?php echo $Remarks ?></td>
-                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                    
                                 <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
                             </tr>
                         <?php
+                        
+                        
                         }
-                
+                        
+                         $queryusers = "SELECT * FROM `inventoryManagement`";
+                            $query = mysqli_query($conn, $queryusers) or die (mysqli_error());
+                            echo '<div class="label">Select Name:</div>';
+                            echo '<select username="prescription">';
+                            echo '<option value = "">---Select---</option>';
+                            while($d = mysqli_fetch_assoc($query)) 
+                            {
+                            echo "<option value='{".$d['ID']."}'>".$d['prescriptionName']."</option>";
+                            
+                            }   
+                            echo '</select>';
+                            
                 ?>
             </tbody>
         </table>
