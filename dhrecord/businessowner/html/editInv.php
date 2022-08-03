@@ -17,7 +17,7 @@
         $ID = $res['ID'];
         $prescriptionName = $res['prescriptionName'];
 	    $prescriptionDesc = $res['prescriptionDesc'];
-	    $prescriptionQty = $res['Quantity'];
+	    $prescriptionQty = $res['prescriptionQty'];
 	    $Remarks = $res['Remarks'];
 
     }

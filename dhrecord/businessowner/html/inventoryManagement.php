@@ -162,19 +162,8 @@
                         <?php
                         
                         
-                        }
+                        }                       
                         
-                         $queryusers = "SELECT * FROM `inventoryManagement`";
-                            $query = mysqli_query($conn, $queryusers) or die (mysqli_error());
-                            echo '<div class="label">Select Name:</div>';
-                            echo '<select username="prescription">';
-                            echo '<option value = "">---Select---</option>';
-                            while($d = mysqli_fetch_assoc($query)) 
-                            {
-                            echo "<option value='{".$d['ID']."}'>".$d['prescriptionName']."</option>";
-                            
-                            }   
-                            echo '</select>';
                             
                 ?>
             </tbody>
