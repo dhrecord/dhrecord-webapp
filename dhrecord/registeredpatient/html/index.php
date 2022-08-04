@@ -70,7 +70,7 @@ if(!isset($_SESSION['loggedin']))
             <!-- <h1>Homepage</h1> -->
             <hr>
             <h4 class="lead">Welcome, <?php echo $_SESSION['username']; ?></h4>
-            <h4 class="lead">Your next appointment is in 21 days.</h4>
+            <!--<h4 class="lead">Your next appointment is in 21 days.</h4>-->
             <hr>
             <div>
                 <!--# temporary => later can add notifications and other functionalites <br> # e.g. list of accounts that
