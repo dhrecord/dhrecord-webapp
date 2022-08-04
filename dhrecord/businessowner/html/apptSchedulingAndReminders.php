@@ -173,10 +173,22 @@
                    die("Connection failed: " . mysqli_connect_error());
                  }
 
-                // GET THE LIST OF CLINICS
-                $resultBO = $conn->query("SELECT * FROM businessOwner");
+                // GET THE DOCTOR FULLNAME
+                $stmtDocFN = $conn->prepare("SELECT fullName 
+                                                FROM doctor 
+                                                WHERE doctorID = ?");
+                $stmtDocFN->bind_param("s", $_SESSION['id']);
+                $stmtDocFN->execute();
+                $resultDocFN = $stmtDocFN->get_result();
 
-                echo $_SESSION['username'];
+                if ($resultDocFN->num_rows === 0) {
+                    echo '*';
+                } else {
+                    while ($rowDocFN = $resultDocFN->fetch_assoc()){
+                        echo $rowDocFN['fullName'];
+                    }
+                }
+
                 echo '</h4>';
 
                 echo '<div>
