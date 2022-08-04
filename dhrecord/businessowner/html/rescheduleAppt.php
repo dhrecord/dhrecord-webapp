@@ -137,7 +137,7 @@
 
                 // reschedule btn
                 echo '<td class="text-center">
-                <form method="POST" action="../../registeredpatient/html/rescheduleApptForm.php">
+                <form method="POST" action="../../businessowner/html/rescheduleApptForm.php">
                 <button type="submit" name="appt_id" value="';
                 echo $sql['apptID'];                    
                 echo '" class="btn btn-dark btn-sm">Reschedule</button></form></td>';
