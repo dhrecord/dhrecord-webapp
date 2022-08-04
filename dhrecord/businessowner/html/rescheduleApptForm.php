@@ -147,7 +147,7 @@
                         }
 
                         // if login as frontdesk -> doctor id is passed by form parameter
-                        if ($_SESSION['role'] === "fd"){
+                        if ($_SESSION['role'] === "fd" or $_SESSION['role'] === "ca"){
                             // GET THE DOCTOR FULLNAME
                             $stmtDoc = $conn->prepare("SELECT doctor.fullName, appointment.doctorID
                                                         FROM appointment

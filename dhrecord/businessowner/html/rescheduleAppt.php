@@ -136,7 +136,7 @@
             }
            
             // if login as frontdesk -> doctor id is passed by form parameter
-            if ($_SESSION['role'] === "fd"){
+            if ($_SESSION['role'] === "fd" or $_SESSION['role'] === "ca"){
                 $docID = $_POST['doc_id'];
             }
                                     
