@@ -92,7 +92,7 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
-      <h4>Reschedule Appointment - <?php $_SESSION['username']?></h4>
+      <h4>Reschedule Appointment</h4>
     </div>
     
     <div>
@@ -110,31 +110,34 @@
         </tr>
         <tr>
           <?php
-          $servername = "localhost";
-          $database = "u922342007_Test";
-          $username = "u922342007_admin";
-          $password = "Aylm@012";
+            $servername = "localhost";
+            $database = "u922342007_Test";
+            $username = "u922342007_admin";
+            $password = "Aylm@012";
 
-          // Create connection
-          $conn = mysqli_connect($servername, $username, $password, $database);
-				           
-          $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
-          FROM appointment,doctor,registeredPatient WHERE appointment.doctorID = doctor.doctorID AND appointment.patientID = registeredPatient.ID 
-          AND appointment.status != 'finished'");
+            // Create connection
+            $conn = mysqli_connect($servername, $username, $password, $database);
+                            
+            $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
+            FROM appointment,doctor,registeredPatient WHERE appointment.doctorID = doctor.doctorID AND appointment.patientID = registeredPatient.ID 
+            AND appointment.status != 'finished'");
 
-          $result = mysqli_query($conn, $res);
-          while($sql = mysqli_fetch_assoc($result))
-          {
-		$link = 'document.location.href="finishAppointment.php?apptID='.$sql['apptID'].'"';
-             	echo "<tr><td>".$sql['apptID'].
-                  "</td><td>".$sql['docName'].
-                  "</td><td>".$sql['ptName'].
-                  "</td><td>".$sql['date'].
-                  "</td><td>".$sql['time'].
-                  "</td><td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
-                  <td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>
-                  <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
-          }
+            $result = mysqli_query($conn, $res);
+            $index = 1;
+            while($sql = mysqli_fetch_assoc($result))
+            {
+                $link = 'document.location.href="finishAppointment.php?apptID='.$sql['apptID'].'"';
+                echo "<tr><td>".$index.
+                    "</td><td>".$sql['docName'].
+                    "</td><td>".$sql['ptName'].
+                    "</td><td>".$sql['agenda'].
+                    "</td><td>".$sql['date'].
+                    "</td><td>".substr($sql['time'], 0, 5).
+                    "</td><td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
+                    <td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>
+                    <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
+                $index += 1;
+            }
           ?>
       </table>
     </div>
