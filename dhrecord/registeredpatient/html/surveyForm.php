@@ -9,8 +9,8 @@
 
   $uName=$_SESSION['username'];
   $estimatedWait=$_POST['estimatedWait'];
-	$clinicRef=$_POST['çlinicRef'];
-	$docRef=$_POST['docRef'];
+  $clinicRef=$_POST['çlinicRef'];
+  $docRef=$_POST['docRef'];	
   $serviceQuality=$_POST['serviceQuality'];
   $recommended=$_POST['recommended'];
   $medconds=$_POST['medconds'];
