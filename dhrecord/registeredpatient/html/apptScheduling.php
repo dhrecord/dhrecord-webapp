@@ -94,7 +94,7 @@
 
                 <div class="mx-2"> 
                   <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
-                style="">
+                style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
                     <option selected disabled hidden>Filter By...</option>
                     <option value="1">Clinic Name</option>
                     <option value="2">Services</option>
