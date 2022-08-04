@@ -176,7 +176,7 @@
                 // GET THE DOCTOR FULLNAME
                 $stmtDocFN = $conn->prepare("SELECT fullName 
                                                 FROM doctor 
-                                                WHERE doctorID = ?");
+                                                WHERE userID = ?");
                 $stmtDocFN->bind_param("s", $_SESSION['id']);
                 $stmtDocFN->execute();
                 $resultDocFN = $stmtDocFN->get_result();
