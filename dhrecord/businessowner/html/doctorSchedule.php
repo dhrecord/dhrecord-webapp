@@ -111,8 +111,6 @@
      {
       die("Connection failed: " . mysqli_connect_error());
      }
-
-     echo $_POST['doc_id'];
   ?>
 
   <div class="container my-5">
@@ -123,7 +121,7 @@
       // GET THE DOCTOR FULLNAME
       $stmtDocFN = $conn->prepare("SELECT fullName 
                                       FROM doctor 
-                                      WHERE userID = ?");
+                                      WHERE doctorID = ?");
       $stmtDocFN->bind_param("s", $_POST['doc_id']);
       $stmtDocFN->execute();
       $resultDocFN = $stmtDocFN->get_result();
