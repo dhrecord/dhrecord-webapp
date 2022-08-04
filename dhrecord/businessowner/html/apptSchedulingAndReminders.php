@@ -248,7 +248,7 @@
 
                     while ($rowAppt = $resultAAppt->fetch_assoc()){
                         echo 'console.log(';
-                        echo echo $rowAppt['agenda'];;
+                        echo $rowAppt['agenda'];
                         echo ')';
 
                         echo 'appts.push({start:"';
