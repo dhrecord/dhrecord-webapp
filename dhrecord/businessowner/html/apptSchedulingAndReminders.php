@@ -250,6 +250,10 @@
                     $stmtAppt->execute();
                     $resultAAppt = $stmtAppt->get_result();
 
+                    echo 'console.log(';
+                    echo $rowDoc['ID'];
+                    echo ');';
+
                     while ($rowAppt = $resultAAppt->fetch_assoc()){
                         echo 'console.log(';
                         echo $rowAppt['agenda'];
