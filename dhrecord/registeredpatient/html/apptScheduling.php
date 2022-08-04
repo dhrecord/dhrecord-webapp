@@ -27,11 +27,39 @@
   if(isset($_POST['save'])){
     if(!empty($_POST['search'] and !empty($_POST['select']))){
       $search = $_POST['search'];
-      $select = $_POST['select'];
-      echo $select;
       $search = "%$search%"; // prepare the $search variable
-      $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
-      $stmt->bind_param("s", $search);
+
+      $select = $_POST['select'];
+      $stmt = '';
+
+      switch ($select) {
+        case "1":
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
+            $stmt->bind_param("s", $search);
+            break;
+        case "2":
+
+            break;
+        case "3":
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE locationOfClinic LIKE ?");
+            $stmt->bind_param("s", $search);
+            break;
+        case "4":
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE postalCode LIKE ?");
+            $stmt->bind_param("s", $search);
+            break;
+        case "5":
+
+            break;
+        case "6":
+
+          break;
+        default:
+            break;
+      }
+      
+      // $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
+      // $stmt->bind_param("ss", $category, $search);
       $stmt->execute();
       $result = $stmt->get_result();
     }
@@ -120,14 +148,7 @@
         <div class="mb-5 d-flex justify-content-between">
             <div class="d-flex align-items-center">
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
-          
-                <!-- <div class="input-group mx-4" style="width:fit-content">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
-                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div> -->
+
                 <form action="#" method="post" class="d-flex">
                   <div class="input-group mx-4" style="width:fit-content">
                     <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
