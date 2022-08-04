@@ -154,7 +154,7 @@ if(!isset($_SESSION['loggedin']))
                           {
                             echo '<option value="';
 
-                            $fieldNOC = $row['nameOfDoc'];
+                            $fieldNOC = $row['fullName'];
                             echo $fieldNOC;
 
                             echo '">';
