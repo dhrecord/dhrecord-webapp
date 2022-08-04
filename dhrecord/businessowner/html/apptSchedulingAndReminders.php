@@ -227,12 +227,16 @@
 
             <?php
                 // GET THE DoctorID from UserID
-                $stmtDoc = $conn->prepare("SELECT doctor.doctorID
+                $stmtDoc = $conn->prepare("SELECT doctorID
                                                 FROM doctor
-                                                WHERE doctor.userID=?");
+                                                WHERE userID=?");
                 $stmtDoc->bind_param("s", $_SESSION['id']);
                 $stmtDoc->execute();
                 $resultDoc = $stmtDoc->get_result();
+
+                echo 'console.log(';
+                echo $_SESSION['id'];
+                echo ');';
 
                 while ($rowDoc = $resultDoc->fetch_assoc()){
                     // GET THE APPOINTMENT DETAILS
