@@ -234,15 +234,7 @@
                 $stmtDoc->execute();
                 $resultDoc = $stmtDoc->get_result();
 
-                echo 'console.log(';
-                echo $_SESSION['id'];
-                echo ');';
-
                 while ($rowDoc = $resultDoc->fetch_assoc()){
-                    echo 'console.log(';
-                    echo $rowDoc['ID'];
-                    echo ');';
-
                     // GET THE APPOINTMENT DETAILS
                     $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, doctor.fullName
                                                     FROM appointment
@@ -250,15 +242,11 @@
                                                     JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
                                                     JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
                                                     WHERE appointment.doctorID=?");
-                    $stmtAppt->bind_param("s", $rowDoc['ID']);
+                    $stmtAppt->bind_param("s", $rowDoc['doctorID']);
                     $stmtAppt->execute();
                     $resultAAppt = $stmtAppt->get_result();
 
                     while ($rowAppt = $resultAAppt->fetch_assoc()){
-                        echo 'console.log(';
-                        echo $rowAppt['agenda'];
-                        echo ')';
-
                         echo 'appts.push({start:"';
                         echo $rowAppt['date'];
                         echo 'T';
@@ -277,8 +265,6 @@
                     }
                 }
             ?>
-
-            console.log(appts);
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
