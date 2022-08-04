@@ -117,18 +117,6 @@
             die("Connection failed: " . mysqli_connect_error());
             }
         ?>
-        <!-- <h4 class="mb-5">Appointment Scheduling and Reminders</h4> -->
-
-        <!-- show this if login as a clinic admin -->
-        <?php
-            if ($_SESSION['role'] === "ca"){
-                echo '<div>
-                        <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
-                        <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
-                        <p>-</p>
-                    </div>';
-            }
-        ?>
 
         <!-- show this if login as a front-desk -->
         <?php
