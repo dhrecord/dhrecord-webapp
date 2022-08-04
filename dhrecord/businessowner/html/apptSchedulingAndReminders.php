@@ -195,13 +195,26 @@
                             array_push($specializations, $rowSpec["specName"]);
                         }
 
-                        $join_specializations = implode(', ', $specializations);
-                        echo $join_specializations;
+                        if (count($specializations)){
+                            $join_specializations = implode(', ', $specializations);
+                            echo $join_specializations; 
+                        } else{
+                            echo '-';
+                        }
 
                         echo '</td><td>';
-                        echo $rowDocs['contactNumber'];
+                        if ($rowDocs['contactNumber']){
+                            echo $rowDocs['contactNumber']; 
+                        } else{
+                            echo '-';
+                        }
+
                         echo'</td><td>';
-                        echo $rowDocs['email'];
+                        if ($rowDocs['email']){
+                            echo $rowDocs['email']; 
+                        } else{
+                            echo '-';
+                        }
                         echo'</td>';
 
                         echo '<td class="text-center">
