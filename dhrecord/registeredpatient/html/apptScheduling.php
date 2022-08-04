@@ -5,6 +5,35 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
+
+  // Database Connection
+  $servername = "localhost";
+  $database = "u922342007_Test";
+  $username = "u922342007_admin";
+  $password = "Aylm@012";
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $database);
+
+  if (!$conn) 
+  {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  $searchErr = '';
+  $employee_details='';
+
+  if(isset($_POST['save'])){
+    if(!empty($_POST['search'])){
+      $search = $_POST['search'];
+      $stmt = $con->prepare("select * from businessOwner where nameOfClinic like '%$search%'");
+      $stmt->execute();
+      $employee_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    else{
+      $searchErr = "Please enter the information";
+    }
+    
+  }
 ?>
 
 <!doctype html>
@@ -84,13 +113,22 @@
             <div class="d-flex align-items-center">
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
           
-                <div class="input-group mx-4" style="width:fit-content">
+                <!-- <div class="input-group mx-4" style="width:fit-content">
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                </div>
+                </div> -->
+                <form action="#" method="post">
+                  <div class="input-group mx-4" style="width:fit-content">
+                    <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
+                    aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px;"/>
+                    <button id="basic-addon2" type="submit" name="save" class="input-group-text">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                </form>
 
                 <div class="mx-2"> 
                   <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
@@ -128,188 +166,208 @@
                     <th class="px-4">Clinic Description</th>
                 </tr>
 
+                <!-- SHOWING CLINICS -->
+                <?php
+                  if(!$employee_details){
+                      echo '<tr>No data found</tr>';
+                  }
+                  else{
+                    foreach($employee_details as $key=>$value){
+                ?>
+
+                <tr>
+                    <td><?php echo $key+1;?></td>
+                    <td><?php echo $value['nameOfClinic'];?></td>
+                    <td><?php echo $value['locationOfClinic'];?></td>
+                </tr>
+                        
+                <?php
+                    }  
+                  }
+                ?>
+
                 <?php 
-                  // Database Connection
-                  $servername = "localhost";
-                  $database = "u922342007_Test";
-                  $username = "u922342007_admin";
-                  $password = "Aylm@012";
-                  // Create connection
-                  $conn = mysqli_connect($servername, $username, $password, $database);
+                  // // Database Connection
+                  // $servername = "localhost";
+                  // $database = "u922342007_Test";
+                  // $username = "u922342007_admin";
+                  // $password = "Aylm@012";
+                  // // Create connection
+                  // $conn = mysqli_connect($servername, $username, $password, $database);
 
-                  if (!$conn) 
-                  {
-                    die("Connection failed: " . mysqli_connect_error());
-                  }
+                  // if (!$conn) 
+                  // {
+                  //   die("Connection failed: " . mysqli_connect_error());
+                  // }
 
-                  $sessionID = $_SESSION['id'];
+                  // $sessionID = $_SESSION['id'];
 
-                  // GET THE LIST OF CLINICS
-                  $resultBO = $conn->query("SELECT * FROM businessOwner");
+                  // // GET THE LIST OF CLINICS
+                  // $resultBO = $conn->query("SELECT * FROM businessOwner");
 
-                  while ($row = $resultBO->fetch_assoc())
-                  {
-                    echo '<tr style="background-color: #F2F2F2">
-                      <td class="px-4"><b>';
+                  // while ($row = $resultBO->fetch_assoc())
+                  // {
+                  //   echo '<tr style="background-color: #F2F2F2">
+                  //     <td class="px-4"><b>';
 
-                    $fieldNOC = $row['nameOfClinic'];
-                    echo $fieldNOC;
+                  //   $fieldNOC = $row['nameOfClinic'];
+                  //   echo $fieldNOC;
 
-                    echo
-                      '</b></td>
-                      <td class="px-4">
-                          <b>Address: </b>';
+                  //   echo
+                  //     '</b></td>
+                  //     <td class="px-4">
+                  //         <b>Address: </b>';
                           
-                    $fieldLOC = $row['locationOfClinic'];
-                    if($fieldLOC){
-                      echo $fieldLOC;
-                    } else {
-                      echo '-';
-                    }
+                  //   $fieldLOC = $row['locationOfClinic'];
+                  //   if($fieldLOC){
+                  //     echo $fieldLOC;
+                  //   } else {
+                  //     echo '-';
+                  //   }
 
-                    echo '<br/><b>Postal Code: </b>';
+                  //   echo '<br/><b>Postal Code: </b>';
 
-                    $fieldPC = $row['postalCode'];
-                    if($fieldPC){
-                      echo $fieldPC;
-                    } else {
-                      echo '-';
-                    }
+                  //   $fieldPC = $row['postalCode'];
+                  //   if($fieldPC){
+                  //     echo $fieldPC;
+                  //   } else {
+                  //     echo '-';
+                  //   }
 
-                    echo
-                        '<br/><b>Phone: </b>';
+                  //   echo
+                  //       '<br/><b>Phone: </b>';
                           
-                    $field3 = $row['contactNumber'];
-                    if($field3){
-                      echo $field3;
-                    } else {
-                      echo '-';
-                    }
+                  //   $field3 = $row['contactNumber'];
+                  //   if($field3){
+                  //     echo $field3;
+                  //   } else {
+                  //     echo '-';
+                  //   }
                           
-                    echo      
-                          '<br/>
-                          <b>Website: </b>';
+                  //   echo      
+                  //         '<br/>
+                  //         <b>Website: </b>';
 
-                    $field4 = $row['website'];
-                    if ($field4){
-                      echo $field4; 
-                    } else{
-                      echo '-';
-                    }
+                  //   $field4 = $row['website'];
+                  //   if ($field4){
+                  //     echo $field4; 
+                  //   } else{
+                  //     echo '-';
+                  //   }
                     
-                    echo
-                          '<br/><br/>
+                  //   echo
+                  //         '<br/><br/>
 
-                          <b>Doctors:</b><br>
-                          <table class="table docs">
-                            <tr>
-                              <th class="px-4">Name</th>
-                              <th class="px-4">Services</th>
-                              <th class="px-4 text-center">Operating Hours</th>
-                              <th class="px-4"></th>
-                            </tr>';
+                  //         <b>Doctors:</b><br>
+                  //         <table class="table docs">
+                  //           <tr>
+                  //             <th class="px-4">Name</th>
+                  //             <th class="px-4">Services</th>
+                  //             <th class="px-4 text-center">Operating Hours</th>
+                  //             <th class="px-4"></th>
+                  //           </tr>';
                     
-                    // GET THE LIST OF DOCTORS IN THE CLINIC
-                    $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
-                                              FROM doctor
-                                              WHERE clinicID = ?");
-                    $stmtDoc->bind_param("s", $row['ID']);
-                    $stmtDoc->execute();
-                    $resultDoc = $stmtDoc->get_result();
+                  //   // GET THE LIST OF DOCTORS IN THE CLINIC
+                  //   $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
+                  //                             FROM doctor
+                  //                             WHERE clinicID = ?");
+                  //   $stmtDoc->bind_param("s", $row['ID']);
+                  //   $stmtDoc->execute();
+                  //   $resultDoc = $stmtDoc->get_result();
 
-                    if ($resultDoc->num_rows === 0) {
-                      echo '<tr><td class="px-4">-</td><td class="px-4">-</td><td class="text-center">-</td><td></td></tr>';
-                    } else {
-                      while ($rowDoc = $resultDoc->fetch_assoc()){
-                        echo
-                            '<tr>
-                              <td class="px-4">';
+                  //   if ($resultDoc->num_rows === 0) {
+                  //     echo '<tr><td class="px-4">-</td><td class="px-4">-</td><td class="text-center">-</td><td></td></tr>';
+                  //   } else {
+                  //     while ($rowDoc = $resultDoc->fetch_assoc()){
+                  //       echo
+                  //           '<tr>
+                  //             <td class="px-4">';
 
-                        echo $rowDoc['fullName'];
+                  //       echo $rowDoc['fullName'];
                           
-                        echo
-                              '</td>
-                              <td class="px-4">';
+                  //       echo
+                  //             '</td>
+                  //             <td class="px-4">';
                         
-                        // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
-                        $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
-                                                  FROM doctorSpecialization
-                                                  JOIN clinicSpecialization 
-                                                  ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                                                  WHERE doctorSpecialization.doctorID=?");
-                        $stmtSpec->bind_param("s", $rowDoc['doctorID']);
-                        $stmtSpec->execute();
-                        $resultSpec = $stmtSpec->get_result();
+                  //       // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
+                  //       $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                  //                                 FROM doctorSpecialization
+                  //                                 JOIN clinicSpecialization 
+                  //                                 ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                  //                                 WHERE doctorSpecialization.doctorID=?");
+                  //       $stmtSpec->bind_param("s", $rowDoc['doctorID']);
+                  //       $stmtSpec->execute();
+                  //       $resultSpec = $stmtSpec->get_result();
 
-                        $specializations = array();
-                        while ($rowSpec = $resultSpec->fetch_assoc()){
-                          array_push($specializations, $rowSpec["specName"]);
-                        }
+                  //       $specializations = array();
+                  //       while ($rowSpec = $resultSpec->fetch_assoc()){
+                  //         array_push($specializations, $rowSpec["specName"]);
+                  //       }
                         
-                        $join_specializations = implode(', ', $specializations);
-                        echo $join_specializations;
+                  //       $join_specializations = implode(', ', $specializations);
+                  //       echo $join_specializations;
                               
-                        echo '</td><td class="px-4 text-center">';
-                        echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(\'';
+                  //       echo '</td><td class="px-4 text-center">';
+                  //       echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(\'';
 
-                        echo $rowDoc['fullName'];
-                        echo '\',\'';
-                        echo $join_specializations;
-                        echo '\',\'';
+                  //       echo $rowDoc['fullName'];
+                  //       echo '\',\'';
+                  //       echo $join_specializations;
+                  //       echo '\',\'';
 
-                        // GET THE OPERATING HOURS OF THE CLINIC
-                        $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
-                                                  FROM operatingHours 
-                                                  WHERE operatingHours.doctorID = ?");
-                        $stmtOH->bind_param("s", $rowDoc['doctorID']);
-                        $stmtOH->execute();
-                        $resultOH = $stmtOH->get_result();
+                  //       // GET THE OPERATING HOURS OF THE CLINIC
+                  //       $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
+                  //                                 FROM operatingHours 
+                  //                                 WHERE operatingHours.doctorID = ?");
+                  //       $stmtOH->bind_param("s", $rowDoc['doctorID']);
+                  //       $stmtOH->execute();
+                  //       $resultOH = $stmtOH->get_result();
 
-                        if ($resultOH->num_rows === 0) {
-                          echo '-';
-                        } else { 
-                          while ($rowOH = $resultOH->fetch_assoc()){
-                            if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
-                              echo '(';
-                              echo $rowOH['day'];
-                              echo ': Closed)';
-                            } else {
-                              echo '(';
-                              echo $rowOH['day'];
-                              echo ': ';
-                              $start_time = $rowOH['start_time']; 
-                              echo substr($start_time, 0, 5);
-                              echo '-';
-                              $end_time = $rowOH['end_time']; 
-                              echo substr($end_time, 0, 5);
-                              echo ')';
-                            }
-                            echo ', ';
-                          }
-                        }
+                  //       if ($resultOH->num_rows === 0) {
+                  //         echo '-';
+                  //       } else { 
+                  //         while ($rowOH = $resultOH->fetch_assoc()){
+                  //           if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                  //             echo '(';
+                  //             echo $rowOH['day'];
+                  //             echo ': Closed)';
+                  //           } else {
+                  //             echo '(';
+                  //             echo $rowOH['day'];
+                  //             echo ': ';
+                  //             $start_time = $rowOH['start_time']; 
+                  //             echo substr($start_time, 0, 5);
+                  //             echo '-';
+                  //             $end_time = $rowOH['end_time']; 
+                  //             echo substr($end_time, 0, 5);
+                  //             echo ')';
+                  //           }
+                  //           echo ', ';
+                  //         }
+                  //       }
 
-                        echo '\');">View</button>';
+                  //       echo '\');">View</button>';
                         
-                        echo
-                            '</td><td class="px-4">
-                              <form method="POST" action="../../registeredpatient/html/bookAppt.php">
-                              <button type="submit" name="doc_id" value="';
+                  //       echo
+                  //           '</td><td class="px-4">
+                  //             <form method="POST" action="../../registeredpatient/html/bookAppt.php">
+                  //             <button type="submit" name="doc_id" value="';
 
-                        echo $rowDoc['doctorID'];
+                  //       echo $rowDoc['doctorID'];
                                 
-                        echo       
-                            '" class="btn btn-dark">Book</button></form></td></tr>';
-                      }
-                    }
+                  //       echo       
+                  //           '" class="btn btn-dark">Book</button></form></td></tr>';
+                  //     }
+                  //   }
 
-                    echo
-                          '</table>              
-                        </td>
-                      </tr>
-                      ';
-                  }
+                  //   echo
+                  //         '</table>              
+                  //       </td>
+                  //     </tr>
+                  //     ';
+                  // }
 
-                  mysqli_close($conn);
+                  // mysqli_close($conn);
                 ?>
             </table>
         </div>
@@ -346,16 +404,37 @@
     var db_result = "";
     let local_input = document.getElementById("searchInput");
     let local_filter = local_input.value.toUpperCase();
+
     <?php
-      // GET THE LIST OF DOCTORS IN THE CLINIC
-      // $stmtOHQuery = $conn->prepare("SELECT * FROM operatingHours WHERE UPPER(day) = ? AND start_time != \"00:00:00\"");
-      // $stmtOHQuery->bind_param("s", ?);
-      // $stmtOHQuery->execute();
-      // $resultOHQuery = $stmtOHQuery->get_result();
+      // GET THE AVAILABLE DOCTOR BASED ON ENTERED DAY
+      $stmtOHQuery = $conn->prepare("SELECT * FROM operatingHours WHERE UPPER(day) = ? AND start_time != \"00:00:00\"");
+      $stmtOHQuery->bind_param("s", UPPER("S"));
+      $stmtOHQuery->execute();
+      $resultOHQuery = $stmtOHQuery->get_result();
 
-      // while ($rowOHQuery = $resultOHQuery->fetch_assoc()){
+      $docs_id = [];
 
-      // }
+      while ($rowOHQuery = $resultOHQuery->fetch_assoc()){
+        $docID = $rowOHQuery["doctorID"];
+        array_push($docs_id, $docID);
+      }
+
+      // GET THE CLINIC WHERE THE DOCTOR WORKS
+      $stmtCDWQuery = $conn->prepare("SELECT businessOwner.nameOfClinic 
+                                        FROM businessOwner 
+                                        JOIN doctor ON businessOwner.ID = doctor.clinicID 
+                                        WHERE doctor.doctorID = ?");
+      $nameOfClinics = [];
+
+      for ($x = 0; $x < count($docs_id); $x++){
+        $stmtCDWQuery->bind_param("s", $docs_id[$x]);
+        $stmtCDWQuery->execute();
+        $resultCDWQuery = $stmtCDWQuery->get_result();
+        
+        while ($rowCDWQuery = $resultCDWQuery->fetch_assoc()){
+          array_push($nameOfClinics, $docs_id[$x]);
+        } 
+      }
     ?>
   </script>
 
