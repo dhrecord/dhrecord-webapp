@@ -3,21 +3,7 @@
 
 	require_once("connection.php");
 
-    //$ID = $_GET['GetID'];
-    $query = "select * from `inventoryManagement` WHERE ID = '".$prescriptionID."'";
-    $result = mysqli_query($conn,$query);
     
-
-    while($res=mysqli_fetch_assoc($result))
-    {
-        $ID = $res['ID'];
-        $prescriptionName = $res['prescriptionName'];
-	    $prescriptionDesc = $res['prescriptionDesc'];
-	    $prescriptionQty = $res['prescriptionQty'];
-	    $Remarks = $res['Remarks'];
-        
-        
-    }
     $queryusers = "SELECT * FROM `inventoryManagement`";
                             $query1 = mysqli_query($conn, $queryusers) or die (mysqli_error());
                             
@@ -96,35 +82,27 @@ if(isset($_POST['update']))
     $string1 = str_replace("{","",$prescription);
     $prescriptionID = str_replace("}","",$string1);
     $Quantity = $_POST['Quantity'];
+    
+    $query = "select * from `inventoryManagement` WHERE ID = '".$prescriptionID."'";
+    $result = mysqli_query($conn,$query);
+
+   while($res=mysqli_fetch_assoc($result))
+   {
+        $ID = $res['ID'];
+        $prescriptionName = $res['prescriptionName'];
+	    $prescriptionDesc = $res['prescriptionDesc'];
+	    $prescriptionQty = $res['prescriptionQty'];
+	    $Remarks = $res['Remarks'];
+        echo "inside";
+        
+   }
     $newQty = $prescriptionQty - $Quantity;
+	$queryy = "UPDATE `inventoryManagement` SET prescriptionQty = '".$newQty."' WHERE ID= '".$prescriptionID."'";
+	$result1 = mysqli_query($conn,$queryy) or die (mysqli_error());
     
-    //$query = "select * from `inventoryManagement`";
-    //$result = mysqli_query($conn,$query);
-    
-    //$query3 = "select * from `inventoryManagement` WHERE ID = '".$prescriptionID."'";
-    //$result3 = mysqli_query($conn,$query);
-    
-	//$queryy = "UPDATE `inventoryManagement` SET prescriptionQty = '".$newQty."' WHERE ID= '".$prescriptionID."'";
-	//$result1 = mysqli_query($conn,$queryy) or die (mysqli_error());
-    
-	if($result3)
+	if($result1)
 	{
-	    
-		echo "PrescriptionQty:  ";
-		echo $prescriptionQty;
-		echo "<br/>";
-		echo "PrescriptionID:  ";
-		echo $prescriptionID;
-		echo "<br/>";
-		echo "Quantity:  ";
-		echo $Quantity;
-		echo "<br/>";
-		echo "newQty:  ";
-	    echo $newQty;
-	    //$Quantity = $_POST['Quantity'];
-        //$newQty = $prescriptionQty - $Quantity;
-        //echo $newQty;
-		//header("location:inventoryManagement.php");
+		header("location:inventoryManagement.php");
 	}
 	else
 	{
