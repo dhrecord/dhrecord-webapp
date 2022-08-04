@@ -116,16 +116,15 @@
             $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.apptID, appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, businessOwner.locationOfClinic, doctor.fullName
                                           FROM appointment
                                           JOIN doctor ON appointment.doctorID = doctor.doctorID
-                                          JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
-                                          JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
+                                          JOIN businessOwner ON businessOwner.ID = doctor.clinicID
                                           WHERE appointment.patientID=?");
             $stmtAppt->bind_param("s", $rowPatName['ID']);
             $stmtAppt->execute();
-            $resultAAppt = $stmtAppt->get_result();
+            $resultAppt = $stmtAppt->get_result();
 
             $stmtAppt = 1;
 
-            while ($rowAppt = $resultAAppt->fetch_assoc()){
+            while ($rowAppt = $resultAppt->fetch_assoc()){
               echo '<tr><td>';
               echo $stmtAppt;
 
@@ -156,7 +155,11 @@
                                 
               echo       
                   '" class="btn btn-dark btn-sm">Reschedule</button></form>
-                  </td><td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>';
+                  </td><td class="text-center"><button class="btn btn-sm btn-danger" id="cancel-btn-';
+
+              echo $rowAppt['apptID'];
+                  
+              echo '">Cancel</button></td>';
 
               $stmtAppt += 1;
             }
@@ -170,5 +173,37 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
           crossorigin="anonymous"></script>
+
+  <script>
+    // Cancel Appointment Button
+    var buttons = document.getElementsByClassName("btn-danger");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
+          var dialog = confirm("Are you sure want to cancel the appointment?");
+          if (dialog) {
+              console.log('Appointment is Cancelled!');
+
+              let btn_id = this.id.split("-")[2];
+              <?php
+                // Cancel Appointment
+                $btn_id = null; // testing => later need to pass the value from js var 'btn_id' 
+                $query = "DELETE FROM appointment WHERE apptID = '$btn_id'";
+                if (mysqli_query($conn,$query)) 
+                {
+                  echo "console.log('deleted!')";
+                }
+              
+                else
+                {
+                  echo "console.log('something went wrong!')";
+                }
+              ?>
+          }
+          else {
+              console.log('Appointment is not Cancelled');
+          }
+        });
+    }
+  </script>
 </body>
 </html>

@@ -1,11 +1,17 @@
 <?php
-require_once(__DIR__.'/../dompdf/autoload.inc.php');
+session_start();
+if(!isset($_SESSION['loggedin']))
+  {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+  }
 
-use Dompdf\Dompdf;
 
-
-// instantiate and use the dompdf class]
-$dompdf = new Dompdf();
+$servername = "localhost";
+$database = "u922342007_Test";
+$username = "u922342007_admin";
+$password = "Aylm@012";
+$conn = mysqli_connect($servername, $username, $password, $database);
 
 $referralID = $_GET['ID'];
 
@@ -13,7 +19,7 @@ $res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracki
 registeredPatient.fullName AS ptName,  registeredPatient.nricNumber, registeredPatient.contactNumber, registeredPatient.address, registeredPatient.medConditions, 
 registeredPatient.drugAllergies, doctor.fullName AS docName FROM referralTracking, registeredPatient, doctor, users 
 WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID 
-AND referralTracking.referringDoctor = doctor.ID AND referralTracking.ID = '{$referralID}'");
+AND referralTracking.referringDoctor = doctor.doctorID AND referralTracking.ID = '{$referralID}'");
 
 $result = mysqli_query($conn, $res);
 
@@ -27,10 +33,19 @@ $result = mysqli_query($conn, $res);
      $da = $sql["drugAllergies"];
      $referredTo = $sql["referredTo"];
      $referralDate = $sql["referralDate"];
-     $referringDoc = $sq["docName"];
+     $referringDoc = $sql["docName"];
      $toothCondi = $sql["toothCondition"];
      $comments = $sql["comments"];
    }
+
+
+require_once(__DIR__.'/../dompdf/autoload.inc.php');
+
+use Dompdf\Dompdf;
+
+
+// instantiate and use the dompdf class]
+$dompdf = new Dompdf();
 
 
 date_default_timezone_set('Asia/Singapore');
@@ -135,7 +150,8 @@ main {
 }
 
 #printDate {
-    display: none;
+    display: inline;
+    margin-left: 5px;
 }
 
 footer {
@@ -148,11 +164,7 @@ footer {
     border-top: 0.5px solid grey;
 }
 
-@media print {
-    #printDate {
-        display: inline;
-    }
-}
+
 </style>
 <body>
     <header>
@@ -201,7 +213,7 @@ footer {
                 <tr>
                     <th>Referring Doctor</th>
                     <td>
-                        " . $referringDoctor . "
+                        " . $referringDoc . "
                     </td>
                 </tr>
                 <tr>
@@ -228,7 +240,7 @@ footer {
     </main>
     
     <footer>
-        <p id='printDate'>Printed on
+        <p id='printDate'>  Printed on
         " . $date . "</p>
     </footer>
 </body>

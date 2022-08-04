@@ -112,10 +112,6 @@
                         <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
                         <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
                         <p>-</p>
-                    </div>
-                    <div>
-                        <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
-                        <p>-</p>
                     </div>';
             }
         ?>
@@ -177,10 +173,22 @@
                    die("Connection failed: " . mysqli_connect_error());
                  }
 
-                // GET THE LIST OF CLINICS
-                $resultBO = $conn->query("SELECT * FROM businessOwner");
+                // GET THE DOCTOR FULLNAME
+                $stmtDocFN = $conn->prepare("SELECT fullName 
+                                                FROM doctor 
+                                                WHERE userID = ?");
+                $stmtDocFN->bind_param("s", $_SESSION['id']);
+                $stmtDocFN->execute();
+                $resultDocFN = $stmtDocFN->get_result();
 
-                echo $_SESSION['username'];
+                if ($resultDocFN->num_rows === 0) {
+                    echo $_SESSION['username'];
+                } else {
+                    while ($rowDocFN = $resultDocFN->fetch_assoc()){
+                        echo $rowDocFN['fullName'];
+                    }
+                }
+
                 echo '</h4>';
 
                 echo '<div>
@@ -215,6 +223,47 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
+            var appts = [];
+
+            <?php
+                // GET THE DoctorID from UserID
+                $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID
+                                                FROM doctor
+                                                WHERE userID=?");
+                $stmtDoc->bind_param("s", $_SESSION['id']);
+                $stmtDoc->execute();
+                $resultDoc = $stmtDoc->get_result();
+
+                while ($rowDoc = $resultDoc->fetch_assoc()){
+                    // GET THE APPOINTMENT DETAILS
+                    $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, doctor.fullName AS 'd_fullName', registeredPatient.fullName AS 'p_fullName'
+                                                    FROM appointment
+                                                    JOIN doctor ON appointment.doctorID = doctor.doctorID
+                                                    JOIN registeredPatient ON registeredPatient.ID = appointment.patientID
+                                                    WHERE appointment.doctorID=?");
+                    $stmtAppt->bind_param("s", $rowDoc['doctorID']);
+                    $stmtAppt->execute();
+                    $resultAAppt = $stmtAppt->get_result();
+
+                    while ($rowAppt = $resultAAppt->fetch_assoc()){
+                        echo 'appts.push({start:"';
+                        echo $rowAppt['date'];
+                        echo 'T';
+                        echo $rowAppt['time'];
+
+                        echo '", title:"';
+                        echo $rowAppt['agenda'];
+                        
+                        echo '", patient:"';
+                        echo $rowAppt['p_fullName'];
+
+                        echo '", doctor:"';
+                        echo $rowAppt['d_fullName'];
+
+                        echo '"});';
+                    }
+                }
+            ?>
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
@@ -229,20 +278,7 @@
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
-                events: [
-                    {
-                        title: 'Monthly Checkup',
-                        start: '2022-07-27T14:00:00',
-                        doctor: 'Dr. Smith Rowe',
-                        patient: 'Mark Ken'
-                    },
-                    {
-                        title: 'Dental Brace',
-                        start: '2022-07-31T15:00:00',
-                        doctor: 'Dr. Smith Rowe',
-                        patient: 'Mariah Owen'
-                    },
-                ]
+                events: appts
             });
 
             calendar.render();

@@ -92,7 +92,7 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-5 d-flex justify-content-between">
-      <h4>Reschedule Appointment - {doctor name}</h4>
+      <h4>Reschedule Appointment</h4>
     </div>
     
     <div>
@@ -109,27 +109,73 @@
           <th></th>
         </tr>
         <tr>
-          <td>1</td>
-          <td>Dr. Smith Rowe</td>
-          <td>Mark Ken</td>
-          <td>Monthly Checkup</td>
-          <td>27-07-2002</td>
-          <td>02.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><a href="finishAppointment.php?apptID=1">Finish</a></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr>
-        <tr>
-          <td>2</td>          
-          <td>Dr. Smith Rowe</td>
-          <td>Mariah Owen</td>
-          <td>Dental Brace</td>
-          <td>31-07-2002</td>
-          <td>03.00 pm</td>
-          <td class="text-center"><button class="btn btn-sm btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleApptForm.php'">Reschedule</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-success" onclick="document.location.href='../../businessowner/html/finishAppointment.php'">Finish</button></td>
-          <td class="text-center"><button class="btn btn-sm btn-danger">Cancel</button></td>
-        </tr>
+          <?php
+            $servername = "localhost";
+            $database = "u922342007_Test";
+            $username = "u922342007_admin";
+            $password = "Aylm@012";
+
+            // Create connection
+            $conn = mysqli_connect($servername, $username, $password, $database);
+
+            // GET THE DOCTOR ID
+            $stmtDoc = $conn->prepare("SELECT doctorID
+                        FROM doctor 
+                        WHERE userID = ?");
+            $stmtDoc->bind_param("s", $_SESSION['id']);
+            $stmtDoc->execute();
+            $resultDoc = $stmtDoc->get_result();
+
+            while ($rowDoc = $resultDoc->fetch_assoc()){
+                $docID = $rowDoc['doctorID'];
+            }
+                         
+            // GET APPOINTMENT DETAILS THAT BELONG TO THE DOCTOR
+            // $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
+            // FROM appointment,doctor,registeredPatient WHERE appointment.doctorID = doctor.doctorID AND appointment.patientID = registeredPatient.ID 
+            // AND appointment.status != 'finished' AND appointment.doctorID = ?");
+            // $result = mysqli_query($conn, $res);
+
+            $res = $conn->prepare("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
+                                    FROM appointment,doctor,registeredPatient WHERE appointment.doctorID = doctor.doctorID AND appointment.patientID = registeredPatient.ID 
+                                    AND appointment.status != 'finished' AND appointment.doctorID = ?");
+            $res->bind_param("s", $docID);
+            $res->execute();
+            $result = $res->get_result();
+
+            $index = 1;
+            while($sql = mysqli_fetch_assoc($result))
+            {
+                $link = 'document.location.href="finishAppointment.php?apptID='.$sql['apptID'].'"';
+                echo "<tr><td>".$index.
+                    "</td><td>".$sql['docName'].
+                    "</td><td>".$sql['ptName'].
+                    "</td><td>".$sql['agenda'].
+                    "</td><td>".$sql['date'].
+                    "</td><td>".substr($sql['time'], 0, 5).
+                    "</td>";
+
+                // reschedule btn
+                echo '<td class="text-center">
+                <form method="POST" action="../../businessowner/html/rescheduleApptForm.php">
+                <button type="submit" name="appt_id" value="';
+                echo $sql['apptID'];                    
+                echo '" class="btn btn-dark btn-sm">Reschedule</button></form></td>';
+
+                // finish btn
+                echo "<td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>";
+                
+                // cancel btn
+                echo '<td class="text-center"><button class="btn btn-sm btn-danger" id="cancel-btn-';
+                echo $sql['apptID'];      
+                echo '">Cancel</button></td>';
+                    
+                // echo "<td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
+                //     <td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>
+                //     <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
+                $index += 1;
+            }
+          ?>
       </table>
     </div>
   </div>
@@ -138,5 +184,37 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+    <script>
+        // Cancel Appointment Button
+        var buttons = document.getElementsByClassName("btn-danger");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function(e) {
+            var dialog = confirm("Are you sure want to cancel the appointment?");
+            if (dialog) {
+                console.log('Appointment is Cancelled!');
+
+                let btn_id = this.id.split("-")[2];
+                <?php
+                    // Cancel Appointment
+                    $btn_id = null; // testing => later need to pass the value from js var 'btn_id' 
+                    $query = "DELETE FROM appointment WHERE apptID = '$btn_id'";
+                    if (mysqli_query($conn,$query)) 
+                    {
+                    echo "console.log('deleted!')";
+                    }
+                
+                    else
+                    {
+                    echo "console.log('something went wrong!')";
+                    }
+                ?>
+            }
+            else {
+                console.log('Appointment is not Cancelled');
+            }
+            });
+        }
+  </script>
 </body>
 </html>

@@ -109,28 +109,142 @@
     <div class="p-5" style="background: #F2F2F2;">
         <div class="d-flex">
             <div>
-                <p class="m-0"><b>Doctor:</b> Dr.Smith Rowe</p>
-                <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
+                <p class="m-0"><b>Doctor: </b> 
+                    <?php
+                        // Database Connection
+                        $servername = "localhost";
+                        $database = "u922342007_Test";
+                        $username = "u922342007_admin";
+                        $password = "Aylm@012";
+                        // Create connection
+                        $conn = mysqli_connect($servername, $username, $password, $database);
 
-                <br>
+                        if (!$conn) 
+                        {
+                        die("Connection failed: " . mysqli_connect_error());
+                        }
 
-                <p class="m-0"><b>Clinic:</b>Ashford Dental Centre</p>
-                <p class="m-0"><b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/></p>
+                        // GET THE DOCTOR FULLNAME
+                        $stmtDoc = $conn->prepare("SELECT fullName, doctorID
+                                        FROM doctor 
+                                        WHERE userID = ?");
+                        $stmtDoc->bind_param("s", $_SESSION['id']);
+                        $stmtDoc->execute();
+                        $resultDoc = $stmtDoc->get_result();
 
-                <br>
+                        if ($resultDoc->num_rows === 0) {
+                            echo $_SESSION['username'];
+                        } else {
+                            while ($rowDoc = $resultDoc->fetch_assoc()){
+                                $docID = $rowDoc['doctorID'];
+                                echo $rowDoc['fullName'];
+                            }
+                        }
+                    ?>
+                </p>
+
+                <p class="m-0"><b>Specialization: </b>
+                    <?php
+                        // GET THE DOCTOR'S SPECIALIZATION
+                        $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                    FROM doctorSpecialization
+                                                    JOIN clinicSpecialization 
+                                                    ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                    WHERE doctorSpecialization.doctorID=?");
+                        $stmtSpec->bind_param("s", $docID);
+                        $stmtSpec->execute();
+                        $resultSpec = $stmtSpec->get_result();
+
+                        $specializations = array();
+                        while ($rowSpec = $resultSpec->fetch_assoc()){
+                            array_push($specializations, $rowSpec["specName"]);
+                        }
+
+                        $join_specializations = implode(', ', $specializations);
+                        echo $join_specializations;
+                    ?>
+                </p>
+
+                <br/>
+                
+                <?php
+                    // GET THE DOCTOR'S SPECIALIZATION
+                    $stmtClinic = $conn->prepare("SELECT DISTINCT businessOwner.nameOfClinic, businessOwner.locationOfClinic
+                                                FROM businessOwner
+                                                JOIN doctor
+                                                ON doctor.clinicID = businessOwner.ID
+                                                WHERE doctor.doctorID=?");
+                    $stmtClinic->bind_param("s", $docID);
+                    $stmtClinic->execute();
+                    $resultClinic = $stmtClinic->get_result();
+
+                    while ($rowClinic = $resultClinic->fetch_assoc()){
+                        echo '<p class="m-0"><b>Clinic: </b>';
+                        echo $rowClinic['nameOfClinic'];
+                        echo '</p><p class="m-0"><b>Address: </b>';
+                        echo $rowClinic['locationOfClinic'];
+                        echo '<br/></p>';
+                    }
+                ?>
+
+                <br/>
 
                 <p class="m-0"> 
-                    <b>Operating Hours:</b><br/>
-                    Monday-Friday: 9am–6pm<br/>
-                    Saturday: 1pm-4pm<br/>
-                    Sunday: Closed<br/><br/>
+                    <b>Operating Hours: </b><br/>
+                    
+                    <?php
+                        // GET THE OPERATING HOURS OF THE CLINIC
+                        $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
+                                                    FROM operatingHours 
+                                                    WHERE operatingHours.doctorID = ?");
+                        $stmtOH->bind_param("s", $docID);
+                        $stmtOH->execute();
+                        $resultOH = $stmtOH->get_result();
+
+                        echo '<p>';
+                        if ($resultOH->num_rows === 0) {
+                            echo '-';
+                        } else { 
+                            while ($rowOH = $resultOH->fetch_assoc()){
+                            if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                                echo $rowOH['day'];
+                                echo ': Closed<br/>';
+                            } else {
+                                echo $rowOH['day'];
+                                echo ': ';
+                                $start_time = $rowOH['start_time']; 
+                                echo substr($start_time, 0, 5);
+                                echo '-';
+                                $end_time = $rowOH['end_time']; 
+                                echo substr($end_time, 0, 5);
+                                echo '<br/>';
+                            }
+                            }
+                        }
+                        echo '</p>';
+                    ?>
                 </p>
             </div>
+            
+            <?php
+                // GET THE APPT DETAILS
+                $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time
+                                                FROM appointment
+                                                WHERE appointment.apptID=?");
+                $stmtAppt->bind_param("s", $_POST['appt_id']);
+                $stmtAppt->execute();
+                $resultAppt = $stmtAppt->get_result();
+
+                while ($rowAppt = $resultAppt->fetch_assoc()){
+                    $apptDate = $rowAppt['date'];
+                    $apptTime = $rowAppt['time'];
+                }
+            ?>
 
             <div class="mx-5">
                 <div>
                     <p><b>Current Date:</b></p>
-                    <p>27-07-2022</p>
+                    <p><?=$apptDate?></p>
                 </div>
                 <div>
                     <p><b>New Date:</b></p>
@@ -142,7 +256,7 @@
             <div class="mx-5">
                 <div>
                     <p><b>Current Time:</b></p>
-                    <p>02.00 pm</p>
+                    <p><?=substr($apptTime, 0, 5)?></p>
                 </div>
                 <div class="d-flex">
                     <input type="text" id="result" style="display:none;"/>

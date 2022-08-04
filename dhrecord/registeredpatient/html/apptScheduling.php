@@ -210,10 +210,9 @@
                             </tr>';
                     
                     // GET THE LIST OF DOCTORS IN THE CLINIC
-                    $stmtDoc = $conn->prepare("SELECT DISTINCT doctor.doctorID, doctor.fullName 
-                                              FROM doctorClinic 
-                                              JOIN doctor ON doctorClinic.doctorID = doctor.doctorID 
-                                              WHERE doctorClinic.clinicID = ?");
+                    $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
+                                              FROM doctor
+                                              WHERE clinicID = ?");
                     $stmtDoc->bind_param("s", $row['ID']);
                     $stmtDoc->execute();
                     $resultDoc = $stmtDoc->get_result();
@@ -343,107 +342,25 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-  <script type="application/javascript">
-    function passData(docName, specializations, operatingHours) {
-      const dn = document.getElementById("d_name");
-      dn.innerHTML = docName;
+  <script>
+    var db_result = "";
+    let local_input = document.getElementById("searchInput");
+    let local_filter = local_input.value.toUpperCase();
+    <?php
+      // GET THE LIST OF DOCTORS IN THE CLINIC
+      // $stmtOHQuery = $conn->prepare("SELECT * FROM operatingHours WHERE UPPER(day) = ? AND start_time != \"00:00:00\"");
+      // $stmtOHQuery->bind_param("s", ?);
+      // $stmtOHQuery->execute();
+      // $resultOHQuery = $stmtOHQuery->get_result();
 
-      const sl = document.getElementById("spec_list");
-      sl.innerHTML = specializations;
+      // while ($rowOHQuery = $resultOHQuery->fetch_assoc()){
 
-      const oh = document.getElementById("o_hours");
-
-      if (operatingHours !== '-'){
-        let oh_item = operatingHours.split(', ');
-        let oh_html = "<p>";
-
-        for (let i = 0; i < oh_item.length; i++) {
-          let oh_item_day = "";
-          oh_item_day += oh_item[i].substring(1, oh_item[i].length-1);
-          oh_item_day += "<br\/>";
-
-          oh_html += oh_item_day;
-        }
-
-        oh_html += "</p>";
-        oh.innerHTML = oh_html;
-      } else {
-        oh.innerHTML = "-";
-      }
-    }
+      // }
+    ?>
   </script>
 
-  <script type="application/javascript">
-    function tableSearch() {
-        let select = document.getElementById('auditLog_ddlFilterBy');
-        let value = select.options[select.selectedIndex].value;
-
-        let input, filter, table, tr, td, txtValue;
-        let tr2, tr3;
-
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("clinicTable");
-        tr = table.getElementsByTagName("tr");
-
-        // search by clinic name
-        if (value === "1"){
-          for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } 
-
-                else {
-                    tr[i].style.display = "none";
-                }
-            }
-
-            tr2 = document.getElementsByClassName('docs');
-            for (let k = 0; k < tr2.length; k++) {
-              tr3 = tr2[k].getElementsByTagName("tr");
-              for (let j = 0; j < tr3.length; j++) {
-                tr3[j].style.display = "";
-              }
-            }
-          }
-        }
-
-        // search by address
-        else if(value === "3"){
-          for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-
-            if (td) {  
-                txtValue = td.innerHTML;
-                let split_content = txtValue.split("<b>");
-
-                if (split_content.length > 1){
-                  let addr = split_content[1].split("/b>")[1].split("<br>")[0];
-
-                  if (addr.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                  } else {
-                    tr[i].style.display = "none";
-                  }
-                }
-            }
-
-            tr2 = document.getElementsByClassName('docs');
-            for (let k = 0; k < tr2.length; k++) {
-              tr3 = tr2[k].getElementsByTagName("tr");
-              for (let j = 0; j < tr3.length; j++) {
-                tr3[j].style.display = "";
-              }
-            }
-          }
-        }
-    };
-  </script>
+  <script src="../js/passDataToModal.js"></script>
+  <script src="../js/searchClinicFilter.js"></script>
 
 </body>
 

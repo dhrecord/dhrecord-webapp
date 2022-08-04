@@ -53,7 +53,16 @@
       } else {
         //echo "Error: " . $res . "<br>" . mysqli_error($conn);
       }
-        
+    
+    $res = ("UPDATE appointment SET status = 'finished' WHERE apptID = '{$apptID}'");
+    
+    if (mysqli_query($conn, $res)) 
+      {
+        //echo "New record created successfully";
+      } else {
+        //echo "Error: " . $res . "<br>" . mysqli_error($conn);
+      }
+    
     header('Location: ./apptSchedulingAndReminders.php');
   }
 
@@ -184,7 +193,7 @@
              <div class="mb-3 row">
                  <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
                  <div class="col-sm-10">
-                     <select name="referTo" id="referTo">
+                     <select name="referTo" id="referTo" class="form-select">
                          <option selected value=""></option>
                          <?php
                             // Database Connection
