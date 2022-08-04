@@ -22,10 +22,13 @@
   $searchErr = '';
   $result = '';
   $search = '';
+  $select = '';
 
   if(isset($_POST['save'])){
-    if(!empty($_POST['search'])){
+    if(!empty($_POST['search'] and !empty($_POST['select']))){
       $search = $_POST['search'];
+      $select = $_POST['select'];
+      echo $select;
       $search = "%$search%"; // prepare the $search variable
       $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
       $stmt->bind_param("s", $search);
@@ -133,20 +136,20 @@
                       <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                   </div>
-                </form>
 
-                <div class="mx-2"> 
-                  <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
-                style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
-                    <option selected disabled hidden>Filter By...</option>
-                    <option value="1">Clinic Name</option>
-                    <option value="2">Services</option>
-                    <option value="3">Address</option>
-                    <option value="4">Postal Code</option>
-                    <option value="5">Operating Hours (Day)</option>
-                    <option value="6">Operating Hours (Time)</option>
-                  </select>
+                  <div class="mx-2"> 
+                    <select name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                  style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
+                      <option selected disabled hidden>Filter By...</option>
+                      <option value="1">Clinic Name</option>
+                      <option value="2">Services</option>
+                      <option value="3">Address</option>
+                      <option value="4">Postal Code</option>
+                      <option value="5">Operating Hours (Day)</option>
+                      <option value="6">Operating Hours (Time)</option>
+                    </select>
                 </div>
+                </form>
             </div>
 
             <div class="d-flex align-items-center">
@@ -368,46 +371,7 @@
         crossorigin="anonymous"></script>
 
   <script src="../js/passDataToModal.js"></script>
-  <script src="../js/searchClinicFilter.js"></script>
-
-  <script>
-    // var db_result = "";
-    // let local_input = document.getElementById("searchInput");
-    // let local_filter = local_input.value.toUpperCase();
-
-    <?php
-      // GET THE AVAILABLE DOCTOR BASED ON ENTERED DAY
-      // $stmtOHQuery = $conn->prepare("SELECT * FROM operatingHours WHERE UPPER(day) = ? AND start_time != \"00:00:00\"");
-      // $stmtOHQuery->bind_param("s", UPPER("S"));
-      // $stmtOHQuery->execute();
-      // $resultOHQuery = $stmtOHQuery->get_result();
-
-      // $docs_id = [];
-
-      // while ($rowOHQuery = $resultOHQuery->fetch_assoc()){
-      //   $docID = $rowOHQuery["doctorID"];
-      //   array_push($docs_id, $docID);
-      // }
-
-      // // GET THE CLINIC WHERE THE DOCTOR WORKS
-      // $stmtCDWQuery = $conn->prepare("SELECT businessOwner.nameOfClinic 
-      //                                   FROM businessOwner 
-      //                                   JOIN doctor ON businessOwner.ID = doctor.clinicID 
-      //                                   WHERE doctor.doctorID = ?");
-      // $nameOfClinics = [];
-
-      // for ($x = 0; $x < count($docs_id); $x++){
-      //   $stmtCDWQuery->bind_param("s", $docs_id[$x]);
-      //   $stmtCDWQuery->execute();
-      //   $resultCDWQuery = $stmtCDWQuery->get_result();
-        
-      //   while ($rowCDWQuery = $resultCDWQuery->fetch_assoc()){
-      //     array_push($nameOfClinics, $docs_id[$x]);
-      //   } 
-      // }
-    ?>
-  </script>
-
+  <!-- <script src="../js/searchClinicFilter.js"></script> -->
 </body>
 
 </html>
