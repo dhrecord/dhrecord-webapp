@@ -282,7 +282,7 @@
                         echo $join_specializations;
                         echo '\',\'';
 
-                        // GET THE OPERATING HOURS OF THE CLINIC
+                        // GET THE OPERATING HOURS OF EACH DOcTOR
                         $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
                                                   FROM operatingHours 
                                                   WHERE operatingHours.doctorID = ?");
@@ -336,190 +336,6 @@
 
                   mysqli_close($conn);
                 ?>
-
-                <?php 
-                  // // Database Connection
-                  // $servername = "localhost";
-                  // $database = "u922342007_Test";
-                  // $username = "u922342007_admin";
-                  // $password = "Aylm@012";
-                  // // Create connection
-                  // $conn = mysqli_connect($servername, $username, $password, $database);
-
-                  // if (!$conn) 
-                  // {
-                  //   die("Connection failed: " . mysqli_connect_error());
-                  // }
-
-                  // $sessionID = $_SESSION['id'];
-
-                  // // GET THE LIST OF CLINICS
-                  // $resultBO = $conn->query("SELECT * FROM businessOwner");
-
-                  // while ($row = $resultBO->fetch_assoc())
-                  // {
-                  //   echo '<tr style="background-color: #F2F2F2">
-                  //     <td class="px-4"><b>';
-
-                  //   $fieldNOC = $row['nameOfClinic'];
-                  //   echo $fieldNOC;
-
-                  //   echo
-                  //     '</b></td>
-                  //     <td class="px-4">
-                  //         <b>Address: </b>';
-                          
-                  //   $fieldLOC = $row['locationOfClinic'];
-                  //   if($fieldLOC){
-                  //     echo $fieldLOC;
-                  //   } else {
-                  //     echo '-';
-                  //   }
-
-                  //   echo '<br/><b>Postal Code: </b>';
-
-                  //   $fieldPC = $row['postalCode'];
-                  //   if($fieldPC){
-                  //     echo $fieldPC;
-                  //   } else {
-                  //     echo '-';
-                  //   }
-
-                  //   echo
-                  //       '<br/><b>Phone: </b>';
-                          
-                  //   $field3 = $row['contactNumber'];
-                  //   if($field3){
-                  //     echo $field3;
-                  //   } else {
-                  //     echo '-';
-                  //   }
-                          
-                  //   echo      
-                  //         '<br/>
-                  //         <b>Website: </b>';
-
-                  //   $field4 = $row['website'];
-                  //   if ($field4){
-                  //     echo $field4; 
-                  //   } else{
-                  //     echo '-';
-                  //   }
-                    
-                  //   echo
-                  //         '<br/><br/>
-
-                  //         <b>Doctors:</b><br>
-                  //         <table class="table docs">
-                  //           <tr>
-                  //             <th class="px-4">Name</th>
-                  //             <th class="px-4">Services</th>
-                  //             <th class="px-4 text-center">Operating Hours</th>
-                  //             <th class="px-4"></th>
-                  //           </tr>';
-                    
-                  //   // GET THE LIST OF DOCTORS IN THE CLINIC
-                  //   $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
-                  //                             FROM doctor
-                  //                             WHERE clinicID = ?");
-                  //   $stmtDoc->bind_param("s", $row['ID']);
-                  //   $stmtDoc->execute();
-                  //   $resultDoc = $stmtDoc->get_result();
-
-                  //   if ($resultDoc->num_rows === 0) {
-                  //     echo '<tr><td class="px-4">-</td><td class="px-4">-</td><td class="text-center">-</td><td></td></tr>';
-                  //   } else {
-                  //     while ($rowDoc = $resultDoc->fetch_assoc()){
-                  //       echo
-                  //           '<tr>
-                  //             <td class="px-4">';
-
-                  //       echo $rowDoc['fullName'];
-                          
-                  //       echo
-                  //             '</td>
-                  //             <td class="px-4">';
-                        
-                  //       // GET LIST OF SPECIALIZATIONS OF THE DOCTOR
-                  //       $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
-                  //                                 FROM doctorSpecialization
-                  //                                 JOIN clinicSpecialization 
-                  //                                 ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                  //                                 WHERE doctorSpecialization.doctorID=?");
-                  //       $stmtSpec->bind_param("s", $rowDoc['doctorID']);
-                  //       $stmtSpec->execute();
-                  //       $resultSpec = $stmtSpec->get_result();
-
-                  //       $specializations = array();
-                  //       while ($rowSpec = $resultSpec->fetch_assoc()){
-                  //         array_push($specializations, $rowSpec["specName"]);
-                  //       }
-                        
-                  //       $join_specializations = implode(', ', $specializations);
-                  //       echo $join_specializations;
-                              
-                  //       echo '</td><td class="px-4 text-center">';
-                  //       echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(\'';
-
-                  //       echo $rowDoc['fullName'];
-                  //       echo '\',\'';
-                  //       echo $join_specializations;
-                  //       echo '\',\'';
-
-                  //       // GET THE OPERATING HOURS OF THE CLINIC
-                  //       $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
-                  //                                 FROM operatingHours 
-                  //                                 WHERE operatingHours.doctorID = ?");
-                  //       $stmtOH->bind_param("s", $rowDoc['doctorID']);
-                  //       $stmtOH->execute();
-                  //       $resultOH = $stmtOH->get_result();
-
-                  //       if ($resultOH->num_rows === 0) {
-                  //         echo '-';
-                  //       } else { 
-                  //         while ($rowOH = $resultOH->fetch_assoc()){
-                  //           if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
-                  //             echo '(';
-                  //             echo $rowOH['day'];
-                  //             echo ': Closed)';
-                  //           } else {
-                  //             echo '(';
-                  //             echo $rowOH['day'];
-                  //             echo ': ';
-                  //             $start_time = $rowOH['start_time']; 
-                  //             echo substr($start_time, 0, 5);
-                  //             echo '-';
-                  //             $end_time = $rowOH['end_time']; 
-                  //             echo substr($end_time, 0, 5);
-                  //             echo ')';
-                  //           }
-                  //           echo ', ';
-                  //         }
-                  //       }
-
-                  //       echo '\');">View</button>';
-                        
-                  //       echo
-                  //           '</td><td class="px-4">
-                  //             <form method="POST" action="../../registeredpatient/html/bookAppt.php">
-                  //             <button type="submit" name="doc_id" value="';
-
-                  //       echo $rowDoc['doctorID'];
-                                
-                  //       echo       
-                  //           '" class="btn btn-dark">Book</button></form></td></tr>';
-                  //     }
-                  //   }
-
-                  //   echo
-                  //         '</table>              
-                  //       </td>
-                  //     </tr>
-                  //     ';
-                  // }
-
-                  // mysqli_close($conn);
-                ?>
             </table>
         </div>
     </div>
@@ -551,46 +367,46 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+  <script src="../js/passDataToModal.js"></script>
+  <script src="../js/searchClinicFilter.js"></script>
+
   <script>
-    var db_result = "";
-    let local_input = document.getElementById("searchInput");
-    let local_filter = local_input.value.toUpperCase();
+    // var db_result = "";
+    // let local_input = document.getElementById("searchInput");
+    // let local_filter = local_input.value.toUpperCase();
 
     <?php
       // GET THE AVAILABLE DOCTOR BASED ON ENTERED DAY
-      $stmtOHQuery = $conn->prepare("SELECT * FROM operatingHours WHERE UPPER(day) = ? AND start_time != \"00:00:00\"");
-      $stmtOHQuery->bind_param("s", UPPER("S"));
-      $stmtOHQuery->execute();
-      $resultOHQuery = $stmtOHQuery->get_result();
+      // $stmtOHQuery = $conn->prepare("SELECT * FROM operatingHours WHERE UPPER(day) = ? AND start_time != \"00:00:00\"");
+      // $stmtOHQuery->bind_param("s", UPPER("S"));
+      // $stmtOHQuery->execute();
+      // $resultOHQuery = $stmtOHQuery->get_result();
 
-      $docs_id = [];
+      // $docs_id = [];
 
-      while ($rowOHQuery = $resultOHQuery->fetch_assoc()){
-        $docID = $rowOHQuery["doctorID"];
-        array_push($docs_id, $docID);
-      }
+      // while ($rowOHQuery = $resultOHQuery->fetch_assoc()){
+      //   $docID = $rowOHQuery["doctorID"];
+      //   array_push($docs_id, $docID);
+      // }
 
-      // GET THE CLINIC WHERE THE DOCTOR WORKS
-      $stmtCDWQuery = $conn->prepare("SELECT businessOwner.nameOfClinic 
-                                        FROM businessOwner 
-                                        JOIN doctor ON businessOwner.ID = doctor.clinicID 
-                                        WHERE doctor.doctorID = ?");
-      $nameOfClinics = [];
+      // // GET THE CLINIC WHERE THE DOCTOR WORKS
+      // $stmtCDWQuery = $conn->prepare("SELECT businessOwner.nameOfClinic 
+      //                                   FROM businessOwner 
+      //                                   JOIN doctor ON businessOwner.ID = doctor.clinicID 
+      //                                   WHERE doctor.doctorID = ?");
+      // $nameOfClinics = [];
 
-      for ($x = 0; $x < count($docs_id); $x++){
-        $stmtCDWQuery->bind_param("s", $docs_id[$x]);
-        $stmtCDWQuery->execute();
-        $resultCDWQuery = $stmtCDWQuery->get_result();
+      // for ($x = 0; $x < count($docs_id); $x++){
+      //   $stmtCDWQuery->bind_param("s", $docs_id[$x]);
+      //   $stmtCDWQuery->execute();
+      //   $resultCDWQuery = $stmtCDWQuery->get_result();
         
-        while ($rowCDWQuery = $resultCDWQuery->fetch_assoc()){
-          array_push($nameOfClinics, $docs_id[$x]);
-        } 
-      }
+      //   while ($rowCDWQuery = $resultCDWQuery->fetch_assoc()){
+      //     array_push($nameOfClinics, $docs_id[$x]);
+      //   } 
+      // }
     ?>
   </script>
-
-  <script src="../js/passDataToModal.js"></script>
-  <script src="../js/searchClinicFilter.js"></script>
 
 </body>
 
