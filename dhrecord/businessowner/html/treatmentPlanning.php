@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['loggedin']))
+  {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,22 +95,20 @@
             </div>
         </div>
     </nav>
-    </nav>
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-5">Inventory Management</h4>
-        <form action="prescriptionTest.php" method ="POST">
+        <h4 class="mb-5">Treatment Planning</h4>
+        <form action="" method ="POST">
         <div class="mb-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px";id="search" name="search" value="<?php echo $searchkey; ?>" />
-                    <button class="input-group-text" id="basic-addon2" type="submit" name="search";">
+                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="search" name="search" value="" />
+                    <button class="input-group-text" id="basic-addon2" type="submit" name="search1";">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;       id="qty" name="qty" value="" />
-                    <button type="button" class="btn btn-dark" type="submit" name="submit"/>
+                   
                     
 
                     </form>
@@ -124,11 +130,15 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Prescription Name</th>
-                    <th scope="col">Prescription Description</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Remarks</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Treatment</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Medical Condition</th>
+                    <th scope="col">Medication</th>
+                    <th scope="col">Attending Doctor</th>
+                    <th scope="col">Next Treatment</th>
+                    <th scope="col">Next Treatment Date</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                     
@@ -142,45 +152,46 @@
                 if(isset($_POST['search']))
                     {
                         $searchkey= $_POST['search'];
-                        $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
+                        $res = mysqli_query($conn, "SELECT * FROM `treatmentPlanning` WHERE patientName LIKE '%$searchkey%'");
                             
                     }
 
                 else 
-                    $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement`");
+                    $res = mysqli_query($conn, "SELECT * FROM `treatmentPlanning`");
                 
                     while($obj = mysqli_fetch_assoc($res))
                         {
 
                             $ID = $obj['ID'];
-                            $prescriptionName = $obj['prescriptionName'];
-	                        $prescriptionDesc = $obj['prescriptionDesc'];
-	                        $prescriptionQty = $obj['prescriptionQty']; 
-	                        $Remarks = $obj['Remarks'];
-                        
-                    
+                            $Treatment = $obj['Treatment'];	                        
+	                        $patientName = $obj['patientName'];
+	                        $Date = $obj['Date']; 
+	                        $medicalCondition = $obj['medicalCondition'];
+                            $Medication = $obj['Medication'];
+                            $Doctor = $obj['Doctor'];
+                            $nextTreatment = $obj['nextTreatment'];
+                            $nextTreatmentDate = $obj['nextTreatmentDate'];
+                            
+                            
                         ?>
                             <tr>
                                 <td><?php echo $ID ?></td>
-                                <td><?php echo $prescriptionName ?></td>
-                                <td><?php echo $prescriptionDesc ?></td>
-                                <td><?php echo $prescriptionQty ?></td>
-                                <td><?php echo $Remarks ?></td>
-                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                                
+                                <td><?php echo $Treatment ?></td>
+                                <td><?php echo $patientName ?></td>
+                                <td><?php echo $Date ?></td>
+                                <td><?php echo $medicalCondition ?></td>
+                                <td><?php echo $Medication ?></td>
+                                <td><?php echo $Doctor ?></td>
+                                <td><?php echo $nextTreatment ?></td>
+                                <td><?php echo $nextTreatmentDate ?></td>
+                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                    
                                 <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
                             </tr>
                         <?php
-                        }
                         
-                            $queryusers = "SELECT * FROM `inventoryManagement`";
-                            $query = mysqli_query($conn, $queryusers) or die (mysqli_error());
-                            echo '<div class="label">Select Name:</div>';
-                            echo '<select username="prescription">';
-                            echo '<option value = "">---Select---</option>';
-                            while ( $d=mysqli_fetch_array($query)) {
-                            echo "<option value='{".$d['ID']."}'>".$d['prescriptionName']."</option>";
-                            
-                            echo '</select>';
+                        
+                        }                       
+                        
                             
                 ?>
             </tbody>
