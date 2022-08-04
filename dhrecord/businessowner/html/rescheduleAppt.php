@@ -141,7 +141,7 @@
                                     AND appointment.status != 'finished' AND appointment.doctorID = ?");
             $res->bind_param("s", $docID);
             $res->execute();
-            $result = $stmtDoc->get_result();
+            $result = $res->get_result();
 
             $index = 1;
             while($sql = mysqli_fetch_assoc($result))
