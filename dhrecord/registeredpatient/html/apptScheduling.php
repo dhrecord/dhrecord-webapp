@@ -21,6 +21,7 @@
 
   $searchErr = '';
   $result = '';
+  $search = '';
 
   if(isset($_POST['save'])){
     if(!empty($_POST['search'])){
@@ -34,6 +35,8 @@
     else{
       $searchErr = "Please enter the information";
     }
+  } else {
+    $result = $conn->query("SELECT * FROM businessOwner");
   }
 ?>
 
