@@ -107,15 +107,85 @@
     <div class="p-5" style="background: #F2F2F2;">
       <div class="d-flex">
         <div>
-            <p class="m-0"><b>Doctor:</b> Dr.Smith Rowe</p>
-            <p class="m-0"><b>Specialization:</b> Oral Surgery, Dental Surgery</p>
+            <p class="m-0"><b>Doctor: </b>
+                <?php
+                    // Database Connection
+                    $servername = "localhost";
+                    $database = "u922342007_Test";
+                    $username = "u922342007_admin";
+                    $password = "Aylm@012";
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $database);
 
-            <br>
+                    if (!$conn) 
+                    {
+                    die("Connection failed: " . mysqli_connect_error());
+                    }
 
-            <p class="m-0"><b>Clinic:</b> Ashford Dental Centre</p>
-            <p class="m-0"><b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br/></p>
+                    // GET THE DOCTOR FULLNAME
+                    $stmtDoc = $conn->prepare("SELECT fullName, doctorID
+                                    FROM doctor 
+                                    WHERE userID = ?");
+                    $stmtDoc->bind_param("s", $_SESSION['id']);
+                    $stmtDoc->execute();
+                    $resultDoc = $stmtDoc->get_result();
 
-            <br>
+                    if ($resultDoc->num_rows === 0) {
+                        echo $_SESSION['username'];
+                    } else {
+                        while ($rowDoc = $resultDoc->fetch_assoc()){
+                            $docID = $rowDoc['doctorID'];
+                            echo $rowDoc['fullName'];
+                        }
+                    }
+                ?>
+            </p>
+
+            <p class="m-0"><b>Specialization: </b> 
+                <?php
+                    // GET THE DOCTOR'S SPECIALIZATION
+                    $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                FROM doctorSpecialization
+                                                JOIN clinicSpecialization 
+                                                ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                WHERE doctorSpecialization.doctorID=?");
+                    $stmtSpec->bind_param("s", $docID);
+                    $stmtSpec->execute();
+                    $resultSpec = $stmtSpec->get_result();
+
+                    $specializations = array();
+                    while ($rowSpec = $resultSpec->fetch_assoc()){
+                        array_push($specializations, $rowSpec["specName"]);
+                    }
+
+                    $join_specializations = implode(', ', $specializations);
+                    echo $join_specializations;
+                ?>
+            </p>
+
+            <br/>
+
+            <?php
+                // GET THE DOCTOR'S SPECIALIZATION
+                $stmtClinic = $conn->prepare("SELECT DISTINCT businessOwner.nameOfClinic, businessOwner.locationOfClinic
+                                            FROM businessOwner
+                                            JOIN doctorClinic
+                                            ON doctorClinic.clinicID = businessOwner.ID
+                                            WHERE doctorClinic.doctorID=?");
+                $stmtClinic->bind_param("s", $docID);
+                $stmtClinic->execute();
+                $resultClinic = $stmtClinic->get_result();
+
+                while ($rowClinic = $resultClinic->fetch_assoc()){
+                  echo '<p class="m-0"><b>Clinic: </b>';
+                  echo $rowClinic['nameOfClinic'];
+                  echo '</p><p class="m-0"><b>Address: </b>';
+                  echo $rowClinic['locationOfClinic'];
+                  echo '<br/></p>';
+                }
+            ?>
+
+            <br/>
 
             <p class="m-0"> 
                 <b>Operating Hours:</b><br/>
@@ -183,22 +253,6 @@
             $(event.target).toggleClass("transparent");
         });
     });
-
-    // var $datePicker = $("div#datepicker");
-    // var $datePicker = $("div");
-
-    // $datePicker.datepicker({
-    //     changeMonth: true,
-    //     changeYear: true,
-    //     inline: true,
-    //     altField: "#datep",
-    // }).change(function(e){
-    //     setTimeout(function(){   
-    //     $datePicker
-    //         .find('.ui-datepicker-current-day').parent().after('<tr><td colspan="8"><div><button>8:00 am &mdash; 9:00 am</button></div><button>9:00 am &mdash; 10:00 am</button></div><button>10:00 am &mdash; 11:00 am</button></div></td></tr>')
-            
-    //     });
-    // });
   </script>
 
    <!-- bootstrap js -->
