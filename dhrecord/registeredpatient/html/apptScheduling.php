@@ -38,11 +38,12 @@
             $stmt->bind_param("s", $search);
             break;
         case "2":
-            $stmt = $conn->prepare("SELECT DISTINCT * FROM doctorSpecialization
-                                    JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
-                                    JOIN doctor ON doctor.doctorID = doctorSpecialization.doctorID
-                                    JOIN businessOwner ON businessOwner.ID = doctor.clinicID
-                                    WHERE clinicSpecialization.specName LIKE ?");
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
+                                          (SELECT DISTINCT businessOwner.ID FROM doctorSpecialization
+                                            JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
+                                            JOIN doctor ON doctor.doctorID = doctorSpecialization.doctorID
+                                            JOIN businessOwner ON businessOwner.ID = doctor.clinicID
+                                            WHERE clinicSpecialization.specName LIKE ?)");
             $stmt->bind_param("s", $search);
             break;
         case "3":
