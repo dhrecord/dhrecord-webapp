@@ -42,7 +42,7 @@
                                     JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
                                     JOIN doctor ON doctor.doctorID = doctorSpecialization.doctorID
                                     JOIN businessOwner ON businessOwner.ID = doctor.clinicID
-                                    WHERE clinicSpecialization.specName = ?");
+                                    WHERE clinicSpecialization.specName LIKE ?");
             $stmt->bind_param("s", $search);
             break;
         case "3":
