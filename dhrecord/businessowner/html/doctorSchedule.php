@@ -98,21 +98,59 @@
     </nav>
 
   <!-- content -->
+  <?php
+     // Database Connection
+     $servername = "localhost";
+     $database = "u922342007_Test";
+     $username = "u922342007_admin";
+     $password = "Aylm@012";
+     // Create connection
+     $conn = mysqli_connect($servername, $username, $password, $database);
+
+     if (!$conn) 
+     {
+      die("Connection failed: " . mysqli_connect_error());
+     }
+  ?>
+
   <div class="container my-5">
-    <div class="mb-5 d-flex justify-content-between">
-      <h4>Doctor Appointment Calendar - {doctor name}</h4>
-      <div>
-        <button class="btn btn-dark" onclick="document.location.href='../../businessowner/html/bookAppt.php'">Book Appointment</button>
-        <button class="btn btn-dark" onclick="document.location.href='../../businessowner/html/rescheduleAppt.php'">Reschedule</button>
-      </div>
-    </div>
+    <?php
+      echo '<div class="mb-5 d-flex justify-content-between">
+      <h4>Doctor Appoinment Calendar - ';
 
-    <div class="calendar-box">
-      <div id='calendar-container'>
-        <div id='calendar'></div>
-      </div>
-    </div>
+      // GET THE DOCTOR FULLNAME
+      $stmtDocFN = $conn->prepare("SELECT fullName 
+                                      FROM doctor 
+                                      WHERE userID = ?");
+      $stmtDocFN->bind_param("s", $_POST['doc_id']);
+      $stmtDocFN->execute();
+      $resultDocFN = $stmtDocFN->get_result();
 
+      if ($resultDocFN->num_rows === 0) {
+          echo $_SESSION['username'];
+      } else {
+          while ($rowDocFN = $resultDocFN->fetch_assoc()){
+              echo $rowDocFN['fullName'];
+          }
+      }
+
+      echo '</h4>';
+
+      echo '<div>
+              <button class="btn btn-dark"
+                  onclick="document.location.href=\'../../businessowner/html/bookAppt.php\'">Book
+                  Appointment</button>
+              <button class="btn btn-dark"
+                  onclick="document.location.href=\'../../businessowner/html/rescheduleAppt.php\'">Reschedule</button>
+          </div>
+      </div>';
+
+      echo '<div class="calendar-box">
+              <div id="calendar-container">
+                  <div id="calendar"></div>
+              </div>
+          </div>';
+    ?>
   </div>
 
   <script src="../../apptScheduling/js/jquery-3.3.1.min.js"></script>
