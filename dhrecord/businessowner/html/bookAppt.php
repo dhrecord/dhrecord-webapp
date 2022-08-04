@@ -146,12 +146,13 @@
 
                     // if login as frontdesk -> doctor id is passed by form parameter
                     if ($_SESSION['role'] === "fd"){
+                        $docID = $_POST['doc_id'];
+
                         // GET THE DOCTOR FULLNAME
-                        $stmtDoc = $conn->prepare("SELECT doctor.fullName, appointment.doctorID
-                                                    FROM appointment
-                                                    JOIN doctor ON appointment.doctorID = doctor.doctorID
-                                                    WHERE appointment.apptID = ?");
-                        $stmtDoc->bind_param("s", $_POST['appt_id']);
+                        $stmtDoc = $conn->prepare("SELECT fullName
+                                                    FROM doctor 
+                                                    WHERE doctorID = ?");
+                        $stmtDoc->bind_param("s", $_POST['doc_id']);
                         $stmtDoc->execute();
                         $resultDoc = $stmtDoc->get_result();
 
@@ -159,7 +160,6 @@
                             echo "-";
                         } else {
                             while ($rowDoc = $resultDoc->fetch_assoc()){
-                                $docID = $rowDoc['doctorID'];
                                 echo $rowDoc['fullName'];
                             }
                         }
