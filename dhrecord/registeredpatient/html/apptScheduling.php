@@ -20,11 +20,14 @@
   }
 
   $searchErr = '';
-  $result='';
+  $result = '';
 
   if(isset($_POST['save'])){
     if(!empty($_POST['search'])){
       $search = $_POST['search'];
+      echo "===";
+      echo $search;
+      echo "===";
       $stmt = $conn->prepare("select * from businessOwner where nameOfClinic like '%?%'");
       $stmt->bind_param("s", $search);
       $stmt->execute();
