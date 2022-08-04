@@ -225,11 +225,26 @@
                     ?>
                 </p>
             </div>
+            
+            <?php
+                // GET THE APPT DETAILS
+                $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time
+                                                FROM appointment
+                                                WHERE appointment.apptID=?");
+                $stmtAppt->bind_param("s", $_POST['appt_id']);
+                $stmtAppt->execute();
+                $resultAppt = $stmtAppt->get_result();
+
+                while ($rowAppt = $resultAppt->fetch_assoc()){
+                    $apptDate = $rowAppt['date'];
+                    $apptTime = $rowAppt['time'];
+                }
+            ?>
 
             <div class="mx-5">
                 <div>
                     <p><b>Current Date:</b></p>
-                    <p>27-07-2022</p>
+                    <p><?=$apptDate?></p>
                 </div>
                 <div>
                     <p><b>New Date:</b></p>
@@ -241,7 +256,7 @@
             <div class="mx-5">
                 <div>
                     <p><b>Current Time:</b></p>
-                    <p>02.00 pm</p>
+                    <p><?=substr($apptTime, 0, 5)?></p>
                 </div>
                 <div class="d-flex">
                     <input type="text" id="result" style="display:none;"/>
