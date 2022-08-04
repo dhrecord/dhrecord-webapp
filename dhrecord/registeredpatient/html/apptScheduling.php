@@ -33,10 +33,12 @@
       $stmt = '';
 
       switch ($select) {
+        // search by clinic name
         case "1":
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
             $stmt->bind_param("s", $search);
             break;
+        // search by specializations/sevices
         case "2":
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
                                           (SELECT DISTINCT businessOwner.ID FROM doctorSpecialization
@@ -46,17 +48,26 @@
                                             WHERE clinicSpecialization.specName LIKE ?)");
             $stmt->bind_param("s", $search);
             break;
+        // search by clinic address
         case "3":
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE locationOfClinic LIKE ?");
             $stmt->bind_param("s", $search);
             break;
+        // search by postal code
         case "4":
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE postalCode LIKE ?");
             $stmt->bind_param("s", $search);
             break;
+        // search by operating hours -> day
         case "5":
-
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
+                                      (SELECT DISTINCT businessOwner.ID FROM businessOwner 
+                                        JOIN doctor ON businessOwner.ID = doctor.clinicID
+                                        JOIN operatingHours ON operatingHours.doctorID = doctor.doctorID
+                                        WHERE operatingHours.day LIKE ? and operatingHours.start_time != \"00:00:00\")");
+            $stmt->bind_param("s", $search);
             break;
+        // search by operating hours -> time
         case "6":
 
           break;
