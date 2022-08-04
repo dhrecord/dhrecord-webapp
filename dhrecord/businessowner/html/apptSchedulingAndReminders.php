@@ -134,7 +134,7 @@
         <?php
             if ($_SESSION['role'] === "fd"){
                 echo '<div>
-                        <h4 class="mb-5">Appointment Scheduling and Reminders - </h4>';
+                        <h4 class="mb-5">Appointment Scheduling and Reminders - ';
 
                 // CLINIC NAME
                 $stmtCN = $conn->prepare("SELECT nameOfClinic 
@@ -153,7 +153,7 @@
                     }
                 }
 
-                echo '<table class="table table-striped">
+                echo '</h4><table class="table table-striped">
                             <tr class="bg-dark text-white">
                                 <th>No</th>
                                 <th>Doctor</th>
