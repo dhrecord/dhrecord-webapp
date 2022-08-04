@@ -117,12 +117,32 @@
 
             // Create connection
             $conn = mysqli_connect($servername, $username, $password, $database);
-                            
-            $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
-            FROM appointment,doctor,registeredPatient WHERE appointment.doctorID = doctor.doctorID AND appointment.patientID = registeredPatient.ID 
-            AND appointment.status != 'finished'");
 
-            $result = mysqli_query($conn, $res);
+            // GET THE DOCTOR ID
+            $stmtDoc = $conn->prepare("SELECT doctorID
+                        FROM doctor 
+                        WHERE userID = ?");
+            $stmtDoc->bind_param("s", $_SESSION['id']);
+            $stmtDoc->execute();
+            $resultDoc = $stmtDoc->get_result();
+
+            while ($rowDoc = $resultDoc->fetch_assoc()){
+                $docID = $rowDoc['doctorID'];
+            }
+                         
+            // GET APPOINTMENT DETAILS THAT BELONG TO THE DOCTOR
+            // $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
+            // FROM appointment,doctor,registeredPatient WHERE appointment.doctorID = doctor.doctorID AND appointment.patientID = registeredPatient.ID 
+            // AND appointment.status != 'finished' AND appointment.doctorID = ?");
+            // $result = mysqli_query($conn, $res);
+
+            $res = $conn->prepare("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
+                                    FROM appointment,doctor,registeredPatient WHERE appointment.doctorID = doctor.doctorID AND appointment.patientID = registeredPatient.ID 
+                                    AND appointment.status != 'finished' AND appointment.doctorID = ?");
+            $res->bind_param("s", $docID);
+            $res->execute();
+            $result = $stmtDoc->get_result();
+
             $index = 1;
             while($sql = mysqli_fetch_assoc($result))
             {
