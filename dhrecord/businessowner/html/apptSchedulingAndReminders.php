@@ -182,7 +182,7 @@
                 $resultDocFN = $stmtDocFN->get_result();
 
                 if ($resultDocFN->num_rows === 0) {
-                    echo '*';
+                    echo $_SESSION['username'];
                 } else {
                     while ($rowDocFN = $resultDocFN->fetch_assoc()){
                         echo $rowDocFN['fullName'];
