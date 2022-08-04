@@ -1,3 +1,19 @@
+<?php 
+      //Database Connection
+      $servername = "localhost";
+      $database = "u922342007_Test";
+      $username = "u922342007_admin";
+      $password = "Aylm@012";
+
+      // Create connection
+      $conn = mysqli_connect($servername, $username, $password, $database);
+
+      if (!$conn) 
+      {
+	    die("Connection failed: " . mysqli_connect_error());
+      }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -81,9 +97,25 @@
             <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
                 <tr>
                     <th class="px-4">Clinic Name</th>
-                    <th class="px-4">Clinic Description</th>
+                    <th class="px-4">Clinic Address</th>
                 </tr>
-                <tr>
+               <?php
+
+                    //$query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
+                    $query = "SELECT * FROM businessOwner";
+  
+                    //$clinicID = $row['ID'];
+
+                    if ($result = $conn->query($query)) 
+                    {
+                        while ($row = $result->fetch_assoc()) 
+                        {
+               ?>
+               <tr>     
+                    <td><?php echo $row["clinicName"]; ?></td>
+                    <td><?php echo $row["address"]; ?></td> 
+               </tr>
+                <!--<tr>
                     <td class="px-4">Ashford Dental Centre</td>
                     <td class="px-4">
                         <b>Address: </b>215 Upper Thomson Rd, Singapore 574349<br>
@@ -133,7 +165,7 @@
 
                     </td>
                 </tr>
-                <!--<tr>
+                <tr>
                     <td>Smilefocus Dental Clinic</td>
                     <td>
                         Located in: Camden Medical<br>
