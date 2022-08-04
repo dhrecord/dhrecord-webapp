@@ -236,11 +236,11 @@
 
                 while ($rowDoc = $resultDoc->fetch_assoc()){
                     // GET THE APPOINTMENT DETAILS
-                    $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, doctor.fullName
+                    $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, doctor.fullName AS 'd_fullName', registeredPatient.fullName AS 'p_fullName'
                                                     FROM appointment
                                                     JOIN doctor ON appointment.doctorID = doctor.doctorID
                                                     JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
-                                                    JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
+                                                    JOIN registeredPatient ON registeredPatient.ID = appointment.patientID
                                                     WHERE appointment.doctorID=?");
                     $stmtAppt->bind_param("s", $rowDoc['doctorID']);
                     $stmtAppt->execute();
@@ -255,11 +255,11 @@
                         echo '", title:"';
                         echo $rowAppt['agenda'];
                         
-                        echo '", clinic:"';
-                        echo $rowAppt['nameOfClinic'];
+                        echo '", patient:"';
+                        echo $rowAppt['p_fullName'];
 
                         echo '", doctor:"';
-                        echo $rowAppt['fullName'];
+                        echo $rowAppt['d_fullName'];
 
                         echo '"});';
                     }
