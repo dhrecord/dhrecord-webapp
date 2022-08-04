@@ -33,6 +33,7 @@
       $result = $stmt->get_result();
     }
     else{
+      $result = $conn->query("SELECT * FROM businessOwner");
       $searchErr = "Please enter the information";
     }
   } else {
