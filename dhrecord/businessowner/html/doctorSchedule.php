@@ -166,6 +166,37 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
+      var appts = [];
+
+      <?php
+        // GET THE APPOINTMENT DETAILS
+        $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, doctor.fullName AS 'd_fullName', registeredPatient.fullName AS 'p_fullName'
+                                        FROM appointment
+                                        JOIN doctor ON appointment.doctorID = doctor.doctorID
+                                        JOIN registeredPatient ON registeredPatient.ID = appointment.patientID
+                                        WHERE appointment.doctorID=?");
+        $stmtAppt->bind_param("s", $_POST['doc_id']);
+        $stmtAppt->execute();
+        $resultAAppt = $stmtAppt->get_result();
+
+        while ($rowAppt = $resultAAppt->fetch_assoc()){
+            echo 'appts.push({start:"';
+            echo $rowAppt['date'];
+            echo 'T';
+            echo $rowAppt['time'];
+
+            echo '", title:"';
+            echo $rowAppt['agenda'];
+            
+            echo '", patient:"';
+            echo $rowAppt['p_fullName'];
+
+            echo '", doctor:"';
+            echo $rowAppt['d_fullName'];
+
+            echo '"});';
+        }
+      ?>
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
@@ -180,20 +211,7 @@
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         eventLimit: true, // allow "more" link when too many events
-        events: [
-          {
-            title: 'Monthly Checkup',
-            start: '2022-07-27T14:00:00',
-            doctor: 'Dr. Smith Rowe',
-            patient: 'Mark Ken'
-          },
-          {
-            title: 'Dental Brace',
-            start: '2022-07-31T15:00:00',
-            doctor: 'Dr. Smith Rowe',
-            patient: 'Mariah Owen'
-          },
-        ]
+        events: appts
       });
 
       calendar.render();
