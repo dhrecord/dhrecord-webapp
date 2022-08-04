@@ -127,7 +127,7 @@ if(!isset($_SESSION['loggedin']))
                 </div>
             </div>
 	<div class="mb-3 row">
-                <label for="pickDoc" class="col-sm-2 col-form-label">Name of clinic</label>
+                <label for="pickDoc" class="col-sm-2 col-form-label">Name of Doctor</label>
                 <div class="col-sm-1">
                     <select class="form-select" id="docRef" aria-label="Name of doctor" max-width: 250px;">
 			<option selected disabled hidden>Select</option>
