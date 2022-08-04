@@ -169,9 +169,9 @@
                 // GET THE DOCTOR'S SPECIALIZATION
                 $stmtClinic = $conn->prepare("SELECT DISTINCT businessOwner.nameOfClinic, businessOwner.locationOfClinic
                                             FROM businessOwner
-                                            JOIN doctorClinic
-                                            ON doctorClinic.clinicID = businessOwner.ID
-                                            WHERE doctorClinic.doctorID=?");
+                                            JOIN doctor
+                                            ON doctor.clinicID = businessOwner.ID
+                                            WHERE doctor.doctorID=?");
                 $stmtClinic->bind_param("s", $docID);
                 $stmtClinic->execute();
                 $resultClinic = $stmtClinic->get_result();

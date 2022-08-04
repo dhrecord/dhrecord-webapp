@@ -239,7 +239,6 @@
                     $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, doctor.fullName AS 'd_fullName', registeredPatient.fullName AS 'p_fullName'
                                                     FROM appointment
                                                     JOIN doctor ON appointment.doctorID = doctor.doctorID
-                                                    JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
                                                     JOIN registeredPatient ON registeredPatient.ID = appointment.patientID
                                                     WHERE appointment.doctorID=?");
                     $stmtAppt->bind_param("s", $rowDoc['doctorID']);

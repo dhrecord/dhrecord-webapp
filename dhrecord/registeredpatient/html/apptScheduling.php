@@ -210,10 +210,9 @@
                             </tr>';
                     
                     // GET THE LIST OF DOCTORS IN THE CLINIC
-                    $stmtDoc = $conn->prepare("SELECT DISTINCT doctor.doctorID, doctor.fullName 
-                                              FROM doctorClinic 
-                                              JOIN doctor ON doctorClinic.doctorID = doctor.doctorID 
-                                              WHERE doctorClinic.clinicID = ?");
+                    $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
+                                              FROM doctor
+                                              WHERE clinicID = ?");
                     $stmtDoc->bind_param("s", $row['ID']);
                     $stmtDoc->execute();
                     $resultDoc = $stmtDoc->get_result();

@@ -116,8 +116,7 @@
             $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.apptID, appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, businessOwner.locationOfClinic, doctor.fullName
                                           FROM appointment
                                           JOIN doctor ON appointment.doctorID = doctor.doctorID
-                                          JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
-                                          JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
+                                          JOIN businessOwner ON businessOwner.ID = doctor.clinicID
                                           WHERE appointment.patientID=?");
             $stmtAppt->bind_param("s", $rowPatName['ID']);
             $stmtAppt->execute();
