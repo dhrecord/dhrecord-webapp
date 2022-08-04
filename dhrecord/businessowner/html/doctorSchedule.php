@@ -145,7 +145,7 @@
       //     </div>
       // </div>';
 
-      echo '</h4><div>';
+      echo '</h4><div class="d-flex">';
 
       // echo '<button class="btn btn-dark"
       //             onclick="document.location.href=\'../../businessowner/html/bookAppt.php\'">Book
@@ -156,12 +156,12 @@
       echo '<form method="POST" action="../../businessowner/html/bookAppt.php">
       <button type="submit" name="doc_id" value="';
       echo $_POST['doc_id'];                    
-      echo '" class="btn btn-dark btn-sm">Book Appointment</button></form>';
+      echo '" class="btn btn-dark">Book Appointment</button></form>';
 
       echo '<form method="POST" action="../../businessowner/html/rescheduleAppt.php">
       <button type="submit" name="doc_id" value="';
       echo $_POST['doc_id'];                    
-      echo '" class="btn btn-dark btn-sm">Reschedule</button></form>';
+      echo '" class="btn btn-dark">Reschedule</button></form>';
 
       echo '</div></div>';
 

@@ -129,6 +129,8 @@
             // while ($rowDoc = $resultDoc->fetch_assoc()){
             //     $docID = $rowDoc['doctorID'];}
 
+            $docID = "";
+
             // if login as doctor -> need to finnd doctor id
             if ($_SESSION['role'] === "dr"){
                 // GET THE DOCTOR ID 
@@ -149,9 +151,6 @@
             if ($_SESSION['role'] === "fd"){
                 $docID = $_POST['doc_id'];
             }
-
-            echo $_SESSION['role'];
-            echo $docID;
                                     
             // GET APPOINTMENT DETAILS THAT BELONG TO THE DOCTOR
             // $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
