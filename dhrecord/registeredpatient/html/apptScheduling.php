@@ -128,7 +128,7 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div> -->
-                <form action="#" method="post">
+                <form action="#" method="post" class="d-flex">
                   <div class="input-group mx-4" style="width:fit-content">
                     <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
                     aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px;"/>
@@ -137,18 +137,18 @@
                     </button>
                   </div>
 
-                  <div class="mx-2"> 
-                    <select name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
-                  style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
-                      <option selected disabled hidden>Filter By...</option>
-                      <option value="1">Clinic Name</option>
-                      <option value="2">Services</option>
-                      <option value="3">Address</option>
-                      <option value="4">Postal Code</option>
-                      <option value="5">Operating Hours (Day)</option>
-                      <option value="6">Operating Hours (Time)</option>
-                    </select>
-                </div>
+                    <div class="mx-2"> 
+                      <select name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                    style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
+                        <option selected disabled hidden>Filter By...</option>
+                        <option value="1">Clinic Name</option>
+                        <option value="2">Services</option>
+                        <option value="3">Address</option>
+                        <option value="4">Postal Code</option>
+                        <option value="5">Operating Hours (Day)</option>
+                        <option value="6">Operating Hours (Time)</option>
+                      </select>
+                  </div>
                 </form>
             </div>
 
