@@ -157,7 +157,7 @@
                     $clinicID = '';
                 } else {
                     while ($rowCID = $resultCID->fetch_assoc()){
-                        $clinicID = $rowCID['fullName'];
+                        $clinicID = $rowCID['clinicID'];
                     }
                 }
                                 
