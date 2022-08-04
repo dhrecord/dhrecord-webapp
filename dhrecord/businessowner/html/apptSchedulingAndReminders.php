@@ -134,8 +134,26 @@
         <?php
             if ($_SESSION['role'] === "fd"){
                 echo '<div>
-                        <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
-                        <table class="table table-striped">
+                        <h4 class="mb-5">Appointment Scheduling and Reminders - </h4>';
+
+                // CLINIC NAME
+                $stmtCN = $conn->prepare("SELECT nameOfClinic 
+                                            FROM frontDesk
+                                            JOIN businessOwner ON frontDesk.clinicID = businessOwner.ID
+                                            WHERE frontDesk.userID = ?");
+                $stmtCN->bind_param("s", $_SESSION['id']);
+                $stmtCN->execute();
+                $resultN = $stmtCN->get_result();
+
+                if ($resultN->num_rows === 0) {
+                    echo '*';
+                } else {
+                    while ($rowN = $resultN->fetch_assoc()){
+                        echo $rowN['nameOfClinic'];
+                    }
+                }
+
+                echo '<table class="table table-striped">
                             <tr class="bg-dark text-white">
                                 <th>No</th>
                                 <th>Doctor</th>
