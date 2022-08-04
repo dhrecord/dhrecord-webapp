@@ -227,7 +227,7 @@
 
             <?php
                 // GET THE DoctorID from UserID
-                $stmtDoc = $conn->prepare("SELECT doctorID
+                $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID
                                                 FROM doctor
                                                 WHERE userID=?");
                 $stmtDoc->bind_param("s", $_SESSION['id']);
@@ -239,6 +239,10 @@
                 echo ');';
 
                 while ($rowDoc = $resultDoc->fetch_assoc()){
+                    echo 'console.log(';
+                    echo $rowDoc['ID'];
+                    echo ');';
+
                     // GET THE APPOINTMENT DETAILS
                     $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, doctor.fullName
                                                     FROM appointment
@@ -249,10 +253,6 @@
                     $stmtAppt->bind_param("s", $rowDoc['ID']);
                     $stmtAppt->execute();
                     $resultAAppt = $stmtAppt->get_result();
-
-                    echo 'console.log(';
-                    echo $rowDoc['ID'];
-                    echo ');';
 
                     while ($rowAppt = $resultAAppt->fetch_assoc()){
                         echo 'console.log(';
