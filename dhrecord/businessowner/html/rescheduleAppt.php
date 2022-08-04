@@ -91,7 +91,7 @@
 
   <!-- content -->
   <div class="container my-5">
-    <div class="mb-5 d-flex justify-content-between">
+    <div class="mb-4 d-flex justify-content-between">
       <h4>Reschedule Appointment</h4>
     </div>
     
@@ -117,18 +117,6 @@
 
             // Create connection
             $conn = mysqli_connect($servername, $username, $password, $database);
-
-            // // GET THE DOCTOR ID
-            // $stmtDoc = $conn->prepare("SELECT doctorID
-            // FROM doctor 
-            // WHERE userID = ?");
-            // $stmtDoc->bind_param("s", $_SESSION['id']);
-            // $stmtDoc->execute();
-            // $resultDoc = $stmtDoc->get_result();
-
-            // while ($rowDoc = $resultDoc->fetch_assoc()){
-            //     $docID = $rowDoc['doctorID'];}
-
             $docID = "";
 
             // if login as doctor -> need to finnd doctor id
