@@ -118,37 +118,37 @@
             // Create connection
             $conn = mysqli_connect($servername, $username, $password, $database);
 
-            // GET THE DOCTOR ID
-            $stmtDoc = $conn->prepare("SELECT doctorID
-            FROM doctor 
-            WHERE userID = ?");
-            $stmtDoc->bind_param("s", $_SESSION['id']);
-            $stmtDoc->execute();
-            $resultDoc = $stmtDoc->get_result();
+            // // GET THE DOCTOR ID
+            // $stmtDoc = $conn->prepare("SELECT doctorID
+            // FROM doctor 
+            // WHERE userID = ?");
+            // $stmtDoc->bind_param("s", $_SESSION['id']);
+            // $stmtDoc->execute();
+            // $resultDoc = $stmtDoc->get_result();
 
-            while ($rowDoc = $resultDoc->fetch_assoc()){
-                $docID = $rowDoc['doctorID'];}
+            // while ($rowDoc = $resultDoc->fetch_assoc()){
+            //     $docID = $rowDoc['doctorID'];}
 
-            // // if login as doctor -> need to finnd doctor id
-            // if ($data['role'] === "dr"){
-            //     // GET THE DOCTOR ID 
-            //     $stmtDoc = $conn->prepare("SELECT doctorID
-            //                 FROM doctor 
-            //                 WHERE userID = ?");
+            // if login as doctor -> need to finnd doctor id
+            if ($_SESSION['role'] === "dr"){
+                // GET THE DOCTOR ID 
+                $stmtDoc = $conn->prepare("SELECT doctorID
+                            FROM doctor 
+                            WHERE userID = ?");
                 
-            //     $stmtDoc->bind_param("s", $_SESSION['id']);
-            //     $stmtDoc->execute();
-            //     $resultDoc = $stmtDoc->get_result();
+                $stmtDoc->bind_param("s", $_SESSION['id']);
+                $stmtDoc->execute();
+                $resultDoc = $stmtDoc->get_result();
 
-            //     while ($rowDoc = $resultDoc->fetch_assoc()){
-            //         $docID = $rowDoc['doctorID'];
-            //     }
-            // }
+                while ($rowDoc = $resultDoc->fetch_assoc()){
+                    $docID = $rowDoc['doctorID'];
+                }
+            }
            
-            // // if login as frontdesk -> doctor id is passed by form parameter
-            // if ($data['role'] === "fd"){
-            //     $docID = $_POST['doc_id'];
-            // }
+            // if login as frontdesk -> doctor id is passed by form parameter
+            if ($_SESSION['role'] === "fd"){
+                $docID = $_POST['doc_id'];
+            }
                                     
             // GET APPOINTMENT DETAILS THAT BELONG TO THE DOCTOR
             // $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
