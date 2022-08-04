@@ -223,6 +223,48 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
+            var appts = [];
+
+            <?php
+                // GET THE DoctorID from UserID
+                $stmtDoc = $conn->prepare("SELECT doctor.doctorID
+                                                FROM doctor
+                                                WHERE doctor.userID=?");
+                $stmtDoc->bind_param("s", $_SESSION['id']);
+                $stmtDoc->execute();
+                $resultDoc = $stmtDoc->get_result();
+
+                while ($rowDoc = $resultDoc->fetch_assoc()){
+                    // GET THE APPOINTMENT DETAILS
+                    $stmtAppt = $conn->prepare("SELECT DISTINCT appointment.date, appointment.time, appointment.agenda, businessOwner.nameOfClinic, doctor.fullName
+                                                    FROM appointment
+                                                    JOIN doctor ON appointment.doctorID = doctor.doctorID
+                                                    JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
+                                                    JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
+                                                    WHERE appointment.patientID=?");
+                    $stmtAppt->bind_param("s", $rowDoc['ID']);
+                    $stmtAppt->execute();
+                    $resultAAppt = $stmtAppt->get_result();
+
+                    while ($rowAppt = $resultAAppt->fetch_assoc()){
+                        echo 'appts.push({start:"';
+                        echo $rowAppt['date'];
+                        echo 'T';
+                        echo $rowAppt['time'];
+
+                        echo '", title:"';
+                        echo $rowAppt['agenda'];
+                        
+                        echo '", clinic:"';
+                        echo $rowAppt['nameOfClinic'];
+
+                        echo '", doctor:"';
+                        echo $rowAppt['fullName'];
+
+                        echo '"});';
+                    }
+                }
+            ?>
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
@@ -237,20 +279,7 @@
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
-                events: [
-                    {
-                        title: 'Monthly Checkup',
-                        start: '2022-07-27T14:00:00',
-                        doctor: 'Dr. Smith Rowe',
-                        patient: 'Mark Ken'
-                    },
-                    {
-                        title: 'Dental Brace',
-                        start: '2022-07-31T15:00:00',
-                        doctor: 'Dr. Smith Rowe',
-                        patient: 'Mariah Owen'
-                    },
-                ]
+                events: appts
             });
 
             calendar.render();
