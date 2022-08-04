@@ -149,6 +149,9 @@
             if ($_SESSION['role'] === "fd"){
                 $docID = $_POST['doc_id'];
             }
+
+            echo $_SESSION['role'];
+            echo $docID;
                                     
             // GET APPOINTMENT DETAILS THAT BELONG TO THE DOCTOR
             // $res = ("SELECT apptID, doctor.fullName as docName, registeredPatient.fullName as ptName, agenda, date, time 
