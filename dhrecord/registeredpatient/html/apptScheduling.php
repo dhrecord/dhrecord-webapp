@@ -152,14 +152,14 @@
                 <form action="#" method="post" class="d-flex">
                   <div class="input-group mx-4" style="width:fit-content">
                     <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
-                    aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px;"/>
+                    aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px;" required/>
                     <button id="basic-addon2" type="submit" name="save" class="input-group-text">
                       <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                   </div>
 
                     <div class="mx-2"> 
-                      <select name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                      <select required name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
                     style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
                         <option selected disabled hidden>Filter By...</option>
                         <option value="1">Clinic Name</option>
