@@ -25,6 +25,7 @@
   if(isset($_POST['save'])){
     if(!empty($_POST['search'])){
       $search = $_POST['search'];
+      $search = "%$search%"; // prepare the $search variable
       $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
       $stmt->bind_param("s", $search);
       $stmt->execute();
