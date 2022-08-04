@@ -26,20 +26,20 @@
 
   if(isset($_POST['save'])){
     if(!empty($_POST['search'] and !empty($_POST['select']))){
-      $search = $_POST['search'];
-      $search = "%$search%"; // prepare the $search variable
-
+      $search = $_POST['search'];      
       $select = $_POST['select'];
       $stmt = '';
 
       switch ($select) {
         // search by clinic name
         case "1":
+            $search = "%$search%"; // prepare the $search variable
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
             $stmt->bind_param("s", $search);
             break;
         // search by specializations/sevices
         case "2":
+            $search = "%$search%"; // prepare the $search variable
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
                                           (SELECT DISTINCT businessOwner.ID FROM doctorSpecialization
                                             JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
@@ -50,16 +50,19 @@
             break;
         // search by clinic address
         case "3":
+            $search = "%$search%"; // prepare the $search variable
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE locationOfClinic LIKE ?");
             $stmt->bind_param("s", $search);
             break;
         // search by postal code
         case "4":
+            $search = "%$search%"; // prepare the $search variable
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE postalCode LIKE ?");
             $stmt->bind_param("s", $search);
             break;
         // search by operating hours -> day
         case "5":
+            $search = "%$search%"; // prepare the $search variable
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
                                       (SELECT DISTINCT businessOwner.ID FROM businessOwner 
                                         JOIN doctor ON businessOwner.ID = doctor.clinicID
