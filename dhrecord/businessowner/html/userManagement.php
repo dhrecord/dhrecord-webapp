@@ -228,27 +228,27 @@
         }
         ?>
 
-            <?php
+        <?php
 
-                $query2 = "SELECT * FROM frontDesk WHERE clinicID = $clinicID";
+            $query2 = "SELECT * FROM frontDesk WHERE clinicID = $clinicID";
 
-                if ($result2 = $conn->query($query2)) 
+            if ($result2 = $conn->query($query2)) 
+            {
+                while ($row2 = $result2->fetch_assoc()) 
                 {
-                    while ($row2 = $result2->fetch_assoc()) 
-                    {
-                        $frontdeskUserID = $row2["userID"];
-                        $query3 = "SELECT * FROM users WHERE ID = $frontdeskUserID";
-                        $result3 = $conn->query($query3);
-                        $row3 = $result3->fetch_assoc();
-                ?>
-                    <tr>
-                        <td><?php echo $row2["fullName"]; ?></td>
-                        <td><?php echo $row3["role"]; ?></td> 
-                        <td><?php echo $row2["contactNumber"]; ?></td> 
-                        <td><?php echo $row2["email"]; ?></td>
-                        <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModalFD<?php echo $row2["frontdeskID"]; ?>">Edit</button></td>
-                        <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row2["userID"]; ?>'">Delete</button></td>
-                    </tr>
+                    $frontdeskUserID = $row2["userID"];
+                    $query3 = "SELECT * FROM users WHERE ID = $frontdeskUserID";
+                    $result3 = $conn->query($query3);
+                    $row3 = $result3->fetch_assoc();
+            ?>
+                <tr>
+                    <td><?php echo $row2["fullName"]; ?></td>
+                    <td><?php echo $row3["role"]; ?></td> 
+                    <td><?php echo $row2["contactNumber"]; ?></td> 
+                    <td><?php echo $row2["email"]; ?></td>
+                    <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModalFD<?php echo $row2["frontdeskID"]; ?>">Edit</button></td>
+                    <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row2["userID"]; ?>'">Delete</button></td>
+                </tr>
 
 
 
@@ -282,6 +282,75 @@
                             <div class="mb-3">
                                 <label for="clinicID" class="form-label">Clinic ID</label>
                                 <input type="text" class="form-control" id="clinicID" name="clinicID"<?php echo 'value="'.$row2["clinicID"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <?php
+            }
+        }
+        ?>
+
+        <?php
+
+            $query4 = "SELECT * FROM doctor WHERE clinicID = $clinicID";
+
+            if ($result4 = $conn->query($query4)) 
+            {
+                while ($row4 = $result4->fetch_assoc()) 
+                {
+                    $doctorUserID = $row4["userID"];
+                    $query5 = "SELECT * FROM users WHERE ID = $doctorUserID";
+                    $result5 = $conn->query($query5);
+                    $row5 = $result5->fetch_assoc();
+            ?>
+                <tr>
+                    <td><?php echo $row4["fullName"]; ?></td>
+                    <td><?php echo $row5["role"]; ?></td> 
+                    <td><?php echo $row4["contactNumber"]; ?></td> 
+                    <td><?php echo $row4["email"]; ?></td>
+                    <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModalDR<?php echo $row4["doctorID"]; ?>">Edit</button></td>
+                    <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row4["userID"]; ?>'">Delete</button></td>
+                </tr>
+
+
+
+        <!-- modal -->
+        <div class="modal fade" id="popupModalDR<?php echo $row4["doctorID"]; ?>" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="popupModalLabel">View/Edit Full Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./editUserDoctor.php" method="post">
+                            <p style="display: none;" id="invisibleID"></p>
+                            <div class="mb-3">
+                                <label for="doctorID" class="form-label">Doctor ID</label>
+                                <input type="text" class="form-control" id="doctorID" name="doctorID" <?php echo 'value="'.$row4["doctorID"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" <?php echo 'value="'.$row4["fullName"].'"'; ?>>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactNumber" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" id="contactNumber" name="contactNumber" <?php echo 'value="'.$row4["contactNumber"].'"'; ?>>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" <?php echo 'value="'.$row4["email"].'"'; ?>>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clinicID" class="form-label">Clinic ID</label>
+                                <input type="text" class="form-control" id="clinicID" name="clinicID"<?php echo 'value="'.$row4["clinicID"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3 row">
                                 <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
