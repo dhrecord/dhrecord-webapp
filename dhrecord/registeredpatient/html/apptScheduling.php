@@ -25,9 +25,10 @@
   if(isset($_POST['save'])){
     if(!empty($_POST['search'])){
       $search = $_POST['search'];
-      $stmt = $conn->prepare("select * from businessOwner where nameOfClinic like '%$search%'");
+      $stmt = $conn->prepare("select * from businessOwner where nameOfClinic like '%?%'");
+      $stmt->bind_param("s", $search);
       $stmt->execute();
-      $employee_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $result = $stmt->get_result();
     }
     else{
       $searchErr = "Please enter the information";
@@ -167,21 +168,9 @@
 
                 <!-- SHOWING CLINICS -->
                 <?php
-                  if(!$employee_details){
-                      echo '<tr>No data found</tr>';
-                  }
-                  else{
-                    foreach($employee_details as $key=>$value){
-                ?>
-
-                <tr>
-                    <td><?php echo $key+1;?></td>
-                    <td><?php echo $value['nameOfClinic'];?></td>
-                    <td><?php echo $value['locationOfClinic'];?></td>
-                </tr>
-                        
-                <?php
-                    }  
+                  while ($row = $result->fetch_assoc()){
+                    echo $row['nameOfClinic'];
+                    echo $row['locationOfClinic'];
                   }
                 ?>
 
