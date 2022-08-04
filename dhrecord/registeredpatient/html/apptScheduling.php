@@ -38,7 +38,7 @@
             $stmt->bind_param("s", $search);
             break;
         case "2":
-            $stmt = $conn->prepare("SELECT * FROM doctorSpecialization
+            $stmt = $conn->prepare("SELECT DISTINCT * FROM doctorSpecialization
                                     JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
                                     JOIN doctor ON doctor.doctorID = doctorSpecialization.doctorID
                                     JOIN businessOwner ON businessOwner.ID = doctor.clinicID
