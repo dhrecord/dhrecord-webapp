@@ -111,6 +111,8 @@
      {
       die("Connection failed: " . mysqli_connect_error());
      }
+
+     echo $_POST['doc_id'];
   ?>
 
   <div class="container my-5">
