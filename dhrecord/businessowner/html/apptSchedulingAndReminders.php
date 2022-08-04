@@ -241,7 +241,7 @@
                                                     JOIN doctor ON appointment.doctorID = doctor.doctorID
                                                     JOIN doctorClinic ON doctorClinic.doctorID = doctor.doctorID
                                                     JOIN businessOwner ON businessOwner.ID = doctorClinic.clinicID
-                                                    WHERE appointment.patientID=?");
+                                                    WHERE appointment.doctorID=?");
                     $stmtAppt->bind_param("s", $rowDoc['ID']);
                     $stmtAppt->execute();
                     $resultAAppt = $stmtAppt->get_result();
