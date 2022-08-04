@@ -20,7 +20,7 @@
   }
 
   $searchErr = '';
-  $employee_details='';
+  $result='';
 
   if(isset($_POST['save'])){
     if(!empty($_POST['search'])){
