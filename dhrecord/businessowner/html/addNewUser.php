@@ -48,10 +48,13 @@ $row1 = $stmt_result->fetch_assoc();
 
 //echo $row1['ID'];
 
-//if($role === "dr")
-//{
-//
-//}
+if($role === "dr")
+{
+	$stmt = mysqli_prepare($conn, "insert into doctor(userID, fullName, contactNumber, email, clinicID) values(?, ?, ?, ?, ?)");
+	mysqli_stmt_bind_param($stmt, "isssi", $row1['ID'], $fullName, $contactNumber, $email, $clinicID);
+	mysqli_stmt_execute($stmt);
+	header('Location: addUser.php');
+}
 
 if($role === "ca")
 {
