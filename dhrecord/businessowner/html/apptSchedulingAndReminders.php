@@ -247,6 +247,10 @@
                     $resultAAppt = $stmtAppt->get_result();
 
                     while ($rowAppt = $resultAAppt->fetch_assoc()){
+                        echo 'console.log(';
+                        echo echo $rowAppt['agenda'];;
+                        echo ')';
+
                         echo 'appts.push({start:"';
                         echo $rowAppt['date'];
                         echo 'T';
@@ -265,6 +269,8 @@
                     }
                 }
             ?>
+
+            console.log(appts);
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
