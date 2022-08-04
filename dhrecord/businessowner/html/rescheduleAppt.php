@@ -133,9 +133,26 @@
                     "</td><td>".$sql['agenda'].
                     "</td><td>".$sql['date'].
                     "</td><td>".substr($sql['time'], 0, 5).
-                    "</td><td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
-                    <td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>
-                    <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
+                    "</td>";
+
+                // reschedule btn
+                echo '<td class="text-center">
+                <form method="POST" action="../../registeredpatient/html/rescheduleApptForm.php">
+                <button type="submit" name="appt_id" value="';
+                echo $sql['apptID'];                    
+                echo '" class="btn btn-dark btn-sm">Reschedule</button></form></td>';
+
+                // finish btn
+                echo "<td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>";
+                
+                // cancel btn
+                echo '<td class="text-center"><button class="btn btn-sm btn-danger" id="cancel-btn-';
+                echo $sql['apptID'];      
+                echo '">Cancel</button></td>';
+                    
+                // echo "<td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
+                //     <td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>
+                //     <td class='text-center'><button class='btn btn-sm btn-danger'>Cancel</button></td></tr>";
                 $index += 1;
             }
           ?>
@@ -147,5 +164,37 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+    <script>
+        // Cancel Appointment Button
+        var buttons = document.getElementsByClassName("btn-danger");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function(e) {
+            var dialog = confirm("Are you sure want to cancel the appointment?");
+            if (dialog) {
+                console.log('Appointment is Cancelled!');
+
+                let btn_id = this.id.split("-")[2];
+                <?php
+                    // Cancel Appointment
+                    $btn_id = null; // testing => later need to pass the value from js var 'btn_id' 
+                    $query = "DELETE FROM appointment WHERE apptID = '$btn_id'";
+                    if (mysqli_query($conn,$query)) 
+                    {
+                    echo "console.log('deleted!')";
+                    }
+                
+                    else
+                    {
+                    echo "console.log('something went wrong!')";
+                    }
+                ?>
+            }
+            else {
+                console.log('Appointment is not Cancelled');
+            }
+            });
+        }
+  </script>
 </body>
 </html>
