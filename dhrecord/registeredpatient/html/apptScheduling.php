@@ -73,7 +73,7 @@
                                       (SELECT DISTINCT businessOwner.ID FROM businessOwner 
                                         JOIN doctor ON businessOwner.ID = doctor.clinicID
                                         JOIN operatingHours ON operatingHours.doctorID = doctor.doctorID
-                                        WHERE operatingHours.start_time >= ? and operatingHours.end_time <= ?)");
+                                        WHERE operatingHours.start_time <= ? and operatingHours.end_time > ?)");
           $stmt->bind_param("ss", $search, $search);
           break;
         default:
