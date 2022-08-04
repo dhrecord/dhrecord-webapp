@@ -125,48 +125,50 @@ if(!isset($_SESSION['loggedin']))
                         ?>
            	 </select>
                 </div>
-		<div class="col-sm-10">
-		  <select name="docRefer" id="docRefer">
-		    <?php
-		      // Database Connection
-		      $servername = "localhost";
-		      $database = "u922342007_Test";
-		      $username = "u922342007_admin";
-		      $password = "Aylm@012";
-		      // Create connection
-		      $conn = mysqli_connect($servername, $username, $password, $database);
-
-		      if (!$conn)
-		      {
-			die("Connection failed: " . mysqli_connect_error());
-		      }
-
-		      $sessionID = $_SESSION['id'];
-
-		      // GET THE LIST OF DOCTORS
-		      $resultBO = $conn->query("SELECT * FROM doctor");
-
-		      while ($row = $resultBO->fetch_assoc())
-		      {
-			echo '<option value="';
-
-			$fieldNOC = $row['nameOfDoc'];
-			echo $fieldNOC;
-
-			echo '">';
-
-			echo $fieldNOC;
-
-			echo '</option>';
-		      }
-
-		      mysqli_close($conn);
-		    ?>
-		  </select>
-		</div>
-
             </div>
-		
+	<div class="mb-3 row">
+                <label for="pickDoc" class="col-sm-2 col-form-label">Name of clinic</label>
+                <div class="col-sm-1">
+                    <select class="form-select" id="docRef" aria-label="Name of doctor" max-width: 250px;">
+			<option selected disabled hidden>Select</option>
+			<?php
+                          // Database Connection
+                          $servername = "localhost";
+                          $database = "u922342007_Test";
+                          $username = "u922342007_admin";
+                          $password = "Aylm@012";
+                          // Create connection
+                          $conn = mysqli_connect($servername, $username, $password, $database);
+
+                          if (!$conn)
+                          {
+                            die("Connection failed: " . mysqli_connect_error());
+                          }
+
+                          $sessionID = $_SESSION['id'];
+
+                          // GET THE LIST OF DOCTORS
+                          $resultBO = $conn->query("SELECT * FROM doctor");
+
+                          while ($row = $resultBO->fetch_assoc())
+                          {
+                            echo '<option value="';
+
+                            $fieldNOC = $row['nameOfDoc'];
+                            echo $fieldNOC;
+
+                            echo '">';
+
+                            echo $fieldNOC;
+
+                            echo '</option>';
+                          }
+
+                          mysqli_close($conn);
+                        ?>
+           	 </select>
+                </div>
+            </div>
             <div class="mb-3 row">
                 <label for="serviceQuality" class="col-sm-2 col-form-label">On a scale of 1-5 how was the quality of the
                     service you recieved</label>
