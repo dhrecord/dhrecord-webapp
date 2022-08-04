@@ -125,6 +125,46 @@ if(!isset($_SESSION['loggedin']))
                         ?>
            	 </select>
                 </div>
+		<div class="col-sm-10">
+		  <select name="docRefer" id="docRefer">
+		    <?php
+		      // Database Connection
+		      $servername = "localhost";
+		      $database = "u922342007_Test";
+		      $username = "u922342007_admin";
+		      $password = "Aylm@012";
+		      // Create connection
+		      $conn = mysqli_connect($servername, $username, $password, $database);
+
+		      if (!$conn)
+		      {
+			die("Connection failed: " . mysqli_connect_error());
+		      }
+
+		      $sessionID = $_SESSION['id'];
+
+		      // GET THE LIST OF DOCTORS
+		      $resultBO = $conn->query("SELECT * FROM doctor");
+
+		      while ($row = $resultBO->fetch_assoc())
+		      {
+			echo '<option value="';
+
+			$fieldNOC = $row['nameOfDoc'];
+			echo $fieldNOC;
+
+			echo '">';
+
+			echo $fieldNOC;
+
+			echo '</option>';
+		      }
+
+		      mysqli_close($conn);
+		    ?>
+		  </select>
+		</div>
+
             </div>
 		
             <div class="mb-3 row">
