@@ -25,14 +25,13 @@
   if(isset($_POST['save'])){
     if(!empty($_POST['search'])){
       $search = $_POST['search'];
-      $stmt = $con->prepare("select * from businessOwner where nameOfClinic like '%$search%'");
+      $stmt = $conn->prepare("select * from businessOwner where nameOfClinic like '%$search%'");
       $stmt->execute();
       $employee_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     else{
       $searchErr = "Please enter the information";
     }
-    
   }
 ?>
 
