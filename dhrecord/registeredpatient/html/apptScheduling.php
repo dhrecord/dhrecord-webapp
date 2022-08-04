@@ -28,7 +28,7 @@
       echo "===";
       echo $search;
       echo "===";
-      $stmt = $conn->prepare("select * from businessOwner where nameOfClinic = ?");
+      $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic = ?");
       $stmt->bind_param("s", $search);
       $stmt->execute();
       $result = $stmt->get_result();
