@@ -31,7 +31,7 @@
     $medicationPrescribed = $_POST["medicationPrescribed"];
     $comments = $_POST["comments"];
     
-    if (isset($_POST["referTo"]) || $_POST["referTo"] != "")
+    if (isset($_POST["referTo"]) && $_POST["referTo"] != "")
     {
       $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, comments, patient_ID)
       VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$comments}', '{$apptPatientID}')";
