@@ -193,7 +193,7 @@
              <div class="mb-3 row">
                  <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
                  <div class="col-sm-10">
-                     <select name="referTo" id="referTo">
+                     <select name="referTo" id="referTo" class="form-select">
                          <option selected value=""></option>
                          <?php
                             // Database Connection
