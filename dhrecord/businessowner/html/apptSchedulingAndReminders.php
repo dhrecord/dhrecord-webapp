@@ -103,6 +103,20 @@
 
     <!-- content -->
     <div class="container my-5">
+        <?php
+            // Database Connection
+            $servername = "localhost";
+            $database = "u922342007_Test";
+            $username = "u922342007_admin";
+            $password = "Aylm@012";
+            // Create connection
+            $conn = mysqli_connect($servername, $username, $password, $database);
+
+            if (!$conn) 
+            {
+            die("Connection failed: " . mysqli_connect_error());
+            }
+        ?>
         <!-- <h4 class="mb-5">Appointment Scheduling and Reminders</h4> -->
 
         <!-- show this if login as a clinic admin -->
@@ -126,31 +140,81 @@
                                 <th>No</th>
                                 <th>Doctor</th>
                                 <th>Services</th>
-                                <th>Contact</th>
+                                <th>Contact No</th>
+                                <th>Email</th>
                                 <th></th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Dr. Smith Rowe</td>
-                                <td>Oral Surgery, Dental Surgery</td>
-                                <td>+65 4574 7654</td>
-                                <td class="text-center"><button class="btn btn-sm btn-dark"
-                                        onclick="document.location.href=\'../../businessowner/html/doctorSchedule.php\'">View
-                                        Schedule</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Dr. Elizabeth</td>
-                                <td>Orthodontic</td>
-                                <td>+65 8867 7777</td>
-                                <td class="text-center"><button class="btn btn-sm btn-dark"
-                                        onclick="document.location.href=\'../../businessowner/html/doctorSchedule.php\'">View
-                                        Schedule</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>';
+                            </tr>';
+                
+                // GET THE CLINIC ID WHERE THE FRONTDESK WORKS
+                $stmtCID = $conn->prepare("SELECT clinicID 
+                                            FROM frontDesk
+                                            WHERE userID = ?");
+                $stmtCID->bind_param("s", $_SESSION['id']);
+                $stmtCID->execute();
+                $resultCID = $stmtCID->get_result();
+
+                if ($resultCID->num_rows === 0) {
+                    $clinicID = '';
+                } else {
+                    while ($rowCID = $resultCID->fetch_assoc()){
+                        $clinicID = $rowCID['fullName'];
+                    }
+                }
+                                
+                // GET THE LIST OF DOCTOR DETAILS THAT WORKS IN THE CLINIC
+                $stmtDocs = $conn->prepare("SELECT * 
+                                            FROM doctor
+                                            WHERE clinicID = ?");
+                $stmtDocs->bind_param("s", $clinicID);
+                $stmtDocs->execute();
+                $resultDocs = $stmtDocs->get_result();
+
+                if ($resultDocs->num_rows === 0) {
+                    echo '-';
+                } else {
+                    $index = 1;
+                    while ($rowDocs = $resultDocs->fetch_assoc()){
+                        echo '<tr><td>';
+                        echo $index;
+                        echo'</td><td>';
+                        echo $rowDocs['fullName'];
+                        echo'</td><td>';
+                        
+                        // GET THE DOCTOR'S SPECIALIZATION
+                        $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                            FROM doctorSpecialization
+                                            JOIN clinicSpecialization 
+                                            ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                            WHERE doctorSpecialization.doctorID=?");
+                        $stmtSpec->bind_param("s", $rowDocs['doctorID']);
+                        $stmtSpec->execute();
+                        $resultSpec = $stmtSpec->get_result();
+
+                        $specializations = array();
+                        while ($rowSpec = $resultSpec->fetch_assoc()){
+                            array_push($specializations, $rowSpec["specName"]);
+                        }
+
+                        $join_specializations = implode(', ', $specializations);
+                        echo $join_specializations;
+
+                        echo '</td><td>';
+                        echo $rowDocs['contactNumber'];
+                        echo'</td><td>';
+                        echo $rowDocs['email'];
+                        echo'</td>';
+
+                        echo '<td class="text-center">
+                                <form method="POST" action="../../businessowner/html/doctorSchedule.php">
+                                <button type="submit" name="doc_id" value="';
+                        echo $rowDocs['doctorID'];                    
+                        echo '" class="btn btn-dark btn-sm">View Schedule</button></form></td></tr>';
+
+                        $index += 1;
+                    }
+                }
+
+                echo '</table></div>';
             }
         ?>
 
@@ -159,19 +223,6 @@
             if ($_SESSION['role'] === "dr"){
                 echo '<div><div class="my-4 d-flex justify-content-between">
                 <h4>Doctor Appoinment Calendar - ';
-
-                 // Database Connection
-                 $servername = "localhost";
-                 $database = "u922342007_Test";
-                 $username = "u922342007_admin";
-                 $password = "Aylm@012";
-                 // Create connection
-                 $conn = mysqli_connect($servername, $username, $password, $database);
-
-                 if (!$conn) 
-                 {
-                   die("Connection failed: " . mysqli_connect_error());
-                 }
 
                 // GET THE DOCTOR FULLNAME
                 $stmtDocFN = $conn->prepare("SELECT fullName 
