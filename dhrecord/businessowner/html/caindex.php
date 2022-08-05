@@ -29,7 +29,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid container">
-            <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
+            <?php 
+                $role = $_SESSION['role'];
+                if ($role === 'dr')
+                {
+                    '<a class="navbar-brand" href="./drindex.php"><b>DHRecord</b></a>';
+                } else if ($role === "fd")
+                {
+                    '<a class="navbar-brand" href="./fdindex.php"><b>DHRecord</b></a>';
+                } else
+                {
+                    '<a class="navbar-brand" href="./caindex.php"><b>DHRecord</b></a>';
+                }
+            ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -110,7 +122,20 @@
       <h1>Homepage</h1>
       <hr>
       <h4 class="lead">Hi, <?php echo $_SESSION['username']; ?>!</h4>
-      <h4 class="lead">Role: <?php echo $_SESSION['role']; ?></h4>
+      <h4 class="lead">Role: 
+          <?php 
+          if ($role === "ca")
+          {
+              echo "clinic admin";
+          } else if ($role === "dr")
+          {
+              echo "doctor";
+          } else
+          {
+              echo "front desk";
+          }
+          ?>
+        </h4>
       <hr>
       <p class="mx-2" style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button class="btn btn-secondary" onclick="window.location.href='./changeUsernameOrPasswordBusinessOwner.php';">Change Password</button></p>
       <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
