@@ -41,13 +41,13 @@
                             $role = $_SESSION['role'];
                             if ($role === 'dr')
                             {
-                                "<a class="nav-link active" aria-current="page" href="./drindex.php">Home</a>";
+                                '<a class="nav-link active" aria-current="page" href="./drindex.php">Home</a>';
                             } else if ($role === "fd")
                             {
-                                "<a class="nav-link active" aria-current="page" href="./fdindex.php">Home</a>";
+                                '<a class="nav-link active" aria-current="page" href="./fdindex.php">Home</a>';
                             } else
                             {
-                                "<a class="nav-link active" aria-current="page" href="./caindex.php">Home</a>";
+                                '<a class="nav-link active" aria-current="page" href="./caindex.php">Home</a>';
                             }
                         ?>
                         <!-- <a class="nav-link active" aria-current="page" href="./index.php">Home</a> -->
