@@ -278,7 +278,7 @@
                     $field5 = $row['rating'];
                     if ($field5){
                       $field5 = number_format($field5);
-                      for ($x = 0; $x <= $field5; $x++) {
+                      for ($x = 0; $x < $field5; $x++) {
                         echo '<i class="fa-solid fa-star"></i>';
                       }
                     } else{
