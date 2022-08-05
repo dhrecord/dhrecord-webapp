@@ -1,4 +1,4 @@
-<?php 
+<?php
       //Database Connection
       $servername = "localhost";
       $database = "u922342007_Test";
@@ -8,7 +8,7 @@
       // Create connection
       $conn = mysqli_connect($servername, $username, $password, $database);
 
-      if (!$conn) 
+      if (!$conn)
       {
 	    die("Connection failed: " . mysqli_connect_error());
       }
@@ -23,13 +23,13 @@
     <title>DHRecord</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheet.css">
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- jquery -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -40,7 +40,7 @@
         <div class="container-fluid container">
             <a class="navbar-brand" href="../ClinicSearch/index.html"><b>DHRecord</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
@@ -57,9 +57,13 @@
                 </ul>
                 <div>
                     <button type="button" class="btn btn-light btn-sm" style="width: 90px; margin-right: 10px;"
-                        onclick="window.location.href='../RegistrationPagePatient/index.html'">Register</button>
+                            onclick="window.location.href='../RegistrationPagePatient/index.html'">
+                        Register
+                    </button>
                     <button type="button" class="btn btn-light btn-sm" style="width: 90px;"
-                        onclick="window.location.href='../LoginPage/index.html'">Login</button>
+                            onclick="window.location.href='../LoginPage/index.html'">
+                        Login
+                    </button>
                 </div>
             </div>
         </div>
@@ -78,7 +82,7 @@
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
-                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
+                           aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -99,26 +103,26 @@
                     <th class="px-4">Clinic Name</th>
                     <th class="px-4">Clinic Address</th>
                 </tr>
-               <?php
+                <?php
 
-                    //$query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
-                    $query = "SELECT * FROM businessOwner";
-  
-                    //$clinicID = $row['ID'];
+                //$query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
+                $query = "SELECT * FROM businessOwner";
 
-                    if ($result = $conn->query($query)) 
-                    {
-                        while ($row = $result->fetch_assoc()) 
-                        {
-               ?>
-               <tr>     
+                //$clinicID = $row['ID'];
+
+                if ($result = $conn->query($query))
+                {
+                while ($row = $result->fetch_assoc())
+                {
+                ?>
+                <tr>
                     <td><?php echo $row["nameOfClinic"]; ?></td>
-                    <td><?php echo $row["address"]; ?></td> 
-               </tr>
+                    <td><?php echo $row["locationOfClinic"]; ?></td>
+                </tr>
 
                 <?php
-                        }
-                    }
+                }
+                }
                 ?>
                 <!--<tr>
                     <td class="px-4">Ashford Dental Centre</td>
@@ -195,14 +199,14 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-        crossorigin="anonymous"></script>
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-        crossorigin="anonymous"></script>
+            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
 
     <!-- <script src="./index.js"></script> -->
     <script type="application/javascript">
