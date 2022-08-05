@@ -36,7 +36,7 @@ else
     	$query = "UPDATE users SET password='$newPassWord' WHERE ID='$userID'";
     	if (mysqli_query($conn,$query)) 
     	{
-    		header('Location: changeUsernameOrPassword.php');
+    		header('Location: changeUsernameOrPasswordBusinessOwner.php');
     	}
     
     	else
@@ -46,7 +46,7 @@ else
     }
     else 
     {
-    	header('Location: passwordsDontMatch.php');
+    	header('Location: passwordsDontMatchBusinessOwner.php');
     }
 }
 
