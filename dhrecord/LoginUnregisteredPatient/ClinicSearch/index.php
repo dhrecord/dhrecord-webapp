@@ -112,9 +112,14 @@
                         {
                ?>
                <tr>     
-                    <td><?php echo $row["clinicName"]; ?></td>
+                    <td><?php echo $row["nameOfClinic"]; ?></td>
                     <td><?php echo $row["address"]; ?></td> 
                </tr>
+
+                <?php
+                        }
+                    }
+                ?>
                 <!--<tr>
                     <td class="px-4">Ashford Dental Centre</td>
                     <td class="px-4">
