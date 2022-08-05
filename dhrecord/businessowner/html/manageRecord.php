@@ -53,13 +53,13 @@
 		$role = $_SESSION['role'];
 		if ($role === 'dr')
 		{
-			'<a class="navbar-brand" href="./drindex.php"><b>DHRecord</b></a>';
+			echo '<a class="navbar-brand" href="./drindex.php"><b>DHRecord</b></a>';
 		} else if ($role === "fd")
 		{
-			'<a class="navbar-brand" href="./fdindex.php"><b>DHRecord</b></a>';
+			echo '<a class="navbar-brand" href="./fdindex.php"><b>DHRecord</b></a>';
 		} else
 		{
-			'<a class="navbar-brand" href="./caindex.php"><b>DHRecord</b></a>';
+			echo '<a class="navbar-brand" href="./caindex.php"><b>DHRecord</b></a>';
 		}
 	    ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -73,13 +73,13 @@
 			    	$role = $_SESSION['role'];
 			    	if ($role === 'dr')
 			    	{
-					'<a class="nav-link active" aria-current="page" href="./drindex.php">Home</a>';
+					echo '<a class="nav-link active" aria-current="page" href="./drindex.php">Home</a>';
 			    	} else if ($role === "fd")
 			    	{
-					'<a class="nav-link active" aria-current="page" href="./fdindex.php">Home</a>';
+					echo '<a class="nav-link active" aria-current="page" href="./fdindex.php">Home</a>';
 			    	} else
 				{
-					'<a class="nav-link active" aria-current="page" href="./caindex.php">Home</a>';
+					echo '<a class="nav-link active" aria-current="page" href="./caindex.php">Home</a>';
 			 	}
 				?>
                     </li>
