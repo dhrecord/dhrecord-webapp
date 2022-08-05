@@ -63,21 +63,21 @@
                             }
                         ?>
                     </li>
+                    <!--
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Patient Records
                         </a>
-                        <!--
+                        
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <li><a class="dropdown-item" href="./userManagement.php">User Management</a></li> 
                             <li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>
-                        </ul>
-                        -->
-                        <li class="nav-item">
-                        <a class="nav-link" href="./manageRecord.php">Patient Records</a>
+                        </ul> 
                     </li>
-                        
+                    -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
