@@ -531,6 +531,7 @@ a.fc-more:hover {
 
 .fc-more-popover .fc-event-container {
   padding: 10px;
+  background-color: #48A0FF;
 }
 
 /* Now Indicator
@@ -590,7 +591,7 @@ TODO: more distinction between this file and common.css
 
 td.fc-widget-header{
   background-color: #212529!important;
-  color: white!important;
+  color: black!important;
   padding: 6px!important;
 }
 
