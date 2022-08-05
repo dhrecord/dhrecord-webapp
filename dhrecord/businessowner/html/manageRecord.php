@@ -49,7 +49,19 @@
 <body onload="findData();">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid container">
-            <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
+            <?php 
+		$role = $_SESSION['role'];
+		if ($role === 'dr')
+		{
+			'<a class="navbar-brand" href="./drindex.php"><b>DHRecord</b></a>';
+		} else if ($role === "fd")
+		{
+			'<a class="navbar-brand" href="./fdindex.php"><b>DHRecord</b></a>';
+		} else
+		{
+			'<a class="navbar-brand" href="./caindex.php"><b>DHRecord</b></a>';
+		}
+	    ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
