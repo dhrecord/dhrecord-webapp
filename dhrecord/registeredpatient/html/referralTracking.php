@@ -77,7 +77,7 @@ if(!isset($_SESSION['loggedin']))
 		    <div class="d-flex align-items-center">
 			<p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
 			<div class="input-group">
-			    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..."
+			    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..." pattern="[a-zA-Z0-9]"
 				aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
 			</div>
 		    </div>
