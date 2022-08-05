@@ -124,13 +124,13 @@
           <?php 
               if ($role === "ca")
               {
-                  echo "clinic admin";
+                  echo "Clinic Admin";
               } else if ($role === "dr")
               {
-                  echo "doctor";
+                  echo "Doctor";
               } else
               {
-                  echo "front desk";
+                  echo "Front-desk";
               }
          ?>
       </h4>
