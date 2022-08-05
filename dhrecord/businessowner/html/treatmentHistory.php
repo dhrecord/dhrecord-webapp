@@ -137,8 +137,7 @@
         </div>
         <table class="table table-striped">
 			<tr>
-				<th>Start Date</th>
-				<th>End Date</th>
+				<th>Date</th>
 				<th>Attending Doctor</th>
 				<th>Tooth Condition</th>
 				<th>Medication Prescribed</th>
@@ -162,8 +161,8 @@
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 				
-				$query = mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.toothCondition, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
+				$query = mysqli_query($conn, "SELECT treatmentHistory.date, treatmentHistory.attendingDoctor, treatmentHistory.toothCondition, 
+				treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				
@@ -174,8 +173,7 @@
 					{
 				?>
 					<tr>
-						<td><?php echo $fetch['startDate']?></td>
-						<td><?php echo $fetch['endDate']?></td>
+						<td><?php echo $fetch['date']?></td>
 						<td><?php echo $fetch['attendingDoctor']?></td>
 						<td><?php echo $fetch['toothCondition']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
@@ -188,20 +186,19 @@
 				{
 					echo
 					'<tr>
-						<td colspan = "6"><center>Record Not Found</center></td>
+						<td colspan = "5"><center>Record Not Found</center></td>
 					</tr>';
 				}
 			} else
 			{
-				$query=mysqli_query($conn, "SELECT treatmentHistory.startDate, treatmentHistory.endDate, treatmentHistory.attendingDoctor, 
-				treatmentHistory.toothCondition, treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
+				$query=mysqli_query($conn, "SELECT treatmentHistory.date, treatmentHistory.attendingDoctor, treatmentHistory.toothCondition, 
+				treatmentHistory.medicationPrescribed, registeredPatient.fullName FROM treatmentHistory, registeredPatient
 				WHERE treatmentHistory.pt_ID = registeredPatient.ID") or die(mysqli_error());
 				while($fetch=mysqli_fetch_array($query))
 				{
 			?>
 			<tr>
-				<td><?php echo $fetch['startDate']?></td>
-				<td><?php echo $fetch['endDate']?></td>
+				<td><?php echo $fetch['date']?></td>
 				<td><?php echo $fetch['attendingDoctor']?></td>
 				<td><?php echo $fetch['toothCondition']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
