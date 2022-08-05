@@ -106,6 +106,15 @@ a {
   padding: 10px;
 }
 
+.fc-popover .fc-header .fc-title {
+  margin: 0 2px;
+  color: black!important;
+}
+
+.fc-popover .fc-widget-content{
+  height: 100%!important;
+}
+
 @media (max-width: 767.98px) {
   .fc-toolbar {
     display: block !important;
