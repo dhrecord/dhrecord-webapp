@@ -50,7 +50,19 @@
     <!-- navbar -->
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid container">
-            <a class="navbar-brand" href="./index.html"><b>DHRecord</b></a>
+            <?php 
+		$role = $_SESSION['role'];
+		if ($role === 'dr')
+		{
+			echo '<a class="navbar-brand" href="./drindex.php"><b>DHRecord</b></a>';
+		} else if ($role === "fd")
+		{
+			echo '<a class="navbar-brand" href="./fdindex.php"><b>DHRecord</b></a>';
+		} else
+		{
+			echo '<a class="navbar-brand" href="./caindex.php"><b>DHRecord</b></a>';
+		}
+	   ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -58,7 +70,19 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+                        <?php 
+				$role = $_SESSION['role'];
+				if ($role === 'dr')
+				{
+					echo '<a class="nav-link active" aria-current="page" href="./drindex.php">Home</a>';
+				} else if ($role === "fd")
+				{
+					echo '<a class="nav-link active" aria-current="page" href="./fdindex.php">Home</a>';
+				} else
+				{
+					echo '<a class="nav-link active" aria-current="page" href="./caindex.php">Home</a>';
+				}
+			?>
                     </li>
                     <!--<li class="nav-item">
                         <a class="nav-link" href="./userManagement.php">User Management</a>
