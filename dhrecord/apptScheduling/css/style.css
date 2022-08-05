@@ -82,6 +82,11 @@ a {
   /* height: fit-content; */
 }
 
+.fc-popover .fc-widget-content{
+  height: 100%;
+  /* height: fit-content; */
+}
+
 .fc-listWeek-view.fc-widget-content{
   height: fit-content;
 }
