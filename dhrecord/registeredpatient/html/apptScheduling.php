@@ -270,6 +270,17 @@
                     } else{
                       echo '-';
                     }
+
+                    echo      
+                          '<br/>
+                          <b>Rating: </b>';
+
+                    $field5 = $row['rating'];
+                    if ($field5){
+                      echo $field5; 
+                    } else{
+                      echo '-';
+                    }
                     
                     echo
                           '<br/><br/>
