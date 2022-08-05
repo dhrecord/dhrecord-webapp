@@ -128,7 +128,7 @@
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..."
-                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
+                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" pattern="[a-zA-Z0-9]"/>
                 </div>
             </div>
             <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
