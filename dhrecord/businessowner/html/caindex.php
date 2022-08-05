@@ -123,17 +123,17 @@
       <hr>
       <h4 class="lead">Hi, <?php echo $_SESSION['username']; ?>!</h4>
       <h4 class="lead">Role: 
-          <?php 
-          if ($role === "ca")
-          {
-              echo "clinic admin";
-          } else if ($role === "dr")
-          {
-              echo "doctor";
-          } else
-          {
-              echo "front desk";
-          }
+          <?php
+            if ($role === "ca")
+            {
+                echo "Clinic Admin";
+            } else if ($role === "dr")
+            {
+                echo "Doctor";
+            } else
+            {
+                echo "Front-desk";
+            }
           ?>
         </h4>
       <hr>
