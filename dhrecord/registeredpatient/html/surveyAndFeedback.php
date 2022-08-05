@@ -80,14 +80,14 @@ if(!isset($_SESSION['loggedin']))
                 <label for="estimatedWait" class="col-sm-2 col-form-label">What was estimated waiting time after
                     scheduled appointment timing?</label>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control" name="estimatedWait" id="estimatedWait" placeholder="mins">
+                    <input required type="number" min="1" max="60" class="form-control" name="estimatedWait" id="estimatedWait" placeholder="mins">
                 </div>
             </div>
 	 <div class="mb-3 row">
                 <label for="pickDoc" class="col-sm-2 col-form-label">Name of clinic</label>
                 <div class="col-sm-1">
                     <select class="form-select" id="clinicRef" name="clinicRef" aria-label="Name of clinic" max-width: 250px;">
-			<option selected disabled hidden>Select</option>
+			<option required selected disabled hidden>Select</option>
 			<?php
                           // Database Connection
                           $servername = "localhost";
@@ -130,7 +130,7 @@ if(!isset($_SESSION['loggedin']))
                 <label for="pickDoc" class="col-sm-2 col-form-label">Name of Doctor</label>
                 <div class="col-sm-1">
                     <select class="form-select" id="docRef" name="docRef" aria-label="Name of doctor" max-width: 250px;">
-			<option selected disabled hidden>Select</option>
+			<option required selected disabled hidden>Select</option>
 			<?php
                           // Database Connection
                           $servername = "localhost";
@@ -174,24 +174,24 @@ if(!isset($_SESSION['loggedin']))
                     service you recieved</label>
                 <div class="col-sm-10">
                     <br>
-                    1 <input type="radio" name="serviceQuality" value="1">
-                    2 <input type="radio" name="serviceQuality" value="2">
-                    3 <input type="radio" name="serviceQuality" value="3">
-                    4 <input type="radio" name="serviceQuality" value="4">
-                    5 <input type="radio" name="serviceQuality" value="5">
+                    1 <input required type="radio" name="serviceQuality" value="1">
+                    2 <input required type="radio" name="serviceQuality" value="2">
+                    3 <input required type="radio" name="serviceQuality" value="3">
+                    4 <input required type="radio" name="serviceQuality" value="4">
+                    5 <input required type="radio" name="serviceQuality" value="5">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="recommended" class="col-sm-2 col-form-label">Would you recommend our clinic to your friends
                     or family</label>
                 <div class="col-sm-10">
-                    yes <input type="radio" name="recommended" value="yes">
-                    no <input type="radio" name="recommended" value="no"> </div>
+                    yes <input required type="radio" name="recommended" value="yes">
+                    no <input required type="radio" name="recommended" value="no"> </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="med-conditions" class="col-sm-2 col-form-label">Remarks</label>
                     <div class="col-sm-10">
-                        <textarea type="text" class="form-control" name="medconds" id="medconds" rows="10" cols="50"></textarea>
+                        <textarea required type="text" class="form-control" name="medconds" id="medconds" rows="10" cols="50"></textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
