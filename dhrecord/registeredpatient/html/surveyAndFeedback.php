@@ -86,7 +86,7 @@ if(!isset($_SESSION['loggedin']))
 	 <div class="mb-3 row">
                 <label for="pickDoc" class="col-sm-2 col-form-label">Name of clinic</label>
                 <div class="col-sm-1">
-                    <select required class="form-select" id="clinicRef" name="clinicRef" aria-label="Name of clinic" max-width: 250px;">
+                    <select class="form-select" id="clinicRef" name="clinicRef" aria-label="Name of clinic" required>
 			<option selected disabled hidden>Select</option>
 			<?php
                           // Database Connection
@@ -129,7 +129,7 @@ if(!isset($_SESSION['loggedin']))
 	<div class="mb-3 row">
                 <label for="pickDoc" class="col-sm-2 col-form-label">Name of Doctor</label>
                 <div class="col-sm-1">
-                    <select required class="form-select" id="docRef" name="docRef" aria-label="Name of doctor" max-width: 250px;">
+                    <select class="form-select" id="docRef" name="docRef" aria-label="Name of doctor" required>
 			<option selected disabled hidden>Select</option>
 			<?php
                           // Database Connection
