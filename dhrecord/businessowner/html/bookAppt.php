@@ -122,22 +122,48 @@
                     die("Connection failed: " . mysqli_connect_error());
                     }
 
-                    // GET THE DOCTOR FULLNAME
-                    $stmtDoc = $conn->prepare("SELECT fullName, doctorID
-                                    FROM doctor 
-                                    WHERE userID = ?");
-                    $stmtDoc->bind_param("s", $_SESSION['id']);
-                    $stmtDoc->execute();
-                    $resultDoc = $stmtDoc->get_result();
+                    $docID = "";
 
-                    if ($resultDoc->num_rows === 0) {
-                        echo $_SESSION['username'];
-                    } else {
-                        while ($rowDoc = $resultDoc->fetch_assoc()){
-                            $docID = $rowDoc['doctorID'];
-                            echo $rowDoc['fullName'];
+                    // if login as doctor -> need to finnd doctor id
+                    if ($_SESSION['role'] === "dr"){
+                        // GET THE DOCTOR FULLNAME
+                        $stmtDoc = $conn->prepare("SELECT fullName, doctorID
+                                                    FROM doctor 
+                                                    WHERE userID = ?");
+                        $stmtDoc->bind_param("s", $_SESSION['id']);
+                        $stmtDoc->execute();
+                        $resultDoc = $stmtDoc->get_result();
+
+                        if ($resultDoc->num_rows === 0) {
+                            echo $_SESSION['username'];
+                        } else {
+                            while ($rowDoc = $resultDoc->fetch_assoc()){
+                                $docID = $rowDoc['doctorID'];
+                                echo $rowDoc['fullName'];
+                            }
                         }
                     }
+
+                    // if login as frontdesk -> doctor id is passed by form parameter
+                    if ($_SESSION['role'] === "fd" or $_SESSION['role'] === "ca"){
+                        $docID = $_POST['doc_id'];
+
+                        // GET THE DOCTOR FULLNAME
+                        $stmtDoc = $conn->prepare("SELECT fullName
+                                                    FROM doctor 
+                                                    WHERE doctorID = ?");
+                        $stmtDoc->bind_param("s", $_POST['doc_id']);
+                        $stmtDoc->execute();
+                        $resultDoc = $stmtDoc->get_result();
+
+                        if ($resultDoc->num_rows === 0) {
+                            echo "-";
+                        } else {
+                            while ($rowDoc = $resultDoc->fetch_assoc()){
+                                echo $rowDoc['fullName'];
+                            }
+                        }
+                    }  
                 ?>
             </p>
 

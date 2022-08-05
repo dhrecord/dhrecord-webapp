@@ -110,8 +110,11 @@ if(!isset($_SESSION['loggedin']))
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Address: </span><?php echo $data['address']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Medical Conditions: </span><?php echo $data['medConditions']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Drug Allergies: </span><?php echo $data['drugAllergies']; ?></p>
-                    <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $data["users_ID"]; ?>">Edit</button></p>
-                    <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button class="btn btn-sm btn-secondary" onclick="window.location.href='./changeUsernameOrPassword.php';">Change Password</button></p>
+                    
+                    <div class="d-flex mt-4">
+                        <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $data["users_ID"]; ?>">Edit</button></p>
+                        <p class="mx-2" style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button class="btn btn-secondary" onclick="window.location.href='./changeUsernameOrPassword.php';">Change Password</button></p>
+                    </div>
                 </div>
 
                         <!-- modal -->

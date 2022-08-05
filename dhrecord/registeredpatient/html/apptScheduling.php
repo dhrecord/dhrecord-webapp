@@ -5,6 +5,96 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
+
+  // Database Connection
+  $servername = "localhost";
+  $database = "u922342007_Test";
+  $username = "u922342007_admin";
+  $password = "Aylm@012";
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $database);
+
+  if (!$conn) 
+  {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  $searchErr = '';
+  $result = '';
+  $search = '';
+  $select = '';
+
+  if(isset($_POST['save'])){
+    if(!empty($_POST['search'] and !empty($_POST['select']))){
+      $search = $_POST['search'];      
+      $select = $_POST['select'];
+      $stmt = '';
+
+      switch ($select) {
+        // search by clinic name
+        case "1":
+            $search = "%$search%"; // prepare the $search variable
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
+            $stmt->bind_param("s", $search);
+            break;
+        // search by specializations/sevices
+        case "2":
+            $search = "%$search%"; // prepare the $search variable
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
+                                          (SELECT DISTINCT businessOwner.ID FROM doctorSpecialization
+                                            JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
+                                            JOIN doctor ON doctor.doctorID = doctorSpecialization.doctorID
+                                            JOIN businessOwner ON businessOwner.ID = doctor.clinicID
+                                            WHERE clinicSpecialization.specName LIKE ?)");
+            $stmt->bind_param("s", $search);
+            break;
+        // search by clinic address
+        case "3":
+            $search = "%$search%"; // prepare the $search variable
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE locationOfClinic LIKE ?");
+            $stmt->bind_param("s", $search);
+            break;
+        // search by postal code
+        case "4":
+            $search = "%$search%"; // prepare the $search variable
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE postalCode LIKE ?");
+            $stmt->bind_param("s", $search);
+            break;
+        // search by operating hours -> day
+        case "5":
+            $search = "%$search%"; // prepare the $search variable
+            $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
+                                      (SELECT DISTINCT businessOwner.ID FROM businessOwner 
+                                        JOIN doctor ON businessOwner.ID = doctor.clinicID
+                                        JOIN operatingHours ON operatingHours.doctorID = doctor.doctorID
+                                        WHERE operatingHours.day LIKE ? and operatingHours.start_time != \"00:00:00\")");
+            $stmt->bind_param("s", $search);
+            break;
+        // search by operating hours -> time
+        case "6":
+          $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
+                                      (SELECT DISTINCT businessOwner.ID FROM businessOwner 
+                                        JOIN doctor ON businessOwner.ID = doctor.clinicID
+                                        JOIN operatingHours ON operatingHours.doctorID = doctor.doctorID
+                                        WHERE operatingHours.start_time <= time(?) and operatingHours.end_time > time(?))");
+          $stmt->bind_param("ss", $search, $search);
+          break;
+        default:
+            break;
+      }
+      
+      // $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
+      // $stmt->bind_param("ss", $category, $search);
+      $stmt->execute();
+      $result = $stmt->get_result();
+    }
+    else{
+      $result = $conn->query("SELECT * FROM businessOwner");
+      $searchErr = "Please enter the information";
+    }
+  } else {
+    $result = $conn->query("SELECT * FROM businessOwner");
+  }
 ?>
 
 <!doctype html>
@@ -83,27 +173,29 @@
         <div class="mb-5 d-flex justify-content-between">
             <div class="d-flex align-items-center">
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
-          
-                <div class="input-group mx-4" style="width:fit-content">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Enter Value ..."
-                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 350px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="tableSearch();">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
 
-                <div class="mx-2"> 
-                  <select class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
-                style="">
-                    <option selected disabled hidden>Filter By...</option>
-                    <option value="1">Clinic Name</option>
-                    <option value="2">Services</option>
-                    <option value="3">Address</option>
-                    <option value="4">Postal Code</option>
-                    <option value="5">Operating Hours (Day)</option>
-                    <option value="6">Operating Hours (Time)</option>
-                  </select>
-                </div>
+                <form action="#" method="post" class="d-flex">
+                  <div class="input-group mx-4" style="width:fit-content">
+                    <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
+                    aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px;" required/>
+                    <button id="basic-addon2" type="submit" name="save" class="input-group-text">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+
+                    <div class="mx-2"> 
+                      <select required name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
+                    style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
+                        <option value="" selected disabled hidden>Filter By...</option>
+                        <option value="1">Clinic Name</option>
+                        <option value="2">Services</option>
+                        <option value="3">Address</option>
+                        <option value="4">Postal Code</option>
+                        <option value="5">Operating Hours (Day)</option>
+                        <option value="6">Operating Hours (Time)</option>
+                      </select>
+                  </div>
+                </form>
             </div>
 
             <div class="d-flex align-items-center">
@@ -128,27 +220,9 @@
                     <th class="px-4">Clinic Description</th>
                 </tr>
 
-                <?php 
-                  // Database Connection
-                  $servername = "localhost";
-                  $database = "u922342007_Test";
-                  $username = "u922342007_admin";
-                  $password = "Aylm@012";
-                  // Create connection
-                  $conn = mysqli_connect($servername, $username, $password, $database);
-
-                  if (!$conn) 
-                  {
-                    die("Connection failed: " . mysqli_connect_error());
-                  }
-
-                  $sessionID = $_SESSION['id'];
-
-                  // GET THE LIST OF CLINICS
-                  $resultBO = $conn->query("SELECT * FROM businessOwner");
-
-                  while ($row = $resultBO->fetch_assoc())
-                  {
+                <!-- SHOWING CLINICS -->
+                <?php
+                  while ($row = $result->fetch_assoc()){
                     echo '<tr style="background-color: #F2F2F2">
                       <td class="px-4"><b>';
 
@@ -257,7 +331,7 @@
                         echo $join_specializations;
                         echo '\',\'';
 
-                        // GET THE OPERATING HOURS OF THE CLINIC
+                        // GET THE OPERATING HOURS OF EACH DOcTOR
                         $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
                                                   FROM operatingHours 
                                                   WHERE operatingHours.doctorID = ?");
@@ -342,26 +416,8 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-  <script>
-    var db_result = "";
-    let local_input = document.getElementById("searchInput");
-    let local_filter = local_input.value.toUpperCase();
-    <?php
-      // GET THE LIST OF DOCTORS IN THE CLINIC
-      // $stmtOHQuery = $conn->prepare("SELECT * FROM operatingHours WHERE UPPER(day) = ? AND start_time != \"00:00:00\"");
-      // $stmtOHQuery->bind_param("s", ?);
-      // $stmtOHQuery->execute();
-      // $resultOHQuery = $stmtOHQuery->get_result();
-
-      // while ($rowOHQuery = $resultOHQuery->fetch_assoc()){
-
-      // }
-    ?>
-  </script>
-
   <script src="../js/passDataToModal.js"></script>
-  <script src="../js/searchClinicFilter.js"></script>
-
+  <!-- <script src="../js/searchClinicFilter.js"></script> -->
 </body>
 
 </html>

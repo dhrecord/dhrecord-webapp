@@ -117,18 +117,6 @@
             die("Connection failed: " . mysqli_connect_error());
             }
         ?>
-        <!-- <h4 class="mb-5">Appointment Scheduling and Reminders</h4> -->
-
-        <!-- show this if login as a clinic admin -->
-        <?php
-            if ($_SESSION['role'] === "ca"){
-                echo '<div>
-                        <h4 class="mb-5">Appointment Scheduling and Reminders</h4>
-                        <p># show this if login as a clinic-admin => Should clinic admin be able to access appt scheduling info?</p>
-                        <p>-</p>
-                    </div>';
-            }
-        ?>
 
         <!-- show this if login as a front-desk -->
         <?php
@@ -166,6 +154,125 @@
                 // GET THE CLINIC ID WHERE THE FRONTDESK WORKS
                 $stmtCID = $conn->prepare("SELECT clinicID 
                                             FROM frontDesk
+                                            WHERE userID = ?");
+                $stmtCID->bind_param("s", $_SESSION['id']);
+                $stmtCID->execute();
+                $resultCID = $stmtCID->get_result();
+
+                if ($resultCID->num_rows === 0) {
+                    $clinicID = '';
+                } else {
+                    while ($rowCID = $resultCID->fetch_assoc()){
+                        $clinicID = $rowCID['clinicID'];
+                    }
+                }
+                                
+                // GET THE LIST OF DOCTOR DETAILS THAT WORKS IN THE CLINIC
+                $stmtDocs = $conn->prepare("SELECT * 
+                                            FROM doctor
+                                            WHERE clinicID = ?");
+                $stmtDocs->bind_param("s", $clinicID);
+                $stmtDocs->execute();
+                $resultDocs = $stmtDocs->get_result();
+
+                if ($resultDocs->num_rows === 0) {
+                    echo '-';
+                } else {
+                    $index = 1;
+                    while ($rowDocs = $resultDocs->fetch_assoc()){
+                        echo '<tr><td>';
+                        echo $index;
+                        echo'</td><td>';
+                        echo $rowDocs['fullName'];
+                        echo'</td><td>';
+                        
+                        // GET THE DOCTOR'S SPECIALIZATION
+                        $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                            FROM doctorSpecialization
+                                            JOIN clinicSpecialization 
+                                            ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                            WHERE doctorSpecialization.doctorID=?");
+                        $stmtSpec->bind_param("s", $rowDocs['doctorID']);
+                        $stmtSpec->execute();
+                        $resultSpec = $stmtSpec->get_result();
+
+                        $specializations = array();
+                        while ($rowSpec = $resultSpec->fetch_assoc()){
+                            array_push($specializations, $rowSpec["specName"]);
+                        }
+
+                        if (count($specializations)){
+                            $join_specializations = implode(', ', $specializations);
+                            echo $join_specializations; 
+                        } else{
+                            echo '-';
+                        }
+
+                        echo '</td><td>';
+                        if ($rowDocs['contactNumber']){
+                            echo $rowDocs['contactNumber']; 
+                        } else{
+                            echo '-';
+                        }
+
+                        echo'</td><td>';
+                        if ($rowDocs['email']){
+                            echo $rowDocs['email']; 
+                        } else{
+                            echo '-';
+                        }
+                        echo'</td>';
+
+                        echo '<td class="text-center">
+                                <form method="POST" action="../../businessowner/html/doctorSchedule.php">
+                                <button type="submit" name="doc_id" value="';
+                        echo $rowDocs['doctorID'];                    
+                        echo '" class="btn btn-dark btn-sm">View Schedule</button></form></td></tr>';
+
+                        $index += 1;
+                    }
+                }
+
+                echo '</table></div>';
+            }
+        ?>
+
+        <!-- show this if login as a clinic admin -->
+        <?php
+            if ($_SESSION['role'] === "ca"){
+                echo '<div>
+                        <h4 class="mb-5">Appointment Scheduling and Reminders - ';
+
+                // CLINIC NAME
+                $stmtCN = $conn->prepare("SELECT nameOfClinic 
+                                            FROM clinicAdmin
+                                            JOIN businessOwner ON clinicAdmin.clinicID = businessOwner.ID
+                                            WHERE clinicAdmin.userID = ?");
+                $stmtCN->bind_param("s", $_SESSION['id']);
+                $stmtCN->execute();
+                $resultN = $stmtCN->get_result();
+
+                if ($resultN->num_rows === 0) {
+                    echo '*';
+                } else {
+                    while ($rowN = $resultN->fetch_assoc()){
+                        echo $rowN['nameOfClinic'];
+                    }
+                }
+
+                echo '</h4><table class="table table-striped">
+                            <tr class="bg-dark text-white">
+                                <th>No</th>
+                                <th>Doctor</th>
+                                <th>Services</th>
+                                <th>Contact No</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>';
+                
+                // GET THE CLINIC ID WHERE THE FRONTDESK WORKS
+                $stmtCID = $conn->prepare("SELECT clinicID 
+                                            FROM clinicAdmin
                                             WHERE userID = ?");
                 $stmtCID->bind_param("s", $_SESSION['id']);
                 $stmtCID->execute();
