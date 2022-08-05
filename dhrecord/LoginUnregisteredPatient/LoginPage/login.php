@@ -52,16 +52,23 @@
 				
 				else if ($data['role'] === "pt")
 				{
-					//echo $_SESSION['username'];
-					//echo $_SESSION['id'];
 					header('Location: ../../registeredpatient/html/index.php');
 				}
 				
-				else if ($data['role'] === "ca" or $data['role'] === "dr" or $data['role'] === "fd")
+				else if ($data['role'] === "ca")
 				{
-					header('Location: ../../businessowner/html/index.php');
+					header('Location: ../../businessowner/html/caindex.php');
 				}
 				
+				else if ($data['role'] === "dr")
+				{
+					header('Location: ../../businessowner/html/drindex.php');
+				}
+				
+				else if ($data['role'] === "fd")
+				{
+					header('Location: ../../businessowner/html/fdindex.php');
+				}
 				
 			}else{
 				echo "invalid username or password";
