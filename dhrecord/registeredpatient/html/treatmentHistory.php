@@ -109,10 +109,10 @@ if(!isset($_SESSION['loggedin']))
 			{
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
-				$query = mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.symptoms,
+				$query = mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.toothCondition,
 				treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users, doctor
-				WHERE treatmentHistory.attendingDoctor = doctor.ID AND treatmentHistory.pt_ID = registeredPatient.ID 
-				AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' 
+				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
+				AND registeredPatient.users_ID = users.ID AND users.ID =  '{$_SESSION['id']}' 
 				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
 					or die(mysqli_error());
 				$row=mysqli_num_rows($query);
@@ -138,10 +138,10 @@ if(!isset($_SESSION['loggedin']))
 				}
 			} else
 			{
-				$query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.symptoms,
+				$query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.toothCondition,
 				treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users, doctor
-				WHERE treatmentHistory.attendingDoctor = doctor.ID AND treatmentHistory.pt_ID = registeredPatient.ID 
-				AND registeredPatient.users_ID = users.ID AND users.ID = '{$_SESSION['id']}' ") 
+				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
+				AND registeredPatient.users_ID = users.ID AND users.ID =  '{$_SESSION['id']}' ") 
 					or die(mysqli_error());
 				while($fetch=mysqli_fetch_array($query))
 				{
