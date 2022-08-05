@@ -48,7 +48,6 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <?php 
-                          $role = $_SESSION['role'];
                           if ($role === 'dr')
                           {
                             echo '<a class="nav-link active" aria-current="page" href="./drindex.php">Home</a>';
@@ -73,10 +72,20 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             User & Records
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="./userManagement.php">User Management</a></li>
-                            <li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>
-                        </ul>
+                        <?php
+                          if ($role === 'ca')
+                          {
+                            echo '<ul class="dropdown-menu" aria-labelledby="navbarDropdown">'
+                              echo '<li><a class="dropdown-item" href="./userManagement.php">User Management</a></li>'
+                              echo '<li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>'
+                            echo '</ul>'
+                          } else
+                          {
+                            echo '<li class="nav-item">'
+                              echo '<a class="nav-link" href="./manageRecord.php">Patient Records</a>'
+                            echo '</li>'
+                          }
+                        ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./referralTracking.php">Referral Tracking</a>
