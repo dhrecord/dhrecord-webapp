@@ -58,18 +58,18 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
 			    <?php 
-			    $role = $_SESSION['role'];
-			    if ($role === 'dr')
-			    {
-				    "<a class="nav-link active" aria-current="page" href="./drindex.php">Home</a>";
-			    } else if ($role === "fd")
-			    {
-				    "<a class="nav-link active" aria-current="page" href="./fdindex.php">Home</a>";
-			    } else
-			    {
-				    "<a class="nav-link active" aria-current="page" href="./caindex.php">Home</a>";
-			    }
-			    ?>
+			    	$role = $_SESSION['role'];
+			    	if ($role === 'dr')
+			    	{
+					'<a class="nav-link active" aria-current="page" href="./drindex.php">Home</a>';
+			    	} else if ($role === "fd")
+			    	{
+					'<a class="nav-link active" aria-current="page" href="./fdindex.php">Home</a>';
+			    	} else
+				{
+					'<a class="nav-link active" aria-current="page" href="./caindex.php">Home</a>';
+			 	}
+				?>
                     </li>
                     <!--<li class="nav-item">
                         <a class="nav-link" href="./userManagement.php">User Management</a>
