@@ -277,12 +277,10 @@
 
                     $field5 = $row['rating'];
                     if ($field5){
-                      echo '<div class="d-flex">';
                       $field5 = number_format($field5);
                       for ($x = 0; $x <= $field5; $x++) {
                         echo '<i class="fa-solid fa-star"></i>';
                       }
-                      echo '</div>';
                     } else{
                       echo '-';
                     }
