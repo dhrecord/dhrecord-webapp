@@ -99,9 +99,7 @@
       <h4 class="lead">Hi, <?php echo $_SESSION['username']; ?>!</h4>
       <h4 class="lead">Role: <?php echo $_SESSION['role']; ?></h4>
       <hr>
-      <p># temporary => later can add notifications and other functionalites <br> # e.g. list of accounts that need to
-        be
-        reviewed and approved.</p>
+      <p class="mx-2" style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button class="btn btn-secondary" onclick="window.location.href='./changeUsernameOrPassword.php';">Change Password</button></p>
       <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
     </div>
   </main>
