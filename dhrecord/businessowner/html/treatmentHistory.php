@@ -147,7 +147,6 @@
 			</tr>    		
 			
 			 <?php                           
-			session_start();
 			//Database Connection
 			$servername = "localhost";
 			$database = "u922342007_Test";
@@ -187,8 +186,8 @@
 					}
 				}else
 				{
-					echo'
-					<tr>
+					echo
+					'<tr>
 						<td colspan = "6"><center>Record Not Found</center></td>
 					</tr>';
 				}
