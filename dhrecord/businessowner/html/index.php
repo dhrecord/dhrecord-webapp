@@ -97,7 +97,7 @@
       <h1>Homepage</h1>
       <hr>
       <h4 class="lead">Hi, <?php echo $_SESSION['username']; ?>!</h4>
-      <h4 class="lead">Role: Clinic Admin</h4>
+      <h4 class="lead">Role: <?php echo $_SESSION['role']; ?></h4>
       <hr>
       <p># temporary => later can add notifications and other functionalites <br> # e.g. list of accounts that need to
         be
