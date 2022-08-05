@@ -41,7 +41,7 @@
                   </ul>
                   <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
-                        Welcome, ' echo $_SESSION['username'];
+                        Welcome, '; echo $_SESSION['username'];
                     echo '</p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
                         '; echo "onclick='document.location.href="."../../LoginUnregisteredPatient/LoginPage/logout.php".">Logout</button>";
@@ -53,8 +53,8 @@
                     <div class="bg-light p-5 rounded mt-3">
                       <h1>Homepage</h1>
                       <hr>
-                      <h4 class="lead">Hi, ' echo $_SESSION['username']; echo '!</h4>
-                      <h4 class="lead">Role:'
+                      <h4 class="lead">Hi, '; echo $_SESSION['username']; echo '!</h4>
+                      <h4 class="lead">Role:';
                       if ($role === "ca")
                       {
                         echo "Clinic Admin";
