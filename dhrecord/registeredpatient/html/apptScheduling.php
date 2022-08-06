@@ -513,7 +513,6 @@
         crossorigin="anonymous"></script>
 
   <script src="../js/passDataToModal.js"></script>
-  <!-- <script src="../js/searchClinicFilter.js"></script> -->
 </body>
 
 </html>
