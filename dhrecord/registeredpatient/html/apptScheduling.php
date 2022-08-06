@@ -370,7 +370,7 @@
                                                     (SELECT DISTINCT doctor.doctorID FROM doctor 
                                                       JOIN operatingHours ON operatingHours.doctorID = doctor.doctorID
                                                       WHERE operatingHours.start_time <= time(?) and operatingHours.end_time > time(?))");
-                      $stmtDoc->bind_param("ss", $row['ID'], $search);  
+                      $stmtDoc->bind_param("sss", $row['ID'], $search, $search);  
                     } else {
                       $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
                                                   FROM doctor
