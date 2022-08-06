@@ -336,9 +336,10 @@
                     
                     // GET THE LIST OF DOCTORS IN THE CLINIC
                     $stmtDoc = "";
-                    
+
                     if(isset($_POST['save'])){
                       if(!empty($_POST['select'])){
+                        echo "hi2";
                         $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
                                                     FROM doctor
                                                     WHERE clinicID = ? AND doctorID IN
@@ -347,12 +348,16 @@
                                                         JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
                                                         WHERE clinicSpecialization.specName LIKE ?)");
                         $stmtDoc->bind_param("ss", $row['ID'], $search);
+                        echo $row['ID'];
+                        echo $search;
                       }
                     } else {
+                      echo "hi";
                       $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
                                                   FROM doctor
                                                   WHERE clinicID = ?");
                       $stmtDoc->bind_param("s", $row['ID']);
+                      echo $row['ID'];
                     }
            
                     $stmtDoc->execute();
