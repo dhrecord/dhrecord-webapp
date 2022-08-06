@@ -367,13 +367,19 @@
                         $resultSpec = $stmtSpec->get_result();
 
                         $specializations = array();
-                        while ($rowSpec = $resultSpec->fetch_assoc()){
-                          array_push($specializations, $rowSpec["specName"]);
+
+                        if ($resultSpec->num_rows === 0) {
+                          $join_specializations = '-';
+                          echo '-';
+                        } else { 
+                          while ($rowSpec = $resultSpec->fetch_assoc()){
+                            array_push($specializations, $rowSpec["specName"]);
+                          }
+
+                          $join_specializations = implode(', ', $specializations);
+                          echo $join_specializations;
                         }
-                        
-                        $join_specializations = implode(', ', $specializations);
-                        echo $join_specializations;
-                              
+
                         echo '</td><td class="px-4 text-center">';
                         echo '<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal" onclick="passData(\'';
 
