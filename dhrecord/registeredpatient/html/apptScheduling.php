@@ -42,7 +42,7 @@
             break;
         // search by specializations/sevices
         case "2":
-            $search = "%$search%"; // prepare the $search variable
+            $search = "%$search%";
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
                                           (SELECT DISTINCT businessOwner.ID FROM doctorSpecialization
                                             JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
@@ -55,7 +55,7 @@
             break;
         // search by clinic address
         case "3":
-            $search = "%$search%"; // prepare the $search variable
+            $search = "%$search%";
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE locationOfClinic LIKE ?");
             $stmt->bind_param("s", $search);
             $stmt->execute();
@@ -63,7 +63,7 @@
             break;
         // search by postal code
         case "4":
-            $search = "%$search%"; // prepare the $search variable
+            $search = "%$search%"; 
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE postalCode LIKE ?");
             $stmt->bind_param("s", $search);
             $stmt->execute();
@@ -71,7 +71,7 @@
             break;
         // search by operating hours -> day
         case "5":
-            $search = "%$search%"; // prepare the $search variable
+            $search = "%$search%"; 
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
                                       (SELECT DISTINCT businessOwner.ID FROM businessOwner 
                                         JOIN doctor ON businessOwner.ID = doctor.clinicID
@@ -337,8 +337,12 @@
                     // GET THE LIST OF DOCTORS IN THE CLINIC
                     $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
                                               FROM doctor
-                                              WHERE clinicID = ?");
-                    $stmtDoc->bind_param("s", $row['ID']);
+                                              WHERE clinicID = ? AND doctorID IN
+                                                (SELECT doctor.doctorID FROM doctor
+                                                  JOIN doctorSpecialization ON doctor.doctorID = doctorSpecialization.doctorID
+                                                  JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
+                                                  WHERE clinicSpecialization.specName LIKE ?)");
+                    $stmtDoc->bind_param("ss", $row['ID'], $search);
                     $stmtDoc->execute();
                     $resultDoc = $stmtDoc->get_result();
 
