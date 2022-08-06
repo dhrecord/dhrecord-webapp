@@ -346,7 +346,7 @@
                     // GET THE LIST OF DOCTORS IN THE CLINIC
                     $stmtDoc = "";
 
-                    if($case == '2'){
+                    if($case == '2' or $case == '7' or $case == '8'){
                         $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
                                                     FROM doctor
                                                     WHERE clinicID = ? AND doctorID IN
