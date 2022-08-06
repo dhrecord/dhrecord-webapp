@@ -232,7 +232,7 @@
                     <b>Quick Filter:</b>
                 </div>
 
-                <form action="#" method="post" class="d-flex">
+                <form action="#" method="post" class="d-flex align-items-center">
                   <div class="mx-2"> 
                     <select required name="select2" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
                   style="">
