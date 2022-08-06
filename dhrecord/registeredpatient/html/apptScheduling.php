@@ -236,7 +236,7 @@
                   <div class="mx-2"> 
                     <select required name="select2" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
                   style="">
-                      <option selected disabled hidden>Filter By...</option>
+                      <option selected disabled hidden>Sort By...</option>
                       <option value="7">Show Nearest Clinics</option>
                       <option value="8">Show Highest Rating Clinics</option>
                     </select>
