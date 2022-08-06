@@ -142,7 +142,10 @@
                         ?>
                     </div>
                 </div>
-                <button type="submit" class="btn btn btn-dark mt-4">Submit</button>
+                <div class="mb-3 row">
+                    <button type="submit" class="btn btn btn-dark mt-4">Submit</button>
+                </div>
+                
             </form>
         </div>
     </div>
