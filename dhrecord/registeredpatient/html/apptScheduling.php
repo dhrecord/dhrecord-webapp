@@ -24,6 +24,7 @@
   $search = '';
   $select = '';
 
+  // SEARCH CLINIC + FILTER
   if(isset($_POST['save'])){
     if(!empty($_POST['search'] and !empty($_POST['select']))){
       $search = $_POST['search'];      
@@ -91,13 +92,6 @@
           $stmt->execute();
           $result = $stmt->get_result();
           break;
-        // search nearest clinics
-        case "7":
-          break;
-        // search highest rating clinics
-        case "8":
-          $result = $conn->query("SELECT * FROM businessOwner ORDER BY rating DESC");
-          break;
         default:
             break;
       }
@@ -106,7 +100,28 @@
       $result = $conn->query("SELECT * FROM businessOwner");
       $searchErr = "Please enter the information";
     }
-  } else {
+  } 
+  // QUICK FILTER
+  else if(isset($_POST['save2'])){
+    if(!empty($_POST['select2'])){    
+      $select = $_POST['select2'];
+      $stmt = '';
+
+      switch ($select) {
+        // search nearest clinics
+        case "7":
+          break;
+        // search highest rating clinics
+        case "8":
+          $result = $conn->query("SELECT * FROM businessOwner ORDER BY rating DESC");
+          break;
+        default:
+          break;
+      }
+    }
+  }
+  // FETCH ALL 
+  else {
     $result = $conn->query("SELECT * FROM businessOwner");
   }
 ?>
@@ -219,7 +234,7 @@
 
                 <form action="#" method="post" class="d-flex">
                   <div class="mx-2"> 
-                    <select required name="select" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
+                    <select required name="select2" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
                   style="">
                       <option selected disabled hidden>Filter By...</option>
                       <option value="7">Show Nearest Clinics</option>
@@ -227,7 +242,7 @@
                     </select>
                   </div>
                   <div>
-                      <button id="basic-addon3" type="submit" name="save" class="input-group-text h-100">
+                      <button id="basic-addon3" type="submit" name="save2" class="input-group-text h-100">
                         <i class="fa-solid fa-magnifying-glass"></i>
                       </button>
                   </div>
