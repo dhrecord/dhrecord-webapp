@@ -210,6 +210,11 @@
                     <option value="2">Show Highest Rating Clinics</option>
                   </select>
                 </div>
+                <div>
+                    <button id="basic-addon2" type="submit" name="save" class="input-group-text">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
