@@ -74,7 +74,7 @@ if(!isset($_SESSION['loggedin']))
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-5">Treatment History</h4>
+        <h4 class="mb-4">Treatment History</h4>
         <div class="mb-4 d-flex align-items-center">
             <div class="d-flex align-items-center">
                 <form class="form-inline" method="POST" action="">
