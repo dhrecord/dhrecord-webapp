@@ -23,6 +23,7 @@
   $result = '';
   $search = '';
   $select = '';
+  $case = '';
 
   // SEARCH CLINIC + FILTER
   if(isset($_POST['save'])){
@@ -34,6 +35,7 @@
       switch ($select) {
         // search by clinic name
         case "1":
+            $case = '1';
             $search = "%$search%"; // prepare the $search variable
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE nameOfClinic LIKE ?");
             $stmt->bind_param("s", $search);
@@ -42,6 +44,7 @@
             break;
         // search by specializations/sevices
         case "2":
+            $case = '2';
             $search = "%$search%";
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
                                           (SELECT DISTINCT businessOwner.ID FROM doctorSpecialization
@@ -55,6 +58,7 @@
             break;
         // search by clinic address
         case "3":
+            $case = '3';
             $search = "%$search%";
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE locationOfClinic LIKE ?");
             $stmt->bind_param("s", $search);
@@ -63,6 +67,7 @@
             break;
         // search by postal code
         case "4":
+            $case = '4';
             $search = "%$search%"; 
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE postalCode LIKE ?");
             $stmt->bind_param("s", $search);
@@ -71,6 +76,7 @@
             break;
         // search by operating hours -> day
         case "5":
+            $case = '5';
             $search = "%$search%"; 
             $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
                                       (SELECT DISTINCT businessOwner.ID FROM businessOwner 
@@ -83,6 +89,7 @@
             break;
         // search by operating hours -> time
         case "6":
+          $case = '6';
           $stmt = $conn->prepare("SELECT * FROM businessOwner WHERE ID IN 
                                       (SELECT DISTINCT businessOwner.ID FROM businessOwner 
                                         JOIN doctor ON businessOwner.ID = doctor.clinicID
@@ -110,9 +117,11 @@
       switch ($select) {
         // search nearest clinics
         case "7":
+          $case = '7';
           break;
         // search highest rating clinics
         case "8":
+          $case = '8';
           $result = $conn->query("SELECT * FROM businessOwner ORDER BY rating DESC");
           break;
         default:
@@ -337,9 +346,7 @@
                     // GET THE LIST OF DOCTORS IN THE CLINIC
                     $stmtDoc = "";
 
-                    if(isset($_POST['save'])){
-                      if(!empty($_POST['select'])){
-                        echo "hi2";
+                    if($case == '2'){
                         $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
                                                     FROM doctor
                                                     WHERE clinicID = ? AND doctorID IN
@@ -348,16 +355,11 @@
                                                         JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
                                                         WHERE clinicSpecialization.specName LIKE ?)");
                         $stmtDoc->bind_param("ss", $row['ID'], $search);
-                        echo $row['ID'];
-                        echo $search;
-                      }
                     } else {
-                      echo "hi";
                       $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
                                                   FROM doctor
                                                   WHERE clinicID = ?");
                       $stmtDoc->bind_param("s", $row['ID']);
-                      echo $row['ID'];
                     }
            
                     $stmtDoc->execute();
