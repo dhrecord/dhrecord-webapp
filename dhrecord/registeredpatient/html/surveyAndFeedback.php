@@ -86,7 +86,7 @@ if(!isset($_SESSION['loggedin']))
 	 <div class="mb-3 row">
                 <label for="pickDoc" class="col-sm-2 col-form-label">Name of clinic</label>
                 <div class="col-sm-1">
-                    <select class="form-select" id="clinicRef" name="clinicRef" aria-label="Name of clinic" required>
+                    <select style="width:fit-content" class="form-select" id="clinicRef" name="clinicRef" aria-label="Name of clinic" required>
 			<option selected disabled hidden>Select</option>
 			<?php
                           // Database Connection
