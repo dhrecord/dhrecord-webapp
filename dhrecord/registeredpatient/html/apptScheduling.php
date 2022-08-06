@@ -242,8 +242,8 @@
                     </select>
                   </div>
                   <div class="">
-                      <button id="basic-addon3" type="submit" name="save2" class="input-group-text h-100 pt-1">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                      <button id="basic-addon3" type="submit" name="save2" class="input-group-text h-100">
+                        <i class="fa-solid fa-magnifying-glass py-1"></i>
                       </button>
                   </div>
                 </form>
