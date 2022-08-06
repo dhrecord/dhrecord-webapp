@@ -54,21 +54,26 @@
 				{
 					header('Location: ../../registeredpatient/html/index.php');
 				}
-				
-				else if ($data['role'] === "ca")
+
+				else
 				{
-					header('Location: ../../businessowner/html/caindex.php');
+					header('Location: ../../businessowner/html/index.php');
 				}
 				
-				else if ($data['role'] === "dr")
-				{
-					header('Location: ../../businessowner/html/drindex.php');
-				}
+				//else if ($data['role'] === "ca")
+				//{
+				//	header('Location: ../../businessowner/html/caindex.php');
+				//}
 				
-				else if ($data['role'] === "fd")
-				{
-					header('Location: ../../businessowner/html/fdindex.php');
-				}
+				//else if ($data['role'] === "dr")
+				//{
+				//	header('Location: ../../businessowner/html/drindex.php');
+				//}
+				
+				//else if ($data['role'] === "fd")
+				//{
+				//	header('Location: ../../businessowner/html/fdindex.php');
+				//}
 				
 			}else{
 				echo "invalid username or password";
