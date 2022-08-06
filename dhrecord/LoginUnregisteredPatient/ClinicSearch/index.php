@@ -453,7 +453,7 @@
                         
                         echo
                             '</td><td class="px-4">
-                              <form method="POST" action="../../LoginUnregisteredPatient/LoginPage/login.php">
+                              <form method="POST" action="../../LoginUnregisteredPatient/LoginPage/login.html">
                               <button type="submit" name="doc_id" class="btn btn-dark">Book</button></form></td></tr>';
                       }
                     }
@@ -509,6 +509,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
             crossorigin="anonymous"></script>
+
+    <script src="../js/passDataToModal.js"></script>
 </body>
 
 </html>
