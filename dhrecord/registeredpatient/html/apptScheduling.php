@@ -335,14 +335,26 @@
                             </tr>';
                     
                     // GET THE LIST OF DOCTORS IN THE CLINIC
-                    $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
-                                              FROM doctor
-                                              WHERE clinicID = ? AND doctorID IN
-                                                (SELECT doctor.doctorID FROM doctor
-                                                  JOIN doctorSpecialization ON doctor.doctorID = doctorSpecialization.doctorID
-                                                  JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
-                                                  WHERE clinicSpecialization.specName LIKE ?)");
-                    $stmtDoc->bind_param("ss", $row['ID'], $search);
+                    $stmtDoc = "";
+                    
+                    if(isset($_POST['save'])){
+                      if(!empty($_POST['select'])){
+                        $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
+                                                    FROM doctor
+                                                    WHERE clinicID = ? AND doctorID IN
+                                                      (SELECT doctor.doctorID FROM doctor
+                                                        JOIN doctorSpecialization ON doctor.doctorID = doctorSpecialization.doctorID
+                                                        JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
+                                                        WHERE clinicSpecialization.specName LIKE ?)");
+                        $stmtDoc->bind_param("ss", $row['ID'], $search);
+                      }
+                    } else {
+                      $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
+                                                  FROM doctor
+                                                  WHERE clinicID = ?");
+                      $stmtDoc->bind_param("s", $row['ID']);
+                    }
+           
                     $stmtDoc->execute();
                     $resultDoc = $stmtDoc->get_result();
 
