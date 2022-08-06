@@ -346,15 +346,31 @@
                     // GET THE LIST OF DOCTORS IN THE CLINIC
                     $stmtDoc = "";
 
-                    if($case == '2' or $case == '7' or $case == '8'){
-                        $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
-                                                    FROM doctor
-                                                    WHERE clinicID = ? AND doctorID IN
-                                                      (SELECT doctor.doctorID FROM doctor
-                                                        JOIN doctorSpecialization ON doctor.doctorID = doctorSpecialization.doctorID
-                                                        JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
-                                                        WHERE clinicSpecialization.specName LIKE ?)");
-                        $stmtDoc->bind_param("ss", $row['ID'], $search);
+                    if($case == '2') {
+                      $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
+                                                  FROM doctor
+                                                  WHERE clinicID = ? AND doctorID IN
+                                                    (SELECT doctor.doctorID FROM doctor
+                                                      JOIN doctorSpecialization ON doctor.doctorID = doctorSpecialization.doctorID
+                                                      JOIN clinicSpecialization ON clinicSpecialization.ID = doctorSpecialization.specializationID
+                                                      WHERE clinicSpecialization.specName LIKE ?)");
+                      $stmtDoc->bind_param("ss", $row['ID'], $search);
+                    } else if($case == '5') {
+                      $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
+                                                  FROM doctor
+                                                  WHERE clinicID = ? AND doctorID IN
+                                                    (SELECT DISTINCT doctor.doctorID FROM doctor 
+                                                      JOIN operatingHours ON operatingHours.doctorID = doctor.doctorID
+                                                      WHERE operatingHours.day LIKE ? and operatingHours.start_time != \"00:00:00\"))");
+                      $stmtDoc->bind_param("ss", $row['ID'], $search);  
+                    } else if($case == '6') {
+                      $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
+                                                  FROM doctor
+                                                  WHERE clinicID = ? AND doctorID IN
+                                                    (SELECT DISTINCT doctor.doctorID FROM doctor 
+                                                      JOIN operatingHours ON operatingHours.doctorID = doctor.doctorID
+                                                      WHERE operatingHours.start_time <= time(?) and operatingHours.end_time > time(?))");
+                      $stmtDoc->bind_param("ss", $row['ID'], $search);  
                     } else {
                       $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
                                                   FROM doctor
