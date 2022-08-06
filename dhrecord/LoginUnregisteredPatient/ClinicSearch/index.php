@@ -195,7 +195,7 @@
 
     <!-- content -->
   <div class="container my-5">
-    <div class="mb-5 d-flex justify-content-between">
+    <div class="mb-4 d-flex justify-content-between">
       <h4>Find a Clinic</h4>
     </div>
 
