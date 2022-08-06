@@ -361,7 +361,7 @@
                                                   WHERE clinicID = ? AND doctorID IN
                                                     (SELECT DISTINCT doctor.doctorID FROM doctor 
                                                       JOIN operatingHours ON operatingHours.doctorID = doctor.doctorID
-                                                      WHERE operatingHours.day LIKE ? and operatingHours.start_time != \"00:00:00\"))");
+                                                      WHERE operatingHours.day LIKE ? and operatingHours.start_time != \"00:00:00\")");
                       $stmtDoc->bind_param("ss", $row['ID'], $search);  
                     } else if($case == '6') {
                       $stmtDoc = $conn->prepare("SELECT DISTINCT doctorID, fullName 
