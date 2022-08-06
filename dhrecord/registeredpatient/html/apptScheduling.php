@@ -232,7 +232,7 @@
                     <b>Quick Filter:</b>
                 </div>
 
-                <form action="#" method="post" class="d-flex">
+                <form action="#" method="post" class="d-flex align-items-center">
                   <div class="mx-2"> 
                     <select required name="select2" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
                   style="">
@@ -241,7 +241,7 @@
                       <option value="8">Show Highest Rating Clinics</option>
                     </select>
                   </div>
-                  <div class="h-100">
+                  <div class="pt-1">
                       <button id="basic-addon3" type="submit" name="save2" class="input-group-text h-100">
                         <i class="fa-solid fa-magnifying-glass"></i>
                       </button>
