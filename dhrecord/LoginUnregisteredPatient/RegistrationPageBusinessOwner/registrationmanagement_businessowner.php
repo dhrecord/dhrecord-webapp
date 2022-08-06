@@ -142,9 +142,15 @@
                         ?>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                <button type="submit" class="btn btn btn-dark mt-4">Submit</button>
             </form>
         </div>
+    </div>
+
+    <div class="container pb-5">
+        <footer class="pt-3 mt-4 text-muted border-top text-center">
+            &copy; DHRecord 2021
+        </footer>
     </div>
 
     <!-- bootstrap js -->
