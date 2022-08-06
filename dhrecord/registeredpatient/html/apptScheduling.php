@@ -215,7 +215,7 @@
                     <div class="mx-2"> 
                       <select required name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
                     style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
-                        <option value="" selected disabled hidden>Filter By...</option>
+                        <option value="" selected disabled hidden>Category ...</option>
                         <option value="1">Clinic Name</option>
                         <option value="2">Services</option>
                         <option value="3">Address</option>
@@ -229,14 +229,14 @@
 
             <div class="d-flex align-items-center">
                 <div class="mx-4" style="width:fit-content">
-                    <b>Quick Filter:</b>
+                    <b>Sort By:</b>
                 </div>
 
                 <form action="#" method="post" class="d-flex align-items-center">
                   <div class="mx-2"> 
                     <select required name="select2" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
                   style="">
-                      <option selected disabled hidden>Sort By...</option>
+                      <option selected disabled hidden>Category ...</option>
                       <option value="7">Show Nearest Clinics</option>
                       <option value="8">Show Highest Rating Clinics</option>
                     </select>
