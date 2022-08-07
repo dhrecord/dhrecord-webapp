@@ -295,8 +295,6 @@
                             </tr>';
                 
                 // GET THE CLINIC ID WHERE THE FRONTDESK WORKS
-                echo ">>";
-                echo $_SESSION['id'];
                 $stmtCID = $conn->prepare("SELECT clinicID 
                                             FROM clinicAdmin
                                             WHERE userID = ?");
@@ -306,14 +304,10 @@
                 $clinicID = '';
 
                 if ($resultCID->num_rows > 0) {
-                    echo "hi";
                     while ($rowCID = $resultCID->fetch_assoc()){
                         $clinicID = $rowCID['clinicID'];
                     }
                 }
-
-                echo "==";
-                echo $clinicID;
                                 
                 // GET THE LIST OF DOCTOR DETAILS THAT WORKS IN THE CLINIC
                 $stmtDocs = $conn->prepare("SELECT * 
