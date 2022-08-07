@@ -239,21 +239,34 @@
 
       if ($resultOHSlot->num_rows > 0) {
         while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
-          // echo ' for (var i = 0; i < Object.keys(timeslot).length; i++) {';
 
-          echo 'timeslot["';
-          echo $rowOHSlot['day'];
-          echo '"].push("';
-          echo substr($rowOHSlot['start_time'], 0, 5);
-          echo '");';
+          if (substr($rowOHSlot['start_time'], 0, 5) == "00:00" and substr($rowOHSlot['end_time'], 0, 5) == "00:00"){
+            echo 'timeslot["';
+            echo $rowOHSlot['day'];
+            echo '"].push("';
+            echo "Closed";
+            echo '");';
+          } else {
+            $floor = (int) substr($rowOHSlot['start_time'], 0, 2);
+            $ceil = (int) substr($rowOHSlot['end_time'], 0, 2);
 
-          echo 'timeslot["';
-          echo $rowOHSlot['day'];
-          echo '"].push("';
-          echo substr($rowOHSlot['end_time'], 0, 5);
-          echo '");';
+            $range = $ceil - $floor;
 
-          // echo '}';
+            for ($x = 0; $x < $range; $x++) {
+              $time = "";
+              if (strlen(strval($x)) == 1){
+                $time = "0".strval($x).":00";
+              } else {
+                $time = strval($x).":00";
+              }
+
+              echo 'timeslot["';
+              echo $rowOHSlot['day'];
+              echo '"].push("';
+              echo $time;
+              echo '");';
+            }
+          }
         }
       }
     ?>
@@ -270,10 +283,14 @@
 
                 if (timeslot[chosenDay]){
                     let htmlContent= "";
-                    for (let i=0; i<timeslot[chosenDay].length; i++){
+                    if (timeslot[chosenDay].length == 1){
+                      htmlContent += "<p>" + timeslot[chosenDay][0] + "</p>";
+                    } else {
+                      for (let i=0; i<timeslot[chosenDay].length; i++){
                         htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                      }
                     }
-                
+                  
                     timepicker.html(htmlContent); 
                 }
                 else{
