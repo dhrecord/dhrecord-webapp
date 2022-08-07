@@ -250,12 +250,12 @@
             $floor = (int) substr($rowOHSlot['start_time'], 0, 2);
             $ceil = (int) substr($rowOHSlot['end_time'], 0, 2);
 
-            for ($floor; $x < $ceil; $x++) {
+            for ($floor; $floor < $ceil; $floor++) {
               $time = "";
-              if (strlen(strval($x)) == 1){
-                $time = "0".strval($x).":00";
+              if (strlen(strval($floor)) == 1){
+                $time = "0".strval($floor).":00";
               } else {
-                $time = strval($x).":00";
+                $time = strval($floor).":00";
               }
 
               echo 'timeslot["';
