@@ -13,8 +13,7 @@
   $time = $_POST['time'];
 
   // convert date
-  $convertedDate = DateTime::createFromFormat('m/d/Y', $date);
-  $formattedDate = $convertedDate->format('Y-m-d');
+  $formattedDate = substr($date['time'], 6, 4)."-".substr($date['time'], 0, 2)."-".substr($date['time'], 3, 2);
 
   $servername = "localhost";
   $database = "u922342007_Test";
