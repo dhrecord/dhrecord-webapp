@@ -301,14 +301,16 @@
                 $stmtCID->bind_param("s", $_SESSION['id']);
                 $stmtCID->execute();
                 $resultCID = $stmtCID->get_result();
+                $clinicID = '';
 
-                if ($resultCID->num_rows === 0) {
-                    $clinicID = '';
-                } else {
+                if ($resultCID->num_rows > 0) {
                     while ($rowCID = $resultCID->fetch_assoc()){
                         $clinicID = $rowCID['clinicID'];
                     }
                 }
+                
+                echo "==";
+                echo $clinicID;
                                 
                 // GET THE LIST OF DOCTOR DETAILS THAT WORKS IN THE CLINIC
                 $stmtDocs = $conn->prepare("SELECT * 
@@ -318,9 +320,7 @@
                 $stmtDocs->execute();
                 $resultDocs = $stmtDocs->get_result();
 
-                if ($resultDocs->num_rows === 0) {
-                    echo '-';
-                } else {
+                if ($resultDocs->num_rows > 0) {
                     $index = 1;
                     while ($rowDocs = $resultDocs->fetch_assoc()){
                         echo '<tr><td>';
