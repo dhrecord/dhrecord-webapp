@@ -232,7 +232,7 @@
 
     <?php
       // GET THE BOOKED TIME SLOTS
-      $stmtBSlot = $conn->prepare("SELECT date, time 
+      $stmtBSlot = $conn->prepare("SELECT appointment.date, appointment.time 
                                   FROM appointment 
                                   WHERE appointment.doctorID = ?");
       $stmtBSlot->bind_param("s", $_POST['doc_id']);
