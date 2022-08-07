@@ -7,18 +7,11 @@
   }
 
   
-  $docID = $_POST['doc_id'];
-  $patID = $_POST['pat_id'];
+  $docID = $_POST['docID'];
+  $patID = $_POST['patID'];
   $agenda = $_POST['agenda'];
   $date = $_POST['date'];
   $time = $_POST['time'];
-
-  echo "console.log('";
-  echo $date;
-  echo "')";
-  echo "console.log('";
-  echo $time;
-  echo "')";
 
   $servername = "localhost";
   $database = "u922342007_Test";
