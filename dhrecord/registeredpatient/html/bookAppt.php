@@ -193,7 +193,7 @@
 
         <div class="mx-5">
             <div>
-                <p><b>Date (mm/dd/yyyy):</b></p>
+                <p><b>Date (mm-dd-yyyy):</b></p>
                 <input type="text" id="datepicker"/>
             </div>
         </div>
@@ -267,9 +267,7 @@
           echo '}';
         }
       }
-
-      echo 'console.log(booked_timeslot);';
-
+      
       // GET THE TIME SLOT FROM CLINIC OPENING HOURS
       $stmtOHSlot = $conn->prepare("SELECT day, start_time, end_time 
                                   FROM operatingHours 
