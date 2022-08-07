@@ -282,7 +282,7 @@
                         <p><b>Patient:</b></p>
                         <!-- <input type="text" name="patID" style="width:250px;"/> -->
                         <select name="patID" id="patID" class="form-select">
-                          <option selected value="">ID | Name</option>
+                          <option selected value="">ID - Name</option>
                           <?php
                             // GET THE LIST OF PATIENTS
                             $resultPatId = $conn->query("SELECT DISTINCT ID, fullName
@@ -303,11 +303,20 @@
               </div>
             </div>
 
+            <div class=" mb-4">
+              <div class="mx-5">
+                    <div>
+                        <p><b>Agenda:</b></p>
+                        <input type="text" name="agenda" style="width:250px;"/>
+                    </div>
+              </div>
+            </div>
+
             <div class="d-flex">
               <div class="mx-5">
                   <div>
                       <p><b>Date (mm-dd-yyyy):</b></p>
-                      <input type="text" id="datepicker"/>
+                      <input type="text" id="datepicker" name="date"/>
                       <input type="text" id="result" style="display:none;"/>
                   </div>
               </div>
