@@ -245,13 +245,13 @@
           echo $rowOHSlot['day'];
           echo '"].push("';
           substr($rowOHSlot['start_time'], 0, 5);
-          echo '")';
+          echo '");';
 
           echo 'timeslot["';
           echo $rowOHSlot['day'];
           echo '"].push("';
-          substr($rowOHSlot['end_time'], 0, 5);
-          echo '")';
+          echo substr($rowOHSlot['end_time'], 0, 5);
+          echo '");';
 
           // echo '}';
         }
