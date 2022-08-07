@@ -243,7 +243,7 @@
         while ($rowBSlot = $resultBSlot->fetch_assoc()){
           // if date exists alr as key in dict
           echo 'if (booked_timeslot["';
-          echo $date;
+          echo $resultBSlot['date'];
           echo '"]){';
 
           echo 'booked_timeslot["';
