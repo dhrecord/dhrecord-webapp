@@ -194,7 +194,7 @@
           </div>
 
           <div>
-            <div>
+            <div class=" mb-2">
               <div class="mx-5">
                     <div>
                         <p><b>Agenda:</b></p>
