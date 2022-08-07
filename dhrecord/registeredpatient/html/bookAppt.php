@@ -318,7 +318,7 @@
                 let chosenDate = new Date(dateText);
                 let chosenDay = daysArr[chosenDate.getDay()];
 
-                let dateInOtherFormat = chosenDate.substr(6:) + "-" + chosenDate.substr(0:2) + "-" + chosenDate.substr(3:5);
+                let dateInOtherFormat = chosenDate.substr(6,4) + "-" + chosenDate.substr(0,2) + "-" + chosenDate.substr(3,4);
 
                 result.attr("data-course-id", timeslot[chosenDay]); 
 
