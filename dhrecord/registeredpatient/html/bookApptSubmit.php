@@ -13,7 +13,7 @@
   $time = $_POST['time'];
 
   // convert date
-  $formattedDate = substr($date['time'], 6, 4)."-".substr($date['time'], 0, 2)."-".substr($date['time'], 3, 2);
+  $formattedDate = substr($date, 6, 4)."-".substr($date, 0, 2)."-".substr($date, 3, 2);
 
   $servername = "localhost";
   $database = "u922342007_Test";
