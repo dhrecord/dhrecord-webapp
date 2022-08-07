@@ -193,9 +193,8 @@
 
         <div class="mx-5">
             <div>
-                <p><b>Date:</b></p>
+                <p><b>Date (mm/dd/yyyy):</b></p>
                 <input type="text" id="datepicker"/>
-                <p class="mt-3"><i>#test: choose 26/7 orr 28/7 for sample slot</i></p>
             </div>
         </div>
 
@@ -219,16 +218,38 @@
     var result = $("#result");
     var timepicker = $("#timepicker");
 
+    // GET THE TIME SLOT FROM CLINIC OPENING HOURS - BOOKED SLOTS
+    <?php
+      // $stmtOHSlot = $conn->prepare("SELECT day, start_time, end_time 
+      //                             FROM operatingHours 
+      //                             WHERE operatingHours.doctorID = ?");
+      // $stmtOHSlot->bind_param("s", $_POST['doc_id']);
+      // $stmtOHSlot->execute();
+      // $resultOHSlot = $stmtOHSlot->get_result();
+
+      // if ($resultOHSlot->num_rows === 0) {
+      //   echo '-';
+      // } else { 
+      //   while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
+          
+      //   }
+      // }
+    ?>
+
     var timeslot = {
-        "26-07-2022" : ["08.00 am", "09.00 am", "10.00 am"],
-        "28-07-2022": ["08.00 am", "09.00 am", "11.00 am", "12.00 pm", "01.00 pm"]
+        "Monday" : ["08.00", "09.00", "10.00"],
+        "Sunday": ["08.00", "09.00", "11.00", "12.00", "13.00"]
     };
 
     $( function() {
+        const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         $("#datepicker").datepicker({
-            dateFormat: 'dd-mm-yy',
+            dateFormat: 'mm-dd-yy',
             onSelect: function(dateText, pickerObj){
-                result.attr("data-course-id", timeslot[dateText]); 
+                let chosenDate = new Date(dateText);
+                let chosenDay = daysArr[chosenDate.getDay()];
+
+                result.attr("data-course-id", timeslot[chosenDay]); 
 
                 if (timeslot[dateText]){
                     let htmlContent= "";
