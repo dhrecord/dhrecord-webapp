@@ -432,7 +432,7 @@
     <script src='../../apptScheduling/fullcalendar/packages/timegrid/main.js'></script>
     <script src='../../apptScheduling/fullcalendar/packages/list/main.js'></script>
 
-    <?php if ($_SESSION['role'] === "ca"){ ?>
+    <?php if ($_SESSION['role'] === "dr"){ ?>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
