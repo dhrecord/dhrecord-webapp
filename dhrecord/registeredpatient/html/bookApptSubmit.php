@@ -13,7 +13,7 @@
   $time = $_POST['time'];
 
   // convert date
-  $formattedDate = "'".substr($date, 6, 4)."-".substr($date, 0, 2)."-".substr($date, 3, 2)."'";
+  $formattedDate = substr($date, 6, 4)."-".substr($date, 0, 2)."-".substr($date, 3, 2);
 
   $servername = "localhost";
   $database = "u922342007_Test";
@@ -24,14 +24,14 @@
  
   $timeArray=  explode(", ", $time ); 
   if(count($timeArray)<= 2){
-    $time = "'".substr($time, 0, 5).":00"."'";
-    $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (?, ?, ?, ?, ?)");
+    $time = substr($time, 0, 5).":00";
+    $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (date(?), time(?), ?, ?, ?)");
     mysqli_stmt_bind_param($stmt, "sssss", $formattedDate, $time, $agenda, $docID, $patID);
     mysqli_stmt_execute($stmt);
   } else {
     for($i=0;$i<count($timeArray);$i++){
-        $timeBlock = "'".$timeArray[$i].":00"."'";
-        $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (?, ?, ?, ?, ?)");
+        $timeBlock = $timeArray[$i].":00";
+        $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (date(?), time(?), ?, ?, ?)");
         mysqli_stmt_bind_param($stmt, "sssss", $formattedDate, $timeBlock, $agenda, $docID, $patID);
         mysqli_stmt_execute($stmt);
     }
