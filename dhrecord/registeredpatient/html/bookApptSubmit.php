@@ -31,6 +31,6 @@
 //   mysqli_stmt_bind_param($stmt, "sssss", $docID, $patID, $agenda, $date, $time);
 //   mysqli_stmt_execute($stmt);
 
-  header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/apptScheduling.php");
+//   header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/apptScheduling.php");
   mysqli_close($conn);
 ?>
