@@ -385,22 +385,24 @@
         $(document).click(function(e) {
           $(event.target).toggleClass("transparent");
 
-          if($(event.target).hasClass("transparent")){
-            $value = $("#result2").val();
-            if($(event.target).text() !== "Submit" && $(event.target).text() !== ""){
-              $("#result2").val($value + $(event.target).text() + ", ");
-            }
-          } else {
-            $value = $("#result2").val();
-            if ($value.includes($(event.target).text())){
-              // find index
-              $idx = $value.search($(event.target).text());
+          if ($(event.target).text() !== "Submit"){
+            if($(event.target).hasClass("transparent")){
+              $value = $("#result2").val();
+              if($(event.target).text() !== ""){
+                $("#result2").val($value + $(event.target).text() + ", ");
+              }
+            } else {
+              $value = $("#result2").val();
+              if ($value.includes($(event.target).text())){
+                // find index
+                $idx = $value.search($(event.target).text());
 
-              // remove from $value
-              $new_val = $value.substr(0, $idx) + $value.substr($idx+7, $value.length);
+                // remove from $value
+                $new_val = $value.substr(0, $idx) + $value.substr($idx+7, $value.length);
 
-              // reassign value to input
-              $("#result2").val($new_val);
+                // reassign value to input
+                $("#result2").val($new_val);
+              }
             }
           }
         });
