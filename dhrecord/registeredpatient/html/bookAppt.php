@@ -244,7 +244,7 @@
           echo 'timeslot["';
           echo $rowOHSlot['day'];
           echo '"].push("';
-          substr($rowOHSlot['start_time'], 0, 5);
+          echo substr($rowOHSlot['start_time'], 0, 5);
           echo '");';
 
           echo 'timeslot["';
