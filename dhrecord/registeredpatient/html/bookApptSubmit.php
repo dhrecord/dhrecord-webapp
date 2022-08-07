@@ -8,8 +8,8 @@
   
   $docID = $_POST['docID'];
   $patID = $_POST['patID'];
-  $agenda = $_POST['agenda'];
-  $date = $_POST['date'];
+  $agenda = '"'.$_POST['agenda'].'"';
+  $date = '"'.$_POST['date'].'"';
   $time = $_POST['time'];
 
   // convert date
@@ -20,21 +20,17 @@
   $username = "u922342007_admin";
   $password = "Aylm@012";
 
-  echo $agenda;
-  echo $formattedDate;
-  echo $time;
-
   $conn = mysqli_connect($servername, $username, $password, $database);
  
   $timeArray=  explode(", ", $time ); 
   if(count($timeArray)<= 2){
-    $time = substr($time, 0, 5).":00";
+    $time = '"'.substr($time, 0, 5).':00'.'"';
     $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda` , `doctorID` , `patientID`) values (?, ?, ?, ?, ?");
     mysqli_stmt_bind_param($stmt, "sssss", $date, $time, $agenda, $docID, $patID);
     mysqli_stmt_execute($stmt);
   } else {
     for($i=0;$i<count($timeArray);$i++){
-        $timeBlock = $timeArray[$i].":00";
+        $timeBlock = '"'.$timeArray[$i].":00".'"';
         $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda` , `doctorID` , `patientID`) values (?, ?, ?, ?, ?");
         mysqli_stmt_bind_param($stmt, "sssss", $date, $timeBlock, $agenda, $docID, $patID);
         mysqli_stmt_execute($stmt);
