@@ -194,11 +194,11 @@
           </div>
 
           <div>
-            <div class=" mb-2">
+            <div class=" mb-4">
               <div class="mx-5">
                     <div>
                         <p><b>Agenda:</b></p>
-                        <input type="text" name="agenda"/>
+                        <input type="text" name="agenda" style="width:250px;"/>
                     </div>
               </div>
             </div>
