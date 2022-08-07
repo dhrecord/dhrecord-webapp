@@ -387,7 +387,7 @@
 
           if($(event.target).hasClass("transparent")){
             $value = $("#result2").val();
-            if($value !== "Submit" and $value !== ""){
+            if($value !== "Submit" && $value !== ""){
               $("#result2").val($value + $(event.target).text() + ", ");
             }
           } else {
