@@ -214,7 +214,7 @@
 
               <div class="mx-5">
                   <div class="d-flex">
-                      <input type="text" id="result2" style="display:none;" name="time"/>
+                      <input type="text" id="result2" style="display:none;" name="time" value=""/>
                       <div>
                           <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                           <div id="timepicker"></div>
@@ -383,7 +383,24 @@
         });
 
         $(document).click(function(e) {
-            $(event.target).toggleClass("transparent");
+          $(event.target).toggleClass("transparent");
+
+          if($(event.target).hasClass("transparent")){
+            $value = $("#result2").val();
+            $("#result2").val($value + $(event.target).text() + ", ");
+          } else {
+            $value = $("#result2").val();
+            if ($value.includes($(event.target).text())){
+              // find index
+              $idx = $value.search($(event.target).text());
+
+              // remove from $value
+              $new_val = $value.substr(0:$idx) + $value.substr($idx+7, $value.length);
+
+              // reassign value to input
+              $("#result2").val($new_val);
+            }
+          }
         });
     });
   </script>
