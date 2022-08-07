@@ -12,8 +12,6 @@
   $date = $_POST['date'];
   $time = $_POST['time'];
 
-  echo $patID;
-
   // convert date
   $formattedDate = substr($date, 6, 4)."-".substr($date, 0, 2)."-".substr($date, 3, 2);
 
@@ -24,21 +22,21 @@
 
   $conn = mysqli_connect($servername, $username, $password, $database);
  
-  // $timeArray=  explode(", ", $time ); 
-  // if(count($timeArray)<= 2){
-  //   $time = substr($time, 0, 5).":00";
-  //   $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (date(?), time(?), ?, ?, ?)");
-  //   mysqli_stmt_bind_param($stmt, "sssss", $formattedDate, $time, $agenda, $docID, $patID);
-  //   mysqli_stmt_execute($stmt);
-  // } else {
-  //   for($i=0;$i<count($timeArray);$i++){
-  //       $timeBlock = $timeArray[$i].":00";
-  //       $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (date(?), time(?), ?, ?, ?)");
-  //       mysqli_stmt_bind_param($stmt, "sssss", $formattedDate, $timeBlock, $agenda, $docID, $patID);
-  //       mysqli_stmt_execute($stmt);
-  //   }
-  // }
+  $timeArray=  explode(", ", $time ); 
+  if(count($timeArray)<= 2){
+    $time = substr($time, 0, 5).":00";
+    $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (date(?), time(?), ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "sssss", $formattedDate, $time, $agenda, $docID, $patID);
+    mysqli_stmt_execute($stmt);
+  } else {
+    for($i=0;$i<count($timeArray);$i++){
+        $timeBlock = $timeArray[$i].":00";
+        $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (date(?), time(?), ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, "sssss", $formattedDate, $timeBlock, $agenda, $docID, $patID);
+        mysqli_stmt_execute($stmt);
+    }
+  }
 
-  // header("Location: http://dhrecord.com/dhrecord/businessowner/html/apptSchedulingAndReminders.php");
+  header("Location: http://dhrecord.com/dhrecord/businessowner/html/apptSchedulingAndReminders.php");
   mysqli_close($conn);
 ?>
