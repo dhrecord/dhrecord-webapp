@@ -5,7 +5,6 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
-
   
   $docID = $_POST['docID'];
   $patID = $_POST['patID'];
@@ -17,6 +16,10 @@
   $database = "u922342007_Test";
   $username = "u922342007_admin";
   $password = "Aylm@012";
+
+  echo $agenda;
+  echo $date;
+  echo $time;
 
   $conn = mysqli_connect($servername, $username, $password, $database);
 
