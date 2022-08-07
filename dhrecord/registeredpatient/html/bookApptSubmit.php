@@ -12,13 +12,17 @@
   $date = $_POST['date'];
   $time = $_POST['time'];
 
+  // convert date
+  $convertedDate = DateTime::createFromFormat('m/d/Y', $date);
+  $formattedDate = $convertedDate->format('Y-m-d');
+
   $servername = "localhost";
   $database = "u922342007_Test";
   $username = "u922342007_admin";
   $password = "Aylm@012";
 
   echo $agenda;
-  echo $date;
+  echo $formattedDate;
   echo $time;
 
   $conn = mysqli_connect($servername, $username, $password, $database);
