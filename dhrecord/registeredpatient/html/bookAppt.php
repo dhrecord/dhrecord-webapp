@@ -218,6 +218,16 @@
     var result = $("#result");
     var timepicker = $("#timepicker");
 
+    var timeslot = {
+        "Monday" : [],
+        "Tuesday" : [],
+        "Wednesday" : [],
+        "Thursday" : [],
+        "Friday" : [],
+        "Saturday": [],
+        "Sunday": [],
+    };
+
     // GET THE TIME SLOT FROM CLINIC OPENING HOURS - BOOKED SLOTS
     <?php
       $stmtOHSlot = $conn->prepare("SELECT day, start_time, end_time 
@@ -236,14 +246,35 @@
           echo 'console.log(';
           echo substr($rowOHSlot['start_time'], 0, 5);
           echo ');';
+
+          // echo ' for (var i = 0; i < Object.keys(timeslot).length; i++) {';
+
+          echo 'timeslot["';
+          echo $rowOHSlot['day'];
+          echo '"].push("';
+          substr($rowOHSlot['start_time'], 0, 5);
+          echo '")';
+
+          echo 'timeslot["';
+          echo $rowOHSlot['day'];
+          echo '"].push("';
+          substr($rowOHSlot['end_time'], 0, 5);
+          echo '")';
+
+          // echo '}';
         }
       }
     ?>
 
-    var timeslot = {
-        "Monday" : ["08.00", "09.00", "10.00"],
-        "Sunday": ["08.00", "09.00", "11.00", "12.00", "13.00"]
-    };
+    for (var i = 0; i < Object.keys(timeslot).length; i++) {
+        // var datum = timeslot[i];
+        // if (!d[datum.key]) {
+        //     d[datum.key] = [];
+        // }
+        d[datum.key].push(datum.val);
+    }
+
+
 
     $( function() {
         const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
