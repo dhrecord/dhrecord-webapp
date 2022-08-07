@@ -239,14 +239,6 @@
 
       if ($resultOHSlot->num_rows > 0) {
         while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
-          echo 'console.log(';
-          echo $rowOHSlot['day'];
-          echo ');';
-
-          echo 'console.log(';
-          echo substr($rowOHSlot['start_time'], 0, 5);
-          echo ');';
-
           // echo ' for (var i = 0; i < Object.keys(timeslot).length; i++) {';
 
           echo 'timeslot["';
@@ -265,16 +257,6 @@
         }
       }
     ?>
-
-    for (var i = 0; i < Object.keys(timeslot).length; i++) {
-        // var datum = timeslot[i];
-        // if (!d[datum.key]) {
-        //     d[datum.key] = [];
-        // }
-        d[datum.key].push(datum.val);
-    }
-
-
 
     $( function() {
         const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
