@@ -228,8 +228,51 @@
         "Sunday": [],
     };
 
-    // GET THE TIME SLOT FROM CLINIC OPENING HOURS - BOOKED SLOTS
+    var booked_timeslot = {};
+
     <?php
+      // GET THE BOOKED TIME SLOTS
+      $stmtBSlot = $conn->prepare("SELECT date, time 
+                                  FROM appointment 
+                                  WHERE appointment.doctorID = ?");
+      $stmtBSlot->bind_param("s", $_POST['doc_id']);
+      $stmtBSlot->execute();
+      $resultBSlot = $stmtBSlot->get_result();
+
+      if ($resultBSlot->num_rows > 0) {
+        while ($rowBSlot = $resultBSlot->fetch_assoc()){
+          $appt_time = substr($resultBSlot['time'], 0, 5);
+
+          // if date exists alr as key in dict
+          echo 'if (booked_timeslot["';
+          echo $date;
+          echo '"]){';
+
+          echo 'booked_timeslot["';
+          echo $resultBSlot['date'];
+          echo '"].push("';
+          echo substr($resultBSlot['time'], 0, 5);
+          echo '");';
+
+          // if date does not exist as key in dict
+          echo '} else {';
+          echo 'booked_timeslot["';
+          echo $resultBSlot['date'];
+          echo '"] = []';
+
+          echo 'booked_timeslot["';
+          echo $resultBSlot['date'];
+          echo '"].push("';
+          echo substr($resultBSlot['time'], 0, 5);
+          echo '");';
+
+          echo '}';
+        }
+      }
+
+      echo 'console.log(booked_timeslot);';
+
+      // GET THE TIME SLOT FROM CLINIC OPENING HOURS
       $stmtOHSlot = $conn->prepare("SELECT day, start_time, end_time 
                                   FROM operatingHours 
                                   WHERE operatingHours.doctorID = ?");
