@@ -241,8 +241,6 @@
 
       if ($resultBSlot->num_rows > 0) {
         while ($rowBSlot = $resultBSlot->fetch_assoc()){
-          $appt_time = substr($resultBSlot['time'], 0, 5);
-
           // if date exists alr as key in dict
           echo 'if (booked_timeslot["';
           echo $date;
