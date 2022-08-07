@@ -205,7 +205,7 @@
             <div class="mx-5">
                 <div>
                     <p><b>Current Date (mm/dd/yyyy):</b></p>
-                    <p><?=substr($apptDate, 0, 4).substr($apptDate, 5, 2).substr($apptDate, 8, 2)?></p>
+                    <p><?=substr($apptDate, 8, 2)."-".substr($apptDate, 5, 2)."-".substr($apptDate, 0, 4)?></p>
                 </div>
                 <div>
                     <p><b>New Date (mm/dd/yyyy):</b></p>
