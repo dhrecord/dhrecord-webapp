@@ -395,7 +395,7 @@
               $idx = $value.search($(event.target).text());
 
               // remove from $value
-              $new_val = $value.substr(0:$idx) + $value.substr($idx+7, $value.length);
+              $new_val = $value.substr(0, $idx) + $value.substr($idx+7, $value.length);
 
               // reassign value to input
               $("#result2").val($new_val);
