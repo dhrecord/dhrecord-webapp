@@ -418,6 +418,7 @@
     ?>
 
     $( function() {
+        const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         $("#datepicker").datepicker({
             dateFormat: 'dd-mm-yy',
             onSelect: function(dateText, pickerObj){
