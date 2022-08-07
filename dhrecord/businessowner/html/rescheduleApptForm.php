@@ -420,7 +420,7 @@
     $( function() {
         const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         $("#datepicker").datepicker({
-            dateFormat: 'dd-mm-yy',
+            dateFormat: 'mm-dd-yy',
             onSelect: function(dateText, pickerObj){
                 let chosenDate = new Date(dateText);
               let chosenDay = daysArr[chosenDate.getDay()];
