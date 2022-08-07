@@ -208,12 +208,13 @@
                   <div>
                       <p><b>Date (mm-dd-yyyy):</b></p>
                       <input type="text" id="datepicker" name="date"/>
+                      <input type="text" id="result" style="display:none;"/>
                   </div>
               </div>
 
               <div class="mx-5">
                   <div class="d-flex">
-                      <input type="text" id="result" style="display:none;" name="time"/>
+                      <input type="text" id="result2" style="display:none;" name="time"/>
                       <div>
                           <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                           <div id="timepicker"></div>
@@ -362,12 +363,12 @@
                       for (let i=0; i<timeslot[chosenDay].length; i++){
                         if (booked_timeslot[dateInOtherFormat]) {
                           if (booked_timeslot[dateInOtherFormat].includes(timeslot[chosenDay][i])){
-                            htmlContent += "<input type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' " + "value='" + timeslot[chosenDay][i] + "'" + " disabled/>";
+                            htmlContent += "<button type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' disabled>" + timeslot[chosenDay][i] + "</button>";
                           } else {
-                            htmlContent += "<input type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' " + "value='" + timeslot[chosenDay][i] + "'" + " disabled/>";
+                            htmlContent += "<button type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
                           }
                         } else {
-                          htmlContent += "<input type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' " + "value='" + timeslot[chosenDay][i] + "'" + " disabled/>";
+                          htmlContent += "<button type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
                         }
                       }
                     }
