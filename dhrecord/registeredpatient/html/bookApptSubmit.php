@@ -41,6 +41,6 @@
     }
   }
 
-  header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/apptScheduling.php");
+//   header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/apptScheduling.php");
   mysqli_close($conn);
 ?>
