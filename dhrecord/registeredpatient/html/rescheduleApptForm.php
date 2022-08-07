@@ -204,14 +204,13 @@
 
             <div class="mx-5">
                 <div>
-                    <p><b>Current Date:</b></p>
-                    <p><?=$apptDate?></p>
+                    <p><b>Current Date (mm/dd/yyyy):</b></p>
+                    <p><?=substr($apptDate, 0, 4).substr($apptDate, 5, 2).substr($apptDate, 8, 2)?></p>
                 </div>
                 <div>
-                    <p><b>New Date:</b></p>
+                    <p><b>New Date (mm/dd/yyyy):</b></p>
                     <input type="text" id="datepicker"/>
                 </div>
-                <p class="mt-3"><i>#test: choose 26/7 orr 28/7 for sample slot</i></p>
             </div>
 
             <div class="mx-5">
