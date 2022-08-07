@@ -250,9 +250,7 @@
             $floor = (int) substr($rowOHSlot['start_time'], 0, 2);
             $ceil = (int) substr($rowOHSlot['end_time'], 0, 2);
 
-            $range = $ceil - $floor;
-
-            for ($x = 0; $x < $range; $x++) {
+            for ($floor; $x < $ceil; $x++) {
               $time = "";
               if (strlen(strval($x)) == 1){
                 $time = "0".strval($x).":00";
