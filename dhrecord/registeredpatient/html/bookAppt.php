@@ -328,13 +328,21 @@
                       htmlContent += "<p>" + timeslot[chosenDay][0] + "</p>";
                     } else {
                       for (let i=0; i<timeslot[chosenDay].length; i++){
+                        console.log(dateInOtherFormat);
+                        console.log("------");
                         if (booked_timeslot[dateInOtherFormat]) {
+                          console.log(timeslot[chosenDay][i]);
+                          console.log(booked_timeslot[dateInOtherFormat].includes(timeslot[chosenDay][i]));
+                          console.log("------");
                           if (booked_timeslot[dateInOtherFormat].includes(timeslot[chosenDay][i])){
+                            console.log("here1");
                             htmlContent += "<button class='btn btn-sm btn-danger mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
                           } else {
+                            console.log("here2");
                             htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
                           }
                         } else {
+                          console.log("here3");
                           htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
                         }
                       }
