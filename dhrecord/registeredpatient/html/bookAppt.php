@@ -251,10 +251,10 @@
 
                 result.attr("data-course-id", timeslot[chosenDay]); 
 
-                if (timeslot[dateText]){
+                if (timeslot[chosenDay]){
                     let htmlContent= "";
-                    for (let i=0; i<timeslot[dateText].length; i++){
-                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[dateText][i] + "</button>";
+                    for (let i=0; i<timeslot[chosenDay].length; i++){
+                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
                     }
                 
                     timepicker.html(htmlContent); 
