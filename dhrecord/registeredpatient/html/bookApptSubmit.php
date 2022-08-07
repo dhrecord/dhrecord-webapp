@@ -25,13 +25,13 @@
   $timeArray=  explode(", ", $time ); 
   if(count($timeArray)<= 2){
     $time = '"'.substr($time, 0, 5).':00'.'"';
-    $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda` , `doctorID` , `patientID`) values (?, ?, ?, ?, ?");
+    $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (?, ?, ?, ?, ?)");
     mysqli_stmt_bind_param($stmt, "sssss", $formattedDate, $time, $agenda, $docID, $patID);
     mysqli_stmt_execute($stmt);
   } else {
     for($i=0;$i<count($timeArray);$i++){
         $timeBlock = '"'.$timeArray[$i].":00".'"';
-        $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda` , `doctorID` , `patientID`) values (?, ?, ?, ?, ?");
+        $stmt = mysqli_prepare($conn, "insert into `appointment`(`date`, `time`, `agenda`, `doctorID`, `patientID`) values (?, ?, ?, ?, ?)");
         mysqli_stmt_bind_param($stmt, "sssss", $formattedDate, $timeBlock, $agenda, $docID, $patID);
         mysqli_stmt_execute($stmt);
     }
