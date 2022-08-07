@@ -243,25 +243,25 @@
         while ($rowBSlot = $resultBSlot->fetch_assoc()){
           // if date exists alr as key in dict
           echo 'if (booked_timeslot["';
-          echo $resultBSlot['date'];
+          echo $rowBSlot['date'];
           echo '"]){';
 
           echo 'booked_timeslot["';
-          echo $resultBSlot['date'];
+          echo $rowBSlot['date'];
           echo '"].push("';
-          echo substr($resultBSlot['time'], 0, 5);
+          echo substr($rowBSlot['time'], 0, 5);
           echo '");';
 
           // if date does not exist as key in dict
           echo '} else {';
           echo 'booked_timeslot["';
-          echo $resultBSlot['date'];
+          echo $rowBSlot['date'];
           echo '"] = []';
 
           echo 'booked_timeslot["';
-          echo $resultBSlot['date'];
+          echo $rowBSlot['date'];
           echo '"].push("';
-          echo substr($resultBSlot['time'], 0, 5);
+          echo substr($rowBSlot['time'], 0, 5);
           echo '");';
 
           echo '}';
