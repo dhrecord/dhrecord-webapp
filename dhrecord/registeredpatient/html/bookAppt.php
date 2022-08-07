@@ -78,139 +78,174 @@
     </div>
 
     <div class="p-5" style="background: #F2F2F2;">
-      <div class="d-flex">
-        <div>
-            <p class="m-0"><b>Doctor: </b>
-              <?php
-                // Database Connection
-                $servername = "localhost";
-                $database = "u922342007_Test";
-                $username = "u922342007_admin";
-                $password = "Aylm@012";
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $database);
-
-                if (!$conn) 
-                {
-                  die("Connection failed: " . mysqli_connect_error());
-                }
-
-                // GET THE DOCTOR'S FULLNAME
-                $stmtDocName = $conn->prepare("SELECT DISTINCT doctor.fullName
-                                              FROM doctor
-                                              WHERE doctor.doctorID=?");
-                $stmtDocName->bind_param("s", $_POST['doc_id']);
-                $stmtDocName->execute();
-                $resultDocName = $stmtDocName->get_result();
-
-                while ($rowDocName = $resultDocName->fetch_assoc()){
-                  echo $rowDocName['fullName'];
-                }
-              ?>
-            </p>
-            <p class="m-0"><b>Specialization: </b>
+      <!-- <form method="post" action="./bookApptSubmit.php"> -->
+      <form method="post" action="#">
+        <div class="d-flex">
+          <div>
+              <p class="m-0"><b>Doctor: </b>
                 <?php
-                  // GET THE DOCTOR'S SPECIALIZATION
-                  $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
-                                              FROM doctorSpecialization
-                                              JOIN clinicSpecialization 
-                                              ON clinicSpecialization.ID = doctorSpecialization.specializationID 
-                                              WHERE doctorSpecialization.doctorID=?");
-                  $stmtSpec->bind_param("s", $_POST['doc_id']);
-                  $stmtSpec->execute();
-                  $resultSpec = $stmtSpec->get_result();
+                  // Database Connection
+                  $servername = "localhost";
+                  $database = "u922342007_Test";
+                  $username = "u922342007_admin";
+                  $password = "Aylm@012";
+                  // Create connection
+                  $conn = mysqli_connect($servername, $username, $password, $database);
 
-                  $specializations = array();
-                  while ($rowSpec = $resultSpec->fetch_assoc()){
-                    array_push($specializations, $rowSpec["specName"]);
+                  if (!$conn) 
+                  {
+                    die("Connection failed: " . mysqli_connect_error());
                   }
 
-                  $join_specializations = implode(', ', $specializations);
-                  echo $join_specializations;
+                  // GET THE DOCTOR'S FULLNAME
+                  $stmtDocName = $conn->prepare("SELECT DISTINCT doctor.fullName
+                                                FROM doctor
+                                                WHERE doctor.doctorID=?");
+                  $stmtDocName->bind_param("s", $_POST['doc_id']);
+                  $stmtDocName->execute();
+                  $resultDocName = $stmtDocName->get_result();
+
+                  while ($rowDocName = $resultDocName->fetch_assoc()){
+                    echo $rowDocName['fullName'];
+                  }
                 ?>
-            </p>
+              </p>
 
-            <br/>
+              <p class="m-0"><b>Specialization: </b>
+                  <?php
+                    // GET THE DOCTOR'S SPECIALIZATION
+                    $stmtSpec = $conn->prepare("SELECT clinicSpecialization.specName 
+                                                FROM doctorSpecialization
+                                                JOIN clinicSpecialization 
+                                                ON clinicSpecialization.ID = doctorSpecialization.specializationID 
+                                                WHERE doctorSpecialization.doctorID=?");
+                    $stmtSpec->bind_param("s", $_POST['doc_id']);
+                    $stmtSpec->execute();
+                    $resultSpec = $stmtSpec->get_result();
 
-            <?php
-                // GET THE DOCTOR'S SPECIALIZATION
-                $stmtClinic = $conn->prepare("SELECT DISTINCT businessOwner.nameOfClinic, businessOwner.locationOfClinic
-                                            FROM businessOwner
-                                            JOIN doctor
-                                            ON doctor.clinicID = businessOwner.ID
-                                            WHERE doctor.doctorID=?");
-                $stmtClinic->bind_param("s", $_POST['doc_id']);
-                $stmtClinic->execute();
-                $resultClinic = $stmtClinic->get_result();
+                    $specializations = array();
+                    while ($rowSpec = $resultSpec->fetch_assoc()){
+                      array_push($specializations, $rowSpec["specName"]);
+                    }
 
-                while ($rowClinic = $resultClinic->fetch_assoc()){
-                  echo '<p class="m-0"><b>Clinic: </b>';
-                  echo $rowClinic['nameOfClinic'];
-                  echo '</p><p class="m-0"><b>Address: </b>';
-                  echo $rowClinic['locationOfClinic'];
-                  echo '<br/></p>';
-                }
-            ?>
+                    $join_specializations = implode(', ', $specializations);
+                    echo $join_specializations;
+                  ?>
+              </p>
 
-            <br>
+              <br/>
 
-            <p class="m-0"> 
-                <b>Operating Hours:</b><br/>
-                
-                <?php
-                  // GET THE OPERATING HOURS OF THE CLINIC
-                  $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
-                                              FROM operatingHours 
-                                              WHERE operatingHours.doctorID = ?");
-                  $stmtOH->bind_param("s", $_POST['doc_id']);
-                  $stmtOH->execute();
-                  $resultOH = $stmtOH->get_result();
+              <?php
+                  // GET THE DOCTOR'S SPECIALIZATION
+                  $stmtClinic = $conn->prepare("SELECT DISTINCT businessOwner.nameOfClinic, businessOwner.locationOfClinic
+                                              FROM businessOwner
+                                              JOIN doctor
+                                              ON doctor.clinicID = businessOwner.ID
+                                              WHERE doctor.doctorID=?");
+                  $stmtClinic->bind_param("s", $_POST['doc_id']);
+                  $stmtClinic->execute();
+                  $resultClinic = $stmtClinic->get_result();
 
-                  echo '<p>';
-                  if ($resultOH->num_rows === 0) {
-                    echo '-';
-                  } else { 
-                    while ($rowOH = $resultOH->fetch_assoc()){
-                      if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
-                        echo $rowOH['day'];
-                        echo ': Closed<br/>';
-                      } else {
-                        echo $rowOH['day'];
-                        echo ': ';
-                        $start_time = $rowOH['start_time']; 
-                        echo substr($start_time, 0, 5);
-                        echo '-';
-                        $end_time = $rowOH['end_time']; 
-                        echo substr($end_time, 0, 5);
-                        echo '<br/>';
+                  while ($rowClinic = $resultClinic->fetch_assoc()){
+                    echo '<p class="m-0"><b>Clinic: </b>';
+                    echo $rowClinic['nameOfClinic'];
+                    echo '</p><p class="m-0"><b>Address: </b>';
+                    echo $rowClinic['locationOfClinic'];
+                    echo '<br/></p>';
+                  }
+              ?>
+
+              <br>
+
+              <p class="m-0"> 
+                  <b>Operating Hours:</b><br/>
+                  
+                  <?php
+                    // GET THE OPERATING HOURS OF THE CLINIC
+                    $stmtOH = $conn->prepare("SELECT day, start_time, end_time 
+                                                FROM operatingHours 
+                                                WHERE operatingHours.doctorID = ?");
+                    $stmtOH->bind_param("s", $_POST['doc_id']);
+                    $stmtOH->execute();
+                    $resultOH = $stmtOH->get_result();
+
+                    echo '<p>';
+                    if ($resultOH->num_rows === 0) {
+                      echo '-';
+                    } else { 
+                      while ($rowOH = $resultOH->fetch_assoc()){
+                        if ($rowOH['start_time'] === "00:00:00" and $rowOH['end_time'] === "00:00:00"){
+                          echo $rowOH['day'];
+                          echo ': Closed<br/>';
+                        } else {
+                          echo $rowOH['day'];
+                          echo ': ';
+                          $start_time = $rowOH['start_time']; 
+                          echo substr($start_time, 0, 5);
+                          echo '-';
+                          $end_time = $rowOH['end_time']; 
+                          echo substr($end_time, 0, 5);
+                          echo '<br/>';
+                        }
                       }
                     }
-                  }
-                  echo '</p>';
-                ?>
-            </p>
-        </div>
+                    echo '</p>';
+                  ?>
+              </p>
+          </div>
 
-        <div class="mx-5">
+          <div>
             <div>
-                <p><b>Date (mm-dd-yyyy):</b></p>
-                <input type="text" id="datepicker"/>
+              <div class="mx-5">
+                    <div>
+                        <p><b>Agenda:</b></p>
+                        <input type="text" name="agenda"/>
+                    </div>
+              </div>
             </div>
-        </div>
 
-        <div class="mx-5">
             <div class="d-flex">
-                <input type="text" id="result" style="display:none;"/>
-                <div>
-                    <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
-                    <div id="timepicker"></div>
-                </div>
+              <div class="mx-5">
+                  <div>
+                      <p><b>Date (mm-dd-yyyy):</b></p>
+                      <input type="text" id="datepicker" name="date"/>
+                  </div>
+              </div>
+
+              <div class="mx-5">
+                  <div class="d-flex">
+                      <input type="text" id="result" style="display:none;" name="time"/>
+                      <div>
+                          <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
+                          <div id="timepicker"></div>
+                      </div>
+                  </div>
+              </div>
             </div>
+          </div>
+
+          <!-- hidden value -->
+          <input type="text" style="display:none;" name="docID" value=<?=$_POST['doc_id']?>/>
+          <?php
+            // GET THE Patient ID
+            $stmtPatId = $conn->prepare("SELECT DISTINCT ID
+                                            FROM registeredPatient
+                                            WHERE registeredPatient.users_ID=?");
+            $stmtPatId->bind_param("s", $_SESSION['id']);
+            $stmtPatId->execute();
+            $resultPatId = $stmtPatId->get_result();
+
+            while ($rowPatId = $resultPatId->fetch_assoc()){
+              echo '<input type="text" style="display:none;" name="patID" value="';
+              echo $rowPatId['ID'];
+              echo '"/>';
+            }
+          ?>
         </div>
-      </div>
-      <div class="text-end">
-        <button class="btn btn-success">Submit</button>
-      </div>
+        <div class="text-end">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -267,7 +302,7 @@
           echo '}';
         }
       }
-      
+
       // GET THE TIME SLOT FROM CLINIC OPENING HOURS
       $stmtOHSlot = $conn->prepare("SELECT day, start_time, end_time 
                                   FROM operatingHours 
