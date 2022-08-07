@@ -362,12 +362,12 @@
                       for (let i=0; i<timeslot[chosenDay].length; i++){
                         if (booked_timeslot[dateInOtherFormat]) {
                           if (booked_timeslot[dateInOtherFormat].includes(timeslot[chosenDay][i])){
-                            htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' disabled>" + timeslot[chosenDay][i] + "</button>";
+                            htmlContent += "<input type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' " + "value='" + timeslot[chosenDay][i] + "'" + " disabled/>";
                           } else {
-                            htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                            htmlContent += "<input type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' " + "value='" + timeslot[chosenDay][i] + "'" + " disabled/>";
                           }
                         } else {
-                          htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                          htmlContent += "<input type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' " + "value='" + timeslot[chosenDay][i] + "'" + " disabled/>";
                         }
                       }
                     }
