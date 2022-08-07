@@ -78,8 +78,7 @@
     </div>
 
     <div class="p-5" style="background: #F2F2F2;">
-      <!-- <form method="post" action="./bookApptSubmit.php"> -->
-      <form method="post" action="#">
+      <form method="post" action="./bookApptSubmit.php">
         <div class="d-flex">
           <div>
               <p class="m-0"><b>Doctor: </b>
