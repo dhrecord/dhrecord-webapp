@@ -220,20 +220,24 @@
 
     // GET THE TIME SLOT FROM CLINIC OPENING HOURS - BOOKED SLOTS
     <?php
-      // $stmtOHSlot = $conn->prepare("SELECT day, start_time, end_time 
-      //                             FROM operatingHours 
-      //                             WHERE operatingHours.doctorID = ?");
-      // $stmtOHSlot->bind_param("s", $_POST['doc_id']);
-      // $stmtOHSlot->execute();
-      // $resultOHSlot = $stmtOHSlot->get_result();
+      $stmtOHSlot = $conn->prepare("SELECT day, start_time, end_time 
+                                  FROM operatingHours 
+                                  WHERE operatingHours.doctorID = ?");
+      $stmtOHSlot->bind_param("s", $_POST['doc_id']);
+      $stmtOHSlot->execute();
+      $resultOHSlot = $stmtOHSlot->get_result();
 
-      // if ($resultOHSlot->num_rows === 0) {
-      //   echo '-';
-      // } else { 
-      //   while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
-          
-      //   }
-      // }
+      if ($resultOHSlot->num_rows > 0) {
+        while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
+          echo 'console.log(';
+          echo $rowOHSlot['day'];
+          echo ');';
+
+          echo 'console.log(';
+          echo substr($rowOHSlot['start_time'], 0, 5);
+          echo ');';
+        }
+      }
     ?>
 
     var timeslot = {
