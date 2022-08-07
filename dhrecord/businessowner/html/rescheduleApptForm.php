@@ -293,14 +293,13 @@
 
             <div class="mx-5">
                 <div>
-                    <p><b>Current Date:</b></p>
+                    <p><b>Current Date  (mm-dd-yyyy):</b></p>
                     <p><?=$apptDate?></p>
                 </div>
                 <div>
-                    <p><b>New Date:</b></p>
+                    <p><b>New Date (mm-dd-yyyy):</b></p>
                     <input type="text" id="datepicker"/>
                 </div>
-                <p class="mt-3"><i>#test: choose 26/7 orr 28/7 for sample slot</i></p>
             </div>
 
             <div class="mx-5">
@@ -329,27 +328,129 @@
     var timepicker = $("#timepicker");
 
     var timeslot = {
-        "26-07-2022" : ["09.00 am", "10.00 am", "11.00 am"],
-        "28-07-2022": ["08.00 am", "09.00 am", "11.00 am", "12.00 pm", "01.00 pm", "02.00 pm", "03.00 pm"]
+        "Monday" : [],
+        "Tuesday" : [],
+        "Wednesday" : [],
+        "Thursday" : [],
+        "Friday" : [],
+        "Saturday": [],
+        "Sunday": [],
     };
+
+    var booked_timeslot = {};
+
+    <?php
+      // GET THE BOOKED TIME SLOTS
+      $stmtBSlot = $conn->prepare("SELECT appointment.date, appointment.time 
+                                  FROM appointment 
+                                  WHERE appointment.doctorID = ?");
+      $stmtBSlot->bind_param("s", $docID);
+      $stmtBSlot->execute();
+      $resultBSlot = $stmtBSlot->get_result();
+
+      if ($resultBSlot->num_rows > 0) {
+        while ($rowBSlot = $resultBSlot->fetch_assoc()){
+          // if date exists alr as key in dict
+          echo 'if (booked_timeslot["';
+          echo $rowBSlot['date'];
+          echo '"]){';
+
+          echo 'booked_timeslot["';
+          echo $rowBSlot['date'];
+          echo '"].push("';
+          echo substr($rowBSlot['time'], 0, 5);
+          echo '");';
+
+          // if date does not exist as key in dict
+          echo '} else {';
+          echo 'booked_timeslot["';
+          echo $rowBSlot['date'];
+          echo '"] = [];';
+
+          echo 'booked_timeslot["';
+          echo $rowBSlot['date'];
+          echo '"].push("';
+          echo substr($rowBSlot['time'], 0, 5);
+          echo '");';
+
+          echo '}';
+        }
+      }
+      
+      // GET THE TIME SLOT FROM CLINIC OPENING HOURS
+      $stmtOHSlot = $conn->prepare("SELECT day, start_time, end_time 
+                                  FROM operatingHours 
+                                  WHERE operatingHours.doctorID = ?");
+      $stmtOHSlot->bind_param("s", $docID);
+      $stmtOHSlot->execute();
+      $resultOHSlot = $stmtOHSlot->get_result();
+
+      if ($resultOHSlot->num_rows > 0) {
+        while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
+
+          if (substr($rowOHSlot['start_time'], 0, 5) == "00:00" and substr($rowOHSlot['end_time'], 0, 5) == "00:00"){
+            echo 'timeslot["';
+            echo $rowOHSlot['day'];
+            echo '"].push("';
+            echo "Closed";
+            echo '");';
+          } else {
+            $floor = (int) substr($rowOHSlot['start_time'], 0, 2);
+            $ceil = (int) substr($rowOHSlot['end_time'], 0, 2);
+
+            for ($floor; $floor < $ceil; $floor++) {
+              $time = "";
+              if (strlen(strval($floor)) == 1){
+                $time = "0".strval($floor).":00";
+              } else {
+                $time = strval($floor).":00";
+              }
+
+              echo 'timeslot["';
+              echo $rowOHSlot['day'];
+              echo '"].push("';
+              echo $time;
+              echo '");';
+            }
+          }
+        }
+      }
+    ?>
 
     $( function() {
         $("#datepicker").datepicker({
             dateFormat: 'dd-mm-yy',
             onSelect: function(dateText, pickerObj){
-                result.attr("data-course-id", timeslot[dateText]); 
+                let chosenDate = new Date(dateText);
+              let chosenDay = daysArr[chosenDate.getDay()];
 
-                if (timeslot[dateText]){
-                    let htmlContent= "";
-                    for (let i=0; i<timeslot[dateText].length; i++){
-                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[dateText][i] + "</button>";
+              let dateInOtherFormat = dateText.substr(6,4) + "-" + dateText.substr(0,2) + "-" + dateText.substr(3,2);
+
+              result.attr("data-course-id", timeslot[chosenDay]); 
+
+              if (timeslot[chosenDay]){
+                  let htmlContent= "";
+                  if (timeslot[chosenDay].length == 1){
+                    htmlContent += "<p>" + timeslot[chosenDay][0] + "</p>";
+                  } else {
+                    for (let i=0; i<timeslot[chosenDay].length; i++){
+                      if (booked_timeslot[dateInOtherFormat]) {
+                        if (booked_timeslot[dateInOtherFormat].includes(timeslot[chosenDay][i])){
+                          htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' disabled>" + timeslot[chosenDay][i] + "</button>";
+                        } else {
+                          htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                        }
+                      } else {
+                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                      }
                     }
+                  }
                 
-                    timepicker.html(htmlContent); 
-                }
-                else{
-                    timepicker.html("No Available Slot"); 
-                }
+                  timepicker.html(htmlContent); 
+              }
+              else {
+                  timepicker.html("No Available Slot"); 
+              }
             },
             altField: "#result"
         });
