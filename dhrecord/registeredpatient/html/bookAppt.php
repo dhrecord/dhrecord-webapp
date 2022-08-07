@@ -318,6 +318,8 @@
                 let chosenDate = new Date(dateText);
                 let chosenDay = daysArr[chosenDate.getDay()];
 
+                let dateInOtherFormat = chosenDate.substr(6:) + "-" + chosenDate.substr(0:2) + "-" + chosenDate.substr(3:5);
+
                 result.attr("data-course-id", timeslot[chosenDay]); 
 
                 if (timeslot[chosenDay]){
@@ -326,7 +328,15 @@
                       htmlContent += "<p>" + timeslot[chosenDay][0] + "</p>";
                     } else {
                       for (let i=0; i<timeslot[chosenDay].length; i++){
-                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                        if (booked_timeslot[dateInOtherFormat]) {
+                          if (booked_timeslot[dateInOtherFormat].includes(timeslot[chosenDay][i])){
+                            htmlContent += "<button class='btn btn-sm btn-danger mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                          } else {
+                            htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                          }
+                        } else {
+                          htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                        }
                       }
                     }
                   
