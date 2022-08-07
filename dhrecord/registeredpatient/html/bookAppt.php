@@ -256,7 +256,7 @@
           echo '} else {';
           echo 'booked_timeslot["';
           echo $rowBSlot['date'];
-          echo '"] = []';
+          echo '"] = [];';
 
           echo 'booked_timeslot["';
           echo $rowBSlot['date'];
