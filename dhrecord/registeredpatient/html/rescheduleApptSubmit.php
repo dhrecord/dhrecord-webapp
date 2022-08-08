@@ -11,7 +11,9 @@
   $time = $_POST['time'];
 
   echo $apptID;
-  echo $date;
+  echo "==";
+  echo $date; 
+  echo "==";
   echo $time;
 
   // convert date
