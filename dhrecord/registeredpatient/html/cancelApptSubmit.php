@@ -17,7 +17,7 @@
  
   $stmt = mysqli_prepare($conn, "delete from `appointment` where `apptID` = ?");
   mysqli_stmt_bind_param($stmt, "s", $apptID);
-  
-  header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/apptScheduling.php");
+
+  // header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/apptScheduling.php");
   mysqli_close($conn);
 ?>
