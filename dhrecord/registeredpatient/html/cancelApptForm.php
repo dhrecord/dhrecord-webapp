@@ -237,7 +237,7 @@
           </div>
 
           <div class="text-end">
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="submit" class="btn btn-danger">Cancel</button>
           </div>
       </form> 
     </div>
