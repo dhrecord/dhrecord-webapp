@@ -155,11 +155,13 @@
                                 
               echo       
                   '" class="btn btn-dark btn-sm">Reschedule</button></form>
-                  </td><td class="text-center"><button class="btn btn-sm btn-danger" id="cancel-btn-';
-
-              echo $rowAppt['apptID'];
+                  </td><td class="text-center">
+                  <form method="POST" action="../../registeredpatient/html/cancelApptForm.php">
+                  <button name="appt_id" class="btn btn-sm btn-danger" value="';
                   
-              echo '">Cancel</button></td>';
+              echo $rowAppt['apptID'];
+
+              echo '">Cancel</button></form></td>';
 
               $stmtAppt += 1;
             }
@@ -176,34 +178,34 @@
 
   <script>
     // Cancel Appointment Button
-    var buttons = document.getElementsByClassName("btn-danger");
-    for (var i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function(e) {
-          var dialog = confirm("Are you sure want to cancel the appointment?");
-          if (dialog) {
-              console.log('Appointment is Cancelled!');
+    // var buttons = document.getElementsByClassName("btn-danger");
+    // for (var i = 0; i < buttons.length; i++) {
+    //     buttons[i].addEventListener("click", function(e) {
+    //       var dialog = confirm("Are you sure want to cancel the appointment?");
+    //       if (dialog) {
+    //           console.log('Appointment is Cancelled!');
 
-              let btn_id = this.id.split("-")[2];
-              <?php
-                // Cancel Appointment
-                $btn_id = null; // testing => later need to pass the value from js var 'btn_id' 
-                $query = "DELETE FROM appointment WHERE apptID = '$btn_id'";
-                if (mysqli_query($conn,$query)) 
-                {
-                  echo "console.log('deleted!')";
-                }
+    //           let btn_id = this.id.split("-")[2];
+    //           <?php
+    //             // Cancel Appointment
+    //             $btn_id = null; // testing => later need to pass the value from js var 'btn_id' 
+    //             $query = "DELETE FROM appointment WHERE apptID = '$btn_id'";
+    //             if (mysqli_query($conn,$query)) 
+    //             {
+    //               echo "console.log('deleted!')";
+    //             }
               
-                else
-                {
-                  echo "console.log('something went wrong!')";
-                }
-              ?>
-          }
-          else {
-              console.log('Appointment is not Cancelled');
-          }
-        });
-    }
+    //             else
+    //             {
+    //               echo "console.log('something went wrong!')";
+    //             }
+    //           ?>
+    //       }
+    //       else {
+    //           console.log('Appointment is not Cancelled');
+    //       }
+    //     });
+    // }
   </script>
 </body>
 </html>
