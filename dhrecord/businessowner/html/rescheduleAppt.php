@@ -221,36 +221,5 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-    <script>
-        // Cancel Appointment Button
-        var buttons = document.getElementsByClassName("btn-danger");
-        for (var i = 0; i < buttons.length; i++) {
-            buttons[i].addEventListener("click", function(e) {
-            var dialog = confirm("Are you sure want to cancel the appointment?");
-            if (dialog) {
-                console.log('Appointment is Cancelled!');
-
-                let btn_id = this.id.split("-")[2];
-                <?php
-                    // Cancel Appointment
-                    $btn_id = null; // testing => later need to pass the value from js var 'btn_id' 
-                    $query = "DELETE FROM appointment WHERE apptID = '$btn_id'";
-                    if (mysqli_query($conn,$query)) 
-                    {
-                    echo "console.log('deleted!')";
-                    }
-                
-                    else
-                    {
-                    echo "console.log('something went wrong!')";
-                    }
-                ?>
-            }
-            else {
-                console.log('Appointment is not Cancelled');
-            }
-            });
-        }
-  </script>
 </body>
 </html>
