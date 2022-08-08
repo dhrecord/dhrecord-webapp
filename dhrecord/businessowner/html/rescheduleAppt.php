@@ -202,7 +202,7 @@
                 // cancel btn
                 echo '<td class="text-center">
                       <form method="POST" action="../../businessowner/html/cancelApptForm.php">
-                      <button class="btn btn-sm btn-danger" value="';
+                      <button name="appt_id" class="btn btn-sm btn-danger" value="';
                 echo $sql['apptID'];      
                 echo '">Cancel</button></form></td>';
                     
