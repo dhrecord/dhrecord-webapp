@@ -51,62 +51,62 @@
                 <div class="mb-3 row">
                     <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="fullName" name="fullName">
+                        <input type="text" class="form-control" id="fullName" name="fullName" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="nricNumber" class="col-sm-2 col-form-label">NRIC Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nricNumber" name="nricNumber">
+                        <input type="text" class="form-control" id="nricNumber" name="nricNumber" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="contactNumber" name="contactNumber">
+                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="email" class="col-sm-2 col-form-label">Email Address</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="email" name="email">
+                        <input type="text" class="form-control" id="email" name="email" required>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="userName" name="userName" />
+                        <input type="text" class="form-control" id="userName" name="userName" required/>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="passWord" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="passWord" name="passWord" />
+                        <input type="password" class="form-control" id="passWord" name="passWord" required/>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="RegistrationNumber" class="col-sm-2 col-form-label">Registration Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="RegistrationNumber" name="RegistrationNumber">
+                        <input type="text" class="form-control" id="RegistrationNumber" name="RegistrationNumber" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="LicenseNumber" class="col-sm-2 col-form-label">License Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="LicenseNumber" name="LicenseNumber">
+                        <input type="text" class="form-control" id="LicenseNumber" name="LicenseNumber" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="nameOfClinic" class="col-sm-2 col-form-label">Name of Clinic</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nameOfClinic" name="nameOfClinic">
+                        <input type="text" class="form-control" id="nameOfClinic" name="nameOfClinic" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="locationOfClinic" class="col-sm-2 col-form-label">Location of Clinic</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="locationOfClinic" name="locationOfClinic">
+                        <input type="text" class="form-control" id="locationOfClinic" name="locationOfClinic" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
