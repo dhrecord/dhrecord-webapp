@@ -221,7 +221,7 @@
                       <p><?=substr($apptTime, 0, 5)?></p>
                   </div>
                   <div class="d-flex">
-                      <input type="text" id="result2" style="display:none;" name="time" value=""/>
+                      <input type="text" id="result2" style="display:none;" name="time" value="" />
                       <div>
                           <p><b>New Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i</p>
                           <div id="timepicker"></div>
@@ -230,7 +230,8 @@
               </div>
 
               <!-- hidden value -->
-              <input type="text" style="display:none;" name="apptID" value=<?=$_POST['appt_id']?>/>
+              <input type="text" style="display:none;" name="apptID" value=<?=$_POST['appt_id']?> />
+              <?php echo $_POST['appt_id'] ?>;
           </div>
 
           <div class="text-end">
@@ -374,9 +375,9 @@
         });
 
         $(document).click(function(e) {
-            $(event.target).toggleClass("transparent");
+          $(event.target).toggleClass("transparent");
 
-            if ($(event.target).text() !== "Submit"){
+          if ($(event.target).text() !== "Submit"){
             if($(event.target).hasClass("transparent")){
               $value = $("#result2").val();
               if($(event.target).text() !== ""){
