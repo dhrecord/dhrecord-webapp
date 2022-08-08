@@ -29,13 +29,12 @@
   } else {
     for($i=0;$i<count($timeArray);$i++){
         $timeBlock = $timeArray[$i].":00";
-        // $stmt = mysqli_prepare($conn, "UPDATE appointment SET appoinment.date=date(?), appoinment.time=time(?) WHERE apptID=?");
         $stmt = mysqli_prepare($conn, "update `appointment` set `date`=date(?), `time`=time(?) where `apptID`=?");
         mysqli_stmt_bind_param($stmt, "sss", $formattedDate, $time, $apptID);
         mysqli_stmt_execute($stmt);
     }
   }
 
-  // header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/apptScheduling.php");
+  header("Location: http://dhrecord.com/dhrecord/registeredpatient/html/apptScheduling.php");
   mysqli_close($conn);
 ?>
