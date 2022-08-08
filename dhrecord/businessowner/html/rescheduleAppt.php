@@ -200,9 +200,11 @@
                 echo "<td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>";
                 
                 // cancel btn
-                echo '<td class="text-center"><button class="btn btn-sm btn-danger" id="cancel-btn-';
+                echo '<td class="text-center">
+                      <form method="POST" action="../../businessowner/html/cancelApptForm.php">
+                      <button class="btn btn-sm btn-danger" value="';
                 echo $sql['apptID'];      
-                echo '">Cancel</button></td>';
+                echo '">Cancel</button></form></td>';
                     
                 // echo "<td class='text-center'><button class='btn btn-sm btn-dark' onclick='document.location.href='../../businessowner/html/rescheduleApptForm.php'>Reschedule</button></td>
                 //     <td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>
