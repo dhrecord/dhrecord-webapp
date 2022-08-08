@@ -210,7 +210,7 @@
                   </div>
                   <div>
                       <p><b>New Date (mm-dd-yyyy):</b></p>
-                      <input type="text" id="datepicker"/>
+                      <input type="text" id="datepicker" name="date"/>
                       <input type="text" id="result" style="display:none;"/>
                   </div>
               </div>
@@ -354,12 +354,12 @@
                     for (let i=0; i<timeslot[chosenDay].length; i++){
                       if (booked_timeslot[dateInOtherFormat]) {
                         if (booked_timeslot[dateInOtherFormat].includes(timeslot[chosenDay][i])){
-                          htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' disabled>" + timeslot[chosenDay][i] + "</button>";
+                          htmlContent += "<button type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn' disabled>" + timeslot[chosenDay][i] + "</button>";
                         } else {
-                          htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                          htmlContent += "<button type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
                         }
                       } else {
-                        htmlContent += "<button class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
+                        htmlContent += "<button type='button' class='btn btn-sm btn-dark mx-2 mb-2 slot-btn'>" + timeslot[chosenDay][i] + "</button>";
                       }
                     }
                   }
