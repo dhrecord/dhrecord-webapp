@@ -100,7 +100,7 @@
                       }
 
                       // GET THE DOCTOR'S FULLNAME
-                      $stmtDocName = $conn->prepare("SELECT DISTINCT doctor.fullName, doctor.doctorID, appointment.date, appointment.time
+                      $stmtDocName = $conn->prepare("SELECT DISTINCT doctor.fullName, doctor.doctorID, appointment.date, appointment.time, appointment.agenda
                                                       FROM doctor
                                                       JOIN appointment ON doctor.doctorID = appointment.doctorID
                                                       WHERE appointment.apptID=?");
@@ -110,12 +110,14 @@
                       $docID = "";
                       $apptDate = "";
                       $apptTime = "";
+                      $apptAgenda = "";
 
                       while ($rowDocName = $resultDocName->fetch_assoc()){
                         echo $rowDocName['fullName'];
                         $docID = $rowDocName['doctorID'];
                         $apptDate = $rowDocName['date'];
                         $apptTime = $rowDocName['time'];
+                        $apptAgenda = $rowDocName['agenda'];
                       }
                     ?>
                   </p>
@@ -203,31 +205,46 @@
                   </p>
               </div>
 
-              <div class="mx-5">
-                  <div>
-                      <p><b>Current Date (mm-dd-yyyy):</b></p>
-                      <p><?=substr($apptDate, 5, 2)."-".substr($apptDate, 8, 2)."-".substr($apptDate, 0, 4)?></p>
+              <div>
+                <div class=" mb-4">
+                  <div class="mx-5">
+                        <div>
+                            <p><b>Agenda:</b></p>
+                            <p><?=$apptAgenda?></p>
+                        </div>
                   </div>
-                  <div>
-                      <p><b>New Date (mm-dd-yyyy):</b></p>
-                      <input type="text" id="datepicker" name="date"/>
-                      <input type="text" id="result" style="display:none;"/>
+                </div>
+
+                <div class="d-flex">
+                  <div class="mx-5">
+                    <div>
+                        <p><b>Current Date (mm-dd-yyyy):</b></p>
+                        <p><?=substr($apptDate, 5, 2)."-".substr($apptDate, 8, 2)."-".substr($apptDate, 0, 4)?></p>
+                    </div>
+                    <div>
+                        <p><b>New Date (mm-dd-yyyy):</b></p>
+                        <input type="text" id="datepicker" name="date"/>
+                        <input type="text" id="result" style="display:none;"/>
+                    </div>
                   </div>
+
+                  <div class="mx-5">
+                    <div>
+                        <p><b>Current Time:</b></p>
+                        <p><?=substr($apptTime, 0, 5)?></p>
+                    </div>
+                    <div class="d-flex">
+                        <input type="text" id="result2" style="display:none;" name="time" value="" />
+                        <div>
+                            <p><b>New Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i</p>
+                            <div id="timepicker"></div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div class="mx-5">
-                  <div>
-                      <p><b>Current Time:</b></p>
-                      <p><?=substr($apptTime, 0, 5)?></p>
-                  </div>
-                  <div class="d-flex">
-                      <input type="text" id="result2" style="display:none;" name="time" value="" />
-                      <div>
-                          <p><b>New Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i</p>
-                          <div id="timepicker"></div>
-                      </div>
-                  </div>
-              </div>
+              
 
               <!-- hidden value -->
               <input type="text" style="display:none;" name="apptID" value=<?=$_POST['appt_id']?> />
