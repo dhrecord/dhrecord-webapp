@@ -231,7 +231,6 @@
 
               <!-- hidden value -->
               <input type="text" style="display:none;" name="apptID" value=<?=$_POST['appt_id']?> />
-              <?php echo $_POST['appt_id'] ?>;
           </div>
 
           <div class="text-end">
