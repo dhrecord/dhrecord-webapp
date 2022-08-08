@@ -175,7 +175,7 @@
                     {
                         $searchkey= $_POST['search'];
                         $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
-                            //test 1
+                            //test 2
                     }
 
                 else 
