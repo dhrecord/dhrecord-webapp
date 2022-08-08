@@ -188,7 +188,7 @@
                             $prescriptionName = $obj['prescriptionName'];
 	                        $prescriptionDesc = $obj['prescriptionDesc'];
 	                        $prescriptionQty = $obj['prescriptionQty'];
-                            $$prescriptionPrice = $obj['$prescriptionPrice']; 
+                            $prescriptionPrice = $obj['prescriptionPrice']; 
 	                        $Remarks = $obj['Remarks'];
                             
                         ?>
