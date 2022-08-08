@@ -236,15 +236,13 @@
                     <div class="d-flex">
                         <input type="text" id="result2" style="display:none;" name="time" value="" />
                         <div>
-                            <p><b>New Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i</p>
+                            <p><b>New Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                             <div id="timepicker"></div>
                         </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              
 
               <!-- hidden value -->
               <input type="text" style="display:none;" name="apptID" value=<?=$_POST['appt_id']?> />
