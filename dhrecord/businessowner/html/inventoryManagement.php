@@ -159,6 +159,7 @@
                     <th scope="col">Prescription Name</th>
                     <th scope="col">Prescription Description</th>
                     <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
@@ -186,7 +187,8 @@
                             $ID = $obj['ID'];
                             $prescriptionName = $obj['prescriptionName'];
 	                        $prescriptionDesc = $obj['prescriptionDesc'];
-	                        $prescriptionQty = $obj['prescriptionQty']; 
+	                        $prescriptionQty = $obj['prescriptionQty'];
+                            $$prescriptionPrice = $obj['$prescriptionPrice']; 
 	                        $Remarks = $obj['Remarks'];
                             
                         ?>
@@ -195,6 +197,7 @@
                                 <td><?php echo $prescriptionName ?></td>
                                 <td><?php echo $prescriptionDesc ?></td>
                                 <td><?php echo $prescriptionQty ?></td>
+                                <td><?php echo $prescriptionPrice ?></td>
                                 <td><?php echo $Remarks ?></td>
                                 <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                    
                                 <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
