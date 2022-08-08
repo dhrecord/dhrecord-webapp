@@ -44,21 +44,6 @@
 	mysqli_stmt_bind_param($stmt, "sssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies, $role, $userName, $passWord, $vkey, $verifiedNegative);
 	mysqli_stmt_execute($stmt);
 
-	//inserting data
-	//$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
-	//mysqli_stmt_bind_param($stmt, "sss", $role, $userName, $passWord);
-	//mysqli_stmt_execute($stmt);
-
-	//$stmt = $conn->prepare("SELECT ID FROM users where username = ?");
-	//$stmt->bind_param("s", $userName);
-	//$stmt->execute();
-	//$stmt_result = $stmt->get_result();
-	//$row = $stmt_result->fetch_assoc();
-
-	//$stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?)");
-	//mysqli_stmt_bind_param($stmt, "ssssssss", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies, $row['ID']);
-	//mysqli_stmt_execute($stmt);
-
 	mysqli_close($conn);
 	header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
 
