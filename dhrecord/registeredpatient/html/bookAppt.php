@@ -198,7 +198,7 @@
               <div class="mx-5">
                     <div>
                         <p><b>Agenda:</b></p>
-                        <input type="text" name="agenda" style="width:250px;"/>
+                        <input type="text" name="agenda" style="width:250px;" required/>
                     </div>
               </div>
             </div>
@@ -207,14 +207,14 @@
               <div class="mx-5">
                   <div>
                       <p><b>Date (mm-dd-yyyy):</b></p>
-                      <input type="text" id="datepicker" name="date"/>
-                      <input type="text" id="result" style="display:none;"/>
+                      <input type="text" id="datepicker" name="date" required/>
+                      <input type="text" id="result" style="display:none;" required/>
                   </div>
               </div>
 
               <div class="mx-5">
                   <div class="d-flex">
-                      <input type="text" id="result2" style="display:none;" name="time" value=""/>
+                      <input type="text" id="result2" style="display:none;" name="time" required/>
                       <div>
                           <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                           <div id="timepicker"></div>
@@ -311,13 +311,13 @@
       $stmtOHSlot->bind_param("s", $_POST['doc_id']);
       $stmtOHSlot->execute();
       $resultOHSlot = $stmtOHSlot->get_result();
-      $closedDays = array();
+      $closedDaysArr = array();
 
       if ($resultOHSlot->num_rows > 0) {
         while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
 
           if (substr($rowOHSlot['start_time'], 0, 5) == "00:00" and substr($rowOHSlot['end_time'], 0, 5) == "00:00"){
-            array_push($closedDays,$rowOHSlot['day']);
+            array_push($closedDaysArr,$rowOHSlot['day']);
 
             echo 'timeslot["';
             echo $rowOHSlot['day'];
@@ -371,36 +371,50 @@
         ?>
 
         var blocked_days_array = [];
+
         <?php
-          for ($i = 0; $i < count($closedDays); $i++)  {
+          for ($i = 0; $i < count($closedDaysArr); $i++)  {
             echo 'blocked_days_array.push(["';
-            echo $closedDays[$i];
+            echo $closedDaysArr[$i];
             echo '"]);';
           }
         ?>
 
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
+            minDate: 0,
             beforeShowDay: function(date){
-                // var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
-                // return [ blocked_date_array.indexOf(string) == -1 ]
-
-                var day = date.getDay(), Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
-                // var closedDates = [[8, 29, 2022], [8, 25, 2022]];
+                var day = date.getDay();
                 var closedDates = blocked_date_array;
-                // var closedDays = [[Sunday], [Saturday]];
                 var closedDays = blocked_days_array;
                 
                 for (var i = 0; i < closedDays.length; i++) {
-                  let formatted_day = closedDays[i][0], Sunday = "Sunday", Monday = "Monday", 
-                                      Tuesday = "Tuesday", Wednesday = "Wednesday", Thursday = "Thursday", 
-                                      Friday = "Friday", Saturday = "Saturday";
+                  let formatted_date = '';
+                  switch(closedDays[i][0]){
+                    case "Sunday":
+                      formatted_date = 0;
+                      break;
+                    case "Monday":
+                      formatted_date = 1;
+                      break;
+                    case "Tuesday":
+                      formatted_date = 2;
+                      break;
+                    case "Wednesday":
+                      formatted_date = 3;
+                      break;
+                    case "Thursday":
+                      formatted_date = 4;
+                      break;
+                    case "Friday":
+                      formatted_date = 5;
+                      break;
+                    case "Saturday":
+                      formatted_date = 6;
+                      break;
+                  }
 
-                  console.log(day);console.log("--");console.log(typeof(day));console.log("==");
-                  console.log(formatted_day);console.log("--");console.log(ftypeof(ormatted_day));console.log("==");
-                  console.log(closedDays[i][0]);console.log("--"); console.log(typeof(closedDays[i][0]));console.log("==");
-
-                  if (day == formatted_day) {
+                  if (day == formatted_date) {
                       return [false];
                   }
                 }
@@ -453,7 +467,7 @@
         $(document).click(function(e) {
           $(event.target).toggleClass("transparent");
 
-          if ($(event.target).text() !== "Submit"){
+          if ($(event.target).text() !== "Submit" && $(event.target).text().length === 5){
             if($(event.target).hasClass("transparent")){
               $value = $("#result2").val();
               if($(event.target).text() !== ""){
@@ -471,6 +485,17 @@
                 // reassign value to input
                 $("#result2").val($new_val);
               }
+            }
+          } else if($(event.target).text() === "Submit") {
+            let date_val = $("#result").val();
+            let time_val = $("#result2").val();
+            if (date_val === ""){
+              alert("please choose the date!");
+              return false;
+            }
+            if (time_val === ""){
+              alert("please choose the time slot!");
+              return false;
             }
           }
         });

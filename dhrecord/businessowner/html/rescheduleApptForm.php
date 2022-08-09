@@ -312,8 +312,8 @@
                     </div>
                     <div>
                         <p><b>New Date (mm-dd-yyyy):</b></p>
-                        <input type="text" id="datepicker" name="date"/>
-                        <input type="text" id="result" style="display:none;"/>
+                        <input type="text" id="datepicker" name="date" required/>
+                        <input type="text" id="result" style="display:none;" required/>
                     </div>
                   </div>
 
@@ -323,7 +323,7 @@
                           <p><?=substr($apptTime, 0, 5)?></p>
                       </div>
                       <div class="d-flex">
-                          <input type="text" id="result2" style="display:none;" name="time" value="" />
+                          <input type="text" id="result2" style="display:none;" name="time" value="" required/>
                           <div>
                               <p><b>New Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                               <div id="timepicker"></div>
@@ -405,11 +405,14 @@
       $stmtOHSlot->bind_param("s", $docID);
       $stmtOHSlot->execute();
       $resultOHSlot = $stmtOHSlot->get_result();
+      $closedDaysArr = array();
 
       if ($resultOHSlot->num_rows > 0) {
         while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
 
           if (substr($rowOHSlot['start_time'], 0, 5) == "00:00" and substr($rowOHSlot['end_time'], 0, 5) == "00:00"){
+            array_push($closedDaysArr,$rowOHSlot['day']);
+
             echo 'timeslot["';
             echo $rowOHSlot['day'];
             echo '"].push("';
@@ -440,8 +443,40 @@
 
     $( function() {
         const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var blocked_date_array = [];
+
+        <?php
+          // GET THE PUBLIC HOLIDAY DATE
+          $resultPHD = $conn->query("SELECT * FROM blockedDate");
+
+          if ($resultPHD->num_rows > 0) {
+            while ($rowPHD = $resultPHD->fetch_assoc()){
+              $formatted_date_PHD = $rowPHD["date"];
+
+              echo 'blocked_date_array.push([';
+              echo substr($formatted_date_PHD, 5, 2); // month
+              echo ', ';
+              echo substr($formatted_date_PHD, 8, 2); // date
+              echo ', ';
+              echo substr($formatted_date_PHD, 0, 4); // year
+              echo ']);';
+            }
+          }
+        ?>
+
+        var blocked_days_array = [];
+
+        <?php
+          for ($i = 0; $i < count($closedDaysArr); $i++)  {
+            echo 'blocked_days_array.push(["';
+            echo $closedDaysArr[$i];
+            echo '"]);';
+          }
+        ?>
+
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
+            minDate: 0,
             onSelect: function(dateText, pickerObj){
               let chosenDate = new Date(dateText);
               let chosenDay = daysArr[chosenDate.getDay()];
@@ -477,27 +512,35 @@
             altField: "#result"
         });
 
-        $(document).click(function(e) {
-          $(event.target).toggleClass("transparent");
+        var $prev_ele = '';
 
-          if ($(event.target).text() !== "Submit"){
+        $(document).click(function(e) {
+          // can only choose on slot for reschedule
+          if ($prev_ele !== ''){
+            $prev_ele.toggleClass("transparent");
+            $(event.target).toggleClass("transparent");
+          }
+          
+          $prev_ele = $(event.target);
+
+          if ($(event.target).text() !== "Submit" && $(event.target).text().length === 5){
             if($(event.target).hasClass("transparent")){
-              $value = $("#result2").val();
               if($(event.target).text() !== ""){
-                $("#result2").val($value + $(event.target).text() + ", ");
+                $("#result2").val($(event.target).text() + ", ");
               }
             } else {
-              $value = $("#result2").val();
-              if ($value.includes($(event.target).text())){
-                // find index
-                $idx = $value.search($(event.target).text());
-
-                // remove from $value
-                $new_val = $value.substr(0, $idx) + $value.substr($idx+7, $value.length);
-
-                // reassign value to input
-                $("#result2").val($new_val);
-              }
+              $("#result2").val("");
+            }
+          } else if($(event.target).text() === "Submit") {
+            let date_val = $("#result").val();
+            let time_val = $("#result2").val();
+            if (date_val === ""){
+              alert("please choose the date!");
+              return false;
+            }
+            if (time_val === ""){
+              alert("please choose the time slot!");
+              return false;
             }
           }
         });
