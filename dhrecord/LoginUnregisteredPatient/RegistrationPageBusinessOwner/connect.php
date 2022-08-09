@@ -37,6 +37,7 @@
 	{
 		echo "Only letters and white space allowed";
 		//header("Location: index.php");
+	
 	}
 	else if(!preg_match("/[A-Z]{1}[\d]{7}[A-Z]{1}/",$nricNumber))
 	{
@@ -64,6 +65,9 @@
 		$stmt = mysqli_prepare($conn, "insert into tempRegisteredBusinessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		mysqli_stmt_bind_param($stmt, "sssssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $RegistrationNumber, $LicenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $passWord, $vkey, $verifiedNegative);
 		mysqli_stmt_execute($stmt);
+
+		mysqli_close($conn);
+		header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
 	}
 
 	//inserting data
@@ -81,7 +85,6 @@
 	//mysqli_stmt_bind_param($stmt, "sssssssss", $fullName, $nricNumber, $contactNumber, $email, $registrationNumber, $licenseNumber, $locationOfClinic, $clinicSpecialization, $row['ID']);
 	//mysqli_stmt_execute($stmt);
 
-	mysqli_close($conn);
-	header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
+
 
 ?>
