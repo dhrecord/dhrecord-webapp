@@ -64,12 +64,16 @@ a.ui-datepicker-next{
     cursor:default;
 }
 
-td.ui-datepicker-unselectable:hover a{
+/* td.ui-datepicker-unselectable:hover a{
     color: black;
 }
 
 td.ui-datepicker-unselectable:hover{
     background-color: #F2F2F2;
+} */
+
+.ui-state-default.transparent{
+    color: grey;
 }
 
 .slot-btn {
