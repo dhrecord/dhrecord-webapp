@@ -20,7 +20,7 @@
   }
 
   $searchErr = '';
-  $result = '';
+  $result = Array();
   $search = '';
   $select = '';
   $case = '';
@@ -118,6 +118,17 @@
         // search nearest clinics
         case "7":
           $case = '7';
+
+          $stmt = $conn->prepare("SELECT address FROM registeredPatient WHERE users_ID = ?");
+          $stmt->bind_param("s", $_SESSION['id']);
+          $stmt->execute();
+          $result_address = $stmt->get_result();
+          $user_address = '';
+
+          while ($row_address = $result_address->fetch_assoc()){
+            $user_address = $row_address['address'];
+          }
+
           break;
         // search highest rating clinics
         case "8":
@@ -511,6 +522,28 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+         
+  <!-- Add the this google map apis to webpage -->
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCI2rrQ6FeYu6JvfehofKYLLKxkDxem78o"></script>
+
+  <script>
+    window.onload = function GetLocation() {
+        var geocoder = new google.maps.Geocoder();
+        var address = "<?=$result_address?>";
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+                console.log(latitude);
+                console.log("=====");
+                console.log(longitude);
+            } else {
+                console.log("Request failed.");
+            }
+        });
+    };
+  </script>
 
   <script src="../js/passDataToModal.js"></script>
 </body>
