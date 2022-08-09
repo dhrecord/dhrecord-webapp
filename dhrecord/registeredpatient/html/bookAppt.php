@@ -363,7 +363,7 @@
 
               echo "console.log('";
               echo $formatted_date;
-              echo "')";
+              echo "');";
             }
           }
         ?>
