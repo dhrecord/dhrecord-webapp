@@ -47,7 +47,7 @@
     
     }
     $res = "INSERT INTO treatmentHistory (date, attendingDoctor, pt_ID, toothCondition, diagnosis, medicationPrescribed, quantity, comments)
-      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribed}', {$quantity}, '{$comments}')";
+      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribed}', CAST ('{$quantity}' AS int), '{$comments}')";
     
     if (mysqli_query($conn, $res)) 
       {
@@ -260,8 +260,7 @@
              <div class="mb-3 row">
                  <label for="comments" class="col-sm-2 col-form-label">Comments</label>
                  <div class="col-sm-10">
-                     <textarea rows="4" class="form-control" id="comments" name="comments">
-                     </textarea>
+                     <textarea rows="4" class="form-control" id="comments" name="comments"></textarea>
                  </div>
              </div>
              <div class="mb-3 row">
