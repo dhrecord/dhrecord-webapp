@@ -78,8 +78,12 @@ a {
 
 
 .fc-widget-content{
-  height: 25px!important;
+  height: 25px;
   /* height: fit-content; */
+}
+
+.fc-time-grid-event .fc-widget-content{
+  height: 42px!important;
 }
 
 .fc-popover .fc-widget-content{
