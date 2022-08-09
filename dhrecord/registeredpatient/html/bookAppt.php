@@ -371,9 +371,11 @@
         ?>
 
         var blocked_days_array = [];
+        let formatted_day = '';
+
         <?php
           for ($i = 0; $i < count($closedDays); $i++)  {
-            echo 'let formatted_day = ';
+            echo 'formatted_day = ';
             echo $closedDays[$i];
             echo ', Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;';
             echo 'blocked_days_array.push([formatted_day]);';
