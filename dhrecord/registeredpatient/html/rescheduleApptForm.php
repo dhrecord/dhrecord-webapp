@@ -471,7 +471,7 @@
         $(document).click(function(e) {
           $(event.target).toggleClass("transparent");
 
-          if ($(event.target).text() !== "Submit"){
+          if ($(event.target).text() !== "Submit" && $(event.target).text().length === 5){
             if($(event.target).hasClass("transparent")){
               $value = $("#result2").val();
               if($(event.target).text() !== ""){
