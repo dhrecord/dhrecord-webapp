@@ -367,6 +367,8 @@
           }
         ?>
 
+        console.log(blocked_date_array);
+
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
             beforeShowDay: function(date){
@@ -374,7 +376,8 @@
                 // return [ blocked_date_array.indexOf(string) == -1 ]
 
                 var day = date.getDay(), Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
-                var closedDates = blocked_date_array;
+                // var closedDates = [[8, 29, 2022], [8, 25, 2022]];
+                var closedDates = [[8, 29, 2022], [8, 25, 2022]];
                 var closedDays = [[Sunday], [Saturday]];
                 for (var i = 0; i < closedDays.length; i++) {
                   if (day == closedDays[i][0]) {
