@@ -8,7 +8,7 @@ if(!isset($_SESSION['loggedin']))
 
 require_once("connection.php");
 
-$ID = $_GET['ID'];
+$ID = $_GET['GetID'];
 
  if ($res1 = $conn->query($res))
                     while($obj = $res1->fetch_assoc())
