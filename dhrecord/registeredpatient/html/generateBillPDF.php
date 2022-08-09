@@ -246,13 +246,7 @@ footer {
                     <td>
                         " . $quantity . " <br>                        
                     </td>
-                </tr>
-                <tr>
-                    <th>Referring Doctor</th>
-                    <td>
-                        " . $referringDoc . "
-                    </td>
-                </tr>  
+                </tr>                 
 
                 <tr>
                     <th>Total Cost:</th>                   
