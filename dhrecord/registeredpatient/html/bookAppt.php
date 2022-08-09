@@ -311,13 +311,13 @@
       $stmtOHSlot->bind_param("s", $_POST['doc_id']);
       $stmtOHSlot->execute();
       $resultOHSlot = $stmtOHSlot->get_result();
-      $closedDays = array();
+      $closedDaysArr = array();
 
       if ($resultOHSlot->num_rows > 0) {
         while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
 
           if (substr($rowOHSlot['start_time'], 0, 5) == "00:00" and substr($rowOHSlot['end_time'], 0, 5) == "00:00"){
-            array_push($closedDays,$rowOHSlot['day']);
+            array_push($closedDaysArr,$rowOHSlot['day']);
 
             echo 'timeslot["';
             echo $rowOHSlot['day'];
@@ -371,41 +371,49 @@
         ?>
 
         var blocked_days_array = [];
-        let formatted_day = '';
 
         <?php
-          for ($i = 0; $i < count($closedDays); $i++)  {
-            echo 'formatted_day = ';
-            echo $closedDays[$i];
-            echo ', Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;';
-            echo 'blocked_days_array.push([formatted_day]);';
+          for ($i = 0; $i < count($closedDaysArr); $i++)  {
+            echo 'blocked_days_array.push(["';
+            echo $closedDaysArr[$i];
+            echo '"]);';
           }
         ?>
 
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
             beforeShowDay: function(date){
-                // var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
-                // return [ blocked_date_array.indexOf(string) == -1 ]
-
-                var day = date.getDay(), Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
-                // var closedDates = [[8, 29, 2022], [8, 25, 2022]];
+                var day = date.getDay();
                 var closedDates = blocked_date_array;
-                // var closedDays = [[Sunday], [Saturday]];
                 var closedDays = blocked_days_array;
                 
                 for (var i = 0; i < closedDays.length; i++) {
-                  // let formatted_day = closedDays[i][0], Sunday = "Sunday", Monday = "Monday", 
-                  //                     Tuesday = "Tuesday", Wednesday = "Wednesday", Thursday = "Thursday", 
-                  //                     Friday = "Friday", Saturday = "Saturday";
+                  let formatted_date = '';
+                  switch(closedDays[i][0]){
+                    case "Sunday":
+                      formatted_date = 0;
+                      break;
+                    case "Monday":
+                      formatted_date = 1;
+                      break;
+                    case "Tuesday":
+                      formatted_date = 2;
+                      break;
+                    case "Wednesday":
+                      formatted_date = 3;
+                      break;
+                    case "Thursday":
+                      formatted_date = 4;
+                      break;
+                    case "Friday":
+                      formatted_date = 5;
+                      break;
+                    case "Saturday":
+                      formatted_date = 6;
+                      break;
+                  }
 
-                  // let formatted_day = closedDays[i][0], Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
-
-                  console.log(day);console.log("--");console.log(typeof(day));console.log("==");
-                  // console.log(formatted_day);console.log("--");console.log(typeof(formatted_day));console.log("==");
-                  console.log(closedDays[i][0]);console.log("--"); console.log(typeof(closedDays[i][0]));console.log("==");
-
-                  if (day == closedDays[i][0]) {
+                  if (day == formatted_date[i][0]) {
                       return [false];
                   }
                 }
