@@ -201,7 +201,7 @@
                             $res3 = $conn->query($query2);
                             $obj2 = $res3->fetch_assoc();
                             
-                            //$ID = $obj['ID'];
+                            $ID = $obj['ID'];
                             //$date = $obj['date'];
 	                        //$attendingDoctor = $obj['attendingDoctor'];
 	                        //$fullName = $obj1['fullName'];
