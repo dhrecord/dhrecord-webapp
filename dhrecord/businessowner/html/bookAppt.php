@@ -281,7 +281,7 @@
                     <div>
                         <p><b>Patient:</b></p>
                         <!-- <input type="text" name="patID" style="width:250px;"/> -->
-                        <select name="patID" id="patID" class="form-select">
+                        <select name="patID" id="patID" class="form-select" required>
                           <option selected value="">ID - Name</option>
                           <?php
                             // GET THE LIST OF PATIENTS
@@ -307,7 +307,7 @@
               <div class="mx-5">
                     <div>
                         <p><b>Agenda:</b></p>
-                        <input type="text" name="agenda" style="width:250px;"/>
+                        <input type="text" name="agenda" style="width:250px;" id="agenda" required/>
                     </div>
               </div>
             </div>
@@ -580,8 +580,18 @@
               }
             }
           } else if($(event.target).text() === "Submit") {
+            let patientID = $("#patID").val();
+            let agenda = $("#agenda").val();
             let date_val = $("#result").val();
             let time_val = $("#result2").val();
+            if (patientID === ""){
+              alert("please choose the patient!");
+              return false;
+            }
+            if (agenda === ""){
+              alert("please enter agenda!");
+              return false;
+            }
             if (date_val === ""){
               alert("please choose the date!");
               return false;

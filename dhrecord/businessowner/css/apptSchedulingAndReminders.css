@@ -65,11 +65,15 @@ a.ui-datepicker-next{
 }
 
 td.ui-datepicker-unselectable:hover a{
-    color: black;
+    color: rgb(166, 166, 166);
 }
 
 td.ui-datepicker-unselectable:hover{
-    background-color: #F2F2F2;
+    background-color: transparent;
+}
+
+.ui-state-disabled .ui-state-default{
+    color: rgb(166, 166, 166);
 }
 
 .slot-btn {
