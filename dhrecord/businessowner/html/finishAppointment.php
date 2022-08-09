@@ -47,7 +47,7 @@
     
     }
     $res = "INSERT INTO treatmentHistory (date, attendingDoctor, pt_ID, toothCondition, diagnosis, medicationPrescribed, quantity, comments)
-      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribed}', '{$quantity}', '{$comments}')";
+      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribed}', {$quantity}, '{$comments}')";
     
     if (mysqli_query($conn, $res)) 
       {
