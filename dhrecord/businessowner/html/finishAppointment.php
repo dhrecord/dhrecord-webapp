@@ -259,7 +259,8 @@
              <div class="mb-3 row">
                  <label for="comments" class="col-sm-2 col-form-label">Comments</label>
                  <div class="col-sm-10">
-                     <input type="text" class="form-control" id="comments" name="comments">
+                     <textarea rows="4" class="form-control" id="comments" name="comments">
+                     </textarea>
                  </div>
              </div>
              <div class="mb-3 row">
