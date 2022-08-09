@@ -1,18 +1,30 @@
 <?php
-session_start();
-if(!isset($_SESSION['loggedin']))
-  {
-    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
-    exit;
-  }
+//session_start();
+//if(!isset($_SESSION['loggedin']))
+//  {
+//    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+//    exit;
+//  }
 
 require_once("connection.php");
 
-$ID = $_GET['ID'];
-
+$ID = $_GET['GetID'];
+$res = "SELECT * FROM treatmentHistory WHERE ID = $ID";
  if ($res1 = $conn->query($res))
                     while($obj = $res1->fetch_assoc())
                         {
+                            $ID = $obj['ID'];
+                            $date = $obj['date'];
+	                        //$attendingDoctor = $obj['attendingDoctor'];
+	                        //$fullName = $obj1['fullName'];
+	                        //$fullName1 = $obj2['fullName'];
+	                        //$pt_ID = $obj['pt_ID'];
+                            $toothCondition = $obj['toothCondition']; 
+	                        $diagnosis = $obj['diagnosis'];
+                            $medicationPrescribed = $obj['medicationPrescribed'];
+                            $quantity = $obj['quantity'];
+                            $comments = $obj['comments'];
+                            
                             $doctorID = $obj["attendingDoctor"];
                             $query1 = "SELECT * FROM doctor WHERE doctorID = $doctorID";
                             $res2 = $conn->query($query1);
@@ -34,18 +46,14 @@ $ID = $_GET['ID'];
                             $mc = $obj2['medConditions']; 
                             $da = $obj2['drugAllergies']; 
                             
-
-                            $ID = $obj['ID'];
-                            $date = $obj['date'];
-	                        //$attendingDoctor = $obj['attendingDoctor'];
-	                        //$fullName = $obj1['fullName'];
-	                        //$fullName1 = $obj2['fullName'];
-	                        //$pt_ID = $obj['pt_ID'];
-                            $toothCondition = $obj['toothCondition']; 
-	                        $diagnosis = $obj['diagnosis'];
                             $medicationPrescribed = $obj['medicationPrescribed'];
-                            $quantity = $obj['quantity'];
-                            $comments = $obj['comments'];
+                            $query3 = "SELECT * FROM inventoryManagement WHERE prescriptionName = '$medicationPrescribed'";
+                            $res4 = $conn->query($query3);
+                            $obj3 = $res4->fetch_assoc();
+                            $prescriptionPrice = $obj3['prescriptionPrice'];
+
+                            $totalCost = $prescriptionPrice * $quantity;
+                            
                         }
 
 
@@ -212,15 +220,13 @@ footer {
             <h4>Billing Summary:</h4>
                 <tr>
                     <td>Patient's Name: " . $name . "<br>
-                        Patient's Address:
-                        <p>" .$addr. "<br></p>
-                        
-                    </td>
-                    <td>
+                        Patient's Address: " .$address. "
+                        <td>
                         NRIC: " . $nric . " <br>
                         Contact Number: " . $hp . "
+                        </td>
                     </td>
-                </tr>                
+                </tr>    
                 <tr>
                     <td>Medical Conditions: " . $mc . "</td>
                 </tr>
@@ -228,9 +234,8 @@ footer {
                     <td>Drug Allergies: " . $da . "</td>
                 </tr>
             </table>
-            
-        </section>
-        <section class='sendTo'>
+        </section> 
+            <section class='sendTo'>
             <table>
                 
                 
@@ -239,20 +244,9 @@ footer {
                     <td> <th>Quantity</th></td>
                 </tr>
                 <tr>
-                    
-                    <td>
-                        " . $medicationPrescribed . "<br>
-                    </td>
-                    <td>
-                        " . $quantity . " <br>                        
-                    </td>
-                </tr>
-                <tr>
-                    <th>Referring Doctor</th>
-                    <td>
-                        " . $referringDoc . "
-                    </td>
-                </tr>  
+                    <td>".$medicationPrescribed."</td>
+                    <td><th>".$quantity."</th></td>
+                </tr>                 
 
                 <tr>
                     <th>Total Cost:</th>                   
