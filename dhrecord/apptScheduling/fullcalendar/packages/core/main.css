@@ -269,9 +269,10 @@ temporary rendered events).
   position: relative;
 }
 
-.fc-timeGridWeek-view .fc-event {
+.fc-timeGridWeek-view .fc-event, .fc-timeGridDay-view .fc-event {
   position: absolute;
 }
+
 
 .fc-event,
 .fc-event-dot {
