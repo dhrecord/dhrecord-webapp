@@ -355,11 +355,14 @@
           if ($resultPHD->num_rows > 0) {
             while ($rowPHD = $resultPHD->fetch_assoc()){
               $formatted_date_PHD = $rowPHD["date"];
-              $formatted_date = substr($formatted_date_PHD, 5, 2)."-".substr($formatted_date_PHD, 8, 2)."-".substr($formatted_date_PHD, 0, 4);
 
-              echo 'blocked_date_array.push("';
-              echo $formatted_date;
-              echo '");';
+              echo 'blocked_date_array.push([';
+              echo $substr($formatted_date_PHD, 5, 2); // month
+              echo ', ';
+              echo $substr($formatted_date_PHD, 8, 2); // date
+              echo ', ';
+              echo $substr($formatted_date_PHD, 0, 4); // year
+              echo ']);';
             }
           }
         ?>
@@ -371,7 +374,7 @@
                 // return [ blocked_date_array.indexOf(string) == -1 ]
 
                 var day = date.getDay(), Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
-                var closedDates = [[8, 29, 2022], [8, 25, 2022]];
+                var closedDates = blocked_date_array;
                 var closedDays = [[Sunday], [Saturday]];
                 for (var i = 0; i < closedDays.length; i++) {
                   if (day == closedDays[i][0]) {
