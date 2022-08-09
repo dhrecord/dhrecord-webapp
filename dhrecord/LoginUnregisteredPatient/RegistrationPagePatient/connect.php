@@ -32,12 +32,23 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
-	$name = test_input($_POST['fullName']);
-
-	if(!preg_match("/^[a-zA-Z-' ]*$/",$name))
+	if(!preg_match("/^[a-zA-Z-' ]*$/",$fullName))
 	{
-		$nameErr = "Only letters and white space allowed";
-		header("Location: index.php");
+		echo "Only letters and white space allowed";
+		//header("Location: index.php");
+	
+	}
+	else if(!preg_match("[A-Z]{1}[\d]{7}[A-Z]{1}",$nricNumber))
+	{
+	
+		echo "please enter a valid NRIC";
+	
+	}
+	else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+	{
+	
+		echo "Please enter a valid email";
+		//header("Location: index.php");		
 	
 	}
 	else
