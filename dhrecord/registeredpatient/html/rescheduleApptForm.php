@@ -316,11 +316,14 @@
       $stmtOHSlot->bind_param("s", $docID);
       $stmtOHSlot->execute();
       $resultOHSlot = $stmtOHSlot->get_result();
+      $closedDaysArr = array();
 
       if ($resultOHSlot->num_rows > 0) {
         while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
 
           if (substr($rowOHSlot['start_time'], 0, 5) == "00:00" and substr($rowOHSlot['end_time'], 0, 5) == "00:00"){
+            array_push($closedDaysArr,$rowOHSlot['day']);
+            
             echo 'timeslot["';
             echo $rowOHSlot['day'];
             echo '"].push("';
@@ -351,8 +354,85 @@
 
     $( function() {
         const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var blocked_date_array = [];
+
+        <?php
+          // GET THE PUBLIC HOLIDAY DATE
+          $resultPHD = $conn->query("SELECT * FROM blockedDate");
+
+          if ($resultPHD->num_rows > 0) {
+            while ($rowPHD = $resultPHD->fetch_assoc()){
+              $formatted_date_PHD = $rowPHD["date"];
+
+              echo 'blocked_date_array.push([';
+              echo substr($formatted_date_PHD, 5, 2); // month
+              echo ', ';
+              echo substr($formatted_date_PHD, 8, 2); // date
+              echo ', ';
+              echo substr($formatted_date_PHD, 0, 4); // year
+              echo ']);';
+            }
+          }
+        ?>
+
+        var blocked_days_array = [];
+
+        <?php
+          for ($i = 0; $i < count($closedDaysArr); $i++)  {
+            echo 'blocked_days_array.push(["';
+            echo $closedDaysArr[$i];
+            echo '"]);';
+          }
+        ?>
+
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
+            beforeShowDay: function(date){
+                var day = date.getDay();
+                var closedDates = blocked_date_array;
+                var closedDays = blocked_days_array;
+                
+                for (var i = 0; i < closedDays.length; i++) {
+                  let formatted_date = '';
+                  switch(closedDays[i][0]){
+                    case "Sunday":
+                      formatted_date = 0;
+                      break;
+                    case "Monday":
+                      formatted_date = 1;
+                      break;
+                    case "Tuesday":
+                      formatted_date = 2;
+                      break;
+                    case "Wednesday":
+                      formatted_date = 3;
+                      break;
+                    case "Thursday":
+                      formatted_date = 4;
+                      break;
+                    case "Friday":
+                      formatted_date = 5;
+                      break;
+                    case "Saturday":
+                      formatted_date = 6;
+                      break;
+                  }
+
+                  if (day == formatted_date) {
+                      return [false];
+                  }
+                }
+
+                for (i = 0; i < closedDates.length; i++) {
+                  if (date.getMonth() == closedDates[i][0] - 1 &&
+                  date.getDate() == closedDates[i][1] &&
+                  date.getFullYear() == closedDates[i][2]) {
+                    return [false];
+                  }
+                }
+
+                return [true];
+            },
             onSelect: function(dateText, pickerObj){
               let chosenDate = new Date(dateText);
               let chosenDay = daysArr[chosenDate.getDay()];
