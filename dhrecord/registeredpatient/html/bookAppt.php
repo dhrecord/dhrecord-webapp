@@ -350,9 +350,7 @@
 
         <?php
           // GET THE PUBLIC HOLIDAY DATE
-          $stmtPHD = $conn->query("SELECT * FROM blockedDate");
-          $stmtPHD->execute();
-          $resultBSlot = $stmtPHD->get_result();
+          $resultBSlot = $conn->query("SELECT * FROM blockedDate");
 
           if ($resultPHD->num_rows > 0) {
             while ($rowPHD = $resultPHD->fetch_assoc()){
