@@ -367,8 +367,27 @@
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
             beforeShowDay: function(date){
-                var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
-                return [ blocked_date_array.indexOf(string) == -1 ] || $.datepicker.noWeekends
+                // var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
+                // return [ blocked_date_array.indexOf(string) == -1 ]
+
+                var day = date.getDay(), Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
+                var closedDates = [[8, 29, 2022], [8, 25, 2022]];
+                var closedDays = [[Sunday], [Saturday]];
+                for (var i = 0; i < closedDays.length; i++) {
+                  if (day == closedDays[i][0]) {
+                      return [false];
+                  }
+                }
+
+                for (i = 0; i < closedDates.length; i++) {
+                  if (date.getMonth() == closedDates[i][0] - 1 &&
+                  date.getDate() == closedDates[i][1] &&
+                  date.getFullYear() == closedDates[i][2]) {
+                    return [false];
+                  }
+                }
+
+                return [true];
             },
             onSelect: function(dateText, pickerObj){
                 let chosenDate = new Date(dateText);
