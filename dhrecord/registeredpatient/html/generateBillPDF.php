@@ -213,7 +213,7 @@ footer {
                 <tr>
                     <td>Patient's Name: " . $name . "<br>
                         Patient's Address:
-                        <p>" .$addr. "<br></p>
+                        <p>" .$address. "<br></p>
                         
                     </td>
                     <td>
