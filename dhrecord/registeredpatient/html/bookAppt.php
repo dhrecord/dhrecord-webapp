@@ -346,7 +346,25 @@
 
     $( function() {
         const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        var blocked_date_array = ["08-14-2022","08-30-2022","08-23-2022"];
+        var blocked_date_array = [];
+
+        <?php
+          // GET THE PUBLIC HOLIDAY DATE
+          $stmtPHD = $conn->query("SELECT * FROM blockedDate");
+          $stmtPHD->execute();
+          $resultBSlot = $stmtPHD->get_result();
+
+          if ($resultPHD->num_rows > 0) {
+            while ($rowPHD = $resultPHD->fetch_assoc()){
+              $formatted_date = $rowPHD["date"];
+              $formatted_date = $formatted_date.substr(8, 2)."-".$formatted_date.substr(5, 2)."-".$formatted_date.substr(0, 4);
+
+              echo 'blocked_date_array.push(';
+              echo $formatted_date;
+              echo ');';
+            }
+          }
+        ?>
 
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
