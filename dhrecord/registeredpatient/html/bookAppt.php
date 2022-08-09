@@ -395,6 +395,11 @@
                   let formatted_day = closedDays[i][0], Sunday = "Sunday", Monday = "Monday", 
                                       Tuesday = "Tuesday", Wednesday = "Wednesday", Thursday = "Thursday", 
                                       Friday = "Friday", Saturday = "Saturday";
+
+                  console.log(day);console.log("--");console.log(typeof(day));console.log("==");
+                  console.log(formatted_day);console.log("--");console.log(ftypeof(ormatted_day));console.log("==");
+                  console.log(closedDays[i][0]);console.log("--"); console.log(typeof(closedDays[i][0]));console.log("==");
+
                   if (day == formatted_day) {
                       return [false];
                   }
