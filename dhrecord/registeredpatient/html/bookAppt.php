@@ -311,11 +311,14 @@
       $stmtOHSlot->bind_param("s", $_POST['doc_id']);
       $stmtOHSlot->execute();
       $resultOHSlot = $stmtOHSlot->get_result();
+      $closedDays = array();
 
       if ($resultOHSlot->num_rows > 0) {
         while ($rowOHSlot = $resultOHSlot->fetch_assoc()){
 
           if (substr($rowOHSlot['start_time'], 0, 5) == "00:00" and substr($rowOHSlot['end_time'], 0, 5) == "00:00"){
+            array_push($closedDays,$rowOHSlot['day']);
+
             echo 'timeslot["';
             echo $rowOHSlot['day'];
             echo '"].push("';
@@ -375,6 +378,7 @@
 
                 var day = date.getDay(), Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
                 // var closedDates = [[8, 29, 2022], [8, 25, 2022]];
+                console.log("<?=print_r($closedDays)?>");
                 var closedDates = blocked_date_array;
                 var closedDays = [[Sunday], [Saturday]];
                 for (var i = 0; i < closedDays.length; i++) {
