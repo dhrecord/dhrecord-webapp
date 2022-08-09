@@ -205,7 +205,25 @@
              <div class="mb-3 row">
                  <label for="medicationPrescribed" class="col-sm-2 col-form-label">Medication Prescribed</label>
                  <div class="col-sm-10">
-                     <input type="text" class="form-control" id="medicationPrescribed" name="medicationPrescribed">
+                     <!-- <input type="text" class="form-control" id="medicationPrescribed" name="medicationPrescribed"> -->
+                     <select name="medicationPrescribed" id="medicationPrescribed" class="form-select">
+                         <option selected value=""></option>
+                         <?php
+                            // GET THE LIST OF MEDICATIONS THAT A CLINIC HAS
+                            $resultM = $conn->query("SELECT * FROM inventoryManagement");
+
+                            while ($row = $resultM->fetch_assoc()) {
+                                echo '<option value="';
+                                $fieldM = $row['prescriptionName'];
+                                echo $fieldM;
+                                echo '">';
+                                echo $fieldM;
+                                echo '</option>';
+                            }
+
+                            mysqli_close($conn);
+                            ?>
+                     </select>
                  </div>
              </div>
              <div class="mb-3 row">
@@ -220,20 +238,6 @@
                      <select name="referTo" id="referTo" class="form-select">
                          <option selected value=""></option>
                          <?php
-                            // Database Connection
-                            $servername = "localhost";
-                            $database = "u922342007_Test";
-                            $username = "u922342007_admin";
-                            $password = "Aylm@012";
-                            // Create connection
-                            $conn = mysqli_connect($servername, $username, $password, $database);
-
-                            if (!$conn) {
-                                die("Connection failed: " . mysqli_connect_error());
-                            }
-
-                            $sessionID = $_SESSION['id'];
-
                             // GET THE LIST OF CLINICS
                             $resultBO = $conn->query("SELECT * FROM businessOwner");
                             //echo '<option value="">""</option>';
