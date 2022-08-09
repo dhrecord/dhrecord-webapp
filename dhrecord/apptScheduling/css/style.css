@@ -82,10 +82,6 @@ a {
   /* height: fit-content; */
 }
 
-.fc-time-grid-event .fc-widget-content{
-  height: 42px!important;
-}
-
 .fc-popover .fc-widget-content{
   height: 100%!important;
 }
@@ -134,4 +130,8 @@ a {
 
 .btn:hover{
   opacity: 0.8;
+}
+
+.fc-time-grid-event .fc-content{
+  height: 42px!important;
 }
