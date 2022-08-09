@@ -220,9 +220,7 @@
                                 echo $fieldM;
                                 echo '</option>';
                             }
-
-                            mysqli_close($conn);
-                            ?>
+                          ?>
                      </select>
                  </div>
              </div>
@@ -233,14 +231,13 @@
                  </div>
              </div>
              <div class="mb-3 row">
-                 <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
-                 <div class="col-sm-10">
+                <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
+                <div class="col-sm-10">
                      <select name="referTo" id="referTo" class="form-select">
                          <option selected value=""></option>
                          <?php
                             // GET THE LIST OF CLINICS
                             $resultBO = $conn->query("SELECT * FROM businessOwner");
-                            //echo '<option value="">""</option>';
 
                             while ($row = $resultBO->fetch_assoc()) {
                                 echo '<option value="';
@@ -255,9 +252,9 @@
                             }
 
                             mysqli_close($conn);
-                            ?>
+                          ?>
                      </select>
-                 </div>
+                </div>
              </div>
              <div class="mb-3 row">
                  <label for="comments" class="col-sm-2 col-form-label">Comments</label>
