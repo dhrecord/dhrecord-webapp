@@ -27,8 +27,10 @@
     $apptDoctorID = $_POST["apptDoctorID"];
     $apptPatientID = $_POST["apptPatientID"];
     $toothCondition = $_POST["toothCondition"];
-    $referredTo = $_POST["referTo"];
+    $diagnosis = $_POST["diagnosis"];
     $medicationPrescribed = $_POST["medicationPrescribed"];
+    $quantity = $_POST["quantity"];
+    $referredTo = $_POST["referTo"];
     $comments = $_POST["comments"];
     
     if (isset($_POST["referTo"]) && $_POST["referTo"] != "")
@@ -44,8 +46,8 @@
       }
     
     }
-    $res = "INSERT INTO treatmentHistory (date, attendingDoctor, toothCondition, medicationPrescribed, pt_ID)
-      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$medicationPrescribed}', '{$apptPatientID}')";
+    $res = "INSERT INTO treatmentHistory (date, attendingDoctor, pt_ID, toothCondition, diagnosis, medicationPrescribed, quantity, comments)
+      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribed}', CAST('{$quantity}' AS int), '{$comments}')";
     
     if (mysqli_query($conn, $res)) 
       {
@@ -72,11 +74,11 @@
   
     while($sql = mysqli_fetch_assoc($result))
     {
-              $apptID = $sql["apptID"];
-              $apptDate = $sql["date"];
-              $apptAgenda = $sql["agenda"];
-              $apptDoctorID = $sql["doctorID"];
-              $apptPatientID = $sql["patientID"];
+      $apptID = $sql["apptID"];
+      $apptDate = $sql["date"];
+      $apptAgenda = $sql["agenda"];
+      $apptDoctorID = $sql["doctorID"];
+      $apptPatientID = $sql["patientID"];
     }
 ?>
 
@@ -227,7 +229,7 @@
              <div class="mb-3 row">
                  <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
                  <div class="col-sm-10">
-                     <input type="text" class="form-control" id="Quantity" name="Quantity">
+                     <input type="number" min="0" step="1" class="form-control" id="quantity" name="quantity">
                  </div>
              </div>
              <div class="mb-3 row">
@@ -251,7 +253,6 @@
                                 echo '</option>';
                             }
 
-                            mysqli_close($conn);
                           ?>
                      </select>
                 </div>
@@ -259,8 +260,7 @@
              <div class="mb-3 row">
                  <label for="comments" class="col-sm-2 col-form-label">Comments</label>
                  <div class="col-sm-10">
-                     <textarea rows="4" class="form-control" id="comments" name="comments">
-                     </textarea>
+                     <textarea rows="4" class="form-control" id="comments" name="comments"></textarea>
                  </div>
              </div>
              <div class="mb-3 row">

@@ -131,3 +131,7 @@ a {
 .btn:hover{
   opacity: 0.8;
 }
+
+.fc-time-grid-event .fc-content{
+  height: 42px!important;
+}
