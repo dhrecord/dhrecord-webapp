@@ -373,9 +373,9 @@
         var blocked_days_array = [];
         <?php
           for ($i = 0; $i < count($closedDays); $i++)  {
-            echo 'blocked_days_array.push(["';
+            echo 'blocked_days_array.push([';
             echo $closedDays[$i];
-            echo '"]);';
+            echo ']);';
           }
         ?>
 
@@ -392,12 +392,14 @@
                 var closedDays = blocked_days_array;
                 
                 for (var i = 0; i < closedDays.length; i++) {
-                  let formatted_day = closedDays[i][0], Sunday = "Sunday", Monday = "Monday", 
-                                      Tuesday = "Tuesday", Wednesday = "Wednesday", Thursday = "Thursday", 
-                                      Friday = "Friday", Saturday = "Saturday";
+                  // let formatted_day = closedDays[i][0], Sunday = "Sunday", Monday = "Monday", 
+                  //                     Tuesday = "Tuesday", Wednesday = "Wednesday", Thursday = "Thursday", 
+                  //                     Friday = "Friday", Saturday = "Saturday";
+
+                  let formatted_day = closedDays[i][0], Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
 
                   console.log(day);console.log("--");console.log(typeof(day));console.log("==");
-                  console.log(formatted_day);console.log("--");console.log(ftypeof(ormatted_day));console.log("==");
+                  console.log(formatted_day);console.log("--");console.log(typeof(formatted_day));console.log("==");
                   console.log(closedDays[i][0]);console.log("--"); console.log(typeof(closedDays[i][0]));console.log("==");
 
                   if (day == formatted_day) {
