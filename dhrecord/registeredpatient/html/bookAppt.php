@@ -370,6 +370,15 @@
           }
         ?>
 
+        var blocked_days = [];
+        <?php
+          for ($i = 0; $i < count($closedDays); $i++)  {
+            echo 'blocked_days.push([';
+            echo $closedDays[$i];
+            echo ']);';
+          }
+        ?>
+
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
             beforeShowDay: function(date){
@@ -378,9 +387,9 @@
 
                 var day = date.getDay(), Sunday = 0, Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6;
                 // var closedDates = [[8, 29, 2022], [8, 25, 2022]];
-                console.log("<?=print_r($closedDays)?>");
                 var closedDates = blocked_date_array;
-                var closedDays = [[Sunday], [Saturday]];
+                // var closedDays = [[Sunday], [Saturday]];
+                var closedDays = blocked_days;
                 for (var i = 0; i < closedDays.length; i++) {
                   if (day == closedDays[i][0]) {
                       return [false];
