@@ -6,37 +6,72 @@ if(!isset($_SESSION['loggedin']))
     exit;
   }
 
+require_once("connection.php");
 
-$servername = "localhost";
-$database = "u922342007_Test";
-$username = "u922342007_admin";
-$password = "Aylm@012";
-$conn = mysqli_connect($servername, $username, $password, $database);
+$ID = $_GET['ID'];
 
-$referralID = $_GET['ID'];
+ if ($res1 = $conn->query($res))
+                    while($obj = $res1->fetch_assoc())
+                        {
+                            $doctorID = $obj["attendingDoctor"];
+                            $query1 = "SELECT * FROM doctor WHERE doctorID = $doctorID";
+                            $res2 = $conn->query($query1);
+                            $obj1 = $res2->fetch_assoc();
 
-$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, referralTracking.toothCondition, referralTracking.comments,
-registeredPatient.fullName AS ptName,  registeredPatient.nricNumber, registeredPatient.contactNumber, registeredPatient.address, registeredPatient.medConditions, 
-registeredPatient.drugAllergies, doctor.fullName AS docName FROM referralTracking, registeredPatient, doctor, users 
-WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID 
-AND referralTracking.referringDoctor = doctor.doctorID AND referralTracking.ID = '{$referralID}'");
+                            $doctorName = $obj1['fullName'];                            
+                            
+                            $PT_ID = $obj["pt_ID"];
+                            $query2 = "SELECT * FROM registeredPatient WHERE ID = $PT_ID";
+                            $res3 = $conn->query($query2);
+                            $obj2 = $res3->fetch_assoc();
 
-$result = mysqli_query($conn, $res);
+                            $name = $obj2['fullName']; 
+                            $nric = $obj2['nricNumber']; 
+                            $hp = $obj2['contactNumber']; 
+                            $email = $obj2['email']; 
+                            $address = $obj2['address']; 
+                            $pCode = $obj2['postalCode']; 
+                            $mc = $obj2['medConditions']; 
+                            $da = $obj2['drugAllergies']; 
+                            
 
- while($sql = mysqli_fetch_assoc($result))
-    {
-     $name = $sql["ptName"];
-     $nric = $sql["nricNumber"];
-     $hp = $sql["contactNumber"];
-     $addr = $sql["address"];
-     $mc = $sql["medConditions"];
-     $da = $sql["drugAllergies"];
-     $referredTo = $sql["referredTo"];
-     $referralDate = $sql["referralDate"];
-     $referringDoc = $sql["docName"];
-     $toothCondi = $sql["toothCondition"];
-     $comments = $sql["comments"];
-   }
+                            $ID = $obj['ID'];
+                            $date = $obj['date'];
+	                        //$attendingDoctor = $obj['attendingDoctor'];
+	                        //$fullName = $obj1['fullName'];
+	                        //$fullName1 = $obj2['fullName'];
+	                        //$pt_ID = $obj['pt_ID'];
+                            $toothCondition = $obj['toothCondition']; 
+	                        $diagnosis = $obj['diagnosis'];
+                            $medicationPrescribed = $obj['medicationPrescribed'];
+                            $quantity = $obj['quantity'];
+                            $comments = $obj['comments'];
+                        }
+
+
+
+//$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, referralTracking.toothCondition, referralTracking.comments,
+//registeredPatient.fullName AS ptName,  registeredPatient.nricNumber, registeredPatient.contactNumber, registeredPatient.address, registeredPatient.medConditions, 
+//registeredPatient.drugAllergies, doctor.fullName AS docName FROM referralTracking, registeredPatient, doctor, users 
+//WHERE users.ID = '{$_SESSION['id']}' AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID 
+//AND referralTracking.referringDoctor = doctor.doctorID AND referralTracking.ID = '{$referralID}'");
+
+//$result = mysqli_query($conn, $res);
+
+// while($sql = mysqli_fetch_assoc($result))
+//    {
+//     $name = $sql["ptName"];
+//     $nric = $sql["nricNumber"];
+//     $hp = $sql["contactNumber"];
+//     $addr = $sql["address"];
+//     $mc = $sql["medConditions"];
+//     $da = $sql["drugAllergies"];
+//     $referredTo = $sql["referredTo"];
+//     $referralDate = $sql["referralDate"];
+//     $referringDoc = $sql["docName"];
+//     $toothCondi = $sql["toothCondition"];
+//     $comments = $sql["comments"];
+//   }
 
 
 require_once(__DIR__.'/../dompdf/autoload.inc.php');
@@ -49,8 +84,8 @@ $dompdf = new Dompdf();
 
 
 date_default_timezone_set('Asia/Singapore');
-$date =  date("d/m/y g:i a");
-echo $date;
+$Cdate =  date("d/m/y g:i a");
+echo $Cdate;
 
 //Get variable values from sql
 /*
@@ -174,20 +209,18 @@ footer {
     <main>
     <section>
         <table class='patient-details'>
-            <h4>Referral:</h4>
+            <h4>Billing Summary:</h4>
                 <tr>
                     <td>Patient's Name: " . $name . "<br>
-                        Patient's Address:<br>
-                        <p>" .$addr. "<br>
-                        </p>
+                        Patient's Address:
+                        <p>" .$addr. "<br></p>
+                        
                     </td>
                     <td>
-                        NRIC: " . $nric . "
+                        NRIC: " . $nric . " <br>
+                        Contact Number: " . $hp . "
                     </td>
-                </tr>
-                <tr>
-                    <td>Contact Number: " . $hp . "</td>
-                </tr>
+                </tr>                
                 <tr>
                     <td>Medical Conditions: " . $mc . "</td>
                 </tr>
@@ -199,15 +232,19 @@ footer {
         </section>
         <section class='sendTo'>
             <table>
-                <h4>To:</h4>
+                
+                
                 <tr>
-                    <th>Person</th>
-                    <td></td>
+                    <th>Medication Prescribed</th>                   
+                    <td> <th>Quantity</th></td>
                 </tr>
                 <tr>
-                    <th>Department \ Sub-Specialty</th>
+                    
                     <td>
-                        " . $referredTo . "<br>
+                        " . $medicationPrescribed . "<br>
+                    </td>
+                    <td>
+                        " . $quantity . " <br>                        
                     </td>
                 </tr>
                 <tr>
@@ -215,33 +252,20 @@ footer {
                     <td>
                         " . $referringDoc . "
                     </td>
-                </tr>
+                </tr>  
+
                 <tr>
-                    <th>Referral Date</th>
-                    <td>
-                        " . $referralDate . "
-                    </td>
-                </tr>
-                <tr>
-                    <th>Tooth Condition</th>
-                    <td>
-                        " . $toothCondi . "
-                    </td>
+                    <th>Total Cost:</th>                   
+                    <td> <th> " . $totalCost  . "</th></td>
                 </tr>
             </table>
-        </section>
-        <section class='comments'>
-            <h4>Comments:</h4>
-            <div class='comment-group'>
-                <p>" . $comments . "</p>
-            </div>
-        </section>
+        </section>        
         
     </main>
     
     <footer>
         <p id='printDate'>  Printed on
-        " . $date . "</p>
+        " . $Cdate . "</p>
     </footer>
 </body>
 ";
