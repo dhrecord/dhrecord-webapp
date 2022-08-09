@@ -65,7 +65,7 @@
         //echo "Error: " . $res . "<br>" . mysqli_error($conn);
       }
     
-    // header('Location: ./apptSchedulingAndReminders.php');
+    header('Location: ./apptSchedulingAndReminders.php');
   }
 
   $res = "SELECT * FROM appointment WHERE apptID = " .$_GET['apptID']. " ";
@@ -229,7 +229,7 @@
              <div class="mb-3 row">
                  <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
                  <div class="col-sm-10">
-                     <input type="number" min="0" step="1" class="form-control" id="Quantity" name="Quantity">
+                     <input type="number" min="0" step="1" class="form-control" id="quantity" name="quantity">
                  </div>
              </div>
              <div class="mb-3 row">
