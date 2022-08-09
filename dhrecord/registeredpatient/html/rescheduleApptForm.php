@@ -468,8 +468,16 @@
             altField: "#result"
         });
 
+        var $prev_ele = '';
+
         $(document).click(function(e) {
-          $(event.target).toggleClass("transparent");
+          // can only choose on slot for reschedule
+          if ($prev_ele !== ''){
+            $prev_ele.toggleClass("transparent");
+            $(event.target).toggleClass("transparent");
+          }
+          
+          $prev_ele = $(event.target);
 
           if ($(event.target).text() !== "Submit" && $(event.target).text().length === 5){
             if($(event.target).hasClass("transparent")){
