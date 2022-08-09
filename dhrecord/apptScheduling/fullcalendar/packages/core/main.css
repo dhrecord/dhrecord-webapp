@@ -254,7 +254,8 @@ temporary rendered events).
 /* Global Event Styles
 --------------------------------------------------------------------------------------------------*/
 .fc-event {
-  position: relative;
+  /* position: relative; */
+  position: absolute;
   /* for resize handle and other inner positioning */
   display: block;
   /* make the <a> tag block */
@@ -1090,4 +1091,8 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
     display: none;
     /* don't display any button-related controls */
   }
+}
+
+.fc-time-grid .fc-event-container{
+  position: relative;
 }
