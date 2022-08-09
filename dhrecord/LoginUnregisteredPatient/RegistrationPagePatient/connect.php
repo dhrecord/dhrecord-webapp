@@ -32,13 +32,14 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
+
 	if(!preg_match("/^[a-zA-Z-' ]*$/",$fullName))
 	{
 		echo "Only letters and white space allowed";
 		//header("Location: index.php");
 	
 	}
-	else if(!preg_match("[A-Z]{1}[\d]{7}[A-Z]{1}",$nricNumber))
+	else if(!preg_match("/[A-Z]{1}[\d]{7}[A-Z]{1}/",$nricNumber))
 	{
 	
 		echo "please enter a valid NRIC";
