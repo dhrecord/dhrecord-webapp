@@ -355,11 +355,11 @@
           if ($resultPHD->num_rows > 0) {
             while ($rowPHD = $resultPHD->fetch_assoc()){
               $formatted_date = $rowPHD["date"];
-              $formatted_date = $formatted_date.substr(8, 2)."-".$formatted_date.substr(5, 2)."-".$formatted_date.substr(0, 4);
+              // $formatted_date = $formatted_date.substr(8, 2)."-".$formatted_date.substr(5, 2)."-".$formatted_date.substr(0, 4);
 
-              echo 'blocked_date_array.push(';
-              echo $formatted_date;
-              echo ');';
+              // echo 'blocked_date_array.push(';
+              // echo $formatted_date;
+              // echo ');';
 
               echo 'console.log(';
               echo $formatted_date;
