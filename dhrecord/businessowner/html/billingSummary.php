@@ -163,8 +163,7 @@
                     <th scope="col">Medication Prescribed</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Comments</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col">Generate Bill PDF</th> 
                     
                 </tr>
             </thead>
@@ -226,8 +225,7 @@
                                 <td><?php echo $obj['medicationPrescribed'] ?></td>
                                 <td><?php echo $obj['quantity'] ?></td>
                                 <td><?php echo $obj['comments'] ?></td>
-                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                    
-                                <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
+                                <td><a href="generateBillPDF.php?GetID=<?php echo $ID ?>">Generate</a></td> 
                             </tr>
                         <?php
                         
