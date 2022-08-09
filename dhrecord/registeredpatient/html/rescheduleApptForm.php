@@ -491,8 +491,13 @@
               }
             }
           } else if($(event.target).text() === "Submit") {
-            let val = $("#result2").val();
-            if (val === ""){
+            let date_val = $("#result").val();
+            let time_val = $("#result2").val();
+            if (date_val === ""){
+              alert("please choose the time slot!");
+              return false;
+            }
+            if (time_val === ""){
               alert("please choose the time slot!");
               return false;
             }
