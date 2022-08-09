@@ -489,7 +489,7 @@
             let date_val = $("#result").val();
             let time_val = $("#result2").val();
             if (date_val === ""){
-              alert("please choose the time slot!");
+              alert("please choose the date!");
               return false;
             }
             if (time_val === ""){
