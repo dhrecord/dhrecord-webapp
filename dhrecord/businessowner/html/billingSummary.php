@@ -154,12 +154,15 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Prescription Name</th>
-                    <th scope="col">Prescription Description</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Attending Doctor</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Tooth Condition</th>
+                    <th scope="col">Diagnosis</th>
+                    <th scope="col">Medication Prescribed</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Remarks</th>
+                    <th scope="col">Comments</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                     
@@ -178,33 +181,51 @@
                     }
 
                 else 
-                    $res = mysqli_query($conn, "select * from `treatmentHistory`");
-                
-                    while($obj = mysqli_fetch_assoc($res))
+                    //$res = mysqli_query($conn, "select * from `treatmentHistory`");
+                    //$res = mysqli_query($conn,"SELECT treatmentHistory.ID,treatmentHistory.date,doctor.fullName//,treatmentHistory.pt_ID,treatmentHistory.toothCondition,treatmentHistory.diagnosis//,treatmentHistory.medicationPrescribed,treatmentHistory.quantity,treatmentHistory.comments  //FROM treatmentHistory, doctor WHERE treatmentHistory.attendingDoctor =  doctor.doctorID");
+                    
+                    //$res = "SELECT *  FROM treatmentHistory INNER JOIN doctor ON treatmentHistory.attendingDoctor =  doctor.doctorID";
+                    $res = "SELECT * FROM treatmentHistory";
+                    //$res = "SELECT * FROM brand INNER JOIN product ON brand.brand_id = product.brand_id";
+
+			//$result = mysqli_query($conn, $res);
+                if ($res1 = $conn->query($res))
+                    while($obj = $res1->fetch_assoc())
                         {
-
-                            $ID = $obj['ID'];
-                            $date = $obj['date'];
-	                        $attendingDoctor = $obj['attendingDoctor'];
-	                        $pt_ID = $obj['pt_ID'];
-                            $toothCondition = $obj['toothCondition']; 
-	                        $diagnosis = $obj['diagnosis'];
-                            $medicationPrescribed = $obj['medicationPrescribed'];
-                            $quantity = $obj['quantity'];
-                            $comments = $obj['comments'];
-
+                            $doctorID = $obj["attendingDoctor"];
+                            $query1 = "SELECT * FROM doctor WHERE doctorID = $doctorID";
+                            $res2 = $conn->query($query1);
+                            $obj1 = $res2->fetch_assoc();
+                            
+                            $PT_ID = $obj["pt_ID"];
+                            $query2 = "SELECT * FROM registeredPatient WHERE ID = $PT_ID";
+                            $res3 = $conn->query($query2);
+                            $obj2 = $res3->fetch_assoc();
+                            
+                            //$ID = $obj['ID'];
+                            //$date = $obj['date'];
+	                        //$attendingDoctor = $obj['attendingDoctor'];
+	                        //$fullName = $obj1['fullName'];
+	                        //$fullName1 = $obj2['fullName'];
+	                        //$pt_ID = $obj['pt_ID'];
+                            //$toothCondition = $obj['toothCondition']; 
+	                        //$diagnosis = $obj['diagnosis'];
+                            //$medicationPrescribed = $obj['medicationPrescribed'];
+                            //$quantity = $obj['quantity'];
+                            //$comments = $obj['comments'];
+                          
                             
                         ?>
                             <tr>
-                                <td><?php echo $ID ?></td>
-                                <td><?php echo $date ?></td>
-                                <td><?php echo $attendingDoctor ?></td>
-                                <td><?php echo $pt_ID ?></td>
-                                <td><?php echo $toothCondition ?></td>
-                                <td><?php echo $diagnosis ?></td>
-                                <td><?php echo $medicationPrescribed ?></td>
-                                <td><?php echo $quantity ?></td>
-                                <td><?php echo $comments ?></td>
+                                <td><?php echo $obj['ID'] ?></td>
+                                <td><?php echo $obj['date'] ?></td>
+                                <td><?php echo $obj1['fullName'] ?></td>
+                                <td><?php echo $obj2['fullName'] ?></td>
+                                <td><?php echo $obj['toothCondition'] ?></td>
+                                <td><?php echo $obj['diagnosis'] ?></td>
+                                <td><?php echo $obj['medicationPrescribed'] ?></td>
+                                <td><?php echo $obj['quantity'] ?></td>
+                                <td><?php echo $obj['comments'] ?></td>
                                 <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                    
                                 <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
                             </tr>
