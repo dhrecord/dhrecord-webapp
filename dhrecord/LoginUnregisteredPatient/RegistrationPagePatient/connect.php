@@ -45,6 +45,12 @@
 		echo "please enter a valid NRIC";
 	
 	}
+	else if(!preg_match("/[0-9]{8}/",$contactNumber))
+	{
+		echo "Only numbers allowed";
+		//header("Location: index.php");
+	
+	}
 	else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 	{
 	
