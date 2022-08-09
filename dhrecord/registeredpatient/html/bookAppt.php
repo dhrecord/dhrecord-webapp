@@ -370,12 +370,12 @@
           }
         ?>
 
-        var blocked_days = [];
+        var blocked_days_array = [];
         <?php
           for ($i = 0; $i < count($closedDays); $i++)  {
-            echo 'blocked_days.push([';
+            echo 'blocked_days_array.push(["';
             echo $closedDays[$i];
-            echo ']);';
+            echo '"]);';
           }
         ?>
 
@@ -389,7 +389,8 @@
                 // var closedDates = [[8, 29, 2022], [8, 25, 2022]];
                 var closedDates = blocked_date_array;
                 // var closedDays = [[Sunday], [Saturday]];
-                var closedDays = blocked_days;
+                var closedDays = blocked_days_array;
+                
                 for (var i = 0; i < closedDays.length; i++) {
                   if (day == closedDays[i][0]) {
                       return [false];
