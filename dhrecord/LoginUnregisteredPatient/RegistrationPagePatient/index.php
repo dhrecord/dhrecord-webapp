@@ -35,8 +35,8 @@
                     </li>
                 </ul>
                 <div>
-                    <button type="button" class="btn btn-light btn-sm" style="width: 90px; margin-right: 10px;"
-                        onclick="window.location.href='../RegistrationPagePatient/index.html'">Register</button>
+                    <!--<button type="button" class="btn btn-light btn-sm" style="width: 90px; margin-right: 10px;"
+                        onclick="window.location.href='../RegistrationPagePatient/index.php'">Register</button>-->
                     <button type="button" class="btn btn-light btn-sm" style="width: 90px;"
                         onclick="window.location.href='../LoginPage/index.html'">Login</button>
                 </div>
