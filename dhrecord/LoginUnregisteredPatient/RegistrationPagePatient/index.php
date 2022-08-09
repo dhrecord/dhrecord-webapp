@@ -35,8 +35,8 @@
                     </li>
                 </ul>
                 <div>
-                    <button type="button" class="btn btn-light btn-sm" style="width: 90px; margin-right: 10px;"
-                        onclick="window.location.href='../RegistrationPagePatient/index.html'">Register</button>
+                    <!--<button type="button" class="btn btn-light btn-sm" style="width: 90px; margin-right: 10px;"
+                        onclick="window.location.href='../RegistrationPagePatient/index.php'">Register</button>-->
                     <button type="button" class="btn btn-light btn-sm" style="width: 90px;"
                         onclick="window.location.href='../LoginPage/index.html'">Login</button>
                 </div>
@@ -53,7 +53,7 @@
                     <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="fullName" name="fullName" required />
-                        <span class="error">* <?php $nameErr=""; echo $nameErr;?></span>
+                        <span class="error"> <?php $nameErr=""; echo $nameErr;?></span>
                     </div>
                 </div>
                 <div class="mb-3 row">
