@@ -32,17 +32,43 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 	
-	$subject = "Email Verification";
-	$message = "Hi! Please click the link below to verify your email!<br> <a href='http://dhrecord.com/dhrecord/LoginUnregisteredPatient/RegistrationPageBusinessOwner/verify.php?vkey=$vkey'>Register Account</a>";
-	$headers = "From: dentalrecord00@gmail.com \r\n";
-	$headers .= "MIME-version: 1.0" . "\r\n";
-	$headers .= "content-type:text/html;charset=UTF-8" . "\r\n";
-	
-	mail($email, $subject, $message, $headers);
 
-	$stmt = mysqli_prepare($conn, "insert into tempRegisteredBusinessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "sssssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $RegistrationNumber, $LicenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $passWord, $vkey, $verifiedNegative);
-	mysqli_stmt_execute($stmt);
+	if(!preg_match("/^[a-zA-Z-' ]*$/",$fullName))
+	{
+		echo "Only letters and white space allowed";
+		//header("Location: index.php");
+	
+	}
+	else if(!preg_match("/[A-Z]{1}[\d]{7}[A-Z]{1}/",$nricNumber))
+	{
+	
+		echo "please enter a valid NRIC";
+	
+	}
+	else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+	{
+	
+		echo "Please enter a valid email";
+		//header("Location: index.php");		
+	
+	}
+	else
+	{
+		$subject = "Email Verification";
+		$message = "Hi! Please click the link below to verify your email!<br> <a href='http://dhrecord.com/dhrecord/LoginUnregisteredPatient/RegistrationPageBusinessOwner/verify.php?vkey=$vkey'>Register Account</a>";
+		$headers = "From: dentalrecord00@gmail.com \r\n";
+		$headers .= "MIME-version: 1.0" . "\r\n";
+		$headers .= "content-type:text/html;charset=UTF-8" . "\r\n";
+	
+		mail($email, $subject, $message, $headers);
+
+		$stmt = mysqli_prepare($conn, "insert into tempRegisteredBusinessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		mysqli_stmt_bind_param($stmt, "sssssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $RegistrationNumber, $LicenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $passWord, $vkey, $verifiedNegative);
+		mysqli_stmt_execute($stmt);
+
+		mysqli_close($conn);
+		header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
+	}
 
 	//inserting data
 	//$stmt = mysqli_prepare($conn, "insert into users(role, username, password) values (?, ?, ?)");
@@ -59,7 +85,6 @@
 	//mysqli_stmt_bind_param($stmt, "sssssssss", $fullName, $nricNumber, $contactNumber, $email, $registrationNumber, $licenseNumber, $locationOfClinic, $clinicSpecialization, $row['ID']);
 	//mysqli_stmt_execute($stmt);
 
-	mysqli_close($conn);
-	header("Location: http://dhrecord.com/dhrecord/LoginUnregisteredPatient/LoginPage/");
+
 
 ?>
