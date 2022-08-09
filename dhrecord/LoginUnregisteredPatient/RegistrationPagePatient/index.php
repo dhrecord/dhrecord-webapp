@@ -53,7 +53,7 @@
                     <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="fullName" name="fullName" required />
-                        <span class="error">* <?php $nameErr=""; echo $nameErr;?></span>
+                        <span class="error"> <?php $nameErr=""; echo $nameErr;?></span>
                     </div>
                 </div>
                 <div class="mb-3 row">
