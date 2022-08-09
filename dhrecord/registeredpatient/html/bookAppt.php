@@ -346,8 +346,14 @@
 
     $( function() {
         const daysArr =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var blocked_date_array = ["08-14-2022","08-30-2022","08-23-2022"];
+
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
+            beforeShowDay: function(date){
+                var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
+                return [ blocked_date_array.indexOf(string) == -1 ]
+            },
             onSelect: function(dateText, pickerObj){
                 let chosenDate = new Date(dateText);
                 let chosenDay = daysArr[chosenDate.getDay()];
