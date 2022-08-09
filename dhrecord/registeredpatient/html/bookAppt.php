@@ -485,6 +485,12 @@
                 $("#result2").val($new_val);
               }
             }
+          } else if($(event.target).text() === "Submit") {
+            let val = $("#result2").val();
+            if (val === ""){
+              alert("please choose the time slot!");
+              return false;
+            }
           }
         });
     });

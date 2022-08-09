@@ -234,7 +234,7 @@
                         <p><?=substr($apptTime, 0, 5)?></p>
                     </div>
                     <div class="d-flex">
-                        <input type="text" id="result2" style="display:none;" name="time" value="" required/>
+                        <input type="text" id="result2" style="display:none;" name="time" required/>
                         <div>
                             <p><b>New Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                             <div id="timepicker"></div>
@@ -489,6 +489,12 @@
                 // reassign value to input
                 $("#result2").val($new_val);
               }
+            }
+          } else if($(event.target).text() === "Submit") {
+            let val = $("#result2").val();
+            if (val === ""){
+              alert("please choose the time slot!");
+              return false;
             }
           }
         });
