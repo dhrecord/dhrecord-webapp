@@ -392,7 +392,10 @@
                 var closedDays = blocked_days_array;
                 
                 for (var i = 0; i < closedDays.length; i++) {
-                  if (day == closedDays[i][0]) {
+                  let formatted_day = closedDays[i][0], Sunday = "Sunday", Monday = "Monday", 
+                                      Tuesday = "Tuesday", Wednesday = "Wednesday", Thursday = "Thursday", 
+                                      Friday = "Friday", Saturday = "Saturday";
+                  if (day == formatted_day) {
                       return [false];
                   }
                 }
