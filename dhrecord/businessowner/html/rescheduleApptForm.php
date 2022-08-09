@@ -476,6 +476,7 @@
 
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
+            minDate: 0,
             onSelect: function(dateText, pickerObj){
               let chosenDate = new Date(dateText);
               let chosenDay = daysArr[chosenDate.getDay()];

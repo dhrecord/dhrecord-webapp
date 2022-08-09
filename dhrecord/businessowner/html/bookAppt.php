@@ -476,6 +476,7 @@
 
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
+            minDate: 0,
             beforeShowDay: function(date){
                 var day = date.getDay();
                 var closedDates = blocked_date_array;
