@@ -511,6 +511,8 @@
             altField: "#result"
         });
 
+        var $prev_ele = '';
+
         $(document).click(function(e) {
           // can only choose on slot for reschedule
           if ($prev_ele !== ''){
