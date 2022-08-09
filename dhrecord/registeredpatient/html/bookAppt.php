@@ -355,22 +355,14 @@
           if ($resultPHD->num_rows > 0) {
             while ($rowPHD = $resultPHD->fetch_assoc()){
               $formatted_date_PHD = $rowPHD["date"];
-              // $formatted_date = $formatted_date.substr(8, 2)."-".$formatted_date.substr(5, 2)."-".$formatted_date.substr(0, 4);
+              $formatted_date_PHD = $formatted_date_PHD.substr(8, 2)."-".$formatted_date_PHD.substr(5, 2)."-".$formatted_date_PHD.substr(0, 4);
 
-              // echo 'blocked_date_array.push(';
-              // echo $formatted_date;
-              // echo ');';
-
-              echo 'console.log("';
+              echo 'blocked_date_array.push("';
               echo $formatted_date_PHD;
               echo '");';
-              echo 'console.log("====");';
             }
           }
         ?>
-
-        console.log("////");
-        console.log(blocked_date_array);
 
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
