@@ -198,7 +198,7 @@
               <div class="mx-5">
                     <div>
                         <p><b>Agenda:</b></p>
-                        <input type="text" name="agenda" style="width:250px;"/>
+                        <input type="text" name="agenda" style="width:250px;" required/>
                     </div>
               </div>
             </div>
@@ -207,14 +207,14 @@
               <div class="mx-5">
                   <div>
                       <p><b>Date (mm-dd-yyyy):</b></p>
-                      <input type="text" id="datepicker" name="date"/>
-                      <input type="text" id="result" style="display:none;"/>
+                      <input type="text" id="datepicker" name="date" required/>
+                      <input type="text" id="result" style="display:none;" required/>
                   </div>
               </div>
 
               <div class="mx-5">
                   <div class="d-flex">
-                      <input type="text" id="result2" style="display:none;" name="time" value=""/>
+                      <input type="text" id="result2" style="display:none;" name="time" value="" required/>
                       <div>
                           <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                           <div id="timepicker"></div>
