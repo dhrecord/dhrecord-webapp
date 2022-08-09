@@ -357,11 +357,11 @@
               $formatted_date_PHD = $rowPHD["date"];
 
               echo 'blocked_date_array.push([';
-              echo $substr($formatted_date_PHD, 5, 2); // month
+              echo substr($formatted_date_PHD, 5, 2); // month
               echo ', ';
-              echo $substr($formatted_date_PHD, 8, 2); // date
+              echo substr($formatted_date_PHD, 8, 2); // date
               echo ', ';
-              echo $substr($formatted_date_PHD, 0, 4); // year
+              echo substr($formatted_date_PHD, 0, 4); // year
               echo ']);';
             }
           }
