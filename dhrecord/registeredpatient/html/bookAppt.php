@@ -360,9 +360,17 @@
               echo 'blocked_date_array.push(';
               echo $formatted_date;
               echo ');';
+
+              echo 'console.log(';
+              echo $formatted_date;
+              echo ');';
+              echo 'console.log("====");';
             }
           }
         ?>
+
+        console.log("////");
+        console.log(blocked_date_array);
 
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
