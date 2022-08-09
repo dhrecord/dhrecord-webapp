@@ -368,7 +368,7 @@
             dateFormat: 'mm-dd-yy',
             beforeShowDay: function(date){
                 var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
-                return [ blocked_date_array.indexOf(string) == -1 ]
+                return [ blocked_date_array.indexOf(string) == -1 ] && $.datepicker.noWeekends
             },
             onSelect: function(dateText, pickerObj){
                 let chosenDate = new Date(dateText);
