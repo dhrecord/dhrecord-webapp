@@ -47,7 +47,7 @@
     
     }
     $res = "INSERT INTO treatmentHistory (date, attendingDoctor, pt_ID, toothCondition, diagnosis, medicationPrescribed, quantity, comments)
-      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribed}', CAST ('{$quantity}' AS int), '{$comments}')";
+      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribed}', CAST('{$quantity}' AS int), '{$comments}')";
     
     if (mysqli_query($conn, $res)) 
       {
@@ -65,7 +65,7 @@
         //echo "Error: " . $res . "<br>" . mysqli_error($conn);
       }
     
-    header('Location: ./apptSchedulingAndReminders.php');
+    // header('Location: ./apptSchedulingAndReminders.php');
   }
 
   $res = "SELECT * FROM appointment WHERE apptID = " .$_GET['apptID']. " ";
