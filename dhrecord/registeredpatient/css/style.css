@@ -65,7 +65,7 @@ a.ui-datepicker-next{
 }
 
 td.ui-datepicker-unselectable:hover a{
-    color: grey;
+    color: rgb(166, 166, 166);
 }
 
 td.ui-datepicker-unselectable:hover{
@@ -73,7 +73,7 @@ td.ui-datepicker-unselectable:hover{
 }
 
 .ui-state-disabled .ui-state-default{
-    color: grey;
+    color: rgb(166, 166, 166);
 }
 
 .slot-btn {
