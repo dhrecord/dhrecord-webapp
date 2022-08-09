@@ -214,7 +214,7 @@
 
               <div class="mx-5">
                   <div class="d-flex">
-                      <input type="text" id="result2" style="display:none;" name="time" value="" required/>
+                      <input type="text" id="result2" style="display:none;" name="time" required/>
                       <div>
                           <p><b>Time:</b>&nbsp;&nbsp;<i>(can choose more than 1 slot)</i></p>
                           <div id="timepicker"></div>
