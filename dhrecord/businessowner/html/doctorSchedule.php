@@ -168,7 +168,7 @@
       echo '<form method="POST" action="../../businessowner/html/rescheduleAppt.php">
       <button type="submit" name="doc_id" value="';
       echo $_POST['doc_id'];                    
-      echo '" class="btn btn-dark">Reschedule</button></form>';
+      echo '" class="btn btn-dark">Update Appointment</button></form>';
 
       echo '</div></div>';
 
