@@ -512,26 +512,21 @@
         });
 
         $(document).click(function(e) {
-          $(event.target).toggleClass("transparent");
+          // can only choose on slot for reschedule
+          if ($prev_ele !== ''){
+            $prev_ele.toggleClass("transparent");
+            $(event.target).toggleClass("transparent");
+          }
+          
+          $prev_ele = $(event.target);
 
           if ($(event.target).text() !== "Submit" && $(event.target).text().length === 5){
             if($(event.target).hasClass("transparent")){
-              $value = $("#result2").val();
               if($(event.target).text() !== ""){
-                $("#result2").val($value + $(event.target).text() + ", ");
+                $("#result2").val($(event.target).text() + ", ");
               }
             } else {
-              $value = $("#result2").val();
-              if ($value.includes($(event.target).text())){
-                // find index
-                $idx = $value.search($(event.target).text());
-
-                // remove from $value
-                $new_val = $value.substr(0, $idx) + $value.substr($idx+7, $value.length);
-
-                // reassign value to input
-                $("#result2").val($new_val);
-              }
+              $("#result2").val("");
             }
           } else if($(event.target).text() === "Submit") {
             let date_val = $("#result").val();
