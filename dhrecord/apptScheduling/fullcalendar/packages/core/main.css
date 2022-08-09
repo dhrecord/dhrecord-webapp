@@ -255,7 +255,7 @@ temporary rendered events).
 --------------------------------------------------------------------------------------------------*/
 .fc-event {
   /* position: relative; */
-  position: absolute;
+  /* position: absolute; */
   /* for resize handle and other inner positioning */
   display: block;
   /* make the <a> tag block */
@@ -263,6 +263,14 @@ temporary rendered events).
   line-height: 1.4;
   border-radius: 3px;
   border: 1px solid #007bffb7;
+}
+
+.fc-dayGridMonth-view .fc-event{
+  position: relative;
+}
+
+.fc-timeGridWeek-view .fc-event {
+  position: absolute;
 }
 
 .fc-event,
