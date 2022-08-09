@@ -413,7 +413,7 @@
                       break;
                   }
 
-                  if (day == formatted_date[i][0]) {
+                  if (day == formatted_date) {
                       return [false];
                   }
                 }
