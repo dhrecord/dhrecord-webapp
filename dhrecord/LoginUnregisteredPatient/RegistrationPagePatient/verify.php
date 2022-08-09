@@ -47,7 +47,7 @@ if(isset($_GET['vkey'])){
 			$row1 = $stmt_result->fetch_assoc();
 
 			$stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, users_ID, attendingDoctor) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			mysqli_stmt_bind_param($stmt, "ssssssss", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['address'], $row['medConditions'], $row['drugAllergies'], $row1['ID'], $row['attendingDoctor']);
+			mysqli_stmt_bind_param($stmt, "sssssssss", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['address'], $row['medConditions'], $row['drugAllergies'], $row1['ID'], $row['attendingDoctor']);
 			mysqli_stmt_execute($stmt);
 
 			$deleteRow = mysqli_prepare($conn, "DELETE FROM tempRegisteredPatient WHERE vkey = '$vkey'");
