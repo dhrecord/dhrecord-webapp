@@ -169,14 +169,15 @@
       <h4>Finish Appointment Form</h4>
     </div>
 
-    <div class="mb-5">
-      <p>
+    <div class="mb-5 alert alert-danger alert-dismissible fade show" role="alert">
+      <!-- <p> -->
         <?php
           if ($err_msg != ""){
             echo $err_msg;
           }
         ?>
-      </p>
+      <!-- </p> -->
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     
     <div>
