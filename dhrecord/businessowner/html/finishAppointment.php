@@ -72,7 +72,7 @@
       
       // update treatment history
       $res = "INSERT INTO treatmentHistory (date, attendingDoctor, pt_ID, toothCondition, diagnosis, medicationPrescribed, quantity, comments)
-        VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribedID}', CAST('{$quantity}' AS int), '{$comments}')";
+        VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$prescriptionName}', CAST('{$quantity}' AS int), '{$comments}')";
       
       
       // update inventory management
