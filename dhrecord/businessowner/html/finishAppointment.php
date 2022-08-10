@@ -28,58 +28,106 @@
     $apptPatientID = $_POST["apptPatientID"];
     $toothCondition = $_POST["toothCondition"];
     $diagnosis = $_POST["diagnosis"];
-    $medicationPrescribed = $_POST["medicationPrescribed"];
-    $quantity = $_POST["quantity"];
+    $medicationPrescribedID = $_POST["medicationPrescribed"]; // the med's ID
+    $quantity = $_POST["quantity"]; // qty requested
     $referredTo = $_POST["referTo"];
     $comments = $_POST["comments"];
-    
-    if (isset($_POST["referTo"]) && $_POST["referTo"] != "")
+
+    // find med's name from ID
+    $query = "select * from `inventoryManagement` WHERE ID = '".$medicationPrescribedID."'";
+    $result = mysqli_query($conn,$query);
+    $prescriptionName = "";
+    $prescriptionQty = ""; // available qty from db
+
+    while($res=mysqli_fetch_assoc($result))
     {
-      $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, comments, patient_ID)
-      VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$comments}', '{$apptPatientID}')";
-    
-      if (mysqli_query($conn, $res)) 
-      {
-        //echo "New record created successfully";
-      } else {
-        //echo "Error: " . $res . "<br>" . mysqli_error($conn);
-      }
-    
+        $prescriptionName = $res['prescriptionName'];
+        $prescriptionQty = $res['prescriptionQty'];
     }
-    $res = "INSERT INTO treatmentHistory (date, attendingDoctor, pt_ID, toothCondition, diagnosis, medicationPrescribed, quantity, comments)
-      VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribed}', CAST('{$quantity}' AS int), '{$comments}')";
-    
-    if (mysqli_query($conn, $res)) 
+
+    // proceed only if med's quantity is enough to meet the demand
+    if ($quantity <= $prescriptionQty){
+      // update referral tracking
+      if (isset($_POST["referTo"]) && $_POST["referTo"] != "")
       {
-        //echo "New record created successfully";
-      } else {
-        //echo "Error: " . $res . "<br>" . mysqli_error($conn);
+        $res = "INSERT INTO referralTracking (referredTo, referralDate, referringDoctor, toothCondition, comments, patient_ID)
+        VALUES ('{$referredTo}', '{$apptDate}', '{$apptDoctorID}', '{$toothCondition}', '{$comments}', '{$apptPatientID}')";
+      
+        if (mysqli_query($conn, $res)) 
+        {
+          //echo "New record created successfully";
+        } else {
+          //echo "Error: " . $res . "<br>" . mysqli_error($conn);
+        }
+      
       }
-    
-    $res = ("UPDATE appointment SET status = 'finished' WHERE apptID = '{$apptID}'");
-    
-    if (mysqli_query($conn, $res)) 
+      
+      // update treatment history
+      $res = "INSERT INTO treatmentHistory (date, attendingDoctor, pt_ID, toothCondition, diagnosis, medicationPrescribed, quantity, comments)
+        VALUES ('{$apptDate}', '{$apptDoctorID}', '{$apptPatientID}', '{$toothCondition}', '{$diagnosis}', '{$medicationPrescribedID}', CAST('{$quantity}' AS int), '{$comments}')";
+      
+      
+      // update inventory management
+      $newQty = $prescriptionQty - $quantity;
+      $queryy = "UPDATE `inventoryManagement` SET prescriptionQty = '".$newQty."' WHERE ID= '".$medicationPrescribedID."'";
+      $result1 = mysqli_query($conn,$queryy) or die (mysqli_error());
+        
+      // if success, redirect to appt schedule page
+      if($result1)
       {
-        //echo "New record created successfully";
-      } else {
-        //echo "Error: " . $res . "<br>" . mysqli_error($conn);
+        header("location:apptSchedulingAndReminders.php");
       }
-    
-    header('Location: ./apptSchedulingAndReminders.php');
+      else
+      {
+        echo "Please check your query:</br>";
+        echo "PrescriptionID:  ";
+        echo $prescriptionID;
+        echo "<br/>";
+        echo "PrescriptionQty:  ";
+        echo $prescriptionQty1;
+        echo "<br/>";
+        echo "Your Requested Quantity:  ";
+        echo $quantity;
+        echo "<br/>";
+        echo "newQty:  ";
+        echo $newQty;
+      }
+
+
+      if (mysqli_query($conn, $res)) 
+        {
+          //echo "New record created successfully";
+        } else {
+          //echo "Error: " . $res . "<br>" . mysqli_error($conn);
+        }
+      
+      $res = ("UPDATE appointment SET status = 'finished' WHERE apptID = '{$apptID}'");
+      
+      if (mysqli_query($conn, $res)) 
+        {
+          //echo "New record created successfully";
+        } else {
+          //echo "Error: " . $res . "<br>" . mysqli_error($conn);
+        }
+      
+      header('Location: ./apptSchedulingAndReminders.php');
+    } else {
+      echo 'alert("Not enough supply!");';
+    }
   }
 
   $res = "SELECT * FROM appointment WHERE apptID = " .$_GET['apptID']. " ";
 
   $result = mysqli_query($conn, $res);
   
-    while($sql = mysqli_fetch_assoc($result))
-    {
-      $apptID = $sql["apptID"];
-      $apptDate = $sql["date"];
-      $apptAgenda = $sql["agenda"];
-      $apptDoctorID = $sql["doctorID"];
-      $apptPatientID = $sql["patientID"];
-    }
+  while($sql = mysqli_fetch_assoc($result))
+  {
+    $apptID = $sql["apptID"];
+    $apptDate = $sql["date"];
+    $apptAgenda = $sql["agenda"];
+    $apptDoctorID = $sql["doctorID"];
+    $apptPatientID = $sql["patientID"];
+  }
 ?>
 
 <!doctype html>
@@ -216,10 +264,10 @@
 
                             while ($row = $resultM->fetch_assoc()) {
                                 echo '<option value="';
-                                $fieldM = $row['prescriptionName'];
-                                echo $fieldM;
+                                // $fieldM = $row['prescriptionName'];
+                                echo $row['ID'];
                                 echo '">';
-                                echo $fieldM;
+                                echo $row['prescriptionName'];
                                 echo '</option>';
                             }
                           ?>
