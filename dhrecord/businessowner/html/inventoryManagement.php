@@ -115,8 +115,8 @@
                                 <td><?php echo $prescriptionQty ?></td>
                                 <td><?php echo $prescriptionPrice ?></td>
                                 <td><?php echo $Remarks ?></td>
-                                <td><a href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                    
-                                <td><a href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
+                                <td><a class="btn btn-sm btn-secondary" href="editInv.php?GetID=<?php echo $ID ?>">Edit</a></td>                    
+                                <td><a class="btn btn-sm btn-danger" href="deleteInv.php?Delete=<?php echo $ID ?>">Delete</a></td>
                             </tr>
                         <?php
                         
