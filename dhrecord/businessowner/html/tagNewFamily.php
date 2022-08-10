@@ -50,7 +50,7 @@ if($row1['familyTag'] == "0")
 		if(mysqli_query($conn,$query4) && mysqli_query($conn,$query5))
 		{
 		
-			header('Location: familyTagging.php');
+			header('Location: manageRecord.php');
 		
 		}
 		else
@@ -69,7 +69,7 @@ else
 	if(mysqli_query($conn,$query6))
 	{
 		
-		header('Location: familyTagging.php');
+		header('Location: manageRecord.php');
 		
 	}
 	else

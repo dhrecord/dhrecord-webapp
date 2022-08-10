@@ -7,7 +7,7 @@ if(!isset($_SESSION['loggedin']))
 	exit;
 }
 
-$UserID = $_GET['UserID'];
+$UserID = $_GET['ChangeID'];
 	
 //Database Connection
 $servername = "localhost";
