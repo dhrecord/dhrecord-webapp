@@ -49,6 +49,8 @@
           die("Connection failed: " . mysqli_connect_error());
         }
 
+        $sessionID = $_SESSION['id'];
+
         $stmt = "";
         if ($role === "ca")
         {
