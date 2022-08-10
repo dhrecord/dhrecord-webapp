@@ -83,7 +83,7 @@
 	      	    $res = ("SELECT registeredPatient.fullName, surveyForm.timeTaken, surveyForm.rating, surveyForm.recommendation, surveyForm.remarks, 
 		    surveyForm.nameClinic, surveyForm.nameDoc FROM frontDesk, businessOwner, surveyForm, users, registeredPatient
 		    WHERE frontDesk.clinicID = businessOwner.ID AND businessOwner.nameOfClinic = surveyForm.nameClinic
-		    AND surveyForm.username =  users.username AND users.ID = registeredPatient.users_ID AND frontDesk.userID = '{$_SESSION['id']}''");
+		    AND surveyForm.username =  users.username AND users.ID = registeredPatient.users_ID AND frontDesk.userID = '{$_SESSION['id']}'");
 
 			              $result = mysqli_query($conn, $res);
 
