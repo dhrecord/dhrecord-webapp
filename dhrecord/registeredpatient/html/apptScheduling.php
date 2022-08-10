@@ -119,15 +119,15 @@
         case "7":
           $case = '7';
 
-          $stmt = $conn->prepare("SELECT address FROM registeredPatient WHERE users_ID = ?");
-          $stmt->bind_param("s", $_SESSION['id']);
-          $stmt->execute();
-          $result_address = $stmt->get_result();
-          $user_address = '';
+          // $stmt = $conn->prepare("SELECT address FROM registeredPatient WHERE users_ID = ?");
+          // $stmt->bind_param("s", $_SESSION['id']);
+          // $stmt->execute();
+          // $result_address = $stmt->get_result();
+          // $user_address = '';
 
-          while ($row_address = $result_address->fetch_assoc()){
-            $user_address = $row_address['address'];
-          }
+          // while ($row_address = $result_address->fetch_assoc()){
+          //   $user_address = $row_address['address'];
+          // }
 
           break;
         // search highest rating clinics
@@ -525,12 +525,14 @@
 
          
   <!-- Add the this google map apis to webpage -->
-  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCI2rrQ6FeYu6JvfehofKYLLKxkDxem78o"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCI2rrQ6FeYu6JvfehofKYLLKxkDxem78o"></script>
 
   <script>
     window.onload = function GetLocation() {
         var geocoder = new google.maps.Geocoder();
-        var address = "<?=$result_address?>";
+        var address = "
+        <?php//$result_address?>
+        ";
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 var latitude = results[0].geometry.location.lat();
@@ -543,7 +545,7 @@
             }
         });
     };
-  </script>
+  </script> -->
 
   <script src="../js/passDataToModal.js"></script>
 </body>
