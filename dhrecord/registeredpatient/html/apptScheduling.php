@@ -523,30 +523,6 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-         
-  <!-- Add the this google map apis to webpage -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCI2rrQ6FeYu6JvfehofKYLLKxkDxem78o"></script>
-
-  <script>
-    window.onload = function GetLocation() {
-        var geocoder = new google.maps.Geocoder();
-        var address = "
-        <?php//$result_address?>
-        ";
-        geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                var latitude = results[0].geometry.location.lat();
-                var longitude = results[0].geometry.location.lng();
-                console.log(latitude);
-                console.log("=====");
-                console.log(longitude);
-            } else {
-                console.log("Request failed.");
-            }
-        });
-    };
-  </script> -->
-
   <script src="../js/passDataToModal.js"></script>
 </body>
 
