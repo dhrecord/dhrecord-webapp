@@ -75,10 +75,10 @@ else if($role === "dr")
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link <?php if($title == "Home"){echo "active";}?>" aria-current="page" href="./index.php">Home</a>
+                    <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if($title == "ManageRecord"){echo "active";}?>" href="./manageRecord.php">Patient Records</a>
+                        <a class="nav-link" href="./manageRecord.php">Patient Records</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

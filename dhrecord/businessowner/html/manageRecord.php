@@ -21,26 +21,6 @@
   }
   
   $sessionID = $_SESSION['id'];
-
-  // link in navbar active -> white color when selected
-  function includeWithVariables($filePath, $variables = array(), $print = true)
-  {
-      $output = NULL;
-      if(file_exists($filePath)){
-          // Extract the variables to a local namespace
-          extract($variables);
-          // Start output buffering
-          ob_start();
-          // Include the template file
-          include $filePath;
-          // End buffering and return its contents
-          $output = ob_get_clean();
-      }
-      if ($print) {
-          print $output;
-      }
-      return $output;
-  }
 ?>
 
 <!DOCTYPE html>
@@ -67,10 +47,7 @@
 </head>
 
 <body onload="findData();">
-    <?php 
-        // include 'navBar.php'; 
-    ?>
-    <?php includeWithVariables('navBar.php', array('title' => 'ManageRecord')); ?>
+    <?php include 'navBar.php'; ?>
 
     <!--test--> 
     <!-- content -->
