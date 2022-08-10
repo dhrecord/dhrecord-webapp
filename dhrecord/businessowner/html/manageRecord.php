@@ -102,7 +102,7 @@
                     <td><?php echo $row["contactNumber"]; ?></td>
                     <td><?php echo $row["email"]; ?></td>
                     <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["ID"]; ?>">Edit</button></td>
-                    <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deletePatient.php?UserID=<?php echo $row["users_ID"]; ?>'">Delete</button></td>
+                    <td><button type="button" class="btn btn-sm btn-danger" onclick="document.location.href='deletePatient.php?UserID=<?php echo $row["users_ID"]; ?>'">Delete</button></td>
                     <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='familyTagging.php?ChangeID=<?php echo $row["users_ID"]; ?>'">Family Tagging</button></td>
                </tr>
 
