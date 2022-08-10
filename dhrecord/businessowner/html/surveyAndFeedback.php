@@ -104,7 +104,7 @@
             crossorigin="anonymous"></script>
 
     <script src="../js/index.js"></script>
-	<script src="../js/filter.js"></script>
+	<script src="../js/surveyfilter.js"></script>
 
 
 </body>
