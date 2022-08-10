@@ -60,12 +60,13 @@
 	<table class="table table-striped">
 		<thead>
         		<tr>
-        			<th>Patient Name</th>
+				<th>Patient Name</th>
         			<th>Time Taken</th>
-              <th>Ratings</th>
-              <th>Recomendations</th>
-              <th>Remarks</th>
-              <th>Name of Doctor</th>
+			        <th>Ratings</th>
+			        <th>Recomendations</th>
+			        <th>Remarks</th>
+				<th>Name of Clinic</th>
+			        <th>Name of Doctor</th>
         		</tr>
 		</thead>
 		
