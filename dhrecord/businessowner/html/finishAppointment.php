@@ -243,20 +243,20 @@
              <div class="mb-3 row">
                  <label for="toothCondition" class="col-sm-2 col-form-label">Tooth Condition: </label>
                  <div class="col-sm-10">
-                     <input type="text" class="form-control" id="toothCondition" name="toothCondition">
+                     <input type="text" class="form-control" id="toothCondition" name="toothCondition" required>
                  </div>
              </div>
              <div class="mb-3 row">
                  <label for="diagnosis" class="col-sm-2 col-form-label">Diagnosis: </label>
                  <div class="col-sm-10">
-                     <input type="text" class="form-control" id="diagnosis" name="diagnosis">
+                     <input type="text" class="form-control" id="diagnosis" name="diagnosis" required>
                  </div>
              </div>
              <div class="mb-3 row">
                  <label for="medicationPrescribed" class="col-sm-2 col-form-label">Medication Prescribed</label>
                  <div class="col-sm-10">
                      <!-- <input type="text" class="form-control" id="medicationPrescribed" name="medicationPrescribed"> -->
-                     <select name="medicationPrescribed" id="medicationPrescribed" class="form-select">
+                     <select name="medicationPrescribed" id="medicationPrescribed" class="form-select" required>
                          <option selected value=""></option>
                          <?php
                             // GET THE LIST OF MEDICATIONS THAT A CLINIC HAS
@@ -277,13 +277,13 @@
              <div class="mb-3 row">
                  <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
                  <div class="col-sm-10">
-                     <input type="number" min="0" step="1" class="form-control" id="quantity" name="quantity">
+                     <input type="number" min="0" step="1" class="form-control" id="quantity" name="quantity" required>
                  </div>
              </div>
              <div class="mb-3 row">
                 <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
                 <div class="col-sm-10">
-                     <select name="referTo" id="referTo" class="form-select">
+                     <select name="referTo" id="referTo" class="form-select" required>
                          <option selected value=""></option>
                          <?php
                             // GET THE LIST OF CLINICS
@@ -308,7 +308,7 @@
              <div class="mb-3 row">
                  <label for="comments" class="col-sm-2 col-form-label">Comments</label>
                  <div class="col-sm-10">
-                     <textarea rows="4" class="form-control" id="comments" name="comments"></textarea>
+                     <textarea rows="4" class="form-control" id="comments" name="comments" required></textarea>
                  </div>
              </div>
              <div class="mb-3 row">

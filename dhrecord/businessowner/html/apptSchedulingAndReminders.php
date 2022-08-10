@@ -406,7 +406,7 @@
                             onclick="document.location.href=\'../../businessowner/html/bookAppt.php\'">Book
                             Appointment</button>
                         <button class="btn btn-dark"
-                            onclick="document.location.href=\'../../businessowner/html/rescheduleAppt.php\'">Reschedule</button>
+                            onclick="document.location.href=\'../../businessowner/html/rescheduleAppt.php\'">Update Appointment</button>
                     </div>
                 </div>';
 
