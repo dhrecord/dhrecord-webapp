@@ -35,7 +35,39 @@
   <main class="container my-5">
     <div class="bg-light p-5 rounded mt-3">
       <hr>
-      <h4 class="lead"><b>Hi, <?php echo $_SESSION['username']; ?>!</b></h4>
+      <?php 
+        //Database Connection
+        $servername = "localhost";
+        $database = "u922342007_Test";
+        $username = "u922342007_admin";
+        $password = "Aylm@012";
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $database);
+
+        if (!$conn) 
+        {
+          die("Connection failed: " . mysqli_connect_error());
+        }
+
+        $stmt = "";
+        if ($role === "ca")
+        {
+          $stmt = $conn->prepare("SELECT fullName FROM clinicAdmin where userID = ?");
+        } else if ($role === "dr")
+        {
+          $stmt = $conn->prepare("SELECT fullName FROM doctor where userID = ?");
+        } else
+        {
+          $stmt = $conn->prepare("SELECT fullName FROM frontDesk where userID = ?");
+        }
+        
+        $stmt->bind_param("s", $sessionID);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+        $data = $stmt_result->fetch_assoc();
+      ?>
+      <!-- displaying full name instead of username => username already showed in navbar -->
+      <h4 class="lead"><b>Hi, <?php echo $data["fullName"] ?>!</b></h4>
       <h4 class="lead">Role:
           <?php 
               if ($role === "ca")
