@@ -169,6 +169,10 @@
       <h4>Finish Appointment Form</h4>
     </div>
 
+    <?php
+      if ($err_msg != ""){
+    ?>
+
     <div class="mb-5 alert alert-danger alert-dismissible fade show" role="alert">
       <!-- <p> -->
         <?php
@@ -179,6 +183,10 @@
       <!-- </p> -->
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+
+    <?php
+      }
+    ?>
     
     <div>
         <!-- <form> -->
@@ -209,9 +217,8 @@
                  <label for="medicationPrescribed" class="col-sm-2 col-form-label">Medication Prescribed</label>
                  <div class="col-sm-10">
                      <!-- <input type="text" class="form-control" id="medicationPrescribed" name="medicationPrescribed"> -->
-                     <select name="medicationPrescribed" id="medicationPrescribed" class="form-select" required 
-                      value="<?=$medicationPrescribedID?>">
-                         <option selected value=""></option>
+                     <select name="medicationPrescribed" id="medicationPrescribed" class="form-select" required>
+                         <option selected value="" <?php if($medicationPrescribedID == ""){echo "selected";} ?>></option>
                          <?php
                             // GET THE LIST OF MEDICATIONS THAT A CLINIC HAS
                             $resultM = $conn->query("SELECT * FROM inventoryManagement");
@@ -220,7 +227,11 @@
                                 echo '<option value="';
                                 // $fieldM = $row['prescriptionName'];
                                 echo $row['ID'];
-                                echo '">';
+                                echo '" ';
+
+                                if($medicationPrescribedID == $row['ID']){echo "selected";}
+                                
+                                echo '>';
                                 echo $row['prescriptionName'];
                                 echo '</option>';
                             }
@@ -238,8 +249,8 @@
              <div class="mb-3 row">
                 <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
                 <div class="col-sm-10">
-                     <select name="referTo" id="referTo" class="form-select" required value="<?=$referredTo?>">
-                         <option selected value=""></option>
+                     <select name="referTo" id="referTo" class="form-select" required>
+                         <option value="" <?php if($referredTo == ""){echo "selected";} ?>></option>
                          <?php
                             // GET THE LIST OF CLINICS
                             $resultBO = $conn->query("SELECT * FROM businessOwner");
@@ -250,8 +261,11 @@
                                 $fieldNOC = $row['nameOfClinic'];
                                 echo $fieldNOC;
 
-                                echo '">';
-
+                                echo '" ';
+                                
+                                if($referredTo == $fieldNOC){echo "selected";}
+                                
+                                echo '>';
                                 echo $fieldNOC;
                                 echo '</option>';
                             }
@@ -263,7 +277,7 @@
              <div class="mb-3 row">
                  <label for="comments" class="col-sm-2 col-form-label">Comments</label>
                  <div class="col-sm-10">
-                     <textarea rows="4" class="form-control" id="comments" name="comments" required value="<?=$comments?>"></textarea>
+                     <textarea rows="4" class="form-control" id="comments" name="comments" required><?=$comments?></textarea>
                  </div>
              </div>
              <div class="mb-3 row">
