@@ -453,7 +453,7 @@
                         
                         echo
                             '</td><td class="px-4">
-                              <form method="POST" action="../../LoginUnregisteredPatient/LoginPage/login.html">
+                              <form method="POST" action="../../LoginUnregisteredPatient/LoginPage/index.html">
                               <button type="submit" name="doc_id" class="btn btn-dark">Book</button></form></td></tr>';
                       }
                     }
