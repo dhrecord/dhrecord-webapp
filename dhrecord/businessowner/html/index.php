@@ -51,7 +51,7 @@
          ?>
       </h4>
       <hr>
-      <p class="mx-2 mt-3" style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><button class="btn btn-secondary" onclick="window.location.href='./changeUsernameOrPasswordBusinessOwner.php';">Change Password</button></p>
+      <p class="mx-2 mt-3" style="font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.2;"><button class="btn btn-secondary" onclick="window.location.href='./changeUsernameOrPasswordBusinessOwner.php';">Change Password</button></p>
       <!-- <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">View navbar docs &raquo;</a> -->
     </div>
   </main>
