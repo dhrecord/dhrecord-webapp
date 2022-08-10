@@ -80,11 +80,10 @@
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
 				           
-			              $res = ("SELECT registeredPatient.fullName, surveyForm.timeTaken, surveyForm.rating, surveyForm.recommendation, surveyForm.remarks, 
-                    surveyForm.nameClinic, surveyForm.nameDoc FROM clinicAdmin, businessOwner, surveyForm, users, registeredPatient 
-                    WHERE clinicAdmin.clinicID = businessOwner.ID  AND businessOwner.nameOfClinic = surveyForm.nameClinic 
-                    AND surveyForm.username =  users.username AND users.ID = registeredPatient.users_ID
-                    AND clinicAdmin.UserID = '{$_SESSION['ID']}'");
+	      	    $res = ("SELECT registeredPatient.fullName, surveyForm.timeTaken, surveyForm.rating, surveyForm.recommendation, surveyForm.remarks, 
+		    surveyForm.nameClinic, surveyForm.nameDoc FROM frontDesk, businessOwner, surveyForm, users, registeredPatient
+		    WHERE frontDesk.clinicID = businessOwner.ID AND businessOwner.nameOfClinic = surveyForm.nameClinic
+		    AND surveyForm.username =  users.username AND users.ID = registeredPatient.users_ID AND frontDesk.userID = '{$_SESSION['ID']}''");
 
 			              $result = mysqli_query($conn, $res);
 
