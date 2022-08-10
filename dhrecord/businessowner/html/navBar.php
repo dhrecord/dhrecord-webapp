@@ -42,6 +42,9 @@ if($role === "fd")
                     <li class="nav-item">
                         <a class="nav-link" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./surveyAndFeedback.php">Survey and Feedback</a>
+                    </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
