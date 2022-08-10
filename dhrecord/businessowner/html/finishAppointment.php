@@ -17,6 +17,14 @@
   {
     die("Connection failed: " . mysqli_connect_error());
   }
+
+  $toothCondition = "";
+  $diagnosis = "";
+  $medicationPrescribedID = "";
+  $quantity = ""; 
+  $referredTo = "";
+  $comments = "";
+  $err_msg = "";
   
   //get form data and insert into tables
   if (isset($_POST['submit'])) 
@@ -112,7 +120,8 @@
       
       header('Location: ./apptSchedulingAndReminders.php');
     } else {
-      echo 'alert("Not enough supply!");';
+      // echo 'alert("Not enough supply!");';
+      $err_msg = "Not enough supply!";
     }
   }
 
@@ -159,6 +168,16 @@
     <div class="mb-5 d-flex justify-content-between">
       <h4>Finish Appointment Form</h4>
     </div>
+
+    <div class="mb-5">
+      <p>
+        <?php
+          if ($err_msg != ""){
+            echo $err_msg;
+          }
+        ?>
+      </p>
+    </div>
     
     <div>
         <!-- <form> -->
@@ -174,20 +193,23 @@
              <div class="mb-3 row">
                  <label for="toothCondition" class="col-sm-2 col-form-label">Tooth Condition: </label>
                  <div class="col-sm-10">
-                     <input type="text" class="form-control" id="toothCondition" name="toothCondition" required>
+                     <input type="text" class="form-control" id="toothCondition" name="toothCondition" required 
+                     value=<?=$toothCondition?> />
                  </div>
              </div>
              <div class="mb-3 row">
                  <label for="diagnosis" class="col-sm-2 col-form-label">Diagnosis: </label>
                  <div class="col-sm-10">
-                     <input type="text" class="form-control" id="diagnosis" name="diagnosis" required>
+                     <input type="text" class="form-control" id="diagnosis" name="diagnosis" required
+                     value=<?=$diagnosis?> />
                  </div>
              </div>
              <div class="mb-3 row">
                  <label for="medicationPrescribed" class="col-sm-2 col-form-label">Medication Prescribed</label>
                  <div class="col-sm-10">
                      <!-- <input type="text" class="form-control" id="medicationPrescribed" name="medicationPrescribed"> -->
-                     <select name="medicationPrescribed" id="medicationPrescribed" class="form-select" required>
+                     <select name="medicationPrescribed" id="medicationPrescribed" class="form-select" required 
+                      value=<?=$medicationPrescribedID?>>
                          <option selected value=""></option>
                          <?php
                             // GET THE LIST OF MEDICATIONS THAT A CLINIC HAS
@@ -208,13 +230,14 @@
              <div class="mb-3 row">
                  <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
                  <div class="col-sm-10">
-                     <input type="number" min="0" step="1" class="form-control" id="quantity" name="quantity" required>
+                     <input type="number" min="0" step="1" class="form-control" id="quantity" name="quantity" required 
+                     value=<?=$quantity?> />
                  </div>
              </div>
              <div class="mb-3 row">
                 <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
                 <div class="col-sm-10">
-                     <select name="referTo" id="referTo" class="form-select" required>
+                     <select name="referTo" id="referTo" class="form-select" required value=<?=$referredTo?>>
                          <option selected value=""></option>
                          <?php
                             // GET THE LIST OF CLINICS
@@ -239,7 +262,7 @@
              <div class="mb-3 row">
                  <label for="comments" class="col-sm-2 col-form-label">Comments</label>
                  <div class="col-sm-10">
-                     <textarea rows="4" class="form-control" id="comments" name="comments" required></textarea>
+                     <textarea rows="4" class="form-control" id="comments" name="comments" required value=<?=$comments?>></textarea>
                  </div>
              </div>
              <div class="mb-3 row">
