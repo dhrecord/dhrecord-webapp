@@ -52,23 +52,6 @@ date_default_timezone_set('Asia/Singapore');
 $date =  date("d/m/y g:i a");
 echo $date;
 
-//Get variable values from sql
-/*
-$name = "Bryan Ong";
-$address = ;
-//$dob = "09/07/1999";
-$phoneNumber = "9876 5432";
-//$sex = "F";
-$referringDoctor = "SIM, SETH TAN [P2695J]";
-$referredClinic = "Allergy Clinic";
-$institution = "National University Hospital";
-$referralReason = "NUH Adult Allergy Clinic for drug allergy testing";
-$referralType = "Subsidized referral if eligible";
-$schedulingInstructions = "Routine";
-$diagnosis = "The encounter diagnosis was Allergic drug reaction";
-$activeProblem = "2021-12: Viral exanthem";
-$allergies = "She is allergic to amoxicillin, clavulanic acid, and etoricoxib";
-*/
 
 $html = "  
 <style>
