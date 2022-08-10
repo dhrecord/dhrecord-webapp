@@ -118,7 +118,7 @@
         // search nearest clinics
         case "7":
           $case = '7';
-
+          // prepare data => nearest clinic based on user postal code
           // $stmt = $conn->prepare("SELECT address FROM registeredPatient WHERE users_ID = ?");
           // $stmt->bind_param("s", $_SESSION['id']);
           // $stmt->execute();
