@@ -250,7 +250,7 @@
                 <label for="referTo" class="col-sm-2 col-form-label">Refer To (Other Clinic)</label>
                 <div class="col-sm-10">
                      <select name="referTo" id="referTo" class="form-select" required>
-                         <option value="" <?php if($referredTo == ""){echo "selected";} ?>></option>
+                         <option value="selected"></option>
                          <?php
                             // GET THE LIST OF CLINICS
                             $resultBO = $conn->query("SELECT * FROM businessOwner");
