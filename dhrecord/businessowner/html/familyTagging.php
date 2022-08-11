@@ -29,7 +29,7 @@ $row = $result->fetch_assoc();
 
 $patientID = $row["ID"];
 $fullName = $row["fullName"];
-
+$currentFamilyTag = $row["familyTag"];
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +69,12 @@ $fullName = $row["fullName"];
                     <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="fullName" name="fullName" <?php echo 'value = "'.$fullName. '"'; ?> readonly>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="familyTag" class="col-sm-2 col-form-label">Family Tag</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="currentFamilyTag" name="currentFamilyTag" <?php echo 'value = "'.$currentFamilyTag. '"'; ?> readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
