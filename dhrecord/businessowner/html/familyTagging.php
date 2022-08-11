@@ -56,7 +56,7 @@ $currentFamilyTag = $row["familyTag"];
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-4">Add New User</h4>
+        <h4 class="mb-4">Family Tagging</h4>
         <form method="post" action="./tagNewFamily.php" method="POST">
             <div class="container border border-dark p-4" style="border-top-width: 10px!important;">
                 <div class="mb-3 row">
