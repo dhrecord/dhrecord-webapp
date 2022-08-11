@@ -43,10 +43,10 @@ if($row1['familyTag'] == "0")
 	$query3 = "UPDATE registeredPatient SET familyTag='$tempFamilyTag' WHERE ID='$UserID'";
 	if(mysqli_query($conn,$query3))
 	{
-		$toTag = $row1['familyTag'];
-		$query4 = "UPDATE registeredPatient SET familyTag='$toTag' WHERE ID='$familyID'";
+		$query4 = "UPDATE registeredPatient SET familyTag='$tempFamilyTag' WHERE ID='$familyID'";
 		$toIncrease = $tempFamilyTag + 1;
 		$query5 = "UPDATE familyTagHolder SET familyTagHolder='$toIncrease'";
+
 		if(mysqli_query($conn,$query4) && mysqli_query($conn,$query5))
 		{
 		
