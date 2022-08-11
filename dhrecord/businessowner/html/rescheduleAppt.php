@@ -114,7 +114,9 @@
                 echo '" class="btn btn-dark btn-sm">Reschedule</button></form></td>';
 
                 // finish btn
-                echo "<td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>";
+                if ($_SESSION['role'] === "dr"){
+                  echo "<td class='text-center'><button class='btn btn-sm btn-success' onclick='".$link."'>Finish</button></td>";
+                }
                 
                 // cancel btn
                 echo '<td class="text-center">
