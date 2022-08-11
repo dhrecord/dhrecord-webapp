@@ -143,7 +143,7 @@
         // search highest rating clinics
         case "8":
           $case = '8';
-          $result = $conn->query("SELECT * FROM businessOwner ORDER BY rating DESC");
+          $result = $conn->query("SELECT * FROM businessOwner WHERE rating IS NOT NULL ORDER BY rating DESC");
           break;
         default:
           break;
