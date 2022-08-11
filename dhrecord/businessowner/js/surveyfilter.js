@@ -26,16 +26,3 @@ searchbar.addEventListener("input", (evt) => {
     console.log(e);
   }
 });
-
-dropdown.addEventListener("change", (evt) => {
-  try {
-    const value = evt.currentTarget.value;
-    if (value === "2") {
-      searchbar.setAttribute("type", "date");
-    } else {
-      searchbar.setAttribute("type", "text");
-    }
-  } catch (e) {
-    console.log(e);
-  }
-});
