@@ -119,15 +119,25 @@
         case "7":
           $case = '7';
           // prepare data => nearest clinic based on user postal code
-          // $stmt = $conn->prepare("SELECT address FROM registeredPatient WHERE users_ID = ?");
-          // $stmt->bind_param("s", $_SESSION['id']);
-          // $stmt->execute();
-          // $result_address = $stmt->get_result();
-          // $user_address = '';
+          $stmt = $conn->prepare("SELECT postalCode FROM registeredPatient WHERE users_ID = ?");
+          $stmt->bind_param("s", $_SESSION['id']);
+          $stmt->execute();
+          $result_PC = $stmt->get_result();
+          $user_PC = '';
+          $row_PC = $result_PC->fetch_assoc();
+          $user_PC = $row_PC['postalCode']; // postal code of user => patient
 
-          // while ($row_address = $result_address->fetch_assoc()){
-          //   $user_address = $row_address['address'];
-          // }
+          // find sector range => get first two digits
+          $sectorUserPC = substr($user_PC, 0, 2); 
+          // sg postal code 6 digits
+          $upperBound = ($sectorUserPC + 1)*10000;
+          $lowerBound = ($sectorUserPC - 1)*10000;
+
+          // find clinics within range
+          $stmt2 = $conn->prepare("SELECT * FROM businessOwner WHERE postalCode <= ? AND postalCode >= ?");
+          $stmt2->bind_param("ss", $upperBound, $lowerBound);
+          $stmt2->execute();
+          $result = $stmt2->get_result();
 
           break;
         // search highest rating clinics
@@ -249,7 +259,7 @@
 
             <div class="d-flex align-items-center">
                 <div class="mx-4" style="width:fit-content">
-                    <b>Sort By:</b>
+                    <b>Quick Filter:</b>
                 </div>
 
                 <form action="#" method="post" class="d-flex align-items-center">
@@ -258,7 +268,7 @@
                   style="">
                       <option selected disabled hidden>Category ...</option>
                       <option value="7">Show Nearest Clinics</option>
-                      <option value="8">Show Highest Rating Clinics</option>
+                      <option value="8">Show Highest Rating Clinics</option> <!-- show 4 to 5 stars clinic -->
                     </select>
                   </div>
                   <div class="">
