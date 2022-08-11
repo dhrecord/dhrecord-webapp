@@ -18,6 +18,27 @@
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $database);
 
+	// Store the cipher method
+	$ciphering = "AES-128-CTR";
+  
+	// Use OpenSSl Encryption method
+	$iv_length = openssl_cipher_iv_length($ciphering);
+	$options = 0;
+
+	// Non-NULL Initialization Vector for encryption
+	$encryption_iv = '1234567891011121';
+
+	// Store the encryption key
+	$encryption_key = "JovenChanDunCry";
+
+	// Non-NULL Initialization Vector for decryption
+	$decryption_iv = '1234567891011121';
+  
+	// Store the decryption key
+	$decryption_key = "JovenChanDunCry";
+
+	//$encryptedPassword = openssl_encrypt($passWord, $ciphering, $encryption_key, $options, $encryption_iv);
+
 	if (!$conn) 
 	{
 		die("Connection failed: " . mysqli_connect_error());
@@ -36,6 +57,9 @@
 			$stmt->fetch();
 			$data = $stmt_result->fetch_assoc();
 
+			//$decryptedPassword = openssl_decrypt($data['password'], $ciphering, $decryption_key, $options, $decryption_iv)
+			//if($decryptedPassword === $passWord) 
+			//{
 			if($data['password'] === $passWord) 
 			{
 				$_SESSION['loggedin'] = TRUE;
