@@ -82,7 +82,8 @@
                 
                     $res = ("SELECT referralTracking.ID, registeredPatient.fullName AS ptName, referralTracking.referredTo, referralTracking.referralDate, 
                     doctor.fullName AS docName, referralTracking.toothCondition FROM referralTracking, registeredPatient, doctor
-                    WHERE referralTracking.patient_ID = registeredPatient.ID AND referralTracking.referringDoctor = doctor.doctorID");
+                    WHERE referralTracking.patient_ID = registeredPatient.ID AND referralTracking.referringDoctor = doctor.doctorID 
+		    ORDER BY referralTracking.ID ASC");
 
                     $result = mysqli_query($conn, $res);
 
