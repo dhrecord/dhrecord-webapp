@@ -115,15 +115,16 @@ if(!isset($_SESSION['loggedin']))
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
 				           
-			$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, referralTracking.referringDoctor, 
-			referralTracking.toothCondition, referralTracking.comments FROM referralTracking, registeredPatient, users WHERE users.ID = '{$_SESSION['id']}' 
+			$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, doctor.fullName, 
+			referralTracking.toothCondition, referralTracking.comments FROM referralTracking, registeredPatient, users, doctor 
+			WHERE users.ID = '{$_SESSION['id']}' AND referralTracking.referringDoctor = doctor.doctorID
 			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
 			$result = mysqli_query($conn, $res);
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["referringDoctor"]
+                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["fullName"]
 				      ."</td><td>".$sql["toothCondition"]."</td><td>".$sql["comments"]."</td><td><a class='btn btn-dark btn-sm' href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
                             }
 			        ?>         
