@@ -80,15 +80,16 @@
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
                 
-                    $res = ("SELECT referralTracking.ID, registeredPatient.fullName, referralTracking.referredTo, referralTracking.referralDate, 
-                    referralTracking.referringDoctor, referralTracking.toothCondition FROM referralTracking, registeredPatient
-                    WHERE referralTracking.patient_ID = registeredPatient.ID");
+                    $res = ("SELECT referralTracking.ID, registeredPatient.fullName AS ptName, referralTracking.referredTo, referralTracking.referralDate, 
+                    doctor.fullName AS docName, referralTracking.toothCondition FROM referralTracking, registeredPatient, doctor
+                    WHERE referralTracking.patient_ID = registeredPatient.ID AND referralTracking.referringDoctor = doctor.doctorID 
+		    ORDER BY referralTracking.ID ASC");
 
                     $result = mysqli_query($conn, $res);
 
                     while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["fullName"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".
-                                  $sql["referringDoctor"]."</td><td>".$sql["toothCondition"]."</td></tr>";
+                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["ptName"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".
+                                  $sql["docName"]."</td><td>".$sql["toothCondition"]."</td></tr>";
                             }
                ?>
             </tbody>
