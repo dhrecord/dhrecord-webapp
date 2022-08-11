@@ -28,7 +28,7 @@
 	// Store the encryption key
 	$encryption_key = "JovenChanDunCry";
 
-	$encryptedPassword = openssl_encrypt($simple_string, $ciphering, $encryption_key, $options, $encryption_iv);
+	$encryptedPassword = openssl_encrypt($passWord, $ciphering, $encryption_key, $options, $encryption_iv);
 
 	//timestamp
 	$vkey = md5(time().$userName);
