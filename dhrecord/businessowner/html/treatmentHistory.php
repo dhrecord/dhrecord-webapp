@@ -92,7 +92,7 @@
 				?>
 					<tr>
 						<td><?php echo $fetch['date']?></td>
-						<td><?php echo $fetch['attendingDoctor']?></td>
+						<td><?php echo $fetch['fullName']?></td>
 						<td><?php echo $fetch['toothCondition']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
 						<td><?php echo $fetch['fullName']?></td>
@@ -117,7 +117,7 @@
 			?>
 			<tr>
 				<td><?php echo $fetch['date']?></td>
-				<td><?php echo $fetch['attendingDoctor']?></td>
+				<td><?php echo $fetch['fullName']?></td>
 				<td><?php echo $fetch['toothCondition']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
 				<td><?php echo $fetch['fullName']?></td>
