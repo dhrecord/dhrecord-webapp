@@ -67,7 +67,7 @@
         $stmt_result = $stmt->get_result();
 
         $fullName = '';
-        if ($resultN->num_rows === 0) {
+        if ($stmt_result->num_rows === 0) {
           $fullName = $_SESSION['username'];
         } else{
           $data = $stmt_result->fetch_assoc();
