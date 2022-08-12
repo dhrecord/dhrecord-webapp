@@ -81,8 +81,8 @@ if(!isset($_SESSION['loggedin']))
 			<label>Date:</label>
 			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>"/>
 			<label>To</label>
-			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
-			<button class="btn btn-primary" name="filter"><span class="glyphicon glyphicon-search"></span>Search</button>
+			<input type="date" class="form-control mt-1" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
+			<button class="btn btn-primary mt-2" name="filter"><span class="glyphicon glyphicon-search"></span>Search</button>
 		</form>
 		<br/><br/>
             </div>
