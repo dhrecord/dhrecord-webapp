@@ -44,6 +44,16 @@
 	mysqli_stmt_bind_param($stmt, "ssssssssi", $row['nameOfClinic'], $row['locationOfClinic'], $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row1['ID']);
 	mysqli_stmt_execute($stmt);
 
+	$targetUserID = $row1['ID']
+
+	$sql = "SELECT * FROM businessOwner WHERE users_ID = $targetUserID";
+	$clinicID = mysqli_query($conn,$query);
+	$row2 = $clinicID->fetch_assoc();
+
+	$stmt = mysqli_prepare($conn, "insert into clinicAdmin(userID, fullName, contactNumber, email, clinicID) values(?, ?, ?, ?, ?)");
+	mysqli_stmt_bind_param($stmt, "isssi", $row1['ID'], $row['fullName'], $row['contactNumber'], $row['email'], $row2['ID']);
+	mysqli_stmt_execute($stmt);
+
 	$sql = "DELETE FROM businessOwnerForApproval WHERE id = $id"; 
 	
 	if(mysqli_query($conn,$sql)){
