@@ -59,7 +59,6 @@
 				<th>Tooth Condition</th>
 				<th>Medication Prescribed</th>
 				<th>Patient's Name</th>
-
 			</tr>    		
 			
 			 <?php                           
@@ -77,15 +76,9 @@
 			{
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
-				
-				// $query = mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName AS docName, treatmentHistory.toothCondition, 
-				// treatmentHistory.medicationPrescribed, registeredPatient.fullName AS ptName FROM treatmentHistory, registeredPatient, doctor
-				// WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
-				// AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
-				// 	or die(mysqli_error());
 
-                $query = mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.toothCondition,
-				treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, doctor
+                $query = mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName AS docName, treatmentHistory.toothCondition,
+				treatmentHistory.medicationPrescribed, registeredPatient.fullName AS ptName FROM treatmentHistory, registeredPatient, doctor
 				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
                  AND registeredPatient.ID =  '{$_POST['pat_id']}' 
 				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
@@ -98,15 +91,11 @@
 					{
 				?>
 					<tr>
-						<!-- <td><?php //echo $fetch['date']?></td>
-						<td><?php //echo $fetch['docName']?></td>
-						<td><?php //echo $fetch['toothCondition']?></td>
-						<td><?php //echo $fetch['medicationPrescribed']?></td>
-						<td><?php //echo $fetch['ptName']?></td> -->
 						<td><?php echo $fetch['date']?></td>
 						<td><?php echo $fetch['fullName']?></td>
 						<td><?php echo $fetch['toothCondition']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
+                        <td><?php echo $fetch['ptName']?></td>
 					</tr>
 				<?php
 					}
@@ -119,10 +108,6 @@
 				}
 			} else
 			{
-				// $query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName AS docName, treatmentHistory.toothCondition, 
-				// treatmentHistory.medicationPrescribed, registeredPatient.fullName AS ptName FROM treatmentHistory, registeredPatient, doctor
-				// WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID") or die(mysqli_error());
-
                 $query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.toothCondition,
 				treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, doctor
 				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
@@ -133,16 +118,11 @@
 				{
 			?>
 			<tr>
-				<!-- <td><?php //echo $fetch['date']?></td>
-				<td><?php //echo $fetch['docName']?></td>
-				<td><?php //echo $fetch['toothCondition']?></td>
-				<td><?php //echo $fetch['medicationPrescribed']?></td>
-				<td><?php //echo $fetch['ptName']?></td> -->
-
                 <td><?php echo $fetch['date']?></td>
 				<td><?php echo $fetch['fullName']?></td>
 				<td><?php echo $fetch['toothCondition']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
+                <td><?php echo $fetch['ptName']?></td>
 			</tr>
 			<?php
 				}
