@@ -1,11 +1,43 @@
 <?php
+	session_start();
+	if(!isset($_SESSION['loggedin']))
+	{
+		header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+		exit;
+	}
 
-    session_start();
-  if(!isset($_SESSION['loggedin']))
-  {
-    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
-    exit;
-  }
+	// Database Connection
+	$servername = "localhost";
+	$database = "u922342007_Test";
+	$username = "u922342007_admin";
+	$password = "Aylm@012";
+	// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $database);
+
+	if (!$conn) 
+	{
+	die("Connection failed: " . mysqli_connect_error());
+	}
+
+	$result = '';
+	$search = '';
+
+	// SEARCH PATIENT
+	if(isset($_POST['save'])){
+		if(!empty($_POST['search'])){
+			$search = $_POST['search'];
+			$search = "%$search%";
+            $stmt = $conn->prepare("SELECT * FROM registeredPatient WHERE fullName LIKE ?");
+            $stmt->bind_param("s", $search);
+            $stmt->execute();
+            $result = $stmt->get_result();
+		}
+		else{
+			$result = $conn->query("SELECT * FROM registeredPatient");
+		}
+	} else {
+		$result = $conn->query("SELECT * FROM registeredPatient");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -53,23 +85,6 @@
 				</div>
 			</form>
 		</div>
-
-		<?php
-			// Database Connection
-			$servername = "localhost";
-			$database = "u922342007_Test";
-			$username = "u922342007_admin";
-			$password = "Aylm@012";
-			// Create connection
-			$conn = mysqli_connect($servername, $username, $password, $database);
-		
-			if (!$conn) 
-			{
-			die("Connection failed: " . mysqli_connect_error());
-			}
-
-			$result = $conn->query("SELECT * FROM registeredPatient");
-		?>
 
 		<div class="content-div my-4">
             <table class="table" id="patientTable" data-filter-control="true" data-show-search-clear-button="true">
