@@ -44,7 +44,7 @@
 	mysqli_stmt_bind_param($stmt, "ssssssssi", $row['nameOfClinic'], $row['locationOfClinic'], $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row1['ID']);
 	mysqli_stmt_execute($stmt);
 
-	$targetUserID = $row1['ID']
+	$targetUserID = $row1['ID'];
 
 	$query = "SELECT * FROM businessOwner WHERE users_ID = $targetUserID";
 	$clinicID = mysqli_query($conn,$query);
