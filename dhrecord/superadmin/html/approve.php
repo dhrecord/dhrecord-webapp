@@ -46,7 +46,7 @@
 
 	$targetUserID = $row1['ID']
 
-	$sql = "SELECT * FROM businessOwner WHERE users_ID = $targetUserID";
+	$query = "SELECT * FROM businessOwner WHERE users_ID = $targetUserID";
 	$clinicID = mysqli_query($conn,$query);
 	$row2 = $clinicID->fetch_assoc();
 
