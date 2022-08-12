@@ -57,11 +57,11 @@
 			$stmt->fetch();
 			$data = $stmt_result->fetch_assoc();
 
-			//$decryptedPassword = openssl_decrypt($data['password'], $ciphering, $decryption_key, $options, $decryption_iv)
-			//if($decryptedPassword === $passWord) 
-			//{
-			if($data['password'] === $passWord) 
+			$decryptedPassword = openssl_decrypt($data['password'], $ciphering, $decryption_key, $options, $decryption_iv)
+			if($decryptedPassword === $passWord) 
 			{
+			//if($data['password'] === $passWord) 
+			//{
 				$_SESSION['loggedin'] = TRUE;
 				$_SESSION['username'] = $data['username'];
 				$_SESSION['role'] = $data['role'];
