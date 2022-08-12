@@ -38,7 +38,7 @@
 
     <!-- content -->
     <div class="container my-5">
-        <h4 class="mb-4">Treatment History</h4>
+        <h4 class="mb-5">Treatment History</h4>
 
 		<div class="d-flex align-items-center">
 			<div><p class="m-0"><b>Search Patient:</b></p></div>
@@ -54,6 +54,23 @@
 			</form>
 		</div>
 
+		<?php
+			// Database Connection
+			$servername = "localhost";
+			$database = "u922342007_Test";
+			$username = "u922342007_admin";
+			$password = "Aylm@012";
+			// Create connection
+			$conn = mysqli_connect($servername, $username, $password, $database);
+		
+			if (!$conn) 
+			{
+			die("Connection failed: " . mysqli_connect_error());
+			}
+
+			$result = $conn->query("SELECT * FROM registeredPatient");
+		?>
+
 		<div class="content-div my-4">
             <table class="table" id="patientTable" data-filter-control="true" data-show-search-clear-button="true">
                 <tr class="bg-dark text-light">
@@ -66,109 +83,27 @@
                 </tr>
 
                 <!-- SHOWING CLINICS -->
-				<tr class="bg-dark text-light">
-					<td class="px-4">1</td>
-                    <td class="px-4">Name</td>
-                    <td class="px-4">NRIC</td>
-					<td class="px-4">Contact No.</td>
-					<td class="px-4">Email</td>
+				<?php 
+					if ($result->num_rows > 0) { 
+						while ($row = $result->fetch_assoc()){
+				?>
+				
+				<tr>
+					<td class="px-4"><?=$row['ID']?></td>
+                    <td class="px-4"><?=$row['fullName']?></td>
+                    <td class="px-4"><?=$row['nricNumber']?></td>
+					<td class="px-4"><?=$row['contactNumber']?></td>
+					<td class="px-4"><?=$row['email']?></td>
 					<td class="px-4 text-center">
 						<form method="POST" action="../../registeredpatient/html/patientTreatmentHistory.php">
-							<button type="submit" name="pat_id" value="<?php?>" class="btn btn-dark">View</button>
+							<button type="submit" name="pat_id" value="<?=$row['ID']?>" class="btn btn-dark">View</button>
 						</form>
 					</td>
                 </tr>
+
+				<?php }} ?>
             </table>
         </div>
-
-        <!-- <div class="mb-4 d-flex align-items-center">
-            <div class="d-flex align-items-center">
-			<form class="form-inline" method="POST" action="">
-				<label>Date:</label>
-				<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php //echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>"/>
-				<label>To</label>
-				<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php //echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
-				<button class="btn btn-primary mt-3" name="search"><span class="glyphicon glyphicon-search">Search</span></button>
-			</form>
-		<br/><br/><br/>
-            </div>
-        </div> -->
-        <!-- <table class="table table-striped">
-			<tr>
-				<th>Date</th>
-				<th>Attending Doctor</th>
-				<th>Tooth Condition</th>
-				<th>Medication Prescribed</th>
-				<th>Patient's Name</th>
-
-			</tr>    		
-			
-			 <?php                           
-			//Database Connection
-			// $servername = "localhost";
-			// $database = "u922342007_Test";
-			// $username = "u922342007_admin";
-			// $password = "Aylm@012";
-        
-			// // Create connection
-			// $conn = mysqli_connect($servername, $username, $password, $database);
-
-			       
-			// if(ISSET($_POST['search']))
-			// {
-			// 	$date1 = date("Y-m-d", strtotime($_POST['date1']));
-			// 	$date2 = date("Y-m-d", strtotime($_POST['date2']));
-				
-			// 	$query = mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName AS docName, treatmentHistory.toothCondition, 
-			// 	treatmentHistory.medicationPrescribed, registeredPatient.fullName AS ptName FROM treatmentHistory, registeredPatient, doctor
-			// 	WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
-			// 	AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
-			// 		or die(mysqli_error());
-				
-			// 	$row=mysqli_num_rows($query);
-			// 	if($row>0)
-			// 	{
-			// 		while($fetch=mysqli_fetch_array($query))
-			// 		{
-			// 	?>
-			// 		<tr>
-			// 			<td><?php //echo $fetch['date']?></td>
-			// 			<td><?php //echo $fetch['docName']?></td>
-			// 			<td><?php //echo $fetch['toothCondition']?></td>
-			// 			<td><?php //echo $fetch['medicationPrescribed']?></td>
-			// 			<td><?php //echo $fetch['ptName']?></td>
-						
-			// 		</tr>
-			// 	<?php
-			// 		}
-			// 	}else
-			// 	{
-			// 		echo
-			// 		'<tr>
-			// 			<td colspan = "5"><center>Record Not Found</center></td>
-			// 		</tr>';
-			// 	}
-			// } else
-			// {
-			// 	$query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName AS docName, treatmentHistory.toothCondition, 
-			// 	treatmentHistory.medicationPrescribed, registeredPatient.fullName AS ptName FROM treatmentHistory, registeredPatient, doctor
-			// 	WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID") or die(mysqli_error());
-			// 	while($fetch=mysqli_fetch_array($query))
-			// 	{
-			?>
-			<tr>
-				<td><?php //echo $fetch['date']?></td>
-				<td><?php //echo $fetch['docName']?></td>
-				<td><?php //echo $fetch['toothCondition']?></td>
-				<td><?php //echo $fetch['medicationPrescribed']?></td>
-				<td><?php //echo $fetch['ptName']?></td>
-			</tr>
-			<?php
-			// 	}
-			// }
-			?>
-						    
-        </table> -->
     </div>
 
 
