@@ -15,6 +15,21 @@
 	$userName = $_POST['userName'];
 	$passWord = $_POST['passWord'];
 
+	// Store the cipher method
+	$ciphering = "AES-128-CTR";
+  
+	// Use OpenSSl Encryption method
+	$iv_length = openssl_cipher_iv_length($ciphering);
+	$options = 0;
+
+	// Non-NULL Initialization Vector for encryption
+	$encryption_iv = '1234567891011121';
+
+	// Store the encryption key
+	$encryption_key = "JovenChanDunCry";
+
+	$encryptedPassword = openssl_encrypt($passWord, $ciphering, $encryption_key, $options, $encryption_iv);
+
 	//timestamp
 	$vkey = md5(time().$userName);
 	$verifiedNegative = 0;
@@ -63,7 +78,7 @@
 		mail($email, $subject, $message, $headers);
 
 		$stmt = mysqli_prepare($conn, "insert into tempRegisteredBusinessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		mysqli_stmt_bind_param($stmt, "sssssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $RegistrationNumber, $LicenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $passWord, $vkey, $verifiedNegative);
+		mysqli_stmt_bind_param($stmt, "sssssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $RegistrationNumber, $LicenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $encryptedPassword, $vkey, $verifiedNegative);
 		mysqli_stmt_execute($stmt);
 
 		mysqli_close($conn);
