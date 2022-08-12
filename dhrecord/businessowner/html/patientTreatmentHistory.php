@@ -92,7 +92,7 @@
 				?>
 					<tr>
 						<td><?php echo $fetch['date']?></td>
-						<td><?php echo $fetch['fullName']?></td>
+						<td><?php echo $fetch['docName']?></td>
 						<td><?php echo $fetch['toothCondition']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
                         <td><?php echo $fetch['ptName']?></td>
@@ -108,8 +108,8 @@
 				}
 			} else
 			{
-                $query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.toothCondition,
-				treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, doctor
+                $query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName AS docName, treatmentHistory.toothCondition,
+				treatmentHistory.medicationPrescribed, registeredPatient.fullName AS ptName FROM treatmentHistory, registeredPatient, doctor
 				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
 				AND registeredPatient.ID =  '{$_POST['pat_id']}' ") 
 					or die(mysqli_error());
@@ -119,7 +119,7 @@
 			?>
 			<tr>
                 <td><?php echo $fetch['date']?></td>
-				<td><?php echo $fetch['fullName']?></td>
+				<td><?php echo $fetch['docName']?></td>
 				<td><?php echo $fetch['toothCondition']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
                 <td><?php echo $fetch['ptName']?></td>
