@@ -92,7 +92,10 @@ if(!isset($_SESSION['loggedin']))
 				<th>Date</th>
 				<th>Attending Doctor</th>
 				<th>Tooth Condition</th>
+				<th>Diagnosis</th>
 				<th>Medication Prescribed</th>
+				<th>Quantity</th>
+				<th>Comments</th>
 			</tr>    		
 			
 			 <?php                           
