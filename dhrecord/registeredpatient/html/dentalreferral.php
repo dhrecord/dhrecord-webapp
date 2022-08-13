@@ -68,85 +68,64 @@ $html = "
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     height: 100vh;
     width: 100vw;
     font-size: 12px;
 }
-
 img {
     width: 80px;
     height: 80px;
 }
-
 p {
     margin: 0;
     padding: 0;
 }
-
-
-
 header {
     margin: 5px 0px 80px 20px;
     display: inline;
-
 }
-
 header h2 {
     margin-left: 80px;
     margin-top: -60px;
     margin-bottom: 60px;
 }
-
 main {
     height: 75%;
     margin: 15px 15px 60px 15px;
 }
-
-
 .patient-details {
     border-spacing: 40px 20px;
     max-width: 800px;
     margin-bottom: 10px;
 }
-
 .patient-details tr td {
     vertical-align: top;
 }
-
 .patient-details td:nth-child(2) {
     padding-left: 150px;
 }
-
 .sendTo table {
     border-spacing: 40px 5px;
 }
-
 .sendTo table th {
     text-align: left;
 }
-
 .sendTo table td {
     padding-left: 20px;
 }
-
 .comments {
     margin-top: 30px;
     margin-left: 40px;
 }
-
 .comment-group {
     margin-bottom: 30px;
 }
-
 #printDate {
     display: inline;
     margin-left: 5px;
 }
-
 footer {
-
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -154,13 +133,10 @@ footer {
     /* Height of the footer */
     border-top: 0.5px solid grey;
 }
-
-
 </style>
 <body>
     <header>
         <h2>DHRecord</h2>
-
     </header>
     <main>
     <section>
