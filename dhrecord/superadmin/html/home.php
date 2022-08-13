@@ -1,11 +1,32 @@
 <?php
 
-    session_start();
-    if(!isset($_SESSION['loggedin']))
-      {
-        header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
-        exit;
-      }
+  session_start();
+  if(!isset($_SESSION['loggedin']))
+    {
+      header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+      exit;
+    }
+
+  //Database Connection
+  $servername = "localhost";
+  $database = "u922342007_Test";
+  $username = "u922342007_admin";
+  $password = "Aylm@012";
+
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $database);
+
+  if (!$conn) 
+  {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  $query = "SELECT COUNT(*) FROM businessOwnerForApproval";
+  $total = 0;
+
+  if ($result = $conn->query($query)) {
+    $total = $result->fetch_assoc();
+  }
 
 ?>
 
@@ -113,7 +134,7 @@
             <div>
               <h2>Clinic Account Registration</h2>
               <div>
-                <h3 style="color: #00A3A8;">! 3 Registrants</h3>
+                <h3 style="color: #00A3A8;">! <?=$total?> Registrants</h3>
                 <p>need to be reviewed and need approval</p>
               </div>
             </div>
