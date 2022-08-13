@@ -16,9 +16,8 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 $referralID = $_GET['ID'];
 
 $res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, referralTracking.toothCondition, referralTracking.comments,
-treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity, registeredPatient.fullName AS ptName, registeredPatient.nricNumber, 
-registeredPatient.contactNumber, registeredPatient.address, registeredPatient.postalCode,registeredPatient.medConditions, registeredPatient.drugAllergies, 
-doctor.fullName AS docName 
+registeredPatient.fullName AS ptName, registeredPatient.nricNumber, registeredPatient.contactNumber, registeredPatient.address, registeredPatient.postalCode,
+registeredPatient.medConditions, registeredPatient.drugAllergies, doctor.fullName AS docName 
 FROM referralTracking, registeredPatient, doctor, users 
 WHERE users.ID = '{$_SESSION['id']}' 
 AND users.ID = registeredPatient.users_ID 
@@ -41,9 +40,9 @@ $result = mysqli_query($conn, $res);
      $referringDoc = $sql["docName"];
      $toothCondi = $sql["toothCondition"];
      $comments = $sql["comments"];
-     $diagnosis = $sql["diagnosis"];
-     $medPres = $sql["medicationPrescribed"];
-     $quantity = $sql["quantity"];
+     //$diagnosis = $sql["diagnosis"];
+     //$medPres = $sql["medicationPrescribed"];
+     //$quantity = $sql["quantity"];
    }
 
 
@@ -195,24 +194,6 @@ footer {
                     <th>Tooth Condition</th>
                     <td>
                         " . $toothCondi . "
-                    </td>
-                </tr>
-                <tr>
-                    <th>Diagnosis</th>
-                    <td>
-                        " . $diagnosis . "
-                    </td>
-                </tr>
-                <tr>
-                    <th>Medication Prescribed</th>
-                    <td>
-                        " . $medPres . "
-                    </td>
-                </tr>
-                <tr>
-                    <th>Quantity</th>
-                    <td>
-                        " . $quantity . "
                     </td>
                 </tr>
             </table>
