@@ -110,16 +110,13 @@
 					<td class="px-4"><?=$row['contactNumber']?></td>
 					<td class="px-4"><?=$row['email']?></td>
 					<td class="px-4 text-center">
-						<form method="POST" action="../../businessowner/html/patientTreatmentHistory.php">
-							<button type="submit" name="pat_id" value="<?=$row['ID']?>" class="btn btn-dark">View</button>
+						<!-- <form method="POST" action="../../businessowner/html/patientTreatmentHistory.php"> -->
+							<button type="submit" name="pat_id" href='./patientTreatmentHistory.php?ID=".$row["ID"]."'class="btn btn-dark">View</button>
 						</form>
 					</td>
                 </tr>
 
-				<?php }} 
-		    			$id = $_POST['id'];
-		    			echo $id;
-				?>
+				<?php }} ?>
             </table>
         </div>
     </div>
