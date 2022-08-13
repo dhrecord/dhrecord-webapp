@@ -63,6 +63,10 @@ if($role === "fd")
 
 else if($role === "dr")
 {
+    $link = $_SERVER['PHP_SELF'];
+    $link_array = explode('/',$link);
+    $page = end($link_array);
+    echo $page;
 ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
