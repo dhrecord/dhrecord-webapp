@@ -54,11 +54,14 @@
         </div>
         <table class="table table-striped">
 			<tr>
+				<th>Patient's Name</th>
 				<th>Date</th>
 				<th>Attending Doctor</th>
 				<th>Tooth Condition</th>
+				<th>Diagnosis</th>
 				<th>Medication Prescribed</th>
-				<th>Patient's Name</th>
+				<th>Quantity</th>
+				<th>Comments</th>
 			</tr>    		
 			
 			 <?php                           
@@ -77,12 +80,11 @@
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 
-                $query = mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName AS docName, treatmentHistory.toothCondition,
-				treatmentHistory.medicationPrescribed, registeredPatient.fullName AS ptName FROM treatmentHistory, registeredPatient, doctor
-				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
-                 AND registeredPatient.ID =  '{$_POST['pat_id']}' 
-				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
-					or die(mysqli_error());
+                		$query = mysqli_query($conn, "SELECT registeredPatient.fullName AS ptName, treatmentHistory.date, doctor.fullName AS docName, 
+				treatmentHistory.toothCondition, treatmentHstory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
+				treatmentHistory.comments FROM treatmentHistory, registeredPatient, doctor WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
+				AND treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.ID =  '{$_POST['pat_id']}' 
+				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") or die(mysqli_error());
 				
 				$row=mysqli_num_rows($query);
 				if($row>0)
@@ -91,11 +93,15 @@
 					{
 				?>
 					<tr>
+						<td><?php echo $fetch['ptName']?></td>
 						<td><?php echo $fetch['date']?></td>
 						<td><?php echo $fetch['docName']?></td>
 						<td><?php echo $fetch['toothCondition']?></td>
+						<td><?php echo $fetch['diagnosis']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
-                        <td><?php echo $fetch['ptName']?></td>
+						<td><?php echo $fetch['quantity']?></td>
+						<td><?php echo $fetch['comments']?></td>
+                        
 					</tr>
 				<?php
 					}
@@ -103,26 +109,28 @@
 				{
 					echo
 					'<tr>
-						<td colspan = "5"><center>Record Not Found</center></td>
+						<td colspan = "8"><center>Record Not Found</center></td>
 					</tr>';
 				}
 			} else
 			{
-                $query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName AS docName, treatmentHistory.toothCondition,
-				treatmentHistory.medicationPrescribed, registeredPatient.fullName AS ptName FROM treatmentHistory, registeredPatient, doctor
-				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
-				AND registeredPatient.ID =  '{$_POST['pat_id']}' ") 
-					or die(mysqli_error());
+                		$query=mysqli_query($conn, "SELECT registeredPatient.fullName AS ptName, treatmentHistory.date, doctor.fullName AS docName, 
+				treatmentHistory.toothCondition, treatmentHstory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
+				treatmentHistory.comments FROM treatmentHistory, registeredPatient, doctor WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
+				AND treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.ID =  '{$_POST['pat_id']}' ") or die(mysqli_error());
 
 				while($fetch=mysqli_fetch_array($query))
 				{
 			?>
 			<tr>
-                <td><?php echo $fetch['date']?></td>
+                		<td><?php echo $fetch['ptName']?></td>
+				<td><?php echo $fetch['date']?></td>
 				<td><?php echo $fetch['docName']?></td>
 				<td><?php echo $fetch['toothCondition']?></td>
+				<td><?php echo $fetch['diagnosis']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
-                <td><?php echo $fetch['ptName']?></td>
+				<td><?php echo $fetch['quantity']?></td>
+				<td><?php echo $fetch['comments']?></td>
 			</tr>
 			<?php
 				}
