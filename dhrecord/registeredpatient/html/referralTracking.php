@@ -88,7 +88,10 @@ if(!isset($_SESSION['loggedin']))
                 <option value="2">Referral Date</option>
                 <option value="3">Referring Doctor</option>
                 <option value="4">Tooth Condition</option>
-	    	<option value="5">Comments</option>
+	    	<option value="5">Diagnosis</option>
+	    	<option value="6">Medication Prescribed</option>
+	    	<option value="7">Quantity</option>
+	    	<option value="8">Comments</option>
             </select>
         </div>
 	<table class="table table-striped">
@@ -99,6 +102,9 @@ if(!isset($_SESSION['loggedin']))
         			<th>Referral Date</th>
 				<th>Referring Doctor</th>
 				<th>Tooth Condition</th>
+				<th>Diagnosis</th>
+				<th>Medication Prescribed</th>
+				<th>Quantity</th>
 				<th>Comments</th>
 				<th>Referral Letter</th>
         		</tr>
@@ -116,7 +122,8 @@ if(!isset($_SESSION['loggedin']))
                     $conn = mysqli_connect($servername, $username, $password, $database);
 				           
 			$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, doctor.fullName, 
-			referralTracking.toothCondition, referralTracking.comments FROM referralTracking, registeredPatient, users, doctor 
+			referralTracking.toothCondition, treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
+			referralTracking.comments FROM referralTracking, treatmentHistory, registeredPatient, users, doctor
 			WHERE users.ID = '{$_SESSION['id']}' AND referralTracking.referringDoctor = doctor.doctorID
 			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
 
@@ -125,7 +132,9 @@ if(!isset($_SESSION['loggedin']))
 
                     while($sql = mysqli_fetch_assoc($result)){
                               echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["fullName"]
-				      ."</td><td>".$sql["toothCondition"]."</td><td>".$sql["comments"]."</td><td><a class='btn btn-dark btn-sm' href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
+			      ."</td><td>".$sql["toothCondition"].$sql["diagnosis"].$sql["medicationPrescribed"].$sql["quantity"]."</td><td>"
+			      ."</td><td>"."</td><td>"."</td><td>".$sql["comments"]
+			      ."</td><td><a class='btn btn-dark btn-sm' href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
                             }
 			        ?>         
 		</tbody>
