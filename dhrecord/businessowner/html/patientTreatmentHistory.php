@@ -81,7 +81,7 @@
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 
                 		$query = mysqli_query($conn, "SELECT registeredPatient.fullName AS ptName, treatmentHistory.date, doctor.fullName AS docName, 
-				treatmentHistory.toothCondition, treatmentHstory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
+				treatmentHistory.toothCondition, treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
 				treatmentHistory.comments FROM treatmentHistory, registeredPatient, doctor WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
 				AND treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.ID =  '{$_POST['pat_id']}' 
 				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") or die(mysqli_error());
@@ -115,7 +115,7 @@
 			} else
 			{
                 		$query=mysqli_query($conn, "SELECT registeredPatient.fullName AS ptName, treatmentHistory.date, doctor.fullName AS docName, 
-				treatmentHistory.toothCondition, treatmentHstory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
+				treatmentHistory.toothCondition, treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
 				treatmentHistory.comments FROM treatmentHistory, registeredPatient, doctor WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
 				AND treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.ID =  '{$_POST['pat_id']}' ") or die(mysqli_error());
 
