@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <a href="./reviewrequest.php" class="btn btn-dark">Review Request</a>
+                <!--<a href="./reviewrequest.php" class="btn btn-dark">Review Request</a>-->
                 &nbsp;&nbsp;&nbsp;
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal5">Add
                     Specialization</button>
@@ -106,17 +106,49 @@
                     <th scope="col">Specialization Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
+                    <!--<th scope="col">Delete</th>-->
                 </tr>
             </thead>
-            <tbody id="data4">
+            <tbody>
+                <?php
+	            //Database Connection
+	            $servername = "localhost";
+	            $database = "u922342007_Test";
+	            $username = "u922342007_admin";
+	            $password = "Aylm@012";
 
-            </tbody>
-        </table>
+	            // Create connection
+	            $conn = mysqli_connect($servername, $username, $password, $database);
+
+	            if (!$conn) 
+	            {
+		            die("Connection failed: " . mysqli_connect_error());
+	            }
+
+                $query = "SELECT * FROM clinicSpecialization";
+
+                if ($result = $conn->query($query)) 
+                {
+                    while ($row = $result->fetch_assoc()) 
+                    {
+                    
+                        $ID = $row["ID"];
+                        $specName = $row["specName"];
+                        $description = $row["description"];
+                ?>
+
+                        <!--display data-->
+                        <tr> 
+                          <td><?php echo $row["ID"]; ?></td> 
+                          <td><?php echo $row["specName"]; ?></td> 
+                          <td><?php echo $row["description"]; ?></td> 
+                          <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["ID"]; ?>">Edit</button></td>
+                          <!--<td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='approve.php?id=<?php echo $row["id"]; ?>'">Approve</button></td>-->
+                        </tr>
 
         <!-- modal -->
         <!-- edit row -->
-        <div class="modal fade" id="popupModal4" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+        <div class="modal fade" id="popupModal<?php echo $row["id"]; ?>" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -124,21 +156,25 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="./editClinicSpecialization.php" method="post">
                             <p style="display: none;" id="invisibleID"></p>
                             <div class="mb-3">
+                                <label for="ID" class="form-label">ID</label>
+                                <input type="text" class="form-control" id="ID" name="ID" <?php echo 'value="'.$row["ID"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
                                 <label for="inputSpecializationName" class="form-label">Specialization Name</label>
-                                <input type="text" class="form-control" id="inputSpecializationName">
+                                <input type="text" class="form-control" id="inputSpecializationName" name="inputSpecializationName" <?php echo 'value="'.$row["specName"].'"'; ?>>
                             </div>
                             <div class="mb-3">
                                 <label for="inputDescription" class="form-label">Description</label>
-                                <textarea rows=3 type="text" class="form-control" id="inputDescription"></textarea>
+                                <textarea rows=3 type="text" class="form-control" id="inputDescription" name="inputDescription" <?php echo 'value="'.$row["description"].'"'; ?>></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" onclick="saveDetails4();" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -155,12 +191,12 @@
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label for="inputSpecializationName2" class="form-label">Specialization Name</label>
-                                <input type="text" class="form-control" id="inputSpecializationName2">
+                                <label for="addSpecializationName" class="form-label">Specialization Name</label>
+                                <input type="text" class="form-control" id="addSpecializationName" name="addSpecializationName">
                             </div>
                             <div class="mb-3">
-                                <label for="inputDescription2" class="form-label">Description</label>
-                                <textarea rows=3 type="text" class="form-control" id="inputDescription2"></textarea>
+                                <label for="addDescription" class="form-label">Description</label>
+                                <textarea rows=3 type="text" class="form-control" id="addDescription" name="addDescription"></textarea>
                             </div>
                         </form>
                     </div>
@@ -172,6 +208,17 @@
             </div>
         </div>
     </main>
+
+                <?php
+
+                    }
+            
+                }
+        
+                ?>
+
+        </tbody>
+    </table>
 
 
     <!-- bootstrap js -->
