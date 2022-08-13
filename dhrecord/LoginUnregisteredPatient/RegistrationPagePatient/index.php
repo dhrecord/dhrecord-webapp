@@ -110,39 +110,6 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="attendingDoctor" class="col-sm-2 col-form-label">Attending Doctor</label>
-                    <div class="col-sm-10">
-                        <?php
-                        
-                        //Database Connection
-	                    $servername = "localhost";
-	                    $database = "u922342007_Test";
-	                    $username = "u922342007_admin";
-	                    $password = "Aylm@012";
-
-	                    // Create connection
-	                    $conn = mysqli_connect($servername, $username, $password, $database);
-
-	                    if (!$conn) 
-	                    {
-		                    die("Connection failed: " . mysqli_connect_error());
-	                    }
-
-                        $sql = "SELECT * FROM `doctor`";
-                        $result = mysqli_query($conn,$sql);
-
-                        echo "<select name='attendingDoctor'>";
-                        
-                        while($row = mysqli_fetch_array($result))
-                        {
-                            echo "<option value='" . $row['doctorID'] ."'>" . $row['fullName'] ."</option>";
-                        }
-
-                        echo "</select>";
-                        ?>
-                    </div>
-                </div>
-                <div class="mb-3 row">
                     <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
                 </div>
             </div>
