@@ -167,7 +167,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="inputDescription" class="form-label">Description</label>
-                                <textarea type="text" class="form-control" id="inputDescription" name="inputDescription" <?php echo 'value="'.$row["description"].'"'; ?>></textarea>
+                                <textarea type="text" class="form-control" id="inputDescription" name="inputDescription" <?php echo 'placeholder=" '.$row["description"].'"'; ?>></textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
