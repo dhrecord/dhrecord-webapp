@@ -22,7 +22,7 @@ $query = "UPDATE clinicSpecialization SET specName='$inputSpecializationName', d
 
 if (mysqli_query($conn,$query)) 
 {
-	header('Location: clinicSpecialization.php');
+	header('Location: clinicspecialization.php');
 }
 else
 {

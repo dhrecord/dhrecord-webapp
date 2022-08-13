@@ -22,7 +22,7 @@ mysqli_stmt_bind_param($stmt, "ss", $addSpecializationName, $addDescription);
 
 if (mysqli_stmt_execute($stmt)) 
 {
-	header('Location: clinicSpecialization.php');
+	header('Location: clinicspecialization.php');
 }
 else
 {
