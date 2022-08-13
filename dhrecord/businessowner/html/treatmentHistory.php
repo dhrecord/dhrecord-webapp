@@ -116,7 +116,9 @@
 					</td>
                 </tr>
 
-				<?php }} echo '$_POST[pat_id]';
+				<?php }} 
+		    			$id = $_POST['id'];
+		    			echo $id;
 				?>
             </table>
         </div>
