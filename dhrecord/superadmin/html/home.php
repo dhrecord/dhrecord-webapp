@@ -21,15 +21,45 @@
     die("Connection failed: " . mysqli_connect_error());
   }
 
+  // calculate total number of clinic/business owner registration that need approval
   $query = "SELECT COUNT(*) FROM businessOwnerForApproval";
   $result = $conn->query($query);
-  $total = 0;
+  $total_ca_need_appr = 0;
 
   if ($result -> num_rows > 0) {
     $row = $result->fetch_row();
-    $total = $row[0];
+    $total_ca_need_appr = $row[0];
   }
 
+  // calculate total number of registered patients
+  $query2 = "SELECT COUNT(*) FROM registeredPatient";
+  $result2 = $conn->query($query2);
+  $total_reg_pt = 0;
+
+  if ($result2 -> num_rows > 0) {
+    $row2 = $result2->fetch_row();
+    $total_reg_pt = $row2[0];
+  }
+
+  // calculate total number of approved clinics
+  $query3 = "SELECT COUNT(*) FROM businessOwner";
+  $result3 = $conn->query($query3);
+  $total_approved_clinics = 0;
+
+  if ($result3 -> num_rows > 0) {
+    $row3 = $result3->fetch_row();
+    $total_approved_clinics = $row3[0];
+  }
+
+  // total number of registered clinic specializations
+  $query4 = "SELECT COUNT(*) FROM clinicSpecialization";
+  $result4 = $conn->query($query4);
+  $total_clinic_spec = 0;
+
+  if ($result4 -> num_rows > 0) {
+    $row4 = $result4->fetch_row();
+    $total_clinic_spec = $row4[0];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -136,11 +166,11 @@
             <div>
               <h2>Clinic Account Registration</h2>
               <div>
-                <h3 style="color: #00A3A8;">! <?=$total?> Registrants</h3>
+                <h3 style="color: #00A3A8;">! <?=$total_ca_need_appr?> Registrants</h3>
                 <p>need to be reviewed and need approval</p>
               </div>
             </div>
-            <div><a href="./registrationmanagement_businessowner.html" class=" btn btn-outline-dark" type="button">Check
+            <div><a href="./registrationmanagement_businessowner.php" class=" btn btn-outline-dark" type="button">Check
                 Now</a></div>
           </div>
         </div>
@@ -150,11 +180,11 @@
             <h2>Summary</h2>
             <hr>
             <div style="font-size: 16px;">
-              <p>Total Registered Patients: 4</p>
+              <p>Total Registered Patients: <?=$total_reg_pt?></p>
               <hr>
-              <p>Total Approved Clinics: 3</p>
+              <p>Total Approved Clinics: <?=$total_approved_clinics?></p>
               <hr>
-              <p>Total Registered Clinic Specializations: 7</p>
+              <p>Total Registered Clinic Specializations: <?=$total_clinic_spec?></p>
               <hr>
             </div>
           </div>
