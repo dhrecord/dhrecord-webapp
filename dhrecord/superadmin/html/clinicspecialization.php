@@ -31,6 +31,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<!--pls push for the love of god-->
 <body onload="findData4();">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid container">
