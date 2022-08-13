@@ -24,13 +24,16 @@ if($role === "fd")
                             <a class="nav-link <?php echo ($page == 'index.php') ? 'active': '' ?>" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'manageRecord.php') ? 'active': '' ?>" href="./manageRecord.php">Patient Records</a>
+                        <a class="nav-link <?php echo ($page == 'manageRecord.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="./manageRecord.php">Patient Records</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'referralTracking.php') ? 'active': '' ?>" href="./referralTracking.php">Referral Tracking</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle <?php echo ($page == 'apptSchedulingAndReminders.php' or $page == 'treatmentHistory.php') ? 'active': '' ?>" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle <?php echo ($page == 'apptSchedulingAndReminders.php' 
+                                    or $page == 'treatmentHistory.php' or $page == 'doctorSchedule.php' 
+                                    or $page == 'rescheduleAppt.php' or $page == 'rescheduleApptForm.php' 
+                                    or $page == 'bookAppt.php' or strpos($page, 'patientTreatmentHistory.php') !== FALSE) ? 'active': '' ?>" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Appointment & Treatment
                         </a>
@@ -44,7 +47,7 @@ if($role === "fd")
                         <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicing.php">Payment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'inventoryManagement.php') ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
+                        <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'surveyAndFeedback.php') ? 'active': '' ?>" href="./surveyAndFeedback.php">Survey and Feedback</a>
@@ -82,10 +85,13 @@ else if($role === "dr")
                     <a class="nav-link <?php echo ($page == 'index.php') ? 'active': '' ?>" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'manageRecord.php') ? 'active': '' ?>" href="./manageRecord.php">Patient Records</a>
+                        <a class="nav-link <?php echo ($page == 'manageRecord.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="./manageRecord.php">Patient Records</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle <?php echo ($page == 'apptSchedulingAndReminders.php' or $page == 'treatmentHistory.php') ? 'active': '' ?>" 
+                        <a class="nav-link dropdown-toggle <?php echo ($page == 'apptSchedulingAndReminders.php' 
+                                    or $page == 'treatmentHistory.php' or $page == 'finishAppointment.php' 
+                                    or $page == 'rescheduleAppt.php' or $page == 'rescheduleApptForm.php' 
+                                    or $page == 'bookAppt.php' or strpos($page, 'patientTreatmentHistory.php') !== FALSE) ? 'active': '' ?>" 
                             href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Appointment & Treatment
                         </a>
@@ -96,7 +102,7 @@ else if($role === "dr")
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'inventoryManagement.php') ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
+                        <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
@@ -132,7 +138,8 @@ else
                         <a class="nav-link <?php echo ($page == 'index.php') ? 'active': '' ?>" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle <?php echo ($page == 'userManagement.php' or $page == 'manageRecord.php' or $page == 'addUser.php' ) ? 'active': '' ?>" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle <?php echo ($page == 'userManagement.php' or $page == 'manageRecord.php' 
+                        or $page == 'addUser.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             User & Records
                         </a>
