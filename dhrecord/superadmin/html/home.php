@@ -22,10 +22,12 @@
   }
 
   $query = "SELECT COUNT(*) FROM businessOwnerForApproval";
+  $result = $conn->query($query);
   $total = 0;
 
-  if ($result = $conn->query($query)) {
-    $total = $result->fetch_assoc();
+  if ($result -> num_rows > 0) {
+    $row = $result->get_result()->fetch_row();
+    $total = $row[0];
   }
 
 ?>
