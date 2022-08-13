@@ -48,6 +48,7 @@ if(isset($_GET['vkey'])){
 			$stmt_result = $stmt->get_result();
 			$row1 = $stmt_result->fetch_assoc();
 
+			//done
 			$stmt = mysqli_prepare($conn, "insert into registeredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, users_ID, familyTag) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			mysqli_stmt_bind_param($stmt, "ssssssssi", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['address'], $row['medConditions'], $row['drugAllergies'], $row1['ID'], $familyTagZero);
 			mysqli_stmt_execute($stmt);

@@ -44,6 +44,7 @@
         </div>
     </nav>
 
+    <!--done-->
     <!--registration form-->
     <div class="container my-5">
         <h4 class="mb-4">Registration Management - Patient Account</h4>
