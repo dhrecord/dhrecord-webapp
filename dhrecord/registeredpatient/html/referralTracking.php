@@ -125,15 +125,16 @@ if(!isset($_SESSION['loggedin']))
 			referralTracking.toothCondition, treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
 			referralTracking.comments FROM referralTracking, treatmentHistory, registeredPatient, users, doctor
 			WHERE users.ID = '{$_SESSION['id']}' AND referralTracking.referringDoctor = doctor.doctorID
-			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID");
+			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID
+			ORDER BY referralTracking.ID ASC");
 
 			$result = mysqli_query($conn, $res);
 					
 
                     while($sql = mysqli_fetch_assoc($result)){
                               echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["fullName"]
-			      ."</td><td>".$sql["toothCondition"].$sql["diagnosis"].$sql["medicationPrescribed"].$sql["quantity"]."</td><td>"
-			      ."</td><td>"."</td><td>"."</td><td>".$sql["comments"]
+			      ."</td><td>".$sql["toothCondition"]."</td><td>".$sql["diagnosis"]."</td><td>".$sql["medicationPrescribed"]."</td><td>"
+			      .$sql["quantity"]."</td><td>".$sql["comments"]
 			      ."</td><td><a class='btn btn-dark btn-sm' href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
                             }
 			        ?>         
