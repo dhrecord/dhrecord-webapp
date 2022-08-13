@@ -111,8 +111,9 @@
 					<td class="px-4"><?=$row['email']?></td>
 					<td class="px-4 text-center">
 						<!-- <form method="POST" action="../../businessowner/html/patientTreatmentHistory.php"> -->
-							<button type="submit" name="pat_id" href='./patientTreatmentHistory.php?ID=".$row["ID"]."'class="btn btn-dark">View</button>
-						</form>
+							<?php $pid = $row['ID']; ?>
+							<button type="submit" name="pat_id" href='./patientTreatmentHistory.php?ID='.<?php $pid ?>.'class="btn btn-dark">View</button>
+						<!-- </form> -->
 					</td>
                 </tr>
 
