@@ -66,7 +66,6 @@ else if($role === "dr")
     $link = $_SERVER['PHP_SELF'];
     $link_array = explode('/',$link);
     $page = end($link_array);
-    echo $page;
 ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -79,14 +78,14 @@ else if($role === "dr")
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./index.php">Home</a>
+                    <a class="nav-link <?php echo ($page == 'index.php') ? 'active': '' ?>" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./manageRecord.php">Patient Records</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle <?php echo ($page == 'apptSchedulingAndReminders.php' or $page == 'treatmentHistory.php') ? 'active': '' ?>" 
+                            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Appointment & Treatment
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -96,7 +95,7 @@ else if($role === "dr")
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./inventoryManagement.php">Inventory Management</a>
+                        <a class="nav-link <?php echo ($page == 'inventoryManagement.php') ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
