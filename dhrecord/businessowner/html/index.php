@@ -65,10 +65,18 @@
         $stmt->bind_param("s", $sessionID);
         $stmt->execute();
         $stmt_result = $stmt->get_result();
-        $data = $stmt_result->fetch_assoc();
+
+        $fullName = '';
+        if ($stmt_result->num_rows === 0) {
+          $fullName = $_SESSION['username'];
+        } else{
+          $data = $stmt_result->fetch_assoc();
+          $fullName = $data["fullName"];
+        }
+        
       ?>
       <!-- displaying full name instead of username => username already showed in navbar -->
-      <h4 class="lead"><b>Hi, <?php echo $data["fullName"] ?>!</b></h4>
+      <h4 class="lead"><b>Hi, <?php echo $fullName ?>!</b></h4>
       <h4 class="lead">Role:
           <?php 
               if ($role === "ca")

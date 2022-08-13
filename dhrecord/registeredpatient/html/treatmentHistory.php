@@ -81,10 +81,10 @@ if(!isset($_SESSION['loggedin']))
 			<label>Date:</label>
 			<input type="date" class="form-control" placeholder="Start"  name="date1" value="<?php echo isset($_POST['date1']) ? $_POST['date1'] : '' ?>"/>
 			<label>To</label>
-			<input type="date" class="form-control" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
-			<button class="btn btn-primary" name="filter"><span class="glyphicon glyphicon-search"></span>Search</button>
+			<input type="date" class="form-control mt-1" placeholder="End"  name="date2" value="<?php echo isset($_POST['date2']) ? $_POST['date2'] : '' ?>"/>
+			<button class="btn btn-primary mt-3" name="filter"><span class="glyphicon glyphicon-search"></span>Search</button>
 		</form>
-		<br/><br/>
+		<br/><br/><br/>
             </div>
         </div>
         <table class="table table-striped">
@@ -92,7 +92,10 @@ if(!isset($_SESSION['loggedin']))
 				<th>Date</th>
 				<th>Attending Doctor</th>
 				<th>Tooth Condition</th>
+				<th>Diagnosis</th>
 				<th>Medication Prescribed</th>
+				<th>Quantity</th>
+				<th>Comments</th>
 			</tr>    		
 			
 			 <?php                           
@@ -110,11 +113,13 @@ if(!isset($_SESSION['loggedin']))
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
 				$query = mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.toothCondition,
-				treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users, doctor
-				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
+				treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity, treatmentHistory.comments
+				FROM treatmentHistory, registeredPatient, users, doctor
+				WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
+				AND treatmentHistory.pt_ID = registeredPatient.ID 
 				AND registeredPatient.users_ID = users.ID AND users.ID =  '{$_SESSION['id']}' 
-				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") 
-					or die(mysqli_error());
+				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") or die(mysqli_error());
+				
 				$row=mysqli_num_rows($query);
 				if($row>0)
 				{
@@ -125,7 +130,10 @@ if(!isset($_SESSION['loggedin']))
 						<td><?php echo $fetch['date']?></td>
 						<td><?php echo $fetch['fullName']?></td>
 						<td><?php echo $fetch['toothCondition']?></td>
+						<td><?php echo $fetch['diagnosis']?></td>
 						<td><?php echo $fetch['medicationPrescribed']?></td>
+						<td><?php echo $fetch['quantity']?></td>
+						<td><?php echo $fetch['comments']?></td>
 					</tr>
 				<?php
 					}
@@ -133,16 +141,18 @@ if(!isset($_SESSION['loggedin']))
 				{
 					echo'
 					<tr>
-						<td colspan = "4"><center>Record Not Found</center></td>
+						<td colspan = "7"><center>Record Not Found</center></td>
 					</tr>';
 				}
 			} else
 			{
 				$query=mysqli_query($conn, "SELECT treatmentHistory.date, doctor.fullName, treatmentHistory.toothCondition,
-				treatmentHistory.medicationPrescribed FROM treatmentHistory, registeredPatient, users, doctor
-				WHERE treatmentHistory.attendingDoctor = doctor.doctorID AND treatmentHistory.pt_ID = registeredPatient.ID 
-				AND registeredPatient.users_ID = users.ID AND users.ID =  '{$_SESSION['id']}' ") 
-					or die(mysqli_error());
+				treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity, treatmentHistory.comments 
+				FROM treatmentHistory, registeredPatient, users, doctor
+				WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
+				AND treatmentHistory.pt_ID = registeredPatient.ID 
+				AND registeredPatient.users_ID = users.ID AND users.ID =  '{$_SESSION['id']}' ") or die(mysqli_error());
+				
 				while($fetch=mysqli_fetch_array($query))
 				{
 			?>
@@ -150,7 +160,10 @@ if(!isset($_SESSION['loggedin']))
 				<td><?php echo $fetch['date']?></td>
 				<td><?php echo $fetch['fullName']?></td>
 				<td><?php echo $fetch['toothCondition']?></td>
+				<td><?php echo $fetch['diagnosis']?></td>
 				<td><?php echo $fetch['medicationPrescribed']?></td>
+				<td><?php echo $fetch['quantity']?></td>
+				<td><?php echo $fetch['comments']?></td>
 			</tr>
 			<?php
 				}

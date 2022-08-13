@@ -51,22 +51,24 @@
             <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
-                <option value="1">Name</option>
+                <option value="1">Patient Name</option>
                 <option value="2">Referred To</option>
                 <option value="3">Referral Date</option>
                 <option value="4">Referring Doctor</option>
                 <option value="5">Tooth Condition</option>
+		<option value="6">Comments</option>
             </select>
         </div>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Patient Name</th>
                     <th scope="col">Referred To</th>
                     <th scope="col">Referral Date</th>
                     <th scope="col">Referring Doctor</th>
                     <th scope="col">Tooth Condition</th>
+		    <th scope="col">Comments</th>
                 </tr>
             </thead>
 
@@ -81,7 +83,7 @@
                     $conn = mysqli_connect($servername, $username, $password, $database);
                 
                     $res = ("SELECT referralTracking.ID, registeredPatient.fullName AS ptName, referralTracking.referredTo, referralTracking.referralDate, 
-                    doctor.fullName AS docName, referralTracking.toothCondition FROM referralTracking, registeredPatient, doctor
+                    doctor.fullName AS docName, referralTracking.toothCondition, referralTracking.comments FROM referralTracking, registeredPatient, doctor
                     WHERE referralTracking.patient_ID = registeredPatient.ID AND referralTracking.referringDoctor = doctor.doctorID 
 		    ORDER BY referralTracking.ID ASC");
 
@@ -89,7 +91,7 @@
 
                     while($sql = mysqli_fetch_assoc($result)){
                               echo "<tr><td>".$sql["ID"]."</td><td>".$sql["ptName"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".
-                                  $sql["docName"]."</td><td>".$sql["toothCondition"]."</td></tr>";
+                                  $sql["docName"]."</td><td>".$sql["toothCondition"]."</td><td>".$sql["comments"]."</td></tr>";
                             }
                ?>
             </tbody>
