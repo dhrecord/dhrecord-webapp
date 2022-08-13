@@ -79,7 +79,8 @@
 			{
 				$date1 = date("Y-m-d", strtotime($_POST['date1']));
 				$date2 = date("Y-m-d", strtotime($_POST['date2']));
-
+				
+				echo '$_POST["pat_id"]';
                 		$query = mysqli_query($conn, "SELECT registeredPatient.fullName AS ptName, treatmentHistory.date, doctor.fullName AS docName, 
 				treatmentHistory.toothCondition, treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
 				treatmentHistory.comments FROM treatmentHistory, registeredPatient, doctor WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
