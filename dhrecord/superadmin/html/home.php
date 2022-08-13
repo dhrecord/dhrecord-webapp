@@ -26,7 +26,7 @@
   $total = 0;
 
   if ($result -> num_rows > 0) {
-    $row = $result->get_result()->fetch_row();
+    $row = $result->fetch_row();
     $total = $row[0];
   }
 
