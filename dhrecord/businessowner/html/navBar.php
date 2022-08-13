@@ -151,9 +151,9 @@ else
                             <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="./reportingAndStatistics.php">Reporting & Statistics</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="./billingInvoicing.php">Payment</a>
                     </li>
