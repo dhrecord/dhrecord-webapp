@@ -60,6 +60,16 @@
     $row4 = $result4->fetch_row();
     $total_clinic_spec = $row4[0];
   }
+
+  // total number of registered doctors
+  $query5 = "SELECT COUNT(*) FROM doctor";
+  $result5 = $conn->query($query5);
+  $total_doctors = 0;
+
+  if ($result5 -> num_rows > 0) {
+    $row5 = $result5->fetch_row();
+    $total_doctors = $row5[0];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -152,11 +162,11 @@
             <div>
               <h2>Clinic Specialization</h2>
               <div>
-                <h3 style="color: #FFB847;">! 3 Requests</h3>
-                <p>need to be reviewed and need approval</p>
+                <h3 style="color: #FFB847;"><?=$total_clinic_spec?> items</h3>
+                <p>with the description of each item</p>
               </div>
             </div>
-            <div><a href="./reviewrequest.html" class="btn btn-outline-light" type="button">Check
+            <div><a href="./clinicspecialization.php" class="btn btn-outline-light" type="button">Check
                 Now</a></div>
           </div>
         </div>
@@ -184,7 +194,7 @@
               <hr>
               <p>Total Approved Clinics: <?=$total_approved_clinics?></p>
               <hr>
-              <p>Total Registered Clinic Specializations: <?=$total_clinic_spec?></p>
+              <p>Total Registered Doctors: <?=$total_doctors?></p>
               <hr>
             </div>
           </div>
