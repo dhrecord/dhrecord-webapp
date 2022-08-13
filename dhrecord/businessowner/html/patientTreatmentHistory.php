@@ -83,7 +83,7 @@
                 		$query = mysqli_query($conn, "SELECT registeredPatient.fullName AS ptName, treatmentHistory.date, doctor.fullName AS docName, 
 				treatmentHistory.toothCondition, treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
 				treatmentHistory.comments FROM treatmentHistory, registeredPatient, doctor WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
-				AND treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.ID =  '{$_POST['pat_id']}' 
+				AND treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.ID =  '{$_GET['pat_id']}' 
 				AND date(treatmentHistory.date) BETWEEN '$date1' AND '$date2'") or die(mysqli_error());
 				
 				$row=mysqli_num_rows($query);
@@ -117,7 +117,7 @@
                 		$query=mysqli_query($conn, "SELECT registeredPatient.fullName AS ptName, treatmentHistory.date, doctor.fullName AS docName, 
 				treatmentHistory.toothCondition, treatmentHistory.diagnosis, treatmentHistory.medicationPrescribed, treatmentHistory.quantity,
 				treatmentHistory.comments FROM treatmentHistory, registeredPatient, doctor WHERE treatmentHistory.attendingDoctor = doctor.doctorID 
-				AND treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.ID =  '{$_POST['pat_id']}' ") or die(mysqli_error());
+				AND treatmentHistory.pt_ID = registeredPatient.ID AND registeredPatient.ID =  '{$_GET['pat_id']}' ") or die(mysqli_error());
 
 				while($fetch=mysqli_fetch_array($query))
 				{
