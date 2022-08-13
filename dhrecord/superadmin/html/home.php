@@ -157,16 +157,18 @@
       </div>
 
       <div class="row align-items-md-stretch">
+    
+
         <div class="col-md-4">
           <div class="h-100 p-5 text-white bg-dark rounded-3 d-flex flex-column justify-content-between">
             <div>
-              <h2>Clinic Specialization</h2>
+              <h2>Clinic Account Registration</h2>
               <div>
-                <h3 style="color: #FFB847;"><?=$total_clinic_spec?> items</h3>
-                <p>with the description of each item</p>
+                <h3 style="color: #FFB847;">! <?=$total_ca_need_appr?> Registrants</h3>
+                <p>need to be reviewed and need approval</p>
               </div>
             </div>
-            <div><a href="./clinicspecialization.php" class="btn btn-outline-light" type="button">Check
+            <div><a href="./registrationmanagement_businessowner.php" class=" btn btn-outline-light" type="button">Check
                 Now</a></div>
           </div>
         </div>
@@ -174,13 +176,13 @@
         <div class="col-md-4">
           <div class="h-100 p-5 bg-light border rounded-3 d-flex flex-column justify-content-between">
             <div>
-              <h2>Clinic Account Registration</h2>
+              <h2>Clinic Specialization</h2>
               <div>
-                <h3 style="color: #00A3A8;">! <?=$total_ca_need_appr?> Registrants</h3>
-                <p>need to be reviewed and need approval</p>
+                <h3 style="color: #00A3A8;"><?=$total_clinic_spec?> items</h3>
+                <p>with the description of each item</p>
               </div>
             </div>
-            <div><a href="./registrationmanagement_businessowner.php" class=" btn btn-outline-dark" type="button">Check
+            <div><a href="./clinicspecialization.php" class="btn btn-outline-dark" type="button">Check
                 Now</a></div>
           </div>
         </div>
