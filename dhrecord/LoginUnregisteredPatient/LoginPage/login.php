@@ -101,10 +101,10 @@
 				//}
 				
 			}else{
-				echo "invalid username or password";
+				header('Location: invalidCredentials.php');
 			}
 		}else{
-			echo "invalid username or password";
+			header('Location: invalidCredentials.php');
 		}
 	}
 
