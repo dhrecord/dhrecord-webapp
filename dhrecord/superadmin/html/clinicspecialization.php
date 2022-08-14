@@ -91,7 +91,7 @@
             <div class="d-flex justify-content-end">
                 <!--<a href="./reviewrequest.php" class="btn btn-dark">Review Request</a>-->
                 &nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModal5">Add
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModalAddRow">Add
                     Specialization</button>
             </div>
         </div>
@@ -178,7 +178,7 @@
         </div>
 
         <!-- add row -->
-        <div class="modal fade" id="popupModal5" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+        <div class="modal fade" id="popupModalAddRow" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
