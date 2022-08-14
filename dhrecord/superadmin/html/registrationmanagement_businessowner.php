@@ -49,9 +49,6 @@
             <a class="nav-link" href="./clinicspecialization.php">Clinic Specialization</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./auditlog.php">Audit Log</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="./usermanagement.php">User Management</a>
           </li>
           <li class="nav-item dropdown">

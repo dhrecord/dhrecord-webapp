@@ -1,12 +1,26 @@
 <?php
+  session_start();
+  if(!isset($_SESSION['loggedin']))
+  {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+  }
 
-    session_start();
-    if(!isset($_SESSION['loggedin']))
-      {
-        header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
-        exit;
-      }
+  //Database Connection
+  $servername = "localhost";
+  $database = "u922342007_Test";
+  $username = "u922342007_admin";
+  $password = "Aylm@012";
 
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $database);
+
+  if (!$conn) 
+  {
+	die("Connection failed: " . mysqli_connect_error());
+  }
+  
+  $sessionID = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -47,9 +61,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./clinicspecialization.php">Clinic Specialization</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./auditlog.php">Audit Log</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./usermanagement.php">User Management</a>
@@ -108,23 +119,39 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
                     <th scope="col">Name</th>
                     <th scope="col">Address</th>
                     <th scope="col">NRIC</th>
                     <th scope="col">Contact No</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Check Referral</th>
-                    <th scope="col">Registration Date</th>
-                    <th scope="col">Full Info</th>
+                    <th scope="col">View</th>
                 </tr>
             </thead>
-            <tbody id="data2">
-            </tbody>
-        </table>
+            <tbody id="data">
+               <?php
+
+                    //$query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
+                    $query = "SELECT * FROM registeredPatient";
+  
+                    //$clinicID = $row['ID'];
+
+                    if ($result = $conn->query($query)) 
+                    {
+                        while ($row = $result->fetch_assoc()) 
+                        {
+               ?>
+               <tr>     
+                    <td><?php echo $row["fullName"]; ?></td>
+                    <td><?php echo $row["address"]; ?></td> 
+                    <td><?php echo $row["nricNumber"]; ?></td> 
+                    <td><?php echo $row["contactNumber"]; ?></td>
+                    <td><?php echo $row["email"]; ?></td>
+                    <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["ID"]; ?>">View</button></td>
+               </tr>
+
 
         <!-- modal -->
-        <div class="modal fade" id="popupModal2" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+        <div class="modal fade" id="popupModal<?php echo $row["ID"]; ?>" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -135,49 +162,49 @@
                         <form>
                             <p style="display: none;" id="invisibleID"></p>
                             <div class="mb-3">
-                                <label for="inputName" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="inputName" readonly>
+                                <label for="clinicadminID" class="form-label">Patient ID</label>
+                                <input type="text" class="form-control" id="patientID" name="patientID" <?php echo 'value="'.$row["ID"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="inputAddress" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="inputAddress" readonly>
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" <?php echo 'value="'.$row["fullName"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="inputNRIC" class="form-label">NRIC</label>
-                                <input type="text" class="form-control" id="inputNRIC" readonly>
+                                <label for="nricNumber" class="form-label">NRIC Number</label>
+                                <input type="text" class="form-control" id="nricNumber" name="nricNumber" <?php echo 'value="'.$row["nricNumber"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="inputContactNo" class="form-label">Contact No.</label>
-                                <input type="text" class="form-control" id="inputContactNo" readonly>
+                                <label for="contactNumber" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" id="contactNumber" name="contactNumber" <?php echo 'value="'.$row["contactNumber"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="inputEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                                    readonly>
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" <?php echo 'value="'.$row["email"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="inputCheckReferral" class="form-label">Check Referral</label>
-                                <input type="text" class="form-control" id="inputCheckReferral" readonly>
+                                <label for="medConditions" class="form-label">Medical Conditions</label>
+                                <input type="text" class="form-control" id="medConditions" name="medConditions" <?php echo 'value="'.$row["medConditions"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="inputRegistrationDate" class="form-label">Registration Date</label>
-                                <input type="text" class="form-control" id="inputRegistrationDate" readonly>
+                                <label for="drugAllergies" class="form-label">Drug Allergies</label>
+                                <input type="text" class="form-control" id="drugAllergies" name="drugAllergies" <?php echo 'value="'.$row["drugAllergies"].'"'; ?> readonly>
                             </div>
-                            <div class="mb-3">
-                                <label for="inputMedCond" class="form-label">Medical Conditions</label>
-                                <textarea rows=3 type="text" class="form-control" id="inputMedCond" readonly></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputDrugAlle" class="form-label">Drug Allergies</label>
-                                <textarea rows=2 type="text" class="form-control" id="inputDrugAlle"
-                                    readonly></textarea>
+                            <div class="mb-3 row">
+                                <div class="text-center"<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button></div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        
+        <?php
+            }
+        }
+        ?>
+
+                    </tbody>
+        </table>
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
