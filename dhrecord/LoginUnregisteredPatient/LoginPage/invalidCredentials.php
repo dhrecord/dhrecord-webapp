@@ -49,8 +49,8 @@
       </div>
       <div>
           <div class="text-center">
-              <button type="button" class="btn btn-lg btn-primary mt-3 text-center btn-login-custom" onclick="document.location.href='.index.html'">
-                  Login
+              <button type="button" class="btn btn-lg btn-primary mt-3 text-center btn-login-custom" onclick="document.location.href='index.html'">
+                  Try Again
               </button>
           </div>
       </div>
