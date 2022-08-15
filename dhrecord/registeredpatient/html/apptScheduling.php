@@ -359,8 +359,9 @@
                       $rating_no = '';
                       $row_R = $resultR->fetch_assoc();
                       $rating_no = $row_R['average']; 
+                      echo $rating_no;
 
-                      if ($rating_no !== ''){
+                      if ($rating_no !== '' and $rating_no){
                         if (fmod($rating_no, 1)!== 0.00){
                           $rating_no = floor($rating_no);
                           for ($x = 0; $x < $rating_no; $x++) {
