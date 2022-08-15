@@ -64,7 +64,13 @@
 	}
 	else if(!preg_match("/[0-9]{8}/",$contactNumber))
 	{
-		echo "Only numbers allowed";
+		echo "Only numbers allowed for Contact Number";
+		//header("Location: index.php");
+	
+	}
+	else if(!preg_match("/[0-9]{6}/",$postalCode))
+	{
+		echo "Only numbers allowed for Postal Code";
 		//header("Location: index.php");
 	
 	}
