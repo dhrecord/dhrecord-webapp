@@ -176,7 +176,7 @@
                         <a class="nav-link" aria-current="page" href="../About/index.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../ContactUs/index.html">Contact Us</a>
+                        <a class="nav-link" aria-current="page" href="../ContactUs/index.php">Contact Us</a>
                     </li>
                 </ul>
                 <div>

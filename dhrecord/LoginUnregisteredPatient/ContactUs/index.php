@@ -42,7 +42,7 @@
                         <a class="nav-link" aria-current="page" href="../About/index.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../ContactUs/index.html">Contact Us</a>
+                        <a class="nav-link active" aria-current="page" href="../ContactUs/index.php">Contact Us</a>
                     </li>
                 </ul>
                 <div>
@@ -60,7 +60,7 @@
     </nav>
 
     <main>
-        <div class="container mt-5 mb-4  text-center">
+        <div class="container mt-5 mb-4 text-center">
             <h4>Contact Us</h4>
         </div>
 
