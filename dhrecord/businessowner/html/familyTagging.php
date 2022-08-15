@@ -117,9 +117,12 @@ $currentFamilyTag = $row["familyTag"];
                if($currentFamilyTag == 0)
                {
                ?>
-
+               <td></td>
+               <td></td>
                <td>No family Members currently</td>
-
+               <td></td>
+               <td></td>
+               <td></td>
                <?php
                }
 
