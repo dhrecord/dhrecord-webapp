@@ -143,6 +143,7 @@
         // search highest rating clinics
         case "8":
           $case = '8';
+          // SELECT AVG(rating) FROM `surveyForm` WHERE nameClinic = 'Expat Dental';
           $result = $conn->query("SELECT * FROM businessOwner WHERE rating IS NOT NULL ORDER BY rating DESC");
           break;
         default:
@@ -344,7 +345,39 @@
                             <b>Rating: </b>';
   
                       $field5 = $row['rating'];
+                      
+                      // $stmtR = $conn->prepare("SELECT AVG(rating) FROM surveyForm WHERE nameClinic = ?");
+                      // $stmtR->bind_param("s", $fieldNOC);
+                      // $stmtR->execute();
+                      // $resultR = $stmtR->get_result();
+                      // $field5 = '';
+
+                      // if ($resultR !== ''){
+                      //   while ($row = $resultR->fetch_assoc()){
+                      //     $field5 = $rowR[0];
+                      //   }
+                      // }
+                      
+                     
+                    
+                      // if ($resultR -> num_rows > 0){
+                      //   $rowR = $result->fetch_row();
+                      //   $field5 = $rowR[0];
+                      // }
+
                       if ($field5){
+                        // if (fmod($field5,1)!== 0.00){
+                        //   $field5 = floor($field5);
+                        //   for ($x = 0; $x < $field5; $x++) {
+                        //     echo '<i class="fa-solid fa-star"></i>';
+                        //   }
+                        //   echo '<i class="fa-solid fa-star-half"></i>';
+                        // } else {
+                        //   $field5 = number_format($field5);
+                        //   for ($x = 0; $x < $field5; $x++) {
+                        //     echo '<i class="fa-solid fa-star"></i>';
+                        //   }
+                        // }
                         $field5 = number_format($field5);
                         for ($x = 0; $x < $field5; $x++) {
                           echo '<i class="fa-solid fa-star"></i>';
