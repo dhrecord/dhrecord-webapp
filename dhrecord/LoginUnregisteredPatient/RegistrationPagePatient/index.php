@@ -99,8 +99,7 @@
                 <div class="mb-3 row">
                     <label for="postalCode" class="col-sm-2 col-form-label">Postal Code</label>
                     <div class="col-sm-10">
-                        <text type="text" class="form-control" id="postalCode" rows="2" cols="50"
-                            name="postalCode" required></text>
+                        <input type="text" class="form-control" id="postalCode" name="postalCode" required/>
                     </div>
                 </div>
                 <div class="mb-3 row">
