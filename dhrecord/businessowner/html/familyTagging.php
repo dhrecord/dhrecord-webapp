@@ -114,12 +114,21 @@ $currentFamilyTag = $row["familyTag"];
             </thead>
             <tbody id="data">
                <?php
+               if($currentFamilyTag == 0)
+               {
+               ?>
 
+               <td>No family Members currently</td>
+
+               <?php
+               }
+
+               else{
                     $query2 = "SELECT * FROM registeredPatient WHERE familyTag = $currentFamilyTag";
 
                     if ($result2 = $conn->query($query2)) 
                     {
-                        while ($row2 = $result->fetch_assoc()) 
+                        while ($row2 = $result2->fetch_assoc()) 
                         {
                ?>
                <tr>     
@@ -173,7 +182,6 @@ $currentFamilyTag = $row["familyTag"];
                             </div>
                             <div class="mb-3 row">
                                 <div class="text-center"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button></div>
-                                <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
                             </div>
                         </form>
                     </div>
@@ -182,7 +190,9 @@ $currentFamilyTag = $row["familyTag"];
         </div>
         
         <?php
+                }
             }
+
         }
         ?>
 
