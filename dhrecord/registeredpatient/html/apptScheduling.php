@@ -343,7 +343,18 @@
                       echo      
                             '<br/>
                             <b>Rating: </b>';
-  
+
+                      //////////////////////////
+                      $stmtR = $conn->prepare("SELECT AVG(rating) FROM surveyForm WHERE nameClinic = ?");
+                      $stmtR->bind_param("s", $fieldNOC);
+                      $stmtR->execute();
+                      $resultR = $stmtR->get_result();
+                      $rating_no = '';
+                      $row_R = $resultR->fetch_assoc();
+                      $rating_no = $row_R[0]; 
+                      echo $rating_no;
+                      /////////////////////////
+
                       $field5 = $row['rating'];
                       
                       // $stmtR = $conn->prepare("SELECT AVG(rating) FROM surveyForm WHERE nameClinic = ?");
@@ -358,7 +369,6 @@
                       //   }
                       // }
                       
-                     
                     
                       // if ($resultR -> num_rows > 0){
                       //   $rowR = $result->fetch_row();
