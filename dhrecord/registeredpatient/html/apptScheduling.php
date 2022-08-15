@@ -344,19 +344,19 @@
                             '<br/>
                             <b>Rating: </b>';
   
-                      // $field5 = $row['rating'];
+                      $field5 = $row['rating'];
                       
-                      $stmtR = $conn->prepare("SELECT AVG(rating) FROM surveyForm WHERE nameClinic = ?");
-                      $stmtR->bind_param("s", $fieldNOC);
-                      $stmtR->execute();
-                      $resultR = $stmtR->get_result();
-                      $field5 = '';
+                      // $stmtR = $conn->prepare("SELECT AVG(rating) FROM surveyForm WHERE nameClinic = ?");
+                      // $stmtR->bind_param("s", $fieldNOC);
+                      // $stmtR->execute();
+                      // $resultR = $stmtR->get_result();
+                      // $field5 = '';
 
-                      if ($resultR !== ''){
-                        while ($row = $resultR->fetch_assoc()){
-                          $field5 = $rowR[0];
-                        }
-                      }
+                      // if ($resultR !== ''){
+                      //   while ($row = $resultR->fetch_assoc()){
+                      //     $field5 = $rowR[0];
+                      //   }
+                      // }
                       
                      
                     
