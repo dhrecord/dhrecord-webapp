@@ -345,13 +345,13 @@
                             <b>Rating: </b>';
 
                       //////////////////////////
-                      $stmtR = $conn->prepare("SELECT AVG(rating) FROM surveyForm WHERE nameClinic = ?");
+                      $stmtR = $conn->prepare("SELECT AVG(rating) as average FROM surveyForm WHERE nameClinic = ?");
                       $stmtR->bind_param("s", $fieldNOC);
                       $stmtR->execute();
                       $resultR = $stmtR->get_result();
                       $rating_no = '';
                       $row_R = $resultR->fetch_assoc();
-                      $rating_no = $row_R[0]; 
+                      $rating_no = $row_R['average']; 
                       echo $rating_no;
                       /////////////////////////
 
