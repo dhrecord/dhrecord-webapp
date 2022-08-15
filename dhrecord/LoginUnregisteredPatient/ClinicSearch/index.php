@@ -194,7 +194,7 @@
     </nav>
 
     <!-- content -->
-  <div class="container my-5">
+  <div class="container mt-5 mb-2">
     <div class="mb-4 d-flex justify-content-between">
       <h4>Find a Clinic</h4>
     </div>
@@ -495,7 +495,7 @@
   </div>
 
     <div class="container pb-4">
-        <footer class="pt-1 mt-0 text-muted border-top text-center">
+        <footer class="pt-1 mt-0 text-muted text-center">
             &copy; DHRecord 2021
         </footer>
     </div>
