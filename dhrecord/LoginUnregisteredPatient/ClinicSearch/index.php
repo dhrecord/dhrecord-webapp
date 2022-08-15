@@ -125,7 +125,7 @@
         // search highest rating clinics
         case "8":
           $case = '8';
-          $result = $conn->query("SELECT * FROM businessOwner WHERE rating IS NOT NULL ORDER BY rating DESC");
+          $result = $conn->query("SELECT businessOwner.*, AVG(surveyForm.rating) FROM businessOwner LEFT OUTER JOIN surveyForm ON businessOwner.nameOfClinic = surveyForm.nameClinic GROUP BY nameOfClinic ORDER BY AVG(surveyForm.rating) DESC");
           break;
         default:
           break;
