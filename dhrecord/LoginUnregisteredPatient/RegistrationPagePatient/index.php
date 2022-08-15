@@ -97,6 +97,13 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
+                    <label for="postalCode" class="col-sm-2 col-form-label">Postal Code</label>
+                    <div class="col-sm-10">
+                        <text type="text" class="form-control" id="postalCode" rows="2" cols="50"
+                            name="postalCode" required></text>
+                    </div>
+                </div>
+                <div class="mb-3 row">
                     <label for="med-conditions" class="col-sm-2 col-form-label">Medical Conditions</label>
                     <div class="col-sm-10">
                         <textarea type="text" class="form-control" id="med-conditions" rows="4" cols="50"

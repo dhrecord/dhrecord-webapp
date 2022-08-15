@@ -6,6 +6,7 @@
 	$contactNumber = $_POST['contactNumber'];
 	$email = $_POST['email'];
 	$address = $_POST['address'];
+	$postalCode = $_POST['postalCode'];
 	$medConditions = $_POST['med-conditions'];
 	$drugAllergies = $_POST['drug-allergies'];
 	$attendingDoctor = $_POST['attendingDoctor'];
@@ -85,8 +86,8 @@
 		mail($email,$subject,$message,$headers);
 	
 		//done
-		$stmt = mysqli_prepare($conn, "insert into tempRegisteredPatient(fullName, nricNumber, contactNumber, email, address, medConditions, drugAllergies, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		mysqli_stmt_bind_param($stmt, "sssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $address, $medConditions, $drugAllergies, $role, $userName, $encryptedPassword, $vkey, $verifiedNegative);
+		$stmt = mysqli_prepare($conn, "insert into tempRegisteredPatient(fullName, nricNumber, contactNumber, email, address, postalCode, medConditions, drugAllergies, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		mysqli_stmt_bind_param($stmt, "ssssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $address, $postalCode, $medConditions, $drugAllergies, $role, $userName, $encryptedPassword, $vkey, $verifiedNegative);
 		mysqli_stmt_execute($stmt);
 
 		mysqli_close($conn);
