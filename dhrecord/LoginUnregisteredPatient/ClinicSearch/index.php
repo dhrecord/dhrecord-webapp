@@ -490,10 +490,12 @@
           </div>
       </div>
     </div>
+
+    <hr/>
   </div>
 
-    <div class="container pb-5">
-        <footer class="pt-3 mt-4 text-muted border-top text-center">
+    <div class="container pb-4">
+        <footer class="pt-1 mt-0 text-muted border-top text-center">
             &copy; DHRecord 2021
         </footer>
     </div>
