@@ -100,6 +100,95 @@ $currentFamilyTag = $row["familyTag"];
                 </div>
             </div>
         </form>
+
+                <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">NRIC</th>
+                    <th scope="col">Contact No</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">View</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+               <?php
+
+                    $query2 = "SELECT * FROM registeredPatient WHERE 'familyTag'=$currentFamilyTag";
+
+                    if ($result2 = $conn->query($query2)) 
+                    {
+                        while ($row2 = $result->fetch_assoc()) 
+                        {
+               ?>
+               <tr>     
+                    <td><?php echo $row2["fullName"]; ?></td>
+                    <td><?php echo $row2["address"]; ?></td> 
+                    <td><?php echo $row2["nricNumber"]; ?></td> 
+                    <td><?php echo $row2["contactNumber"]; ?></td>
+                    <td><?php echo $row2["email"]; ?></td>
+                    <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row2["ID"]; ?>">View</button></td>
+               </tr>
+
+
+        <!-- modal -->
+        <div class="modal fade" id="popupModal<?php echo $row2["ID"]; ?>" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="popupModalLabel">View/Edit Full Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <p style="display: none;" id="invisibleID"></p>
+                            <div class="mb-3">
+                                <label for="clinicadminID" class="form-label">Patient ID</label>
+                                <input type="text" class="form-control" id="patientID" name="patientID" <?php echo 'value="'.$row2["ID"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" <?php echo 'value="'.$row2["fullName"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nricNumber" class="form-label">NRIC Number</label>
+                                <input type="text" class="form-control" id="nricNumber" name="nricNumber" <?php echo 'value="'.$row2["nricNumber"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactNumber" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" id="contactNumber" name="contactNumber" <?php echo 'value="'.$row2["contactNumber"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" <?php echo 'value="'.$row2["email"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="medConditions" class="form-label">Medical Conditions</label>
+                                <input type="text" class="form-control" id="medConditions" name="medConditions" <?php echo 'value="'.$row2["medConditions"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="drugAllergies" class="form-label">Drug Allergies</label>
+                                <input type="text" class="form-control" id="drugAllergies" name="drugAllergies" <?php echo 'value="'.$row2["drugAllergies"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3 row">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <?php
+            }
+        }
+        ?>
+
+                    </tbody>
+        </table>
+
     </div>
 
     <!-- bootstrap js -->

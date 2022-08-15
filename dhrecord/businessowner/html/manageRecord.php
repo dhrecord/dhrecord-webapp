@@ -147,6 +147,7 @@
                                 <input type="text" class="form-control" id="drugAllergies" name="drugAllergies" <?php echo 'value="'.$row["drugAllergies"].'"'; ?>>
                             </div>
                             <div class="mb-3 row">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                 <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
                             </div>
                         </form>
