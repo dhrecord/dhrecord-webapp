@@ -53,8 +53,8 @@
 
 		if($stmt_result->num_rows > 0)
 		{
-			$stmt->bind_result($id, $password);
-			$stmt->fetch();
+			//$stmt->bind_result($id, $password);
+			//$stmt->fetch();
 			$data = $stmt_result->fetch_assoc();
 
 			//$decryptedPassword = openssl_decrypt($data['password'], $ciphering, $decryption_key, $options, $decryption_iv);
@@ -101,10 +101,10 @@
 				//}
 				
 			}else{
-				echo "invalid username or password";
+				header('Location: invalidCredentials.php');
 			}
 		}else{
-			echo "invalid username or password";
+			header('Location: invalidCredentials.php');
 		}
 	}
 
