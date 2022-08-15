@@ -42,7 +42,7 @@
                         <a class="nav-link" aria-current="page" href="../About/index.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../ContactUs/index.html">Contact Us</a>
+                        <a class="nav-link active" aria-current="page" href="../ContactUs/index.php">Contact Us</a>
                     </li>
                 </ul>
                 <div>
@@ -60,13 +60,13 @@
     </nav>
 
     <main>
-        <div class="container my-5 text-center">
+        <div class="container mt-5 mb-4 text-center">
             <h4>Contact Us</h4>
         </div>
 
         <div class="container">
             <form style="width: fit-content; border-top-width: 10px!important;"
-                class="py-3 px-4 mx-auto border border-dark">
+                class="py-3 px-4 mx-auto border border-dark mb-5">
                 <div class="mb-3">
                     <label for="inputName" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="inputName" style="width: 500px;">
@@ -96,10 +96,12 @@
                     <input type="submit" name="" id="" class="btn btn-dark mt-3 px-5">
                 </div>
             </form>
+
+            <hr>
         </div>
 
-        <div class="container pb-5 pt-3">
-            <footer class="pt-3 mt-4 text-muted border-top text-center">
+        <div class="container pb-4">
+            <footer class="pt-1 mt-0 text-muted text-center">
                 &copy; DHRecord 2021
             </footer>
         </div>

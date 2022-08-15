@@ -176,7 +176,7 @@
                         <a class="nav-link" aria-current="page" href="../About/index.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../ContactUs/index.html">Contact Us</a>
+                        <a class="nav-link" aria-current="page" href="../ContactUs/index.php">Contact Us</a>
                     </li>
                 </ul>
                 <div>
@@ -194,7 +194,7 @@
     </nav>
 
     <!-- content -->
-  <div class="container my-5">
+  <div class="container mt-5 mb-2">
     <div class="mb-4 d-flex justify-content-between">
       <h4>Find a Clinic</h4>
     </div>
@@ -490,10 +490,12 @@
           </div>
       </div>
     </div>
+
+    <hr/>
   </div>
 
-    <div class="container pb-5">
-        <footer class="pt-3 mt-4 text-muted border-top text-center">
+    <div class="container pb-4">
+        <footer class="pt-1 mt-0 text-muted text-center">
             &copy; DHRecord 2021
         </footer>
     </div>
