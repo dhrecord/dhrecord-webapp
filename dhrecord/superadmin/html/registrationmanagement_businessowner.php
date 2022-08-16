@@ -94,11 +94,18 @@
 
                     $querySpec = "SELECT * FROM clinicSpecialization WHERE specName LIKE '$search'";
                     $resultSpec = $conn->query($querySpec);
-                    $rowSpec = $resultSpec->fetch_assoc();
-                    $specializationID = $rowSpec["ID"];
+                    // $rowSpec = $resultSpec->fetch_assoc();
+                    // $specializationID = $rowSpec["ID"];
+                    $specializationIDs = Array();
+                    while ($rowSpec = $resultSpec->fetch_assoc()) 
+                    {
+                        array_push($specializationIDs, $rowSpec["ID"]);
+                    }
 
-                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization = ?");
-                    $stmt->bind_param("s", $specializationID);
+                    $specializationIDString = implode(",", $specializationIDs);
+
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization IN (?)");
+                    $stmt->bind_param("s", $specializationIDString);
                     $stmt->execute();
                     $result = $stmt->get_result();
                     break;
