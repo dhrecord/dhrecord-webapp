@@ -65,7 +65,7 @@
                 <div class="mb-3 row">
                     <label for="role" class="col-sm-2 col-form-label">Role</label>
                     <div class="col-sm-10">
-                        <select name="role" id="role" class="form-select" style="max-width:150px">
+                        <select name="role" id="role" class="form-select" style="max-width:150px" onchange="roleChange()">
                             <option value="dr">Doctor</option>
                             <option value="ca">Clinic Admin</option>
                             <option value="fd">Front Desk</option>
@@ -105,7 +105,7 @@
                 </div>
 
                 <!-- only show this if user choose doctor -->
-                <div class="mb-3 row">
+                <div class="mb-3 row" id="operatingHours" style="display:none">
                     <p><b>Operating Hours:</b></p>
 
                     <!-- monday -->
@@ -241,6 +241,18 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function roleChange(){
+            var role = document.getElementById("role").value;
+            var operatingHoursInput = document.getElementById("operatingHours");
+            if (role == "dr"){
+                operatingHoursInput.style.display = "block";
+            } else {
+                operatingHoursInput.style.display = "none";
+            }
+        }
+    </script>
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
