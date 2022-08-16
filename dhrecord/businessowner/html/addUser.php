@@ -113,7 +113,7 @@
                             $sql = "SELECT * FROM `clinicSpecialization`";
                             $result = mysqli_query($conn,$sql);
 
-                            echo "<select name='clinicSpecialization' class='form-select'>";
+                            echo "<select name='clinicSpecialization' class='form-select mx-3' style='max-width:300px;'>";
                             
                             while($row = mysqli_fetch_array($result))
                             {
@@ -266,10 +266,14 @@
         function roleChange(){
             var role = document.getElementById("role").value;
             var operatingHoursInput = document.getElementById("operatingHours");
+            var specializationsInput = document.getElementById("specializations");
+
             if (role == "dr"){
                 operatingHoursInput.style.display = "block";
+                specializationsInput.style.display = "block";
             } else {
                 operatingHoursInput.style.display = "none";
+                specializationsInput.style.display = "none";
             }
         }
 
