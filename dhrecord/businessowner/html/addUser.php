@@ -105,7 +105,7 @@
                 </div>
 
                 <!-- only show this if user choose doctor -->
-                <div class="mb-3 row" id="operatingHours" style="display:none">
+                <div class="mb-3 row" id="operatingHours">
                     <p><b>Operating Hours:</b></p>
 
                     <!-- monday -->
