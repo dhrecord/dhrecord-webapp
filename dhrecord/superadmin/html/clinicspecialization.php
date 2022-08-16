@@ -129,7 +129,7 @@
                 if(isset($_POST['search']))
                 {
                     $searchkey= $_POST['search'];
-                    $query = mysqli_query($conn, "SELECT * FROM `clinicSpecialization` WHERE specName LIKE '%$searchkey%'");
+                    $query = "SELECT * FROM `clinicSpecialization` WHERE specName LIKE '%$searchkey%'";
                 }
 
                 else {
