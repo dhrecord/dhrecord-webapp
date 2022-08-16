@@ -2,10 +2,97 @@
 
     session_start();
 	if(!isset($_SESSION['loggedin']))
-	  {
-	    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
-	    exit;
-	  }
+    {
+    header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
+    exit;
+    }
+
+    $result = '';
+    $search = '';
+    $select = '';
+
+    // SEARCH BUSINESS OWNER
+    if(isset($_POST['save'])){
+        if(!empty($_POST['search'] and !empty($_POST['select']))){
+            $search = $_POST['search'];      
+            $select = $_POST['select'];
+            $stmt = '';
+
+            switch ($select) {
+                // search by no/id
+                case "1":
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE id = ?");
+                    $stmt->bind_param("i", $search);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    break;
+                // search by clinic name
+                case "2":
+                    $search = "%$search%"; // prepare the $search variable
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE nameOfClinic LIKE ?");
+                    $stmt->bind_param("s", $search);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    break;
+                // search by address
+                case "3":
+                    $search = "%$search%"; // prepare the $search variable
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE locationOfClinic LIKE ?");
+                    $stmt->bind_param("s", $search);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    break;
+                // search by contact number
+                case "4":
+                    $search = "%$search%"; // prepare the $search variable
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE contactNumber LIKE ?");
+                    $stmt->bind_param("s", $search);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    break;
+                // search by email
+                case "5":
+                    $search = "%$search%"; // prepare the $search variable
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE email LIKE ?");
+                    $stmt->bind_param("s", $search);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    break;
+                // search by reg no
+                case "6":
+                    $search = "%$search%"; // prepare the $search variable
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE registrationNumber LIKE ?");
+                    $stmt->bind_param("s", $search);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    break;
+                // search by license no
+                case "7":
+                    $search = "%$search%"; // prepare the $search variable
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE licenseNumber LIKE ?");
+                    $stmt->bind_param("s", $search);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    break;
+                // search by specialization
+                case "8":
+                    $search = "%$search%"; // prepare the $search variable
+
+                    $querySpec = "SELECT * FROM clinicSpecialization WHERE specName LIKE '$search'";
+                    $resultSpec = $conn->query($querySpec);
+                    $rowSpec = $resultSpec->fetch_assoc();
+                    $specializationID = $rowSpec["specName"];
+
+                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization = ?");
+                    $stmt->bind_param("s", $specializationID);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    break;
+            }
+        }
+    }  else {
+        $result = $conn->query("SELECT * FROM businessOwnerForApproval");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -80,29 +167,31 @@
 
 
         <div class="mb-4 d-flex align-items-center">
-            <div class="d-flex align-items-center">
-                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
-                <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
-                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="searchName3();">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+            <form action="" method ="POST">
+                <div class="d-flex align-items-center">
+                    <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter Value ..."
+                            aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" id="search" name="search"/>
+                        <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <select class="form-select" id="regManBO_ddlFilterBy" aria-label="Filter By..."
-                style="margin-left: 70px; max-width: 250px;">
-                <option selected disabled hidden>Filter By...</option>
-                <option value="1">No</option>
-                <option value="2">Clinic Name</option>
-                <option value="3">Address</option>
-                <option value="4">Contact No.</option>
-                <option value="5">Email</option>
-                <option value="6">Registration No.</option>
-                <option value="7">License No.</option>
-                <option value="8">Registration Date</option>
-                <option value="9">Specialization</option>
-            </select>
+                <select class="form-select" id="regManBO_ddlFilterBy" aria-label="Filter By..."
+                    style="margin-left: 70px; max-width: 250px;" required name="select">
+                    <option selected disabled hidden>Filter By...</option>
+                    <option value="1">No</option>
+                    <option value="2">Clinic Name</option>
+                    <option value="3">Address</option>
+                    <option value="4">Contact No.</option>
+                    <option value="5">Email</option>
+                    <option value="6">Registration No.</option>
+                    <option value="7">License No.</option>
+                    <!-- <option value="8">Registration Date</option> -->
+                    <option value="8">Specialization</option>
+                </select>
+            </form>
         </div>
 
         <!-- alert -->
@@ -161,9 +250,10 @@
                 //    
                 //}
 
-                $query = "SELECT * FROM businessOwnerForApproval";
+                // $query = "SELECT * FROM businessOwnerForApproval";
 
-                if ($result = $conn->query($query)) 
+                // if ($result = $conn->query($query)) 
+                if ($result !== '') 
                 {
                     while ($row = $result->fetch_assoc()) 
                     {
@@ -269,7 +359,7 @@
         crossorigin="anonymous"></script>
 
     <!-- javascript -->
-    <script src="../js/index.js"></script>
+    <!-- <script src="../js/index.js"></script> -->
 </body>
 
 </html>
