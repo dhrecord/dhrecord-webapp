@@ -105,27 +105,34 @@
                 </div>
 
                 <!-- only show this if user choose doctor -->
-                <div class="mb-3 row" id="specializations">
+                <div class="mt-1 mb-3 row" id="specializations">
                     <p><b>Specializations:</b></p>
 
                     <div class="mb-3 row d-flex align-items-center">
                         <?php
                             $sql = "SELECT * FROM `clinicSpecialization`";
                             $result = mysqli_query($conn,$sql);
-
-                            echo "<select name='clinicSpecialization' class='form-select mx-3' style='max-width:300px;'>";
+                            // echo "<select name='clinicSpecialization' class='form-select mx-3' style='max-width:300px;'>";
+                            // echo "<option value=''></option>";
                             
-                            while($row = mysqli_fetch_array($result))
-                            {
-                                echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
-                            }
+                            // while($row = mysqli_fetch_array($result))
+                            // {
+                            //     echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
+                            // }
 
-                            echo "</select>";
+                            // echo "</select>";
                         ?>
 
-                        <div class="text-center p-0" style="width: fit-content">
-                            <button class="btn btn-dark"><b>+</b></button>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="<?php echo $row['ID'] ?>" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <?php echo $row['specName'] ?>
+                            </label>
                         </div>
+
+                        <!-- <div class="text-center p-0" style="width: fit-content">
+                            <button type="button" class="btn btn-dark"><b>+</b></button>
+                        </div> -->
                     </div>
                 </div>
 
