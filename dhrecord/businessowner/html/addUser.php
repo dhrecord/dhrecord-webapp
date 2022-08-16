@@ -65,13 +65,14 @@
                 <div class="mb-3 row">
                     <label for="role" class="col-sm-2 col-form-label">Role</label>
                     <div class="col-sm-10">
-                        <select name="role" id="role">
-                        <option value="dr">Doctor</option>
-                        <option value="ca">Clinic Admin</option>
-                        <option value="fd">Front Desk</option>
+                        <select name="role" id="role" class="form-select" style="max-width:150px">
+                            <option value="dr">Doctor</option>
+                            <option value="ca">Clinic Admin</option>
+                            <option value="fd">Front Desk</option>
                         </select>
                     </div>
                 </div>
+
                 <div class="mb-3 row">
                     <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
                     <div class="col-sm-10">
@@ -102,6 +103,26 @@
                         <input type="password" class="form-control" id="passWord" name="passWord">
                     </div>
                 </div>
+
+                <!-- only show this if user choose doctor -->
+                <div class="mb-3 row">
+                    <p>Operating Hours:</p>
+
+                    <div class="mb-3 row">
+                        <label for="Monday" class="col-sm-2 col-form-label">Monday</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Monday" name="Monday">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row">
+                        <label for="Tuesday" class="col-sm-2 col-form-label">Tuesday</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Tuesday" name="Tuesday">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="mb-3 row">
                     <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
                 </div>
