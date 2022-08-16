@@ -76,49 +76,57 @@
                 <div class="mb-3 row">
                     <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="fullName" name="fullName">
+                        <input type="text" class="form-control" id="fullName" name="fullName" required />
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="contactNumber" name="contactNumber">
+                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" required />
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="email" name="email">
+                        <input type="text" class="form-control" id="email" name="email" required />
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="userName" name="userName">
+                        <input type="text" class="form-control" id="userName" name="userName" required />
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="passWord" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="passWord" name="passWord">
+                        <input type="password" class="form-control" id="passWord" name="passWord" required />
                     </div>
                 </div>
 
                 <!-- only show this if user choose doctor -->
                 <div class="mb-3 row">
-                    <p>Operating Hours:</p>
+                    <p><b>Operating Hours:</b></p>
 
                     <div class="mb-3 row">
                         <label for="Monday" class="col-sm-2 col-form-label">Monday</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="Monday" name="Monday">
+                        <div class="col-sm-5">
+                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
+                        </div>
+                        <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                        <div class="col-sm-5">
+                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
                         </div>
                     </div>
                     
                     <div class="mb-3 row">
                         <label for="Tuesday" class="col-sm-2 col-form-label">Tuesday</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="Tuesday" name="Tuesday">
+                        <div class="col-sm-5">
+                            <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required />
+                        </div>
+                        <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                        <div class="col-sm-5">
+                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
                         </div>
                     </div>
                 </div>
