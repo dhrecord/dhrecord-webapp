@@ -14,6 +14,22 @@ $email = $_POST['email'];
 $userName = $_POST['userName'];
 $passWord = $_POST['passWord'];
 
+// code added for operating hours
+$MondayFrom = $_POST['MondayFrom'];
+$MondayTo = $_POST['MondayTo'];
+$TuesdayFrom = $_POST['TuesdayFrom'];
+$TuesdayTo = $_POST['TuesdayTo'];
+$WednesdayFrom = $_POST['WednesdayFrom'];
+$WednesdayTo = $_POST['WednesdayTo'];
+$ThursdayFrom = $_POST['ThursdayFrom'];
+$ThursdayTo = $_POST['ThursdayTo'];
+$FridayFrom = $_POST['FridayFrom'];
+$FridayTo = $_POST['FridayTo'];
+$SaturdayFrom = $_POST['SaturdayFrom'];
+$SaturdayTo = $_POST['SaturdayTo'];
+$SundayFrom = $_POST['SundayFrom'];
+$SundayTo = $_POST['SundayTo'];
+
 //Database Connection
 $servername = "localhost";
 $database = "u922342007_Test";
