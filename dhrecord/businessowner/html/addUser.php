@@ -123,8 +123,8 @@
                             echo "</select>";
                         ?>
 
-                        <div class="text-center">
-                            <button class="btn btn-dark mt-4 px-3">+</button>
+                        <div class="text-center p-0" style="width: fit-content">
+                            <button class="btn btn-dark"><b>+</b></button>
                         </div>
                     </div>
                 </div>
