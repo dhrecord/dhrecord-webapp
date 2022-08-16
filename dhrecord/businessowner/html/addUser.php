@@ -146,7 +146,7 @@
 
                     <!-- wednesday -->
                     <div class="mb-2 row">
-                        <label for="Wednesday" class="col-sm-2 col-form-label">Tuesday</label>
+                        <label for="Wednesday" class="col-sm-2 col-form-label">Wednesday</label>
                         <div class="col-sm-5 d-flex align-items-center">
                             <input type="time" class="form-control" id="WednesdayFrom" name="WednesdayFrom" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
@@ -182,7 +182,7 @@
 
                     <!-- friday -->
                     <div class="mb-2 row">
-                        <label for="Friday" class="col-sm-2 col-form-label">Tuesday</label>
+                        <label for="Friday" class="col-sm-2 col-form-label">Friday</label>
                         <div class="col-sm-5 d-flex align-items-center">
                             <input type="time" class="form-control" id="FridayFrom" name="FridayFrom" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
