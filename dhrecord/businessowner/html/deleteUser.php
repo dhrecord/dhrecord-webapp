@@ -67,13 +67,24 @@ elseif ($row['role'] == "ca"){
 	$rowDoc = $resultDoc->fetch_assoc();
 	$rowDocID = $rowDoc['doctorID'];
 
+	// find clinic ID
+	$sessionID = $_SESSION['id'];
+	$queryClinic = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
+	$clinicInfo = mysqli_query($conn,$queryClinic);
+	$rowClinic = $clinicInfo->fetch_assoc();
+	$clinicID = $rowClinic['ID'];
+
+	// delete specializations from doctorSpec and businessOwnerSpec
+	$queryDelete4 = "DELETE FROM doctorSpecialization WHERE doctorID='$rowDocID'";
+	$queryDelete5 = "DELETE FROM businessOwnerSpecialization WHERE businessOwnerID='$clinicID'";
+
 	// delete operating hours
 	$queryDelete3 = "DELETE FROM operatingHours WHERE doctorID='$rowDocID'";
 	// delete user
 	$queryDelete1 = "DELETE FROM doctor WHERE userID='$UserID'";
 	$queryDelete2 = "DELETE FROM users WHERE ID='$UserID'";
 
-	if (mysqli_query($conn,$queryDelete3) && mysqli_query($conn,$queryDelete1) && mysqli_query($conn,$queryDelete2))
+	if (mysqli_query($conn,$queryDelete5) && mysqli_query($conn,$queryDelete4) && mysqli_query($conn,$queryDelete3) && mysqli_query($conn,$queryDelete1) && mysqli_query($conn,$queryDelete2))
 	{
 		mysqli_close();
 		header('Location: userManagement.php');
