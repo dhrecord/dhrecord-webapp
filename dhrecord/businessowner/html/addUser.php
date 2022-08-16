@@ -108,7 +108,7 @@
                 <div class="mt-1 mb-3 row" id="specializations">
                     <p><b>Specializations:</b></p>
 
-                    <div class="mb-3 row d-flex align-items-center">
+                    <div class="mb-3 row d-flex align-items-center px-5">
                         <?php
                             $sql = "SELECT * FROM `clinicSpecialization`";
                             $result = mysqli_query($conn,$sql);
@@ -123,7 +123,7 @@
                             // echo "</select>";
                         ?>
 
-                        <div class="form-check">
+                        <div class="form-check" style="width: fit-content">
                             <input class="form-check-input" type="checkbox" value="<?php echo $row['ID'] ?>" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?php echo $row['specName'] ?>
