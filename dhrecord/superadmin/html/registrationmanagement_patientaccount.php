@@ -173,7 +173,7 @@
             <select class="form-select" id="regManPA_ddlFilterBy" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;" required name="select">
                 <option selected disabled hidden>Filter By...</option>
-                <option value="1">No</option>
+                <option value="1">No/ID</option>
                 <option value="2">Name</option>
                 <option value="3">Address</option>
                 <option value="4">NRIC</option>
