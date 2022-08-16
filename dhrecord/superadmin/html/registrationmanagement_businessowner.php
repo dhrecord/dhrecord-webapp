@@ -102,13 +102,10 @@
                         array_push($specializationIDs, $rowSpec["ID"]);
                     }
 
-                    $specializationIDString = implode(",", $specializationIDs);
-
-                    echo $specializationIDString;
+                    $specializationIDArr = implode(",", $specializationIDs);
 
                     $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization IN (?)");
-                    echo $stmt;
-                    $stmt->bind_param("s", $specializationIDString);
+                    $stmt->bind_param("i", $specializationIDArr);
                     $stmt->execute();
                     $result = $stmt->get_result();
                     break;
