@@ -105,6 +105,26 @@
                 </div>
 
                 <!-- only show this if user choose doctor -->
+                <div class="mb-3 row" id="specializations">
+                    <p><b>Specializations:</b></p>
+
+                    <div class="mb-3 row">
+                        <?php
+                            $sql = "SELECT * FROM `clinicSpecialization`";
+                            $result = mysqli_query($conn,$sql);
+
+                            echo "<select name='clinicSpecialization' class='form-select'>";
+                            
+                            while($row = mysqli_fetch_array($result))
+                            {
+                                echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
+                            }
+
+                            echo "</select>";
+                        ?>
+                    </div>
+                </div>
+
                 <div class="mb-3 row" id="operatingHours">
                     <p><b>Operating Hours:</b></p>
 

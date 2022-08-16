@@ -109,39 +109,43 @@
                         <input type="text" class="form-control" id="locationOfClinic" name="locationOfClinic" required>
                     </div>
                 </div>
-                <div class="mb-3 row">
+
+                <!-- temporary commented -> clinic specializations will be automatically updated when a doctor account is created.
+                        Because to register a doctor account, clinic admin need to enter doctor specialization -->
+
+                <!-- <div class="mb-3 row">
                     <label for="clinicSpecialization" class="col-sm-2 col-form-label">Clinic Specialization</label>
                     <div class="col-sm-10">
                         <?php
                         
-                        //Database Connection
-	                    $servername = "localhost";
-	                    $database = "u922342007_Test";
-	                    $username = "u922342007_admin";
-	                    $password = "Aylm@012";
+                        // //Database Connection
+	                    // $servername = "localhost";
+	                    // $database = "u922342007_Test";
+	                    // $username = "u922342007_admin";
+	                    // $password = "Aylm@012";
 
-	                    // Create connection
-	                    $conn = mysqli_connect($servername, $username, $password, $database);
+	                    // // Create connection
+	                    // $conn = mysqli_connect($servername, $username, $password, $database);
 
-	                    if (!$conn) 
-	                    {
-		                    die("Connection failed: " . mysqli_connect_error());
-	                    }
+	                    // if (!$conn) 
+	                    // {
+		                //     die("Connection failed: " . mysqli_connect_error());
+	                    // }
 
-                        $sql = "SELECT * FROM `clinicSpecialization`";
-                        $result = mysqli_query($conn,$sql);
+                        // $sql = "SELECT * FROM `clinicSpecialization`";
+                        // $result = mysqli_query($conn,$sql);
 
-                        echo "<select name='clinicSpecialization' class='form-select'>";
+                        // echo "<select name='clinicSpecialization' class='form-select'>";
                         
-                        while($row = mysqli_fetch_array($result))
-                        {
-                            echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
-                        }
+                        // while($row = mysqli_fetch_array($result))
+                        // {
+                        //     echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
+                        // }
 
-                        echo "</select>";
+                        // echo "</select>";
                         ?>
                     </div>
-                </div>
+                </div> -->
                 <div class="mb-3 row">
                     <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
                 </div>
