@@ -152,10 +152,18 @@ button:hover{
     font-family: agency-fb, sans-serif;
     font-style: normal;
     font-weight: 700;
-    /* font-size: 64px; */
+    font-size: 64px;
+    line-height: 77px;
+    color: #2C2C2C;
+}
+
+
+.login-form-title2{
+    font-family: agency-fb, sans-serif;
+    font-style: normal;
+    font-weight: 700;
     font-size: 30px;
     max-width: 500px;
-    /* line-height: 77px; */
     color: #2C2C2C;
 }
 
