@@ -131,7 +131,7 @@
                         $sql = "SELECT * FROM `clinicSpecialization`";
                         $result = mysqli_query($conn,$sql);
 
-                        echo "<select name='clinicSpecialization'>";
+                        echo "<select name='clinicSpecialization' class='form-select'>";
                         
                         while($row = mysqli_fetch_array($result))
                         {
@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <button type="submit" class="btn btn btn-dark mt-4">Submit</button>
+                    <div class="text-center"><button type="submit" class="btn btn-dark mt-4 px-5">Submit</button></div>
                 </div>
                 
             </form>
