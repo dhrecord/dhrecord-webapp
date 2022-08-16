@@ -104,10 +104,13 @@
 
                     $specializationIDArr = implode(",", $specializationIDs);
 
-                    $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization IN (?)");
-                    $stmt->bind_param("i", $specializationIDArr);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
+                    // $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization IN (?)");
+                    // $stmt->bind_param("i", $specializationIDArr);
+                    // $stmt->execute();
+                    // $result = $stmt->get_result();
+
+                    $result = $conn->query("SELECT * FROM WHERE clinicSpecialization IN ('$specializationIDArr')");
+
                     break;
             }
         } else {
