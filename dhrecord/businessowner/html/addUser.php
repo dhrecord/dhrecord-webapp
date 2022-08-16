@@ -261,6 +261,9 @@
 
             document.getElementById(dayFrom).disabled = !document.getElementById(dayFrom).disabled;
             document.getElementById(dayTo).disabled = !document.getElementById(dayTo).disabled;
+
+            console.log(document.getElementById(dayFrom).value);
+            console.log(document.getElementById(dayTo).value);
         }
     </script>
 
