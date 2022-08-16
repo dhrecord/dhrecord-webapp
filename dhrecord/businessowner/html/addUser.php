@@ -319,7 +319,7 @@
                 document.getElementById("clinicSpecializations").value = new_str;
             }
 
-            console.log(document.getElementById("clinicSpecializations").value);
+            // format: ;2; ;3; ;12; ;3; ;1; ;12;
         }
     </script>
 

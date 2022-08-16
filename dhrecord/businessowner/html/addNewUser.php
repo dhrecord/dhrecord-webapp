@@ -14,6 +14,9 @@ $email = $_POST['email'];
 $userName = $_POST['userName'];
 $passWord = $_POST['passWord'];
 
+// added - code added for doctor specializations
+$CS = $_POST['clinicSpecializations'];
+
 // added - code added for operating hours
 $MondayFrom = $_POST['MondayFrom'];
 $MondayTo = $_POST['MondayTo'];
@@ -29,9 +32,6 @@ $SaturdayFrom = $_POST['SaturdayFrom'];
 $SaturdayTo = $_POST['SaturdayTo'];
 $SundayFrom = $_POST['SundayFrom'];
 $SundayTo = $_POST['SundayTo'];
-
-// echo $MondayFrom."==".$MondayTo;
-// echo $SundayFrom."==".$SundayTo;
 
 //Database Connection
 $servername = "localhost";
@@ -93,6 +93,23 @@ if($role === "dr")
 		$stmt2 = mysqli_prepare($conn, "insert into operatingHours(doctorID, day, start_time, end_time) values(?, ?, ?, ?)");
 		mysqli_stmt_bind_param($stmt2, "isss",$row2['doctorID'], $day, $st, $et);
 		mysqli_stmt_execute($stmt2);
+	}
+
+	// added - inserting doctor specializations + inserting it to business owner specializations
+	// clean input
+	$CS = substr($CS, 1, -1);
+	$CSArr = explode('; ;', $CS);
+
+	for($x=0; $x<count($CSArr); $x++){
+		// insert data into doctor specialization table
+		$stmt3 = mysqli_prepare($conn, "insert into doctorSpecialization(doctorID, specializationID) values(?, ?)");
+		mysqli_stmt_bind_param($stmt3, "ii", $row2['doctorID'], $CSArr[$x]);
+		mysqli_stmt_execute($stmt3);
+
+		// insert data into business specialization table
+		$stmt4 = mysqli_prepare($conn, "insert into businessOwnerSpecialization(businessOwnerID, specializationID) values(?, ?)");
+		mysqli_stmt_bind_param($stmt4, "ii", $clinicID, $CSArr[$x]);
+		mysqli_stmt_execute($stmt4);
 	}
 
 	header('Location: addUser.php');
