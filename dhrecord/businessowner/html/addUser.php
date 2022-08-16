@@ -108,7 +108,7 @@
                 <div class="mb-3 row">
                     <p><b>Operating Hours:</b></p>
 
-                    <div class="mb-3 row">
+                    <div class="row">
                         <label for="Monday" class="col-sm-2 col-form-label">Monday</label>
                         <div class="col-sm-10 d-flex align-items-center">
                             <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
@@ -118,21 +118,25 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="Monday" class="col-sm-2 col-form-label"></label>
-                        <div class="form-check form-switch">
+                        <label for="Monday" class="col-sm-2 col-form-label">&nbsp;</label>
+                        <div class="col-sm-10 form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
                         </div>
                     </div>
                     
-                    <div class="mb-3 row">
+                    <div class="row">
                         <label for="Tuesday" class="col-sm-2 col-form-label">Tuesday</label>
                         <div class="col-sm-5 d-flex align-items-center">
                             <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
                             <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
                         </div>
-                        <div class="form-check form-switch">
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Tuesday" class="col-sm-2 col-form-label">&nbsp;</label>
+                        <div class="col-sm-10 form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
                         </div>
