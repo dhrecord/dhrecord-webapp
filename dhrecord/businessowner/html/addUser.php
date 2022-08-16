@@ -139,7 +139,7 @@
                     <div class="mb-3 row">
                         <label for="Tuesday" class="col-sm-2 col-form-label">&nbsp;</label>
                         <div class="col-sm-10 form-check form-switch px-5">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTuesday">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultTuesday" onchange="switchChange(this)">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                     <div class="mb-3 row">
                         <label for="Wednesday" class="col-sm-2 col-form-label">&nbsp;</label>
                         <div class="col-sm-10 form-check form-switch px-5">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultWednesday">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultWednesday" onchange="switchChange(this)">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                     <div class="mb-3 row">
                         <label for="Thursday" class="col-sm-2 col-form-label">&nbsp;</label>
                         <div class="col-sm-10 form-check form-switch px-5">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultThursday">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultThursday" onchange="switchChange(this)">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
                     <div class="mb-3 row">
                         <label for="Friday" class="col-sm-2 col-form-label">&nbsp;</label>
                         <div class="col-sm-10 form-check form-switch px-5">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultFriday">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultFriday" onchange="switchChange(this)">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                     <div class="mb-3 row">
                         <label for="Saturday" class="col-sm-2 col-form-label">&nbsp;</label>
                         <div class="col-sm-10 form-check form-switch px-5">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultSaturday">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultSaturday" onchange="switchChange(this)">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                     <div class="mb-3 row">
                         <label for="Sunday" class="col-sm-2 col-form-label">&nbsp;</label>
                         <div class="col-sm-10 form-check form-switch px-5">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultSunday">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefaultSunday" onchange="switchChange(this)">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
                         </div>
                     </div>
