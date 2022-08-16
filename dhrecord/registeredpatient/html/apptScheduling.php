@@ -143,8 +143,8 @@
         // search highest rating clinics
         case "8":
           $case = '8';
-          // SELECT AVG(rating) FROM `surveyForm` WHERE nameClinic = 'Expat Dental';
-          $result = $conn->query("SELECT * FROM businessOwner WHERE rating IS NOT NULL ORDER BY rating DESC");
+          // SELECT nameOfClinic, AVG(surveyForm.rating) FROM businessOwner JOIN surveyForm WHERE businessOwner.nameOfClinic = surveyForm.nameClinic GROUP BY nameOfClinic;
+          $result = $conn->query("SELECT businessOwner.*, AVG(surveyForm.rating) FROM businessOwner LEFT OUTER JOIN surveyForm ON businessOwner.nameOfClinic = surveyForm.nameClinic GROUP BY nameOfClinic ORDER BY AVG(surveyForm.rating) DESC");
           break;
         default:
           break;
@@ -248,7 +248,7 @@
                     style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
                         <option value="" selected disabled hidden>Category ...</option>
                         <option value="1">Clinic Name</option>
-                        <option value="2">Services</option>
+                        <option value="2">Specialization</option>
                         <option value="3">Address</option>
                         <option value="4">Postal Code</option>
                         <option value="5">Operating Hours (Day)</option>
@@ -343,46 +343,30 @@
                       echo      
                             '<br/>
                             <b>Rating: </b>';
-  
-                      $field5 = $row['rating'];
-                      
-                      // $stmtR = $conn->prepare("SELECT AVG(rating) FROM surveyForm WHERE nameClinic = ?");
-                      // $stmtR->bind_param("s", $fieldNOC);
-                      // $stmtR->execute();
-                      // $resultR = $stmtR->get_result();
-                      // $field5 = '';
 
-                      // if ($resultR !== ''){
-                      //   while ($row = $resultR->fetch_assoc()){
-                      //     $field5 = $rowR[0];
-                      //   }
-                      // }
-                      
-                     
-                    
-                      // if ($resultR -> num_rows > 0){
-                      //   $rowR = $result->fetch_row();
-                      //   $field5 = $rowR[0];
-                      // }
+                      $stmtR = $conn->prepare("SELECT AVG(rating) as average FROM surveyForm WHERE nameClinic = ?");
+                      $stmtR->bind_param("s", $fieldNOC);
+                      $stmtR->execute();
+                      $resultR = $stmtR->get_result();
+                      $rating_no = '';
+                      $row_R = $resultR->fetch_assoc();
+                      $rating_no = $row_R['average']; 
 
-                      if ($field5){
-                        // if (fmod($field5,1)!== 0.00){
-                        //   $field5 = floor($field5);
-                        //   for ($x = 0; $x < $field5; $x++) {
-                        //     echo '<i class="fa-solid fa-star"></i>';
-                        //   }
-                        //   echo '<i class="fa-solid fa-star-half"></i>';
-                        // } else {
-                        //   $field5 = number_format($field5);
-                        //   for ($x = 0; $x < $field5; $x++) {
-                        //     echo '<i class="fa-solid fa-star"></i>';
-                        //   }
-                        // }
-                        $field5 = number_format($field5);
-                        for ($x = 0; $x < $field5; $x++) {
-                          echo '<i class="fa-solid fa-star"></i>';
+                      if ($rating_no !== '' and $rating_no){
+                        if (fmod($rating_no, 1)!== 0.00){
+                          $rating_no = floor($rating_no);
+                          for ($x = 0; $x < $rating_no; $x++) {
+                            echo '<i class="fa-solid fa-star"></i>';
+                          }
+                          // half star
+                          echo '<i class="fa-solid fa-star-half"></i>';
+                        } else {
+                          $rating_no = number_format($rating_no);
+                          for ($x = 0; $x < $rating_no; $x++) {
+                            echo '<i class="fa-solid fa-star"></i>';
+                          }
                         }
-                      } else{
+                      } else {
                         echo '-';
                       }
                       
@@ -393,7 +377,7 @@
                             <table class="table docs">
                               <tr>
                                 <th class="px-4">Name</th>
-                                <th class="px-4">Services</th>
+                                <th class="px-4">Specialization</th>
                                 <th class="px-4 text-center">Operating Hours</th>
                                 <th class="px-4"></th>
                               </tr>';
@@ -550,7 +534,7 @@
               <div class="modal-body">
                 <p><b>Doctor Name:</b><br/><span id="d_name"></span>
                 <br/><br/>
-                <b>Services:</b><br/><span id="spec_list"></span>
+                <b>Specialization:</b><br/><span id="spec_list"></span>
                 <br/><br/>
                 <b>Operating Hours:</b><br/><span id="o_hours"></span>
                 </p>

@@ -119,7 +119,7 @@
                         <td><?php echo $row["contactNumber"]; ?></td> 
                         <td><?php echo $row["email"]; ?></td>
                         <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["clinicadminID"]; ?>">Edit</button></td>
-                        <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row["userID"]; ?>'">Delete</button></td>
+                        <td><button type="button" class="btn btn-sm btn-danger" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row["userID"]; ?>'">Delete</button></td>
                     </tr>
 
 
@@ -188,7 +188,7 @@
                     <td><?php echo $row2["contactNumber"]; ?></td> 
                     <td><?php echo $row2["email"]; ?></td>
                     <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModalFD<?php echo $row2["frontdeskID"]; ?>">Edit</button></td>
-                    <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row2["userID"]; ?>'">Delete</button></td>
+                    <td><button type="button" class="btn btn-sm btn-danger" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row2["userID"]; ?>'">Delete</button></td>
                 </tr>
 
 
@@ -258,7 +258,7 @@
                     <td><?php echo $row4["contactNumber"]; ?></td> 
                     <td><?php echo $row4["email"]; ?></td>
                     <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModalDR<?php echo $row4["doctorID"]; ?>">Edit</button></td>
-                    <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row4["userID"]; ?>'">Delete</button></td>
+                    <td><button type="button" class="btn btn-sm btn-danger" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row4["userID"]; ?>'">Delete</button></td>
                 </tr>
 
 

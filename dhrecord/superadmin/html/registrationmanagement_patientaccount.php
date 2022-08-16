@@ -189,9 +189,6 @@
                                 <label for="drugAllergies" class="form-label">Drug Allergies</label>
                                 <input type="text" class="form-control" id="drugAllergies" name="drugAllergies" <?php echo 'value="'.$row["drugAllergies"].'"'; ?> readonly>
                             </div>
-                            <div class="mb-3 row">
-                                <div class="text-center"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button></div>
-                            </div>
                         </form>
                     </div>
                 </div>
