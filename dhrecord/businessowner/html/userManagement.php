@@ -119,7 +119,7 @@
                         <td><?php echo $row["contactNumber"]; ?></td> 
                         <td><?php echo $row["email"]; ?></td>
                         <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["clinicadminID"]; ?>">Edit</button></td>
-                        <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row["userID"]; ?>'">Delete</button></td>
+                        <td><button type="button" class="btn btn-sm btn-danger" onclick="document.location.href='deleteUser.php?UserID=<?php echo $row["userID"]; ?>'">Delete</button></td>
                     </tr>
 
 
