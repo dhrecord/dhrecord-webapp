@@ -78,16 +78,18 @@
     <main class="container my-5">
         <h4 class="mb-5">Clinic Specialization</h4>
         <div class="mb-4 d-flex align-items-center justify-content-between">
-            <div class="d-flex align-items-center">
-                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
-                <div class="input-group">
-                    <input type="text" id="searchNameInput2" class="form-control" placeholder="Specialization Name"
-                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 400px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="searchSpecializationName();">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+            <form action="" method ="POST">
+                <div class="d-flex align-items-center">
+                    <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Specialization Name"
+                            aria-label="Name" aria-describedby="basic-addon2" style="max-width: 400px;" id="search" name="search"/>
+                        <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
             <div class="d-flex justify-content-end">
                 <!--<a href="./reviewrequest.php" class="btn btn-dark">Review Request</a>-->
                 &nbsp;&nbsp;&nbsp;
@@ -123,7 +125,18 @@
 		            die("Connection failed: " . mysqli_connect_error());
 	            }
 
-                $query = "SELECT * FROM clinicSpecialization";
+                $query = '';
+                if(isset($_POST['search']))
+                {
+                    $searchkey= $_POST['search'];
+                    $query = mysqli_query($conn, "SELECT * FROM `clinicSpecialization` WHERE specName LIKE '%$searchkey%'");
+                }
+
+                else {
+                    $query = "SELECT * FROM clinicSpecialization";
+                }
+
+                // $query = "SELECT * FROM clinicSpecialization";
 
                 if ($result = $conn->query($query)) 
                 {
@@ -135,13 +148,13 @@
                         $description = $row["description"];
                 ?>
 
-                        <!--display data-->
-                        <tr> 
-                          <td><?php echo $row["ID"]; ?></td> 
-                          <td><?php echo $row["specName"]; ?></td> 
-                          <td><?php echo $row["description"]; ?></td> 
-                          <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["ID"]; ?>">Edit</button></td>
-                        </tr>
+                <!--display data-->
+                <tr> 
+                    <td><?php echo $row["ID"]; ?></td> 
+                    <td><?php echo $row["specName"]; ?></td> 
+                    <td><?php echo $row["description"]; ?></td> 
+                    <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["ID"]; ?>">Edit</button></td>
+                </tr>
 
         <!-- modal -->
         <!-- edit row -->
@@ -207,11 +220,8 @@
     </main>
 
                 <?php
-
                     }
-            
                 }
-        
                 ?>
 
         </tbody>
@@ -223,7 +233,11 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    <script src="../js/index.js"></script>
+        <script>
+
+        </script>
+
+    <!-- <script src="../js/index.js"></script> -->
 </body>
 
 </html>
