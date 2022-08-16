@@ -262,8 +262,8 @@
             document.getElementById(dayFrom).value = "00:00";
             document.getElementById(dayTo).value = "00:00";
 
-            document.getElementById(dayFrom).disabled = !document.getElementById(dayFrom).disabled;
-            document.getElementById(dayTo).disabled = !document.getElementById(dayTo).disabled;
+            document.getElementById(dayFrom).readOnly = !document.getElementById(dayFrom).readOnly;
+            document.getElementById(dayTo).readOnly = !document.getElementById(dayTo).readOnly;
         }
     </script>
 
