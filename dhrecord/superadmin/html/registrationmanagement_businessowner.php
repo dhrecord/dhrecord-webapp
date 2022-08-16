@@ -104,7 +104,10 @@
 
                     $specializationIDString = implode(",", $specializationIDs);
 
+                    echo $specializationIDString;
+
                     $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization IN (?)");
+                    echo $stmt;
                     $stmt->bind_param("s", $specializationIDString);
                     $stmt->execute();
                     $result = $stmt->get_result();
