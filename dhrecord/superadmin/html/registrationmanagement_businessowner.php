@@ -95,7 +95,7 @@
                     $querySpec = "SELECT * FROM clinicSpecialization WHERE specName LIKE '$search'";
                     $resultSpec = $conn->query($querySpec);
                     $rowSpec = $resultSpec->fetch_assoc();
-                    $specializationID = $rowSpec["specName"];
+                    $specializationID = $rowSpec["ID"];
 
                     $stmt = $conn->prepare("SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization = ?");
                     $stmt->bind_param("s", $specializationID);
@@ -103,6 +103,8 @@
                     $result = $stmt->get_result();
                     break;
             }
+        } else {
+            $result = $conn->query("SELECT * FROM businessOwnerForApproval");
         }
     }  else {
         $result = $conn->query("SELECT * FROM businessOwnerForApproval");
