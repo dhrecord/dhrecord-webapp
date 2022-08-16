@@ -108,6 +108,7 @@
                 <div class="mb-3 row">
                     <p><b>Operating Hours:</b></p>
 
+                    <!-- monday -->
                     <div class="mb-2 row">
                         <label for="Monday" class="col-sm-2 col-form-label">Monday</label>
                         <div class="col-sm-10 d-flex align-items-center">
@@ -125,17 +126,108 @@
                         </div>
                     </div>
                     
+                    <!-- tuesday -->
                     <div class="mb-2 row">
                         <label for="Tuesday" class="col-sm-2 col-form-label">Tuesday</label>
                         <div class="col-sm-5 d-flex align-items-center">
                             <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required style="max-width:200px"/>
                         </div>
                     </div>
 
                     <div class="mb-3 row">
                         <label for="Tuesday" class="col-sm-2 col-form-label">&nbsp;</label>
+                        <div class="col-sm-10 form-check form-switch px-5">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
+                        </div>
+                    </div>
+
+                    <!-- wednesday -->
+                    <div class="mb-2 row">
+                        <label for="Wednesday" class="col-sm-2 col-form-label">Tuesday</label>
+                        <div class="col-sm-5 d-flex align-items-center">
+                            <input type="time" class="form-control" id="Wednesday" name="Wednesday" value="00:00" required style="max-width:200px"/>
+                            &nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input type="time" class="form-control" id="Wednesday" name="Wednesday" value="00:00" required style="max-width:200px"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Wednesday" class="col-sm-2 col-form-label">&nbsp;</label>
+                        <div class="col-sm-10 form-check form-switch px-5">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
+                        </div>
+                    </div>
+
+                    <!-- thursday -->
+                    <div class="mb-2 row">
+                        <label for="Thursday" class="col-sm-2 col-form-label">Thursday</label>
+                        <div class="col-sm-5 d-flex align-items-center">
+                            <input type="time" class="form-control" id="Thursday" name="Thursday" value="00:00" required style="max-width:200px"/>
+                            &nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input type="time" class="form-control" id="Thursday" name="Thursday" value="00:00" required style="max-width:200px"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Thursday" class="col-sm-2 col-form-label">&nbsp;</label>
+                        <div class="col-sm-10 form-check form-switch px-5">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
+                        </div>
+                    </div>
+
+                    <!-- friday -->
+                    <div class="mb-2 row">
+                        <label for="Friday" class="col-sm-2 col-form-label">Tuesday</label>
+                        <div class="col-sm-5 d-flex align-items-center">
+                            <input type="time" class="form-control" id="Friday" name="Friday" value="00:00" required style="max-width:200px"/>
+                            &nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input type="time" class="form-control" id="Friday" name="Friday" value="00:00" required style="max-width:200px"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Friday" class="col-sm-2 col-form-label">&nbsp;</label>
+                        <div class="col-sm-10 form-check form-switch px-5">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
+                        </div>
+                    </div>
+
+                    <!-- saturday -->
+                    <div class="mb-2 row">
+                        <label for="Saturday" class="col-sm-2 col-form-label">Saturday</label>
+                        <div class="col-sm-5 d-flex align-items-center">
+                            <input type="time" class="form-control" id="Saturday" name="Saturday" value="00:00" required style="max-width:200px"/>
+                            &nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input type="time" class="form-control" id="Saturday" name="Saturday" value="00:00" required style="max-width:200px"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Saturday" class="col-sm-2 col-form-label">&nbsp;</label>
+                        <div class="col-sm-10 form-check form-switch px-5">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
+                        </div>
+                    </div>
+
+                    <!-- sunday -->
+                    <div class="mb-2 row">
+                        <label for="Sunday" class="col-sm-2 col-form-label">Sunday</label>
+                        <div class="col-sm-5 d-flex align-items-center">
+                            <input type="time" class="form-control" id="Sunday" name="Sunday" value="00:00" required style="max-width:200px"/>
+                            &nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input type="time" class="form-control" id="Sunday" name="Sunday" value="00:00" required style="max-width:200px"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Sunday" class="col-sm-2 col-form-label">&nbsp;</label>
                         <div class="col-sm-10 form-check form-switch px-5">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
