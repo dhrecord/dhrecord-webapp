@@ -306,7 +306,7 @@
         }
 
         function setCSValue(t){
-            var value = t.vallue;
+            var value = t.value;
             alert(value);
         }
     </script>
