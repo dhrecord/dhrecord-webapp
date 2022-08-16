@@ -69,6 +69,29 @@ if($role === "dr")
 	$stmt = mysqli_prepare($conn, "insert into doctor(userID, fullName, contactNumber, email, clinicID) values(?, ?, ?, ?, ?)");
 	mysqli_stmt_bind_param($stmt, "isssi", $row1['ID'], $fullName, $contactNumber, $email, $clinicID);
 	mysqli_stmt_execute($stmt);
+
+	// get the doctor ID
+	$stmtDID = $conn->prepare("SELECT doctorID FROM doctor where userID = ?");
+	$stmtDID->bind_param("s", $row1['ID']);
+	$stmtDID->execute();
+	$stmt_resultDID = $stmtDID->get_result();
+	$row2 = $stmt_resultDID->fetch_assoc();
+
+	// inserting operating hours of a doctor
+	$days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+	$TimeFrom = array($MondayFrom, $TuesdayFrom, $WednesdayFrom, $ThursdayFrom, $FridayFrom, $SaturdayFrom, $SundayFrom);
+	$TimeTo = array($MondayTo, $TuesdayTo, $WednesdayTo, $ThursdayTo, $FridayTo, $SaturdayTo, $SundayTo);
+
+	for ($x = 0; $x < 7; $x++) {
+		$day = $days[$x];
+		$st = $TimeFrom[$x];
+		$et = $TimeTo[$x];
+
+		$stmt2 = mysqli_prepare($conn, "insert into operatingHours(doctorID, day, start_time, end_time) values(?, ?, ?, ?)");
+		mysqli_stmt_bind_param($stmt2, "isss",$row1['doctorID'], $fullName, $day, $st, $et);
+		mysqli_stmt_execute($stmt2);
+	}
+
 	header('Location: addUser.php');
 }
 
