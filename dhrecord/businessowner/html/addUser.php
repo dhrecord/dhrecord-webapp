@@ -115,6 +115,10 @@
                             &nbsp;&nbsp;-&nbsp;&nbsp;
                             <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
                         </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Monday" class="col-sm-2 col-form-label"></label>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Closed</label>
