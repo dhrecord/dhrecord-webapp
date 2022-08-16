@@ -110,9 +110,10 @@
 
                     <div class="mb-3 row">
                         <label for="Monday" class="col-sm-2 col-form-label">Monday</label>
-                        <div class="col-sm-10">
-                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />&nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
+                        <div class="col-sm-10 d-flex">
+                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
+                            &nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
                         </div>
                         <!-- <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
                         <div class="col-sm-5">
@@ -122,9 +123,10 @@
                     
                     <div class="mb-3 row">
                         <label for="Tuesday" class="col-sm-2 col-form-label">Tuesday</label>
-                        <div class="col-sm-5">
-                            <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required />&nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
+                        <div class="col-sm-5 d-flex">
+                            <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required style="max-width:200px"/>
+                            &nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
                         </div>
                         <!-- <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
                         <div class="col-sm-5">
