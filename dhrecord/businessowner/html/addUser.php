@@ -108,6 +108,8 @@
                 <div class="mt-1 mb-3 row" id="specializations">
                     <p><b>Specializations:</b></p>
 
+                    <input type="text" class="form-control" id="clinicSpecializations" name="clinicSpecializations" style="display:none"/>
+
                     <div class="mb-3 row d-flex align-items-center px-5">
                         <?php
                             $sql = "SELECT * FROM `clinicSpecialization`";
@@ -124,7 +126,7 @@
                         ?>
 
                         <div class="form-check" style="width: fit-content">
-                            <input class="form-check-input" type="checkbox" value="<?php echo $row['ID'] ?>">
+                            <input class="form-check-input" type="checkbox" value="<?php echo $row['ID'] ?>"  onchange="setCSValue(this)">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?php echo $row['specName'] ?>
                             </label>
@@ -301,6 +303,11 @@
 
             document.getElementById(dayFrom).readOnly = !document.getElementById(dayFrom).readOnly;
             document.getElementById(dayTo).readOnly = !document.getElementById(dayTo).readOnly;
+        }
+
+        function setCSValue(t){
+            var value = t.vallue;
+            alert(value);
         }
     </script>
 
