@@ -115,8 +115,8 @@
                             // echo "<select name='clinicSpecialization' class='form-select mx-3' style='max-width:300px;'>";
                             // echo "<option value=''></option>";
                             
-                            // while($row = mysqli_fetch_array($result))
-                            // {
+                            while($row = mysqli_fetch_array($result))
+                            {
                             //     echo "<option value='" . $row['ID'] ."'>" . $row['specName'] ."</option>";
                             // }
 
@@ -129,6 +129,8 @@
                                 <?php echo $row['specName'] ?>
                             </label>
                         </div>
+
+                        <?php } ?>
 
                         <!-- <div class="text-center p-0" style="width: fit-content">
                             <button type="button" class="btn btn-dark"><b>+</b></button>
