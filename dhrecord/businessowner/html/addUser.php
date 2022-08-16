@@ -108,7 +108,7 @@
                 <div class="mb-3 row" id="specializations">
                     <p><b>Specializations:</b></p>
 
-                    <div class="mb-3 row">
+                    <div class="mb-3 row d-flex align-items-center">
                         <?php
                             $sql = "SELECT * FROM `clinicSpecialization`";
                             $result = mysqli_query($conn,$sql);
@@ -123,7 +123,9 @@
                             echo "</select>";
                         ?>
 
-                        <button class="btn btn-dark mt-4 px-3">+</button>
+                        <div class="text-center">
+                            <button class="btn btn-dark mt-4 px-3">+</button>
+                        </div>
                     </div>
                 </div>
 
