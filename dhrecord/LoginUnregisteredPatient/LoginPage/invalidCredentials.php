@@ -45,7 +45,7 @@
     style="height: 100vh; min-height: 500px; margin-right: 320px;">
     <div>
       <div class="mb-5 text-center">
-        <h4 class="login-form-title">Wrong Password or Username, please try again</h4>
+        <h4 class="login-form-title">Wrong Password or Username, Please Try Again</h4>
       </div>
       <div>
           <div class="text-center">
