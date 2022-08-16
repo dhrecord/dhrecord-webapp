@@ -307,7 +307,19 @@
 
         function setCSValue(t){
             var value = t.value;
-            alert(value);
+            var currentValue = document.getElementById("clinicSpecializations").value;
+
+            if(t.checked){
+                document.getElementById("clinicSpecializations").value = currentValue + ";" + value + "; ";
+            } else {
+                let position = currentValue.search(";" + value + ";");
+                let val_len = value.toString().length + 3;
+
+                let new_str = currentValue.substr(0, position) + currentValue.substr(position + val_len);
+                document.getElementById("clinicSpecializations").value = new_str;
+            }
+
+            console.log(document.getElementById("clinicSpecializations").value);
         }
     </script>
 
