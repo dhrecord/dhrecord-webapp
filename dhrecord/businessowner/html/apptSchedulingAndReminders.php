@@ -85,7 +85,7 @@
                             <tr class="bg-dark text-white">
                                 <th>No</th>
                                 <th>Doctor</th>
-                                <th>Services</th>
+                                <th>Specialization</th>
                                 <th>Contact No</th>
                                 <th>Email</th>
                                 <th></th>
@@ -204,7 +204,7 @@
                             <tr class="bg-dark text-white">
                                 <th>No</th>
                                 <th>Doctor</th>
-                                <th>Services</th>
+                                <th>Specialization</th>
                                 <th>Contact No</th>
                                 <th>Email</th>
                                 <th></th>

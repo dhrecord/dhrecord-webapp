@@ -218,7 +218,7 @@
                     style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
                         <option value="" selected disabled hidden>Category ...</option>
                         <option value="1">Clinic Name</option>
-                        <option value="2">Services</option>
+                        <option value="2">Specialization</option>
                         <option value="3">Address</option>
                         <option value="4">Postal Code</option>
                         <option value="5">Operating Hours (Day)</option>
@@ -345,7 +345,7 @@
                           <table class="table docs">
                             <tr>
                               <th class="px-4">Name</th>
-                              <th class="px-4">Services</th>
+                              <th class="px-4">Specialization</th>
                               <th class="px-4 text-center">Operating Hours</th>
                               <th class="px-4"></th>
                             </tr>';
@@ -498,7 +498,7 @@
               <div class="modal-body">
                 <p><b>Doctor Name:</b><br/><span id="d_name"></span>
                 <br/><br/>
-                <b>Services:</b><br/><span id="spec_list"></span>
+                <b>Specialization:</b><br/><span id="spec_list"></span>
                 <br/><br/>
                 <b>Operating Hours:</b><br/><span id="o_hours"></span>
                 </p>
