@@ -88,7 +88,7 @@ if($role === "dr")
 		$et = $TimeTo[$x];
 
 		$stmt2 = mysqli_prepare($conn, "insert into operatingHours(doctorID, day, start_time, end_time) values(?, ?, ?, ?)");
-		mysqli_stmt_bind_param($stmt2, "isss",$row1['doctorID'], $fullName, $day, $st, $et);
+		mysqli_stmt_bind_param($stmt2, "isss",$row1['doctorID'], $day, $st, $et);
 		mysqli_stmt_execute($stmt2);
 	}
 
