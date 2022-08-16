@@ -124,7 +124,7 @@
                         ?>
 
                         <div class="form-check" style="width: fit-content">
-                            <input class="form-check-input" type="checkbox" value="<?php echo $row['ID'] ?>" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="<?php echo $row['ID'] ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?php echo $row['specName'] ?>
                             </label>
