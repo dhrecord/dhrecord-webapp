@@ -21,6 +21,73 @@
   }
   
   $sessionID = $_SESSION['id'];
+
+  $result = '';
+  $search = '';
+  $select = '';
+
+  // SEARCH BUSINESS OWNER
+  if(isset($_POST['searchbtn'])){
+    if(!empty($_POST['search'] and !empty($_POST['select']))){
+        $search = $_POST['search'];      
+        $select = $_POST['select'];
+        $stmt = '';
+
+        switch ($select) {
+            // search by no/id
+            case "1":
+                $stmt = $conn->prepare("SELECT * FROM registeredPatient WHERE ID = ?");
+                $stmt->bind_param("i", $search);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                break;
+            // search by pt name
+            case "2":
+                $search = "%$search%"; // prepare the $search variable
+                $stmt = $conn->prepare("SELECT * FROM registeredPatient WHERE fullName LIKE ?");
+                $stmt->bind_param("s", $search);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                break;
+            // search by pt address
+            case "3":
+                $search = "%$search%"; // prepare the $search variable
+                $stmt = $conn->prepare("SELECT * FROM registeredPatient WHERE registeredPatient.address LIKE ?");
+                $stmt->bind_param("s", $search);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                break;
+            // search by nric
+            case "4":
+                $search = "%$search%"; // prepare the $search variable
+                $stmt = $conn->prepare("SELECT * FROM registeredPatient WHERE nricNumber LIKE ?");
+                $stmt->bind_param("s", $search);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                break;
+            // search by contact no
+            case "5":
+                $search = "%$search%"; // prepare the $search variable
+                $stmt = $conn->prepare("SELECT * FROM registeredPatient WHERE contactNumber LIKE ?");
+                $stmt->bind_param("s", $search);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                break;
+            // search by email
+            case "6":
+                $search = "%$search%"; // prepare the $search variable
+                $stmt = $conn->prepare("SELECT * FROM registeredPatient WHERE email LIKE ?");
+                $stmt->bind_param("s", $search);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                break;
+        }
+    } else {
+        $result = $conn->query("SELECT * FROM registeredPatient");
+    }
+  }  else {
+      $result = $conn->query("SELECT * FROM registeredPatient");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -91,19 +158,20 @@
     <div class="container my-5">
         <h4 class="mb-5">Registration Management - Patient Account</h4>
 
+        <form action="" method ="POST">
         <div class="mb-4 d-flex align-items-center">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
-                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="searchName2();">
+                    <input type="text" class="form-control" placeholder="Enter Value ..."
+                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" id="search" name="search"/>
+                    <button class="input-group-text" id="basic-addon2" type="submit" name="searchbtn">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
             <select class="form-select" id="regManPA_ddlFilterBy" aria-label="Filter By..."
-                style="margin-left: 70px; max-width: 250px;">
+                style="margin-left: 70px; max-width: 250px;" required name="select">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">No</option>
                 <option value="2">Name</option>
@@ -111,10 +179,11 @@
                 <option value="4">NRIC</option>
                 <option value="5">Contact No.</option>
                 <option value="6">Email</option>
-                <option value="7">Check Referral</option>
-                <option value="8">Registration Date</option>
+                <!-- <option value="7">Check Referral</option> -->
+                <!-- <option value="8">Registration Date</option> -->
             </select>
         </div>
+        </form>
 
         <table class="table table-striped">
             <thead>
@@ -131,11 +200,11 @@
                <?php
 
                     //$query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
-                    $query = "SELECT * FROM registeredPatient";
+                    // $query = "SELECT * FROM registeredPatient";
   
                     //$clinicID = $row['ID'];
 
-                    if ($result = $conn->query($query)) 
+                    if ($result !== '') 
                     {
                         while ($row = $result->fetch_assoc()) 
                         {
