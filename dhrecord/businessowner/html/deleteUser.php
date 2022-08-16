@@ -60,6 +60,30 @@ elseif ($row['role'] == "ca"){
 		mysqli_close();
 	}
 
+} elseif ($row['role'] == "dr"){
+	// find doctor ID
+	$queryDoc = "SELECT * FROM doctor WHERE userID='$UserID'";
+	$resultDoc = $conn->query($queryDoc);
+	$rowDoc = $resultDoc->fetch_assoc();
+	$rowDocID = $rowDoc['doctorID'];
+
+	// delete operating hours
+	$queryDelete3 = "DELETE FROM operatingHours WHERE doctorID='$rowDocID'";
+	// delete user
+	$queryDelete1 = "DELETE FROM doctor WHERE userID='$UserID'";
+	$queryDelete2 = "DELETE FROM users WHERE ID='$UserID'";
+
+	if (mysqli_query($conn,$queryDelete3) && mysqli_query($conn,$queryDelete1) && mysqli_query($conn,$queryDelete2))
+	{
+		mysqli_close();
+		header('Location: userManagement.php');
+	}
+
+	else
+	{
+		echo "something went wrong!";
+		mysqli_close();
+	}
 }
 
 ?>
