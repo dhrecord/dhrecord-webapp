@@ -179,34 +179,33 @@
     <div class="container my-5">
         <h4 class="mb-5">Registration Management - Business Owner</h4>
 
-
+        <form action="" method ="POST">
         <div class="mb-4 d-flex align-items-center">
-            <form action="" method ="POST">
-                <div class="d-flex align-items-center">
-                    <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter Value ..."
-                            aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" id="search" name="search"/>
-                        <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
+            <div class="d-flex align-items-center">
+                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Value ..."
+                        aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" id="search" name="search"/>
+                    <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
-                <select class="form-select" id="regManBO_ddlFilterBy" aria-label="Filter By..."
-                    style="margin-left: 70px; max-width: 250px;" required name="select">
-                    <option selected disabled hidden>Filter By...</option>
-                    <option value="1">No</option>
-                    <option value="2">Clinic Name</option>
-                    <option value="3">Address</option>
-                    <option value="4">Contact No.</option>
-                    <option value="5">Email</option>
-                    <option value="6">Registration No.</option>
-                    <option value="7">License No.</option>
-                    <!-- <option value="8">Registration Date</option> -->
-                    <option value="8">Specialization</option>
-                </select>
-            </form>
+            </div>
+            <select class="form-select" id="regManBO_ddlFilterBy" aria-label="Filter By..."
+                style="margin-left: 70px; max-width: 250px;" required name="select">
+                <option selected disabled hidden>Filter By...</option>
+                <option value="1">No</option>
+                <option value="2">Clinic Name</option>
+                <option value="3">Address</option>
+                <option value="4">Contact No.</option>
+                <option value="5">Email</option>
+                <option value="6">Registration No.</option>
+                <option value="7">License No.</option>
+                <!-- <option value="8">Registration Date</option> -->
+                <option value="8">Specialization</option>
+            </select>
         </div>
+    </form>
 
         <!-- alert -->
         <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert_approval"
