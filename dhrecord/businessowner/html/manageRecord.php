@@ -53,13 +53,14 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Manage Records</h4>
+        <form action="" method ="POST">
         <div class="mb-4 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Name" aria-label="Name"
-                        aria-describedby="basic-addon2" style="max-width: 300px;" />
-                    <button class="input-group-text" id="basic-addon2" onclick="searchName();">
+                    <input type="text" class="form-control" placeholder="Name" aria-label="Name"
+                        aria-describedby="basic-addon2" style="max-width: 300px;" id="search" name="search" value=""/>
+                    <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
@@ -84,9 +85,15 @@
             </thead>
             <tbody id="data">
                <?php
-
+                    $query = "";
+                    if(isset($_POST['search'])){
+                        $searchkey= $_POST['search'];
+                        $query = "SELECT * FROM registeredPatient WHERE fullName LIKE '%$searchkey%'";
+                    } else {
+                        $query = "SELECT * FROM registeredPatient";
+                    }
                     //$query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
-                    $query = "SELECT * FROM registeredPatient";
+                    // $query = "SELECT * FROM registeredPatient";
   
                     //$clinicID = $row['ID'];
 
@@ -149,7 +156,7 @@
                             <div class="mb-3 row">
                                 <div class="text-center">
                                     <button type="button" class="btn btn-dark mt-4 px-3" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-dark mt-4 px-3">Submit</button
+                                <button type="submit" class="btn btn-dark mt-4 px-3">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -172,7 +179,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    <script src="../js/index.js"></script>
+    <!-- <script src="../js/index.js"></script> -->
 </body>
 
 </html>
