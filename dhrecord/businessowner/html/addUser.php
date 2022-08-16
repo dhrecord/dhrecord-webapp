@@ -112,9 +112,9 @@
                     <div class="mb-2 row">
                         <label for="Monday" class="col-sm-2 col-form-label">Monday</label>
                         <div class="col-sm-10 d-flex align-items-center">
-                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="MondayFrom" name="Monday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="MondayTo" name="Monday" value="00:00" required style="max-width:200px"/>
                         </div>
                     </div>
 
@@ -130,9 +130,9 @@
                     <div class="mb-2 row">
                         <label for="Tuesday" class="col-sm-2 col-form-label">Tuesday</label>
                         <div class="col-sm-5 d-flex align-items-center">
-                            <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="TuesdayFrom" name="Tuesday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="TuesdayTo" name="Tuesday" value="00:00" required style="max-width:200px"/>
                         </div>
                     </div>
 
@@ -148,9 +148,9 @@
                     <div class="mb-2 row">
                         <label for="Wednesday" class="col-sm-2 col-form-label">Tuesday</label>
                         <div class="col-sm-5 d-flex align-items-center">
-                            <input type="time" class="form-control" id="Wednesday" name="Wednesday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="WednesdayFrom" name="Wednesday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Wednesday" name="Wednesday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="WednesdayTo" name="Wednesday" value="00:00" required style="max-width:200px"/>
                         </div>
                     </div>
 
@@ -166,9 +166,9 @@
                     <div class="mb-2 row">
                         <label for="Thursday" class="col-sm-2 col-form-label">Thursday</label>
                         <div class="col-sm-5 d-flex align-items-center">
-                            <input type="time" class="form-control" id="Thursday" name="Thursday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="ThursdayFrom" name="Thursday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Thursday" name="Thursday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="ThursdayTo" name="Thursday" value="00:00" required style="max-width:200px"/>
                         </div>
                     </div>
 
@@ -184,9 +184,9 @@
                     <div class="mb-2 row">
                         <label for="Friday" class="col-sm-2 col-form-label">Tuesday</label>
                         <div class="col-sm-5 d-flex align-items-center">
-                            <input type="time" class="form-control" id="Friday" name="Friday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="FridayFrom" name="Friday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Friday" name="Friday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="FridayTo" name="Friday" value="00:00" required style="max-width:200px"/>
                         </div>
                     </div>
 
@@ -202,9 +202,9 @@
                     <div class="mb-2 row">
                         <label for="Saturday" class="col-sm-2 col-form-label">Saturday</label>
                         <div class="col-sm-5 d-flex align-items-center">
-                            <input type="time" class="form-control" id="Saturday" name="Saturday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="SaturdayFrom" name="Saturday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Saturday" name="Saturday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="SaturdayTo" name="Saturday" value="00:00" required style="max-width:200px"/>
                         </div>
                     </div>
 
@@ -220,9 +220,9 @@
                     <div class="mb-2 row">
                         <label for="Sunday" class="col-sm-2 col-form-label">Sunday</label>
                         <div class="col-sm-5 d-flex align-items-center">
-                            <input type="time" class="form-control" id="Sunday" name="Sunday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="SundayFrom" name="Sunday" value="00:00" required style="max-width:200px"/>
                             &nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input type="time" class="form-control" id="Sunday" name="Sunday" value="00:00" required style="max-width:200px"/>
+                            <input type="time" class="form-control" id="SundayTo" name="Sunday" value="00:00" required style="max-width:200px"/>
                         </div>
                     </div>
 
@@ -256,7 +256,11 @@
         function switchChange(t){
             var id = t.id;
             var day = id.substring(22);
-            alert(day);
+            var dayFrom = day + "From";
+            var dayTo = day + "To";
+
+            document.getElementById(dayFrom).disabled = !document.getElementById(dayFrom).disabled;
+            document.getElementById(dayTo).disabled = !document.getElementById(dayTo).disabled;
         }
     </script>
 
