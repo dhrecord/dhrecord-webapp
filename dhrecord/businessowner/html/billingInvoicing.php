@@ -49,8 +49,7 @@
                     <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;" id="qty" name="qty" value="" />
-                    <button type="button" class="btn btn-dark" type="submit" name="submit"></button>
+                    
                 
                     <!-- </form> -->
                 </div>
@@ -85,15 +84,24 @@
                 if(isset($_POST['search']))
                     {
                         $searchkey= $_POST['search'];
-                        $res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
+                        //$res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
                             //test 3
+                        $ptResult = mysqli_query($conn,"SELECT * FROM registeredPatient WHERE fullName LIKE '%$searchkey%'");
+                        while($result = mysqli_fetch_assoc($ptResult))
+                        {
+                            $ID1 = $result['ID'];
+                        }
+
+                        $res = "SELECT * FROM treatmentHistory WHERE pt_ID = $ID1";     
+                        //$res = mysqli_query($conn, "SELECT * FROM treatmentHistory WHERE pt_ID = $ID1'");
                     }
 
-                else 
+                 
                     //$res = mysqli_query($conn, "select * from `treatmentHistory`");
                     //$res = mysqli_query($conn,"SELECT treatmentHistory.ID,treatmentHistory.date,doctor.fullName//,treatmentHistory.pt_ID,treatmentHistory.toothCondition,treatmentHistory.diagnosis//,treatmentHistory.medicationPrescribed,treatmentHistory.quantity,treatmentHistory.comments  //FROM treatmentHistory, doctor WHERE treatmentHistory.attendingDoctor =  doctor.doctorID");
                     
                     //$res = "SELECT *  FROM treatmentHistory INNER JOIN doctor ON treatmentHistory.attendingDoctor =  doctor.doctorID";
+                else
                     $res = "SELECT * FROM treatmentHistory";
                     //$res = "SELECT * FROM brand INNER JOIN product ON brand.brand_id = product.brand_id";
 
@@ -135,7 +143,7 @@
                                 <td><?php echo $obj['medicationPrescribed'] ?></td>
                                 <td><?php echo $obj['quantity'] ?></td>
                                 <td><?php echo $obj['comments'] ?></td>
-                                <td><a class="btn btn-sm btn-dark" href="generateBillPDF.php?GetID=<?php echo $ID ?>">Generate</a></td> 
+                                <td><a href="generateBillPDF.php?GetID=<?php echo $ID ?>">Generate</a></td> 
                             </tr>
                         <?php
                         
