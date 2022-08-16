@@ -122,6 +122,8 @@
 
                             echo "</select>";
                         ?>
+
+                        <button class="btn btn-dark mt-4 px-3">+</button>
                     </div>
                 </div>
 
