@@ -110,24 +110,26 @@
 
                     <div class="mb-3 row">
                         <label for="Monday" class="col-sm-2 col-form-label">Monday</label>
-                        <div class="col-sm-5">
+                        <div class="col-sm-10">
+                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />&nbsp;&nbsp;-&nbsp;&nbsp;
                             <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
                         </div>
-                        <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                        <!-- <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
                         <div class="col-sm-5">
                             <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
-                        </div>
+                        </div> -->
                     </div>
                     
                     <div class="mb-3 row">
                         <label for="Tuesday" class="col-sm-2 col-form-label">Tuesday</label>
                         <div class="col-sm-5">
-                            <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required />
-                        </div>
-                        <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-                        <div class="col-sm-5">
+                            <input type="time" class="form-control" id="Tuesday" name="Tuesday" value="00:00" required />&nbsp;&nbsp;-&nbsp;&nbsp;
                             <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
                         </div>
+                        <!-- <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+                        <div class="col-sm-5">
+                            <input type="time" class="form-control" id="Monday" name="Monday" value="00:00" required />
+                        </div> -->
                     </div>
                 </div>
 
