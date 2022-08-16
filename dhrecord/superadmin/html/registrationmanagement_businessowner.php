@@ -109,7 +109,7 @@
                     // $stmt->execute();
                     // $result = $stmt->get_result();
 
-                    $result = $conn->query("SELECT * FROM WHERE clinicSpecialization IN ('$specializationIDArr')");
+                    $result = $conn->query("SELECT * FROM WHERE clinicSpecialization IN ('{$specializationIDArr}')");
 
                     break;
             }
