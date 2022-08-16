@@ -108,7 +108,7 @@
                     // $stmt->bind_param("i", $specializationIDArr);
                     // $stmt->execute();
                     // $result = $stmt->get_result();
-                    $queryCS = "SELECT * FROM WHERE clinicSpecialization IN ($specializationIDArr)";
+                    $queryCS = "SELECT * FROM businessOwnerForApproval WHERE clinicSpecialization IN ($specializationIDArr)";
                     echo $queryCS;
                     $result = $conn->query($queryCS);
 
