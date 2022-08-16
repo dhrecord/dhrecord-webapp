@@ -255,7 +255,8 @@
 
         function switchChange(t){
             var id = t.id;
-            alert(id);
+            var day = id.substring(22);
+            alert(day);
         }
     </script>
 
