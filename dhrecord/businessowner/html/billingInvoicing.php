@@ -135,7 +135,7 @@
                                 <td><?php echo $obj['medicationPrescribed'] ?></td>
                                 <td><?php echo $obj['quantity'] ?></td>
                                 <td><?php echo $obj['comments'] ?></td>
-                                <td><a href="generateBillPDF.php?GetID=<?php echo $ID ?>">Generate</a></td> 
+                                <td><a class="btn btn-sm btn-dark" href="generateBillPDF.php?GetID=<?php echo $ID ?>">Generate</a></td> 
                             </tr>
                         <?php
                         
