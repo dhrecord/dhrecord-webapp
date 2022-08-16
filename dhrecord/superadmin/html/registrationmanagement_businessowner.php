@@ -26,7 +26,7 @@
     $select = '';
 
     // SEARCH BUSINESS OWNER
-    if(isset($_POST['save'])){
+    if(isset($_POST['searchbtn'])){
         if(!empty($_POST['search'] and !empty($_POST['select']))){
             $search = $_POST['search'];      
             $select = $_POST['select'];
@@ -186,7 +186,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" id="search" name="search"/>
-                    <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
+                    <button class="input-group-text" id="basic-addon2" type="submit" name="searchbtn">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
@@ -205,7 +205,7 @@
                 <option value="8">Specialization</option>
             </select>
         </div>
-    </form>
+        </form>
 
         <!-- alert -->
         <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert_approval"
