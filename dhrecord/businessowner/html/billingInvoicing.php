@@ -80,7 +80,9 @@
             <tbody>
             <?php
                 require_once("connection.php");
-                
+                $ID1 = array();
+                $ids = "0";
+                $i = 0;
                 if(isset($_POST['search']))
                     {
                         $searchkey= $_POST['search'];
@@ -89,10 +91,18 @@
                         $ptResult = mysqli_query($conn,"SELECT * FROM registeredPatient WHERE fullName LIKE '%$searchkey%'");
                         while($result = mysqli_fetch_assoc($ptResult))
                         {
-                            $ID1 = $result['ID'];
+                            $ID1[$i] = strval($result['ID']);
+                            $idss= strval($result['ID']);
+                            $ids =  $ids . ',' .  $idss;
+                            $i = $i + 1;
+                            //echo $ID1;
                         }
-
-                        $res = "SELECT * FROM treatmentHistory WHERE pt_ID = $ID1";     
+                        echo $ids;
+                         print_r($ID1);
+                        $idarray = array_map('intval',explode(',',$ids));
+                        $idarray = implode("','",$idarray);
+                        $res = "SELECT * FROM treatmentHistory WHERE pt_ID in ('".$idarray."')";    
+                        echo $res;
                         //$res = mysqli_query($conn, "SELECT * FROM treatmentHistory WHERE pt_ID = $ID1'");
                     }
 
