@@ -24,16 +24,14 @@
   
   $query = "SELECT * FROM businessOwner WHERE users_ID=$sessionID";
   $clinicInfo = mysqli_query($conn,$query);
-  $clinicInfo_result = $clinicInfo->get_result();
   $row = $clinicInfo->fetch_assoc();
   
   $clinicID = "";
 
-  if ($clinicInfo_result->num_rows > 0) 
+  if (!empty($row)) 
   {
 	$clinicID = $row['ID'];
   }
-
   
 ?>
 
