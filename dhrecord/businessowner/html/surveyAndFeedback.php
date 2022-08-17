@@ -80,13 +80,24 @@
         
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $database);
-				           
-	      	    $res = ("SELECT registeredPatient.fullName, surveyForm.timeTaken, surveyForm.rating, surveyForm.recommendation, surveyForm.remarks, 
-		    surveyForm.nameClinic, surveyForm.nameDoc FROM frontDesk, businessOwner, surveyForm, users, registeredPatient
-		    WHERE frontDesk.clinicID = businessOwner.ID AND businessOwner.nameOfClinic = surveyForm.nameClinic
-		    AND surveyForm.username =  users.username AND users.ID = registeredPatient.users_ID AND frontDesk.userID = '{$_SESSION['id']}'");
+		    $role = $_SESSION['role'];
+		    
+		    if ($role=="ca")
+		    {
+			    $res = ("SELECT registeredPatient.fullName, surveyForm.timeTaken, surveyForm.rating, surveyForm.recommendation, surveyForm.remarks, 
+		    	    surveyForm.nameClinic, surveyForm.nameDoc FROM clinicAdmin, businessOwner, surveyForm, users, registeredPatient
+		            WHERE clinicAdmin.clinicID = businessOwner.ID AND businessOwner.nameOfClinic = surveyForm.nameClinic
+			    AND surveyForm.username =  users.username AND users.ID = registeredPatient.users_ID AND clinicAdmin.userID = '{$_SESSION['id']}'");
+		    }
+		    else
+		    {
+			    $res = ("SELECT registeredPatient.fullName, surveyForm.timeTaken, surveyForm.rating, surveyForm.recommendation, surveyForm.remarks,
+			    surveyForm.nameClinic, surveyForm.nameDoc FROM frontDesk, businessOwner, surveyForm, users, registeredPatient
+			    WHERE frontDesk.clinicID = businessOwner.ID AND businessOwner.nameOfClinic = surveyForm.nameClinic
+			    AND surveyForm.username =  users.username AND users.ID = registeredPatient.users_ID AND frontDesk.userID = '{$_SESSION['id']}'");
+		    }
 
-			              $result = mysqli_query($conn, $res);
+	            $result = mysqli_query($conn, $res);
 
                     while($sql = mysqli_fetch_assoc($result)){
                               echo "<tr><td>".$sql["fullName"]."</td><td>".$sql["timeTaken"]."</td><td>".$sql["rating"]."</td><td>".$sql["recommendation"].
