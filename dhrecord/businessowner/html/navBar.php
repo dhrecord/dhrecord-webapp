@@ -174,6 +174,9 @@ else
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo ($page == 'surveyAndFeedback.php') ? 'active': '' ?>" href="./surveyAndFeedback.php">Survey and Feedback</a>
+                    </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
                     <p class="navbar-text text-white m-0">
