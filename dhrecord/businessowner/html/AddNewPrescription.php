@@ -5,6 +5,9 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
+  
+  $prescriptionName = "";
+  $nameErr = "";
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +24,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <style>
+    .error {color: #FF0000;}
+    </style>
 </head>
 
 <body>
@@ -36,7 +42,8 @@
                 <div class="mb-3 row">
                     <label for="fullName" class="col-sm-2 col-form-label">Prescription Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="prescriptionName" name="prescriptionName">
+                        <input type="text" class="form-control" id="prescriptionName" name="prescriptionName" >
+                        
                     </div>
                 </div>
                 <div class="mb-3 row">
