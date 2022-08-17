@@ -59,7 +59,7 @@
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Name" aria-label="Name"
-                        aria-describedby="basic-addon2" style="max-width: 300px;" id="search" name="search" value=""/>
+                        aria-describedby="basic-addon2" style="max-width: 300px;" id="searchValue" name="searchValue" value=""/>
                     <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -85,9 +85,9 @@
             </thead>
             <tbody id="data">
                <?php
-                    $query = "";
-                    if(isset($_POST['search'])){
-                        $searchkey= $_POST['search'];
+                    $query = "SELECT * FROM registeredPatient";
+                    if(isset($_POST['searchValue'])){
+                        $searchkey= $_POST['searchValue'];
                         $query = "SELECT * FROM registeredPatient WHERE fullName LIKE '%$searchkey%'";
                     } else {
                         $query = "SELECT * FROM registeredPatient";
