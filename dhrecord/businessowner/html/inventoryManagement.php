@@ -49,8 +49,6 @@
                     <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <input type="text" class="form-control" placeholder="Search..." style="max-width: 300px;" id="qty" name="qty" value="" />
-                    <button type="button" class="btn btn-dark" type="submit" name="submit"></button>
                 
                     <!-- </form> -->
                 </div>

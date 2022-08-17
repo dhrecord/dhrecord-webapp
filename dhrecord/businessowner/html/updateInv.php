@@ -9,9 +9,10 @@ if(isset($_POST['update']))
     $prescriptionName = $_POST['prescriptionName'];
 	$prescriptionDesc = $_POST['prescriptionDesc'];
 	$prescriptionQty = $_POST['Quantity'];
+	$prescriptionPrice = $_POST['prescriptionPrice'];
 	$Remarks = $_POST['Remarks'];
 
-	$queryy = "UPDATE `inventoryManagement` SET prescriptionName = '".$prescriptionName."', prescriptionDesc = '".$prescriptionDesc."', prescriptionQty = '".$prescriptionQty."', Remarks = '".$Remarks."' WHERE ID= '".$ID."'";
+	$queryy = "UPDATE `inventoryManagement` SET prescriptionName = '".$prescriptionName."', prescriptionDesc = '".$prescriptionDesc."', prescriptionQty = '".$prescriptionQty."', prescriptionPrice = '".$prescriptionPrice."', Remarks = '".$Remarks."' WHERE ID= '".$ID."'";
 	$result1 = mysqli_query($conn,$queryy);
 
 	if($result1)

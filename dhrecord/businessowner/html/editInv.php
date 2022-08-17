@@ -18,6 +18,7 @@
         $prescriptionName = $res['prescriptionName'];
 	    $prescriptionDesc = $res['prescriptionDesc'];
 	    $prescriptionQty = $res['prescriptionQty'];
+	    $prescriptionPrice = $res['prescriptionPrice'];
 	    $Remarks = $res['Remarks'];
 
     }
@@ -66,6 +67,12 @@
                     <label for="contactNumber" class="col-sm-2 col-form-label">Quantity</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="Quantity" name="Quantity" value= "<?php echo $prescriptionQty ?>">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="contactNumber" class="col-sm-2 col-form-label">Price($SGD)</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="prescriptionPrice" name="prescriptionPrice" value= "<?php echo $prescriptionPrice ?>">
                     </div>
                 </div>
                 <div class="mb-3 row">
