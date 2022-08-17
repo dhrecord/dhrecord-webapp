@@ -46,7 +46,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body onload="findData();">
+<body>
     <?php include 'navBar.php'; ?>
 
     <!--test--> 
@@ -68,6 +68,7 @@
             <div class="referral-box px-3 py-1">
                 <!--<p class="m-0"><b>Referral Letter: ASX7aJWs</b></p>-->
             </div>
+        </form>
         </div>
         <table class="table table-striped">
             <thead>
@@ -85,10 +86,10 @@
             </thead>
             <tbody id="data">
                <?php
-                    $searchValue = $_POST['searchValue']
-                    $query = "SELECT * FROM registeredPatient";
+                    $searchValue = $_POST['searchValue'];
+                    $query = "";
                     if(isset($searchValue)){
-                        //$searchkey= $_POST['searchValue'];
+                        $searchkey= $_POST['searchValue'];
                         $query = "SELECT * FROM registeredPatient WHERE fullName LIKE '%$searchValue%'";
                     } else {
                         $query = "SELECT * FROM registeredPatient";
@@ -156,7 +157,7 @@
                             </div>
                             <div class="mb-3 row">
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-dark mt-4 px-3" data-bs-dismiss="modal">Cancel</button>
+                                    <!--<button type="button" class="btn btn-dark mt-4 px-3" data-bs-dismiss="modal">Cancel</button>-->
                                 <button type="submit" class="btn btn-dark mt-4 px-3">Submit</button>
                                 </div>
                             </div>
@@ -180,7 +181,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    <script src="../js/index.js"></script>
+    <!--<script src="../js/index.js"></script>-->
 </body>
 
 </html>
