@@ -10,6 +10,7 @@
 	$prescriptionName = $_POST['prescriptionName'];
 	$prescriptionDesc = $_POST['prescriptionDesc'];
 	$prescriptionQty = $_POST['Quantity'];
+	$prescriptionPrice = $_POST['prescriptionPrice'];
 	$Remarks = $_POST['Remarks'];
 
 	//Database Connection
@@ -28,11 +29,11 @@
 	}
 	
 	//inserting data
-	if ($stmt = mysqli_prepare($conn, "insert into `inventoryManagement`(`prescriptionName`,`prescriptionDesc`,`prescriptionQty`, `Remarks`) values (?, ?, ?, ?)")) 
+	if ($stmt = mysqli_prepare($conn, "insert into `inventoryManagement`(`prescriptionName`,`prescriptionDesc`,`prescriptionQty`,`prescriptionPrice`,`Remarks`) values (?, ?, ?, ?, ?)")) 
 	//if ($stmt = mysqli_prepare($conn, "insert into inventoryManagement(prescriptionName, prescriptionDesc, prescriptionQty, Remarks) values (?, ?, ?, ?)"))
 	{
 		
-		mysqli_stmt_bind_param($stmt, "ssis",$prescriptionName, $prescriptionDesc, $prescriptionQty, $Remarks);
+		mysqli_stmt_bind_param($stmt, "ssids",$prescriptionName, $prescriptionDesc, $prescriptionQty, $prescriptionPrice, $Remarks);
 		mysqli_stmt_execute($stmt);
 
 		header("Location: http://dhrecord.com/dhrecord/businessowner/html/inventoryManagement.php");
