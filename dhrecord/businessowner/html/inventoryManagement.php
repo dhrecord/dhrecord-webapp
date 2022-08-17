@@ -73,7 +73,7 @@
                     <th scope="col">Prescription Name</th>
                     <th scope="col">Prescription Description</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Price($SGD)</th>
                     <th scope="col">Remarks</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
