@@ -11,6 +11,27 @@ $userID = $_POST['userID'];
 $newPassWord = $_POST['newPassWord'];
 $confirmNewPassWord = $_POST['confirmNewPassWord'];
 
+// Store the cipher method
+$ciphering = "AES-128-CTR";
+  
+// Use OpenSSl Encryption method
+$iv_length = openssl_cipher_iv_length($ciphering);
+$options = 0;
+
+// Non-NULL Initialization Vector for encryption
+$encryption_iv = '1234567891011121';
+
+// Store the encryption key
+$encryption_key = "JovenChanDunCry";
+
+// Non-NULL Initialization Vector for decryption
+$decryption_iv = '1234567891011121';
+  
+// Store the decryption key
+$decryption_key = "JovenChanDunCry";
+
+//$encryptedPassword = openssl_encrypt($passWord, $ciphering, $encryption_key, $options, $encryption_iv);
+
 //Database Connection
 $servername = "localhost";
 $database = "u922342007_Test";
@@ -33,6 +54,8 @@ else
 {
     if($newPassWord == $confirmNewPassWord)
     {
+        //$encryptedPassword = openssl_encrypt($newPassWord, $ciphering, $encryption_key, $options, $encryption_iv);
+        //$query = "UPDATE users SET password='$encryptedPassword' WHERE ID='$userID'";
     	$query = "UPDATE users SET password='$newPassWord' WHERE ID='$userID'";
     	if (mysqli_query($conn,$query)) 
     	{

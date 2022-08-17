@@ -30,6 +30,26 @@
   $userName = $row['username'];
   $passWord = $row['password'];
 
+  // Store the cipher method
+  $ciphering = "AES-128-CTR";
+  
+  // Use OpenSSl Encryption method
+  $iv_length = openssl_cipher_iv_length($ciphering);
+  $options = 0;
+
+  // Non-NULL Initialization Vector for encryption
+  $encryption_iv = '1234567891011121';
+
+  // Store the encryption key
+  $encryption_key = "JovenChanDunCry";
+
+  // Non-NULL Initialization Vector for decryption
+  $decryption_iv = '1234567891011121';
+  
+  // Store the decryption key
+  $decryption_key = "JovenChanDunCry";
+
+  //$decryptedPassword = openssl_decrypt($passWord, $ciphering, $decryption_key, $options, $decryption_iv);
 ?>
 
 <!DOCTYPE html>
@@ -121,6 +141,7 @@
                     <label for="passWord" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$passWord. '"'; ?> readonly>
+                        <!--<input type="password" class="form-control" id="passWord" name="passWord"  <?php //echo 'value = "'.$decryptedPassword. '"'; ?> readonly>-->
                     </div>
                 </div>
                 <div class="mb-3 row">
