@@ -6,6 +6,7 @@ $nricNumber = $_POST['nricNumber'];
 $contactNumber = $_POST['contactNumber'];
 $email = $_POST['email'];
 $address = $_POST['address'];
+$postalCode = $_POST['postalCode'];
 
 //Database Connection
 $servername = "localhost";
@@ -21,7 +22,7 @@ if (!$conn)
 	die("Connection failed: " . mysqli_connect_error());
 }
 
-$query = "UPDATE registeredPatient SET fullName='$fullName', nricNumber='$nricNumber' ,contactNumber='$contactNumber', email='$email', address='$address' WHERE users_ID='$patientID'";
+$query = "UPDATE registeredPatient SET fullName='$fullName', nricNumber='$nricNumber' ,contactNumber='$contactNumber', email='$email', address='$address', postalCode='$postalCode' WHERE users_ID='$patientID'";
 
 if (mysqli_query($conn,$query)) 
 {

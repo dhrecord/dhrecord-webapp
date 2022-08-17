@@ -108,6 +108,7 @@ if(!isset($_SESSION['loggedin']))
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Contact Number: </span><?php echo $data['contactNumber']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Email: </span><?php echo $data['email']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Address: </span><?php echo $data['address']; ?></p>
+                    <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Postal Code: </span><?php echo $data['postalCode']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Medical Conditions: </span><?php echo $data['medConditions']; ?></p>
                     <p style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.5rem;line-height: 1.2;"><span style="font-weight: 500;">Drug Allergies: </span><?php echo $data['drugAllergies']; ?></p>
                     
@@ -151,6 +152,10 @@ if(!isset($_SESSION['loggedin']))
                                     <div class="mb-3">
                                         <label for="address" class="form-label">Address</label>
                                         <input type="text" class="form-control" id="address" name="address"<?php echo 'value="'.$data["address"].'"'; ?>>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="postalCode" class="form-label">Postal Code</label>
+                                        <input type="text" class="form-control" id="postalCode" name="postalCode"<?php echo 'value="'.$data["postalCode"].'"'; ?>>
                                     </div>
                                     <div class="mb-3">
                                         <label for="medConditions" class="form-label">Medical Conditions:</label>
