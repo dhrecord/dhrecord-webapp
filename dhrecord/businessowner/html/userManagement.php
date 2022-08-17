@@ -113,7 +113,7 @@
 
             <td></td>
             <td></td>
-            <td>No Users Currently</td>
+            <td>No Clinic ID</td>
             <td></td>
             <td></td>
             <td></td>
