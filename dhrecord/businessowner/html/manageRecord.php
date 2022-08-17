@@ -85,10 +85,11 @@
             </thead>
             <tbody id="data">
                <?php
+                    $searchValue = $_POST['searchValue']
                     $query = "SELECT * FROM registeredPatient";
-                    if(isset($_POST['searchValue'])){
-                        $searchkey= $_POST['searchValue'];
-                        $query = "SELECT * FROM registeredPatient WHERE fullName LIKE '%$searchkey%'";
+                    if(isset($searchValue)){
+                        //$searchkey= $_POST['searchValue'];
+                        $query = "SELECT * FROM registeredPatient WHERE fullName LIKE '%$searchValue%'";
                     } else {
                         $query = "SELECT * FROM registeredPatient";
                     }
