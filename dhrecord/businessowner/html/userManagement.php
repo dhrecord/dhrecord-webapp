@@ -26,7 +26,14 @@
   $clinicInfo = mysqli_query($conn,$query);
   $row = $clinicInfo->fetch_assoc();
   
-  $clinicID = $row['ID'];
+  $clinicID = "";
+
+  if ($row->num_rows > 0) 
+  {
+	$clinicID = $row['ID'];
+  }
+
+  
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +108,22 @@
             </thead>
             <tbody>
             <?php
+    if($clinicID == "")
+    {
+            ?>
 
+            <td></td>
+            <td></td>
+            <td>No Users Currently</td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <?php
+    }
+
+    else
+    {
                 $query = "SELECT * FROM clinicAdmin WHERE clinicID = $clinicID";
 
                 if ($result = $conn->query($query)) 
@@ -306,6 +328,8 @@
         <?php
             }
         }
+
+    }
         ?>
             </tbody>
         </table>
