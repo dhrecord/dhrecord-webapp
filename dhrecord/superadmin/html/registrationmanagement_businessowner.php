@@ -272,11 +272,12 @@
                         $email = $row["email"];
                         $specializationNo = $row["clinicSpecialization"];
                         
-                        $query1 = "SELECT * FROM clinicSpecialization WHERE ID = '$specializationNo'";
-                        $result1 = $conn->query($query1);
-                        $row1 = $result1->fetch_assoc();
+                        //$query1 = "SELECT * FROM clinicSpecialization WHERE ID = '$specializationNo'";
+                        //$result1 = $conn->query($query1);
+                        //$row1 = $result1->fetch_assoc();
                         
-                        $specialization = $row1["specName"];
+                        //$specialization = $row1["specName"];
+                        $postalCode = $row["postalCode"];
                         $RegistrationNo = $row["registrationNumber"];
                         $LicenseNo = $row["licenseNumber"];
                         $ownerName = $row["fullName"];
@@ -331,8 +332,8 @@
                                 <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" <?php echo 'placeholder="'.$email.'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="inputSpecialization" class="form-label">Specialization</label>
-                                <textarea type="text" class="form-control" id="inputSpecialization" <?php echo 'placeholder="'.$specialization.'"'; ?> readonly></textarea>
+                                <label for="postalCode" class="form-label">Specialization</label>
+                                <textarea type="text" class="form-control" id="postalCode" <?php echo 'placeholder="'.$postalCode.'"'; ?> readonly></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="inputRegistrationNo" class="form-label">Registration No.</label>

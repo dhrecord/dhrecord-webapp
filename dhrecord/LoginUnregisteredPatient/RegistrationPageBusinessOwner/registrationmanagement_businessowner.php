@@ -109,6 +109,12 @@
                         <input type="text" class="form-control" id="locationOfClinic" name="locationOfClinic" required>
                     </div>
                 </div>
+                <div class="mb-3 row">
+                    <label for="postalCode" class="col-sm-2 col-form-label">Postal Code</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="postalCode" name="postalCode" required/>
+                    </div>
+                </div>
 
                 <!-- temporary commented -> clinic specializations will be automatically updated when a doctor account is created.
                         Because to register a doctor account, clinic admin need to enter doctor specialization -->

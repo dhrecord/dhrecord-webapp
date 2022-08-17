@@ -8,7 +8,8 @@
 	$LicenseNumber = $_POST['LicenseNumber'];
 	$nameOfClinic = $_POST['nameOfClinic'];
 	$locationOfClinic = $_POST['locationOfClinic'];
-	$clinicSpecialization = $_POST['clinicSpecialization'];
+	$postalCode = $_POST['postalCode'];
+	//$clinicSpecialization = $_POST['clinicSpecialization'];
 
 	//variables to go into users
 	$role = "ca";
@@ -77,8 +78,8 @@
 	
 		mail($email, $subject, $message, $headers);
 
-		$stmt = mysqli_prepare($conn, "insert into tempRegisteredBusinessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		mysqli_stmt_bind_param($stmt, "sssssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $RegistrationNumber, $LicenseNumber, $nameOfClinic, $locationOfClinic, $clinicSpecialization, $role, $userName, $encryptedPassword, $vkey, $verifiedNegative);
+		$stmt = mysqli_prepare($conn, "insert into tempRegisteredBusinessOwner(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, postalCode, role, username, password, vkey, verified) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		mysqli_stmt_bind_param($stmt, "sssssssssssssi", $fullName, $nricNumber, $contactNumber, $email, $RegistrationNumber, $LicenseNumber, $nameOfClinic, $locationOfClinic, $postalCode, $role, $userName, $encryptedPassword, $vkey, $verifiedNegative);
 		mysqli_stmt_execute($stmt);
 
 		mysqli_close($conn);

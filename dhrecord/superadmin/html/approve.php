@@ -40,8 +40,8 @@
 	$stmt_result = $stmt->get_result();
 	$row1 = $stmt_result->fetch_assoc();
 
-	$stmt = mysqli_prepare($conn, "insert into businessOwner(nameOfClinic, locationOfClinic, fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	mysqli_stmt_bind_param($stmt, "ssssssssi", $row['nameOfClinic'], $row['locationOfClinic'], $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row1['ID']);
+	$stmt = mysqli_prepare($conn, "insert into businessOwner(nameOfClinic, locationOfClinic, postalCode, fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, users_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	mysqli_stmt_bind_param($stmt, "sssssssssi", $row['nameOfClinic'], $row['locationOfClinic'], $row['postalCode'], $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row1['ID']);
 	mysqli_stmt_execute($stmt);
 
 	$targetUserID = $row1['ID'];

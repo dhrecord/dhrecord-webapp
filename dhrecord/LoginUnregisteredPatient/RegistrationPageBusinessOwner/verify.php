@@ -34,8 +34,8 @@ if(isset($_GET['vkey'])){
 			$toInsert_Result = $toInsert->get_result();
 			$row = $toInsert_Result->fetch_assoc();
 
-			$stmt = mysqli_prepare($conn, "insert into businessOwnerForApproval(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, clinicSpecialization, role, username, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			mysqli_stmt_bind_param($stmt, "ssssssssssss", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row['nameOfClinic'], $row['locationOfClinic'], $row['clinicSpecialization'], $row['role'], $row['username'], $row['password']);
+			$stmt = mysqli_prepare($conn, "insert into businessOwnerForApproval(fullName, nricNumber, contactNumber, email, registrationNumber, licenseNumber, nameOfClinic, locationOfClinic, postalCode, role, username, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			mysqli_stmt_bind_param($stmt, "ssssssssssss", $row['fullName'], $row['nricNumber'], $row['contactNumber'], $row['email'], $row['registrationNumber'], $row['licenseNumber'], $row['nameOfClinic'], $row['locationOfClinic'], $row['postalCode'], $row['role'], $row['username'], $row['password']);
 			mysqli_stmt_execute($stmt);
 
 			//inserting data
