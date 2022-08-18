@@ -332,7 +332,7 @@
                                 <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" <?php echo 'placeholder="'.$email.'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="postalCode" class="form-label">Specialization</label>
+                                <label for="postalCode" class="form-label">Postal Code</label>
                                 <textarea type="text" class="form-control" id="postalCode" <?php echo 'placeholder="'.$postalCode.'"'; ?> readonly></textarea>
                             </div>
                             <div class="mb-3">
