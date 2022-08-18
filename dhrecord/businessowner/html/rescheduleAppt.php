@@ -47,7 +47,6 @@
           <th>Time</th>
           <th></th>
           <th></th>
-          <th></th>
         </tr>
         <tr>
           <?php
