@@ -236,8 +236,8 @@
                     <th scope="col">Address</th>
                     <th scope="col">Contact No.</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Specialization</th>
-                    <!--<th scope="col">Registration No.</th>
+                    <!--<th scope="col">Specialization</th>
+                    <th scope="col">Registration No.</th>
                     <th scope="col">License No.</th>
                     <th scope="col">Account Status</th>-->
                     <th scope="col">Full Info</th>
@@ -270,7 +270,7 @@
                         $address = $row["locationOfClinic"];
                         $contactNo = $row["contactNumber"];
                         $email = $row["email"];
-                        $specializationNo = $row["clinicSpecialization"];
+                        //$specializationNo = $row["clinicSpecialization"];
                         
                         //$query1 = "SELECT * FROM clinicSpecialization WHERE ID = '$specializationNo'";
                         //$result1 = $conn->query($query1);
@@ -291,7 +291,7 @@
                           <td><?php echo $row["locationOfClinic"]; ?></td> 
                           <td><?php echo $row["contactNumber"]; ?></td> 
                           <td><?php echo $row["email"]; ?></td>
-                          <td><?php echo $row1["specName"]; ?></td> 
+                          <!--<td><?php //echo $row1["specName"]; ?></td>--> 
                           <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#popupModal<?php echo $row["id"]; ?>">View</button></td>
                           <td><button type="button" class="btn btn-sm btn-success" onclick="document.location.href='approve.php?id=<?php echo $row["id"]; ?>'">Approve</button></td>
                         </tr>
@@ -332,7 +332,7 @@
                                 <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" <?php echo 'placeholder="'.$email.'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="postalCode" class="form-label">Specialization</label>
+                                <label for="postalCode" class="form-label">Postal Code</label>
                                 <textarea type="text" class="form-control" id="postalCode" <?php echo 'placeholder="'.$postalCode.'"'; ?> readonly></textarea>
                             </div>
                             <div class="mb-3">
