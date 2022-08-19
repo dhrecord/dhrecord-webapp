@@ -205,7 +205,7 @@
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
 
                 <form action="#" method="post" class="d-flex search-clinic-form">
-                  <div class="input-group mx-4" style="width:fit-content;">
+                  <div class="input-group" style="width:fit-content;">
                     <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
                     aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px; min-width: 250px;" required/>
                     <button id="basic-addon2" type="submit" name="save" class="input-group-text">
@@ -228,8 +228,8 @@
                 </form>
             </div>
 
-            <div class="d-flex align-items-center">
-                <div class="mx-4" style="width:fit-content">
+            <div class="sort-by-div">
+                <div class="sort-by-label" style="width:fit-content">
                     <b>Sort By:</b>
                 </div>
 

@@ -91,6 +91,14 @@ div.content-div{
 
 .search-clinic-form > .input-group{
     flex-wrap: nowrap!important;
+    margin: 30px 0;
+}
+
+.sort-by-div{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 20px;
 }
 
 @media screen and (min-width: 600px) {
@@ -114,7 +122,21 @@ div.content-div{
         flex-direction: row;
     }
 
+    .search-clinic-form > .input-group{
+        margin: 0 40px;
+    }
+
     .select-div1{
         margin: 0 20px;
+    }
+
+    .sort-by-div{
+        flex-direction:row;
+        align-items: center;
+        margin-top: 0;
+    }
+
+    .sort-by-label{
+        margin: 0 40px;
     }
 }
