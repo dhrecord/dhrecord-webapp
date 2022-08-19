@@ -44,7 +44,7 @@ if($role === "fd")
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicing.php">Payment</a>
+                        <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicingFD.php">Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
@@ -100,6 +100,9 @@ else if($role === "dr")
                                     & Reminders</a></li>
                             <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicingDR.php">Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
@@ -169,7 +172,7 @@ else
                         <a class="nav-link" href="./reportingAndStatistics.php">Reporting & Statistics</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicing.php">Payment</a>
+                        <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicingCA.php">Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
