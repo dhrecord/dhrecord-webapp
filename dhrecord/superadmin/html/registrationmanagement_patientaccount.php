@@ -243,6 +243,10 @@
                                 <input type="text" class="form-control" id="nricNumber" name="nricNumber" <?php echo 'value="'.$row["nricNumber"].'"'; ?> readonly>
                             </div>
                             <div class="mb-3">
+                                <label for="postalCode" class="form-label">Postal Code</label>
+                                <input type="text" class="form-control" id="postalCode" name="postalCode" <?php echo 'value="'.$row["postalCode"].'"'; ?> readonly>
+                            </div>
+                            <div class="mb-3">
                                 <label for="contactNumber" class="form-label">Contact Number</label>
                                 <input type="text" class="form-control" id="contactNumber" name="contactNumber" <?php echo 'value="'.$row["contactNumber"].'"'; ?> readonly>
                             </div>
