@@ -132,9 +132,9 @@ div.logIn{
 } */
 
 /* alternative from aurell - responsive web design */
-body {
+/* body {
     overflow: hidden;
-}
+} */
 
 
 button:hover{
@@ -210,18 +210,23 @@ button:hover{
 }
 
 .sign-in-form{
-    padding-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 36px;
 }
 
-@media only screen and (min-width: 600px) {
+@media screen and (min-width: 600px) {
     /* For tablets: */
     .Eclipse1, .Eclipse2{
         display: none;
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
     /* For desktop: */
+    body {
+        overflow: hidden;
+    }
+
     .right-rectangle, .Eclipse1, .Eclipse2{
         display: block;
     }
@@ -237,6 +242,6 @@ button:hover{
     .sign-in-form{
         margin-right: 20vw;
         height: 100vh;
-        padding-top: 0;
+        padding: 0;
     }
 }
