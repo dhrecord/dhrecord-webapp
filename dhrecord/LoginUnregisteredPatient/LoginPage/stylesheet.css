@@ -181,6 +181,9 @@ button:hover{
     top: -14vw;
     border-radius: 50%;
     background: #212529;
+
+     /* For mobile phones: */
+     display: none;
 }
 
 .Eclipse2{
@@ -188,10 +191,13 @@ button:hover{
     position: absolute;
     width: 35vw;
     height: 30vw;
-    left: 65vw;
-    top: 70vh;
+    bottom: -15vw;
+    right: 0;
     border-radius: 50%;
     background: #212529;
+
+     /* For mobile phones: */
+     display: none;
 }
 
 .container-top{
@@ -201,9 +207,36 @@ button:hover{
 
 .right-rectangle{
     background-color: #212529;
-    width: 330px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
+}
+
+.sign-in-form{
+    padding-top: 40px;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .Eclipse1, .Eclipse2{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .right-rectangle, .Eclipse1, .Eclipse2{
+        display: block;
+    }
+
+    .right-rectangle{
+        width: 330px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .sign-in-form{
+        margin-right: 20vw;
+        height: 100vh;
+        padding-top: 0;
+    }
 }
