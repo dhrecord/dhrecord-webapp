@@ -242,15 +242,19 @@ footer {
                 <tr>
                     <th>Medication Prescribed</th>                   
                     <td> <th>Quantity</th></td>
+                    <td> <th>Price</th></td>
                 </tr>
                 <tr>
                     <td>".$medicationPrescribed."</td>
                     <td><th>".$quantity."</th></td>
+                    <td><th>".$prescriptionPrice."</th></td>
                 </tr>                 
 
                 <tr>
-                    <th>Total Cost:</th>                   
-                    <td> <th> " . $totalCost  . "</th></td>
+                
+                    <th><br><br>Total Cost:</th>  
+                    <td><th>    -   </th></td>
+                    <td> <th><br> " . $totalCost  . "</th></td>
                 </tr>
             </table>
         </section>        

@@ -90,12 +90,12 @@
                 $i1 = 0;
                 //$cID;
                 $userID = $_SESSION['id'];
-                    echo $userID;
+                    //echo $userID;
                     //$doctorRes = "SELECT * FROM doctor WHERE username = $userID";   
-                    $doctorRes = "SELECT * FROM clinicAdmin WHERE userID = $userID";
+                    $doctorRes = "SELECT * FROM doctor WHERE userID = $userID";
                     //$doctorRes = mysqli_query($conn,"SELECT * FROM doctor WHERE `userID` = $userID");
                     
-                    echo $doctorRes;
+                    //echo $doctorRes;
                     if ($dRes = $conn->query($doctorRes))
                         while($Result1 = $dRes->fetch_assoc())
                             {
@@ -103,7 +103,7 @@
                                 
                             }
                             
-                         echo $clinicID;   
+                         //echo $clinicID;   
                 
                 if(isset($_POST['search']))
                     {
@@ -135,12 +135,12 @@
                             $i = $i + 1;
                             //echo $ID1;
                         }
-                        echo $ids;
-                         print_r($ID1);
+                        //echo $ids;
+                        // print_r($ID1);
                         $idarray = array_map('intval',explode(',',$ids));
                         $idarray = implode("','",$idarray);
                         $res = "SELECT * FROM treatmentHistory WHERE pt_ID in ('".$idarray."') AND attendingDoctor in ('".$idarray1."')";    
-                        echo $res;
+                        //echo $res;
                         //$res = mysqli_query($conn, "SELECT * FROM treatmentHistory WHERE pt_ID = $ID1'");
                     }
 

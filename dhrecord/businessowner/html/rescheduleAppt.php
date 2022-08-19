@@ -46,7 +46,9 @@
           <th>Date</th>
           <th>Time</th>
           <th></th>
-          <th></th>
+          <?php if ($_SESSION['role'] === "dr"){ ?>
+            <th></th>
+          <?php } ?>
           <th></th>
         </tr>
         <tr>
