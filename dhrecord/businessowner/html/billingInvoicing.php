@@ -5,6 +5,8 @@
     header('Location: ../../LoginUnregisteredPatient/LoginPage/index.html');
     exit;
   }
+  
+  //$userID = $_SESSION['ID'];
 ?>
 
 <!DOCTYPE html>
@@ -83,11 +85,47 @@
                 $ID1 = array();
                 $ids = "0";
                 $i = 0;
+                $ID2 = array();
+                $ids1 = "0";
+                $i1 = 0;
+                //$cID;
+                $userID = $_SESSION['id'];
+                    echo $userID;
+                    //$doctorRes = "SELECT * FROM doctor WHERE username = $userID";   
+                    $doctorRes = "SELECT * FROM clinicAdmin WHERE userID = $userID";
+                    //$doctorRes = mysqli_query($conn,"SELECT * FROM doctor WHERE `userID` = $userID");
+                    
+                    echo $doctorRes;
+                    if ($dRes = $conn->query($doctorRes))
+                        while($Result1 = $dRes->fetch_assoc())
+                            {
+                                $clinicID = $Result1["clinicID"];
+                                
+                            }
+                            
+                         echo $clinicID;   
+                
                 if(isset($_POST['search']))
                     {
                         $searchkey= $_POST['search'];
                         //$res = mysqli_query($conn, "SELECT * FROM `inventoryManagement` WHERE prescriptionName LIKE '%$searchkey%'");
                             //test 3
+                        $doctorID = mysqli_query($conn,"SELECT * from doctor WHERE clinicID = $clinicID");
+                   while($result = mysqli_fetch_assoc($doctorID))
+                        {
+                            $ID2[$i] = strval($result['doctorID']);
+                            $idss1= strval($result['doctorID']);
+                            $ids1 =  $ids1 . ',' .  $idss1;
+                            $i1 = $i1 + 1;
+                            //echo $ID1;
+                        }
+
+                        $idarray1 = array_map('intval',explode(',',$ids1));
+                        $idarray1 = implode("','",$idarray1);
+
+                    //$res10 = "SELECT * FROM treatmentHistory WHERE attendingDoctor in ('".$idarray."')";    
+                        
+                            
                         $ptResult = mysqli_query($conn,"SELECT * FROM registeredPatient WHERE fullName LIKE '%$searchkey%'");
                         while($result = mysqli_fetch_assoc($ptResult))
                         {
@@ -101,7 +139,7 @@
                          print_r($ID1);
                         $idarray = array_map('intval',explode(',',$ids));
                         $idarray = implode("','",$idarray);
-                        $res = "SELECT * FROM treatmentHistory WHERE pt_ID in ('".$idarray."')";    
+                        $res = "SELECT * FROM treatmentHistory WHERE pt_ID in ('".$idarray."') AND attendingDoctor in ('".$idarray1."')";    
                         echo $res;
                         //$res = mysqli_query($conn, "SELECT * FROM treatmentHistory WHERE pt_ID = $ID1'");
                     }
@@ -111,8 +149,36 @@
                     //$res = mysqli_query($conn,"SELECT treatmentHistory.ID,treatmentHistory.date,doctor.fullName//,treatmentHistory.pt_ID,treatmentHistory.toothCondition,treatmentHistory.diagnosis//,treatmentHistory.medicationPrescribed,treatmentHistory.quantity,treatmentHistory.comments  //FROM treatmentHistory, doctor WHERE treatmentHistory.attendingDoctor =  doctor.doctorID");
                     
                     //$res = "SELECT *  FROM treatmentHistory INNER JOIN doctor ON treatmentHistory.attendingDoctor =  doctor.doctorID";
-                else
-                    $res = "SELECT * FROM treatmentHistory";
+                     else {
+                    
+                    //$userRes = "SELECT * FROM doctor WHERE userID = $userID";                    
+                    //if ($dRes = $conn->query($doctorRes))
+                   //     while($R = $dRes->fetch_assoc())
+                    //        {
+                    //            $cID = $R['clinicID'];
+                    //            echo $cID;
+                    //        }
+                    
+                    
+                           
+                            
+                    $doctorID = mysqli_query($conn,"SELECT * from doctor WHERE clinicID = $clinicID");
+                   while($result = mysqli_fetch_assoc($doctorID))
+                        {
+                            $ID1[$i] = strval($result['doctorID']);
+                            $idss= strval($result['doctorID']);
+                            $ids =  $ids . ',' .  $idss;
+                            $i = $i + 1;
+                            //echo $ID1;
+                        }
+
+                        $idarray = array_map('intval',explode(',',$ids));
+                        $idarray = implode("','",$idarray);
+
+                    $res = "SELECT * FROM treatmentHistory WHERE attendingDoctor in ('".$idarray."')";
+                }
+                //else
+                    //$res = "SELECT * FROM treatmentHistory";
                     //$res = "SELECT * FROM brand INNER JOIN product ON brand.brand_id = product.brand_id";
 
 			//$result = mysqli_query($conn, $res);
