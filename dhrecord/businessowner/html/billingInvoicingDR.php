@@ -92,7 +92,7 @@
                 $userID = $_SESSION['id'];
                     echo $userID;
                     //$doctorRes = "SELECT * FROM doctor WHERE username = $userID";   
-                    $doctorRes = "SELECT * FROM clinicAdmin WHERE userID = $userID";
+                    $doctorRes = "SELECT * FROM doctor WHERE userID = $userID";
                     //$doctorRes = mysqli_query($conn,"SELECT * FROM doctor WHERE `userID` = $userID");
                     
                     echo $doctorRes;
