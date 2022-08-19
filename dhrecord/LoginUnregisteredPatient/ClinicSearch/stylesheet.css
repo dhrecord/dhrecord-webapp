@@ -76,16 +76,21 @@ div.content-div{
 .filter-div{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .search-clinic-div{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 }
 
 .search-clinic-form{
     flex-direction: column;
+}
+
+.search-clinic-form > .input-group{
+    flex-wrap: nowrap!important;
 }
 
 @media screen and (min-width: 600px) {
@@ -102,6 +107,7 @@ div.content-div{
     
     .search-clinic-div{
         flex-direction:row;
+        align-items: center;
     }
 
     .search-clinic-form{

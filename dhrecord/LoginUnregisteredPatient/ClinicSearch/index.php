@@ -205,7 +205,7 @@
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
 
                 <form action="#" method="post" class="d-flex search-clinic-form">
-                  <div class="input-group mx-4" style="width:fit-content; flex-wrap: no-wrap!important;">
+                  <div class="input-group mx-4" style="width:fit-content;">
                     <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
                     aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px; min-width: 250px;" required/>
                     <button id="basic-addon2" type="submit" name="save" class="input-group-text">
@@ -236,7 +236,7 @@
                 <form action="#" method="post" class="d-flex align-items-center">
                   <div class="mx-2"> 
                     <select required name="select2" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
-                  style="">
+                  style="max-width: 350px; min-width: 250px;">
                       <option selected disabled hidden>Category ...</option>
                       <option value="8">Show Highest Rating Clinics</option>
                     </select>
