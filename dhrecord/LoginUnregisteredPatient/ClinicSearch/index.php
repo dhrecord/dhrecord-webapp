@@ -205,7 +205,7 @@
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
 
                 <form action="#" method="post" class="d-flex search-clinic-form">
-                  <div class="input-group mx-4" style="width:fit-content; flex-wrap: no-wrap;">
+                  <div class="input-group mx-4" style="width:fit-content; flex-wrap: no-wrap!important;">
                     <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
                     aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px; min-width: 250px;" required/>
                     <button id="basic-addon2" type="submit" name="save" class="input-group-text">
@@ -215,7 +215,7 @@
 
                     <div class="select-div1"> 
                       <select required name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
-                    style="" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
+                      style="max-width: 350px; min-width: 250px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
                         <option value="" selected disabled hidden>Category ...</option>
                         <option value="1">Clinic Name</option>
                         <option value="2">Specialization</option>
