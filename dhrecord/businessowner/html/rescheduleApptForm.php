@@ -393,6 +393,52 @@
         $("#datepicker").datepicker({
             dateFormat: 'mm-dd-yy',
             minDate: 0,
+            beforeShowDay: function(date){
+                var day = date.getDay();
+                var closedDates = blocked_date_array;
+                var closedDays = blocked_days_array;
+                
+                for (var i = 0; i < closedDays.length; i++) {
+                  let formatted_date = '';
+                  switch(closedDays[i][0]){
+                    case "Sunday":
+                      formatted_date = 0;
+                      break;
+                    case "Monday":
+                      formatted_date = 1;
+                      break;
+                    case "Tuesday":
+                      formatted_date = 2;
+                      break;
+                    case "Wednesday":
+                      formatted_date = 3;
+                      break;
+                    case "Thursday":
+                      formatted_date = 4;
+                      break;
+                    case "Friday":
+                      formatted_date = 5;
+                      break;
+                    case "Saturday":
+                      formatted_date = 6;
+                      break;
+                  }
+
+                  if (day == formatted_date) {
+                      return [false];
+                  }
+                }
+
+                for (i = 0; i < closedDates.length; i++) {
+                  if (date.getMonth() == closedDates[i][0] - 1 &&
+                  date.getDate() == closedDates[i][1] &&
+                  date.getFullYear() == closedDates[i][2]) {
+                    return [false];
+                  }
+                }
+
+                return [true];
+            },
             onSelect: function(dateText, pickerObj){
               let chosenDate = new Date(dateText);
               let chosenDay = daysArr[chosenDate.getDay()];
