@@ -200,14 +200,14 @@
     </div>
 
     <div class="container my-5 custom-container">
-        <div class="mb-5 d-flex justify-content-between">
+        <div class="mb-5 filter-div">
             <div class="d-flex align-items-center">
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
 
                 <form action="#" method="post" class="d-flex">
                   <div class="input-group mx-4" style="width:fit-content">
                     <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
-                    aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px;" required/>
+                    aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px; min-width: 250px;" required/>
                     <button id="basic-addon2" type="submit" name="save" class="input-group-text">
                       <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -250,8 +250,8 @@
             </div>
         </div>
 
-        <div class="content-div my-4">
-            <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
+        <div class="content-div my-4" style="overflow-x: auto">
+            <table class="table mb-0" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
                 <tr class="bg-dark text-light">
                     <th class="px-4">Clinic Name</th>
                     <th class="px-4">Clinic Description</th>
