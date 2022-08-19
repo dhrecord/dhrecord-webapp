@@ -200,7 +200,7 @@
     </div>
 
     <div class="container custom-container">
-        <div class="mb-5 filter-div">
+        <div class="mb-2 filter-div">
             <div class="search-clinic-div">
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
 
