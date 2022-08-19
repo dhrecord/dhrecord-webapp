@@ -71,13 +71,13 @@
         <h4 class="mb-5">User Management</h4>
         <div class="mb-4 d-flex align-items-center">
             <div class="d-flex align-items-center">
-                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <!--<p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>-->
                 <div class="input-group">
-                    <input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
+                    <!--<input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="searchName();">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+                    </button>-->
                 </div>
             </div>
             <!--<select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
@@ -91,7 +91,7 @@
             </select>-->
 
             <div class="referral-box px-3"> 
-                <button type="button" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 800px;" onclick="window.location.href='./addUser.php';">Add New User</button>
+                <button type="button" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 1100px;" onclick="window.location.href='./addUser.php';">Add New User</button>
             </div>
         </div>
         <table class="table table-striped">
