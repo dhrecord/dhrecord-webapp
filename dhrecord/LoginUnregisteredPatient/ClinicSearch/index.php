@@ -199,7 +199,7 @@
       <h4>Find a Clinic</h4>
     </div>
 
-    <div class="container my-5 custom-container">
+    <div class="container custom-container">
         <div class="mb-5 filter-div">
             <div class="search-clinic-div">
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
@@ -234,7 +234,7 @@
                 </div>
 
                 <form action="#" method="post" class="d-flex align-items-center">
-                  <div class="mx-2"> 
+                  <div class="sort-by-select-div"> 
                     <select required name="select2" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
                   style="max-width: 350px; min-width: 250px;">
                       <option selected disabled hidden>Category ...</option>
