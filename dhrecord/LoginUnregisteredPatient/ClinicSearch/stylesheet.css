@@ -125,15 +125,16 @@ div.content-div{
 
     .search-clinic-form{
         flex-direction: row;
+        justify-content: space-between;
     }
 
-    .search-clinic-form > .input-group{
+    /* .search-clinic-form > .input-group{
         margin: 0 40px;
-    }
+    } */
 
-    .select-div1{
+    /* .select-div1{
         margin: 0 20px;
-    }
+    } */
 
     .sort-by-div{
         flex-direction:row;
