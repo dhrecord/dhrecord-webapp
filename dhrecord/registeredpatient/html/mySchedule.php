@@ -138,23 +138,30 @@
           $stmtAppt->bind_param("s", $rowPatName['ID']);
           $stmtAppt->execute();
           $resultAAppt = $stmtAppt->get_result();
+          
+          date_default_timezone_set("Singapore");
+          $current_date = date("Y-m-d");
+          $current_time = date("H:i");
 
           while ($rowAppt = $resultAAppt->fetch_assoc()){
-            echo 'appts.push({start:"';
-            echo $rowAppt['date'];
-            echo 'T';
-            echo $rowAppt['time'];
-
-            echo '", title:"';
-            echo $rowAppt['agenda'];
-            
-            echo '", clinic:"';
-            echo $rowAppt['nameOfClinic'];
-
-            echo '", doctor:"';
-            echo $rowAppt['fullName'];
-
-            echo '"});';
+            // checking if the appt is out of date
+            if ($rowAppt['date'] >= $current_date && ($rowAppt['time'] >= $current_time)) {
+              echo 'appts.push({start:"';
+              echo $rowAppt['date'];
+              echo 'T';
+              echo $rowAppt['time'];
+  
+              echo '", title:"';
+              echo $rowAppt['agenda'];
+              
+              echo '", clinic:"';
+              echo $rowAppt['nameOfClinic'];
+  
+              echo '", doctor:"';
+              echo $rowAppt['fullName'];
+  
+              echo '"});';
+            }
           }
         }
       ?>
