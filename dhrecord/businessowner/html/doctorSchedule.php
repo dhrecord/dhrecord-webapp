@@ -123,7 +123,13 @@
         $stmtAppt->execute();
         $resultAAppt = $stmtAppt->get_result();
 
+        date_default_timezone_set("Singapore");
+        $current_date = date("Y-m-d");
+        $current_time = date("H:i");
+
         while ($rowAppt = $resultAAppt->fetch_assoc()){
+          // checking if the appt is out of date
+          if ($rowAppt['date'] > $current_date || ($rowAppt['date'] == $current_date && $rowAppt['time'] >= $current_time)) {
             echo 'appts.push({start:"';
             echo $rowAppt['date'];
             echo 'T';
@@ -139,6 +145,7 @@
             echo $rowAppt['d_fullName'];
 
             echo '"});';
+          }
         }
       ?>
 
