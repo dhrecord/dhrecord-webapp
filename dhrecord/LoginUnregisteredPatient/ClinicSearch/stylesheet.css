@@ -112,6 +112,10 @@ div.content-div{
     align-items: center;
 }
 
+.find-clinic-title{
+    margin: 0 14px;
+}
+
 @media screen and (min-width: 600px) {
     /* For tablets: */
 
@@ -154,5 +158,9 @@ div.content-div{
 
     .custom-container {
         margin: 40px 0;
+    }
+
+    .find-clinic-title{
+        margin: 0;
     }
 }

@@ -196,7 +196,7 @@
     <!-- content -->
   <div class="container mt-5 mb-2">
     <div class="mb-4 d-flex justify-content-between">
-      <h4>Find a Clinic</h4>
+      <h4 class="find-clinic-title">Find a Clinic</h4>
     </div>
 
     <div class="container custom-container">
