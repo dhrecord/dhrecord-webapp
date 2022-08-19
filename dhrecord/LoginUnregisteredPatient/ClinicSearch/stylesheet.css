@@ -92,7 +92,7 @@ div.content-div{
 
 .search-clinic-form > .input-group{
     flex-wrap: nowrap!important;
-    margin: 20px 0;
+    margin: 20px 40px;
 }
 
 .sort-by-div{
@@ -103,7 +103,11 @@ div.content-div{
 }
 
 .sort-by-label{
-    margin-bottom: 20px;
+    margin-bottom: 20px!important;
+}
+
+.select-div1{
+    align-items: center;
 }
 
 @media screen and (min-width: 600px) {
@@ -128,9 +132,9 @@ div.content-div{
         justify-content: space-between;
     }
 
-    /* .search-clinic-form > .input-group{
-        margin: 0 40px;
-    } */
+    .search-clinic-form > .input-group{
+        margin: 0;
+    }
 
     /* .select-div1{
         margin: 0 20px;
@@ -143,7 +147,7 @@ div.content-div{
     }
 
     .sort-by-label{
-        margin: 0 40px;
+        margin: 0 40px!important;
     }
 
     .sort-by-select-div{
