@@ -187,8 +187,8 @@
         <h4 class="mb-5">Registration Management - Business Owner</h4>
 
         <form action="" method ="POST">
-        <div class="mb-4 d-flex align-items-center">
-            <div class="d-flex align-items-center">
+        <div class="mb-4 d-flex search-div2">
+            <div class="d-flex search-input-div">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Enter Value ..."
@@ -228,6 +228,7 @@
             <button type="button" class="btn-close" aria-label="Close" onclick="close_alert();"></button>
         </div>
 
+        <div style="overflow-x:auto;">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -244,6 +245,7 @@
                     <th scope="col">Approve</th>
                 </tr>
             </thead>
+          
             <tbody>
                 <?php
 	            
@@ -358,6 +360,7 @@
         ?>
         </tbody>
     </table>
+    </div>
 
     </div>
 

@@ -78,11 +78,18 @@ button:hover{
 .search-form-group{
     align-items: flex-start;
     flex-direction: column;
+    padding-top: 30px;
 }
 
 .ig1{
     margin: 20px 0;
 }
+
+.search-div2, .search-input-div{
+    display: flex;
+    flex-direction: column;
+}
+
 
 @media screen and (min-width: 768px) {
     /* For desktop: */
@@ -104,4 +111,10 @@ button:hover{
     .ig1{
         margin: 0;
     }
+
+    .search-div2, .search-input-div{
+        display: flex;
+        flex-direction: column;
+    }
+    
 }

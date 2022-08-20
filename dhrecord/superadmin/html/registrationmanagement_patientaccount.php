@@ -185,6 +185,7 @@
         </div>
         </form>
 
+        <div style="overflow-x:auto;">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -275,6 +276,7 @@
 
                     </tbody>
         </table>
+    </div>
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
