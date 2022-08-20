@@ -69,17 +69,17 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">User Management</h4>
-        <div class="mb-4 d-flex align-items-center">
-            <div class="d-flex align-items-center d-box">
+        <div class="mb-4 d-flex d-box">
+            <!-- <div class="d-flex align-items-center d-box"> -->
                 <!--<p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>-->
-                <div class="input-group">
+                <!-- <div class="input-group"> -->
                     <!--<input type="text" id="searchNameInput" class="form-control" placeholder="Enter Value ..."
                         aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
                     <button class="input-group-text" id="basic-addon2" onclick="searchName();">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>-->
-                </div>
-            </div>
+                <!-- </div> -->
+            <!-- </div> -->
             <!--<select class="form-select" id="userManagement_ddlFilterBy" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
@@ -90,9 +90,9 @@
                 <option value="6">Email</option>
             </select>-->
 
-            <div class="referral-box"> 
-                <button type="button" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 1100px;" onclick="window.location.href='./addUser.php';">Add New User</button>
-            </div>
+            <!-- <div class="referral-box">  -->
+                <button type="button" class="btn btn-dark" onclick="window.location.href='./addUser.php';">Add New User</button>
+            <!-- </div> -->
         </div>
         <div style="overflow-x:auto;">
         <table class="table table-striped">
