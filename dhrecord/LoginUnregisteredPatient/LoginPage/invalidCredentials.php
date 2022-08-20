@@ -56,13 +56,13 @@
       </div>
   </div>
 
-  <div class="right-rectangle py-5">
+  <!-- <div class="right-rectangle py-5">
     <div class="d-flex flex-column mx-5">
       <button class="btn btn-login-custom mb-4" onclick="document.location.href='../SurveyAndFeedback/index.html'">Survey & Feedback</button>
       <button class="btn btn-login-custom mb-4" onclick="document.location.href='../ClinicSearch/index.php'">Search Clinics</button>
       <button class="btn btn-login-custom mb-4" onclick="document.location.href='../RegistrationPageBusinessOwner/registrationmanagement_businessowner.php'">Clinic Owner? Register with us here!</button>
     </div>
-  </div>
+  </div> -->
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
     integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
