@@ -94,6 +94,7 @@
                 <button type="button" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: 1100px;" onclick="window.location.href='./addUser.php';">Add New User</button>
             </div>
         </div>
+        <div style="overflow-x:auto;">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -332,6 +333,7 @@
         ?>
             </tbody>
         </table>
+</div>
     </div>
 
     <!-- bootstrap js -->

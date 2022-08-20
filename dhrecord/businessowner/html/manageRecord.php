@@ -70,6 +70,7 @@
             </div>
         </form>
         </div>
+        <div style="overflow-x:auto;">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -174,6 +175,7 @@
 
                     </tbody>
         </table>
+    </div>
 
 
     <!-- bootstrap js -->

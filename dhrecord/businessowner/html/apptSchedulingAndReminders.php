@@ -81,7 +81,7 @@
                     }
                 }
 
-                echo '</h4><table class="table table-striped">
+                echo '</h4><div style="overflow-x:auto;"><table class="table table-striped">
                             <tr class="bg-dark text-white">
                                 <th>No</th>
                                 <th>Doctor</th>
@@ -173,7 +173,7 @@
                     }
                 }
 
-                echo '</table></div>';
+                echo '</table></div></div>';
             }
         ?>
 
@@ -200,7 +200,7 @@
                     }
                 }
 
-                echo '</h4><table class="table table-striped">
+                echo '</h4><div style="overflow-x:auto;"><table class="table table-striped">
                             <tr class="bg-dark text-white">
                                 <th>No</th>
                                 <th>Doctor</th>
@@ -289,7 +289,7 @@
                     }
                 }
 
-                echo '</table></div>';
+                echo '</table></div></div>';
             }
         ?>
 

@@ -59,6 +59,7 @@
 		<option value="6">Comments</option>
             </select>
         </div>
+        <div style="overflow-x:auto;">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -95,7 +96,7 @@
                             }
                ?>
             </tbody>
-        </table>
+        </table></div>
     </div>
 
     <!-- bootstrap js -->

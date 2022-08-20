@@ -57,6 +57,7 @@
 	    	        <option value="5">Name of Doctor</option>
             </select>
         </div>
+        <div style="overflow-x:auto;">
 	<table class="table table-striped">
 		<thead>
         		<tr>
@@ -106,6 +107,7 @@
 			        ?>         
 		</tbody>
 	</table>		
+                        </div>
     	</div>
 
 
