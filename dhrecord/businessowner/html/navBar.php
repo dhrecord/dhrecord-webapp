@@ -144,7 +144,7 @@ else
                         <a class="nav-link dropdown-toggle <?php echo ($page == 'userManagement.php' or $page == 'manageRecord.php' 
                         or $page == 'addUser.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            User Management & Manage Records
+                            User Management <br/>& Manage Records
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./userManagement.php">User Management</a></li>
