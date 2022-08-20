@@ -1,0 +1,28 @@
+.resched-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.personalized_mx{
+    margin: 0;
+}
+
+.personalized_mt4{
+    margin-top:30px;
+}
+
+
+@media screen and (min-width: 768px) {
+    /* For desktop: */
+    .resched-form{
+        flex-direction: row;
+    }
+    
+    .personalized_mx{
+        margin: 0 50px;
+    }
+
+    .personalized_mt4{
+        margin-top:0px;
+    }
+}
