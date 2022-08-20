@@ -1,0 +1,21 @@
+.resched-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.personalized_mx{
+    margin: 0;
+}
+
+
+@media screen and (min-width: 768px) {
+    /* For desktop: */
+    .resched-form{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .personalized_mx{
+        margin: 0 50px;
+    }
+}
