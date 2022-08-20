@@ -223,7 +223,7 @@
                     </div>
                   </div>
 
-                  <div class="personalized_mx personalized_mt4">
+                  <div class="personalized_mx">
                     <div>
                         <p><b>Time:</b></p>
                         <p><?=substr($apptTime, 0, 5)?></p>
