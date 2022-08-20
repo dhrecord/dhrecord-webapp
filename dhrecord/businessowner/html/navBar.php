@@ -39,7 +39,7 @@ if($role === "fd")
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
-                                    & Reminders</a></li>
+                                </a></li>
                             <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
                     </li>
@@ -97,7 +97,7 @@ else if($role === "dr")
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
-                                    & Reminders</a></li>
+                                    </a></li>
                             <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
                     </li>
@@ -164,7 +164,7 @@ else
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
-                                    & Reminders</a></li>
+                                    </a></li>
                             <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
                         </ul>
                     </li>

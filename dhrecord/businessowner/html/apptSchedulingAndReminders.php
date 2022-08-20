@@ -62,7 +62,7 @@
         <?php
             if ($_SESSION['role'] === "fd"){
                 echo '<div>
-                        <h4 class="mb-5">Appointment Scheduling and Reminders - ';
+                        <h4 class="mb-5">Appointment Scheduling - ';
 
                 // CLINIC NAME
                 $stmtCN = $conn->prepare("SELECT nameOfClinic 
@@ -181,7 +181,7 @@
         <?php
             if ($_SESSION['role'] === "ca"){
                 echo '<div>
-                        <h4 class="mb-5">Appointment Scheduling and Reminders - ';
+                        <h4 class="mb-5">Appointment Scheduling - ';
 
                 // CLINIC NAME
                 $stmtCN = $conn->prepare("SELECT nameOfClinic 

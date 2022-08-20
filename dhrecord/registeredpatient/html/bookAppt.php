@@ -47,8 +47,7 @@
             <a class="nav-link" aria-current="page" href="../html/index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../html/apptScheduling.php">Appointment Scheduling &
-              Reminder</a>
+            <a class="nav-link active" href="../html/apptScheduling.php">Appointment Scheduling</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/referralTracking.php">Referral Tracking</a>
