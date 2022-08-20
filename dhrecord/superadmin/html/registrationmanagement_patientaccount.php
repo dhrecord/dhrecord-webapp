@@ -159,8 +159,8 @@
         <h4 class="mb-5">Registration Management - Patient Account</h4>
 
         <form action="" method ="POST">
-        <div class="mb-4 d-flex align-items-center">
-            <div class="d-flex align-items-center">
+        <div class="mb-4 d-flex search-div2">
+            <div class="d-flex search-input-div">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Enter Value ..."
@@ -171,7 +171,7 @@
                 </div>
             </div>
             <select class="form-select" id="regManPA_ddlFilterBy" aria-label="Filter By..."
-                style="margin-left: 70px; max-width: 250px;" required name="select">
+                style="max-width: 250px;" required name="select">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">No/ID</option>
                 <option value="2">Name</option>
