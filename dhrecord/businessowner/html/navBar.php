@@ -24,7 +24,7 @@ if($role === "fd")
                             <a class="nav-link <?php echo ($page == 'index.php') ? 'active': '' ?>" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'manageRecord.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="./manageRecord.php">Patient Records</a>
+                        <a class="nav-link <?php echo ($page == 'manageRecord.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="./manageRecord.php">Manage Records</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'referralTracking.php') ? 'active': '' ?>" href="./referralTracking.php">Referral Tracking</a>
@@ -85,7 +85,7 @@ else if($role === "dr")
                     <a class="nav-link <?php echo ($page == 'index.php') ? 'active': '' ?>" aria-current="page" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'manageRecord.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="./manageRecord.php">Patient Records</a>
+                        <a class="nav-link <?php echo ($page == 'manageRecord.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="./manageRecord.php">Manage Records</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle <?php echo ($page == 'apptSchedulingAndReminders.php' 
@@ -144,7 +144,7 @@ else
                         <a class="nav-link dropdown-toggle <?php echo ($page == 'userManagement.php' or $page == 'manageRecord.php' 
                         or $page == 'addUser.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            User & Records
+                            User Management & Manage Records
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./userManagement.php">User Management</a></li>
