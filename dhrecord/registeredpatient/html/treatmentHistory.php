@@ -87,7 +87,9 @@ if(!isset($_SESSION['loggedin']))
 		<br/><br/><br/>
             </div>
         </div>
-        <table class="table table-striped">
+
+		<div style="overflow-x:auto;">
+		<table class="table table-striped">
 			<tr>
 				<th>Date</th>
 				<th>Attending Doctor</th>
@@ -170,6 +172,8 @@ if(!isset($_SESSION['loggedin']))
 			}
 			?>
         </table>
+		</div>
+       
     </div>
 
 
