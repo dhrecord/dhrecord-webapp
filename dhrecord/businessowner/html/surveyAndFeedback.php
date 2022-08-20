@@ -41,13 +41,13 @@
         <h4 class="mb-5">Survey and Feedback</h4>
 	    <div class="mb-4 search-div">
 		    <div class="search-input-div">
-			<p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
-			<div class="input-group">
-			    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..." pattern="[a-zA-Z0-9]"
-				aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
-			</div>
+                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <div class="input-group">
+                    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..." pattern="[a-zA-Z0-9]"
+                    aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
+                </div>
 		    </div>
-            <select class="form-select" id="survey_ddlfilter" aria-label="Filter By..."
+            <select class="form-select survey_ddlfilter" id="survey_ddlfilter" aria-label="Filter By..."
                 style="max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="0">Patient Name</option>
@@ -55,7 +55,7 @@
                 <option value="2">Ratings</option>
                 <option value="3">Recommendation</option>
                 <option value="4">Remarks</option>
-	    	        <option value="5">Name of Doctor</option>
+                <option value="5">Name of Doctor</option>
             </select>
         </div>
         <div style="overflow-x:auto;">

@@ -4,7 +4,7 @@
 }
 
 
-#referralTracking_ddlfilter, #survey_ddlfilter{
+#referralTracking_ddlfilter, #survey_ddlfilter, .survey_ddlfilter{
     margin-left: 0; 
 }
 
@@ -74,7 +74,7 @@
         align-items: center;
         flex-direction: row;
     }
-    
+
     #searchbar_filter{
         margin: 0;
     }
@@ -125,7 +125,7 @@
         margin: 40px 0;
     }
 
-    #referralTracking_ddlfilter, #survey_ddlfilter{
+    #referralTracking_ddlfilter, #survey_ddlfilter, .survey_ddlfilter{
         margin-left: 70px; 
     }
 }
