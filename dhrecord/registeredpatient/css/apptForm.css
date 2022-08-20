@@ -7,6 +7,10 @@
     margin: 0;
 }
 
+.personalized_mt4{
+    margin-top:40px;
+}
+
 
 @media screen and (min-width: 768px) {
     /* For desktop: */
@@ -16,5 +20,9 @@
     
     .personalized_mx{
         margin: 0 50px;
+    }
+
+    .personalized_mt4{
+        margin-top:0px;
     }
 }
