@@ -80,7 +80,7 @@ if(!isset($_SESSION['loggedin']))
                 <label for="estimatedWait" class="col-sm-2 col-form-label">What was estimated waiting time after
                     scheduled appointment timing?</label>
                 <div class="col-sm-1">
-                    <input type="number" min="1" max="60" class="form-control" name="estimatedWait" id="estimatedWait" placeholder="mins" required>
+                    <input type="number" min="1" max="60" class="form-control" name="estimatedWait" id="estimatedWait" placeholder="mins" style="minn-width:60px;" required>
                 </div>
             </div>
 	 <div class="mb-3 row">

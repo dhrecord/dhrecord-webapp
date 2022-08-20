@@ -91,46 +91,50 @@ if(!isset($_SESSION['loggedin']))
 	    	<option value="5">Comments</option>
             </select>
         </div>
-	<table class="table table-striped">
-		<thead>
-        		<tr>
-				<th>No</th>
-        			<th>Referred To</th>
-        			<th>Referral Date</th>
-				<th>Referring Doctor</th>
-				<th>Tooth Condition</th>
-				<th>Comments</th>
-				<th>Referral Letter</th>
-        		</tr>
-		</thead>
-		
-		<tbody id="data">
-                 <?php                          
-                    //Database Connection
-                    $servername = "localhost";
-                    $database = "u922342007_Test";
-                    $username = "u922342007_admin";
-                    $password = "Aylm@012";
-        
-                    // Create connection
-                    $conn = mysqli_connect($servername, $username, $password, $database);
-				           
-			$res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, doctor.fullName, 
-			referralTracking.toothCondition, referralTracking.comments FROM referralTracking, registeredPatient, users, doctor
-			WHERE users.ID = '{$_SESSION['id']}' AND referralTracking.referringDoctor = doctor.doctorID
-			AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID
-			ORDER BY referralTracking.ID ASC");
 
-			$result = mysqli_query($conn, $res);
-					
+        <div style="overflow-x:auto;">
+        <table class="table table-striped">
+            <thead>
+                    <tr>
+                    <th>No</th>
+                        <th>Referred To</th>
+                        <th>Referral Date</th>
+                    <th>Referring Doctor</th>
+                    <th>Tooth Condition</th>
+                    <th>Comments</th>
+                    <th>Referral Letter</th>
+                    </tr>
+            </thead>
+            
+            <tbody id="data">
+                    <?php                          
+                        //Database Connection
+                        $servername = "localhost";
+                        $database = "u922342007_Test";
+                        $username = "u922342007_admin";
+                        $password = "Aylm@012";
+            
+                        // Create connection
+                        $conn = mysqli_connect($servername, $username, $password, $database);
+                            
+                $res = ("SELECT referralTracking.ID, referralTracking.referredTo, referralTracking.referralDate, doctor.fullName, 
+                referralTracking.toothCondition, referralTracking.comments FROM referralTracking, registeredPatient, users, doctor
+                WHERE users.ID = '{$_SESSION['id']}' AND referralTracking.referringDoctor = doctor.doctorID
+                AND users.ID = registeredPatient.users_ID AND registeredPatient.ID = referralTracking.patient_ID
+                ORDER BY referralTracking.ID ASC");
 
-                    while($sql = mysqli_fetch_assoc($result)){
-                              echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["fullName"]."</td><td>"
-			      .$sql["toothCondition"]."</td><td>".$sql["comments"]."</td><td><a class='btn btn-dark btn-sm' href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
-                            }
-			        ?>         
-		</tbody>
-	</table>		
+                $result = mysqli_query($conn, $res);
+                        
+
+                        while($sql = mysqli_fetch_assoc($result)){
+                                echo "<tr><td>".$sql["ID"]."</td><td>".$sql["referredTo"]."</td><td>".$sql["referralDate"]."</td><td>".$sql["fullName"]."</td><td>"
+                    .$sql["toothCondition"]."</td><td>".$sql["comments"]."</td><td><a class='btn btn-dark btn-sm' href='./dentalreferral.php?ID=".$sql["ID"]."'>Generate referral</a></td></tr>";
+                                }
+                        ?>         
+            </tbody>
+        </table>	
+        </div>
+	
     	</div>
 
 
