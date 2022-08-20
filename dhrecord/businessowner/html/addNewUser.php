@@ -12,8 +12,8 @@ $fullName = $_POST['fullName'];
 $contactNumber = $_POST['contactNumber'];
 $email = $_POST['email'];
 $userName = $_POST['userName'];
-$passWord = $_POST['passWord'];
-//$plainPassWord = $_POST['passWord'];
+//$passWord = $_POST['passWord'];
+$plainPassWord = $_POST['passWord'];
 
 // Store the cipher method
 $ciphering = "AES-128-CTR";
@@ -34,7 +34,7 @@ $decryption_iv = '1234567891011121';
 // Store the decryption key
 $decryption_key = "JovenChanDunCry";
 
-//$passWord = openssl_encrypt($plainPassWord, $ciphering, $encryption_key, $options, $encryption_iv);
+$passWord = openssl_encrypt($plainPassWord, $ciphering, $encryption_key, $options, $encryption_iv);
 
 // added - code added for doctor specializations
 $CS = $_POST['clinicSpecializations'];

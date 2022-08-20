@@ -49,7 +49,7 @@
   // Store the decryption key
   $decryption_key = "JovenChanDunCry";
 
-  //$decryptedPassword = openssl_decrypt($passWord, $ciphering, $decryption_key, $options, $decryption_iv);
+  $decryptedPassword = openssl_decrypt($passWord, $ciphering, $decryption_key, $options, $decryption_iv);
 ?>
 
 <!DOCTYPE html>
@@ -127,8 +127,8 @@
                 <div class="mb-3 row">
                     <label for="passWord" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$passWord. '"'; ?> readonly>
-                        <!--<input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$decryptedPassword. '"'; ?> readonly>-->
+                        <!--<input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$passWord. '"'; ?> readonly>-->
+                        <input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$decryptedPassword. '"'; ?> readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">

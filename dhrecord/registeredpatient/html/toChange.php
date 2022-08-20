@@ -54,9 +54,9 @@ else
 {
     if($newPassWord == $confirmNewPassWord)
     {
-        //$encryptedPassword = openssl_encrypt($newPassWord, $ciphering, $encryption_key, $options, $encryption_iv);
-        //$query = "UPDATE users SET password='$encryptedPassword' WHERE ID='$userID'";
-    	$query = "UPDATE users SET password='$newPassWord' WHERE ID='$userID'";
+        $encryptedPassword = openssl_encrypt($newPassWord, $ciphering, $encryption_key, $options, $encryption_iv);
+        $query = "UPDATE users SET password='$encryptedPassword' WHERE ID='$userID'";
+    	//$query = "UPDATE users SET password='$newPassWord' WHERE ID='$userID'";
     	if (mysqli_query($conn,$query)) 
     	{
     		header('Location: changeUsernameOrPassword.php');

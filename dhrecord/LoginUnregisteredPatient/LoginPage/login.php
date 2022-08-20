@@ -59,10 +59,10 @@
 
 			$decryptedPassword = openssl_decrypt($data['password'], $ciphering, $decryption_key, $options, $decryption_iv);
 			
-			//if($decryptedPassword === $passWord) 
-			//{
-			if($data['password'] === $passWord) 
+			if($decryptedPassword === $passWord) 
 			{
+			//if($data['password'] === $passWord) 
+			//{
 				$_SESSION['loggedin'] = TRUE;
 				$_SESSION['username'] = $data['username'];
 				$_SESSION['role'] = $data['role'];
