@@ -86,7 +86,7 @@
 			</form>
 		</div>
 
-		<div class="content-div my-4">
+		<div class="content-div my-4" style="overflow-x:auto;">
             <table class="table" id="patientTable" data-filter-control="true" data-show-search-clear-button="true">
                 <tr class="bg-dark text-light">
 					<th class="px-4">Patient ID</th>
