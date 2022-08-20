@@ -1,0 +1,132 @@
+.search-div, .search-input-div{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#referralTracking_ddlfilter{
+    margin-left: 0; 
+}
+
+#searchbar_filter{
+    margin: 20px 0;
+}
+
+.title-div-appt{
+    display: flex;
+    flex-direction: column;
+}
+
+.title-div-appt > button{
+  margin-top: 20px;
+}
+
+.filter-div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.search-clinic-div{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+
+.search-clinic-form{
+    flex-direction: column;
+}
+
+.search-clinic-form > .input-group{
+    flex-wrap: nowrap!important;
+    margin: 20px 0;
+}
+
+.sort-by-div{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: 30px;
+    /* margin-top: 0px; */
+}
+
+.sort-by-label{
+    margin-bottom: 20px!important;
+}
+
+.select-div1{
+    align-items: center;
+}
+
+.custom-container {
+    margin: 20px 0;
+}
+
+@media screen and (min-width: 600px) {
+    /* For tablets: */
+
+}
+
+@media screen and (min-width: 768px) {
+    /* For desktop: */
+    .search-div, .search-input-div{
+        align-items: center;
+        flex-direction: row;
+    }
+
+    #referralTracking_ddlfilter{
+        margin-left: 70px; 
+    }
+
+    #searchbar_filter{
+        margin: 0;
+    }
+    
+    .title-div-appt{
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .title-div-appt > button{
+        margin-top: 0;
+    }
+
+    .filter-div{
+        flex-direction:row;
+        justify-content: space-between;
+    }
+    
+    .search-clinic-div{
+        flex-direction:row;
+        align-items: center;
+    }
+
+    .search-clinic-form{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .search-clinic-form > .input-group{
+        margin: 0 40px;
+    }
+
+    .sort-by-div{
+        flex-direction:row;
+        align-items: center;
+        /* margin-top: 0; */
+    }
+
+    .sort-by-label{
+        margin: 0 40px!important;
+    }
+
+    .sort-by-select-div{
+        margin: 0 20px;
+    }
+
+    .custom-container {
+        margin: 40px 0;
+    }
+
+}
