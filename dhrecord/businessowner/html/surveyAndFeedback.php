@@ -34,8 +34,8 @@
 
 <body onload="findData();">
     <?php
-    include 'navBar.php';
-?>
+        include 'navBar.php';
+    ?>
 
 <div class="container my-5">
         <h4 class="mb-5">Survey and Feedback</h4>
