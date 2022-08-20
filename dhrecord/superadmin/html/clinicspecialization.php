@@ -76,13 +76,13 @@
 
 
     <main class="container my-5">
-        <h4 class="mb-5">Clinic Specialization</h4>
+        <h4 class="mb-3">Clinic Specialization</h4>
 
-        <div class="mb-4 d-flex search-div">
+        <div class="d-flex search-div">
             <form action="" method ="POST">
                 <div class="d-flex search-form-group">
                     <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
-                    <div class="input-group">
+                    <div class="input-group ig1">
                         <input type="text" class="form-control" placeholder="Specialization Name"
                             aria-label="Name" aria-describedby="basic-addon2" style="max-width: 400px;" id="search" name="search"/>
                         <button class="input-group-text" id="basic-addon2" type="submit" name="search1">
