@@ -32,6 +32,7 @@
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
   <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="../css/apptForm.css">
 
   <title>DHRecord</title>
 </head>
@@ -81,7 +82,7 @@
 
     <div class="p-5" style="background: #F2F2F2;">
       <form method="post" action="./rescheduleApptSubmit.php">
-          <div class="d-flex">
+          <div class="d-flex resched-form">
               <div>
                   <p class="m-0"><b>Doctor: </b>
                     <?php
@@ -206,7 +207,7 @@
 
               <div>
                 <div class=" mb-4">
-                  <div class="mx-5">
+                  <div class="personalized_mx">
                         <div>
                             <p><b>Agenda:</b></p>
                             <p><?=$apptAgenda?></p>
@@ -214,8 +215,8 @@
                   </div>
                 </div>
 
-                <div class="d-flex">
-                  <div class="mx-5">
+                <div class="d-flex resched-form">
+                  <div class="personalized_mx">
                     <div>
                         <p><b>Current Date (mm-dd-yyyy):</b></p>
                         <p><?=substr($apptDate, 5, 2)."-".substr($apptDate, 8, 2)."-".substr($apptDate, 0, 4)?></p>
@@ -227,7 +228,7 @@
                     </div>
                   </div>
 
-                  <div class="mx-5">
+                  <div class="personalized_mx">
                     <div>
                         <p><b>Current Time:</b></p>
                         <p><?=substr($apptTime, 0, 5)?></p>
