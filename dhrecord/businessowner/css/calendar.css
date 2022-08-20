@@ -5,10 +5,19 @@
 }
 
 
+.title-div-appt > h4{
+   margin-bottom: 20px;
+}
+
+
 @media screen and (min-width: 768px) {
     /* For desktop: */
     .title-div-appt{
         justify-content: space-between;
         flex-direction: row;
     }
+
+    .title-div-appt > h4{
+        margin-bottom: 0;
+     }
 }
