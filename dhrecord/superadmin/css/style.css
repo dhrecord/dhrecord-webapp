@@ -66,3 +66,34 @@ button:hover{
     border: 1px solid #DEE2E6;
     border-top: 10px solid #212529!important;
 }
+
+.search-div{
+    flex-direction: column;
+}
+
+.add-spec-btn-div{
+    justify-content: flex-start;
+}
+
+.search-form-group{
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    /* For desktop: */
+    .search-div{
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .add-spec-btn-div{
+        justify-content: flex-end;
+    }
+
+    .search-form-group{
+        align-items: center;
+        flex-direction: row;
+    }
+}

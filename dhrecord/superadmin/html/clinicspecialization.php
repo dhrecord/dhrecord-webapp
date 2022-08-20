@@ -77,9 +77,10 @@
 
     <main class="container my-5">
         <h4 class="mb-5">Clinic Specialization</h4>
-        <div class="mb-4 d-flex align-items-center justify-content-between">
+
+        <div class="mb-4 d-flex search-div">
             <form action="" method ="POST">
-                <div class="d-flex align-items-center">
+                <div class="d-flex search-form-group">
                     <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Specialization Name"
@@ -90,7 +91,7 @@
                     </div>
                 </div>
             </form>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex add-spec-btn-div">
                 <!--<a href="./reviewrequest.php" class="btn btn-dark">Review Request</a>-->
                 &nbsp;&nbsp;&nbsp;
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#popupModalAddRow">Add
@@ -99,6 +100,8 @@
         </div>
 
 
+        <div style="overflow-x: auto;">
+   
         <table class="table table-striped mt-5">
             <thead>
                 <tr>
@@ -226,7 +229,8 @@
 
         </tbody>
     </table>
-
+         
+    </div>
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
