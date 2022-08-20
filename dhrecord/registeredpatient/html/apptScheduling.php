@@ -224,7 +224,7 @@
 
   <!-- content -->
   <div class="container my-5">
-    <div class="mb-5 d-flex justify-content-between title-div-appt">
+    <div class="mb-5 title-div-appt">
       <h4>Appointment Scheduling and Reminders</h4>
       <button class="btn btn-dark"  onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
     </div>
@@ -281,7 +281,7 @@
             </div>
         </div>
 
-        <div class="content-div my-4">
+        <div class="content-div my-4" style="overflow-x:auto;">
             <table class="table" id="clinicTable" data-filter-control="true" data-show-search-clear-button="true">
                 <tr class="bg-dark text-light">
                     <th class="px-4">Clinic Name</th>
