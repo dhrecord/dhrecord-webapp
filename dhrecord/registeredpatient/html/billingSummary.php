@@ -94,8 +94,7 @@
                             Appointment & Treatment
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
-                                    & Reminders</a></li>
+                            <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling</a></li>
                             <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
                         </ul>
                     </li>

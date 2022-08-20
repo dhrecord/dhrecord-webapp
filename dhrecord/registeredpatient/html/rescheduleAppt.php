@@ -22,6 +22,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
+    <link rel="stylesheet" href="../css/calendar.css">
+
   <title>DHRecord</title>
 </head>
 
@@ -39,8 +41,7 @@
             <a class="nav-link" aria-current="page" href="../html/index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../html/apptScheduling.php">Appointment Scheduling &
-              Reminder</a>
+            <a class="nav-link active" href="../html/apptScheduling.php">Appointment Scheduling</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/referralTracking.php">Referral Tracking</a>
@@ -65,16 +66,16 @@
 
   <!-- content -->
   <div class="container my-5">
-    <div class="mb-5 d-flex justify-content-between">
+    <div class="mb-5 title-div-appt">
       <h4>Reschedule Appointment</h4>
       <!-- buttons -->
-      <div>
+      <div class="title-div-appt-btns">
         <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/apptScheduling.php'">Book Appointment</button>
         <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
       </div>  
     </div>
     
-    <div>
+    <div style="overflow-x:auto;">
       <table class="table table-striped">
         <tr class="bg-dark text-white">
           <th>No</th>

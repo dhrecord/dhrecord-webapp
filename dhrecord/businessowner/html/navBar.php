@@ -39,12 +39,12 @@ if($role === "fd")
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
-                                    & Reminders</a></li>
+                                </a></li>
                             <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicingFD.php">Payment</a>
+                        <a class="nav-link <?php echo ($page == 'billingInvoicingFD.php') ? 'active': '' ?>" href="./billingInvoicingFD.php">Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
@@ -97,12 +97,12 @@ else if($role === "dr")
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
-                                    & Reminders</a></li>
+                                    </a></li>
                             <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicingDR.php">Payment</a>
+                        <a class="nav-link <?php echo ($page == 'billingInvoicingDR.php') ? 'active': '' ?>" href="./billingInvoicingDR.php">Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
@@ -144,7 +144,7 @@ else
                         <a class="nav-link dropdown-toggle <?php echo ($page == 'userManagement.php' or $page == 'manageRecord.php' 
                         or $page == 'addUser.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            User Management & Manage Records
+                            User Management <br/>& Manage Records
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./userManagement.php">User Management</a></li>
@@ -164,15 +164,15 @@ else
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./apptSchedulingAndReminders.php">Appointment Scheduling
-                                    & Reminders</a></li>
-                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment Planning</a></li>
+                                    </a></li>
+                            <li><a class="dropdown-item" href="./treatmentHistory.php">Treatment History</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="./reportingAndStatistics.php">Reporting & Statistics</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($page == 'billingInvoicing.php') ? 'active': '' ?>" href="./billingInvoicingCA.php">Payment</a>
+                        <a class="nav-link <?php echo ($page == 'billingInvoicingCA.php') ? 'active': '' ?>" href="./billingInvoicingCA.php">Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>

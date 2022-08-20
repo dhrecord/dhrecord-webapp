@@ -199,8 +199,7 @@
             <a class="nav-link" aria-current="page" href="../html/index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../html/apptScheduling.php">Appointment Scheduling &
-              Reminder</a>
+            <a class="nav-link active" href="../html/apptScheduling.php">Appointment Scheduling</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/referralTracking.php">Referral Tracking</a>
@@ -226,7 +225,7 @@
   <!-- content -->
   <div class="container my-5">
     <div class="mb-5 title-div-appt">
-      <h4>Appointment Scheduling and Reminders</h4>
+      <h4>Appointment Scheduling</h4>
       <button class="btn btn-dark"  onclick="document.location.href='../../registeredpatient/html/mySchedule.php'">My Appointment</button>
     </div>
 
