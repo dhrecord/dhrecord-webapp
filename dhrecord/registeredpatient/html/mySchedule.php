@@ -29,6 +29,7 @@
 
   <!-- Style -->
   <link rel="stylesheet" href="../../apptScheduling/css/style.css">
+  <link rel="stylesheet" href="../css/calendar.css">
 
   <title>DHRecord</title>
 </head>
@@ -73,9 +74,9 @@
 
   <!-- content -->
   <div class="container my-5">
-    <div class="mb-5 d-flex justify-content-between">
+    <div class="mb-5 title-div-appt">
       <h4>My Appoinment Calendar</h4>
-      <div>
+      <div class="title-div-appt-btns">
         <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/apptScheduling.php'">Book Appointment</button>
         <button class="btn btn-dark" onclick="document.location.href='../../registeredpatient/html/rescheduleAppt.php'">Reschedule</button>
       </div>

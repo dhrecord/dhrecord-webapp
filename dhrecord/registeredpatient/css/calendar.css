@@ -1,0 +1,25 @@
+
+.title-div-appt{
+    display: flex;
+    flex-direction: column;
+}
+
+.title-div-appt-btns{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (min-width: 768px) {
+    /* For desktop: */
+    .title-div-appt{
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .title-div-appt-btns{
+        margin-top: 0;
+        display: block;
+    }
+}
