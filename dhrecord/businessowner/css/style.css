@@ -14,3 +14,16 @@ button:hover {
     opacity: 0.6;
     transition: 0.6s;
 }
+
+
+.d-box{
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    /* For desktop: */
+    .d-box{
+        display: flex;
+        align-items: center;
+    }
+}

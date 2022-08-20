@@ -52,6 +52,7 @@
 		<br/><br/><br/>
             </div>
         </div>
+		<div style="overflow-x:auto;">
         <table class="table table-striped">
 			<tr>
 				<th>Patient's Name</th>
@@ -138,6 +139,7 @@
 			?>
 						    
         </table>
+		</div>
     </div>
 
 
