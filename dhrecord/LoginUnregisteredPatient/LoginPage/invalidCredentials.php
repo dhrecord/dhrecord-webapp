@@ -42,7 +42,7 @@
   <div class="Eclipse1"></div>
   <div class="Eclipse2"></div>
   <div class="container d-flex justify-content-center align-items-center"
-    style="height: 100vh; min-height: 500px; margin-right: 320px;">
+    style="height: 100vh; min-height: 500px;">
     <div>
       <div class="mb-5 text-center">
         <h4 class="login-form-title2">Wrong Password or Username, Please Try Again</h4>
