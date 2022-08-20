@@ -9,7 +9,7 @@
 	$postalCode = $_POST['postalCode'];
 	$medConditions = $_POST['med-conditions'];
 	$drugAllergies = $_POST['drug-allergies'];
-	$attendingDoctor = $_POST['attendingDoctor'];
+	//$attendingDoctor = $_POST['attendingDoctor'];
 
 	//variables to go into users
 	$role = "pt";
