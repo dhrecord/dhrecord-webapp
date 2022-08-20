@@ -100,7 +100,7 @@ $currentFamilyTag = $row["familyTag"];
                 </div>
             </div>
         </form>
-
+            <div style="overflow-x:auto;">
                 <table class="table table-striped">
             <thead>
                 <tr>
@@ -201,7 +201,7 @@ $currentFamilyTag = $row["familyTag"];
 
                     </tbody>
         </table>
-
+    </div>
     </div>
 
     <!-- bootstrap js -->

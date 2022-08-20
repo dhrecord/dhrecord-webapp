@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DHRecord</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/apptSched.css" />
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -40,8 +41,9 @@
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Referral Tracking</h4>
-        <div class="mb-4 d-flex align-items-center">
-            <div class="d-flex align-items-center">
+
+        <div class="mb-4 earch-div">
+            <div class="search-input-div">
                 <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
                 <div class="input-group">
                     <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..."
@@ -49,16 +51,17 @@
                 </div>
             </div>
             <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
-                style="margin-left: 70px; max-width: 250px;">
+                style="max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">Patient Name</option>
                 <option value="2">Referred To</option>
                 <option value="3">Referral Date</option>
                 <option value="4">Referring Doctor</option>
                 <option value="5">Tooth Condition</option>
-		<option value="6">Comments</option>
+		        <option value="6">Comments</option>
             </select>
         </div>
+
         <div style="overflow-x:auto;">
         <table class="table table-striped">
             <thead>
