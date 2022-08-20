@@ -25,10 +25,12 @@
   <!-- Style -->
   <!-- <link rel="stylesheet" href="../../apptScheduling/css/style.css"> -->
   <link rel="stylesheet" href="../css/apptSchedulingAndReminders.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="../css/apptForm.css">
     
   <!-- jquery -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  
 
   <title>DHRecord</title>
 </head>
@@ -46,7 +48,7 @@
 
     <div class="p-5" style="background: #F2F2F2;">
       <form method="post" action="./bookApptSubmit.php">
-        <div class="d-flex">
+        <div class="d-flex resched-form">
           <div>
               <p class="m-0"><b>Doctor: </b>
                   <?php
@@ -193,7 +195,7 @@
 
           <div>
             <div class=" mb-4">
-              <div class="mx-5">
+              <div class="personalized_mx">
                     <div>
                         <p><b>Patient:</b></p>
                         <!-- <input type="text" name="patID" style="width:250px;"/> -->
@@ -220,7 +222,7 @@
             </div>
 
             <div class=" mb-4">
-              <div class="mx-5">
+              <div class="personalized_mx">
                     <div>
                         <p><b>Agenda:</b></p>
                         <input type="text" name="agenda" style="width:250px;" id="agenda" required/>
@@ -228,8 +230,8 @@
               </div>
             </div>
 
-            <div class="d-flex">
-              <div class="mx-5">
+            <div class="d-flex resched-form">
+              <div class="personalized_mx">
                   <div>
                       <p><b>Date (mm-dd-yyyy):</b></p>
                       <input type="text" id="datepicker" name="date" required/>
@@ -237,7 +239,7 @@
                   </div>
               </div>
 
-              <div class="mx-5">
+              <div class="personalized_mx personalized_mt4">
                   <div class="d-flex">
                       <input type="text" id="result2" style="display:none;" name="time" value="" required/>
                       <div>
