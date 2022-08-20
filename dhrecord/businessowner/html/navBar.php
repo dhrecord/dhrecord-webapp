@@ -137,24 +137,24 @@ else
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
                         <a class="nav-link <?php echo ($page == 'index.php') ? 'active': '' ?>" aria-current="page" href="./index.php">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown d-flex align-items-center">
                         <a class="nav-link dropdown-toggle <?php echo ($page == 'userManagement.php' or $page == 'manageRecord.php' 
                         or $page == 'addUser.php' or strpos($page, 'familyTagging.php') !== FALSE) ? 'active': '' ?>" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            User Management <br/>& Manage Records
+                            User Management &<br/> Manage Records
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./userManagement.php">User Management</a></li>
                             <li><a class="dropdown-item" href="./manageRecord.php">View Patient</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
                         <a class="nav-link <?php echo ($page == 'referralTracking.php') ? 'active': '' ?>" href="./referralTracking.php">Referral Tracking</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown d-flex align-items-center">
                         <a class="nav-link dropdown-toggle <?php echo ($page == 'apptSchedulingAndReminders.php' 
                                     or $page == 'treatmentHistory.php' or $page == 'doctorSchedule.php' 
                                     or $page == 'rescheduleAppt.php' or $page == 'rescheduleApptForm.php' 
@@ -171,13 +171,13 @@ else
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="./reportingAndStatistics.php">Reporting & Statistics</a>
                     </li> -->
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
                         <a class="nav-link <?php echo ($page == 'billingInvoicingCA.php') ? 'active': '' ?>" href="./billingInvoicingCA.php">Payment</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
                         <a class="nav-link <?php echo ($page == 'inventoryManagement.php' or $page == 'AddNewPrescription.php' or strpos($page, 'editInv.php') !== FALSE) ? 'active': '' ?>" href="./inventoryManagement.php">Inventory Management</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
                         <a class="nav-link <?php echo ($page == 'surveyAndFeedback.php') ? 'active': '' ?>" href="./surveyAndFeedback.php">Survey and Feedback</a>
                     </li>
                 </ul>
