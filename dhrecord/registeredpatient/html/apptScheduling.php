@@ -230,20 +230,20 @@
     </div>
 
     <div class="container my-5 custom-container">
-        <div class="mb-5 d-flex justify-content-between">
-            <div class="d-flex align-items-center">
+        <div class="mb-2 filter-div">
+            <div class="search-clinic-div">
                 <div><p class="m-0"><b>Search Clinic:</b></p></div>
 
-                <form action="#" method="post" class="d-flex">
-                  <div class="input-group mx-4" style="width:fit-content">
+                <form action="#" method="post" class="d-flex search-clinic-form">
+                  <div class="input-group" style="width:fit-content">
                     <input type="text" id="searchInput" class="form-control" name="search" placeholder="Enter Value ..."
-                    aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px;" required/>
+                    aria-label="search" aria-describedby="basic-addon2" style="max-width: 350px; min-width: 250px;" required/>
                     <button id="basic-addon2" type="submit" name="save" class="input-group-text">
                       <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                   </div>
 
-                    <div class="mx-2"> 
+                    <div class="select-div1"> 
                       <select required name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
                      data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
                         <option value="" selected disabled hidden>Category ...</option>
@@ -258,15 +258,15 @@
                 </form>
             </div>
 
-            <div class="d-flex align-items-center">
-                <div class="mx-4" style="width:fit-content">
+            <div class="sort-by-div">
+                <div class="sort-by-label" style="width:fit-content">
                     <b>Quick Filter:</b>
                 </div>
 
                 <form action="#" method="post" class="d-flex align-items-center">
-                  <div class="mx-2"> 
+                  <div class="sort-by-select-div"> 
                     <select required name="select2" class="form-select" id="auditLog_ddlFilterBy2" aria-label="Filter By..."
-                  style="">
+                  style="max-width: 350px; min-width: 250px;">
                       <option selected disabled hidden>Category ...</option>
                       <option value="7">Show Nearest Clinics</option>
                       <option value="8">Show Highest Rating Clinics</option> <!-- show 4 to 5 stars clinic -->
