@@ -75,7 +75,7 @@
       </div>  
     </div>
     
-    <div class="overflow-x:auto;">
+    <div style="overflow-x:auto;">
       <table class="table table-striped">
         <tr class="bg-dark text-white">
           <th>No</th>
