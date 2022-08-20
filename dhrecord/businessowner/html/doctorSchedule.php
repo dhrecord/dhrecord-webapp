@@ -28,6 +28,7 @@
 
   <!-- Style -->
   <link rel="stylesheet" href="../../apptScheduling/css/style.css">
+  <link rel="stylesheet" href="../css/calendar.css">
 
   <title>DHRecord</title>
 </head>
@@ -56,7 +57,7 @@
 
   <div class="container my-5">
     <?php
-      echo '<div class="mb-5 d-flex justify-content-between">
+      echo '<div class="mb-5 d-flex title-div-appt">
       <h4>Doctor Appoinment Calendar - ';
 
       // GET THE DOCTOR FULLNAME
