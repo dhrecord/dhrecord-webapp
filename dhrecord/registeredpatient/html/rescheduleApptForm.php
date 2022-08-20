@@ -216,7 +216,7 @@
                 </div>
 
                 <div class="d-flex resched-form">
-                  <div class="personalized_mx personalized_mt4">
+                  <div class="personalized_mx">
                     <div>
                         <p><b>Current Date (mm-dd-yyyy):</b></p>
                         <p><?=substr($apptDate, 5, 2)."-".substr($apptDate, 8, 2)."-".substr($apptDate, 0, 4)?></p>
@@ -228,7 +228,7 @@
                     </div>
                   </div>
 
-                  <div class="personalized_mx">
+                  <div class="personalized_mx personalized_mt4">
                     <div>
                         <p><b>Current Time:</b></p>
                         <p><?=substr($apptTime, 0, 5)?></p>
