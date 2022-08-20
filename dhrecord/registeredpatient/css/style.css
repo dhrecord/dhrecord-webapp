@@ -82,3 +82,21 @@ td.ui-datepicker-unselectable:hover{
 .slot-btn.transparent {
     opacity: 0.5;
 }
+
+.search-div, .search-input-div{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 600px) {
+    /* For tablets: */
+
+}
+
+@media screen and (min-width: 768px) {
+    /* For desktop: */
+    .search-div, .search-input-div{
+        align-items: center;
+        flex-direction: row;
+    }
+}

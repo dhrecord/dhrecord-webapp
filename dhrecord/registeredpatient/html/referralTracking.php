@@ -73,13 +73,14 @@ if(!isset($_SESSION['loggedin']))
     <!-- content -->
     <div class="container my-5">
         <h4 class="mb-5">Referral Tracking</h4>
-	    <div class="mb-4 d-flex align-items-center">
-		    <div class="d-flex align-items-center">
-			<p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
-			<div class="input-group">
-			    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..." pattern="[a-zA-Z0-9]"
-				aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
-			</div>
+
+	    <div class="mb-4 search-div">
+		    <div class="search-input-div">
+                <p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
+                <div class="input-group">
+                    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..." pattern="[a-zA-Z0-9]"
+                    aria-label="Name" aria-describedby="basic-addon2" style="max-width: 300px;" />
+                </div>
 		    </div>
             <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
                 style="margin-left: 70px; max-width: 250px;">
@@ -88,7 +89,7 @@ if(!isset($_SESSION['loggedin']))
                 <option value="2">Referral Date</option>
                 <option value="3">Referring Doctor</option>
                 <option value="4">Tooth Condition</option>
-	    	<option value="5">Comments</option>
+	    	    <option value="5">Comments</option>
             </select>
         </div>
 
