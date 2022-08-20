@@ -175,6 +175,7 @@
 
   <!-- Style -->
   <link rel="stylesheet" href="../../apptScheduling/css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 
   <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -245,7 +246,7 @@
 
                     <div class="select-div1"> 
                       <select required name="select" class="form-select" id="auditLog_ddlFilterBy" aria-label="Filter By..."
-                     data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
+                      style="max-width: 350px; min-width: 250px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Time Format E.g. 16:00 ">
                         <option value="" selected disabled hidden>Category ...</option>
                         <option value="1">Clinic Name</option>
                         <option value="2">Specialization</option>
