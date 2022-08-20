@@ -97,6 +97,11 @@ td.ui-datepicker-unselectable:hover{
     margin: 20px 0;
 }
 
+.title-div-appt{
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (min-width: 600px) {
     /* For tablets: */
 
@@ -117,4 +122,8 @@ td.ui-datepicker-unselectable:hover{
         margin: 0;
     }
     
+    .title-div-appt{
+        justify-content: space-between;
+        flex-direction: row;
+    }
 }
