@@ -39,8 +39,8 @@
     </div>
   </div> -->
 
-  <div class="Eclipse1"></div>
-  <div class="Eclipse2"></div>
+  <!-- <div class="Eclipse1"></div>
+  <div class="Eclipse2"></div> -->
   <div class="container d-flex justify-content-center align-items-center"
     style="height: 100vh; min-height: 500px;">
     <div>

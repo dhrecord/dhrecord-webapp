@@ -54,7 +54,7 @@ if($role === "fd")
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
-                    <p class="navbar-text text-white m-0">
+                    <p class="navbar-text text-white m-0 text-end">
                         Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
@@ -109,7 +109,7 @@ else if($role === "dr")
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
-                    <p class="navbar-text text-white m-0">
+                    <p class="navbar-text text-white m-0 text-end">
                         Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
@@ -182,7 +182,7 @@ else
                     </li>
                 </ul>
                 <div class="d-flex flex-column align-items-end">
-                    <p class="navbar-text text-white m-0">
+                    <p class="navbar-text text-white m-0 text-end">
                         Welcome, <?php echo $_SESSION['username']; ?>
                     </p>
                     <button type="button" class="btn btn-light ml-3 btn-sm mb-2"
