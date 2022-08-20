@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DHRecord</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/apptSched.css" />
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -38,8 +39,8 @@
 
 <div class="container my-5">
         <h4 class="mb-5">Survey and Feedback</h4>
-	    <div class="mb-4 d-flex align-items-center">
-		    <div class="d-flex align-items-center">
+	    <div class="mb-4 search-div">
+		    <div class="search-input-div">
 			<p class="m-0"><b>Search:</b>&nbsp;&nbsp;&nbsp;</p>
 			<div class="input-group">
 			    <input type="text" id="searchbar_filter" class="form-control" placeholder="Enter Value ..." pattern="[a-zA-Z0-9]"
@@ -47,7 +48,7 @@
 			</div>
 		    </div>
             <select class="form-select" id="survey_ddlfilter" aria-label="Filter By..."
-                style="margin-left: 70px; max-width: 250px;">
+                style="max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="0">Patient Name</option>
                 <option value="1">Time Taken</option>
