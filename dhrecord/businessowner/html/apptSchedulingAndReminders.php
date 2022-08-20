@@ -34,6 +34,7 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="../../apptScheduling/css/style.css">
+    <link rel="stylesheet" href="../css/calendar.css">
 </head>
 
 <body>
@@ -296,7 +297,7 @@
         <!-- show this if login as a doctor -->
         <?php
             if ($_SESSION['role'] === "dr"){
-                echo '<div><div class="my-4 d-flex justify-content-between">
+                echo '<div><div class="my-4 d-flex title-div-appt">
                 <h4>Doctor Appoinment Calendar - ';
 
                 // GET THE DOCTOR FULLNAME
