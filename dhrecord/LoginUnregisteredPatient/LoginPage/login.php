@@ -57,7 +57,7 @@
 			//$stmt->fetch();
 			$data = $stmt_result->fetch_assoc();
 
-			//$decryptedPassword = openssl_decrypt($data['password'], $ciphering, $decryption_key, $options, $decryption_iv);
+			$decryptedPassword = openssl_decrypt($data['password'], $ciphering, $decryption_key, $options, $decryption_iv);
 			
 			//if($decryptedPassword === $passWord) 
 			//{

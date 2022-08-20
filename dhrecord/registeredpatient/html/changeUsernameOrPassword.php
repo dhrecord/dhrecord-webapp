@@ -83,8 +83,7 @@
             <a class="nav-link" aria-current="page" href="../html/index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/apptScheduling.php">Appointment Scheduling &
-              Reminder</a>
+            <a class="nav-link" href="../html/apptScheduling.php">Appointment Scheduling</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/referralTracking.php">Referral Tracking</a>
@@ -129,7 +128,7 @@
                     <label for="passWord" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$passWord. '"'; ?> readonly>
-                        <!--<input type="password" class="form-control" id="passWord" name="passWord"  <?php //echo 'value = "'.$decryptedPassword. '"'; ?> readonly>-->
+                        <!--<input type="password" class="form-control" id="passWord" name="passWord"  <?php echo 'value = "'.$decryptedPassword. '"'; ?> readonly>-->
                     </div>
                 </div>
                 <div class="mb-3 row">
