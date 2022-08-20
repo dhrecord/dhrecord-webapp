@@ -83,7 +83,7 @@ if(!isset($_SESSION['loggedin']))
                 </div>
 		    </div>
             <select class="form-select" id="referralTracking_ddlfilter" aria-label="Filter By..."
-                style="margin-left: 70px; max-width: 250px;">
+                style="max-width: 250px;">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">Referred To</option>
                 <option value="2">Referral Date</option>

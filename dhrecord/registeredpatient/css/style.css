@@ -88,6 +88,15 @@ td.ui-datepicker-unselectable:hover{
     flex-direction: column;
 }
 
+
+#referralTracking_ddlfilter{
+    margin-left: 0; 
+}
+
+#searchbar_filter{
+    margin: 20px 0;
+}
+
 @media screen and (min-width: 600px) {
     /* For tablets: */
 
@@ -99,4 +108,13 @@ td.ui-datepicker-unselectable:hover{
         align-items: center;
         flex-direction: row;
     }
+
+    #referralTracking_ddlfilter{
+        margin-left: 70px; 
+    }
+
+    #searchbar_filter{
+        margin: 0;
+    }
+    
 }
