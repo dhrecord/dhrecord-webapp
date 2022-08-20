@@ -90,6 +90,10 @@ button:hover{
     flex-direction: column;
 }
 
+#regManBO_ddlFilterBy{
+    margin: 20px 0;
+}
+
 
 @media screen and (min-width: 768px) {
     /* For desktop: */
@@ -114,7 +118,13 @@ button:hover{
 
     .search-div2, .search-input-div{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
     }
     
+    
+    #regManBO_ddlFilterBy{
+        margin: 0;
+        margin-left: 70px; 
+    }
 }

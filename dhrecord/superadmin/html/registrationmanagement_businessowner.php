@@ -199,7 +199,7 @@
                 </div>
             </div>
             <select class="form-select" id="regManBO_ddlFilterBy" aria-label="Filter By..."
-                style="margin-left: 70px; max-width: 250px;" required name="select">
+                style="max-width: 250px;" required name="select">
                 <option selected disabled hidden>Filter By...</option>
                 <option value="1">No</option>
                 <option value="2">Clinic Name</option>
